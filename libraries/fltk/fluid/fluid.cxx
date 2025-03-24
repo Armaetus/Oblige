@@ -106,11 +106,6 @@ int G_debug = 0;
 char G_external_editor_command[512];
 
 
-/// This is set to create different labels when creating new widgets.
-/// \todo Details unclear.
-int reading_file = 0;
-
-
 // File history info...
 
 /// Stores the absolute filename of the last 10 design files, saved in app preferences.
@@ -1418,14 +1413,14 @@ void paste_cb(Fl_Widget*, void*) {
   pasteoffset = ipasteoffset;
   undo_checkpoint();
   undo_suspend();
-  Strategy strategy = kAddAfterCurrent;
+  Strategy strategy = Strategy::FROM_FILE_AFTER_CURRENT;
   if (Fl_Type::current && Fl_Type::current->can_have_children()) {
     if (Fl_Type::current->folded_ == 0) {
       // If the current widget is a group widget and it is not folded,
       // add the new widgets inside the group.
-      strategy = kAddAsLastChild;
+      strategy = Strategy::FROM_FILE_AS_LAST_CHILD;
       // The following alternative also works quite nicely
-      //strategy = kAddAsFirstChild;
+      //strategy = Strategy::FROM_FILE_AS_FIRST_CHILD;
     }
   }
   if (!read_file(cutfname(), 1, strategy)) {
@@ -1479,7 +1474,7 @@ void duplicate_cb(Fl_Widget*, void*) {
   pasteoffset  = 0;
   undo_checkpoint();
   undo_suspend();
-  if (!read_file(cutfname(1), 1, kAddAfterCurrent)) {
+  if (!read_file(cutfname(1), 1, Strategy::FROM_FILE_AFTER_CURRENT)) {
     fl_message("Can't read %s: %s", cutfname(1), strerror(errno));
   }
   fl_unlink(cutfname(1));
@@ -1941,17 +1936,15 @@ void load_history() {
   int   i;              // Looping var
   int   max_files;
 
-
   fluid_prefs.get("recent_files", max_files, 5);
   if (max_files > 10) max_files = 10;
 
   for (i = 0; i < max_files; i ++) {
     fluid_prefs.get( Fl_Preferences::Name("file%d", i), absolute_history[i], "", sizeof(absolute_history[i]));
     if (absolute_history[i][0]) {
-      // Make a relative version of the filename for the menu...
-      fl_filename_relative(relative_history[i], sizeof(relative_history[i]),
-                           absolute_history[i]);
-
+      // Make a shortened version of the filename for the menu...
+      Fl_String fn = fl_filename_shortened(absolute_history[i], 48);
+      strncpy(relative_history[i], fn.c_str(), sizeof(relative_history[i]) - 1);
       if (i == 9) history_item[i].flags = FL_MENU_DIVIDER;
       else history_item[i].flags = 0;
     } else break;
@@ -1982,6 +1975,14 @@ void update_history(const char *flname) {
   if (max_files > 10) max_files = 10;
 
   fl_filename_absolute(absolute, sizeof(absolute), flname);
+#ifdef _WIN32
+  // Make path canonical.
+  for (char *s = absolute; *s; s++) {
+    if (*s == '\\')
+      *s = '/';
+  }
+#endif
+
 
   for (i = 0; i < max_files; i ++)
 #if defined(_WIN32) || defined(__APPLE__)
@@ -2002,9 +2003,8 @@ void update_history(const char *flname) {
 
   // Put the new file at the top...
   strlcpy(absolute_history[0], absolute, sizeof(absolute_history[0]));
-
-  fl_filename_relative(relative_history[0], sizeof(relative_history[0]),
-                       absolute_history[0]);
+  Fl_String fn = fl_filename_shortened(absolute_history[0], 48);
+  strncpy(relative_history[0], fn.c_str(), sizeof(relative_history[0]) - 1);
 
   // Update the menu items as needed...
   for (i = 0; i < max_files; i ++) {
@@ -2191,9 +2191,9 @@ static void sigint(SIGARG) {
  \param[in] argv pointer to an array of arguments
  \return in batch mode, an error code will be returned via \c exit() . This
     function return 1, if there was an error in the parameters list.
- \todo On MSWindows, Fluid can under certain conditions open a dialog box, even
+ \todo On Windows, Fluid can under certain conditions open a dialog box, even
     in batch mode. Is that intentional? Does it circumvent issues with Windows'
- stderr and stdout?
+    stderr and stdout?
  */
 int main(int argc,char **argv) {
   int i = 1;

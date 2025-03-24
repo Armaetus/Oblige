@@ -4,7 +4,7 @@
 // Copyright 1997-2011 by Easy Software Products.
 // Image support by Matthias Melcher, Copyright 2000-2009.
 //
-// Copyright 2013-2021 by Bill Spitzak and others.
+// Copyright 2013-2025 by Bill Spitzak and others.
 //
 // This library is free software. Distribution and use rights are outlined in
 // the file "COPYING" which should have been included with this file.  If this
@@ -220,10 +220,11 @@ void Fl_JPEG_Image::load_jpg_(const char *filename, const char *sharename, const
   fl_jpeg_error_mgr       jerr;     // Error handler info
   JSAMPROW                row;      // Sample row pointer
 
-  // the following variables are pointers allocating some private space that
-  // is not reset by 'setjmp()'
-  char* max_finish_decompress_err;      // count errors and give up after a while
-  char* max_destroy_decompress_err;     // to avoid recursion and deadlock
+  // The following variables are pointers allocating some private space that
+  // is not reset by 'setjmp()'. At least under macOS, it's necessay to make
+  // these variables volatile to avoid errors occurring when compiled with -O1 (issue #1207).
+  volatile char* max_finish_decompress_err;      // count errors and give up after a while
+  volatile char* max_destroy_decompress_err;     // to avoid recursion and deadlock
 
   // Note: The file pointer fp must not be an automatic (stack) variable
   // to avoid potential clobbering by setjmp/longjmp (gcc: [-Wclobbered]).
@@ -289,8 +290,8 @@ void Fl_JPEG_Image::load_jpg_(const char *filename, const char *sharename, const
       alloc_array = 0;
     }
 
-    free(max_destroy_decompress_err);
-    free(max_finish_decompress_err);
+    free((void*)max_destroy_decompress_err);
+    free((void*)max_finish_decompress_err);
 
     ld(ERR_FORMAT);
     delete fp;
@@ -335,8 +336,8 @@ void Fl_JPEG_Image::load_jpg_(const char *filename, const char *sharename, const
   jpeg_finish_decompress(&dinfo);
   jpeg_destroy_decompress(&dinfo);
 
-  free(max_destroy_decompress_err);
-  free(max_finish_decompress_err);
+  free((void*)max_destroy_decompress_err);
+  free((void*)max_finish_decompress_err);
 
   if (*fp)
     fclose(*fp);

@@ -1795,6 +1795,10 @@ static void surface_frame_done(void *data, struct wl_callback *cb, uint32_t time
     xid_rect->win->redraw();
   } else {
     xid_rect->win->Fl_Widget::resize(xid_rect->X, xid_rect->Y, xid_rect->W, xid_rect->H);
+    if (xid_rect->xid->buffer && xid_rect->xid->buffer->draw_buffer_needs_commit) {
+      // for scenarios where the child window is moved and its parent is simultaneously modified
+      Fl_Wayland_Graphics_Driver::buffer_commit(xid_rect->xid);
+    }
   }
   delete xid_rect;
 }
@@ -1929,6 +1933,9 @@ void Fl_Wayland_Window_Driver::resize(int X, int Y, int W, int H) {
         wl_subsurface_set_position(fl_win->subsurface, X * f, Y * f);
         wl_surface_commit(parent_xid->wl_surface);
       } else if (!xid_rect) {
+        if (is_a_move && fl_win->subsurface) {
+          wl_subsurface_set_position(fl_win->subsurface, X * f, Y * f);
+        }
         wl_surface_commit(parent_xid->wl_surface);
       }
     }
