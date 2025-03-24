@@ -74,7 +74,7 @@ struct UpdateKv
 UpdateKv update_kv;
 
 std::string OBSIDIAN_TITLE     = "OBSIDIAN Level Maker";
-std::string OBSIDIAN_CODE_NAME = "UNSTABLE";
+std::string OBSIDIAN_CODE_NAME = "Tabs of Terror";
 
 int screen_w;
 int screen_h;
@@ -1469,7 +1469,7 @@ hardrestart:;
 #endif
         Trans_SetLanguage();
         OBSIDIAN_TITLE     = _("OBSIDIAN Level Maker");
-        OBSIDIAN_CODE_NAME = _("Unstable");
+        OBSIDIAN_CODE_NAME = _("Tabs of Terror");
 #ifndef OBSIDIAN_CONSOLE_ONLY
         Main::SetupFLTK();
 #endif
