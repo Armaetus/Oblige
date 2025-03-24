@@ -62,7 +62,7 @@ OB_MODULES["ui_useful_links"] =
       gap=4    
     },
 
-    {
+    --[[{
       name = "header_addons",
       label = _("Obsidian Addons"),
       gap = 1
@@ -102,18 +102,13 @@ OB_MODULES["ui_useful_links"] =
       label=_("MsrSgtShooterPerson's Delta Resource Pack"),
       url="https://obsidian-level-maker.github.io/addons.html",
       gap=4
-    },
+    },]]--
 
     {
       name = "header_source_ports",
       label = _("Source Ports"),
       gap = 1
     },  
-    { 
-      name="url_marshmallow",     
-      label=_("Marshmallow Doom"),
-      url="http://marshmallowdoom.com/marshmallow-wp",
-    },
     { 
       name="url_k8vaoom",     
       label=_("k8vavoom"),
