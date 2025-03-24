@@ -1971,7 +1971,7 @@ genus *random_barrel(config *c, style *s)
 /* A lamp or similar decoration, tall or short */
 genus *random_lamp0(config *c, style *s)
 {
-    if (c->gamemask & SLUMP_CHEX_BIT)
+    if (c->gamemask & (SLUMP_CHEX_BIT|SLUMP_HACX_BIT))
     {
         return find_genus(c, SLUMP_ID_LAMP);
     }
@@ -1987,7 +1987,7 @@ genus *random_lamp0(config *c, style *s)
 /* A lamp or similar decoration, no taller than a player */
 genus *random_shortlamp0(config *c, style *s)
 {
-    if (c->gamemask & SLUMP_CHEX_BIT)
+    if (c->gamemask & (SLUMP_CHEX_BIT|SLUMP_HACX_BIT))
     {
         return find_genus(c, SLUMP_ID_LAMP);
     }
