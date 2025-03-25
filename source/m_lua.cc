@@ -207,7 +207,11 @@ int gui_mkdir(lua_State *L)
 //
 int gui_get_filename_base(lua_State *L)
 {
-    std::string base = game_object->Filename();
+    std::string base;
+    if (game_object->file_per_map)
+        base = game_object->ZIP_Filename();
+    else
+        base = game_object->Filename();
     lua_pushstring(L, GetStem(base).c_str());
     return 1;
 }
