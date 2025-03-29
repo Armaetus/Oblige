@@ -858,14 +858,7 @@ int wad_add_text_lump(lua_State *L)
         lua_pop(L, 1);
     }
 
-    if (game_object->file_per_map)
-    {
-        ZIPF_AddMem(name, (uint8_t *)lump->GetBuffer(), lump->GetSize());
-    }
-    else
-    {
-        WriteLump(name, lump);
-    }
+    WriteLump(name, lump);
 
     delete lump;
 
@@ -962,17 +955,6 @@ static void TransferFILEtoWAD(PHYSFS_File *fp, const char *dest_lump)
     WAD_FinishLump();
 }
 
-static void TransferFILEtoPK3(PHYSFS_File *fp, const char *pk3filename)
-{
-    PHYSFS_sint64 buf_size = PHYSFS_fileLength(fp);
-    uint8_t      *buffer   = new uint8_t[buf_size];
-    PHYSFS_readBytes(fp, buffer, buf_size);
-
-    ZIPF_AddMem(pk3filename, buffer, buf_size);
-
-    delete[] buffer;
-}
-
 static void TransferWADtoWAD(int src_entry, const char *dest_lump)
 {
     int length = WAD_EntryLen(src_entry);
@@ -1054,26 +1036,6 @@ static bool IsLevelLump(const char *name)
 
 namespace Doom
 {
-int pk3_insert_file(lua_State *L)
-{
-    // LUA: pk3_insert_file(filename, pk3filename)
-
-    const char *filename    = luaL_checkstring(L, 1);
-    const char *pk3filename = luaL_checkstring(L, 2);
-
-    PHYSFS_File *fp = PHYSFS_openRead(filename);
-
-    if (!fp)
-    { // this is unlikely (we know it exists)
-        return luaL_error(L, "pk3_insert_file: cannot open file: %s", filename);
-    }
-
-    TransferFILEtoPK3(fp, pk3filename);
-
-    PHYSFS_close(fp);
-
-    return 0;
-}
 
 int wad_insert_file(lua_State *L)
 {
@@ -1774,14 +1736,7 @@ int title_write(lua_State *L)
         format = "lmp";
     }
 
-    if (game_object->file_per_map)
-    {
-        ZIPF_AddMem(StringFormat("graphics/%s.%s", lumpname, format), (uint8_t *)lump->GetBuffer(), lump->GetSize());
-    }
-    else
-    {
-        WriteLump(lumpname, lump);
-    }
+    WriteLump(lumpname, lump);
 
     delete lump;
 

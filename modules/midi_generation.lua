@@ -14,11 +14,7 @@ function MIDI_CONFIG.all_done()
   for _,song in pairs(GAME.RESOURCES.MUSIC_LUMPS) do
     gui.prog_step("Generating MIDI...")
     if gui.generate_midi_track("scripts/midi/" .. PARAM.midi_config_selection .. ".json", "temp/" .. song .. ".mid") == 1 then
-      if ob_mod_enabled("compress_output") == 1 then
-        gui.pk3_insert_file("temp/" .. song .. ".mid", "music/" .. song .. ".mid")
-      else
-        gui.wad_insert_file("temp/" .. song .. ".mid", song)
-      end
+      gui.wad_insert_file("temp/" .. song .. ".mid", song)
       gui.remove_temp_file(song .. ".mid")
     end
   end

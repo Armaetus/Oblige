@@ -1217,10 +1217,6 @@ bool Build_Cool_Shit()
         {
             FileDelete(game_object->Filename());
         }
-        if (FileExists(game_object->ZIP_Filename()))
-        {
-            FileDelete(game_object->ZIP_Filename());
-        }
     }
 
     // don't need game object anymore

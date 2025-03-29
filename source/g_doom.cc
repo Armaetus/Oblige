@@ -474,14 +474,9 @@ bool Doom::StartWAD(const std::string &filename)
     ClearSections();
 
     qLump_c *info = BSP_CreateInfoLump();
-    if (game_object->file_per_map)
-    {
-        ZIPF_AddMem("OBSIDATA.txt", (uint8_t *)info->GetBuffer(), info->GetSize());
-    }
-    else
-    {
-        WriteLump("OBSIDATA", info);
-    }
+
+    WriteLump("OBSIDATA", info);
+
     delete info;
 
     return true; // OK
@@ -572,15 +567,6 @@ void Doom::EndLevel(const std::string &level_name)
     // in case we need it
     std::string level_wad = PathAppend(home_dir, StringFormat("%s.wad", level_name.c_str()));
 
-    if (game_object->file_per_map)
-    {
-        WAD_CloseWrite();
-        if (!WAD_OpenWrite(level_wad))
-        { // Just stick it in the resource WAD?
-            WAD_OpenWrite(game_object->Filename());
-        }
-    }
-
     WriteLump(level_name, header_lump);
 
     if (UDMF_mode)
@@ -614,25 +600,6 @@ void Doom::EndLevel(const std::string &level_name)
     }
 
     FreeLumps();
-
-    if (game_object->file_per_map)
-    {
-        WAD_CloseWrite();
-        Doom::BuildNodes(level_wad);
-        if (!ZIPF_AddFile(level_wad, "maps"))
-        {
-            FileDelete(level_wad);
-            ZIPF_CloseWrite();
-            FileDelete(game_object->ZIP_Filename());
-            FileDelete(game_object->Filename());
-            FatalError(_("Error writing map WAD to %s\n"), game_object->ZIP_Filename().c_str());
-        }
-        else
-        {
-            FileDelete(level_wad);
-        }
-        WAD_OpenWrite(game_object->Filename());
-    }
 }
 
 int Doom::v094_end_level(lua_State *L)
@@ -1337,7 +1304,6 @@ bool Doom::game_interface_c::Start(const char *preset)
 
     current_port    = ob_get_param("port");
     compress_output = ob_mod_enabled("compress_output");
-    file_per_map    = (compress_output && StringCompare(current_port, "limit_enforcing") != 0);
 
     ob_invoke_hook("pre_setup");
 
@@ -1380,16 +1346,9 @@ bool Doom::game_interface_c::Start(const char *preset)
         return false;
     }
 
-    if (file_per_map)
-    {
-        filename = PathAppend(home_dir, "temp/resources.wad");
-    }
-    else
-    {
-        ReplaceExtension(filename, ".wad");
-    }
+    ReplaceExtension(filename, ".wad");
 
-    if (create_backups && !file_per_map)
+    if (create_backups)
     {
         Main::BackupFile(filename);
     }
