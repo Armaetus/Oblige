@@ -946,4 +946,5 @@ function DOOM.all_done()
   gui.wad_merge_sections("games/doom/data/invisible_wall.wad")
   gui.wad_merge_sections("games/doom/data/lift_flat.wad")
   gui.wad_merge_sections("games/doom/data/vine_dude.wad")
+  gui.wad_merge_sections("games/doom/data/logos.wad")
 end

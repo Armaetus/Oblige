@@ -210,13 +210,13 @@ OTEX_RESOURCE_DB = {
         flats = {'OMETLG44', 'OMETLB04', 'OMETLJ33', 'OMETLG01', 'OMETLA04', 'OMETLG59', 'OMETLG33', 'OMETLK33', 'OMETLG02'},
         textures = {'OMETLO39', 'OMETLM90', 'OMETLL97', 'OMETLH39', 'OMETLE34', 'OMETLH33', 'OMETLG34', 'OMETLC95', 'OMETLC37', 'OMETLP44', 'OMETLE90', 'OMETLD37', 'OMETLC38', 'OMETLP92', 'OMETLN34', 'OMETLF47', 'OMETLF37', 'OMETLF34', 'OMETLB01', 'OMETLD93', 'OMETLF96', 'OMETLC92', 'OMETLH93', 'OMETLB90', 'OMETLL96', 'OMETLH34', 'OMETLF91', 'OMETLA01', 'OMETLC99', 'OMETLD96', 'OMETLD39', 'OMETLI23', 'OMETLE39', 'OMETLL93', 'OMETLC59', 'OMETLE93', 'OMETLP35', 'OMETLO48', 'OMETLC82', 'OMETLD33', 'OMETLP36', 'OMETLF94', 'OMETLH24', 'OMETLJ33', 'OMETLI39', 'OMETLC33', 'OMETLC80', 'OMETLL02', 'OMETLL40', 'OMETLI92', 'OMETLN37', 'OMETLK39', 'OMETLL48', 'OMETLL49', 'OMETLP38', 'OMETLC57', 'OMETLC94', 'OMETLN36', 'OMETLL43', 'OMETLH90', 'OMETLC43', 'OMETLC98', 'OMETLL95', 'OMETLE91', 'OMETLD38', 'OMETLF33', 'OMETLD43', 'OMETLH95', 'OMETLE43', 'OMETLF43', 'OMETLE38', 'OMETLL03', 'OMETLP39', 'OMETLF93', 'OMETLC34', 'OMETLP34', 'OMETLL04', 'OMETLL05', 'OMETLF39', 'OMETLD91', 'OMETLF98', 'OMETLP33', 'OMETLE48', 'OMETLL99', 'OMETLL47', 'OMETLE94', 'OMETLM43', 'OMETLK34', 'OMETLP37', 'OMETLA02', 'OMETLJ34', 'OMETLL98', 'OMETLD90', 'OMETLC39', 'OMETLH91', 'OMETLM01', 'OMETLC81', 'OMETLM92', 'OMETLN91', 'OMETLO44', 'OMETLL06', 'OMETLL91', 'OMETLP91', 'OMETLG43', 'OMETLD47', 'OMETLK33', 'OMETLF92', 'OMETLG44', 'OMETLN33', 'OMETLN44', 'OMETLD92', 'OMETLE98', 'OMETLE95', 'OMETLE37', 'OMETLO91', 'OMETLF90', 'OMETLE96', 'OMETLH43', 'OMETLO90', 'OMETLH23', 'OMETLI38', 'OMETLM02', 'OMETLN38', 'OMETLH97', 'OMETLF38', 'OMETLC83', 'OMETLD97', 'OMETLD34', 'OMETLG33', 'OMETLN92', 'OMETLO36', 'OMETLD95', 'OMETLO38', 'OMETLM91', 'OMETLC93', 'OMETLN48', 'OMETLE33', 'OMETLN39', 'OMETLN35', 'OMETLL90', 'OMETLC97', 'OMETLC36', 'OMETLH96', 'OMETLL92', 'OMETLH37', 'OMETLE92', 'OMETLJ39', 'OMETLO37', 'OMETLN90', 'OMETLF97', 'OMETLE97', 'OMETLI33', 'OMETLC90', 'OMETLO34', 'OMETLH38', 'OMETLD94', 'OMETLD98', 'OMETLC58', 'OMETLH92', 'OMETLO35', 'OMETLF95', 'OMETLP90', 'OMETLD48', 'OMETLO33', 'OMETLE47', 'OMETLG39', 'OMETLC91', 'OMETLL01', 'OMETLO92', 'OMETLP48', 'OMETLI94', 'OMETLF48', 'OMETLC96'}
     },
-    ["ICYW"] = {
+    --[[["ICYW"] = {
         has_flats = true,
         has_textures = false,
         has_all = false,
         flats = {'OICYWA03', 'OICYWA08', 'OICYWA04', 'OICYWA02', 'OICYWA05', 'OICYWA01', 'OICYWA06', 'OICYWA07'},
         textures = {}
-    },
+    },]]
     ["4DMD"] = {
         has_flats = true,
         has_textures = false,
@@ -336,13 +336,13 @@ OTEX_RESOURCE_DB = {
         flats = {},
         textures = {'OSKY12', 'OSKY10', 'OSKY16', 'OSKY14', 'OSKY15', 'OSKY11', 'OSKY17', 'OSKY13', 'OSKY19', 'OSKY18'}
     },
-    ["BLOD"] = {
+    --[[["BLOD"] = {
         has_flats = true,
         has_textures = false,
         has_all = false,
         flats = {'OBLODA04', 'OBLODA08', 'OBLODA03', 'OBLODA07', 'OBLODA01', 'OBLODA02', 'OBLODA06', 'OBLODA05'},
         textures = {}
-    },
+    },]]
     ["CRPT"] = {
         has_flats = true,
         has_textures = true,
@@ -378,13 +378,13 @@ OTEX_RESOURCE_DB = {
         flats = {'OSOLID01'},
         textures = {'OSOLID24', 'OSOLID11', 'OSOLID22', 'OSOLID14', 'OSOLID13', 'OSOLID21', 'OSOLID03', 'OSOLID23', 'OSOLID01', 'OSOLID02', 'OSOLID12', 'OSOLID04'}
     },
-    ["SLUD"] = {
+    --[[["SLUD"] = {
         has_flats = true,
         has_textures = false,
         has_all = false,
         flats = {'OSLUDG04', 'OSLUDG07', 'OSLUDG06', 'OSLUDG01', 'OSLUDG02', 'OSLUDG05', 'OSLUDG03', 'OSLUDG08'},
         textures = {}
-    },
+    },]]
     ["DIRT"] = {
         has_flats = true,
         has_textures = false,
@@ -434,13 +434,13 @@ OTEX_RESOURCE_DB = {
         flats = {'O1DMDA07', 'O1DMDA05', 'O1DMDA04', 'O1DMDA02', 'O1DMDA06', 'O1DMDA01', 'O1DMDA03'},
         textures = {}
     },
-    ["GOOP"] = {
+    --[[["GOOP"] = {
         has_flats = true,
         has_textures = false,
         has_all = false,
         flats = {'OGOOPY01', 'OGOOPY07', 'OGOOPY02', 'OGOOPY08', 'OGOOPY05', 'OGOOPY03', 'OGOOPY04', 'OGOOPY06'},
         textures = {}
-    },
+    },]]
     ["EXIT"] = {
         has_flats = false,
         has_textures = true,
@@ -448,13 +448,13 @@ OTEX_RESOURCE_DB = {
         flats = {},
         textures = {'OEXITA01', 'OEXITC05', 'OEXITC03', 'OEXITC04', 'OEXITB02', 'OEXITC02', 'OEXITA02', 'OEXITB01', 'OEXITC01', 'OEXITB03'}
     },
-    ["LAVA"] = {
+    --[["LAVA"] = {
         has_flats = true,
         has_textures = false,
         has_all = false,
         flats = {'OLAVAD08', 'OLAVAE05', 'OLAVAF07', 'OLAVAF04', 'OLAVAC07', 'OLAVAD07', 'OLAVAB01', 'OLAVAF06', 'OLAVAD01', 'OLAVAC01', 'OLAVAE02', 'OLAVAF10', 'OLAVAE08', 'OLAVAC06', 'OLAVAE07', 'OLAVAF08', 'OLAVAE04', 'OLAVAE06', 'OLAVAD04', 'OLAVAF03', 'OLAVAE01', 'OLAVAD05', 'OLAVAF05', 'OLAVAC03', 'OLAVAE03', 'OLAVAF09', 'OLAVAD02', 'OLAVAF02', 'OLAVAC04', 'OLAVAD06', 'OLAVAA02', 'OLAVAC02', 'OLAVAD03', 'OLAVAA01', 'OLAVAF01', 'OLAVAC05', 'OLAVAC08'},
         textures = {}
-    },
+    },]]
     ["PALC"] = {
         has_flats = false,
         has_textures = true,
@@ -588,7 +588,7 @@ OTEX_RESOURCE_DB = {
         flats = {'OTMPLB05', 'OTMPLB03', 'OTMPLA03', 'OTMPLB04', 'OTMPLB02', 'OTMPLA04', 'OTMPLA01', 'OTMPLB01', 'OTMPLA02'},
         textures = {}
     },
-    ["TAR_"] = {
+    --[[["TAR_"] = {
         has_flats = true,
         has_textures = false,
         has_all = false,
@@ -601,7 +601,7 @@ OTEX_RESOURCE_DB = {
         has_all = false,
         flats = {'OPOOPY08', 'OPOOPY05', 'OPOOPY01', 'OPOOPY07', 'OPOOPY02', 'OPOOPY04', 'OPOOPY03', 'OPOOPY06'},
         textures = {}
-    },
+    },]]
     ["VINE"] = {
         has_flats = true,
         has_textures = true,
@@ -700,13 +700,13 @@ OTEX_RESOURCE_DB = {
         flats = {},
         textures = {'ORTDCB13', 'ORTDCC13', 'ORTDCA22', 'ORTDCA01'}
     },
-    ["WATE"] = {
+    --[[["WATE"] = {
         has_flats = true,
         has_textures = false,
         has_all = false,
         flats = {'OWATER06', 'OWATER05', 'OWATER08', 'OWATER01', 'OWATER03', 'OWATER02', 'OWATER07', 'OWATER04'},
         textures = {}
-    },
+    },]]
     ["CBBL"] = {
         has_flats = true,
         has_textures = false,
@@ -728,13 +728,13 @@ OTEX_RESOURCE_DB = {
         flats = {'OTLMXA02', 'OTLMXA03', 'OTLMXA01', 'OTLMXA05', 'OTLMXA04', 'OTLMXA07', 'OTLMXA06'},
         textures = {}
     },
-    ["NUKE"] = {
+    --[[["NUKE"] = {
         has_flats = true,
         has_textures = false,
         has_all = false,
         flats = {'ONUKEA03', 'ONUKEA06', 'ONUKEA02', 'ONUKEA04', 'ONUKEA08', 'ONUKEA05', 'ONUKEA01', 'ONUKEA07'},
         textures = {}
-    },
+    },]]
     ["CHAN"] = {
         has_flats = false,
         has_textures = true,

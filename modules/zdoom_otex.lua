@@ -413,23 +413,23 @@ OTEX_SPECIAL_RESOURCES =
 
   liquid_materials =
   {
-    OBLODA01 = { t="OFALLB01", f="0BLODA01"},
-    OGOOPY01 = { t="OFALLG01", f="0POOPY01"},
-    OICYWA01 = { t="OFALLW11", f="0ICYWA01"},
+    OBLODA01 = { t="OFALLB01", f="OBLODA01"},
+    OGOOPY01 = { t="OFALLG01", f="OPOOPY01"},
+    OICYWA01 = { t="OFALLW11", f="OICYWA01"},
 
-    OLAVAA01 = { t="OFALLL01", f="0LAVAA01"},
-    OLAVAA02 = { t="OFALLM01", f="0LAVAA02"},
-    OLAVAB01 = { t="OFALLL01", f="0LAVAB01"},
-    OLAVAC01 = { t="OFALLL01", f="0LAVAC01"},
-    OLAVAD01 = { t="OFALLM01", f="0LAVAD01"},
-    OLAVAE01 = { t="OFALLL11", f="0LAVAE01"},
-    OLAVAF01 = { t="OFALLL11", f="0LAVAF01"},
+    OLAVAA01 = { t="OFALLL01", f="OLAVAA01"},
+    OLAVAA02 = { t="OFALLM01", f="OLAVAA02"},
+    OLAVAB01 = { t="OFALLL01", f="OLAVAB01"},
+    OLAVAC01 = { t="OFALLL01", f="OLAVAC01"},
+    OLAVAD01 = { t="OFALLM01", f="OLAVAD01"},
+    OLAVAE01 = { t="OFALLL11", f="OLAVAE01"},
+    OLAVAF01 = { t="OFALLL11", f="OLAVAF01"},
 
-    ONUKEA01 = { t="OFALLN01", f="0NUKEA01"},
-    OSLUDG01 = { t="OFALLS01", f="0SLUDG01"},
-    OPOOPY01 = { t="OFALLP01", f="0POOPY01"},
-    OTAR__01 = { t="OFALLT01", f="0TAR__01"},
-    OWATER01 = { t="OFALLW01", f="0WATER01"}
+    ONUKEA01 = { t="OFALLN01", f="ONUKEA01"},
+    OSLUDG01 = { t="OFALLS01", f="OSLUDG01"},
+    OPOOPY01 = { t="OFALLP01", f="OPOOPY01"},
+    OTAR__01 = { t="OFALLT01", f="OTAR__01"},
+    OWATER01 = { t="OFALLW01", f="OWATER01"}
   },
 
   liquid_defs =
@@ -519,8 +519,7 @@ OTEX_SPECIAL_RESOURCES =
 }
 
 OTEX_GLOWING_FLATS =
-[[
-OBLODA01
+[[    OBLODA01
     OBLODA02
     OBLODA03
     OBLODA04
@@ -929,10 +928,13 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   end
 
   -- create liquid attachments
-  local liquid_tab = table.copy(OTEX_SPECIAL_RESOURCES.liquid_materials)
+  --[[local liquid_tab = table.copy(OTEX_SPECIAL_RESOURCES.liquid_materials)
   for liquid_mat,_ in pairs(liquid_tab) do
     GAME.MATERIALS[liquid_mat]={t=_.t, f=_.f}
-  end
+  end]]
+
+  table.deep_merge(GAME.MATERIALS, OTEX_SPECIAL_RESOURCES.liquid_materials, 2)
+
   local liquid_defs = table.copy(OTEX_SPECIAL_RESOURCES.liquid_defs)
   for liquid,_ in pairs(liquid_defs) do
     GAME.LIQUIDS[liquid]=liquid_defs[liquid]
