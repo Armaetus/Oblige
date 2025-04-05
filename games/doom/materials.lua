@@ -382,7 +382,7 @@ DOOM.MATERIALS =
   O_CARVE  = { t="O_CARVE",  f="O_CARVE",  sane=1 }, -- CEMENT4
   O_NEON   = { t="O_NEON",  f="O_NEON",  sane=1 }, -- CEMENT6
 
-  O_BLACK  = { t="CEMENT5",  f="O_BLACK",  sane=1 }, -- CEMENT5
+  O_BLACK  = { t="O_BLACK",  f="O_BLACK",  sane=1 }, -- CEMENT5
 
   O_INVIST = { t="O_INVIST",  f="O_INVIST", sane=1 }, -- ZZWOLF10
 
