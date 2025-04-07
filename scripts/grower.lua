@@ -935,17 +935,18 @@ function Grower_calc_rule_probs(LEVEL)
     
     local function Grower_reset_absurdities()
       for _,rule in pairs(SHAPE_GRAMMAR) do
+        if type(rule) == "table" then
+          rule.is_absurd = nil
 
-        rule.is_absurd = nil
+          --[[if rule.prob then
+            rule.use_prob = rule.prob
+          end]]
 
-        --[[if rule.prob then
-          rule.use_prob = rule.prob
-        end]]
+          if not rule.initial_env then goto continue end
 
-        if not rule.initial_env then goto continue end
-
-        if rule.initial_env == "none" then rule.env = nil
-        else rule.env = rule.initial_env end
+          if rule.initial_env == "none" then rule.env = nil
+          else rule.env = rule.initial_env end
+        end
 
         ::continue::
       end
@@ -1020,7 +1021,9 @@ function Grower_calc_rule_probs(LEVEL)
 
     local grammarset = {}
     for _,rule in pairs(SHAPE_GRAMMAR) do
-      table.insert(grammarset, rule.name)
+      if type(rule) == "table" then
+        table.insert(grammarset, rule.name)
+      end
     end
 
     -- pick rules to make absurd
@@ -1036,13 +1039,15 @@ function Grower_calc_rule_probs(LEVEL)
 
     -- collect base set rules and preserve them
     for _,rule in pairs(SHAPE_GRAMMAR) do
-      if rule.base_set and not rule.is_absurd then
-        local info =
-        {
-          name = rule.name,
-          prob = rule.use_prob
-        }
-        table.insert(LEVEL.base_set_rules, info)
+      if type(rule) == "table" then
+        if rule.base_set and not rule.is_absurd then
+          local info =
+          {
+            name = rule.name,
+            prob = rule.use_prob
+          }
+          table.insert(LEVEL.base_set_rules, info)
+        end
       end
     end
 
