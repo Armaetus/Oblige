@@ -338,7 +338,7 @@ static bool scan_dir_process_name(const std::string &name, const std::string &pa
     }
 
     // pretend that zero-length files do not exist
-    // [ allows a PK3 to _remove_ a file ]
+    // [ allows a ZIP to _remove_ a file ]
 
     uint8_t buffer[1];
 

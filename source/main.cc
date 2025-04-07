@@ -1634,7 +1634,7 @@ softrestart:;
 
     if (main_action != MAIN_SOFT_RESTART)
     {
-        // this not only finds PK3 files, but also activates the ones specified
+        // this not only finds ZIP files/folders, but also activates the ones specified
         // in OPTIONS.txt
         VFS_ScanForAddons();
 

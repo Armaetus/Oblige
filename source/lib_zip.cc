@@ -35,7 +35,7 @@ bool ZIPF_OpenWrite(const std::string &filename)
 {
     // Make sure the last ZIPF operation was closed properly and that
     // the target archive doesn't already exist (unlike our WAD stuff
-    // there should only ever be one pk3 going on at a time)
+    // there should only ever be one zip going on at a time)
     if (FileExists(filename))
     {
         return false;

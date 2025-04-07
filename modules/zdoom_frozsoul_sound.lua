@@ -281,7 +281,7 @@ OB_MODULES["zdoom_ambient_sound"] =
       label=_("Merge Frozsoul Sound Pack"),
       valuator = "button",
       default = 1,
-      tooltip = _("Merge Frozsoul Ambient Sound Pack sound into generated WAD/PK3"),
+      tooltip = _("Merge Frozsoul Ambient Sound Pack sound into generated WAD"),
       longtip = _("Merge in the sounds from the Frozsoul Ambient Sound Pack, the default set of sounds which this module is designed for. Not necessary if you plan to include the sound pack separately in your launch order."),
     },
   },

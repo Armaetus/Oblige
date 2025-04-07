@@ -1320,7 +1320,7 @@ bool Doom::game_interface_c::Start(const char *preset)
         if (compress_output)
         {
             zip_filename = filename;
-            ReplaceExtension(zip_filename, ".pk3");
+            ReplaceExtension(zip_filename, ".zip");
         }
     }
     else
@@ -1329,8 +1329,8 @@ bool Doom::game_interface_c::Start(const char *preset)
         if (compress_output)
         {
             std::string zip_preset = preset;
-            ReplaceExtension(zip_preset, ".pk3");
-            filename     = DLG_OutputFilename("pk3", zip_preset.c_str());
+            ReplaceExtension(zip_preset, ".zip");
+            filename     = DLG_OutputFilename("zip", zip_preset.c_str());
             zip_filename = filename;
         }
         else
@@ -1380,7 +1380,7 @@ bool Doom::game_interface_c::Start(const char *preset)
         }
         if (!ZIPF_OpenWrite(zip_filename))
         {
-            ProgStatus("%s", _("Error (create PK3/ZIP)"));
+            ProgStatus("%s", _("Error (create ZIP)"));
             return false;
         }
     }
@@ -1467,7 +1467,7 @@ bool Doom::game_interface_c::Finish(bool build_ok)
         {
             if (!ZIPF_AddFile(filename, ""))
             {
-                LogPrint("Adding WAD to PK3 failed! Retaining original "
+                LogPrint("Adding WAD to ZIP failed! Retaining original "
                          "WAD.\n");
                 ZIPF_CloseWrite();
                 FileDelete(zip_filename);
@@ -1476,7 +1476,7 @@ bool Doom::game_interface_c::Finish(bool build_ok)
             {
                 if (!ZIPF_CloseWrite())
                 {
-                    LogPrint("Corrupt PK3! Retaining original WAD.\n");
+                    LogPrint("Corrupt ZIP! Retaining original WAD.\n");
                     FileDelete(zip_filename);
                 }
                 else
