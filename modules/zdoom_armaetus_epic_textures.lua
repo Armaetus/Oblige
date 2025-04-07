@@ -665,7 +665,7 @@ end
 
 
 function OBS_RESOURCE_PACK_EPIC_TEXTURES.synthesize_procedural_themes()
-  if PARAM.bool_orp_room_theme_synthesizer == false then
+  if PARAM.bool_orp_room_theme_synthesizer == 0 then
     return
   end
 
@@ -993,6 +993,12 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   elseif OB_CONFIG.game == "doom1"
   or OB_CONFIG.game == "ultdoom" then
     if LEVEL.outdoor_theme == "snow" then
+      GAME.ROOM_THEMES.tech_Outdoors_generic.floors = snow_tech_floors
+      GAME.ROOM_THEMES.tech_Outdoors_generic.naturals = snow_naturals
+      GAME.ROOM_THEMES.urban_Outdoors_generic.floors = snow_urban_floors
+      GAME.ROOM_THEMES.urban_Outdoors_generic.naturals = snow_naturals
+      GAME.ROOM_THEMES.hell_Outdoors_generic.floors = snow_hell_floors
+      GAME.ROOM_THEMES.hell_Outdoors_generic.naturals = snow_naturals
       GAME.ROOM_THEMES.tech_Outdoors.floors = snow_tech_floors
       GAME.ROOM_THEMES.tech_Outdoors.naturals = snow_naturals
       GAME.ROOM_THEMES.deimos_Outdoors.floors = snow_tech_floors
@@ -1002,6 +1008,12 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
       GAME.ROOM_THEMES.flesh_Outdoors.floors = snow_urban_floors
       GAME.ROOM_THEMES.flesh_Outdoors.naturals = snow_naturals
     elseif LEVEL.outdoor_theme == "desert" then
+      GAME.ROOM_THEMES.tech_Outdoors_generic.floors = sand_tech_floors
+      GAME.ROOM_THEMES.tech_Outdoors_generic.naturals = sand_naturals
+      GAME.ROOM_THEMES.urban_Outdoors_generic.floors = sand_urban_floors
+      GAME.ROOM_THEMES.urban_Outdoors_generic.naturals = sand_naturals
+      GAME.ROOM_THEMES.hell_Outdoors_generic.floors = sand_hell_floors
+      GAME.ROOM_THEMES.hell_Outdoors_generic.naturals = sand_naturals
       GAME.ROOM_THEMES.tech_Outdoors.floors = sand_tech_floors
       GAME.ROOM_THEMES.tech_Outdoors.naturals = sand_naturals
       GAME.ROOM_THEMES.deimos_Outdoors.floors = snow_tech_floors
@@ -1011,6 +1023,12 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
       GAME.ROOM_THEMES.flesh_Outdoors.floors = snow_urban_floors
       GAME.ROOM_THEMES.flesh_Outdoors.naturals = sand_naturals
     elseif LEVEL.outdoor_theme == "temperate" then
+      GAME.ROOM_THEMES.tech_Outdoors_generic.floors = PARAM.def_tech_floors
+      GAME.ROOM_THEMES.tech_Outdoors_generic.naturals = PARAM.def_tech_naturals
+      GAME.ROOM_THEMES.urban_Outdoors_generic.floors = PARAM.def_urban_floors
+      GAME.ROOM_THEMES.urban_Outdoors_generic.naturals = PARAM.def_urban_naturals
+      GAME.ROOM_THEMES.hell_Outdoors_generic.floors = PARAM.def_hell_floors
+      GAME.ROOM_THEMES.hell_Outdoors_generic.naturals = PARAM.def_hell_naturals
       GAME.ROOM_THEMES.tech_Outdoors.floors = PARAM.def_tech_floors
       GAME.ROOM_THEMES.tech_Outdoors.naturals = PARAM.def_tech_naturals
       GAME.ROOM_THEMES.deimos_Outdoors.floors = PARAM.def_deimos_floors
