@@ -992,9 +992,9 @@ function ob_read_all_config(need_full, log_only)
   for _,name in pairs(table.keys_sorted(OB_MODULES)) do
     local def = OB_MODULES[name]
 
-    if ob_check_ui_module(def) then goto continue end
+    if ob_check_ui_module(def) then goto skip end
 
-    if not need_full and not def.shown then goto continue end
+    if not need_full and not def.shown then goto skip end
 
     do_line("@%s = %s", name, sel(def.enabled, "1", "0"))
 
@@ -1083,7 +1083,7 @@ function ob_read_all_config(need_full, log_only)
     end
 
     do_line("")
-    ::continue::
+    ::skip::
   end
 
   do_line("-- END --")
@@ -1774,10 +1774,10 @@ function ob_hexen_ceiling_check(thing_id)
         if ent.ceil and ent.ceil == true then
           on_ceiling = 1
         end
-        goto continue
+        goto skip
     end
   end
-  ::continue::
+  ::skip::
   
   return on_ceiling
 
@@ -1874,7 +1874,7 @@ end
 function ob_default_filename()
   -- create a default filename [ WITHOUT any extension ]
 
-  if OB_CONFIG.batch == "yes" then goto continue end
+  if OB_CONFIG.batch == "yes" then goto skip end
 
   assert(OB_CONFIG)
   assert(OB_CONFIG.game)
@@ -1955,7 +1955,7 @@ function ob_default_filename()
    
  end
  
- ::continue::
+ ::skip::
  
 end
 

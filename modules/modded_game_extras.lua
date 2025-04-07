@@ -1528,13 +1528,13 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           if S.area.chunk then
             if S.area.chunk.kind == "closet"
             or S.area.chunk.kind == "joiner" then
-              goto continue
+              goto skip
             end
           end
 
           S.distance_from_room_center = geom.dist(cx, cy, S.sx, S.sy)
           table.insert(seed_list, S)
-          ::continue::
+          ::skip::
         end
       end
     end
@@ -1576,7 +1576,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     -- check for locked gates (keyed or switched doors)
     for _,C in pairs(R.conns) do
-      if C.R2 == R then goto continue end
+      if C.R2 == R then goto skip end
       if C.lock then
         if C.lock.kind == "quest" then
           for _,G in pairs(C.lock.goals) do
@@ -1592,7 +1592,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           end
         end
       end
-      ::continue::
+      ::skip::
     end
 
     -- check for goal contents (keys or quest switches)

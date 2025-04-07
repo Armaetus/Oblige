@@ -1380,7 +1380,7 @@ function CHUNK_CLASS.is_open_to_sky(chunk, R, SEEDS)
     -- only check seeds around the chunk
     if (sx >= chunk.sx1 and sx <= chunk.sx2) and
        (sy >= chunk.sy1 and sy <= chunk.sy2)
-    then goto continue end
+    then goto skip end
 
     if not Seed_valid(sx, sy) then return false end
 
@@ -1393,7 +1393,7 @@ function CHUNK_CLASS.is_open_to_sky(chunk, R, SEEDS)
       A = S.top.area
       if not (A and area_open_to_sky(A)) then return false end
     end
-    ::continue::
+    ::skip::
   end
   end
 
@@ -1425,7 +1425,7 @@ function CHUNK_CLASS.is_open_to_room(chunk, R)
     -- only check seeds around the chunk
     if (sx >= chunk.sx1 and sx <= chunk.sx2) and
        (sy >= chunk.sy1 and sy <= chunk.sy2)
-    then goto continue end
+    then goto skip end
 
     if not Seed_valid(sx, sy) then return false end
 
@@ -1438,7 +1438,7 @@ function CHUNK_CLASS.is_open_to_room(chunk, R)
       A = S.top.area
       if not (A and area_open_to_room(A)) then return false end
     end
-    ::continue::
+    ::skip::
   end
   end
 

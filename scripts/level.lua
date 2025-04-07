@@ -333,12 +333,12 @@ function Episode_pick_names()
 
   for index,EPI in pairs(GAME.episodes) do
     -- only generate names for used episodes
-    if table.empty(EPI.levels) then goto continue end
+    if table.empty(EPI.levels) then goto skip end
 
     EPI.description = Naming_grab_one("EPISODE")
 
     gui.printf("Episode %d title: %s\n\n", index, EPI.description)
-    ::continue::
+    ::skip::
   end
 end
 
@@ -796,19 +796,19 @@ function Episode_plan_monsters()
     for name,info in pairs(GAME.MONSTERS) do
       -- skip the real boss monsters
       if info.boss_type then
-        if OB_CONFIG.bossesnormal == "no" then goto continue
-        elseif info.boss_type == "nasty" and OB_CONFIG.bossesnormal == "minor" then goto continue
-        elseif info.boss_type == "tough" and OB_CONFIG.bossesnormal ~= "all" then goto continue end
+        if OB_CONFIG.bossesnormal == "no" then goto skip
+        elseif info.boss_type == "nasty" and OB_CONFIG.bossesnormal == "minor" then goto skip
+        elseif info.boss_type == "tough" and OB_CONFIG.bossesnormal ~= "all" then goto skip end
       end
 
-      if LEV.theme.monster_prefs and LEV.theme.monster_prefs[name] and LEV.theme.monster_prefs[name] == 0 then goto continue end
+      if LEV.theme.monster_prefs and LEV.theme.monster_prefs[name] and LEV.theme.monster_prefs[name] == 0 then goto skip end
 
       local prob = prob_for_guard(LEV, info)
 
       if prob > 0 then
         tab[name] = prob
       end
-      ::continue::
+      ::skip::
     end
 
     return tab
@@ -1047,14 +1047,14 @@ function Episode_plan_monsters()
 
       if LEV.is_procedural_gotcha and PARAM.bool_boss_gen == 1 then
         create_fight(LEV, "tough", 1)
-        goto continue
+        goto skip
       end
 
-      if LEV.prebuilt  then goto continue end
-      if LEV.is_secret then goto continue end
+      if LEV.prebuilt  then goto skip end
+      if LEV.is_secret then goto skip end
 
-      if PARAM.float_strength == 12 then goto continue end
-      if OB_CONFIG.bosses   == "none"  then goto continue end
+      if PARAM.float_strength == 12 then goto skip end
+      if OB_CONFIG.bosses   == "none"  then goto skip end
 
       pick_boss_quotas(LEV)
 
@@ -1078,7 +1078,7 @@ function Episode_plan_monsters()
       for i = 1, LEV.boss_quotas.minor do create_fight(LEV, "minor", i) end
 
       for k = 1, LEV.boss_quotas.guard do create_guard(LEV, k) end
-      ::continue::
+      ::skip::
     end
   end
 
@@ -1229,11 +1229,11 @@ function Episode_plan_weapons()
 
       lev_idx = lev_idx + 1
 
-      if LEV.is_secret then goto continue end
-      if LEV.prebuilt  then goto continue end
+      if LEV.is_secret then goto skip end
+      if LEV.prebuilt  then goto skip end
 
       if LEV then return LEV end
-      ::continue::
+      ::skip::
     end
   end
 
@@ -1561,25 +1561,25 @@ function Episode_plan_weapons()
     for _,LEV in pairs(GAME.levels) do
       LEV.new_weapons = {}
 
-      if LEV.prebuilt  then goto continue end
-      if LEV.is_secret then goto continue end
+      if LEV.prebuilt  then goto skip end
+      if LEV.is_secret then goto skip end
 
       table.insert(level_list, LEV)
-      ::continue::
+      ::skip::
     end
 
     assert(#level_list >= 1)
 
     for name,info in pairs(GAME.WEAPONS) do
       -- skip non-item and disabled weapons
-      if (info.add_prob or 0) == 0 then goto continue end
+      if (info.add_prob or 0) == 0 then goto skip end
 
       local LEV = calc_new_weapon_place(info, level_list)
       assert(LEV)
 
       table.insert(LEV.new_weapons, name)
       rand.shuffle(LEV.new_weapons)
-      ::continue::
+      ::skip::
     end
 
     spread_new_weapons(level_list)
@@ -1634,14 +1634,14 @@ function Episode_plan_weapons()
     tab.NONE = 100
 
     for name,info in pairs(GAME.WEAPONS) do
-      if not LEV.seen_weapons[name] then goto continue end
+      if not LEV.seen_weapons[name] then goto skip end
 
       local prob = info.hide_prob or 0
 
       if prob > 0 then
         tab[name] = prob
       end
-      ::continue::
+      ::skip::
     end
 
     local weapon = rand.key_by_probs(tab)

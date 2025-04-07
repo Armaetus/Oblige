@@ -496,10 +496,10 @@ function Grower_preprocess_grammar(test_grammar)
         f_name = "link"
       end
 
-      if not f_name then goto continue end
+      if not f_name then goto skip end
 
       -- already have one?
-      if def.focal_points[f_name] then goto continue end
+      if def.focal_points[f_name] then goto skip end
 
       -- add it
       def.focal_points[f_name] =
@@ -507,7 +507,7 @@ function Grower_preprocess_grammar(test_grammar)
         gx = x,
         gy = y
       }
-      ::continue::
+      ::skip::
     end -- x, y
     end
 
@@ -531,12 +531,12 @@ function Grower_preprocess_grammar(test_grammar)
     for dir = 2,8,2 do
       local nx, ny = geom.nudge(x, y, dir)
 
-      if nx < 1 or nx > def.input.w then goto continue end
-      if ny < 1 or ny > def.input.h then goto continue end
+      if nx < 1 or nx > def.input.w then goto skip end
+      if ny < 1 or ny > def.input.h then goto skip end
 
       local E = def.output[nx][ny]
 
-      if seen[E] then goto continue end
+      if seen[E] then goto skip end
 
       -- TODO support diagonals here
       if E.kind == "diagonal" then
@@ -548,7 +548,7 @@ function Grower_preprocess_grammar(test_grammar)
       if E.kind == kind then
         visit_contiguous_elem(nx, ny, kind, locs, seen)
       end
-      ::continue::
+      ::skip::
     end
   end
 
@@ -728,9 +728,9 @@ function Grower_preprocess_grammar(test_grammar)
 
       for name,cur_def in pairs(grammar) do
 
-        if type(cur_def) ~= "table" then goto continue end
+        if type(cur_def) ~= "table" then goto skip end
 
-        if cur_def.is_processed then goto continue end
+        if cur_def.is_processed then goto skip end
         cur_def.is_processed = true
 
         PARAM.shape_rule_count = PARAM.shape_rule_count + 1 -- debug counter for amount of shape rules read
@@ -776,7 +776,7 @@ function Grower_preprocess_grammar(test_grammar)
         if string.match(name, "^HALL_") then cur_def.env = "hallway" end
         if string.match(name, "^CAVE_") then cur_def.env = "cave" end
         if string.match(name, "^PARK_") then cur_def.env = "park" end
-        ::continue::
+        ::skip::
       end
 
       gui.printf(PARAM.shape_rule_count .. " rules loaded!\n")
@@ -942,13 +942,13 @@ function Grower_calc_rule_probs(LEVEL)
             rule.use_prob = rule.prob
           end]]
 
-          if not rule.initial_env then goto continue end
+          if not rule.initial_env then goto skip end
 
           if rule.initial_env == "none" then rule.env = nil
           else rule.env = rule.initial_env end
         end
 
-        ::continue::
+        ::skip::
       end
     end
 
@@ -1325,7 +1325,7 @@ function Grower_split_liquids(SEEDS, LEVEL)
 
   local function handle_symmetry(R)
     for _,A in pairs(R.areas) do
-      if A.peer then goto continue end
+      if A.peer then goto skip end
 
       if A.mode == "liquid" or A.mode == "cage" then
         local S = A.seeds[1]
@@ -1345,7 +1345,7 @@ function Grower_split_liquids(SEEDS, LEVEL)
           T.area.peer = A
         end
       end
-      ::continue::
+      ::skip::
     end
   end
 
@@ -1857,18 +1857,18 @@ function Grower_grammatical_pass(SEEDS, LEVEL, R, pass, apply_num, stop_prob,
     local tab = {}
 
     for name,rule in pairs(grammar) do
-      if type(rule) ~= "table" then goto continue end
+      if type(rule) ~= "table" then goto skip end
 
-      if rule.pass ~= want_pass then goto continue end
+      if rule.pass ~= want_pass then goto skip end
 
-      if no_new_areas and rule.new_area then goto continue end
+      if no_new_areas and rule.new_area then goto skip end
 
       local prob = prob_for_rule(rule)
 
       if prob > 0 then
         tab[name] = prob
       end
-      ::continue::
+      ::skip::
     end
 
     --if SHAPE_GRAMMAR == SHAPES.OBSIDIAN then
@@ -3277,7 +3277,7 @@ end
           T.x = x
           T.y = y
   
-          if not match_all_focal_points(T) then goto continue end
+          if not match_all_focal_points(T) then goto skip end
   
           if match_or_install_pattern("TEST", T) then
             best.T = table.copy(T)
@@ -3291,7 +3291,7 @@ end
               best.link_chunk = link_chunk
             goto justpickone
           end
-          ::continue::
+          ::skip::
         end -- x, y
       end
     else
@@ -3308,7 +3308,7 @@ end
             T.x = x
             T.y = y
     
-            if not match_all_focal_points(T) then goto continue end
+            if not match_all_focal_points(T) then goto skip end
     
             if match_or_install_pattern("TEST", T) then
               best.T = table.copy(T)
@@ -3322,7 +3322,7 @@ end
                 best.link_chunk = link_chunk
               goto justpickone
             end
-            ::continue::
+            ::skip::
           end -- x, y
         end
       end
@@ -3541,7 +3541,7 @@ end
 
       local aux = cur_rule[aux_name]
       cur_rule.is_auxiliary = true
-      if aux == nil then goto continue end
+      if aux == nil then goto skip end
 
       assert(aux.pass)
 
@@ -3553,7 +3553,7 @@ end
       end
 
       Grower_grammatical_pass(SEEDS, LEVEL, R, aux.pass, num, aux.stop_prob or 0, cur_rule, false, is_emergency)
-      ::continue::
+      ::skip::
     end
   end
 
@@ -4335,11 +4335,11 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
 
     for _,R in pairs(room_list) do
       -- hallways cannot be regrown or resprouted
-      if R.is_hallway then goto continue end
+      if R.is_hallway then goto skip end
 
       R.emergency_sprouted = true
       Grower_grammatical_room(SEEDS, LEVEL, R, "sprout", "is_emergency")
-      ::continue::
+      ::skip::
     end
   end
 
@@ -4779,15 +4779,15 @@ function Grower_flatten_outdoor_fences()
 
       for pass = 1, 2 do
         local S = sel(pass == 1, S1, S2)
-        if not S then goto continue end
+        if not S then goto skip end
 
         if not S.area then
           table.insert(change_list, S)
-          goto continue
+          goto skip
         end
 
         if S.area.mode == "liquid" then
-          goto continue
+          goto skip
         end
 
         -- once we hit a non-liquid area, stop
@@ -4801,7 +4801,7 @@ function Grower_flatten_outdoor_fences()
         if S then
           return
         end
-        ::continue::
+        ::skip::
       end
 
       x, y = geom.nudge(x, y, dir)
