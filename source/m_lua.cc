@@ -207,12 +207,7 @@ int gui_mkdir(lua_State *L)
 //
 int gui_get_filename_base(lua_State *L)
 {
-    std::string base;
-    if (game_object->file_per_map)
-        base = game_object->ZIP_Filename();
-    else
-        base = game_object->Filename();
-    lua_pushstring(L, GetStem(base).c_str());
+    lua_pushstring(L, GetStem(game_object->Filename()).c_str());
     return 1;
 }
 
@@ -343,7 +338,7 @@ static bool scan_dir_process_name(const std::string &name, const std::string &pa
     }
 
     // pretend that zero-length files do not exist
-    // [ allows a PK3 to _remove_ a file ]
+    // [ allows a ZIP to _remove_ a file ]
 
     uint8_t buffer[1];
 
@@ -1451,8 +1446,6 @@ extern int wad_transfer_map(lua_State *L);
 extern int wad_merge_sections(lua_State *L);
 extern int wad_read_text_lump(lua_State *L);
 
-extern int pk3_insert_file(lua_State *L);
-
 extern int fsky_create(lua_State *L);
 extern int fsky_write(lua_State *L);
 extern int fsky_free(lua_State *L);
@@ -1578,8 +1571,6 @@ static const luaL_Reg gui_script_funcs[] = {
     {"wad_transfer_map", Doom::wad_transfer_map},
     {"wad_merge_sections", Doom::wad_merge_sections},
     {"wad_read_text_lump", Doom::wad_read_text_lump},
-
-    {"pk3_insert_file", Doom::pk3_insert_file},
 
     {"fsky_create", Doom::fsky_create},
     {"fsky_write", Doom::fsky_write},

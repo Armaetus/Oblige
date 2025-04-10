@@ -474,14 +474,9 @@ bool Doom::StartWAD(const std::string &filename)
     ClearSections();
 
     qLump_c *info = BSP_CreateInfoLump();
-    if (game_object->file_per_map)
-    {
-        ZIPF_AddMem("OBSIDATA.txt", (uint8_t *)info->GetBuffer(), info->GetSize());
-    }
-    else
-    {
-        WriteLump("OBSIDATA", info);
-    }
+
+    WriteLump("OBSIDATA", info);
+
     delete info;
 
     return true; // OK
@@ -572,15 +567,6 @@ void Doom::EndLevel(const std::string &level_name)
     // in case we need it
     std::string level_wad = PathAppend(home_dir, StringFormat("%s.wad", level_name.c_str()));
 
-    if (game_object->file_per_map)
-    {
-        WAD_CloseWrite();
-        if (!WAD_OpenWrite(level_wad))
-        { // Just stick it in the resource WAD?
-            WAD_OpenWrite(game_object->Filename());
-        }
-    }
-
     WriteLump(level_name, header_lump);
 
     if (UDMF_mode)
@@ -614,25 +600,6 @@ void Doom::EndLevel(const std::string &level_name)
     }
 
     FreeLumps();
-
-    if (game_object->file_per_map)
-    {
-        WAD_CloseWrite();
-        Doom::BuildNodes(level_wad);
-        if (!ZIPF_AddFile(level_wad, "maps"))
-        {
-            FileDelete(level_wad);
-            ZIPF_CloseWrite();
-            FileDelete(game_object->ZIP_Filename());
-            FileDelete(game_object->Filename());
-            FatalError(_("Error writing map WAD to %s\n"), game_object->ZIP_Filename().c_str());
-        }
-        else
-        {
-            FileDelete(level_wad);
-        }
-        WAD_OpenWrite(game_object->Filename());
-    }
 }
 
 int Doom::v094_end_level(lua_State *L)
@@ -1337,7 +1304,6 @@ bool Doom::game_interface_c::Start(const char *preset)
 
     current_port    = ob_get_param("port");
     compress_output = ob_mod_enabled("compress_output");
-    file_per_map    = (compress_output && StringCompare(current_port, "limit_enforcing") != 0);
 
     ob_invoke_hook("pre_setup");
 
@@ -1354,7 +1320,7 @@ bool Doom::game_interface_c::Start(const char *preset)
         if (compress_output)
         {
             zip_filename = filename;
-            ReplaceExtension(zip_filename, ".pk3");
+            ReplaceExtension(zip_filename, ".zip");
         }
     }
     else
@@ -1363,8 +1329,8 @@ bool Doom::game_interface_c::Start(const char *preset)
         if (compress_output)
         {
             std::string zip_preset = preset;
-            ReplaceExtension(zip_preset, ".pk3");
-            filename     = DLG_OutputFilename("pk3", zip_preset.c_str());
+            ReplaceExtension(zip_preset, ".zip");
+            filename     = DLG_OutputFilename("zip", zip_preset.c_str());
             zip_filename = filename;
         }
         else
@@ -1380,16 +1346,9 @@ bool Doom::game_interface_c::Start(const char *preset)
         return false;
     }
 
-    if (file_per_map)
-    {
-        filename = PathAppend(home_dir, "temp/resources.wad");
-    }
-    else
-    {
-        ReplaceExtension(filename, ".wad");
-    }
+    ReplaceExtension(filename, ".wad");
 
-    if (create_backups && !file_per_map)
+    if (create_backups)
     {
         Main::BackupFile(filename);
     }
@@ -1421,7 +1380,7 @@ bool Doom::game_interface_c::Start(const char *preset)
         }
         if (!ZIPF_OpenWrite(zip_filename))
         {
-            ProgStatus("%s", _("Error (create PK3/ZIP)"));
+            ProgStatus("%s", _("Error (create ZIP)"));
             return false;
         }
     }
@@ -1508,7 +1467,7 @@ bool Doom::game_interface_c::Finish(bool build_ok)
         {
             if (!ZIPF_AddFile(filename, ""))
             {
-                LogPrint("Adding WAD to PK3 failed! Retaining original "
+                LogPrint("Adding WAD to ZIP failed! Retaining original "
                          "WAD.\n");
                 ZIPF_CloseWrite();
                 FileDelete(zip_filename);
@@ -1517,7 +1476,7 @@ bool Doom::game_interface_c::Finish(bool build_ok)
             {
                 if (!ZIPF_CloseWrite())
                 {
-                    LogPrint("Corrupt PK3! Retaining original WAD.\n");
+                    LogPrint("Corrupt ZIP! Retaining original WAD.\n");
                     FileDelete(zip_filename);
                 }
                 else

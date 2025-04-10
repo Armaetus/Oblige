@@ -1217,10 +1217,6 @@ bool Build_Cool_Shit()
         {
             FileDelete(game_object->Filename());
         }
-        if (FileExists(game_object->ZIP_Filename()))
-        {
-            FileDelete(game_object->ZIP_Filename());
-        }
     }
 
     // don't need game object anymore
@@ -1638,7 +1634,7 @@ softrestart:;
 
     if (main_action != MAIN_SOFT_RESTART)
     {
-        // this not only finds PK3 files, but also activates the ones specified
+        // this not only finds ZIP files/folders, but also activates the ones specified
         // in OPTIONS.txt
         VFS_ScanForAddons();
 

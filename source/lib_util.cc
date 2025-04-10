@@ -911,7 +911,6 @@ std::string StringFormat(std::string_view fmt, ...)
 std::string NumToString(unsigned long long int value)
 {
     return StringFormat("%llu", value);
-    ;
 }
 
 std::string NumToString(int value)

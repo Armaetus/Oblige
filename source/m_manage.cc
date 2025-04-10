@@ -592,6 +592,12 @@ class UI_Manage_Config : public Fl_Double_Window
             return;
         }
 
+        if (GetExtension(filename) != ".wad" && GetExtension(filename) != ".txt")
+        {
+            DLG_ShowError(_("Only WAD or TXT files are supported (you will need to extract the file if using ZIP output)"));
+            return;
+        }
+
         that->LoadFromFile(filename);
     }
 

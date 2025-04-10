@@ -28,8 +28,9 @@
 #include "main.h"
 #include "sys_assert.h"
 
-static constexpr uint16_t LOG_BUF_LEN = 8192;
-
+static constexpr uint16_t MAX_LOGBUF_SIZE = 16384;
+static char *message_buf = nullptr;
+static size_t message_buf_size = 128;
 static FILE *log_file = nullptr;
 static FILE *ref_file = nullptr;
 std::string  log_filename;
@@ -118,6 +119,13 @@ void LogClose(void)
     log_file = nullptr;
 
     log_filename.clear();
+
+    if (message_buf)
+    {
+        free(message_buf);
+        message_buf = nullptr;
+        message_buf_size = 128;
+    }
 }
 
 void RefClose(void)
@@ -128,6 +136,13 @@ void RefClose(void)
     ref_file = nullptr;
 
     ref_filename.clear();
+
+    if (message_buf)
+    {
+        free(message_buf);
+        message_buf = nullptr;
+        message_buf_size = 128;
+    }
 }
 
 void LogPrint(const char *message, ...)
@@ -135,18 +150,25 @@ void LogPrint(const char *message, ...)
     if (!log_file && !terminal)
         return;
 
-    char message_buf[LOG_BUF_LEN];
+    if (!message_buf)
+        message_buf = (char *)calloc(message_buf_size, sizeof(char));
 
-    message_buf[LOG_BUF_LEN-1] = 0;
+    for (;;)
+    {
+        va_list args;
 
-    // Print the message into a text string
-    va_list argptr;
+        va_start(args, message);
+        int out_len = vsnprintf(message_buf, message_buf_size, message, args);
+        va_end(args);
 
-    va_start(argptr, message);
-    vsprintf(message_buf, message, argptr);
-    va_end(argptr);
+        if (out_len >= 0 && out_len < message_buf_size)
+            break;
+        if (message_buf_size == MAX_LOGBUF_SIZE)
+            break;
 
-    SYS_ASSERT(message_buf[LOG_BUF_LEN-1] == 0);
+        message_buf_size *= 2;
+        message_buf = (char *)realloc(message_buf, message_buf_size * sizeof(char));
+    }
 
     if (log_file)
     {
@@ -166,18 +188,25 @@ void RefPrint(const char *message, ...)
     if (!ref_file && !terminal)
         return;
 
-    char message_buf[LOG_BUF_LEN];
+    if (!message_buf)
+        message_buf = (char *)calloc(message_buf_size, sizeof(char));
 
-    message_buf[LOG_BUF_LEN-1] = 0;
+    for (;;)
+    {
+        va_list args;
 
-    // Print the message into a text string
-    va_list argptr;
+        va_start(args, message);
+        int out_len = vsnprintf(message_buf, message_buf_size, message, args);
+        va_end(args);
 
-    va_start(argptr, message);
-    vsprintf(message_buf, message, argptr);
-    va_end(argptr);
+        if (out_len >= 0 && out_len < message_buf_size)
+            break;
+        if (message_buf_size == MAX_LOGBUF_SIZE)
+            break;
 
-    SYS_ASSERT(message_buf[LOG_BUF_LEN-1] == 0);
+        message_buf_size *= 2;
+        message_buf = (char *)realloc(message_buf, message_buf_size * sizeof(char));
+    }
 
     if (ref_file)
     {
@@ -197,18 +226,25 @@ void DebugPrint(const char *message, ...)
     if (!debugging || (!log_file && !terminal))
         return;
 
-    char message_buf[LOG_BUF_LEN];
+    if (!message_buf)
+        message_buf = (char *)calloc(message_buf_size, sizeof(char));
 
-    message_buf[LOG_BUF_LEN-1] = 0;
+    for (;;)
+    {
+        va_list args;
 
-    // Print the message into a text string
-    va_list argptr;
+        va_start(args, message);
+        int out_len = vsnprintf(message_buf, message_buf_size, message, args);
+        va_end(args);
 
-    va_start(argptr, message);
-    vsprintf(message_buf, message, argptr);
-    va_end(argptr);
+        if (out_len >= 0 && out_len < message_buf_size)
+            break;
+        if (message_buf_size == MAX_LOGBUF_SIZE)
+            break;
 
-    SYS_ASSERT(message_buf[LOG_BUF_LEN-1] == 0);
+        message_buf_size *= 2;
+        message_buf = (char *)realloc(message_buf, message_buf_size * sizeof(char));
+    }
 
     if (log_file)
     {
@@ -225,18 +261,25 @@ void DebugPrint(const char *message, ...)
 
 void ProgStatus(const char *message, ...)
 {
-    char message_buf[LOG_BUF_LEN];
+    if (!message_buf)
+        message_buf = (char *)calloc(message_buf_size, sizeof(char));
 
-    message_buf[LOG_BUF_LEN-1] = 0;
+    for (;;)
+    {
+        va_list args;
 
-    // Print the message into a text string
-    va_list argptr;
+        va_start(args, message);
+        int out_len = vsnprintf(message_buf, message_buf_size, message, args);
+        va_end(args);
 
-    va_start(argptr, message);
-    vsprintf(message_buf, message, argptr);
-    va_end(argptr);
+        if (out_len >= 0 && out_len < message_buf_size)
+            break;
+        if (message_buf_size == MAX_LOGBUF_SIZE)
+            break;
 
-    SYS_ASSERT(message_buf[LOG_BUF_LEN-1] == 0);
+        message_buf_size *= 2;
+        message_buf = (char *)realloc(message_buf, message_buf_size * sizeof(char));
+    }
 
 #ifndef OBSIDIAN_CONSOLE_ONLY
     if (main_win)
@@ -274,18 +317,25 @@ void ProgStatus(const char *message, ...)
 
 [[noreturn]] void FatalError(const char *message, ...)
 {
-    char message_buf[LOG_BUF_LEN];
+    if (!message_buf)
+        message_buf = (char *)calloc(message_buf_size, sizeof(char));
 
-    message_buf[LOG_BUF_LEN-1] = 0;
+    for (;;)
+    {
+        va_list args;
 
-    // Print the message into a text string
-    va_list argptr;
+        va_start(args, message);
+        int out_len = vsnprintf(message_buf, message_buf_size, message, args);
+        va_end(args);
 
-    va_start(argptr, message);
-    vsprintf(message_buf, message, argptr);
-    va_end(argptr);
+        if (out_len >= 0 && out_len < message_buf_size)
+            break;
+        if (message_buf_size == MAX_LOGBUF_SIZE)
+            break;
 
-    SYS_ASSERT(message_buf[LOG_BUF_LEN-1] == 0);
+        message_buf_size *= 2;
+        message_buf = (char *)realloc(message_buf, message_buf_size * sizeof(char));
+    }
 
     if (log_file)
     {

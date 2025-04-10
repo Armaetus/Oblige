@@ -1,5 +1,5 @@
 ----------------------------------------------------------------
---  MODULE: Compress output to PK3
+--  MODULE: Compress output to ZIP
 ----------------------------------------------------------------
 --
 --  Copyright (C) 2023-2025 The OBSIDIAN Team
@@ -18,7 +18,7 @@
 
 OB_MODULES["compress_output"] =
 {
-  label = _("PK3/ZIP Output"),
+  label = _("ZIP Output"),
 
   where = "other",
   priority = 100,
@@ -26,6 +26,6 @@ OB_MODULES["compress_output"] =
   engine = "idtech_1",
 
   port = "advanced",
-  tooltip= _("Automatically compress output to PK3 to save space."),
+  tooltip= _("Automatically compress output to ZIP to save space."),
 }
 

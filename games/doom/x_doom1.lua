@@ -10686,6 +10686,7 @@ OB_GAMES["doom1"] =
 
   hooks =
   {
+    setup = DOOM.setup,
     get_levels = ULTDOOM.get_levels,
     slump_setup = ULTDOOM.slump_setup,
     factory_setup = ULTDOOM.factory_setup,

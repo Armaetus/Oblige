@@ -26,9 +26,9 @@
 extern bool terminal;
 extern bool debugging;
 
-bool LogInit(const std::string &filename); // NULL for none
+bool LogInit(const std::string &filename);
 void LogClose(void);
-bool RefInit(const std::string &filename); // NULL for none
+bool RefInit(const std::string &filename);
 void RefClose(void);
 
 void LogEnableDebug(bool enable);
