@@ -28,8 +28,6 @@ OB_MODULES["midi_generation"] =
   label = _("MIDI Generation"),
 
   where = "experimental",
-  engine = "!idtech_0",
-  port = "!limit_enforcing",
   priority = 5,
 
   tooltip = _("Procedurally generate replacement MIDI tracks"),

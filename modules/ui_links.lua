@@ -40,27 +40,6 @@ OB_MODULES["ui_useful_links"] =
       label=_("Blasphemer (Heretic Replacement)"),
       url="https://github.com/Catoptromancy/blasphemer",    
     },
-    { 
-      name="url_cq3_vanilla",     
-      label=_("Chex Quest 3: Vanilla Edition"),
-      url="https://melodic-spaceship.neocities.org/chex3v",    
-    },
-    { 
-      name="url_hacx",     
-      label=_("HacX 1.2"),
-      url="https://www.doomworld.com/idgames/themes/hacx/hacx12",    
-    },
-    { 
-      name="url_harmony",     
-      label=_("Harmony Compatible"),
-      url="https://www.doomworld.com/idgames/levels/doom2/Ports/g-i/harmonyc",    
-    },
-    { 
-      name="url_rekkr",     
-      label=_("REKKR"),
-      url="https://www.doomworld.com/idgames/levels/doom/megawads/rekkr",
-      gap=4    
-    },
 
     --[[{
       name = "header_addons",

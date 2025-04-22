@@ -34,8 +34,6 @@ OB_MODULES["alt_shape_grammars"] =
     
   where = "arch",
   priority = 102,
-  engine = "!idtech_0",
-  port = "!limit_enforcing",
 
   tooltip = _("Options for alternate means of determining the layout of a level."),
 

@@ -65,7 +65,6 @@ set(OBSIDIAN_SOURCE_FILES
     source/dm_prefab.cc
     source/ff_main.cc
     source/g_doom.cc
-    source/g_wolf.cc
     source/lex.yy.c
     source/lib_argv.cc
     source/lib_midi.cc
@@ -84,9 +83,6 @@ set(OBSIDIAN_SOURCE_FILES
     source/poly.cc
     source/poly_util.cc
     source/poly_wad.cc
-    source/slump_dump.cc
-    source/slump_main.cc
-    source/slump.cc
     source/sys_assert.cc
     source/sys_debug.cc
     source/sys_xoshiro.cc

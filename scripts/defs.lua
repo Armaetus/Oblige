@@ -53,7 +53,6 @@ OB_CONFIG = {}
 
 OB_GAMES   = {}
 OB_THEMES  = {}
-OB_ENGINES = {}
 OB_PORTS = {}
 OB_MODULES = {}
 
@@ -64,7 +63,6 @@ function _(s) return gui.gettext(s) end
 -- special theme types, usable by all games
 OB_THEMES["original"] =
 {
-  port = "!limit_enforcing",
   label = _("Original"),
   priority = 91
 }
@@ -72,7 +70,6 @@ OB_THEMES["original"] =
 
 OB_THEMES["epi"] =
 {
-  port = "!limit_enforcing",
   label = _("Episodic"),
   priority = 85
 }
@@ -87,7 +84,6 @@ OB_THEMES["jumble"] =
 
 OB_THEMES["bit_mixed"] =
 {
-  port = "!limit_enforcing",
   label = _("Bit Mixed"),
   priority = 81
 }
@@ -95,14 +91,12 @@ OB_THEMES["bit_mixed"] =
 
 OB_THEMES["psycho"] =
 {
-  port = "!limit_enforcing",
   label = _("Psychedelic"),
   priority = -99  -- bottom most
 }
 
 OB_THEMES["default"] =
 {
-  port = "limit_enforcing",
   label = _("Default"),
   priority = 99,
 }

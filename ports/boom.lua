@@ -145,8 +145,6 @@ OB_PORTS["boom"] =
 
   priority = 102,  -- this makes it top-most, and the default engine
 
-  game = { chex1=0, doom1=1, doom2=1, hacx=0, harmony=0, strife=0, rekkr=0 },
-
   tables =
   {
     BOOM

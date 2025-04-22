@@ -211,9 +211,6 @@ OB_MODULES["misc"] =
 
   label = _("Advanced Architecture"),
 
-  engine = "!idtech_0",
-  port = "!limit_enforcing",
-
   where = "arch",
   priority = 101,
 

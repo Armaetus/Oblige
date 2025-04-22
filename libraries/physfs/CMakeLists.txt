@@ -104,12 +104,12 @@ set(PHYSFS_SRCS
 # These are (mostly) on by default now, so these options are only useful for
 #  disabling them.
 
-option(PHYSFS_ARCHIVE_ZIP "Enable ZIP support" TRUE)
+option(PHYSFS_ARCHIVE_ZIP "Enable ZIP support" ON)
 if(NOT PHYSFS_ARCHIVE_ZIP)
     add_definitions(-DPHYSFS_SUPPORTS_ZIP=0)
 endif()
 
-option(PHYSFS_ARCHIVE_7Z "Enable 7zip support" OFF)
+option(PHYSFS_ARCHIVE_7Z "Enable 7zip support" ON)
 if(NOT PHYSFS_ARCHIVE_7Z)
     add_definitions(-DPHYSFS_SUPPORTS_7Z=0)
 endif()

@@ -60,8 +60,6 @@ OB_MODULES["doom_mon_control"] =
   label = _("Doom Monster Control"),
 
   game = "doomish",
-  engine = "idtech_1",
-  port = "!limit_enforcing",
   where = "combat",
 
   hooks =
@@ -454,8 +452,6 @@ OB_MODULES["doom_mon_control_id24"] =
   label = _("ID24 Monster Control"),
 
   game = "doomish",
-  engine = "idtech_1",
-  port = "!limit_enforcing",
   where = "experimental",
 
   hooks =
@@ -622,8 +618,6 @@ OB_MODULES["doom_weapon_control"] =
   label = _("Doom Weapon Control"),
 
   game = "doomish",
-  engine = "idtech_1",
-  port = "!limit_enforcing",
   where = "pickup",
 
   hooks =
@@ -782,8 +776,6 @@ OB_MODULES["doom_item_control"] =
   label = _("Doom Item Control"),
 
   game = "doomish",
-  engine = "idtech_1",
-  port = "!limit_enforcing",
   where = "pickup",
 
   hooks =

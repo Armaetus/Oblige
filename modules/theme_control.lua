@@ -127,7 +127,6 @@ OB_MODULES["theme_ctl_doom2"] =
   label = _("[Exp] Doom 2 Theme Control"),
 
   game = "doom2",
-  port = "!limit_enforcing",
   where = "other",
 
   hooks =
@@ -181,7 +180,6 @@ OB_MODULES["theme_ctl_doom1"] =
   label = _("[Exp] Doom 1 Theme Control"),
 
   game = "doom1",
-  port = "!limit_enforcing",
   where = "other",
 
   hooks =

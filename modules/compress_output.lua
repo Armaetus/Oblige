@@ -23,9 +23,6 @@ OB_MODULES["compress_output"] =
   where = "other",
   priority = 100,
 
-  engine = "idtech_1",
-
-  port = "advanced",
   tooltip= _("Automatically compress output to ZIP to save space."),
 }
 

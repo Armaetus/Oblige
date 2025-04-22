@@ -1172,7 +1172,6 @@ end
 OB_MODULES["iwad_mode"] =
 {
   label = _("IWAD Style Mode"),
-  port = "!limit_enforcing",
   game = "doom2", -- Only one supported for now
   where = "arch",
   priority = 60,

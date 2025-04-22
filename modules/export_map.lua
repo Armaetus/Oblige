@@ -263,8 +263,6 @@ OB_MODULES["export_map"] =
 
   where = "other",
   priority = -75,
-  engine = "!idtech_0",
-  port = "!limit_enforcing",
 
   tables =
   {
