@@ -23,6 +23,9 @@
 #include <FL/Fl_Native_File_Chooser.H>
 #include <FL/fl_ask.H>
 #endif
+
+#include <format>
+
 #include "lib_argv.h"
 #include "lib_util.h"
 #include "m_addons.h"
@@ -219,7 +222,7 @@ bool Options_Save(const std::string &filename)
 #ifndef OBSIDIAN_CONSOLE_ONLY
     fprintf(option_fp, "collapse_disabled_modules = %d\n", (collapse_disabled_modules ? 1 : 0));
 #endif
-    fprintf(option_fp, "%s", StringFormat("default_output_path = %s\n\n", default_output_path.c_str()).c_str());
+    fprintf(option_fp, "default_output_path = %s\n\n", default_output_path.c_str());
 
     VFS_OptWrite(option_fp);
 
@@ -596,7 +599,7 @@ class UI_OptionsWin : public Fl_Window
         that->opt_current_output_path->label(BLANKOUT);
         that->opt_current_output_path->redraw_label();
         that->opt_current_output_path->copy_label(
-            StringFormat("%s: %s", _("Current Path"), BestDirectory().c_str()).c_str());
+            std::format("{}: {}", _("Current Path"), BestDirectory()).c_str());
         that->opt_current_output_path->redraw_label();
     }
 };
@@ -685,7 +688,7 @@ UI_OptionsWin::UI_OptionsWin(int W, int H, const char *label) : Fl_Window(W, H, 
     opt_current_output_path->labelfont(font_style);
     opt_current_output_path->labelcolor(FONT2_COLOR);
     // clang-format off
-    opt_current_output_path->copy_label(StringFormat("%s: %s", _("Current Path"), BestDirectory().c_str()).c_str());
+    opt_current_output_path->copy_label(std::format("{}: {}", _("Current Path"), BestDirectory()).c_str());
     // clang-format on
 
     cy += opt_current_output_path->h() + y_step;

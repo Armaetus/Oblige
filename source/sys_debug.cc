@@ -399,9 +399,6 @@ void LogReadLines(log_display_func_t display_func, void *priv_data)
                 buffer.push_back(c);
         }
 
-        // remove any DEL characters (mainly to workaround an FLTK bug)
-        StringReplaceChar(&buffer, 0x7f, 0);
-
         buffer.push_back('\n');
 
         display_func(buffer, priv_data);

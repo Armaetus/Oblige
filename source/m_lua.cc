@@ -22,6 +22,7 @@
 #include "m_lua.h"
 
 #include <algorithm>
+#include <format>
 
 #include "ff_main.h"
 #include "lib_midi.h"
@@ -1289,11 +1290,11 @@ int gui_minimap_disable(lua_State *L)
     if (main_win)
     {
         main_win->build_box->mini_map->EmptyMap();
-        std::string genny = luaL_checkstring(L, 1);
+        const char *genny = luaL_checkstring(L, 1);
+        SYS_ASSERT(genny);
         // clang-format off
-        main_win->build_box->alt_disp->copy_label(StringFormat("%s %s -\n%s", 
-            _("Using"),
-            genny.c_str(), _("Preview Not Available")).c_str());
+        main_win->build_box->alt_disp->copy_label(std::format("{} {} -\n{}", 
+            _("Using"), genny, _("Preview Not Available")).c_str());
         // clang-format on
     }
 #endif
@@ -1677,13 +1678,11 @@ static bool Script_CallFunc(const std::string &func_name, int nresult = 0, const
 #ifndef OBSIDIAN_CONSOLE_ONLY
         if (main_win)
         {
-            main_win->label(StringFormat("%s %s %s \"%s\"", _("[ ERROR ]"), OBSIDIAN_TITLE.c_str(),
-                                         OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                                .c_str());
+            main_win->label(std::format("{} {} {} \"{}\"", _("[ ERROR ]"), OBSIDIAN_TITLE,
+                                         OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
             DLG_ShowError("%s: %s", _("Script Error: "), err_msg);
             main_win->label(
-                StringFormat("%s %s \"%s\"", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                    .c_str());
+                std::format("{} {} \"{}\"", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
         }
 #endif
         lua_pop(LUA_ST, 2); // ob_traceback, message
@@ -1767,7 +1766,7 @@ static int my_loadfile(lua_State *L, const std::string &filename)
         lua_settop(L, fnameindex);
         status = LUA_ERRFILE;
 
-        lua_pushstring(L, StringFormat("file read error: %s", info.error_msg.c_str()).c_str());
+        lua_pushstring(L, std::format("file read error: {}", info.error_msg).c_str());
     }
 
     lua_remove(L, fnameindex);
@@ -2097,9 +2096,8 @@ bool ob_build_cool_shit()
 #ifndef OBSIDIAN_CONSOLE_ONLY
         if (main_win)
         {
-            main_win->label(StringFormat("%s %s %s \"%s\"", _("[ ERROR ]"), OBSIDIAN_TITLE.c_str(),
-                                         OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                                .c_str());
+            main_win->label(std::format("{} {} {} \"{}\"", _("[ ERROR ]"), OBSIDIAN_TITLE,
+                                         OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
         }
 #endif
         ProgStatus("%s", _("Script Error"));
@@ -2107,8 +2105,7 @@ bool ob_build_cool_shit()
         if (main_win)
         {
             main_win->label(
-                StringFormat("%s %s \"%s\"", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                    .c_str());
+                std::format("{} {} \"{}\"", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
 #ifdef _WIN32
             Main::Blinker();
 #endif

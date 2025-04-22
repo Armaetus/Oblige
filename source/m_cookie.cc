@@ -23,6 +23,7 @@
 
 #include <locale.h>
 
+#include <format>
 #include <stdexcept>
 
 #include "lib_argv.h"
@@ -510,7 +511,7 @@ class RecentFiles_c
 
         if (for_menu)
         {
-            buffer = StringFormat("%-.32s", name.c_str());
+            buffer = std::format("{}", name);
         }
         else
         {

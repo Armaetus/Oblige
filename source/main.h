@@ -22,6 +22,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <stdint.h>
 
 #include <map>
 #include <string>
@@ -70,7 +71,7 @@ extern bool batch_mode;
 
 extern std::string batch_output_file;
 
-extern unsigned long long next_rand_seed;
+extern uint64_t next_rand_seed;
 
 // this records the user action, e.g. Cancel or Quit buttons
 enum main_action_kind_e

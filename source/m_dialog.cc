@@ -26,6 +26,7 @@
 
 #include <stdarg.h>
 
+#include <format>
 #include <limits>
 #include <stdexcept>
 #include <string>
@@ -232,7 +233,7 @@ std::string BestDirectory()
 
 std::string DLG_OutputFilename(const char *ext, const char *preset)
 {
-    std::string kind_buf = StringFormat("%s %s\t*.%s", ext, _("files"), ext);
+    std::string kind_buf = std::format("{} {}\t*.{}", ext, _("files"), ext);
 
     // uppercase the first word
     for (char *p = &kind_buf[0]; *p && *p != ' '; p++)
@@ -326,7 +327,7 @@ void DLG_EditSeed(void)
     int         user_response;
     user_buf =
         fl_input_str(user_response, 0 /* limit */, "%s",
-                     string_seed.empty() ? std::to_string(next_rand_seed).c_str() : string_seed.c_str(),
+                     string_seed.empty() ? NumToString(next_rand_seed).c_str() : string_seed.c_str(),
                      _("Enter New Seed Number or Phrase:"));
     // cancelled?
     if (user_response < 0)
@@ -336,7 +337,7 @@ void DLG_EditSeed(void)
 #else
     const char *fl_buf =
         fl_input(_("Enter New Seed Number or Phrase:"), 
-                     string_seed.empty() ? std::to_string(next_rand_seed).c_str() : string_seed.c_str());
+                     string_seed.empty() ? NumToString(next_rand_seed).c_str() : string_seed.c_str());
     // cancelled?
     if (!fl_buf)
     {
@@ -798,7 +799,7 @@ UI_GlossaryViewer::~UI_GlossaryViewer()
 
 void UI_GlossaryViewer::ReadGlossary()
 {
-    std::string glossary = StringFormat("%s/language/%s.txt", install_dir.c_str(), selected_lang.c_str());
+    std::string glossary = std::format("{}/language/{}.txt", install_dir, selected_lang);
 
     if (!FileExists(glossary))
     {
@@ -824,9 +825,6 @@ void UI_GlossaryViewer::ReadGlossary()
             else
                 buffer.push_back(c);
         }
-
-        // remove any DEL characters (mainly to workaround an FLTK bug)
-        StringReplaceChar(&buffer, 0x7f, 0);
 
         buffer.push_back('\n');
 

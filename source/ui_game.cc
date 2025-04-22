@@ -35,7 +35,7 @@ UI_Game::UI_Game(int X, int Y, int W, int H) : Fl_Group(X, Y, W, H)
     int button_h = KromulentHeight(30);
     int button_x = X + KromulentWidth(25);
 
-    int y_step = KromulentHeight(30);
+    int y_step = KromulentHeight(32);
 
     int cx = X + W * 0.29;
     int cy = Y + KromulentHeight(4);
@@ -47,10 +47,10 @@ UI_Game::UI_Game(int X, int Y, int W, int H) : Fl_Group(X, Y, W, H)
     heading->labelfont(font_style | FL_BOLD);
     heading->labelsize(header_font_size);
 
-    cy = Y + KromulentHeight(32);
+    cy = Y + KromulentHeight(36);
 
     int cw = W * 0.50;
-    int ch = KromulentHeight(22);
+    int ch = KromulentHeight(26);
 
     game = new UI_RChoiceMenu(cx, cy, cw, ch, "");
     game->copy_label(_("Game: "));
@@ -99,7 +99,7 @@ UI_Game::UI_Game(int X, int Y, int W, int H) : Fl_Group(X, Y, W, H)
     theme->selection_color(SELECTION);
     theme->callback(callback_Theme, this);
 
-    cy += y_step;
+    cy += y_step * 1.25;
 
     build = new Fl_Button(button_x, cy, button_w, button_h, _("Build"));
     build->visible_focus(0);
@@ -152,7 +152,7 @@ void UI_Game::callback_GameHelp(Fl_Widget *w, void *data)
     win->set_modal();
     win->show();
     // clang-format off
-    buff->text(_("Available Games:\n\nid Tech 1:\n\nDoom 2\n\nDoom\n\nThe Ultimate Doom\n\nPlutonia: Part of Final Doom\n\nTNT: Evilution: Part of Final Doom\n\nHeretic"));
+    buff->text(_("Available Games:\n\nDoom 2\n\nDoom\n\nThe Ultimate Doom\n\nPlutonia: Part of Final Doom\n\nTNT: Evilution: Part of Final Doom\n\nHeretic"));
     // clang-format on
 }
 
@@ -190,7 +190,7 @@ void UI_Game::callback_PortHelp(Fl_Widget *w, void *data)
     win->set_modal();
     win->show();
     // clang-format off
-    buff->text(_("Available Ports:\n\nid Tech 1:\n\nGZDoom: GZDoom and variants (LZDoom, QZDoom, etc)\n\nBoom-Compatible: Ports that are able to use the entire suite of Boom types and features. Most modern source ports fall into this category at a minimum.\n\nEDGE-Classic: Boom-compatible, plus UDMF support, additional specials and other advanced features."));
+    buff->text(_("Available Ports:\n\nGZDoom: GZDoom and variants (LZDoom, QZDoom, etc)\n\nBoom-Compatible: Ports that are able to use the entire suite of Boom types and features. Most modern source ports fall into this category at a minimum.\n\nEDGE-Classic: Boom-compatible, plus UDMF support, additional specials and other advanced features."));
     // clang-format on
 }
 

@@ -23,6 +23,8 @@
 
 #include <locale.h>
 
+#include <format>
+
 #ifdef _WIN32
 #include <windows.h>
 #include <winuser.h>
@@ -81,7 +83,7 @@ int screen_h;
 
 int main_action;
 
-unsigned long long next_rand_seed;
+uint64_t next_rand_seed;
 
 bool                     batch_mode = false;
 std::string              batch_output_file;
@@ -439,7 +441,7 @@ bool Main::BackupFile(const std::string &filename)
     {
         std::string backup_name = filename;
 
-        ReplaceExtension(backup_name, StringFormat("%s.%s", GetExtension(backup_name).c_str(), ".bak"));
+        ReplaceExtension(backup_name, std::format("{}.{}", GetExtension(backup_name), ".bak"));
 
         LogPrint("Backing up existing file to: %s\n", backup_name.c_str());
 
@@ -1034,12 +1036,11 @@ void Main_SetSeed()
         }
     }
     xoshiro_Reseed(next_rand_seed);
-    std::string seed = NumToString(next_rand_seed);
-    ob_set_config("seed", seed.c_str());
+    ob_set_config("seed", NumToString(next_rand_seed));
 #ifndef OBSIDIAN_CONSOLE_ONLY
     if (!batch_mode)
     {
-        main_win->build_box->seed_disp->copy_label(StringFormat("%s %s", _("Seed:"), seed.c_str()).c_str());
+        main_win->build_box->seed_disp->copy_label(std::format("{} {}", _("Seed:"), next_rand_seed).c_str());
         main_win->build_box->seed_disp->redraw();
     }
 #endif
@@ -1090,15 +1091,14 @@ bool Build_Cool_Shit()
     // lock most widgets of user interface
     if (main_win)
     {
-        std::string seed = NumToString(next_rand_seed);
         if (!string_seed.empty())
         {
-            main_win->build_box->seed_disp->copy_label(StringFormat("%s %s", _("Seed:"), string_seed.c_str()).c_str());
+            main_win->build_box->seed_disp->copy_label(std::format("{} {}", _("Seed:"), string_seed).c_str());
             main_win->build_box->seed_disp->redraw();
         }
         else
         {
-            main_win->build_box->seed_disp->copy_label(StringFormat("%s %s", _("Seed:"), seed.c_str()).c_str());
+            main_win->build_box->seed_disp->copy_label(std::format("{} {}", _("Seed:"), next_rand_seed).c_str());
             main_win->build_box->seed_disp->redraw();
         }
         main_win->game_box->SetAbortButton(true);
@@ -1175,8 +1175,7 @@ bool Build_Cool_Shit()
         if (main_win)
         {
             main_win->label(
-                StringFormat("%s %s \"%s\"", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                    .c_str());
+                std::format("{} {} \"{}\"", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
         }
 #endif
         ProgStatus("%s", _("Cancelled"));
@@ -1603,7 +1602,7 @@ softrestart:;
     /* ---- normal GUI mode ---- */
 
     std::string main_title =
-        StringFormat("%s %s \"%s\"", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str());
+        std::format("{} {} \"{}\"", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME);
 
     if (main_action != MAIN_SOFT_RESTART)
     {
@@ -1814,7 +1813,7 @@ softrestart:;
 
         if (!old_seed.empty())
         {
-            main_win->build_box->seed_disp->copy_label(StringFormat("%s %s", _("Seed:"), old_seed.c_str()).c_str());
+            main_win->build_box->seed_disp->copy_label(std::format("{} {}", _("Seed:"), old_seed).c_str());
             old_seed.clear();
         }
 

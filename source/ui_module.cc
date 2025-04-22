@@ -22,6 +22,7 @@
 #include <FL/fl_ask.H>
 #include <locale.h>
 
+#include <format>
 #include <stdexcept>
 
 #include "lib_util.h"
@@ -182,7 +183,7 @@ void UI_Module::AddOption(const std::string &opt, const std::string &label, cons
     UI_RChoice *rch = new UI_RChoice(nx, ny + KromulentHeight(15), nw * .95, KromulentHeight(24));
 
     rch->mod_label = new Fl_Box(rch->x(), rch->y(), rch->w() * .40, KromulentHeight(24), "");
-    rch->mod_label->copy_label(StringFormat("%s: ", label.c_str()).c_str());
+    rch->mod_label->copy_label(std::format("{}: ", label).c_str());
     rch->mod_label->align(FL_ALIGN_RIGHT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
     rch->mod_label->labelfont(font_style);
     rch->mod_label->copy_tooltip(tip.c_str());
@@ -252,7 +253,7 @@ void UI_Module::AddSliderOption(const std::string &opt, std::string &label, cons
         longtip = tip;
     }
 
-    label = StringFormat("%s: ", label.c_str());
+    label = std::format("{}: ", label);
 
     UI_RSlide *rsl = new UI_RSlide(nx, ny + KromulentHeight(15), nw * .95, KromulentHeight(24));
 
@@ -459,7 +460,7 @@ void UI_Module::AddButtonOption(const std::string &opt, const std::string &label
     UI_RButton *rbt = new UI_RButton(nx, ny + KromulentHeight(15), nw * .95, KromulentHeight(24));
 
     rbt->mod_label = new Fl_Box(rbt->x(), rbt->y(), rbt->w() * .40, KromulentHeight(24), "");
-    rbt->mod_label->copy_label(StringFormat("%s: ", label.c_str()).c_str());
+    rbt->mod_label->copy_label(std::format("{}: ", label).c_str());
     rbt->mod_label->align(FL_ALIGN_RIGHT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
     rbt->mod_label->labelfont(font_style);
     rbt->mod_label->copy_tooltip(tip.c_str());
@@ -963,7 +964,7 @@ void UI_Module::callback_PresetCheck(Fl_Widget *w, void *data)
     }
     else
     {
-        new_label = StringFormat("%2g", value);
+        new_label = std::format("{}", value);
         current_slider->unit_label->copy_label(new_label.append(current_slider->units).c_str());
     }
 }
@@ -1104,7 +1105,7 @@ void UI_Module::callback_ManualEntry(Fl_Widget *w, void *data)
     double      new_value = 0;
     std::string string_value;
 
-    float_buf = StringFormat("%2g", current_slider->mod_slider->value());
+    float_buf = std::format("{}", current_slider->mod_slider->value());
 
 tryagain:
 

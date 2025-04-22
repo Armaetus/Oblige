@@ -544,9 +544,6 @@ void Doom::EndLevel(const std::string &level_name)
         header_lump->Append(nuls, 1);
     }
 
-    // in case we need it
-    std::string level_wad = PathAppend(home_dir, StringFormat("%s.wad", level_name.c_str()));
-
     WriteLump(level_name, header_lump);
 
     if (UDMF_mode)
