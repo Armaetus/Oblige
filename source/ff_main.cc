@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <time.h>
 
 #include <chrono>
 #include <iostream>
@@ -13,43 +12,43 @@ extern "C"
 #include "lex.yy.h"
 }
 
-std::time_t now_;
-std::tm     now;
 std::string gameValue;
 std::string portValue;
 std::string themeValue;
 std::string countValue;
 std::string versionValue;
 std::string result;
+std::chrono::year_month_day ymd;
+std::chrono::hh_mm_ss<std::chrono::nanoseconds> hms;
 
 void year()
 {
-    result.append(std::format("{}", now.tm_year + 1900));
+    result.append(std::format("{}", int(ymd.year())));
 }
 
 void month()
 {
-    result.append(std::format("{}", now.tm_mon + 1));
+    result.append(std::format("{}", unsigned(ymd.month())));
 }
 
 void day()
 {
-    result.append(std::format("{}", now.tm_mday));
+    result.append(std::format("{}", unsigned(ymd.day())));
 }
 
 void hour()
 {
-    result.append(std::format("{}", now.tm_hour));
+    result.append(std::format("{}", hms.hours().count()));
 }
 
 void minute()
 {
-    result.append(std::format("{}", now.tm_min));
+    result.append(std::format("{}", hms.minutes().count()));
 }
 
 void second()
 {
-    result.append(std::format("{}", now.tm_sec));
+    result.append(std::format("{}", hms.seconds().count()));
 }
 
 void game()
@@ -92,10 +91,11 @@ const char *ff_main(const char *levelcount, const char *game, const char *port, 
     versionValue      = version;
     std::string input = format;
     result.clear();
-    now_ = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    now  = *std::localtime(&now_);
-
-    auto buffer_state = yy_scan_bytes(input.c_str(), input.size());
+    auto time = std::chrono::system_clock::now();
+    auto timefloor = floor<std::chrono::days>(time);
+    ymd = timefloor;
+    hms = std::chrono::hh_mm_ss{time - timefloor};
+    yy_buffer_state *buffer_state = yy_scan_bytes(input.c_str(), input.size());
     yy_switch_to_buffer(buffer_state);
     while (yylex() != TOK_EOF)
     {
