@@ -38,7 +38,7 @@
 #include "sys_assert.h"
 #include "sys_endian.h"
 #include "sys_macro.h"
-#include "sys_xoshiro.h"
+#include "sys_twister.h"
 
 extern void        CSG_DOOM_Write();
 extern std::string BestDirectory();

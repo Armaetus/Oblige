@@ -40,7 +40,7 @@
 #include "m_lua.h"
 #include "m_trans.h"
 #include "physfs.h"
-#include "sys_xoshiro.h"
+#include "sys_twister.h"
 #ifndef OBSIDIAN_CONSOLE_ONLY
 #ifndef _WIN32
 #include <FL/Fl_File_Icon.H>
@@ -372,8 +372,6 @@ void Determine_WorkingPath()
 #else
     home_dir = PHYSFS_getPrefDir("Obsidian Team", "Obsidian");
 #endif
-    // ensure scratch folder exists
-    MakeDirectory(PathAppend(home_dir, "temp"));
 }
 
 std::string Resolve_DefaultOutputPath()
@@ -927,9 +925,9 @@ void Main::Ticker()
     // To prevent a slow-down, we only call Fl::check()
     // after a certain time has elapsed.
 
-    static uint32_t last_millis = 0;
+    static int64_t last_millis = 0;
 
-    if (const uint32_t cur_millis = TimeGetMillies(); (cur_millis - last_millis) >= TICKER_TIME)
+    if (const int64_t cur_millis = TimeGetMillies(); (cur_millis - last_millis) >= TICKER_TIME)
     {
         Fl::check();
 
@@ -1007,7 +1005,7 @@ int Main_key_handler(int event)
 
 void Main_CalcNewSeed()
 {
-    next_rand_seed = xoshiro_UInt();
+    next_rand_seed = twister_UInt();
 }
 
 void Main_SetSeed()
@@ -1035,8 +1033,8 @@ void Main_SetSeed()
             next_rand_seed = StringHash64(string_seed);
         }
     }
-    xoshiro_Reseed(next_rand_seed);
-    ob_set_config("seed", NumToString(next_rand_seed));
+    twister_Reseed(next_rand_seed);
+    ob_set_config("seed", std::format("{}", next_rand_seed));
 #ifndef OBSIDIAN_CONSOLE_ONLY
     if (!batch_mode)
     {
@@ -1882,7 +1880,7 @@ softrestart:;
 #ifndef OBSIDIAN_CONSOLE_ONLY
                 if (result)
                 {
-                    old_seed = string_seed.empty() ? NumToString(next_rand_seed) : string_seed;
+                    old_seed = string_seed.empty() ? std::format("{}", next_rand_seed) : string_seed;
                     if (main_win->build_box->name_disp->label())
                     {
                         old_name = main_win->build_box->name_disp->label();

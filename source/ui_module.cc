@@ -31,7 +31,7 @@
 #include "main.h"
 #include "sys_assert.h"
 #include "sys_macro.h"
-#include "sys_xoshiro.h"
+#include "sys_twister.h"
 
 UI_Module::UI_Module(int X, int Y, int W, int H, const std::string &id, const std::string &label,
                      const std::string &tip, int red, int green, int blue, bool suboptions)
@@ -690,7 +690,7 @@ void UI_Module::randomize_Values(std::vector<std::string> selected_randomize_gro
         {
             if (StringCompare(group, M->randomize_group) == 0)
             {
-                M->mod_menu->value(xoshiro_Between(0, M->mod_menu->size() - 1));
+                M->mod_menu->value(twister_UInt() % M->mod_menu->size());
                 M->mod_menu->do_callback();
                 break;
             }
@@ -711,7 +711,8 @@ void UI_Module::randomize_Values(std::vector<std::string> selected_randomize_gro
                     M->nan_options->do_callback();
                 }
                 M->mod_slider->value(
-                    M->mod_slider->round(xoshiro_Between(M->mod_slider->minimum(), M->mod_slider->maximum())));
+                    M->mod_slider->round(M->mod_slider->minimum() + 
+                        (M->mod_slider->maximum() - M->mod_slider->minimum()) * twister_Double()));
                 M->mod_slider->do_callback();
                 break;
             }
@@ -726,7 +727,7 @@ void UI_Module::randomize_Values(std::vector<std::string> selected_randomize_gro
         {
             if (StringCompare(group, M->randomize_group) == 0)
             {
-                if (xoshiro_Float() < 0.5)
+                if (twister_Double() < 0.5)
                 {
                     M->mod_check->value(0);
                 }

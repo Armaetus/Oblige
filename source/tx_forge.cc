@@ -38,7 +38,7 @@
 #include "main.h"
 #include "sys_assert.h"
 #include "sys_macro.h"
-#include "sys_xoshiro.h"
+#include "sys_twister.h"
 
 /* Definitions used to address FORGE_REAL and imaginary parts in a two-dimensional
    array of complex numbers as stored by fourn(). */
@@ -198,7 +198,7 @@ static double rand_gauss(void)
 
     for (int i = 0; i < NRAND; i++)
     {
-        sum += (xoshiro_UInt() & 0xFFFF);
+        sum += (twister_UInt() & 0xFFFF);
     }
 
     return sum * gauss_mul - gauss_add;
@@ -206,7 +206,7 @@ static double rand_gauss(void)
 
 static double rand_phase(void)
 {
-    return 2 * OBSIDIAN_PI * xoshiro_Double();
+    return 2 * OBSIDIAN_PI * twister_Double();
 }
 
 /*  SPECTRALSYNTH  --  Spectrally  synthesized  fractal  motion in two

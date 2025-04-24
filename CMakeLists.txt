@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12..3.20)
+cmake_minimum_required(VERSION 3.15)
 
 project(
   obsidian
@@ -85,7 +85,7 @@ set(OBSIDIAN_SOURCE_FILES
     source/poly_wad.cc
     source/sys_assert.cc
     source/sys_debug.cc
-    source/sys_xoshiro.cc
+    source/sys_twister.cc
     source/tx_forge.cc
     source/tx_skies.cc
 )
@@ -133,8 +133,7 @@ if(UNIX)
     if(NOT CONSOLE_ONLY)
       target_link_libraries(
         obsidian
-        PRIVATE fastPRNG
-                fltk
+        PRIVATE fltk
                 fltk_images
                 minilua
                 miniz
@@ -147,15 +146,14 @@ if(UNIX)
       )
     else()
       target_link_libraries(
-        obsidian PRIVATE fastPRNG minilua miniz physfs-static steve
+        obsidian PRIVATE minilua miniz physfs-static steve
       )
     endif()
   elseif(${CMAKE_SYSTEM} MATCHES "BSD")
     if(NOT CONSOLE_ONLY)
       target_link_libraries(
         obsidian
-        PRIVATE fastPRNG
-                fltk
+        PRIVATE fltk
                 fltk_images
                 minilua
                 miniz
@@ -164,15 +162,14 @@ if(UNIX)
       )
     else()
       target_link_libraries(
-        obsidian PRIVATE fastPRNG minilua miniz physfs-static steve
+        obsidian PRIVATE minilua miniz physfs-static steve
       )
     endif()
   else()
     if(NOT CONSOLE_ONLY)
       target_link_libraries(
         obsidian
-        PRIVATE fastPRNG
-                fltk
+        PRIVATE fltk
                 fltk_images
                 minilua
                 miniz
@@ -184,8 +181,7 @@ if(UNIX)
     else()
       target_link_libraries(
         obsidian
-        PRIVATE fastPRNG
-                minilua
+        PRIVATE minilua
                 miniz
                 physfs-static
                 pthread
@@ -197,8 +193,7 @@ else()
   if(NOT CONSOLE_ONLY)
     target_link_libraries(
       obsidian
-      PRIVATE fastPRNG
-              fltk
+      PRIVATE fltk
               fltk_images
               minilua
               miniz
@@ -207,7 +202,7 @@ else()
     )
   else()
     target_link_libraries(
-      obsidian PRIVATE fastPRNG minilua miniz physfs-static steve
+      obsidian PRIVATE minilua miniz physfs-static steve
     )
   endif()
 endif()

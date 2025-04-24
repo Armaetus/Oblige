@@ -92,18 +92,6 @@ std::string CurrentDirectoryGet()
         directory = WStringToUTF8(dir);
     return directory; // can be empty
 }
-static bool CurrentDirectorySet(std::string_view dir)
-{
-    SYS_ASSERT(!dir.empty());
-    std::wstring wdir = UTF8ToWString(dir);
-    return _wchdir(wdir.c_str()) == 0;
-}
-bool MakeDirectory(std::string_view dir)
-{
-    SYS_ASSERT(!dir.empty());
-    std::wstring wdirectory = UTF8ToWString(dir);
-    return _wmkdir(wdirectory.c_str()) == 0;
-}
 bool FileExists(std::string_view name)
 {
     if (name.empty())
@@ -146,16 +134,6 @@ std::string CurrentDirectoryGet()
     if (dir)
         directory = dir;
     return directory;
-}
-static bool CurrentDirectorySet(std::string_view dir)
-{
-    SYS_ASSERT(!dir.empty());
-    return chdir(std::string(dir).c_str()) == 0;
-}
-bool MakeDirectory(std::string_view dir)
-{
-    SYS_ASSERT(!dir.empty());
-    return (mkdir(std::string(dir).c_str(), 0774) == 0);
 }
 bool FileExists(std::string_view name)
 {
@@ -983,9 +961,9 @@ bool VectorSameDir(const double dx1, const double dy1, const double dx2, const d
 
 //------------------------------------------------------------------------
 
-uint32_t TimeGetMillies()
+int64_t TimeGetMillies()
 {
-    return (uint32_t)std::chrono::duration_cast<std::chrono::milliseconds>(
+    return std::chrono::duration_cast<std::chrono::milliseconds>(
                std::chrono::system_clock::now().time_since_epoch())
         .count();
 }

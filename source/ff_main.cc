@@ -24,32 +24,32 @@ std::string result;
 
 void year()
 {
-    result.append(NumToString(now.tm_year + 1900));
+    result.append(std::format("{}", now.tm_year + 1900));
 }
 
 void month()
 {
-    result.append(NumToString(now.tm_mon + 1));
+    result.append(std::format("{}", now.tm_mon + 1));
 }
 
 void day()
 {
-    result.append(NumToString(now.tm_mday));
+    result.append(std::format("{}", now.tm_mday));
 }
 
 void hour()
 {
-    result.append(NumToString(now.tm_hour));
+    result.append(std::format("{}", now.tm_hour));
 }
 
 void minute()
 {
-    result.append(NumToString(now.tm_min));
+    result.append(std::format("{}", now.tm_min));
 }
 
 void second()
 {
-    result.append(NumToString(now.tm_sec));
+    result.append(std::format("{}", now.tm_sec));
 }
 
 void game()

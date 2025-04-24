@@ -1204,7 +1204,7 @@ void GetLinedefs()
 
         // check for zero-length line
         line->zero_len =
-            (fabs(start->x - end->x) < OBSIDIAN_DIST_EPSILON) && (fabs(start->y - end->y) < OBSIDIAN_DIST_EPSILON);
+            (fabs(start->x - end->x) < OBSIDIAN_EPSILON) && (fabs(start->y - end->y) < OBSIDIAN_EPSILON);
 
         line->type     = LE_U16(raw.type);
         uint16_t flags = LE_U16(raw.flags);
@@ -1267,7 +1267,7 @@ void GetLinedefsHexen()
 
         // check for zero-length line
         line->zero_len =
-            (fabs(start->x - end->x) < OBSIDIAN_DIST_EPSILON) && (fabs(start->y - end->y) < OBSIDIAN_DIST_EPSILON);
+            (fabs(start->x - end->x) < OBSIDIAN_EPSILON) && (fabs(start->y - end->y) < OBSIDIAN_EPSILON);
 
         line->type     = (uint8_t)raw.type;
         uint16_t flags = LE_U16(raw.flags);

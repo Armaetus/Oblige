@@ -38,7 +38,6 @@ void        ReplaceExtension(std::string &path, std::string_view ext);
 std::string SanitizePath(std::string_view path);
 
 std::string CurrentDirectoryGet();
-bool        MakeDirectory(std::string_view dir);
 
 bool  FileExists(std::string_view name);
 FILE *FileOpen(std::string_view name, std::string_view mode);
@@ -113,17 +112,6 @@ int StringPrefixCompare(std::string_view A, std::string_view B);
 int StringCaseCompare(std::string_view A, std::string_view B);
 int StringPrefixCaseCompare(std::string_view A, std::string_view B);
 
-template <typename T> 
-inline std::string NumToString(T value)
-{
-    std::string num_string(20, ' ');
-    std::to_chars_result result = std::to_chars(num_string.data(), num_string.data() + num_string.size(), value);
-    if (result.ec != std::errc())
-        num_string = "0";
-    else
-        num_string.resize(result.ptr - num_string.data());
-    return num_string;
-}
 inline int StringToInt(std::string_view value) 
 {
     int actual_number;
@@ -139,7 +127,7 @@ inline double StringToDouble(std::string_view value)
 
 /* time utilities */
 
-uint32_t TimeGetMillies();
+int64_t TimeGetMillies();
 
 /* memory utilities */
 

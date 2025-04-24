@@ -1,4 +1,3 @@
-add_subdirectory(fastPRNG)
 if(WIN32 AND NOT CONSOLE_ONLY)
   add_subdirectory(fltk)
 endif()
