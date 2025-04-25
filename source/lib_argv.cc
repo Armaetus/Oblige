@@ -156,7 +156,7 @@ void argv::Init(const int argc, const char *const *argv)
 
     for (int i = 0; i < argc; i++)
     {
-        SYS_NULL_CHECK(argv[i]);
+        SYS_ASSERT(argv[i]);
         std::string_view cur = argv[i];
 
 #ifdef __APPLE__

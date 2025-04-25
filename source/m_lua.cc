@@ -57,16 +57,16 @@ int gui_format_prefix(lua_State *L)
     const char *game       = luaL_checkstring(L, 2);
     const char *port       = luaL_checkstring(L, 3);
     const char *theme      = luaL_checkstring(L, 4);
-    std::string format     = luaL_checkstring(L, 5);
+    const char *format     = luaL_checkstring(L, 5);
 
-    SYS_ASSERT(levelcount && game && theme && (!format.empty()));
+    SYS_ASSERT(levelcount && game && theme && format);
 
     if (StringCompare(format, "custom") == 0)
     {
         format = custom_prefix.c_str();
     }
 
-    std::string result = ff_main(levelcount, game, port, theme, OBSIDIAN_SHORT_VERSION, format.c_str());
+    std::string result = ff_main(levelcount, game, port, theme, OBSIDIAN_SHORT_VERSION, format);
 
     if (result.empty())
     {

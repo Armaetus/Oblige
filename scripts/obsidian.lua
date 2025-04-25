@@ -84,44 +84,9 @@ end
 
 ------------------------------------------------------------------------
 
-function ob_datetime_format_string()
-  local current_date = os.date("*t")
-
-  local formatstring
-
-  if current_date.month < 10 then
-    formatstring = "0%M"
-  else
-    formatstring = "%M"
-  end
-  if current_date.day < 10 then
-    formatstring = formatstring .. "-0%D"
-  else
-    formatstring = formatstring .. "-%D"
-  end
-  
-  formatstring = "%Y-" .. formatstring .. "-"
-
-  if current_date.hour < 10 then
-    formatstring = formatstring .. "0%h"
-  else
-    formatstring = formatstring .. "%h"
-  end
-
-  if current_date.min < 10 then
-    formatstring = formatstring .. "0%m"
-  else
-    formatstring = formatstring .. "%m"
-  end
-
-  return formatstring
-end
-
 function ob_check_ui_module(def)
   return string.match(def.name, "^ui") ~= nil
 end
-
-
 
 function ob_match_word_or_table(tab, conf)
   if type(tab) == "table" then
@@ -130,8 +95,6 @@ function ob_match_word_or_table(tab, conf)
     return tab == conf
   end
 end
-
-
 
 function ob_match_game(T)
   if not T.game then return true end
@@ -1816,7 +1779,7 @@ function ob_default_filename()
     end
         
     if OB_CONFIG.filename_prefix == "datetime" then
-      formatstring = ob_datetime_format_string() .. "_"
+      formatstring = "%Y-%M-%D-%h%m_"
     elseif OB_CONFIG.filename_prefix == "numlevels" then
       formatstring = "ob" .. levelcount .. "_"
     elseif OB_CONFIG.filename_prefix == "game" then

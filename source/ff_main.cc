@@ -23,32 +23,32 @@ std::chrono::hh_mm_ss<std::chrono::system_clock::duration> hms;
 
 void year()
 {
-    result.append(std::format("{}", int(ymd.year())));
+    result.append(std::format("{:%Y}", ymd.year()));
 }
 
 void month()
 {
-    result.append(std::format("{}", unsigned(ymd.month())));
+    result.append(std::format("{:%m}", ymd.month()));
 }
 
 void day()
 {
-    result.append(std::format("{}", unsigned(ymd.day())));
+    result.append(std::format("{:%d}", ymd.day()));
 }
 
 void hour()
 {
-    result.append(std::format("{}", hms.hours().count()));
+    result.append(std::format("{:%H}", hms.hours()));
 }
 
 void minute()
 {
-    result.append(std::format("{}", hms.minutes().count()));
+    result.append(std::format("{:%M}", hms.minutes()));
 }
 
 void second()
 {
-    result.append(std::format("{}", hms.seconds().count()));
+    result.append(std::format("{:%S}", hms.seconds()));
 }
 
 void game()
