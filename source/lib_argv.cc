@@ -103,7 +103,7 @@ void argv::Init(const int argc, const char *const *argv)
     size_t    i;
     wchar_t **win_argv = CommandLineToArgvW(GetCommandLineW(), &win_argc);
 
-    SYS_NULL_CHECK(win_argv);
+    SYS_ASSERT(win_argv);
 
     list.reserve(win_argc);
     SYS_ASSERT(argv::list.size() >= 0);
@@ -112,7 +112,7 @@ void argv::Init(const int argc, const char *const *argv)
 
     for (i = 0; i < win_argc; i++)
     {
-        SYS_NULL_CHECK(win_argv[i]);
+        SYS_ASSERT(win_argv[i]);
         std::wstring arg = win_argv[i];
         argv_block.push_back(WStringToUTF8(arg));
     }

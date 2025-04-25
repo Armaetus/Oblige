@@ -19,7 +19,7 @@ std::string countValue;
 std::string versionValue;
 std::string result;
 std::chrono::year_month_day ymd;
-std::chrono::hh_mm_ss<std::chrono::nanoseconds> hms;
+std::chrono::hh_mm_ss<std::chrono::system_clock::duration> hms;
 
 void year()
 {
