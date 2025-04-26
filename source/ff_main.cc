@@ -18,37 +18,36 @@ std::string themeValue;
 std::string countValue;
 std::string versionValue;
 std::string result;
-std::chrono::year_month_day ymd;
-std::chrono::hh_mm_ss<std::chrono::system_clock::duration> hms;
+std::chrono::time_point<std::chrono::local_t, std::chrono::seconds> currentTime;
 
 void year()
 {
-    result.append(std::format("{:%Y}", ymd.year()));
+    result.append(std::format("{:%Y}", currentTime));
 }
 
 void month()
 {
-    result.append(std::format("{:%m}", ymd.month()));
+    result.append(std::format("{:%m}", currentTime));
 }
 
 void day()
 {
-    result.append(std::format("{:%d}", ymd.day()));
+    result.append(std::format("{:%d}", currentTime));
 }
 
 void hour()
 {
-    result.append(std::format("{:%H}", hms.hours()));
+    result.append(std::format("{:%H}", currentTime));
 }
 
 void minute()
 {
-    result.append(std::format("{:%M}", hms.minutes()));
+    result.append(std::format("{:%M}", currentTime));
 }
 
 void second()
 {
-    result.append(std::format("{:%S}", hms.seconds()));
+    result.append(std::format("{:%S}", currentTime));
 }
 
 void game()
@@ -91,10 +90,7 @@ const char *ff_main(const char *levelcount, const char *game, const char *port, 
     versionValue      = version;
     std::string input = format;
     result.clear();
-    auto time = std::chrono::system_clock::now();
-    auto timefloor = floor<std::chrono::days>(time);
-    ymd = timefloor;
-    hms = std::chrono::hh_mm_ss{time - timefloor};
+    currentTime = std::chrono::floor<std::chrono::seconds>(std::chrono::current_zone()->to_local(std::chrono::system_clock::now()));
     yy_buffer_state *buffer_state = yy_scan_bytes(input.c_str(), input.size());
     yy_switch_to_buffer(buffer_state);
     while (yylex() != TOK_EOF)
