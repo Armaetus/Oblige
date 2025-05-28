@@ -1521,8 +1521,8 @@ function Room_border_up(LEVEL, SEEDS)
       end
     end
 
-    -- no beams on an edge length of only 1
-    if junction.perimeter == 1 then
+    -- prevent already narrow areas from being blocked
+    if junction.perimeter <=2 then
       return false
     end
 
