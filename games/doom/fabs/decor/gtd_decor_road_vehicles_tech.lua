@@ -12,7 +12,7 @@ PREFABS.Decor_road_vehicle_tractor_thing =
   can_be_on_roads = true,
 
   where = "point",
-  size = 160,
+  size = 168,
   height = 88,
 
   bound_z1 = 0,
