@@ -12306,6 +12306,49 @@ GROW_ADDIE_AI =
 -- The above comment is written by AI, not this one. Just keeping the comment
 -- because it's funny.
 
+GROW_TESTEROONIROO_AI =
+{
+  prob = 5,
+  skip_prob = 97,
+  
+  structure =
+  {
+    "xx.xx","xx!xx",
+    "1....","11/AA",
+    "xx.xx","xx!xx"
+  },
+
+  diagonals =
+  {
+    "1A"
+  }
+},
+
+GROW_ZIGZAG_AI =
+{
+  prob = 30,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xx....x","xxAAAAx",
+    "x.....x","x/AAA/x",
+    "x.....x","x%AAA%x",
+    "x.....x","x/AAA/x",
+    ".......","1%AAA%1",  
+    ".......","11^^^11",
+    ".......","1111111",
+    "xx11xxx","xx11xxx",
+  },
+
+  diagonals =
+  {
+    ".A","A.",
+    ".A","A.",
+    ".A","A.",
+    "1A","A1"
+  }
+},
 
 -- [4x3_ALPHABET]
 
