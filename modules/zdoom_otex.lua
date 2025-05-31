@@ -928,23 +928,27 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   end
 
   -- create liquid attachments
-  --[[local liquid_tab = table.copy(OTEX_SPECIAL_RESOURCES.liquid_materials)
-  for liquid_mat,_ in pairs(liquid_tab) do
-    GAME.MATERIALS[liquid_mat]={t=_.t, f=_.f}
-  end]]
+  if PARAM.bool_otex_liquids == 1 then
 
-  table.deep_merge(GAME.MATERIALS, OTEX_SPECIAL_RESOURCES.liquid_materials, 2)
+    --[[local liquid_tab = table.copy(OTEX_SPECIAL_RESOURCES.liquid_materials)
+    for liquid_mat,_ in pairs(liquid_tab) do
+      GAME.MATERIALS[liquid_mat]={t=_.t, f=_.f}
+    end]]
 
-  local liquid_defs = table.copy(OTEX_SPECIAL_RESOURCES.liquid_defs)
-  for liquid,_ in pairs(liquid_defs) do
-    GAME.LIQUIDS[liquid]=liquid_defs[liquid]
-  end
-  local liquid_themes = table.copy(OTEX_SPECIAL_RESOURCES.liquid_themes)
-  for theme,l_tab in pairs(liquid_themes) do
-    for liquid,prob in pairs(l_tab) do
-      GAME.THEMES[theme].liquids[liquid] = prob
+    table.deep_merge(GAME.MATERIALS, OTEX_SPECIAL_RESOURCES.liquid_materials, 2)
+
+    local liquid_defs = table.copy(OTEX_SPECIAL_RESOURCES.liquid_defs)
+    for liquid,_ in pairs(liquid_defs) do
+      GAME.LIQUIDS[liquid]=liquid_defs[liquid]
+    end
+    local liquid_themes = table.copy(OTEX_SPECIAL_RESOURCES.liquid_themes)
+    for theme,l_tab in pairs(liquid_themes) do
+      for liquid,prob in pairs(l_tab) do
+        GAME.THEMES[theme].liquids[liquid] = prob
+      end
     end
   end
+
 end
 
 
@@ -1004,7 +1008,7 @@ OB_MODULES["otex_proc_module"] =
       longtip = _("Not all room themes may show up in levels as appearance " ..
       "is reliant on use probability. Use multipler below to increase " ..
       "or decrease further"),
-      priority = 2
+      priority = 1
     },
     {
       name="float_otex_rt_prob_mult",
@@ -1016,7 +1020,15 @@ OB_MODULES["otex_proc_module"] =
       increment = 0.1,
       default = 1,
       tooltip = _("Multiplier for all synthesized OTEX room themes."),
-      priority = 1
+      priority = 2
+    },
+    {
+      name="bool_otex_liquids",
+      label=_("Enable OTEX Liquids"),
+      valuator = "button",
+      default = 1,
+      tooltip = _("Whether to include OTEX liquids in generated levels or not"),
+      priority = 3
     }
   }
 }
