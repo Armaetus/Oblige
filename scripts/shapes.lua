@@ -5383,21 +5383,21 @@ GROW_LIQUID_SQUEEZE_GAP_CROSSING_STAIR =
 
   structure =
   {
-    "...","111",
-    "...","111",
-    "...","1v1",
-    "...","%A/",
-    "...","~A~",
-    "...","/A%",
-    "...","1^1",
-    "...","111",
-    "x1x","x1x",
+    ".....","11111",
+    ".....","11111",
+    ".....","11v11",
+    ".....","~%A/~",
+    ".....","~~A~~",
+    ".....","~/A%~",
+    ".....","11^11",
+    ".....","11111",
+    "xx1xx","xx1xx"
   },
 
   diagonals =
   {
     "~1","1~",
-    "~1","1~",
+    "~1","1~"
   },
 },
 
@@ -12214,7 +12214,140 @@ GROW_BOWL_LIQUID =
   },
 },
 
+
+-- [GENAI_SLOP] Gen AI test shape rule with VSCode Continue and Ollama, for the sickos in all of us.
+-- Had to fix manually, by a human, a *lot*.
+
+GROW_RUNE_THWARF_AI =
+{
+  prob = 25,
+  skip_prob = 85,
+
+  structure =
+  {
+    "1.....x","1%AAA%x",
+    "1......","11%AAA%",
+    ".......","11AAAAA",
+    ".......","A1AAAA/",
+    "......x","AvAAA/x",
+    ".....xx","AAAAAxx"
+  },
+
+  diagonals =
+  {
+    "1A","A.",
+    "1A","A.",
+    "A.",
+    "A."
+  },
+},
+
+
+GROW_BIRD_AI =
+{
+  prob = 22,
+  skip_prob = 85,
+
+  structure =
+  {
+    "......x","11%AA%x",
+    "xxx....","xxx%AA%",
+    "xxx....","xxx/AA/",
+    "1.....x","11/AA/x",
+    "1.....x","11%AA%x",
+    "xxx....","xxx%AA%",
+    "xxx....","xxx/AA/",
+    "......x","11/AA/x"
+  },
+
+  diagonals =
+  {
+    "1A","A.",
+    ".A","A.",
+    ".A","A.",
+    "1A","A.",
+    "1A","A.",
+    ".A","A.",
+    ".A","A.",
+    "1A","A."
+  },
+},
+
+
+GROW_ADDIE_AI =
+{
+  prob = 25,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxx...x","xxxAAAx",
+    "xx.....","xxAAAAA",
+    "xx.....","xxAA~AA",
+    "xxx...x","xxxAAAx",
+    ".......","AAA/111",
+    "xx...11","xx11/11"
+  },
+
+  diagonals =
+  {
+    "A1",
+    "1."
+  },
+},
+
+-- This shape is inspired by my best friend Addie, with a pattern of four rows of
+-- alternating x's and A's, followed by three rows of A's and two rows of /'s.
+
+-- The above comment is written by AI, not this one. Just keeping the comment
+-- because it's funny.
+
+GROW_TESTEROONIROO_AI =
+{
+  prob = 5,
+  skip_prob = 97,
+  
+  structure =
+  {
+    "xx.xx","xx!xx",
+    "1....","11/AA",
+    "xx.xx","xx!xx"
+  },
+
+  diagonals =
+  {
+    "1A"
+  }
+},
+
+GROW_ZIGZAG_AI =
+{
+  prob = 30,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xx....x","xxAAAAx",
+    "x.....x","x/AAA/x",
+    "x.....x","x%AAA%x",
+    "x.....x","x/AAA/x",
+    ".......","1%AAA%1",  
+    ".......","11^^^11",
+    ".......","1111111",
+    "xx11xxx","xx11xxx",
+  },
+
+  diagonals =
+  {
+    ".A","A.",
+    ".A","A.",
+    ".A","A.",
+    "1A","A1"
+  }
+},
+
 -- [4x3_ALPHABET]
+
 
 GROW_3x_A =
 {

@@ -34,5 +34,7 @@ PREFABS.Pic_industrial_toilet_gallery_NAHIDA =
   template = "Pic_industrial_toilet_gallery_toilets",
   map = "MAP03",
 
+  texture_pack = "armaetus",
+
   prob = 25
 }
