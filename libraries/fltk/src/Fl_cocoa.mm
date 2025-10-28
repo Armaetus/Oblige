@@ -2758,7 +2758,7 @@ static FLTextInputContext* fltextinputcontext_instance = nil;
     NSData *data = [pboard dataForType:UTF8_pasteboard_type];
     DragData = (char *)malloc([data length] + 1);
     [data getBytes:DragData length:[data length]];
-    DragData[[data length]] = 0;
+    DragData[([data length])] = 0;
     Fl_Screen_Driver::convert_crlf(DragData, strlen(DragData));
   }
   else {
@@ -4722,7 +4722,7 @@ int Fl_Cocoa_Window_Driver::decorated_h()
   return h() + bt/s;
 }
 
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_15_0
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_15_0 && defined(__BLOCKS__)
 
 // Requires -weak_framework ScreenCaptureKit and used by FLTK for macOS ≥ 15.0
 static CGImageRef capture_decorated_window_SCK(NSWindow *nswin) {
@@ -4770,6 +4770,7 @@ static CGImageRef capture_decorated_window_SCK(NSWindow *nswin) {
       int s = (int)[filter pointPixelScale];
       SCStreamConfiguration *config = [[[SCStreamConfiguration alloc] init] autorelease];
       [config setIgnoreShadowsSingleWindow:YES];
+      [config setIgnoreShadowsDisplay:YES]; // necessary with macOS 26 Tahoe
       [config setShowsCursor:NO];
       [config setWidth:W*s];
       [config setHeight:H*s];
@@ -4807,7 +4808,7 @@ CGImageRef Fl_Cocoa_Window_Driver::capture_decorated_window_10_5(NSWindow *nswin
   // usable with 10.5 and above
   CGImageRef img = NULL;
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
-#  if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_15_0
+#  if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_15_0 && defined(__BLOCKS__)
   if (fl_mac_os_version >= 150000)
       img = capture_decorated_window_SCK(nswin);
   else

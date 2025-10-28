@@ -1,4 +1,4 @@
-if(WIN32 AND NOT CONSOLE_ONLY)
+if(NOT CONSOLE_ONLY)
   add_subdirectory(fltk)
 endif()
 add_subdirectory(minilua)

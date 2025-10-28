@@ -67,7 +67,6 @@ OB_THEMES["original"] =
   priority = 91
 }
 
-
 OB_THEMES["epi"] =
 {
   label = _("Episodic"),
@@ -94,13 +93,6 @@ OB_THEMES["psycho"] =
   label = _("Psychedelic"),
   priority = -99  -- bottom most
 }
-
-OB_THEMES["default"] =
-{
-  label = _("Default"),
-  priority = 99,
-}
-
 
 -- choices for Length button
 LENGTH_CHOICES =
