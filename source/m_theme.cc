@@ -728,11 +728,9 @@ class UI_ThemeWin : public Fl_Window
         case 3:
             Fl::scheme("plastic");
             break;
-#if FL_MINOR_VERSION > 3
         case 4:
             Fl::scheme("oxy");
             break;
-#endif
         // Shouldn't be reached, but still
         default:
             Fl::scheme("gtk+");
@@ -779,11 +777,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     box_style = FL_PLASTIC_DOWN_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     box_style = FL_OXY_DOWN_BOX;
                     break;
-#endif
                 default:
                     box_style = FL_GTK_DOWN_BOX;
                     break;
@@ -804,11 +800,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     box_style = FL_PLASTIC_THIN_UP_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     box_style = FL_OXY_THIN_UP_BOX;
                     break;
-#endif
                 default:
                     box_style = FL_GTK_THIN_UP_BOX;
                     break;
@@ -836,11 +830,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     button_style = FL_PLASTIC_DOWN_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     button_style = FL_OXY_DOWN_BOX;
                     break;
-#endif
                 default:
                     button_style = FL_GTK_DOWN_BOX;
                     break;
@@ -861,11 +853,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     button_style = FL_PLASTIC_UP_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     button_style = FL_OXY_UP_BOX;
                     break;
-#endif
                 default:
                     button_style = FL_GTK_UP_BOX;
                     break;
@@ -984,11 +974,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 box_style = FL_PLASTIC_DOWN_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 box_style = FL_OXY_DOWN_BOX;
                 break;
-#endif
             default:
                 box_style = FL_GTK_DOWN_BOX;
                 break;
@@ -1009,11 +997,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 box_style = FL_PLASTIC_THIN_UP_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 box_style = FL_OXY_THIN_UP_BOX;
                 break;
-#endif
             default:
                 box_style = FL_GTK_THIN_UP_BOX;
                 break;
@@ -1068,11 +1054,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 button_style = FL_PLASTIC_DOWN_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 button_style = FL_OXY_DOWN_BOX;
                 break;
-#endif
             default:
                 button_style = FL_GTK_DOWN_BOX;
                 break;
@@ -1093,11 +1077,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 button_style = FL_PLASTIC_UP_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 button_style = FL_OXY_UP_BOX;
                 break;
-#endif
             default:
                 button_style = FL_GTK_UP_BOX;
                 break;
@@ -1754,11 +1736,7 @@ UI_ThemeWin::UI_ThemeWin(int W, int H, const char *label) : Fl_Window(W, H, labe
     opt_widget_theme = new UI_CustomMenu(cx + W * .38, cy, listwidth, KromulentHeight(24), "");
     opt_widget_theme->copy_label(_("Widget Theme: "));
     opt_widget_theme->align(FL_ALIGN_LEFT);
-#if FL_MINOR_VERSION > 3
     opt_widget_theme->add(_("Default|Gleam|Win95|Plastic|Oxy"));
-#else
-    opt_widget_theme->add(_("Default|Gleam|Win95|Plastic"));
-#endif
     opt_widget_theme->callback(callback_WidgetTheme, this);
     opt_widget_theme->value(widget_theme);
     opt_widget_theme->labelfont(font_style);

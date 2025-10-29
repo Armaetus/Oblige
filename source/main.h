@@ -157,8 +157,6 @@ extern std::vector<std::string> batch_randomize_groups;
 #ifndef OBSIDIAN_CONSOLE_ONLY
 // Dialog Windows
 void DLG_ShowError(const char *msg, ...);
-
-std::string DLG_OutputFilename(const char *ext, const char *preset = nullptr);
 #endif
 
 extern std::string default_output_path;
@@ -167,18 +165,6 @@ extern std::string Resolve_DefaultOutputPath();
 
 extern std::string string_seed;
 extern std::string selected_lang;
-
-// Program menu stuff
-#ifndef OBSIDIAN_CONSOLE_ONLY
-void DLG_AboutText();
-void DLG_OptionsEditor();
-void DLG_ThemeEditor();
-
-void DLG_EditSeed();
-void DLG_ViewLogs();
-void DLG_ViewGlossary();
-void DLG_ManageConfig();
-#endif
 
 namespace Main
 {

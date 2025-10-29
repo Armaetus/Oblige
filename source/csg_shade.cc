@@ -73,6 +73,7 @@ Lighting Model
 
 constexpr uint8_t DEFAULT_AMBIENT_LEVEL = 144;
 
+#if 0
 static int current_region_group;
 
 static int SHADE_CalcRegionGroup(region_c *R)
@@ -184,7 +185,6 @@ static void SHADE_MergeResults()
     }
 }
 
-#if 0
 static int SHADE_CaveLighting(region_c *R, double z2)
 {
     int result = 0;

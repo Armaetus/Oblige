@@ -231,7 +231,7 @@ std::string BestDirectory()
     }
 }
 
-std::string DLG_OutputFilename(const char *ext, const char *preset)
+std::string DLG_OutputFilename(const char *ext, const char *preset = nullptr)
 {
     std::string kind_buf = std::format("{} {}\t*.{}", ext, _("files"), ext);
 
@@ -323,7 +323,6 @@ void DLG_EditSeed(void)
 {
     std::string user_buf;
 
-#if FL_MINOR_VERSION > 3
     int         user_response;
     user_buf =
         fl_input_str(user_response, 0 /* limit */, "%s",
@@ -334,20 +333,6 @@ void DLG_EditSeed(void)
     {
         return;
     }
-#else
-    const char *fl_buf =
-        fl_input(_("Enter New Seed Number or Phrase:"), 
-                     string_seed.empty() ? std::format("{}", next_rand_seed).c_str() : string_seed.c_str(), NULL);
-    // cancelled?
-    if (!fl_buf)
-    {
-        return;
-    }
-    else
-    {
-        user_buf = fl_buf;
-    }
-#endif
 
     std::string word = {user_buf.c_str(), static_cast<size_t>(user_buf.size())};
     try
