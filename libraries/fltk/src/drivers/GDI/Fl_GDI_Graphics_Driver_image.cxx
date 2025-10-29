@@ -34,6 +34,7 @@
 ////////////////////////////////////////////////////////////////
 
 #include <config.h>
+#include <stdint.h>
 #include "Fl_GDI_Graphics_Driver.H"
 #include "../WinAPI/Fl_WinAPI_System_Driver.H"
 #include <FL/Fl.H>
