@@ -27,7 +27,7 @@
 #include "sys_macro.h"
 
 UI_MiniMap::UI_MiniMap(int x, int y, int w, int h, const char *label)
-    : Fl_Box(x, y, w, h, label), pixels(NULL), cur_image(NULL)
+    : Fl_Box(x, y, w, h, label), cur_image(NULL), pixels(NULL)
 {
     box(FL_NO_BOX);
 }

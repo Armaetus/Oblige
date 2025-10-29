@@ -42,6 +42,9 @@
 
 extern void        CSG_DOOM_Write();
 extern std::string BestDirectory();
+#ifndef OBSIDIAN_CONSOLE_ONLY
+extern std::string DLG_OutputFilename(const char *ext, const char *preset);
+#endif
 
 extern int ef_solid_type;
 extern int ef_liquid_type;

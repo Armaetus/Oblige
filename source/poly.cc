@@ -293,10 +293,6 @@ void AddIntersection(intersect_c **cut_list, vertex_c *vert, edge_c *part)
 int EvalPartition(edge_c *part, edge_c *edge_list)
 {
     int cost   = 0;
-    int splits = 0;
-
-    int near_miss = 0;
-
     int real_left  = 0;
     int real_right = 0;
     int mini_left  = 0;
@@ -349,8 +345,6 @@ int EvalPartition(edge_c *part, edge_c *edge_list)
 
         if (a_side != 0 && fa < NEAR_MISS_LEN)
         {
-            near_miss++;
-
             // the closer to the end, the higher the cost
             qnty = NEAR_MISS_LEN / fa;
 
@@ -359,8 +353,6 @@ int EvalPartition(edge_c *part, edge_c *edge_list)
 
         if (b_side != 0 && fb < NEAR_MISS_LEN)
         {
-            near_miss++;
-
             qnty = NEAR_MISS_LEN / fb;
 
             cost += (int)(100 * MISS_FACTOR * qnty * qnty);
@@ -388,8 +380,6 @@ int EvalPartition(edge_c *part, edge_c *edge_list)
 
         // When we reach here, we have a and b non-zero and opposite sign,
         // hence this edge will be split by the partition line.
-
-        splits++;
 
         cost += 100 * SPLIT_FACTOR;
     }

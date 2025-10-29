@@ -1227,6 +1227,9 @@ int main(int argc, char **argv)
     // parse the flags
     argv::Init(argc, argv);
 
+    // Give RNG an initial seed
+    twister_Init();
+
 hardrestart:;
 
     if (!PHYSFS_init(argv::list[0].c_str()))
@@ -1353,6 +1356,7 @@ hardrestart:;
 
     Determine_WorkingPath();
     Determine_InstallDir();
+    Verify_InstallDir(install_dir);
     Trans_Init();
     Determine_ConfigFile();
     Determine_OptionsFile();

@@ -373,8 +373,6 @@ const char *csg_brush_c::Validate()
     // make sure brush is convex (co-linear lines is OK), and
     // that the vertices run anti-clockwise
 
-    double average_ang = 0;
-
     bflags |= BRU_IF_Quad;
 
     for (unsigned int k = 0; k < verts.size(); k++)
@@ -406,15 +404,11 @@ const char *csg_brush_c::Validate()
             return "Line loop is not convex!";
         }*/
 
-        average_ang += diff;
-
         if (fabs(v1->x - v2->x) >= EPSILON && fabs(v1->y - v2->y) >= EPSILON)
         {
             bflags &= ~BRU_IF_Quad; // not a quad
         }
     }
-
-    average_ang /= (double)verts.size();
 
     // fprintf(stderr, "Average angle = %1.4f\n\n", average_ang);
 

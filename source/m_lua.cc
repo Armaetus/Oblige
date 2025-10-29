@@ -1372,15 +1372,21 @@ int gui_minimap_fill_box(lua_State *L)
     return 0;
 }
 
+extern void TransferMEMtoWAD(const uint8_t *data, size_t length, const char *dest_lump);
+
 int generate_midi_track(lua_State *L)
 {
     const char *midi_config = luaL_checkstring(L, 1);
     const char *midi_file   = luaL_checkstring(L, 2);
 
-    int value = steve_generate(midi_config, midi_file) ? 1 : 0;
-    lua_pushinteger(L, value);
+    std::string steve_output = steve_generate(midi_config);
 
-    return 1;
+    if (!steve_output.empty())
+        TransferMEMtoWAD((const uint8_t *)steve_output.data(), steve_output.size(), midi_file);
+
+    Main::Ticker();
+
+    return 0;
 }
 
 int remove_temp_file(lua_State *L)

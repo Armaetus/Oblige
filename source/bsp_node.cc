@@ -1681,7 +1681,6 @@ void subsec_t::RoundOff()
     seg_t *last_real_degen = NULL;
 
     int real_total  = 0;
-    int degen_total = 0;
 
 #if DEBUG_SUBSEC
     DebugPrint("Subsec: Rounding off %d\n", index);
@@ -1699,7 +1698,6 @@ void subsec_t::RoundOff()
             if (seg->linedef != NULL)
                 last_real_degen = seg;
 
-            degen_total++;
             continue;
         }
 

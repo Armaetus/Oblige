@@ -984,6 +984,15 @@ static void TransferWADtoWAD(int src_entry, const char *dest_lump)
     WAD_FinishLump();
 }
 
+void TransferMEMtoWAD(const uint8_t *data, size_t length, const char *dest_lump)
+{
+    SYS_ASSERT(data && length && dest_lump);
+
+    WAD_NewLump(dest_lump);
+    WAD_AppendData(data, length);
+    WAD_FinishLump();
+}
+
 static qLump_c *DoLoadLump(int src_entry)
 {
     qLump_c *lump = new qLump_c();
