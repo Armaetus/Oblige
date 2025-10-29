@@ -254,7 +254,12 @@ if(HAVE_DLFCN_H)
 endif(HAVE_DLFCN_H)
 
 set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_DL_LIBS})
-check_symbol_exists(dlsym       "dlfcn.h"            HAVE_DLSYM)
+if (OBSIDIAN_SANITIZE AND NOT MSVC)
+  set(HAVE_DLFCN_H 1)
+  set(HAVE_DLSYM 1)
+else()
+  check_symbol_exists(dlsym       "dlfcn.h"            HAVE_DLSYM)
+endif()
 set(CMAKE_REQUIRED_LIBRARIES)
 
 check_symbol_exists(localeconv  "locale.h"           HAVE_LOCALECONV)
@@ -287,7 +292,11 @@ if(LIB_m AND NOT WIN32)
   set(CMAKE_REQUIRED_LIBRARIES ${LIB_m})
 endif()
 
-check_symbol_exists(trunc        "math.h"        HAVE_TRUNC)
+if (OBSIDIAN_SANITIZE)
+  set(HAVE_TRUNC 1)
+else()
+  check_symbol_exists(trunc        "math.h"        HAVE_TRUNC)
+endif()
 
 set(CMAKE_REQUIRED_LIBRARIES)
 

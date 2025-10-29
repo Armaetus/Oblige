@@ -159,14 +159,6 @@ void argv::Init(const int argc, const char *const *argv)
         SYS_ASSERT(argv[i]);
         std::string_view cur = argv[i];
 
-#ifdef __APPLE__
-        // ignore MacOS X rubbish
-        if (cur == "-psn")
-        {
-            continue;
-        }
-#endif
-
         // support GNU-style long and short options
         if (cur[0] == '-')
         {

@@ -720,10 +720,6 @@ static std::string Trans_GetUserLanguage()
         return "UNKNOWN";
     }
 
-    // #elif defined(__APPLE__)
-    //
-    //    return "UNKNOWN";
-
 #else // Unix
 
     const char *res = NULL;

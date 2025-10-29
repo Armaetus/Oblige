@@ -43,12 +43,10 @@
 #include "sys_twister.h"
 #ifndef OBSIDIAN_CONSOLE_ONLY
 #ifndef _WIN32
-#include <FL/Fl_File_Icon.H>
+#include <fontconfig/fontconfig.h>
 #endif
-#include <FL/Fl_Shared_Image.H>
 #include <FL/fl_ask.H>
 #include <FL/platform.H>
-
 #include "ui_boxes.h"
 #include "ui_window.h"
 #endif
@@ -177,29 +175,17 @@ extern bool ExtractPresetData(FILE *fp, std::string &buf);
 #ifdef _WIN32
 #ifndef OBSIDIAN_CONSOLE_ONLY
 static FLASHWINFO *blinker;
-static int         i_load_private_font(const char *path)
+static int LoadPrivateFont(const char *path)
 {
     return AddFontResourceExW((LPCWSTR)UTF8ToWString(path).data(), FR_PRIVATE, nullptr);
-}
-int v_unload_private_font(const char *path)
-{
-    return RemoveFontResourceExW((LPCWSTR)UTF8ToWString(path).data(), FR_PRIVATE, nullptr);
 }
 #endif
 #else
 #ifndef OBSIDIAN_CONSOLE_ONLY
-#ifndef __APPLE__
-#include <fontconfig/fontconfig.h>
-static int i_load_private_font(const char *path)
+static int LoadPrivateFont(const char *path)
 {
-    return static_cast<int>(FcConfigAppFontAddFile(nullptr, (const FcChar8 *)path));
+    return static_cast<int>(FcConfigAppFontAddFile(NULL, (const FcChar8 *)path));
 }
-int v_unload_private_font(const char *path)
-{
-    FcConfigAppFontClear(nullptr);
-    return 0;
-}
-#endif
 #endif
 #endif
 
@@ -442,7 +428,7 @@ bool Main::BackupFile(const std::string &filename)
     return true;
 }
 #ifndef OBSIDIAN_CONSOLE_ONLY
-int Main::DetermineScaling()
+static int DetermineScaling()
 {
     /* computation of the Kromulent factor */
 
@@ -490,33 +476,20 @@ int Main::DetermineScaling()
 
     return 0;
 }
-#endif
-#if !defined(OBSIDIAN_CONSOLE_ONLY) && !defined(__APPLE__)
-bool Main::LoadInternalFont(const char *fontpath, const int fontnum, const char *fontname)
+static bool LoadInternalFont(const char *fontpath, const int fontnum, const char *fontname)
 {
     /* set the extra font */
-    if (i_load_private_font(fontpath))
+    if (LoadPrivateFont(fontpath))
     {
         Fl::set_font(fontnum, fontname);
         return true;
     }
     return false;
 }
-#endif
-
-#ifndef OBSIDIAN_CONSOLE_ONLY
-void Main::PopulateFontMap()
+static void PopulateFontMap()
 {
     if (font_menu_items.empty())
     {
-
-#ifdef __APPLE__
-        font_menu_items.push_back({"Helvetica <Internal>", FL_HELVETICA});
-        font_menu_items.push_back({"Courier <Internal>", FL_COURIER});
-        font_menu_items.push_back({"Times <Internal>", FL_TIMES});
-        font_menu_items.push_back({"Screen <Internal>", FL_SCREEN});
-#else
-
         // Load bundled fonts. Fonts without a bold variant are essentially
         // loaded twice in a row so that calls for a bold variant don't
         // accidentally change fonts
@@ -616,15 +589,34 @@ void Main::PopulateFontMap()
             font_menu_items.push_back({"Sam I Am", current_free_font});
             current_free_font += 2;
         }
-#endif
     }
     num_fonts = static_cast<int>(font_menu_items.size());
 }
-
-void Main::SetupFLTK()
+static void UnloadFontMap()
 {
-
-    Main::PopulateFontMap();
+#ifdef _WIN32
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/SourceSansPro/SourceSansPro-Regular.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/SourceSansPro/SourceSansPro-Bold.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Avenixel/Avenixel-Regular.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/TheNeueBlack/TheNeue-Black.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Teko/Teko-Regular.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Teko/Teko-Bold.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Kalam/Kalam-Regular.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Kalam/Kalam-Bold.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/3270/3270.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Workbench/Workbench.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Workbench/Workbench.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/FPD-Pressure/FPDPressure-Light.otf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/FPD-Pressure/FPDPressure-Regular.otf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/DramaSans/DramaSans.ttf").data(), FR_PRIVATE, nullptr);
+    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/SamIAm/MiniSmallCaps.ttf").data(), FR_PRIVATE, nullptr);
+#else
+    FcConfigAppFontClear(NULL);
+#endif
+}
+static void SetupFLTK()
+{
+    PopulateFontMap();
 
     Fl::visual(FL_DOUBLE | FL_RGB);
     if (color_scheme == 2)
@@ -685,11 +677,9 @@ void Main::SetupFLTK()
         Fl::get_color(GRADIENT_COLOR, gradient_red, gradient_green, gradient_blue);
         Fl::get_color(BUTTON_COLOR, button_red, button_green, button_blue);
     }
-#if FL_MINOR_VERSION > 3
     Fl::set_boxtype(FL_OXY_UP_BOX, coxy_up_box, 2, 2, 4, 4);
     Fl::set_boxtype(FL_OXY_THIN_UP_BOX, coxy_up_box, 1, 1, 2, 2);
     Fl::set_boxtype(FL_OXY_DOWN_BOX, coxy_down_box, 2, 2, 4, 4);
-#endif
     Fl::set_boxtype(FL_GLEAM_UP_BOX, cgleam_up_box, 2, 2, 4, 4);
     Fl::set_boxtype(FL_GLEAM_THIN_UP_BOX, cgleam_thin_up_box, 2, 2, 4, 4);
     Fl::set_boxtype(FL_GLEAM_DOWN_BOX, cgleam_down_box, 2, 2, 4, 4);
@@ -759,11 +749,9 @@ void Main::SetupFLTK()
         case 3:
             box_style = FL_PLASTIC_DOWN_BOX;
             break;
-#if FL_MINOR_VERSION > 3
         case 4:
             box_style = FL_OXY_DOWN_BOX;
             break;
-#endif
         default:
             box_style = FL_GTK_DOWN_BOX;
             break;
@@ -784,11 +772,9 @@ void Main::SetupFLTK()
         case 3:
             box_style = FL_PLASTIC_THIN_UP_BOX;
             break;
-#if FL_MINOR_VERSION > 3
         case 4:
             box_style = FL_OXY_THIN_UP_BOX;
             break;
-#endif
         default:
             box_style = FL_GTK_THIN_UP_BOX;
             break;
@@ -816,11 +802,9 @@ void Main::SetupFLTK()
         case 3:
             button_style = FL_PLASTIC_DOWN_BOX;
             break;
-#if FL_MINOR_VERSION > 3
         case 4:
             button_style = FL_OXY_DOWN_BOX;
             break;
-#endif
         default:
             button_style = FL_GTK_DOWN_BOX;
             break;
@@ -841,11 +825,9 @@ void Main::SetupFLTK()
         case 3:
             button_style = FL_PLASTIC_UP_BOX;
             break;
-#if FL_MINOR_VERSION > 3
         case 4:
             button_style = FL_OXY_UP_BOX;
             break;
-#endif
         default:
             button_style = FL_GTK_UP_BOX;
             break;
@@ -887,11 +869,7 @@ void Main::SetupFLTK()
     screen_w = Fl::w();
     screen_h = Fl::h();
 
-    KF = Main::DetermineScaling();
-    // load icons for file chooser
-#ifndef _WIN32
-    Fl_File_Icon::load_system_icons();
-#endif
+    KF = DetermineScaling();
 
     // translate some FLTK strings
     fl_no     = _("No");
@@ -1425,7 +1403,7 @@ hardrestart:;
         OBSIDIAN_TITLE     = _("OBSIDIAN Level Maker");
         OBSIDIAN_CODE_NAME = _("Tabs of Terror");
 #ifndef OBSIDIAN_CONSOLE_ONLY
-        Main::SetupFLTK();
+        SetupFLTK();
 #endif
     }
 
@@ -1710,6 +1688,7 @@ softrestart:;
             {
                 main_win->resize(old_x, old_y, old_w, old_h);
             }
+            free(fake_argv[0]);
         }
 
 #ifdef _WIN32 // Populate structure for taskbar/window flash. Must be done after
@@ -1939,6 +1918,10 @@ softrestart:;
     }
 
     Main::Shutdown(false);
+
+#ifndef OBSIDIAN_CONSOLE_ONLY
+    UnloadFontMap();
+#endif
 
     return 0;
 }

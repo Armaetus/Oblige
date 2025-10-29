@@ -55,10 +55,6 @@ constexpr const char *THEME_FILENAME   = "THEME.txt";
 constexpr const char *LOG_FILENAME     = "LOGS.txt";
 constexpr const char *REF_FILENAME     = "REFERENCE.txt";
 
-#if !defined OBSIDIAN_CONSOLE_ONLY && !defined __APPLE__
-extern int v_unload_private_font(const char *path);
-#endif
-
 extern std::string home_dir;
 extern std::string install_dir;
 extern std::string config_file;
@@ -194,14 +190,7 @@ bool BackupFile(const std::string &filename);
 void Blinker();
 #endif
 
-#if !defined(OBSIDIAN_CONSOLE_ONLY) && !defined(__APPLE__)
-bool LoadInternalFont(const char *fontpath, int fontnum, const char *fontname);
-#endif
-
 #ifndef OBSIDIAN_CONSOLE_ONLY
-void SetupFLTK();
-int  DetermineScaling();
-void PopulateFontMap();
 void Ticker();
 #endif
 

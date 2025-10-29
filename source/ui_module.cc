@@ -33,6 +33,12 @@
 #include "sys_macro.h"
 #include "sys_twister.h"
 
+typedef struct
+{
+    UI_Module     *mod;
+    UI_CustomMods *parent;
+} mod_enable_callback_data_t;
+
 UI_Module::UI_Module(int X, int Y, int W, int H, const std::string &id, const std::string &label,
                      const std::string &tip, int red, int green, int blue, bool suboptions)
     : Fl_Group(X, Y, W, H), choice_map(), cur_opt_y(0)
@@ -92,6 +98,15 @@ UI_Module::UI_Module(int X, int Y, int W, int H, const std::string &id, const st
 
 UI_Module::~UI_Module()
 {
+    if (mod_button)
+    {
+        if (mod_button->user_data())
+        {
+            mod_enable_callback_data_t *cb_data = (mod_enable_callback_data_t *)mod_button->user_data();
+            delete cb_data;
+            cb_data = nullptr;
+        }
+    }
 }
 
 bool UI_Module::Is_UI() const
@@ -1229,23 +1244,16 @@ UI_CustomMods::~UI_CustomMods()
 {
 }
 
-typedef struct
-{
-    UI_Module     *mod;
-    UI_CustomMods *parent;
-} mod_enable_callback_data_t;
-
 void UI_CustomMods::AddModule(const std::string &id, const std::string &label, const std::string &tip, int red,
                               int green, int blue, bool suboptions)
 {
     UI_Module *M = new UI_Module(mx, my, mw - 4, KromulentHeight(34), id, label, tip, red, green, blue, suboptions);
 
-    mod_enable_callback_data_t *cb_data = new mod_enable_callback_data_t;
-    cb_data->mod                        = M;
-    cb_data->parent                     = this;
-
     if (!M->Is_UI())
     {
+        mod_enable_callback_data_t *cb_data = new mod_enable_callback_data_t;
+        cb_data->mod                        = M;
+        cb_data->parent                     = this;
         M->mod_button->callback(callback_ModEnable, cb_data);
     }
 
