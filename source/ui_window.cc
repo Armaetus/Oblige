@@ -54,19 +54,6 @@ static void main_win_surprise_go_CB(Fl_Widget *w, void *data)
     did_randomize = true;
 }
 
-int UI_MainWin::handle(int event)
-{
-    if (Fl::event_key() == FL_Escape)
-    {
-        if (clippy->shown())
-        {
-            clippy->hide();
-            return 1;
-        }
-    }
-    return Fl_Window::handle(event);
-}
-
 //
 // MainWin Constructor
 //
@@ -109,8 +96,6 @@ UI_MainWin::UI_MainWin(int W, int H, const char *title) : Fl_Double_Window(W, H,
     build_box = new UI_Build(0, TOP_H + KromulentHeight(4), LEFT_W, BOT_H);
 
     mod_tabs = new UI_CustomTabs(LEFT_W + KromulentHeight(4), KromulentHeight(22), MOD_W * 2, H - KromulentHeight(22));
-
-    clippy = new UI_Clippy();
 
     visible_focus(0);
 

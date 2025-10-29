@@ -172,10 +172,8 @@ extern std::string Resolve_DefaultOutputPath();
 extern std::string string_seed;
 extern std::string selected_lang;
 
-// Clippy/program menu stuff
+// Program menu stuff
 #ifndef OBSIDIAN_CONSOLE_ONLY
-extern Fl_Pixmap *clippy;
-
 void DLG_AboutText();
 void DLG_OptionsEditor();
 void DLG_ThemeEditor();

@@ -371,36 +371,5 @@ class UI_RButton : public Fl_Group
     opt_change_callback_data_t *cb_data;
 };
 
-class UI_Clippy : public Fl_Double_Window
-{
-
-  public:
-    UI_Clippy();
-    virtual ~UI_Clippy();
-
-    Fl_Box *background;
-
-    Fl_Text_Buffer *buff;
-
-    Fl_Text_Display *disp;
-
-    Fl_Button *showme_another;
-
-    Fl_Button *closeme;
-
-    void ShowAdvice(void);
-
-  private:
-    int handle(int event);
-
-    static void callback_MoreAdvice(Fl_Widget *w, void *data);
-
-    static void callback_CloseMe(Fl_Widget *w, void *data);
-
-    int xoff;
-
-    int yoff;
-};
-
 //--- editor settings ---
 // vi:ts=4:sw=4:noexpandtab

@@ -174,8 +174,6 @@ game_interface_c *game_object = NULL;
 extern bool ExtractPresetData(FILE *fp, std::string &buf);
 
 #ifndef OBSIDIAN_CONSOLE_ONLY
-Fl_Pixmap *clippy;
-
 #ifdef _WIN32
 #ifndef OBSIDIAN_CONSOLE_ONLY
 static FLASHWINFO *blinker;
@@ -289,12 +287,6 @@ static void main_win_preset_CB(Fl_Widget *w, void *data)
     }
     fclose(fp);
     Cookie_LoadString(text_buf, false /* keep_seed */);
-}
-
-static void main_win_clippy_CB(Fl_Widget *w, void *data)
-{
-    main_win->clippy->shape(clippy);
-    main_win->clippy->ShowAdvice();
 }
 #endif
 /* ----- user information ----------------------------- */
@@ -1610,13 +1602,6 @@ softrestart:;
 
 // create the main window
 #ifndef OBSIDIAN_CONSOLE_ONLY
-        fl_register_images(); // Needed for Unix window icon and Clippy
-
-        if (!clippy)
-        {
-            clippy = new Fl_Pixmap(clippy_xpm);
-        }
-
         int main_w, main_h;
         UI_MainWin::CalcWindowSize(&main_w, &main_h);
 
@@ -1710,19 +1695,11 @@ softrestart:;
                                             0);
                 }
             }
-            main_win->menu_bar->add(_("Summon Clippy"), nullptr, main_win_clippy_CB);
         }
 
 #ifdef _WIN32
         main_win->icon((const void *)LoadIcon(fl_display, MAKEINTRESOURCE(1)));
-#else
-#ifdef UNIX
-        Fl_Pixmap    program_icon(obsidian_icon);
-        Fl_RGB_Image rgb_icon(&program_icon, FL_BLACK);
-        UI_MainWin::default_icon(&rgb_icon);
 #endif
-#endif
-
         // show window (pass some dummy arguments)
         {
             char *fake_argv[2];
