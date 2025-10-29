@@ -519,14 +519,11 @@ void Main::PopulateFontMap()
     {
 
 #ifdef __APPLE__
-        font_menu_items.push_back({"Sans <Default>", 0});
-        font_menu_items.push_back({"Courier <Internal>", 4});
-        font_menu_items.push_back({"Times <Internal>", 8});
-        font_menu_items.push_back({"Screen <Internal>", 13});
+        font_menu_items.push_back({"Helvetica <Internal>", FL_HELVETICA});
+        font_menu_items.push_back({"Courier <Internal>", FL_COURIER});
+        font_menu_items.push_back({"Times <Internal>", FL_TIMES});
+        font_menu_items.push_back({"Screen <Internal>", FL_SCREEN});
 #else
-
-        // TODO - If feasible, find a better way to automate this/crawl for
-        // *.ttf files
 
         // Load bundled fonts. Fonts without a bold variant are essentially
         // loaded twice in a row so that calls for a bold variant don't
@@ -537,7 +534,7 @@ void Main::PopulateFontMap()
         // modified in some fashion, and the OFL 1.1 license dictates that
         // modified versions cannot display their Reserved Name to users
 
-        int current_free_font = 16;
+        int current_free_font = FL_ZAPF_DINGBATS+1;
 
         if (LoadInternalFont("./theme/fonts/SourceSansPro/SourceSansPro-Regular.ttf", current_free_font,
                              "Source Sans Pro"))
@@ -550,10 +547,10 @@ void Main::PopulateFontMap()
             }
         }
 
-        font_menu_items.push_back({"Sans <Internal>", 0});
-        font_menu_items.push_back({"Courier <Internal>", 4});
-        font_menu_items.push_back({"Times <Internal>", 8});
-        font_menu_items.push_back({"Screen <Internal>", 13});
+        font_menu_items.push_back({"Helvetica <Internal>", FL_HELVETICA});
+        font_menu_items.push_back({"Courier <Internal>", FL_COURIER});
+        font_menu_items.push_back({"Times <Internal>", FL_TIMES});
+        font_menu_items.push_back({"Screen <Internal>", FL_SCREEN});
 
         if (LoadInternalFont("./theme/fonts/Avenixel/Avenixel-Regular.ttf", current_free_font, "Avenixel"))
         {
@@ -629,7 +626,6 @@ void Main::PopulateFontMap()
         }
 #endif
     }
-    // lossy conversion, size_t?
     num_fonts = static_cast<int>(font_menu_items.size());
 }
 

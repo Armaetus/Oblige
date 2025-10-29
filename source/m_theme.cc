@@ -500,12 +500,6 @@ class UI_ThemeWin : public Fl_Window
         main_win->menu_bar->labelsize(FL_NORMAL_SIZE * .90);
         main_win->menu_bar->redraw();
         main_win->game_box->heading->labelsize(header_font_size);
-        main_win->game_box->engine->labelsize(FL_NORMAL_SIZE);
-        main_win->game_box->engine->textsize(FL_NORMAL_SIZE);
-        main_win->game_box->engine->copy_label("                                "
-                                               "        ");
-        main_win->game_box->engine_help->copy_label("");
-        main_win->game_box->engine_help->labelsize(FL_NORMAL_SIZE);
         main_win->game_box->game_help->labelsize(FL_NORMAL_SIZE);
         main_win->game_box->game_help->copy_label("");
         main_win->game_box->game->labelsize(FL_NORMAL_SIZE);
@@ -534,12 +528,10 @@ class UI_ThemeWin : public Fl_Window
         {
             main_win->game_box->child(x)->redraw();
         }
-        main_win->game_box->engine->copy_label("Engine: ");
         main_win->game_box->game->copy_label("Game: ");
         main_win->game_box->port->copy_label("Port: ");
         main_win->game_box->length->copy_label("Length: ");
         main_win->game_box->theme->copy_label("Theme: ");
-        main_win->game_box->engine_help->copy_label("?");
         main_win->game_box->port_help->copy_label("?");
         main_win->game_box->length_help->copy_label("?");
         main_win->game_box->game_help->copy_label("?");
@@ -622,12 +614,6 @@ class UI_ThemeWin : public Fl_Window
         main_win->menu_bar->textfont(font_style);
         main_win->menu_bar->redraw();
         main_win->game_box->heading->labelfont(font_style | FL_BOLD);
-        main_win->game_box->engine->labelfont(font_style);
-        main_win->game_box->engine->textfont(font_style);
-        main_win->game_box->engine->copy_label("                                "
-                                               "        ");
-        main_win->game_box->engine_help->copy_label("");
-        main_win->game_box->engine_help->labelfont(font_style);
         main_win->game_box->game_help->labelfont(font_style);
         main_win->game_box->game_help->copy_label("");
         main_win->game_box->game->labelfont(font_style);
@@ -656,12 +642,10 @@ class UI_ThemeWin : public Fl_Window
         {
             main_win->game_box->child(x)->redraw();
         }
-        main_win->game_box->engine->copy_label("Engine: ");
         main_win->game_box->game->copy_label("Game: ");
         main_win->game_box->port->copy_label("Port: ");
         main_win->game_box->length->copy_label("Length: ");
         main_win->game_box->theme->copy_label("Theme: ");
-        main_win->game_box->engine_help->copy_label("?");
         main_win->game_box->port_help->copy_label("?");
         main_win->game_box->length_help->copy_label("?");
         main_win->game_box->game_help->copy_label("?");
@@ -1221,8 +1205,6 @@ class UI_ThemeWin : public Fl_Window
         main_win->menu_bar->textcolor(FONT_COLOR);
         main_win->menu_bar->redraw();
         main_win->game_box->heading->labelcolor(FONT_COLOR);
-        main_win->game_box->engine->labelcolor(FONT_COLOR);
-        main_win->game_box->engine_help->labelcolor(FONT_COLOR);
         main_win->game_box->game->labelcolor(FONT_COLOR);
         main_win->game_box->game_help->labelcolor(FONT_COLOR);
         main_win->game_box->port->labelcolor(FONT_COLOR);
@@ -1322,7 +1304,6 @@ class UI_ThemeWin : public Fl_Window
         {
             FONT2_COLOR = fl_rgb_color(text2_red, text2_green, text2_blue);
         }
-        main_win->game_box->engine->textcolor(FONT2_COLOR);
         main_win->game_box->game->textcolor(FONT2_COLOR);
         main_win->game_box->port->textcolor(FONT2_COLOR);
         main_win->game_box->length->textcolor(FONT2_COLOR);
@@ -1441,7 +1422,6 @@ class UI_ThemeWin : public Fl_Window
         main_win->color(GAP_COLOR, SELECTION);
         main_win->menu_bar->selection_color(SELECTION);
         main_win->redraw();
-        main_win->game_box->engine->selection_color(SELECTION);
         main_win->game_box->game->selection_color(SELECTION);
         main_win->game_box->port->selection_color(SELECTION);
         main_win->game_box->length->selection_color(SELECTION);
