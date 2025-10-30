@@ -1430,7 +1430,7 @@ void Doom::game_interface_c::EndLevel()
 
     Doom::EndLevel(level_name);
 
-    level_name = "";
+    level_name.clear();
 }
 
 game_interface_c *Doom_GameObject()
