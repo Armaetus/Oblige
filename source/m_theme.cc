@@ -862,7 +862,7 @@ class UI_ThemeWin : public Fl_Window
                 }
                 break;
             case 2:
-                button_style = static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 2);
+                button_style = (Fl_Boxtype)(FL_FREE_BOXTYPE + 2);
                 break;
             case 3:
                 button_style = FL_EMBOSSED_BOX;
@@ -1086,7 +1086,7 @@ class UI_ThemeWin : public Fl_Window
             }
             break;
         case 2:
-            button_style = static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 2);
+            button_style = (Fl_Boxtype)(FL_FREE_BOXTYPE + 2);
             break;
         case 3:
             button_style = FL_EMBOSSED_BOX;

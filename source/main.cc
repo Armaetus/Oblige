@@ -132,7 +132,7 @@ int                                      button_theme   = 0;
 int                                      widget_theme   = 0;
 int                                      window_scaling = 0;
 int                                      font_scaling   = 18;
-int                                      num_fonts      = 0;
+static constexpr int                     num_fonts      = 4;
 std::vector<std::pair<std::string, int>> font_menu_items;
 static int                               old_x = 0;
 static int                               old_y = 0;
@@ -149,14 +149,12 @@ bool        create_backups         = true;
 bool        overwrite_warning      = true;
 bool        debug_messages         = false;
 bool        limit_break            = false;
-bool        preserve_failures      = false;
 bool        preserve_old_config    = false;
 bool        did_randomize          = false;
 bool        randomize_architecture = false;
 bool        randomize_monsters     = false;
 bool        randomize_pickups      = false;
 bool        randomize_misc         = false;
-bool        random_string_seeds    = false;
 bool        password_mode          = false;
 bool        mature_word_lists      = false;
 bool        did_specify_seed       = false;
@@ -173,22 +171,8 @@ extern bool ExtractPresetData(FILE *fp, std::string &buf);
 
 #ifndef OBSIDIAN_CONSOLE_ONLY
 #ifdef _WIN32
-#ifndef OBSIDIAN_CONSOLE_ONLY
 static FLASHWINFO *blinker;
-static int LoadPrivateFont(const char *path)
-{
-    return AddFontResourceExW((LPCWSTR)UTF8ToWString(path).data(), FR_PRIVATE, nullptr);
-}
 #endif
-#else
-#ifndef OBSIDIAN_CONSOLE_ONLY
-static int LoadPrivateFont(const char *path)
-{
-    return static_cast<int>(FcConfigAppFontAddFile(NULL, (const FcChar8 *)path));
-}
-#endif
-#endif
-
 static void main_win_surprise_config_CB(Fl_Widget *w, void *data)
 {
     Fl_Menu_Bar        *menu     = (Fl_Menu_Bar *)w;
@@ -476,143 +460,15 @@ static int DetermineScaling()
 
     return 0;
 }
-static bool LoadInternalFont(const char *fontpath, const int fontnum, const char *fontname)
-{
-    /* set the extra font */
-    if (LoadPrivateFont(fontpath))
-    {
-        Fl::set_font(fontnum, fontname);
-        return true;
-    }
-    return false;
-}
 static void PopulateFontMap()
 {
     if (font_menu_items.empty())
     {
-        // Load bundled fonts. Fonts without a bold variant are essentially
-        // loaded twice in a row so that calls for a bold variant don't
-        // accidentally change fonts
-
-        // Some custom fonts will have a different display name than that of
-        // their TTF fontname. This is because these fonts have been
-        // modified in some fashion, and the OFL 1.1 license dictates that
-        // modified versions cannot display their Reserved Name to users
-
-        int current_free_font = FL_ZAPF_DINGBATS+1;
-
-        if (LoadInternalFont("./theme/fonts/SourceSansPro/SourceSansPro-Regular.ttf", current_free_font,
-                             "Source Sans Pro"))
-        {
-            if (LoadInternalFont("./theme/fonts/SourceSansPro/SourceSansPro-Bold.ttf", current_free_font + 1,
-                                 "Source Sans Pro Bold"))
-            {
-                font_menu_items.push_back({"Sauce <Default>", current_free_font});
-                current_free_font += 2;
-            }
-        }
-
-        font_menu_items.push_back({"Helvetica <Internal>", FL_HELVETICA});
-        font_menu_items.push_back({"Courier <Internal>", FL_COURIER});
-        font_menu_items.push_back({"Times <Internal>", FL_TIMES});
-        font_menu_items.push_back({"Screen <Internal>", FL_SCREEN});
-
-        if (LoadInternalFont("./theme/fonts/Avenixel/Avenixel-Regular.ttf", current_free_font, "Avenixel"))
-        {
-            Fl::set_font(current_free_font + 1, "Avenixel");
-            font_menu_items.push_back({"Avenixel", current_free_font});
-            current_free_font += 2;
-        }
-
-        if (LoadInternalFont("./theme/fonts/TheNeueBlack/TheNeue-Black.ttf", current_free_font, "The Neue Black"))
-        {
-            Fl::set_font(current_free_font + 1, "The Neue Black");
-            font_menu_items.push_back({"New Black", current_free_font});
-            current_free_font += 2;
-        }
-
-        if (LoadInternalFont("./theme/fonts/Teko/Teko-Regular.ttf", current_free_font, "Teko"))
-        {
-            if (LoadInternalFont("./theme/fonts/Teko/Teko-Bold.ttf", current_free_font + 1, "Teko Bold"))
-            {
-                font_menu_items.push_back({"Teko", current_free_font});
-                current_free_font += 2;
-            }
-        }
-
-        if (LoadInternalFont("./theme/fonts/Kalam/Kalam-Regular.ttf", current_free_font, "Kalam"))
-        {
-            if (LoadInternalFont("./theme/fonts/Kalam/Kalam-Bold.ttf", current_free_font + 1, "Kalam Bold"))
-            {
-                font_menu_items.push_back({"Kalam", current_free_font});
-                current_free_font += 2;
-            }
-        }
-
-        if (LoadInternalFont("./theme/fonts/3270/3270.ttf", current_free_font, "3270 Condensed"))
-        {
-            Fl::set_font(current_free_font + 1, "3270 Condensed");
-            font_menu_items.push_back({"3270", current_free_font});
-            current_free_font += 2;
-        }
-
-        if (LoadInternalFont("./theme/fonts/Workbench/Workbench.ttf", current_free_font, "Workbench Light Regular"))
-        {
-            if (LoadInternalFont("./theme/fonts/Workbench/Workbench.ttf", current_free_font + 1, "Workbench Regular"))
-            {
-                font_menu_items.push_back({"Workbench", current_free_font});
-                current_free_font += 2;
-            }
-        }
-
-        if (LoadInternalFont("./theme/fonts/FPD-Pressure/FPDPressure-Light.otf", current_free_font,
-                             "FPD Pressure Light"))
-        {
-            if (LoadInternalFont("./theme/fonts/FPD-Pressure/FPDPressure-Regular.otf", current_free_font + 1,
-                                 "FPD Pressure"))
-            {
-                font_menu_items.push_back({"FPD Pressure", current_free_font});
-                current_free_font += 2;
-            }
-        }
-
-        if (LoadInternalFont("./theme/fonts/DramaSans/DramaSans.ttf", current_free_font, "Drama Sans"))
-        {
-            Fl::set_font(current_free_font + 1, "Drama Sans");
-            font_menu_items.push_back({"Drama Sans", current_free_font});
-            current_free_font += 2;
-        }
-
-        if (LoadInternalFont("./theme/fonts/SamIAm/MiniSmallCaps.ttf", current_free_font, "MiniSmallCaps"))
-        {
-            Fl::set_font(current_free_font + 1, "MiniSmallCaps");
-            font_menu_items.push_back({"Sam I Am", current_free_font});
-            current_free_font += 2;
-        }
+        font_menu_items.push_back({"Helvetica", FL_HELVETICA});
+        font_menu_items.push_back({"Courier", FL_COURIER});
+        font_menu_items.push_back({"Times", FL_TIMES});
+        font_menu_items.push_back({"Screen", FL_SCREEN});
     }
-    num_fonts = static_cast<int>(font_menu_items.size());
-}
-static void UnloadFontMap()
-{
-#ifdef _WIN32
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/SourceSansPro/SourceSansPro-Regular.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/SourceSansPro/SourceSansPro-Bold.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Avenixel/Avenixel-Regular.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/TheNeueBlack/TheNeue-Black.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Teko/Teko-Regular.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Teko/Teko-Bold.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Kalam/Kalam-Regular.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Kalam/Kalam-Bold.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/3270/3270.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Workbench/Workbench.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/Workbench/Workbench.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/FPD-Pressure/FPDPressure-Light.otf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/FPD-Pressure/FPDPressure-Regular.otf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/DramaSans/DramaSans.ttf").data(), FR_PRIVATE, nullptr);
-    RemoveFontResourceExW((LPCWSTR)UTF8ToWString("./theme/fonts/SamIAm/MiniSmallCaps.ttf").data(), FR_PRIVATE, nullptr);
-#else
-    FcConfigAppFontClear(NULL);
-#endif
 }
 static void SetupFLTK()
 {
@@ -691,11 +547,11 @@ static void SetupFLTK()
     Fl::set_boxtype(FL_PLASTIC_DOWN_BOX, cplastic_down_box, 2, 2, 4, 4);
     Fl::set_boxtype(FL_SHADOW_BOX, cshadow_box, 1, 1, 5, 5);
     Fl::set_boxtype(FL_FREE_BOXTYPE, crectbound, 1, 1, 2, 2);
-    Fl::set_boxtype(static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 1), crectbound, 1, 1, 2, 2);
+    Fl::set_boxtype((Fl_Boxtype)(FL_FREE_BOXTYPE + 1), crectbound, 1, 1, 2, 2);
     Fl::set_boxtype(FL_THIN_UP_BOX, cthin_up_box, 1, 1, 2, 2);
     Fl::set_boxtype(FL_EMBOSSED_BOX, cembossed_box, 2, 2, 4, 4);
-    Fl::set_boxtype(static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 2), cengraved_box, 2, 2, 4, 4);
-    Fl::set_boxtype(static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 3), cengraved_box, 2, 2, 4, 4);
+    Fl::set_boxtype((Fl_Boxtype)(FL_FREE_BOXTYPE + 2), cengraved_box, 2, 2, 4, 4);
+    Fl::set_boxtype((Fl_Boxtype)(FL_FREE_BOXTYPE + 3), cengraved_box, 2, 2, 4, 4);
     Fl::set_boxtype(FL_DOWN_BOX, cdown_box, 2, 2, 4, 4);
     Fl::set_boxtype(FL_UP_BOX, cup_box, 2, 2, 4, 4);
     switch (widget_theme)
@@ -834,7 +690,7 @@ static void SetupFLTK()
         }
         break;
     case 2:
-        button_style = static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 2);
+        button_style = (Fl_Boxtype)(FL_FREE_BOXTYPE + 2);
         break;
     case 3:
         button_style = FL_EMBOSSED_BOX;
@@ -855,7 +711,8 @@ static void SetupFLTK()
     else
     {
         // Fallback
-        font_style = 0;
+        font_style = FL_HELVETICA;
+        font_theme = 0;
     }
     if (font_scaling < 6)
     { // Values from old configs
@@ -971,40 +828,42 @@ int Main_key_handler(int event)
 
 void Main_CalcNewSeed()
 {
-    next_rand_seed = twister_UInt();
+    if (string_seed.empty())
+    {
+        if (password_mode)
+        {
+            string_seed = ob_get_password();
+        }
+        else
+        {
+            string_seed = ob_get_random_words();
+        }
+    }
+    ob_set_config("seed", string_seed);
+    next_rand_seed = StringHash64(string_seed);
+    twister_Reseed(next_rand_seed);
 }
 
 void Main_SetSeed()
 {
-    if (random_string_seeds && !did_specify_seed)
+    if (!did_specify_seed || string_seed.empty())
     {
-        if (string_seed.empty())
+        if (password_mode)
         {
-            if (password_mode)
-            {
-                if (next_rand_seed % 2 == 1)
-                {
-                    string_seed = ob_get_password();
-                }
-                else
-                {
-                    string_seed = ob_get_random_words();
-                }
-            }
-            else
-            {
-                string_seed = ob_get_random_words();
-            }
-            ob_set_config("string_seed", string_seed.c_str());
-            next_rand_seed = StringHash64(string_seed);
+            string_seed = ob_get_password();
+        }
+        else
+        {
+            string_seed = ob_get_random_words();
         }
     }
+    ob_set_config("seed", string_seed);
+    next_rand_seed = StringHash64(string_seed);
     twister_Reseed(next_rand_seed);
-    ob_set_config("seed", std::format("{}", next_rand_seed));
 #ifndef OBSIDIAN_CONSOLE_ONLY
     if (!batch_mode)
     {
-        main_win->build_box->seed_disp->copy_label(std::format("{} {}", _("Seed:"), next_rand_seed).c_str());
+        main_win->build_box->seed_disp->copy_label(std::format("{} {}", _("Seed:"), string_seed).c_str());
         main_win->build_box->seed_disp->redraw();
     }
 #endif
@@ -1422,8 +1281,6 @@ hardrestart:;
 
 softrestart:;
 
-    Main_CalcNewSeed();
-
     std::string load_file;
 
     //    TX_TestSynth(next_rand_seed); - Fractal testing stuff
@@ -1548,7 +1405,9 @@ softrestart:;
             return EXIT_FAILURE;
         }
 
+        Main_CalcNewSeed();
         Main_SetSeed();
+
         if (!Build_Cool_Shit())
         {
             FatalError("FAILED!\n");
@@ -1622,6 +1481,8 @@ softrestart:;
     }
 
     Cookie_ParseArguments();
+
+    Main_CalcNewSeed();
 
     if (main_action != MAIN_SOFT_RESTART)
     {
@@ -1795,76 +1656,69 @@ softrestart:;
 
     main_action = MAIN_NONE;
 
-    try
+    // run the GUI until the user quits
+    for (;;)
     {
-        // run the GUI until the user quits
-        for (;;)
-        {
 #ifndef OBSIDIAN_CONSOLE_ONLY
-            Fl::wait(0.2);
+        Fl::wait(0.2);
 #endif
 
-            if (main_action == MAIN_QUIT || main_action == MAIN_HARD_RESTART || main_action == MAIN_SOFT_RESTART)
+        if (main_action == MAIN_QUIT || main_action == MAIN_HARD_RESTART || main_action == MAIN_SOFT_RESTART)
+        {
+            break;
+        }
+
+        if (main_action == MAIN_BUILD)
+        {
+
+            main_action = 0;
+
+            Main_SetSeed();
+
+            // save config in case everything blows up
+            if (did_randomize)
             {
-                break;
-            }
-
-            if (main_action == MAIN_BUILD)
-            {
-
-                main_action = 0;
-
-                Main_SetSeed();
-
-                // save config in case everything blows up
-                if (did_randomize)
-                {
-                    if (!preserve_old_config)
-                    {
-                        Cookie_Save(config_file);
-                    }
-                }
-                else
+                if (!preserve_old_config)
                 {
                     Cookie_Save(config_file);
                 }
+            }
+            else
+            {
+                Cookie_Save(config_file);
+            }
 
-                bool result = Build_Cool_Shit();
+            bool result = Build_Cool_Shit();
 
-                did_specify_seed = false;
+            did_specify_seed = false;
 
 #ifndef OBSIDIAN_CONSOLE_ONLY
-                if (result)
+            if (result)
+            {
+                old_seed = string_seed.empty() ? std::format("{}", next_rand_seed) : string_seed;
+                if (main_win->build_box->name_disp->label())
                 {
-                    old_seed = string_seed.empty() ? std::format("{}", next_rand_seed) : string_seed;
-                    if (main_win->build_box->name_disp->label())
-                    {
-                        old_name = main_win->build_box->name_disp->label();
-                    }
-                    if (main_win->build_box->mini_map->pixels)
-                    {
-                        int map_size = main_win->build_box->mini_map->map_W * main_win->build_box->mini_map->map_H * 3;
-                        old_pixels   = new uint8_t[map_size];
-                        memcpy(old_pixels, main_win->build_box->mini_map->pixels, map_size);
-                    }
+                    old_name = main_win->build_box->name_disp->label();
                 }
-                else
+                if (main_win->build_box->mini_map->pixels)
                 {
-                    old_seed.clear();
-                    old_name.clear();
+                    int map_size = main_win->build_box->mini_map->map_W * main_win->build_box->mini_map->map_H * 3;
+                    old_pixels   = new uint8_t[map_size];
+                    memcpy(old_pixels, main_win->build_box->mini_map->pixels, map_size);
                 }
-                main_win->build_box->alt_disp->label("");
-#endif
-                // regardless of success or fail, compute a new seed
-                Main_CalcNewSeed();
-
-                main_action = MAIN_SOFT_RESTART;
             }
+            else
+            {
+                old_seed.clear();
+                old_name.clear();
+            }
+            main_win->build_box->alt_disp->label("");
+#endif
+            // regardless of success or fail, compute a new seed
+            Main_CalcNewSeed();
+
+            main_action = MAIN_SOFT_RESTART;
         }
-    }
-    catch (std::exception &e)
-    {
-        FatalError(_("An exception occurred: \n%s"), e.what());
     }
 
     if (main_action != MAIN_SOFT_RESTART)
@@ -1922,10 +1776,6 @@ softrestart:;
     }
 
     Main::Shutdown(false);
-
-#ifndef OBSIDIAN_CONSOLE_ONLY
-    UnloadFontMap();
-#endif
 
     return 0;
 }
