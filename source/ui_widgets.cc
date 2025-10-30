@@ -961,50 +961,35 @@ void UI_CustomMenu::draw()
     W += 2 * dx;
 
     // Draw menu item's label
-    if (mvalue())
-    {
-        Fl_Menu_Item m = *mvalue();
-        if (active_r())
-        {
-            m.activate();
-        }
-        else
-        {
-            m.deactivate();
-        }
+    if (mvalue()) {
+    Fl_Menu_Item m = *mvalue();
+    if (active_r()) m.activate(); else m.deactivate();
 
-        // Clip
-        int xx = x() + dx, yy = y() + dy + 1, ww = w() - W, hh = H - 2;
-        fl_push_clip(xx, yy, ww, hh);
+    // Clip
+    int xx = x() + dx, yy = y() + dy + 1, ww = w() - W, hh = H - 2;
+    fl_push_clip(xx, yy, ww, hh);
 
-        if (Fl::scheme())
-        {
-            Fl_Label l;
-            l.value   = m.text;
-            l.image   = 0;
-            l.deimage = 0;
-            l.type    = m.labeltype_;
-            l.font    = m.labelsize_ || m.labelfont_ ? m.labelfont_ : textfont();
-            l.size    = m.labelsize_ ? m.labelsize_ : textsize();
-            l.color   = m.labelcolor_ ? m.labelcolor_ : textcolor();
-            if (!m.active())
-            {
-                l.color = fl_inactive((Fl_Color)l.color);
-            }
-            fl_draw_shortcut = 2; // hack value to make '&' disappear
-            l.draw(xx + 3, yy, ww > 6 ? ww - 6 : 0, hh, FL_ALIGN_LEFT);
-            fl_draw_shortcut = 0;
-            if (Fl::focus() == this)
-            {
-                draw_focus(box(), xx, yy, ww, hh);
-            }
-        }
-        else
-        {
-            fl_draw_shortcut = 2; // hack value to make '&' disappear
-            m.draw(xx, yy, ww, hh, this, Fl::focus() == this);
-            fl_draw_shortcut = 0;
-        }
+    if (Fl::scheme()) {
+      Fl_Label l;
+      l.value = m.text;
+      l.image = 0;
+      l.deimage = 0;
+      l.type = m.labeltype_;
+      l.font = m.labelsize_ || m.labelfont_ ? m.labelfont_ : textfont();
+      l.size = m.labelsize_ ? m.labelsize_ : textsize();
+      l.color= m.labelcolor_ ? m.labelcolor_ : textcolor();
+      l.h_margin_ = l.v_margin_ = l.spacing = 0;
+      if (!m.active()) l.color = fl_inactive((Fl_Color)l.color);
+      fl_draw_shortcut = 2; // hack value to make '&' disappear
+      l.draw(xx+3, yy, ww>6 ? ww-6 : 0, hh, FL_ALIGN_LEFT);
+      fl_draw_shortcut = 0;
+      if ( Fl::focus() == this ) draw_focus(box(), xx, yy, ww, hh);
+    }
+    else {
+      fl_draw_shortcut = 2; // hack value to make '&' disappear
+      m.draw(xx, yy, ww, hh, this, Fl::focus() == this);
+      fl_draw_shortcut = 0;
+    }
 
         fl_pop_clip();
     }

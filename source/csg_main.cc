@@ -213,16 +213,18 @@ void csg_property_set_c::Remove(const std::string &key)
     dict.erase(key);
 }
 
-std::string csg_property_set_c::getStr(const std::string &key, std::string_view def_val) const
+std::string csg_property_set_c::getStr(const std::string &key) const
 {
     std::map<std::string, std::string>::const_iterator PI = dict.find(key);
 
-    if (PI == dict.end())
+    std::string ret;
+
+    if (PI != dict.end())
     {
-        return std::string(def_val);
+        return PI->second;
     }
 
-    return PI->second;
+    return ret;
 }
 
 double csg_property_set_c::getDouble(const std::string &key, double def_val) const
@@ -524,7 +526,7 @@ int csg_brush_c::CalcMedium() const
         return MEDIUM_SOLID;
 
     case BKIND_Liquid: {
-        std::string str = props.getStr("medium", "");
+        std::string str = props.getStr("medium");
 
         if (StringCompare(str, "slime") == 0)
         {
@@ -1543,7 +1545,7 @@ int CSG_add_entity(lua_State *L)
 
     Grab_Properties(L, 1, &E->props);
 
-    E->id = E->props.getStr("id", "");
+    E->id = E->props.getStr("id");
 
     E->x = E->props.getDouble("x");
     E->y = E->props.getDouble("y");
