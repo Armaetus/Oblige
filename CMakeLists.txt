@@ -31,14 +31,17 @@ else()
 endif()
 
 if(MSVC)
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /fp:fast")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:fast")
+  # These are needed for MSVC to play ball as much as possible
+  # with the /EHs- flag
+  add_definitions("-D_HAS_EXCEPTIONS=0 -D_STATIC_CPPLIB")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /fp:fast /EHs- /GR-")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:fast /EHs- /GR-")
   # get the number of logical cores for parallel build
   if (NOT CLANG)
     cmake_host_system_information(RESULT LOGICAL_CORES QUERY NUMBER_OF_LOGICAL_CORES)
     math(EXPR COMPILE_CORES "${LOGICAL_CORES} - 1")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /MD /MP${COMPILE_CORES}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MD /EHa /MP${COMPILE_CORES}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MD /MP${COMPILE_CORES}")
   endif()
   # To use the sanitizer with MSVC, you will need to either have your Visual Studio
   # or Build Tools install in your PATH variable, or copy the appropriate DLL to the program
@@ -58,8 +61,8 @@ if(MSVC)
     set(CMAKE_EXE_LINKER_FLAGS "/SUBSYSTEM:WINDOWS")
   endif()
 else()
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -fno-strict-aliasing")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fno-strict-aliasing")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -fno-exceptions -fno-strict-aliasing")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fno-exceptions -fno-rtti -fno-strict-aliasing")
   if (OBSIDIAN_SANITIZE AND OBSIDIAN_SANITIZE_UB)
     message( FATAL_ERROR "Enable only one of OBSIDIAN_SANITIZE or OBSIDIAN_SANITIZE_UB!" )
   elseif (OBSIDIAN_SANITIZE)

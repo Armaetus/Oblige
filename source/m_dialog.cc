@@ -326,50 +326,14 @@ void DLG_EditSeed(void)
     int         user_response;
     user_buf =
         fl_input_str(user_response, 0 /* limit */, "%s",
-                     string_seed.empty() ? std::format("{}", "{}", next_rand_seed).c_str() : string_seed.c_str(),
-                     _("Enter New Seed Number or Phrase:"));
+                     string_seed.c_str(), _("Enter New Seed Number or Phrase:"));
     // cancelled?
     if (user_response < 0)
     {
         return;
     }
-
-    std::string word = {user_buf.c_str(), static_cast<size_t>(user_buf.size())};
-    try
-    {
-        for (long unsigned int i = 0; i < word.size(); i++)
-        {
-            char character = word[i];
-            if (!IsDigitASCII(character))
-            {
-                throw std::runtime_error(
-                    // clang-format off
-                    _("String contains non-digits. Will process as string\n"));
-                // clang-format on
-            }
-        }
-        did_specify_seed = true;
-        next_rand_seed   = stoull(word);
-        return;
-    }
-    catch (std::invalid_argument &e)
-    {
-        (void)e;
-        printf("%s\n", _("Invalid argument. Will process as string."));
-    }
-    catch (std::out_of_range &e)
-    {
-        (void)e;
-        // clang-format off
-        printf("%s\n", _("Resulting number would be out of range. Will process as string."));
-        // clang-format on
-    }
-    catch (std::exception &e)
-    {
-        printf("%s\n", e.what());
-    }
-    string_seed = word;
-    ob_set_config("string_seed", word.c_str());
+    string_seed = user_buf;
+    ob_set_config("seed", string_seed);
     next_rand_seed   = StringHash64(string_seed);
     did_specify_seed = true;
     return;

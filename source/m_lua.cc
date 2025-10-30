@@ -1389,20 +1389,6 @@ int generate_midi_track(lua_State *L)
     return 0;
 }
 
-int remove_temp_file(lua_State *L)
-{
-    std::string path = PathAppend(home_dir, "temp");
-
-    const char *temp_file = luaL_checkstring(L, 1);
-
-    path = PathAppend(path, GetFilename(temp_file));
-
-    if (FileExists(path))
-        FileDelete(path);
-
-    return 0;
-}
-
 //------------------------------------------------------------------------
 
 extern int SPOT_begin(lua_State *L);
@@ -1592,9 +1578,6 @@ static const luaL_Reg gui_script_funcs[] = {
 
     // MIDI generation
     {"generate_midi_track", generate_midi_track},
-
-    // Miscellany
-    {"remove_temp_file", remove_temp_file},
 
     {NULL, NULL} // the end
 };

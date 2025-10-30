@@ -1299,10 +1299,7 @@ bool Doom::game_interface_c::Finish(bool build_ok)
     if (!build_ok)
     {
         // remove the WAD if an error occurred
-        if (!preserve_failures)
-        {
-            FileDelete(filename);
-        }
+        FileDelete(filename);
     }
     else
     {
