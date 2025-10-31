@@ -75,7 +75,7 @@ UI_Module::UI_Module(int X, int Y, int W, int H, const std::string &id, const st
                              KromulentHeight(24), "");
         heading->copy_label(label.c_str());
         heading->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE);
-        heading->labelfont(font_style | FL_BOLD);
+        heading->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     }
 
     if (!tip.empty())
@@ -126,7 +126,7 @@ void UI_Module::AddHeader(const std::string &opt, const std::string &label, int 
     rhead->mod_label = new Fl_Box(rhead->x(), rhead->y(), rhead->w() * .95, KromulentHeight(24), "");
     rhead->mod_label->copy_label(label.c_str());
     rhead->mod_label->align((FL_ALIGN_CENTER | FL_ALIGN_INSIDE | FL_ALIGN_CLIP));
-    rhead->mod_label->labelfont(font_style + 1);
+    rhead->mod_label->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     rhead->mod_label->labelsize(header_font_size - 2);
 
     if (!mod_button->value())
@@ -1131,7 +1131,7 @@ UI_CustomMods::UI_CustomMods(int X, int Y, int W, int H, const std::string &labe
 
     copy_label(label.c_str());
 
-    labelfont(font_style | FL_BOLD);
+    labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
 
     color(GAP_COLOR, GAP_COLOR);
 

@@ -132,8 +132,24 @@ int                                      button_theme   = 0;
 int                                      widget_theme   = 0;
 int                                      window_scaling = 0;
 int                                      font_scaling   = 18;
-static constexpr int                     num_fonts      = 4;
-std::vector<std::pair<std::string, int>> font_menu_items;
+static constexpr int                     num_fonts      = 14;
+std::vector<std::pair<std::string, int>> font_menu_items =
+{
+    {"Helvetica", FL_HELVETICA},
+    {"Helvetica Bold", FL_HELVETICA_BOLD},
+    {"Helvetica Italic", FL_HELVETICA_ITALIC},
+    {"Helvetica Bold Italic", FL_HELVETICA_BOLD_ITALIC},
+    {"Courier", FL_COURIER},
+    {"Courier Bold", FL_COURIER_BOLD},
+    {"Courier Italic", FL_COURIER_ITALIC},
+    {"Courier Bold Italic", FL_COURIER_BOLD_ITALIC},
+    {"Times", FL_TIMES},
+    {"Times Bold", FL_TIMES_BOLD},
+    {"Times Italic", FL_TIMES_ITALIC},
+    {"Times Bold Italic", FL_TIMES_BOLD_ITALIC},
+    {"Screen", FL_SCREEN},
+    {"Screen Bold", FL_SCREEN_BOLD}
+};
 static int                               old_x = 0;
 static int                               old_y = 0;
 static int                               old_w = 0;
@@ -460,20 +476,8 @@ static int DetermineScaling()
 
     return 0;
 }
-static void PopulateFontMap()
-{
-    if (font_menu_items.empty())
-    {
-        font_menu_items.push_back({"Helvetica", FL_HELVETICA});
-        font_menu_items.push_back({"Courier", FL_COURIER});
-        font_menu_items.push_back({"Times", FL_TIMES});
-        font_menu_items.push_back({"Screen", FL_SCREEN});
-    }
-}
 static void SetupFLTK()
 {
-    PopulateFontMap();
-
     Fl::visual(FL_DOUBLE | FL_RGB);
     if (color_scheme == 2)
     { // "Custom" color selection used to be 2 in older configs

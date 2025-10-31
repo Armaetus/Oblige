@@ -1,17 +1,14 @@
--- Alternate synthwave theme by Frozsoul
-
--- THEME FILE : OBSIDIAN Beta 19 Preview
+-- THEME FILE : OBSIDIAN 21 "Tabs of Terror"
+-- Build 2025.10.31
 -- Based on OBLIGE Level Maker (C) 2006-2017 Andrew Apted
--- https://github.com/GTD-Carthage/Oblige
+-- https://obsidian-level-maker.github.io
 
 window_scaling      = 0
 font_scaling      = 18
-font_theme      = 8
+font_theme      = 2
 widget_theme      = 1
 box_theme      = 5
 button_theme      = 1
-single_pane = 0
-use_system_fonts = 0
 color_scheme      = 1
 text_red      = 255
 text_green      = 188
