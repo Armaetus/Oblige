@@ -613,7 +613,7 @@ class UI_ThemeWin : public Fl_Window
         fl_message_font(font_style, FL_NORMAL_SIZE);
         main_win->menu_bar->textfont(font_style);
         main_win->menu_bar->redraw();
-        main_win->game_box->heading->labelfont(font_style | FL_BOLD);
+        main_win->game_box->heading->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
         main_win->game_box->game_help->labelfont(font_style);
         main_win->game_box->game_help->copy_label("");
         main_win->game_box->game->labelfont(font_style);
@@ -636,7 +636,7 @@ class UI_ThemeWin : public Fl_Window
         main_win->game_box->theme->textfont(font_style);
         main_win->game_box->theme->copy_label("                                "
                                               "        ");
-        main_win->game_box->build->labelfont(font_style | FL_BOLD);
+        main_win->game_box->build->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
         main_win->game_box->quit->labelfont(font_style);
         for (int x = 0; x < main_win->game_box->children(); x++)
         {
@@ -666,7 +666,7 @@ class UI_ThemeWin : public Fl_Window
                 SYS_ASSERT(M);
                 if (!M->Is_UI())
                 {
-                    M->heading->labelfont(font_style | FL_BOLD);
+                    M->heading->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
                     M->redraw();
                 }
                 std::map<std::string, UI_RChoice *>::const_iterator IT;

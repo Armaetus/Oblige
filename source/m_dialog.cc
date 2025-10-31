@@ -93,7 +93,7 @@ static void DialogShowAndRun(const char *message, const char *title, const char 
     icon->box(FL_OVAL_BOX);
     icon->align(FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
     icon->color(FL_RED, FL_RED);
-    icon->labelfont(font_style | FL_BOLD);
+    icon->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     icon->labelsize(24 + KF * 3);
     icon->labelcolor(FL_WHITE);
 
@@ -422,7 +422,7 @@ UI_LogViewer::UI_LogViewer(int W, int H, const char *l) : Fl_Double_Window(W, H,
             but->box(button_style);
             but->visible_focus(0);
             but->color(BUTTON_COLOR);
-            but->labelfont(font_style | FL_BOLD);
+            but->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
             but->labelcolor(FONT2_COLOR);
             but->callback(quit_callback, this);
         }
@@ -724,7 +724,7 @@ UI_GlossaryViewer::UI_GlossaryViewer(int W, int H, const char *l) : Fl_Double_Wi
             but->box(button_style);
             but->visible_focus(0);
             but->color(BUTTON_COLOR);
-            but->labelfont(font_style | FL_BOLD);
+            but->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
             but->labelcolor(FONT2_COLOR);
             but->callback(quit_callback, this);
         }
