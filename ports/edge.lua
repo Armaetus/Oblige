@@ -58,7 +58,7 @@ EDGE.PARAMETERS =
   liquid_floors = true,
   mirrors = true,
   thing_exfloor_flags = true,
-  tga_images = true
+  png_images = true
 }
 
 

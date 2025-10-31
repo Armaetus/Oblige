@@ -31,6 +31,7 @@
 #include "lib_zip.h"
 #include "main.h"
 #include "minilua.h"
+#include "miniz.h" // PNG creation
 #include "physfs.h"
 #include "raw_def.h"
 #include "sys_assert.h"
@@ -1627,44 +1628,27 @@ static int TitleAveragePixel(int x, int y)
     return OBSIDIAN_MAKE_RGBA(r, g, b, 255);
 }
 
-static qLump_c *TitleCreateTGA()
+static qLump_c *TitleCreatePNG()
 {
-    qLump_c *lump = new qLump_c();
+    std::vector<rgb_color_t> raw_image;
 
-    lump->AddByte(0); // id_length
-    lump->AddByte(0); // colormap_type
-    lump->AddByte(2); // TGA_RGB
-
-    lump->AddByte(0); // colormap_xxx
-    lump->AddByte(0);
-    lump->AddByte(0);
-    lump->AddByte(0);
-    lump->AddByte(0);
-
-    lump->AddByte(0);             // x_offset
-    lump->AddByte(0);
-    lump->AddByte(0);             // y_offset
-    lump->AddByte(0);
-
-    lump->AddByte(title_W & 255); // width
-    lump->AddByte(title_W >> 8);
-
-    lump->AddByte(title_H & 255); // height
-    lump->AddByte(title_H >> 8);
-
-    lump->AddByte(24);            // pixel_bits
-    lump->AddByte(0);             // attributes
-
-    for (int y = title_H - 1; y >= 0; y--)
+    for (int y = 0; y < title_H - 1; y++)
     {
         for (int x = 0; x < title_W; x++)
         {
-            rgb_color_t col = TitleAveragePixel(x, y);
-
-            lump->AddByte(OBSIDIAN_RGB_BLUE(col));
-            lump->AddByte(OBSIDIAN_RGB_GREEN(col));
-            lump->AddByte(OBSIDIAN_RGB_RED(col));
+            raw_image.push_back(TitleAveragePixel(x, y));
         }
+    }
+
+    qLump_c *lump = new qLump_c();
+
+    size_t png_size = 0;
+    void *raw_png = tdefl_write_image_to_png_file_in_memory(raw_image.data(), title_W, title_H, 4, &png_size);
+
+    if (raw_png)
+    {
+        lump->Append(raw_png, png_size);
+        free(raw_png);
     }
 
     return lump;
@@ -1731,9 +1715,9 @@ int title_write(lua_State *L)
 
     qLump_c *lump;
 
-    if (StringCompare(format, "tga") == 0)
+    if (StringCompare(format, "png") == 0)
     {
-        lump = TitleCreateTGA();
+        lump = TitleCreatePNG();
     }
     else if (StringCompare(format, "raw") == 0)
     {

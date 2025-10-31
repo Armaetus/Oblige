@@ -44,7 +44,7 @@ ZDOOM.PARAMETERS =
   bridges = true,
   extra_floors = true,
   liquid_floors = true,
-  tga_images = true
+  png_images = true
 }
 
 function ZDOOM.setup()
