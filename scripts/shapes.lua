@@ -8489,8 +8489,6 @@ GROW_LIQUID_CANAL_CROSSING =
 
   group = "canal",
 
-  engine = "zdoom",
-
   structure =
   {
     "~...","~~~~",
@@ -8671,8 +8669,6 @@ GROW_LIQUID_SCANAL_STRAIGHT =
 GROW_LIQUID_SCANAL_STRAIGHT_CROSSING =
 {
   prob = 30,
-
-  engine = "zdoom",
 
   group = "single_canal",
 

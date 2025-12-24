@@ -961,147 +961,41 @@ void UI_CustomMenu::draw()
     W += 2 * dx;
 
     // Draw menu item's label
-    if (mvalue())
-    {
-        Fl_Menu_Item m = *mvalue();
-        if (active_r())
-        {
-            m.activate();
-        }
-        else
-        {
-            m.deactivate();
-        }
+    if (mvalue()) {
+    Fl_Menu_Item m = *mvalue();
+    if (active_r()) m.activate(); else m.deactivate();
 
-        // Clip
-        int xx = x() + dx, yy = y() + dy + 1, ww = w() - W, hh = H - 2;
-        fl_push_clip(xx, yy, ww, hh);
+    // Clip
+    int xx = x() + dx, yy = y() + dy + 1, ww = w() - W, hh = H - 2;
+    fl_push_clip(xx, yy, ww, hh);
 
-        if (Fl::scheme())
-        {
-            Fl_Label l;
-            l.value   = m.text;
-            l.image   = 0;
-            l.deimage = 0;
-            l.type    = m.labeltype_;
-            l.font    = m.labelsize_ || m.labelfont_ ? m.labelfont_ : textfont();
-            l.size    = m.labelsize_ ? m.labelsize_ : textsize();
-            l.color   = m.labelcolor_ ? m.labelcolor_ : textcolor();
-            if (!m.active())
-            {
-                l.color = fl_inactive((Fl_Color)l.color);
-            }
-            fl_draw_shortcut = 2; // hack value to make '&' disappear
-            l.draw(xx + 3, yy, ww > 6 ? ww - 6 : 0, hh, FL_ALIGN_LEFT);
-            fl_draw_shortcut = 0;
-            if (Fl::focus() == this)
-            {
-                draw_focus(box(), xx, yy, ww, hh);
-            }
-        }
-        else
-        {
-            fl_draw_shortcut = 2; // hack value to make '&' disappear
-            m.draw(xx, yy, ww, hh, this, Fl::focus() == this);
-            fl_draw_shortcut = 0;
-        }
+    if (Fl::scheme()) {
+      Fl_Label l;
+      l.value = m.text;
+      l.image = 0;
+      l.deimage = 0;
+      l.type = m.labeltype_;
+      l.font = m.labelsize_ || m.labelfont_ ? m.labelfont_ : textfont();
+      l.size = m.labelsize_ ? m.labelsize_ : textsize();
+      l.color= m.labelcolor_ ? m.labelcolor_ : textcolor();
+      l.h_margin_ = l.v_margin_ = l.spacing = 0;
+      if (!m.active()) l.color = fl_inactive((Fl_Color)l.color);
+      fl_draw_shortcut = 2; // hack value to make '&' disappear
+      l.draw(xx+3, yy, ww>6 ? ww-6 : 0, hh, FL_ALIGN_LEFT);
+      fl_draw_shortcut = 0;
+      if ( Fl::focus() == this ) draw_focus(box(), xx, yy, ww, hh);
+    }
+    else {
+      fl_draw_shortcut = 2; // hack value to make '&' disappear
+      m.draw(xx, yy, ww, hh, this, Fl::focus() == this);
+      fl_draw_shortcut = 0;
+    }
 
         fl_pop_clip();
     }
 
     // Widget's label
     draw_label();
-}
-
-//----------------------------------------------------------------
-
-void UI_Clippy::callback_MoreAdvice(Fl_Widget *w, void *data)
-{
-    UI_Clippy *clip = (UI_Clippy *)data;
-    clip->buff->text(ob_random_advice().c_str());
-}
-
-void UI_Clippy::callback_CloseMe(Fl_Widget *w, void *data)
-{
-    UI_Clippy *clip = (UI_Clippy *)data;
-    clip->hide();
-}
-
-UI_Clippy::UI_Clippy() : Fl_Double_Window(476, 225, NULL)
-{
-    shape(clippy);
-    xoff       = 0;
-    yoff       = 0;
-    background = new Fl_Box(0, 0, 476, 225, NULL);
-    background->image(clippy);
-    buff = new Fl_Text_Buffer();
-    disp = new Fl_Text_Display(165, 10, 300, 165, NULL);
-    disp->box(FL_FLAT_BOX);
-    disp->color(fl_rgb_color(255, 255, 203));
-    disp->buffer(buff);
-    disp->textcolor(FL_BLACK);
-    disp->textsize(20);
-    disp->textfont(8);
-    disp->wrap_mode(Fl_Text_Display::WRAP_AT_BOUNDS, 0);
-    showme_another = new Fl_Button(200, 180, 100, 20, _("Next"));
-    showme_another->box(FL_ROUNDED_FRAME);
-    showme_another->labelcolor(FL_BLACK);
-    showme_another->labelfont(9);
-    showme_another->align(FL_ALIGN_CENTER | FL_ALIGN_INSIDE);
-    showme_another->down_box(FL_ROUNDED_FRAME);
-    showme_another->down_color(fl_rgb_color(255, 255, 203));
-    showme_another->callback(callback_MoreAdvice, this);
-    showme_another->visible_focus(0);
-    closeme = new Fl_Button(320, 180, 100, 20, _("Close"));
-    closeme->box(FL_ROUNDED_FRAME);
-    closeme->labelcolor(FL_BLACK);
-    closeme->labelfont(9);
-    closeme->align(FL_ALIGN_CENTER | FL_ALIGN_INSIDE);
-    closeme->down_box(FL_ROUNDED_FRAME);
-    closeme->down_color(fl_rgb_color(255, 255, 203));
-    closeme->callback(callback_CloseMe, this);
-    closeme->visible_focus(0);
-    visible_focus(0);
-    hide();
-}
-
-void UI_Clippy::ShowAdvice()
-{
-    if (!shown())
-    {
-        hotspot(0, 0, 0);
-    }
-    if (buff->length() == 0)
-    {
-        buff->text(ob_random_advice().c_str());
-    }
-    show();
-}
-
-int UI_Clippy::handle(int event)
-{
-    int ret = Fl_Window::handle(event);
-    switch (event)
-    {
-    case FL_PUSH:
-        xoff = x() - Fl::event_x_root();
-        yoff = y() - Fl::event_y_root();
-        ret  = 1;
-
-    case FL_DRAG:
-        position(xoff + Fl::event_x_root(), yoff + Fl::event_y_root());
-        redraw();
-        ret = 1;
-
-    case FL_RELEASE:
-        show();
-        ret = 1;
-    }
-    return (ret);
-}
-
-UI_Clippy::~UI_Clippy()
-{
 }
 
 //--- editor settings ---

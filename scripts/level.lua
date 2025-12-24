@@ -2582,7 +2582,7 @@ function Level_handle_prebuilt(LEVEL)
   if GAME.format == "doom" then
     gui.wad_transfer_map(info.file, info.map, LEVEL.name)
   else
-    -- FIXME: support other games (Wolf3d, etc)
+    return "abort"
   end
 
   return "ok"
@@ -2872,17 +2872,9 @@ function Level_make_all()
     for _,LEV in pairs(EPI.levels) do
       LEV.allowances = {}
 
-      if PARAM.float_historical_oblige_v2 and rand.odds(PARAM.float_historical_oblige_v2) then
-        LEV.description = Naming_grab_one(LEV.name_class)
-        gui.minimap_disable(gui.gettext("Oblige V2"))
-        if v094_create_LEVEL(GAME.FACTORY.all_levels[LEV.id], LEV.id, #GAME.levels) == "abort" then
-          return "abort"
-        end
-      else
-        gui.minimap_enable()
-        if Level_make_level(LEV) == "abort" then
-          return "abort"
-        end
+      gui.minimap_enable()
+      if Level_make_level(LEV) == "abort" then
+        return "abort"
       end
     end
   end

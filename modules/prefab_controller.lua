@@ -241,9 +241,6 @@ OB_MODULES["prefab_control"] =
   where = "arch",
   priority = 95,
 
-  engine = "idtech_1",
-  port = "!limit_enforcing",
-
   hooks =
   {
     setup = PREFAB_CONTROL.setup,

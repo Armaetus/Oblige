@@ -547,7 +547,7 @@ void region_c::ClockwiseSnags()
         snag_c *A = snags[i];
         snag_c *B = snags[i + 1];
 
-        if (angles[i] < angles[i + 1] - OBSIDIAN_ANG_EPSILON)
+        if (angles[i] < angles[i + 1] - OBSIDIAN_EPSILON)
         {
             // swap 'em
             snags[i]     = B;
@@ -1796,7 +1796,7 @@ static void MarkGapsWithEntities()
             }
 
             // ignore map models
-            if (!(E->props.getStr("model")).empty())
+            if (!E->props.getStr("model").empty())
             {
                 continue;
             }
@@ -1919,7 +1919,7 @@ static void SpreadReachability(void)
         {
             gap_c *G = R->gaps[k];
 
-            if (!(G->bottom->t.face.getStr("reachable")).empty() || !(G->top->b.face.getStr("reachable")).empty())
+            if (!G->bottom->t.face.getStr("reachable").empty() || !G->top->b.face.getStr("reachable").empty())
             {
                 G->reachable = true;
             }

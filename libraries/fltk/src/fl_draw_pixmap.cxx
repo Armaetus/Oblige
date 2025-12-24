@@ -36,6 +36,7 @@
 #include <FL/platform.H>
 #include <FL/fl_draw.H>
 #include <stdio.h>
+#include <stdint.h>
 #include "flstring.h"
 
 

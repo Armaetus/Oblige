@@ -22,6 +22,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <stdint.h>
 
 #include <map>
 #include <string>
@@ -54,10 +55,6 @@ constexpr const char *THEME_FILENAME   = "THEME.txt";
 constexpr const char *LOG_FILENAME     = "LOGS.txt";
 constexpr const char *REF_FILENAME     = "REFERENCE.txt";
 
-#if !defined OBSIDIAN_CONSOLE_ONLY && !defined __APPLE__
-extern int v_unload_private_font(const char *path);
-#endif
-
 extern std::string home_dir;
 extern std::string install_dir;
 extern std::string config_file;
@@ -70,7 +67,7 @@ extern bool batch_mode;
 
 extern std::string batch_output_file;
 
-extern unsigned long long next_rand_seed;
+extern uint64_t next_rand_seed;
 
 // this records the user action, e.g. Cancel or Quit buttons
 enum main_action_kind_e
@@ -129,7 +126,6 @@ extern int                                      button_theme;
 extern int                                      widget_theme;
 extern int                                      window_scaling;
 extern int                                      font_scaling;
-extern int                                      num_fonts;
 extern std::vector<std::pair<std::string, int>> font_menu_items;
 extern bool                                     collapse_disabled_modules;
 #endif
@@ -139,14 +135,12 @@ extern bool        create_backups;
 extern bool        overwrite_warning;
 extern bool        debug_messages;
 extern bool        limit_break;
-extern bool        preserve_failures;
 extern bool        preserve_old_config;
 extern bool        did_randomize;
 extern bool        randomize_architecture;
 extern bool        randomize_monsters;
 extern bool        randomize_pickups;
 extern bool        randomize_misc;
-extern bool        random_string_seeds;
 extern bool        password_mode;
 extern bool        mature_word_lists;
 extern bool        did_specify_seed;
@@ -160,8 +154,6 @@ extern std::vector<std::string> batch_randomize_groups;
 #ifndef OBSIDIAN_CONSOLE_ONLY
 // Dialog Windows
 void DLG_ShowError(const char *msg, ...);
-
-std::string DLG_OutputFilename(const char *ext, const char *preset = nullptr);
 #endif
 
 extern std::string default_output_path;
@@ -170,20 +162,6 @@ extern std::string Resolve_DefaultOutputPath();
 
 extern std::string string_seed;
 extern std::string selected_lang;
-
-// Clippy/program menu stuff
-#ifndef OBSIDIAN_CONSOLE_ONLY
-extern Fl_Pixmap *clippy;
-
-void DLG_AboutText();
-void DLG_OptionsEditor();
-void DLG_ThemeEditor();
-
-void DLG_EditSeed();
-void DLG_ViewLogs();
-void DLG_ViewGlossary();
-void DLG_ManageConfig();
-#endif
 
 namespace Main
 {
@@ -195,14 +173,7 @@ bool BackupFile(const std::string &filename);
 void Blinker();
 #endif
 
-#if !defined(OBSIDIAN_CONSOLE_ONLY) && !defined(__APPLE__)
-bool LoadInternalFont(const char *fontpath, int fontnum, const char *fontname);
-#endif
-
 #ifndef OBSIDIAN_CONSOLE_ONLY
-void SetupFLTK();
-int  DetermineScaling();
-void PopulateFontMap();
 void Ticker();
 #endif
 
@@ -268,7 +239,6 @@ extern game_interface_c *game_object;
 /* interface for each game format */
 
 game_interface_c *Doom_GameObject();
-game_interface_c *Wolf_GameObject();
 
 //--- editor settings ---
 // vi:ts=4:sw=4:noexpandtab

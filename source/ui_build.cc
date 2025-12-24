@@ -19,6 +19,8 @@
 //
 //------------------------------------------------------------------------
 
+#include <format>
+
 #include "lib_util.h"
 #include "m_trans.h"
 #include "main.h"
@@ -270,7 +272,7 @@ void UI_Build::Prog_Step(const char *step_name)
         val = 1;
     }
 
-    prog_label = StringFormat("%d%%", int(val * 100));
+    prog_label = std::format("{}%", int(val * 100));
 
     progress->value(val);
     progress->label(prog_label.c_str());
@@ -278,7 +280,7 @@ void UI_Build::Prog_Step(const char *step_name)
     newtitle.append(prog_label);
     newtitle.append(" ] ");
     newtitle.append(
-        StringFormat("%s %s \"%s\"", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str()));
+        std::format("{} {} \"{}\"", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME));
     newtitle.append(" - ");
     newtitle.append(status_label.c_str());
     main_win->copy_label(newtitle.c_str());
@@ -307,7 +309,7 @@ void UI_Build::Prog_Nodes(int pos, int limit)
         val = 1;
     }
 
-    prog_label = StringFormat("%d%%", int(val * 100));
+    prog_label = std::format("{}%", int(val * 100));
 
     progress->value(val);
     progress->label(prog_label.c_str());
@@ -316,7 +318,7 @@ void UI_Build::Prog_Nodes(int pos, int limit)
     newtitle.append(prog_label);
     newtitle.append(" ] ");
     newtitle.append(
-        StringFormat("%s %s \"%s\"", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str()));
+        std::format("{} {} \"{}\"", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME));
     newtitle.append(" - ");
     newtitle.append(status_label.c_str());
     main_win->copy_label(newtitle.c_str());
@@ -331,8 +333,7 @@ void UI_Build::SetStatus(std::string_view msg)
     if (StringCompare(status_label, _("Success")) == 0)
     {
         main_win->label(
-            StringFormat("%s %s \"%s\"", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                .c_str());
+            std::format("{} {} \"{}\"", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
     }
 
     status->copy_label(status_label.c_str());
@@ -383,7 +384,7 @@ void UI_Build::AddStatusStep(const std::string &name)
 {
     // modifies the current status string to show the current step
     status->label(BLANKOUT);
-    status->copy_label(StringFormat("%s : %s", status_label.c_str(), name.c_str()).c_str());
+    status->copy_label(std::format("{} : {}", status_label, name).c_str());
     status->redraw();
 }
 

@@ -28,7 +28,6 @@ OB_MODULES["ui_useful_links"] =
     {
       name = "header_free_content",
       label = _("Game WADs (Libre/Freeware)"),
-      gap = 1
     },
     { 
       name="url_freedoom",     
@@ -40,27 +39,22 @@ OB_MODULES["ui_useful_links"] =
       label=_("Blasphemer (Heretic Replacement)"),
       url="https://github.com/Catoptromancy/blasphemer",    
     },
-    { 
-      name="url_cq3_vanilla",     
-      label=_("Chex Quest 3: Vanilla Edition"),
-      url="https://melodic-spaceship.neocities.org/chex3v",    
+    {
+      name="url_cq3v",
+      label=_("Chex Quest 3: Vanilla"),
+      url="https://melodic-spaceship.neocities.org/chex3v/downloads",
     },
-    { 
-      name="url_hacx",     
-      label=_("HacX 1.2"),
-      url="https://www.doomworld.com/idgames/themes/hacx/hacx12",    
-    },
-    { 
-      name="url_harmony",     
-      label=_("Harmony Compatible"),
-      url="https://www.doomworld.com/idgames/levels/doom2/Ports/g-i/harmonyc",    
-    },
-    { 
-      name="url_rekkr",     
+    {
+      name="url_rekkr",
       label=_("REKKR"),
-      url="https://www.doomworld.com/idgames/levels/doom/megawads/rekkr",
-      gap=4    
+      url="https://mockingbirdsoftworks.com/modversion.html",
     },
+    {
+      name="url_harmonyc",
+      label=_("Harmony Compatible"),
+      url="https://www.doomworld.com/idgames/levels/doom2/Ports/g-i/harmonyc",
+      gap=1
+    }
 
     --[[{
       name = "header_addons",
@@ -107,22 +101,11 @@ OB_MODULES["ui_useful_links"] =
     {
       name = "header_source_ports",
       label = _("Source Ports"),
-      gap = 1
     },  
-    { 
-      name="url_k8vaoom",     
-      label=_("k8vavoom"),
-      url="https://doomer.boards.net/thread/2260/k8vavoom",    
-    },
     { 
       name="url_edge_classic",     
       label=_("EDGE-Classic"),
       url="https://edge-classic.github.io/",    
-    },
-    { 
-      name="url_prboomx",     
-      label=_("PrBoomX"),
-      url="https://github.com/JadingTsunami/prboomX",    
     },
     { 
       name="url_doom_retro",     
@@ -136,7 +119,7 @@ OB_MODULES["ui_useful_links"] =
     },
     { 
       name="url_gzdoom",     
-      label=_("ZDoom Family (GZDoom, LZDoom, ZDoom)"),
+      label=_("ZDoom Family (UZDoom, GZDoom, LZDoom, ZDoom)"),
       url="https://www.zdoom.org/index",    
     },
     { 

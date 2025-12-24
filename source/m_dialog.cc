@@ -26,6 +26,7 @@
 
 #include <stdarg.h>
 
+#include <format>
 #include <limits>
 #include <stdexcept>
 #include <string>
@@ -92,7 +93,7 @@ static void DialogShowAndRun(const char *message, const char *title, const char 
     icon->box(FL_OVAL_BOX);
     icon->align(FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
     icon->color(FL_RED, FL_RED);
-    icon->labelfont(font_style | FL_BOLD);
+    icon->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     icon->labelsize(24 + KF * 3);
     icon->labelcolor(FL_WHITE);
 
@@ -230,9 +231,9 @@ std::string BestDirectory()
     }
 }
 
-std::string DLG_OutputFilename(const char *ext, const char *preset)
+std::string DLG_OutputFilename(const char *ext, const char *preset = nullptr)
 {
-    std::string kind_buf = StringFormat("%s %s\t*.%s", ext, _("files"), ext);
+    std::string kind_buf = std::format("{} {}\t*.{}", ext, _("files"), ext);
 
     // uppercase the first word
     for (char *p = &kind_buf[0]; *p && *p != ' '; p++)
@@ -322,68 +323,17 @@ void DLG_EditSeed(void)
 {
     std::string user_buf;
 
-#if FL_MINOR_VERSION > 3
     int         user_response;
     user_buf =
         fl_input_str(user_response, 0 /* limit */, "%s",
-                     string_seed.empty() ? std::to_string(next_rand_seed).c_str() : string_seed.c_str(),
-                     _("Enter New Seed Number or Phrase:"));
+                     string_seed.c_str(), _("Enter New Seed Number or Phrase:"));
     // cancelled?
     if (user_response < 0)
     {
         return;
     }
-#else
-    const char *fl_buf =
-        fl_input(_("Enter New Seed Number or Phrase:"), 
-                     string_seed.empty() ? std::to_string(next_rand_seed).c_str() : string_seed.c_str());
-    // cancelled?
-    if (!fl_buf)
-    {
-        return;
-    }
-    else
-    {
-        user_buf = fl_buf;
-    }
-#endif
-
-    std::string word = {user_buf.c_str(), static_cast<size_t>(user_buf.size())};
-    try
-    {
-        for (long unsigned int i = 0; i < word.size(); i++)
-        {
-            char character = word[i];
-            if (!IsDigitASCII(character))
-            {
-                throw std::runtime_error(
-                    // clang-format off
-                    _("String contains non-digits. Will process as string\n"));
-                // clang-format on
-            }
-        }
-        did_specify_seed = true;
-        next_rand_seed   = stoull(word);
-        return;
-    }
-    catch (std::invalid_argument &e)
-    {
-        (void)e;
-        printf("%s\n", _("Invalid argument. Will process as string."));
-    }
-    catch (std::out_of_range &e)
-    {
-        (void)e;
-        // clang-format off
-        printf("%s\n", _("Resulting number would be out of range. Will process as string."));
-        // clang-format on
-    }
-    catch (std::exception &e)
-    {
-        printf("%s\n", e.what());
-    }
-    string_seed = word;
-    ob_set_config("string_seed", word.c_str());
+    string_seed = user_buf;
+    ob_set_config("seed", string_seed);
     next_rand_seed   = StringHash64(string_seed);
     did_specify_seed = true;
     return;
@@ -472,7 +422,7 @@ UI_LogViewer::UI_LogViewer(int W, int H, const char *l) : Fl_Double_Window(W, H,
             but->box(button_style);
             but->visible_focus(0);
             but->color(BUTTON_COLOR);
-            but->labelfont(font_style | FL_BOLD);
+            but->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
             but->labelcolor(FONT2_COLOR);
             but->callback(quit_callback, this);
         }
@@ -774,7 +724,7 @@ UI_GlossaryViewer::UI_GlossaryViewer(int W, int H, const char *l) : Fl_Double_Wi
             but->box(button_style);
             but->visible_focus(0);
             but->color(BUTTON_COLOR);
-            but->labelfont(font_style | FL_BOLD);
+            but->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
             but->labelcolor(FONT2_COLOR);
             but->callback(quit_callback, this);
         }
@@ -798,7 +748,7 @@ UI_GlossaryViewer::~UI_GlossaryViewer()
 
 void UI_GlossaryViewer::ReadGlossary()
 {
-    std::string glossary = StringFormat("%s/language/%s.txt", install_dir.c_str(), selected_lang.c_str());
+    std::string glossary = std::format("{}/language/{}.txt", install_dir, selected_lang);
 
     if (!FileExists(glossary))
     {
@@ -824,9 +774,6 @@ void UI_GlossaryViewer::ReadGlossary()
             else
                 buffer.push_back(c);
         }
-
-        // remove any DEL characters (mainly to workaround an FLTK bug)
-        StringReplaceChar(&buffer, 0x7f, 0);
 
         buffer.push_back('\n');
 

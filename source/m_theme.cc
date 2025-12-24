@@ -500,12 +500,6 @@ class UI_ThemeWin : public Fl_Window
         main_win->menu_bar->labelsize(FL_NORMAL_SIZE * .90);
         main_win->menu_bar->redraw();
         main_win->game_box->heading->labelsize(header_font_size);
-        main_win->game_box->engine->labelsize(FL_NORMAL_SIZE);
-        main_win->game_box->engine->textsize(FL_NORMAL_SIZE);
-        main_win->game_box->engine->copy_label("                                "
-                                               "        ");
-        main_win->game_box->engine_help->copy_label("");
-        main_win->game_box->engine_help->labelsize(FL_NORMAL_SIZE);
         main_win->game_box->game_help->labelsize(FL_NORMAL_SIZE);
         main_win->game_box->game_help->copy_label("");
         main_win->game_box->game->labelsize(FL_NORMAL_SIZE);
@@ -534,12 +528,10 @@ class UI_ThemeWin : public Fl_Window
         {
             main_win->game_box->child(x)->redraw();
         }
-        main_win->game_box->engine->copy_label("Engine: ");
         main_win->game_box->game->copy_label("Game: ");
         main_win->game_box->port->copy_label("Port: ");
         main_win->game_box->length->copy_label("Length: ");
         main_win->game_box->theme->copy_label("Theme: ");
-        main_win->game_box->engine_help->copy_label("?");
         main_win->game_box->port_help->copy_label("?");
         main_win->game_box->length_help->copy_label("?");
         main_win->game_box->game_help->copy_label("?");
@@ -621,13 +613,7 @@ class UI_ThemeWin : public Fl_Window
         fl_message_font(font_style, FL_NORMAL_SIZE);
         main_win->menu_bar->textfont(font_style);
         main_win->menu_bar->redraw();
-        main_win->game_box->heading->labelfont(font_style | FL_BOLD);
-        main_win->game_box->engine->labelfont(font_style);
-        main_win->game_box->engine->textfont(font_style);
-        main_win->game_box->engine->copy_label("                                "
-                                               "        ");
-        main_win->game_box->engine_help->copy_label("");
-        main_win->game_box->engine_help->labelfont(font_style);
+        main_win->game_box->heading->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
         main_win->game_box->game_help->labelfont(font_style);
         main_win->game_box->game_help->copy_label("");
         main_win->game_box->game->labelfont(font_style);
@@ -650,18 +636,16 @@ class UI_ThemeWin : public Fl_Window
         main_win->game_box->theme->textfont(font_style);
         main_win->game_box->theme->copy_label("                                "
                                               "        ");
-        main_win->game_box->build->labelfont(font_style | FL_BOLD);
+        main_win->game_box->build->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
         main_win->game_box->quit->labelfont(font_style);
         for (int x = 0; x < main_win->game_box->children(); x++)
         {
             main_win->game_box->child(x)->redraw();
         }
-        main_win->game_box->engine->copy_label("Engine: ");
         main_win->game_box->game->copy_label("Game: ");
         main_win->game_box->port->copy_label("Port: ");
         main_win->game_box->length->copy_label("Length: ");
         main_win->game_box->theme->copy_label("Theme: ");
-        main_win->game_box->engine_help->copy_label("?");
         main_win->game_box->port_help->copy_label("?");
         main_win->game_box->length_help->copy_label("?");
         main_win->game_box->game_help->copy_label("?");
@@ -682,7 +666,7 @@ class UI_ThemeWin : public Fl_Window
                 SYS_ASSERT(M);
                 if (!M->Is_UI())
                 {
-                    M->heading->labelfont(font_style | FL_BOLD);
+                    M->heading->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
                     M->redraw();
                 }
                 std::map<std::string, UI_RChoice *>::const_iterator IT;
@@ -744,11 +728,9 @@ class UI_ThemeWin : public Fl_Window
         case 3:
             Fl::scheme("plastic");
             break;
-#if FL_MINOR_VERSION > 3
         case 4:
             Fl::scheme("oxy");
             break;
-#endif
         // Shouldn't be reached, but still
         default:
             Fl::scheme("gtk+");
@@ -795,11 +777,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     box_style = FL_PLASTIC_DOWN_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     box_style = FL_OXY_DOWN_BOX;
                     break;
-#endif
                 default:
                     box_style = FL_GTK_DOWN_BOX;
                     break;
@@ -820,11 +800,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     box_style = FL_PLASTIC_THIN_UP_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     box_style = FL_OXY_THIN_UP_BOX;
                     break;
-#endif
                 default:
                     box_style = FL_GTK_THIN_UP_BOX;
                     break;
@@ -852,11 +830,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     button_style = FL_PLASTIC_DOWN_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     button_style = FL_OXY_DOWN_BOX;
                     break;
-#endif
                 default:
                     button_style = FL_GTK_DOWN_BOX;
                     break;
@@ -877,18 +853,16 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     button_style = FL_PLASTIC_UP_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     button_style = FL_OXY_UP_BOX;
                     break;
-#endif
                 default:
                     button_style = FL_GTK_UP_BOX;
                     break;
                 }
                 break;
             case 2:
-                button_style = static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 2);
+                button_style = (Fl_Boxtype)(FL_FREE_BOXTYPE + 2);
                 break;
             case 3:
                 button_style = FL_EMBOSSED_BOX;
@@ -1000,11 +974,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 box_style = FL_PLASTIC_DOWN_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 box_style = FL_OXY_DOWN_BOX;
                 break;
-#endif
             default:
                 box_style = FL_GTK_DOWN_BOX;
                 break;
@@ -1025,11 +997,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 box_style = FL_PLASTIC_THIN_UP_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 box_style = FL_OXY_THIN_UP_BOX;
                 break;
-#endif
             default:
                 box_style = FL_GTK_THIN_UP_BOX;
                 break;
@@ -1084,11 +1054,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 button_style = FL_PLASTIC_DOWN_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 button_style = FL_OXY_DOWN_BOX;
                 break;
-#endif
             default:
                 button_style = FL_GTK_DOWN_BOX;
                 break;
@@ -1109,18 +1077,16 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 button_style = FL_PLASTIC_UP_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 button_style = FL_OXY_UP_BOX;
                 break;
-#endif
             default:
                 button_style = FL_GTK_UP_BOX;
                 break;
             }
             break;
         case 2:
-            button_style = static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 2);
+            button_style = (Fl_Boxtype)(FL_FREE_BOXTYPE + 2);
             break;
         case 3:
             button_style = FL_EMBOSSED_BOX;
@@ -1221,8 +1187,6 @@ class UI_ThemeWin : public Fl_Window
         main_win->menu_bar->textcolor(FONT_COLOR);
         main_win->menu_bar->redraw();
         main_win->game_box->heading->labelcolor(FONT_COLOR);
-        main_win->game_box->engine->labelcolor(FONT_COLOR);
-        main_win->game_box->engine_help->labelcolor(FONT_COLOR);
         main_win->game_box->game->labelcolor(FONT_COLOR);
         main_win->game_box->game_help->labelcolor(FONT_COLOR);
         main_win->game_box->port->labelcolor(FONT_COLOR);
@@ -1322,7 +1286,6 @@ class UI_ThemeWin : public Fl_Window
         {
             FONT2_COLOR = fl_rgb_color(text2_red, text2_green, text2_blue);
         }
-        main_win->game_box->engine->textcolor(FONT2_COLOR);
         main_win->game_box->game->textcolor(FONT2_COLOR);
         main_win->game_box->port->textcolor(FONT2_COLOR);
         main_win->game_box->length->textcolor(FONT2_COLOR);
@@ -1441,7 +1404,6 @@ class UI_ThemeWin : public Fl_Window
         main_win->color(GAP_COLOR, SELECTION);
         main_win->menu_bar->selection_color(SELECTION);
         main_win->redraw();
-        main_win->game_box->engine->selection_color(SELECTION);
         main_win->game_box->game->selection_color(SELECTION);
         main_win->game_box->port->selection_color(SELECTION);
         main_win->game_box->length->selection_color(SELECTION);
@@ -1774,11 +1736,7 @@ UI_ThemeWin::UI_ThemeWin(int W, int H, const char *label) : Fl_Window(W, H, labe
     opt_widget_theme = new UI_CustomMenu(cx + W * .38, cy, listwidth, KromulentHeight(24), "");
     opt_widget_theme->copy_label(_("Widget Theme: "));
     opt_widget_theme->align(FL_ALIGN_LEFT);
-#if FL_MINOR_VERSION > 3
     opt_widget_theme->add(_("Default|Gleam|Win95|Plastic|Oxy"));
-#else
-    opt_widget_theme->add(_("Default|Gleam|Win95|Plastic"));
-#endif
     opt_widget_theme->callback(callback_WidgetTheme, this);
     opt_widget_theme->value(widget_theme);
     opt_widget_theme->labelfont(font_style);

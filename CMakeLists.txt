@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12..3.20)
+cmake_minimum_required(VERSION 3.15)
 
 project(
   obsidian
@@ -6,46 +6,94 @@ project(
   VERSION 0.1.0
 )
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+option(OBSIDIAN_CONSOLE_ONLY "Build Obsidian for headless (non-GUI) use" OFF)
+option(OBSIDIAN_SANITIZE "Enable code sanitizing" OFF)
+option(OBSIDIAN_SANITIZE_UB "Enable undefined behavior sanitizing (No-op with MSVC)" OFF)
 
 string(TIMESTAMP BUILD_TIMESTAMP "%Y.%m.%d" UTC)
 add_compile_definitions(OBSIDIAN_TIMESTAMP="${BUILD_TIMESTAMP}")
-if(CONSOLE_ONLY)
+if(OBSIDIAN_CONSOLE_ONLY)
   add_compile_definitions(OBSIDIAN_CONSOLE_ONLY)
 endif()
-if(NOT WIN32 AND NOT APPLE AND NOT CONSOLE_ONLY)
+if(NOT WIN32 AND NOT OBSIDIAN_CONSOLE_ONLY)
   add_compile_definitions(USE_XFT)
 endif()
+
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  set(CLANG true)
+else()
+  set(CLANG false)
+endif()
+
 if(MSVC)
+  # These are needed for MSVC to play ball as much as possible
+  # with the /EHs- flag
+  add_definitions("-D_HAS_EXCEPTIONS=0 -D_STATIC_CPPLIB")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /fp:fast /EHs- /GR-")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:fast /EHs- /GR-")
   # get the number of logical cores for parallel build
-  cmake_host_system_information(RESULT LOGICAL_CORES QUERY NUMBER_OF_LOGICAL_CORES)
-  math(EXPR COMPILE_CORES "${LOGICAL_CORES} - 1")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /MD /MP${COMPILE_CORES}")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MD /EHa /MP${COMPILE_CORES}")
-  if(NOT CONSOLE_ONLY)
+  if (NOT CLANG)
+    cmake_host_system_information(RESULT LOGICAL_CORES QUERY NUMBER_OF_LOGICAL_CORES)
+    math(EXPR COMPILE_CORES "${LOGICAL_CORES} - 1")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /MD /MP${COMPILE_CORES}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MD /MP${COMPILE_CORES}")
+  endif()
+  # To use the sanitizer with MSVC, you will need to either have your Visual Studio
+  # or Build Tools install in your PATH variable, or copy the appropriate DLL to the program
+  # folder before launching. The paths and filenames can vary based on your setup,
+  # but, as an example, for a 64-bit Debug build using MSVC 2022 Build Tools, the path would be
+  # C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\<version number>\bin\Hostx64\x64
+  # and the file would be clang_rt.asan_dbg_dynamic-x86_64.dll
+  if (OBSIDIAN_SANITIZE AND MSVC_VERSION GREATER_EQUAL 1929)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /fsanitize=address /Oy-")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fsanitize=address /Oy-")
+  endif()
+  if (OBSIDIAN_SANITIZE_UB)
+    message( SEND_ERROR "OBSIDIAN_SANITIZE_UB not supported for MSVC; disabling" )
+    set(OBSIDIAN_SANITIZE_UB OFF)
+  endif()
+  if(NOT OBSIDIAN_CONSOLE_ONLY)
     set(CMAKE_EXE_LINKER_FLAGS "/SUBSYSTEM:WINDOWS")
   endif()
+else()
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -fno-exceptions -fno-strict-aliasing")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fno-exceptions -fno-rtti -fno-strict-aliasing")
+  if (OBSIDIAN_SANITIZE AND OBSIDIAN_SANITIZE_UB)
+    message( FATAL_ERROR "Enable only one of OBSIDIAN_SANITIZE or OBSIDIAN_SANITIZE_UB!" )
+  elseif (OBSIDIAN_SANITIZE)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")
+    if (NOT CLANG)
+      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libasan")
+    endif()
+  elseif (OBSIDIAN_SANITIZE_UB)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=undefined -g -fno-omit-frame-pointer")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=undefined -g -fno-omit-frame-pointer")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=undefined -g")
+    if (NOT CLANG)
+      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libubsan")
+    endif()
+  endif()
+  if (MSYS)
+    set(CMAKE_EXE_LINKER_FLAGS "-static -mwindows ${CMAKE_EXE_LINKER_FLAGS}")
+  endif()
 endif()
-if (MSYS)
-  set(CMAKE_EXE_LINKER_FLAGS "-static -mwindows ${CMAKE_EXE_LINKER_FLAGS}")
-endif()
-if(APPLE OR ${CMAKE_SYSTEM} MATCHES "BSD")
+
+if(${CMAKE_SYSTEM} MATCHES "BSD")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I /usr/local/include")
 endif()
 if(${CMAKE_SYSTEM} MATCHES "OpenBSD")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I /usr/X11R6/include")
 endif()
 
-if(UNIX)
-  if(NOT CONSOLE_ONLY
-     AND NOT APPLE
-  )
-    find_package(Fontconfig REQUIRED)
-  endif()
-  if (NOT CONSOLE_ONLY)
-    find_package(FLTK REQUIRED)
-  endif()
+if(UNIX AND NOT OBSIDIAN_CONSOLE_ONLY)
+  find_package(Fontconfig REQUIRED)
 endif()
 
 add_subdirectory(libraries)
@@ -65,7 +113,6 @@ set(OBSIDIAN_SOURCE_FILES
     source/dm_prefab.cc
     source/ff_main.cc
     source/g_doom.cc
-    source/g_wolf.cc
     source/lex.yy.c
     source/lib_argv.cc
     source/lib_midi.cc
@@ -84,17 +131,14 @@ set(OBSIDIAN_SOURCE_FILES
     source/poly.cc
     source/poly_util.cc
     source/poly_wad.cc
-    source/slump_dump.cc
-    source/slump_main.cc
-    source/slump.cc
     source/sys_assert.cc
     source/sys_debug.cc
-    source/sys_xoshiro.cc
+    source/sys_twister.cc
     source/tx_forge.cc
     source/tx_skies.cc
 )
 
-if (NOT CONSOLE_ONLY)
+if (NOT OBSIDIAN_CONSOLE_ONLY)
   set(OBSIDIAN_SOURCE_FILES
     ${OBSIDIAN_SOURCE_FILES}
     source/m_about.cc
@@ -133,34 +177,11 @@ add_custom_command(
 )
 
 if(UNIX)
-  if(APPLE)
-    if(NOT CONSOLE_ONLY)
+  if(${CMAKE_SYSTEM} MATCHES "BSD")
+    if(NOT OBSIDIAN_CONSOLE_ONLY)
       target_link_libraries(
         obsidian
-        PRIVATE fastPRNG
-                fltk
-                fltk_images
-                minilua
-                miniz
-                physfs-static
-                steve
-                "-framework Cocoa"
-                "-framework CoreGraphics"
-                "-framework CoreText"
-                "-framework QuartzCore"
-      )
-    else()
-      target_link_libraries(
-        obsidian PRIVATE fastPRNG minilua miniz physfs-static steve
-      )
-    endif()
-  elseif(${CMAKE_SYSTEM} MATCHES "BSD")
-    if(NOT CONSOLE_ONLY)
-      target_link_libraries(
-        obsidian
-        PRIVATE fastPRNG
-                fltk
-                fltk_images
+        PRIVATE fltk::fltk
                 minilua
                 miniz
                 physfs-static
@@ -168,16 +189,14 @@ if(UNIX)
       )
     else()
       target_link_libraries(
-        obsidian PRIVATE fastPRNG minilua miniz physfs-static steve
+        obsidian PRIVATE minilua miniz physfs-static steve
       )
     endif()
   else()
-    if(NOT CONSOLE_ONLY)
+    if(NOT OBSIDIAN_CONSOLE_ONLY)
       target_link_libraries(
         obsidian
-        PRIVATE fastPRNG
-                fltk
-                fltk_images
+        PRIVATE fltk::fltk
                 minilua
                 miniz
                 physfs-static
@@ -188,8 +207,7 @@ if(UNIX)
     else()
       target_link_libraries(
         obsidian
-        PRIVATE fastPRNG
-                minilua
+        PRIVATE minilua
                 miniz
                 physfs-static
                 pthread
@@ -198,12 +216,10 @@ if(UNIX)
     endif()
   endif()
 else()
-  if(NOT CONSOLE_ONLY)
+  if(NOT OBSIDIAN_CONSOLE_ONLY)
     target_link_libraries(
       obsidian
-      PRIVATE fastPRNG
-              fltk
-              fltk_images
+      PRIVATE fltk::fltk
               minilua
               miniz
               physfs-static
@@ -211,7 +227,7 @@ else()
     )
   else()
     target_link_libraries(
-      obsidian PRIVATE fastPRNG minilua miniz physfs-static steve
+      obsidian PRIVATE minilua miniz physfs-static steve
     )
   endif()
 endif()

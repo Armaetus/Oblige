@@ -22,6 +22,7 @@
 #include <FL/fl_ask.H>
 #include <locale.h>
 
+#include <format>
 #include <stdexcept>
 
 #include "lib_util.h"
@@ -30,7 +31,13 @@
 #include "main.h"
 #include "sys_assert.h"
 #include "sys_macro.h"
-#include "sys_xoshiro.h"
+#include "sys_twister.h"
+
+typedef struct
+{
+    UI_Module     *mod;
+    UI_CustomMods *parent;
+} mod_enable_callback_data_t;
 
 UI_Module::UI_Module(int X, int Y, int W, int H, const std::string &id, const std::string &label,
                      const std::string &tip, int red, int green, int blue, bool suboptions)
@@ -68,7 +75,7 @@ UI_Module::UI_Module(int X, int Y, int W, int H, const std::string &id, const st
                              KromulentHeight(24), "");
         heading->copy_label(label.c_str());
         heading->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE);
-        heading->labelfont(font_style | FL_BOLD);
+        heading->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     }
 
     if (!tip.empty())
@@ -91,6 +98,15 @@ UI_Module::UI_Module(int X, int Y, int W, int H, const std::string &id, const st
 
 UI_Module::~UI_Module()
 {
+    if (mod_button)
+    {
+        if (mod_button->user_data())
+        {
+            mod_enable_callback_data_t *cb_data = (mod_enable_callback_data_t *)mod_button->user_data();
+            delete cb_data;
+            cb_data = nullptr;
+        }
+    }
 }
 
 bool UI_Module::Is_UI() const
@@ -110,7 +126,7 @@ void UI_Module::AddHeader(const std::string &opt, const std::string &label, int 
     rhead->mod_label = new Fl_Box(rhead->x(), rhead->y(), rhead->w() * .95, KromulentHeight(24), "");
     rhead->mod_label->copy_label(label.c_str());
     rhead->mod_label->align((FL_ALIGN_CENTER | FL_ALIGN_INSIDE | FL_ALIGN_CLIP));
-    rhead->mod_label->labelfont(font_style + 1);
+    rhead->mod_label->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     rhead->mod_label->labelsize(header_font_size - 2);
 
     if (!mod_button->value())
@@ -182,7 +198,7 @@ void UI_Module::AddOption(const std::string &opt, const std::string &label, cons
     UI_RChoice *rch = new UI_RChoice(nx, ny + KromulentHeight(15), nw * .95, KromulentHeight(24));
 
     rch->mod_label = new Fl_Box(rch->x(), rch->y(), rch->w() * .40, KromulentHeight(24), "");
-    rch->mod_label->copy_label(StringFormat("%s: ", label.c_str()).c_str());
+    rch->mod_label->copy_label(std::format("{}: ", label).c_str());
     rch->mod_label->align(FL_ALIGN_RIGHT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
     rch->mod_label->labelfont(font_style);
     rch->mod_label->copy_tooltip(tip.c_str());
@@ -252,7 +268,7 @@ void UI_Module::AddSliderOption(const std::string &opt, std::string &label, cons
         longtip = tip;
     }
 
-    label = StringFormat("%s: ", label.c_str());
+    label = std::format("{}: ", label);
 
     UI_RSlide *rsl = new UI_RSlide(nx, ny + KromulentHeight(15), nw * .95, KromulentHeight(24));
 
@@ -368,33 +384,13 @@ void UI_Module::AddSliderOption(const std::string &opt, std::string &label, cons
         if (!map_string.empty())
         {
             std::string::size_type temp_pos = map_string.find(':');
-            if (temp_pos == std::string::npos)
+            if (temp_pos != std::string::npos)
             {
-                goto skippreset;
-            }
-            double key;
-            try
-            {
-                key                      = stod(map_string.substr(0, temp_pos));
+                double key = StringToDouble(map_string.substr(0, temp_pos));
                 std::string value        = map_string.substr(temp_pos + 1);
                 rsl->preset_choices[key] = value;
             }
-            catch (std::invalid_argument &e)
-            {
-                fl_message("Invalid argument for preset slider value!");
-                goto skippreset;
-            }
-            catch (std::out_of_range &e)
-            {
-                fl_message("Number out of range for preset slider value!");
-                goto skippreset;
-            }
-            catch (std::exception &e)
-            {
-                fl_message("%s", e.what());
-            }
         }
-    skippreset:
         if (pos != std::string::npos)
         {
             oldpos = pos + 1;
@@ -459,7 +455,7 @@ void UI_Module::AddButtonOption(const std::string &opt, const std::string &label
     UI_RButton *rbt = new UI_RButton(nx, ny + KromulentHeight(15), nw * .95, KromulentHeight(24));
 
     rbt->mod_label = new Fl_Box(rbt->x(), rbt->y(), rbt->w() * .40, KromulentHeight(24), "");
-    rbt->mod_label->copy_label(StringFormat("%s: ", label.c_str()).c_str());
+    rbt->mod_label->copy_label(std::format("{}: ", label).c_str());
     rbt->mod_label->align(FL_ALIGN_RIGHT | FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
     rbt->mod_label->labelfont(font_style);
     rbt->mod_label->copy_tooltip(tip.c_str());
@@ -689,7 +685,7 @@ void UI_Module::randomize_Values(std::vector<std::string> selected_randomize_gro
         {
             if (StringCompare(group, M->randomize_group) == 0)
             {
-                M->mod_menu->value(xoshiro_Between(0, M->mod_menu->size() - 1));
+                M->mod_menu->value(twister_UInt() % M->mod_menu->size());
                 M->mod_menu->do_callback();
                 break;
             }
@@ -710,7 +706,8 @@ void UI_Module::randomize_Values(std::vector<std::string> selected_randomize_gro
                     M->nan_options->do_callback();
                 }
                 M->mod_slider->value(
-                    M->mod_slider->round(xoshiro_Between(M->mod_slider->minimum(), M->mod_slider->maximum())));
+                    M->mod_slider->round(M->mod_slider->minimum() + 
+                        (M->mod_slider->maximum() - M->mod_slider->minimum()) * twister_Double()));
                 M->mod_slider->do_callback();
                 break;
             }
@@ -725,7 +722,7 @@ void UI_Module::randomize_Values(std::vector<std::string> selected_randomize_gro
         {
             if (StringCompare(group, M->randomize_group) == 0)
             {
-                if (xoshiro_Float() < 0.5)
+                if (twister_Double() < 0.5)
                 {
                     M->mod_check->value(0);
                 }
@@ -777,40 +774,20 @@ bool UI_Module::SetSliderOption(const std::string &option, const std::string &va
     {
         return false;
     }
-    double double_value;
-    try
+    double double_value = StringToDouble(value);
+    if (limit_break)
     {
-        double_value = stod(value);
-        if (limit_break)
-        {
-            rsl->mod_slider->value(double_value);
-        }
-        else
-        {
-            rsl->mod_slider->value(rsl->mod_slider->clamp(double_value));
-        }
-        rsl->mod_slider->do_callback();
-        if (rsl->nan_choices.size() > 0)
-        {
-            rsl->nan_options->value(0);
-            rsl->nan_options->do_callback();
-        }
+        rsl->mod_slider->value(double_value);
     }
-    catch (std::invalid_argument &e)
+    else
     {
-        // If it is a nan value instead
-        rsl->nan_options->value(rsl->nan_options->find_index(value.c_str()));
+        rsl->mod_slider->value(rsl->mod_slider->clamp(double_value));
+    }
+    rsl->mod_slider->do_callback();
+    if (rsl->nan_choices.size() > 0)
+    {
+        rsl->nan_options->value(0);
         rsl->nan_options->do_callback();
-    }
-    catch (std::out_of_range &e)
-    {
-        // This shouldn't happen
-        fl_message("%s", e.what());
-    }
-    catch (std::exception &e)
-    {
-        // This shouldn't happen either
-        fl_message("%s", e.what());
     }
     return true;
 }
@@ -963,7 +940,7 @@ void UI_Module::callback_PresetCheck(Fl_Widget *w, void *data)
     }
     else
     {
-        new_label = StringFormat("%2g", value);
+        new_label = std::format("{}", value);
         current_slider->unit_label->copy_label(new_label.append(current_slider->units).c_str());
     }
 }
@@ -1097,58 +1074,24 @@ void UI_Module::callback_ShowHelp(Fl_Widget *w, void *data)
 void UI_Module::callback_ManualEntry(Fl_Widget *w, void *data)
 {
     UI_ManualEntry *mod_entry = (UI_ManualEntry *)w;
-
     UI_RSlide *current_slider = (UI_RSlide *)mod_entry->parent();
-
-    std::string float_buf;
-    double      new_value = 0;
-    std::string string_value;
-
-    float_buf = StringFormat("%2g", current_slider->mod_slider->value());
-
-tryagain:
-
-    const char *value_buf = fl_input("%s", float_buf.c_str(), _("Enter Value:"));
+    const char *value_buf = fl_input("%s", std::format("{}", current_slider->mod_slider->value()).c_str(), _("Enter Value:"));
 
     // cancelled?
     if (!value_buf)
     {
-        goto end;
+        return;
     }
-
-    string_value = value_buf;
-
-    try
-    {
-        new_value = stod(string_value);
-    }
-    catch (std::invalid_argument &e)
-    {
-        fl_message("Invalid argument! Try again!");
-        goto tryagain;
-    }
-    catch (std::out_of_range &e)
-    {
-        fl_message("Number out of range! Try again!");
-        goto tryagain;
-    }
-    catch (std::exception &e)
-    {
-        fl_message("%s", e.what());
-    }
-
     if (limit_break)
     {
-        current_slider->mod_slider->value(current_slider->mod_slider->round(new_value));
+        current_slider->mod_slider->value(current_slider->mod_slider->round(StringToDouble(value_buf)));
     }
     else
     {
         current_slider->mod_slider->value(
-            current_slider->mod_slider->clamp(current_slider->mod_slider->round(new_value)));
+            current_slider->mod_slider->clamp(current_slider->mod_slider->round(StringToDouble(value_buf))));
     }
     current_slider->mod_slider->do_callback();
-
-end:;
 }
 
 void UI_Module::callback_NanOptions(Fl_Widget *w, void *data)
@@ -1188,7 +1131,7 @@ UI_CustomMods::UI_CustomMods(int X, int Y, int W, int H, const std::string &labe
 
     copy_label(label.c_str());
 
-    labelfont(font_style | FL_BOLD);
+    labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
 
     color(GAP_COLOR, GAP_COLOR);
 
@@ -1227,23 +1170,16 @@ UI_CustomMods::~UI_CustomMods()
 {
 }
 
-typedef struct
-{
-    UI_Module     *mod;
-    UI_CustomMods *parent;
-} mod_enable_callback_data_t;
-
 void UI_CustomMods::AddModule(const std::string &id, const std::string &label, const std::string &tip, int red,
                               int green, int blue, bool suboptions)
 {
     UI_Module *M = new UI_Module(mx, my, mw - 4, KromulentHeight(34), id, label, tip, red, green, blue, suboptions);
 
-    mod_enable_callback_data_t *cb_data = new mod_enable_callback_data_t;
-    cb_data->mod                        = M;
-    cb_data->parent                     = this;
-
     if (!M->Is_UI())
     {
+        mod_enable_callback_data_t *cb_data = new mod_enable_callback_data_t;
+        cb_data->mod                        = M;
+        cb_data->parent                     = this;
         M->mod_button->callback(callback_ModEnable, cb_data);
     }
 

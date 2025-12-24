@@ -21,6 +21,8 @@
 
 #include <FL/fl_ask.H>
 
+#include <format>
+
 #include "lib_util.h"
 #include "m_trans.h"
 #include "main.h"
@@ -95,9 +97,8 @@ UI_About::UI_About(int W, int H, const char *label) : Fl_Window(W, H, label), wa
     int cy = KromulentHeight(6);
 
     Fl_Box *box = new Fl_Box(0, cy, W, KromulentHeight(50), "");
-    box->copy_label(StringFormat("%s %s\n\"%s\" Build %s", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION,
-                                 OBSIDIAN_CODE_NAME.c_str(), OBSIDIAN_VERSION)
-                        .c_str());
+    box->copy_label(std::format("{} {}\n\"{}\" Build {}", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION,
+                                 OBSIDIAN_CODE_NAME, OBSIDIAN_VERSION).c_str());
     box->align(FL_ALIGN_INSIDE | FL_ALIGN_CENTER | FL_ALIGN_WRAP | FL_ALIGN_CLIP);
     box->labelsize(FL_NORMAL_SIZE * 5 / 3);
     box->labelfont(font_style);

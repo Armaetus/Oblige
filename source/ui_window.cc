@@ -25,9 +25,18 @@
 #include "m_trans.h"
 #include "main.h"
 
-#if (FL_MAJOR_VERSION != 1 || FL_MINOR_VERSION < 3)
-#error "Require FLTK version 1.3.0 or later"
+#if (FL_MAJOR_VERSION != 1 || FL_MINOR_VERSION < 4)
+#error "Require FLTK version 1.4.0 or later"
 #endif
+
+// Program menu stuff
+extern void DLG_AboutText();
+extern void DLG_OptionsEditor();
+extern void DLG_ThemeEditor();
+extern void DLG_EditSeed();
+extern void DLG_ViewLogs();
+extern void DLG_ViewGlossary();
+extern void DLG_ManageConfig();
 
 static constexpr uint16_t BASE_WINDOW_W = 816;
 static constexpr uint16_t BASE_WINDOW_H = 512;
@@ -52,19 +61,6 @@ static void main_win_surprise_go_CB(Fl_Widget *w, void *data)
         tab->SurpriseMe();
     }
     did_randomize = true;
-}
-
-int UI_MainWin::handle(int event)
-{
-    if (Fl::event_key() == FL_Escape)
-    {
-        if (clippy->shown())
-        {
-            clippy->hide();
-            return 1;
-        }
-    }
-    return Fl_Window::handle(event);
 }
 
 //
@@ -109,8 +105,6 @@ UI_MainWin::UI_MainWin(int W, int H, const char *title) : Fl_Double_Window(W, H,
     build_box = new UI_Build(0, TOP_H + KromulentHeight(4), LEFT_W, BOT_H);
 
     mod_tabs = new UI_CustomTabs(LEFT_W + KromulentHeight(4), KromulentHeight(22), MOD_W * 2, H - KromulentHeight(22));
-
-    clippy = new UI_Clippy();
 
     visible_focus(0);
 

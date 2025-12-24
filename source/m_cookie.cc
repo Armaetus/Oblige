@@ -23,6 +23,7 @@
 
 #include <locale.h>
 
+#include <format>
 #include <stdexcept>
 
 #include "lib_argv.h"
@@ -80,33 +81,10 @@ static void Cookie_SetValue(std::string name, const std::string &value)
 
         if (context == cookie_context_e::Arguments || keep_seed)
         {
-            try
-            {
-                next_rand_seed = stoull(value);
-                return;
-            }
-            catch (std::invalid_argument &e)
-            {
-                (void)e;
-                if (!value.empty())
-                {
-                    string_seed = value;
-                    ob_set_config("string_seed", value.c_str());
-                    next_rand_seed = StringHash64(string_seed);
-                }
-                else
-                {
-                    LogPrint("Invalid argument. Will generate new seed.\n");
-                }
-            }
-            catch (std::out_of_range &e)
-            {
-                (void)e;
-                LogPrint("Resulting number would be out of range. Will generate new "
-                         "seed.\n");
-            }
+            string_seed = value;
+            ob_set_config("seed", value);
+            next_rand_seed = StringHash64(string_seed);
         }
-
         return;
     }
 
@@ -510,7 +488,7 @@ class RecentFiles_c
 
         if (for_menu)
         {
-            buffer = StringFormat("%-.32s", name.c_str());
+            buffer = std::format("{}", name);
         }
         else
         {

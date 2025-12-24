@@ -979,7 +979,6 @@ OB_MODULES["zdoom_specials_heretic"] =
 
   priority = 68,
 
-  engine = "idtech_1",
   port = "zdoom",
   where = "other",
 

@@ -22,6 +22,7 @@
 #include "m_lua.h"
 
 #include <algorithm>
+#include <format>
 
 #include "ff_main.h"
 #include "lib_midi.h"
@@ -32,7 +33,7 @@
 #include "physfs.h"
 #include "sys_assert.h"
 #include "sys_debug.h"
-#include "sys_xoshiro.h"
+#include "sys_twister.h"
 
 static lua_State *LUA_ST;
 
@@ -56,16 +57,16 @@ int gui_format_prefix(lua_State *L)
     const char *game       = luaL_checkstring(L, 2);
     const char *port       = luaL_checkstring(L, 3);
     const char *theme      = luaL_checkstring(L, 4);
-    std::string format     = luaL_checkstring(L, 5);
+    const char *format     = luaL_checkstring(L, 5);
 
-    SYS_ASSERT(levelcount && game && theme && (!format.empty()));
+    SYS_ASSERT(levelcount && game && theme && format);
 
     if (StringCompare(format, "custom") == 0)
     {
         format = custom_prefix.c_str();
     }
 
-    std::string result = ff_main(levelcount, game, port, theme, OBSIDIAN_SHORT_VERSION, format.c_str());
+    std::string result = ff_main(levelcount, game, port, theme, OBSIDIAN_SHORT_VERSION, format);
 
     if (result.empty())
     {
@@ -189,18 +190,6 @@ int gui_config_line(lua_State *L)
     conf_line_buffer->push_back(res);
 
     return 0;
-}
-
-// LUA: mkdir(dir_name)
-//
-int gui_mkdir(lua_State *L)
-{
-    const char *name = luaL_checkstring(L, 1);
-
-    bool result = MakeDirectory(name);
-
-    lua_pushboolean(L, result ? 1 : 0);
-    return 1;
 }
 
 // LUA: get_filename_base()
@@ -1198,14 +1187,14 @@ int gui_abort(lua_State *L)
 //
 int gui_random(lua_State *L)
 {
-    lua_Number value = xoshiro_Double();
+    lua_Number value = twister_Double();
     lua_pushnumber(L, value);
     return 1;
 }
 
 int gui_random_int(lua_State *L)
 {
-    lua_Integer value = xoshiro_UInt();
+    lua_Integer value = twister_UInt();
     lua_pushnumber(L, value);
     return 1;
 }
@@ -1213,7 +1202,7 @@ int gui_random_int(lua_State *L)
 int gui_reseed_rng(lua_State *L)
 {
     int seed = luaL_checkinteger(L, 1);
-    xoshiro_Reseed(seed);
+    twister_Reseed(seed);
     return 0;
 }
 
@@ -1289,11 +1278,11 @@ int gui_minimap_disable(lua_State *L)
     if (main_win)
     {
         main_win->build_box->mini_map->EmptyMap();
-        std::string genny = luaL_checkstring(L, 1);
+        const char *genny = luaL_checkstring(L, 1);
+        SYS_ASSERT(genny);
         // clang-format off
-        main_win->build_box->alt_disp->copy_label(StringFormat("%s %s -\n%s", 
-            _("Using"),
-            genny.c_str(), _("Preview Not Available")).c_str());
+        main_win->build_box->alt_disp->copy_label(std::format("{} {} -\n{}", 
+            _("Using"), genny, _("Preview Not Available")).c_str());
         // clang-format on
     }
 #endif
@@ -1383,27 +1372,19 @@ int gui_minimap_fill_box(lua_State *L)
     return 0;
 }
 
+extern void TransferMEMtoWAD(const uint8_t *data, size_t length, const char *dest_lump);
+
 int generate_midi_track(lua_State *L)
 {
     const char *midi_config = luaL_checkstring(L, 1);
     const char *midi_file   = luaL_checkstring(L, 2);
 
-    int value = steve_generate(midi_config, midi_file) ? 1 : 0;
-    lua_pushinteger(L, value);
+    std::string steve_output = steve_generate(midi_config);
 
-    return 1;
-}
+    if (!steve_output.empty())
+        TransferMEMtoWAD((const uint8_t *)steve_output.data(), steve_output.size(), midi_file);
 
-int remove_temp_file(lua_State *L)
-{
-    std::string path = PathAppend(home_dir, "temp");
-
-    const char *temp_file = luaL_checkstring(L, 1);
-
-    path = PathAppend(path, GetFilename(temp_file));
-
-    if (FileExists(path))
-        FileDelete(path);
+    Main::Ticker();
 
     return 0;
 }
@@ -1427,11 +1408,6 @@ extern int CSG_tex_property(lua_State *L);
 extern int CSG_add_brush(lua_State *L);
 extern int CSG_add_entity(lua_State *L);
 extern int CSG_trace_ray(lua_State *L);
-
-extern int WF_wolf_block(lua_State *L);
-extern int WF_wolf_read(lua_State *L);
-extern int v094_begin_wolf_level(lua_State *L);
-extern int v094_end_wolf_level(lua_State *L);
 
 namespace Doom
 {
@@ -1465,13 +1441,6 @@ extern int title_draw_disc(lua_State *L);
 extern int title_draw_clouds(lua_State *L);
 extern int title_draw_planet(lua_State *L);
 extern int title_load_image(lua_State *L);
-extern int v094_begin_level(lua_State *L);
-extern int v094_end_level(lua_State *L);
-extern int v094_add_thing(lua_State *L);
-extern int v094_add_vertex(lua_State *L);
-extern int v094_add_linedef(lua_State *L);
-extern int v094_add_sidedef(lua_State *L);
-extern int v094_add_sector(lua_State *L);
 } // namespace Doom
 
 extern int wadfab_load(lua_State *L);
@@ -1532,7 +1501,6 @@ static const luaL_Reg gui_script_funcs[] = {
     {"set_import_dir", gui_set_import_dir},
     {"get_install_dir", gui_get_install_dir},
     {"scan_directory", gui_scan_directory},
-    {"mkdir", gui_mkdir},
     {"get_filename_base", gui_get_filename_base},
     {"get_file_extension", gui_get_file_extension},
     {"get_save_path", gui_get_save_path},
@@ -1553,12 +1521,6 @@ static const luaL_Reg gui_script_funcs[] = {
     {"minimap_finish", gui_minimap_finish},
     {"minimap_draw_line", gui_minimap_draw_line},
     {"minimap_fill_box", gui_minimap_fill_box},
-
-    // Wolf-3D functions
-    {"wolf_block", WF_wolf_block},
-    {"wolf_read", WF_wolf_read},
-    {"v094_begin_wolf_level", v094_begin_wolf_level},
-    {"v094_end_wolf_level", v094_end_wolf_level},
 
     // Doom/Heretic/Hexen functions
     {"wad_name_gfx", Doom::wad_name_gfx},
@@ -1614,20 +1576,8 @@ static const luaL_Reg gui_script_funcs[] = {
     {"spots_get_items", SPOT_get_items},
     {"spots_end", SPOT_end},
 
-    // v094 functions
-    {"v094_begin_level", Doom::v094_begin_level},
-    {"v094_end_level", Doom::v094_end_level},
-    {"v094_add_thing", Doom::v094_add_thing},
-    {"v094_add_vertex", Doom::v094_add_vertex},
-    {"v094_add_linedef", Doom::v094_add_linedef},
-    {"v094_add_sidedef", Doom::v094_add_sidedef},
-    {"v094_add_sector", Doom::v094_add_sector},
-
     // MIDI generation
     {"generate_midi_track", generate_midi_track},
-
-    // Miscellany
-    {"remove_temp_file", remove_temp_file},
 
     {NULL, NULL} // the end
 };
@@ -1704,13 +1654,11 @@ static bool Script_CallFunc(const std::string &func_name, int nresult = 0, const
 #ifndef OBSIDIAN_CONSOLE_ONLY
         if (main_win)
         {
-            main_win->label(StringFormat("%s %s %s \"%s\"", _("[ ERROR ]"), OBSIDIAN_TITLE.c_str(),
-                                         OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                                .c_str());
+            main_win->label(std::format("{} {} {} \"{}\"", _("[ ERROR ]"), OBSIDIAN_TITLE,
+                                         OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
             DLG_ShowError("%s: %s", _("Script Error: "), err_msg);
             main_win->label(
-                StringFormat("%s %s \"%s\"", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                    .c_str());
+                std::format("{} {} \"{}\"", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
         }
 #endif
         lua_pop(LUA_ST, 2); // ob_traceback, message
@@ -1794,7 +1742,7 @@ static int my_loadfile(lua_State *L, const std::string &filename)
         lua_settop(L, fnameindex);
         status = LUA_ERRFILE;
 
-        lua_pushstring(L, StringFormat("file read error: %s", info.error_msg.c_str()).c_str());
+        lua_pushstring(L, std::format("file read error: {}", info.error_msg).c_str());
     }
 
     lua_remove(L, fnameindex);
@@ -2028,7 +1976,7 @@ std::string ob_get_param(const std::string &parameter)
 
 bool ob_hexen_ceiling_check(int thing_id)
 {
-    if (!Script_CallFunc("ob_hexen_ceiling_check", 1, {NumToString(thing_id)}))
+    if (!Script_CallFunc("ob_hexen_ceiling_check", 1, {std::format("{}", thing_id)}))
     {
         return false;
     }
@@ -2124,9 +2072,8 @@ bool ob_build_cool_shit()
 #ifndef OBSIDIAN_CONSOLE_ONLY
         if (main_win)
         {
-            main_win->label(StringFormat("%s %s %s \"%s\"", _("[ ERROR ]"), OBSIDIAN_TITLE.c_str(),
-                                         OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                                .c_str());
+            main_win->label(std::format("{} {} {} \"{}\"", _("[ ERROR ]"), OBSIDIAN_TITLE,
+                                         OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
         }
 #endif
         ProgStatus("%s", _("Script Error"));
@@ -2134,8 +2081,7 @@ bool ob_build_cool_shit()
         if (main_win)
         {
             main_win->label(
-                StringFormat("%s %s \"%s\"", OBSIDIAN_TITLE.c_str(), OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME.c_str())
-                    .c_str());
+                std::format("{} {} \"{}\"", OBSIDIAN_TITLE, OBSIDIAN_SHORT_VERSION, OBSIDIAN_CODE_NAME).c_str());
 #ifdef _WIN32
             Main::Blinker();
 #endif

@@ -35,7 +35,7 @@ UI_Game::UI_Game(int X, int Y, int W, int H) : Fl_Group(X, Y, W, H)
     int button_h = KromulentHeight(30);
     int button_x = X + KromulentWidth(25);
 
-    int y_step = KromulentHeight(30);
+    int y_step = KromulentHeight(32);
 
     int cx = X + W * 0.29;
     int cy = Y + KromulentHeight(4);
@@ -44,26 +44,13 @@ UI_Game::UI_Game(int X, int Y, int W, int H) : Fl_Group(X, Y, W, H)
                          _("Game Settings"));
     heading->align(FL_ALIGN_LEFT | FL_ALIGN_INSIDE);
     heading->labeltype(FL_NORMAL_LABEL);
-    heading->labelfont(font_style | FL_BOLD);
+    heading->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     heading->labelsize(header_font_size);
 
-    cy = Y + KromulentHeight(32);
+    cy = Y + KromulentHeight(36);
 
     int cw = W * 0.50;
-    int ch = KromulentHeight(22);
-
-    engine = new UI_RChoiceMenu(cx, cy, cw, ch, "");
-    engine->copy_label(_("Engine: "));
-    engine->align(FL_ALIGN_LEFT);
-    engine->labelfont(font_style);
-    engine->textcolor(FONT2_COLOR);
-    engine->selection_color(SELECTION);
-    engine->callback(callback_Engine, this);
-    engine_help = new UI_HelpLink(cx + cw, cy, W * 0.10, ch);
-    engine_help->labelfont(font_style);
-    engine_help->callback(callback_EngineHelp, this);
-
-    cy += y_step;
+    int ch = KromulentHeight(26);
 
     game = new UI_RChoiceMenu(cx, cy, cw, ch, "");
     game->copy_label(_("Game: "));
@@ -112,7 +99,7 @@ UI_Game::UI_Game(int X, int Y, int W, int H) : Fl_Group(X, Y, W, H)
     theme->selection_color(SELECTION);
     theme->callback(callback_Theme, this);
 
-    cy += y_step;
+    cy += y_step * 1.25;
 
     build = new Fl_Button(button_x, cy, button_w, button_h, _("Build"));
     build->visible_focus(0);
@@ -120,7 +107,7 @@ UI_Game::UI_Game(int X, int Y, int W, int H) : Fl_Group(X, Y, W, H)
     build->align(FL_ALIGN_INSIDE | FL_ALIGN_CLIP);
     build->color(BUTTON_COLOR);
     build->labelcolor(FONT2_COLOR);
-    build->labelfont(font_style | FL_BOLD);
+    build->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     build->labelsize(header_font_size);
     build->callback(build_callback, this);
     build->shortcut(FL_F + 2);
@@ -145,22 +132,6 @@ UI_Game::~UI_Game()
 {
 }
 
-void UI_Game::callback_Engine(Fl_Widget *w, void *data)
-{
-    UI_Game *that = (UI_Game *)data;
-
-    ob_set_config("engine", that->engine->GetID());
-
-    if (StringCompare(that->engine->GetID(), "idtech_0") == 0)
-    {
-        that->theme->deactivate();
-    }
-    else
-    {
-        that->theme->activate();
-    }
-}
-
 void UI_Game::callback_Game(Fl_Widget *w, void *data)
 {
     UI_Game *that = (UI_Game *)data;
@@ -181,7 +152,7 @@ void UI_Game::callback_GameHelp(Fl_Widget *w, void *data)
     win->set_modal();
     win->show();
     // clang-format off
-    buff->text(_("Available Games:\n\nid Tech 0:\n\nWolfenstein 3D\n\nSpear of Destiny\n\nNoah's Ark 3D\n\nOperation Body Count: Note, this game is less stable than its other id Tech 0 counterparts!\n\nid Tech 1:\n\nDoom 2\n\nDoom\n\nThe Ultimate Doom\n\nPlutonia: Part of Final Doom\n\nTNT: Evilution: Part of Final Doom\n\nHeretic\n\nChex 3 Vanilla: Unofficial repackaging of Chex Quest 3 for non-ZDoom derived engines. SLUMP support only.\n\nHacX 1.2: SLUMP support only.\n\nREKKR: SLUMP support only.\n\nHarmony Compat: Harmony re-release for non-ZDoom derived engines. Must be run as a PWAD in conjuction with the Doom 2/Freedoom 2 IWAD. SLUMP support only.\n\nStrife: SLUMP support only."));
+    buff->text(_("Available Games:\n\nDoom 2\n\nDoom\n\nThe Ultimate Doom\n\nPlutonia: Part of Final Doom\n\nTNT: Evilution: Part of Final Doom\n\nHeretic"));
     // clang-format on
 }
 
@@ -190,15 +161,6 @@ void UI_Game::callback_Port(Fl_Widget *w, void *data)
     UI_Game *that = (UI_Game *)data;
 
     ob_set_config("port", that->port->GetID());
-
-    if (StringCompare(that->engine->GetID(), "idtech_0") == 0)
-    {
-        that->theme->deactivate();
-    }
-    else
-    {
-        that->theme->activate();
-    }
 }
 
 void UI_Game::callback_Length(Fl_Widget *w, void *data)
@@ -215,23 +177,6 @@ void UI_Game::callback_Theme(Fl_Widget *w, void *data)
     ob_set_config("theme", that->theme->GetID());
 }
 
-void UI_Game::callback_EngineHelp(Fl_Widget *w, void *data)
-{
-    fl_cursor(FL_CURSOR_DEFAULT);
-    Fl_Window       *win  = new Fl_Window(640, 480, _("Engine"));
-    Fl_Text_Buffer  *buff = new Fl_Text_Buffer();
-    Fl_Text_Display *disp = new Fl_Text_Display(20, 20, 640 - 40, 480 - 40);
-    disp->buffer(buff);
-    disp->wrap_mode(Fl_Text_Display::WRAP_AT_BOUNDS, 0);
-    win->resizable(*disp);
-    win->hotspot(0, 0, 0);
-    win->set_modal();
-    win->show();
-    // clang-format off
-    buff->text(_("id Tech 0: Powered Wolfenstein-3D and similar games\n\nid Tech 1: Powered Doom, Doom 2, Heretic, etc"));
-    // clang-format on
-}
-
 void UI_Game::callback_PortHelp(Fl_Widget *w, void *data)
 {
     fl_cursor(FL_CURSOR_DEFAULT);
@@ -245,7 +190,7 @@ void UI_Game::callback_PortHelp(Fl_Widget *w, void *data)
     win->set_modal();
     win->show();
     // clang-format off
-    buff->text(_("Available Ports:\n\nid Tech 0:\n\nVanilla: Works with the original executables\n\nid Tech 1:\n\nGZDoom: GZDoom and variants (LZDoom, QZDoom, etc)\n\nVanilla: Works with the original program or ports that enforce the original limits. Examples: Doom within DOSBox, Chocolate Doom. NOTE: This option will use SLUMP as the map builder.\n\nBoom-Compatible: Ports that are able to use the entire suite of Boom types and features. Most modern source ports fall into this category at a minimum.\n\nEDGE-Classic: Boom-compatible, plus UDMF support, additional specials and other advanced features."));
+    buff->text(_("Available Ports:\n\nGZDoom: GZDoom and variants (LZDoom, QZDoom, etc)\n\nBoom-Compatible: Ports that are able to use the entire suite of Boom types and features. Most modern source ports fall into this category at a minimum.\n\nEDGE-Classic: Boom-compatible, plus UDMF support, additional specials and other advanced features."));
     // clang-format on
 }
 
@@ -270,7 +215,6 @@ void UI_Game::Locked(bool value)
 {
     if (value)
     {
-        engine->deactivate();
         game->deactivate();
         port->deactivate();
         length->deactivate();
@@ -279,7 +223,6 @@ void UI_Game::Locked(bool value)
     }
     else
     {
-        engine->activate();
         game->activate();
         port->activate();
         length->activate();
@@ -290,11 +233,6 @@ void UI_Game::Locked(bool value)
 
 bool UI_Game::AddChoice(const std::string &button, const std::string &id, const std::string &label)
 {
-    if (!StringCompare(button, "engine"))
-    {
-        engine->AddChoice(id, label);
-        return true;
-    }
     if (!StringCompare(button, "game"))
     {
         game->AddChoice(id, label);
@@ -324,11 +262,6 @@ bool UI_Game::AddChoice(const std::string &button, const std::string &id, const 
 
 bool UI_Game::EnableChoice(const std::string &button, const std::string &id, bool enable_it)
 {
-    if (!StringCompare(button, "engine"))
-    {
-        engine->EnableChoice(id, enable_it);
-        return true;
-    }
     if (!StringCompare(button, "game"))
     {
         game->EnableChoice(id, enable_it);
@@ -355,11 +288,6 @@ bool UI_Game::EnableChoice(const std::string &button, const std::string &id, boo
 
 bool UI_Game::SetButton(const std::string &button, const std::string &id)
 {
-    if (!StringCompare(button, "engine"))
-    {
-        engine->ChangeTo(id);
-        return true;
-    }
     if (!StringCompare(button, "game"))
     {
         game->ChangeTo(id);
@@ -390,7 +318,7 @@ void UI_Game::SetAbortButton(bool abort)
     {
         quit->label(_("Cancel"));
         quit->labelcolor(fl_color_cube(3, 1, 1));
-        quit->labelfont(font_style | FL_BOLD);
+        quit->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
 
         quit->callback(stop_callback, this);
 
@@ -404,7 +332,7 @@ void UI_Game::SetAbortButton(bool abort)
 
         quit->callback(quit_callback, this);
 
-        build->labelfont(font_style | FL_BOLD);
+        build->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     }
 }
 

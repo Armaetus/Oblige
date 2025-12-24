@@ -23,6 +23,9 @@
 #include <FL/Fl_Native_File_Chooser.H>
 #include <FL/fl_ask.H>
 #endif
+
+#include <format>
+
 #include "lib_argv.h"
 #include "lib_util.h"
 #include "m_addons.h"
@@ -84,10 +87,6 @@ void Parse_Option(const std::string &name, const std::string &value)
     else if (StringCompare(name, "randomize_misc") == 0)
     {
         randomize_misc = StringToInt(value) ? true : false;
-    }
-    else if (StringCompare(name, "random_string_seeds") == 0)
-    {
-        random_string_seeds = StringToInt(value) ? true : false;
     }
     else if (StringCompare(name, "password_mode") == 0)
     {
@@ -211,7 +210,6 @@ bool Options_Save(const std::string &filename)
     fprintf(option_fp, "randomize_monsters = %d\n", (randomize_monsters ? 1 : 0));
     fprintf(option_fp, "randomize_pickups = %d\n", (randomize_pickups ? 1 : 0));
     fprintf(option_fp, "randomize_misc = %d\n", (randomize_misc ? 1 : 0));
-    fprintf(option_fp, "random_string_seeds = %d\n", (random_string_seeds ? 1 : 0));
     fprintf(option_fp, "password_mode = %d\n", (password_mode ? 1 : 0));
     fprintf(option_fp, "mature_word_lists = %d\n", (mature_word_lists ? 1 : 0));
     fprintf(option_fp, "filename_prefix = %d\n", filename_prefix);
@@ -219,7 +217,7 @@ bool Options_Save(const std::string &filename)
 #ifndef OBSIDIAN_CONSOLE_ONLY
     fprintf(option_fp, "collapse_disabled_modules = %d\n", (collapse_disabled_modules ? 1 : 0));
 #endif
-    fprintf(option_fp, "%s", StringFormat("default_output_path = %s\n\n", default_output_path.c_str()).c_str());
+    fprintf(option_fp, "default_output_path = %s\n\n", default_output_path.c_str());
 
     VFS_OptWrite(option_fp);
 
@@ -251,8 +249,6 @@ class UI_OptionsWin : public Fl_Window
     Fl_Button   *opt_default_output_path;
     Fl_Box      *opt_current_output_path;
 
-    UI_CustomCheckBox *opt_random_string_seeds;
-    UI_HelpLink       *random_string_seeds_help;
     UI_CustomCheckBox *opt_password_mode;
     UI_HelpLink       *password_mode_help;
     UI_CustomCheckBox *opt_mature_words;
@@ -343,39 +339,6 @@ class UI_OptionsWin : public Fl_Window
         main_action = MAIN_HARD_RESTART;
 
         that->want_quit = true;
-    }
-
-    static void callback_Random_String_Seeds(Fl_Widget *w, void *data)
-    {
-        UI_OptionsWin *that = (UI_OptionsWin *)data;
-
-        random_string_seeds = that->opt_random_string_seeds->value() ? true : false;
-
-        if (!random_string_seeds)
-        {
-            that->opt_password_mode->deactivate();
-        }
-        else
-        {
-            that->opt_password_mode->activate();
-        }
-    }
-
-    static void callback_RandomStringSeedsHelp(Fl_Widget *w, void *data)
-    {
-        fl_cursor(FL_CURSOR_DEFAULT);
-        Fl_Window       *win  = new Fl_Window(640, 480, _("Random String Seeds"));
-        Fl_Text_Buffer  *buff = new Fl_Text_Buffer();
-        Fl_Text_Display *disp = new Fl_Text_Display(20, 20, 640 - 40, 480 - 40);
-        disp->buffer(buff);
-        disp->wrap_mode(Fl_Text_Display::WRAP_AT_BOUNDS, 0);
-        win->resizable(*disp);
-        win->hotspot(0, 0, 0);
-        win->set_modal();
-        win->show();
-        // clang-format off
-        buff->text(_("Will randomly pull 1 to 3 words from Obsidian's random word list and use those as input for the map generation seed. Purely for cosmetic/entertainment value."));
-        // clang-format on
     }
 
     static void callback_Password_Mode(Fl_Widget *w, void *data)
@@ -596,7 +559,7 @@ class UI_OptionsWin : public Fl_Window
         that->opt_current_output_path->label(BLANKOUT);
         that->opt_current_output_path->redraw_label();
         that->opt_current_output_path->copy_label(
-            StringFormat("%s: %s", _("Current Path"), BestDirectory().c_str()).c_str());
+            std::format("{}: {}", _("Current Path"), BestDirectory()).c_str());
         that->opt_current_output_path->redraw_label();
     }
 };
@@ -685,25 +648,10 @@ UI_OptionsWin::UI_OptionsWin(int W, int H, const char *label) : Fl_Window(W, H, 
     opt_current_output_path->labelfont(font_style);
     opt_current_output_path->labelcolor(FONT2_COLOR);
     // clang-format off
-    opt_current_output_path->copy_label(StringFormat("%s: %s", _("Current Path"), BestDirectory().c_str()).c_str());
+    opt_current_output_path->copy_label(std::format("{}: {}", _("Current Path"), BestDirectory()).c_str());
     // clang-format on
 
     cy += opt_current_output_path->h() + y_step;
-
-    opt_random_string_seeds = new UI_CustomCheckBox(cx + W * .38, cy, listwidth, KromulentHeight(24), "");
-    opt_random_string_seeds->copy_label(_(" Random String Seeds"));
-    opt_random_string_seeds->value(random_string_seeds ? 1 : 0);
-    opt_random_string_seeds->callback(callback_Random_String_Seeds, this);
-    opt_random_string_seeds->labelfont(font_style);
-    opt_random_string_seeds->selection_color(SELECTION);
-    opt_random_string_seeds->down_box(button_style);
-
-    random_string_seeds_help =
-        new UI_HelpLink(cx + W * .38 + this->opt_filename_prefix->w(), cy, W * 0.10, KromulentHeight(24));
-    random_string_seeds_help->labelfont(font_style);
-    random_string_seeds_help->callback(callback_RandomStringSeedsHelp, this);
-
-    cy += opt_random_string_seeds->h() + y_step * .5;
 
     opt_password_mode = new UI_CustomCheckBox(cx + W * .38, cy, listwidth, KromulentHeight(24), "");
     opt_password_mode->copy_label(_(" Password Mode"));
@@ -712,10 +660,6 @@ UI_OptionsWin::UI_OptionsWin(int W, int H, const char *label) : Fl_Window(W, H, 
     opt_password_mode->labelfont(font_style);
     opt_password_mode->selection_color(SELECTION);
     opt_password_mode->down_box(button_style);
-    if (!random_string_seeds)
-    {
-        opt_password_mode->deactivate();
-    }
 
     password_mode_help =
         new UI_HelpLink(cx + W * .38 + this->opt_filename_prefix->w(), cy, W * 0.10, KromulentHeight(24));

@@ -59,8 +59,6 @@ class UI_MainWin : public Fl_Double_Window
 
     UI_CustomTabs *mod_tabs;
 
-    UI_Clippy *clippy;
-
   public:
     UI_MainWin(int W, int H, const char *title);
     virtual ~UI_MainWin();
@@ -68,9 +66,6 @@ class UI_MainWin : public Fl_Double_Window
     static void CalcWindowSize(int *W, int *H);
 
     void Locked(bool value);
-
-  private:
-    int handle(int event);
 
   private:
     static void menu_do_about(Fl_Widget *w, void *data);

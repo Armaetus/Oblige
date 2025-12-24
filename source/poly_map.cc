@@ -274,7 +274,7 @@ void ParseSidedefField(sidedef_c *side, const std::string &key, ajparse::token_k
         if (num < 0 || num >= num_sectors)
             FatalError("AJ_Poly: illegal sector number #%d\n", (int)num);
 
-        side->sector = all_sectors[num];
+        side->sector = SafeLookupSector(num);
     }
     else
     {
@@ -373,7 +373,7 @@ void ParseLinedefField(linedef_c *line, const std::string &key, ajparse::token_k
         if (num < 0 || num >= (int)num_sidedefs)
             line->right = NULL;
         else
-            line->right = all_sidedefs[num];
+            line->right = SafeLookupSidedef(num);
     }
     else if (key == "sideback")
     {
@@ -382,7 +382,7 @@ void ParseLinedefField(linedef_c *line, const std::string &key, ajparse::token_k
         if (num < 0 || num >= (int)num_sidedefs)
             line->left = NULL;
         else
-            line->left = all_sidedefs[num];
+            line->left = SafeLookupSidedef(num);
     }
     else
     {
@@ -1490,7 +1490,7 @@ void vertex_c::AddTip(double dx, double dy, sector_c *left, sector_c *right)
     {
     }
 
-    while (after && tip->angle + OBSIDIAN_ANG_EPSILON < after->angle)
+    while (after && tip->angle + OBSIDIAN_EPSILON < after->angle)
     {
         after = after->prev;
     }
@@ -1648,8 +1648,8 @@ sector_c *vertex_c::CheckOpen(double dx, double dy) const
 
     for (tip = tip_set; tip; tip = tip->next)
     {
-        if (fabs(tip->angle - angle) < OBSIDIAN_ANG_EPSILON ||
-            fabs(tip->angle - angle) > (360.0 - OBSIDIAN_ANG_EPSILON))
+        if (fabs(tip->angle - angle) < OBSIDIAN_EPSILON ||
+            fabs(tip->angle - angle) > (360.0 - OBSIDIAN_EPSILON))
         {
             // hit a line -- hence not open
             return NULL;
@@ -1662,7 +1662,7 @@ sector_c *vertex_c::CheckOpen(double dx, double dy) const
 
     for (tip = tip_set; tip; tip = tip->next)
     {
-        if (angle + OBSIDIAN_ANG_EPSILON < tip->angle)
+        if (angle + OBSIDIAN_EPSILON < tip->angle)
         {
             // found it
             return tip->right;

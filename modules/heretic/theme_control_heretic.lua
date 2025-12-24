@@ -99,8 +99,6 @@ OB_MODULES["theme_ctl_heretic"] =
   label = _("[Exp] Heretic Theme Control"),
 
   game = "heretic",
-  engine = "idtech_1",
-  port = "!limit_enforcing",
   where = "other",
 
   hooks =

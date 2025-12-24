@@ -44,6 +44,7 @@
 ////////////////////////////////////////////////////////////////
 
 #include <config.h>
+#include <stdint.h>
 #include "Fl_Xlib_Graphics_Driver.H"
 #include "../X11/Fl_X11_Screen_Driver.H"
 #include "../X11/Fl_X11_Window_Driver.H"

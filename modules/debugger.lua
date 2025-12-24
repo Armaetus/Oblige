@@ -87,8 +87,6 @@ OB_MODULES["debugger"] =
   label = _("Miscellaneous Options"),
 
   where = "other",
-  engine = "!idtech_0",
-  port = "!limit_enforcing",
   priority = 5,
 
   tooltip = _("Provides options for printing out more verbose log information. Unusual or experimental features can also be found here."),
@@ -172,8 +170,6 @@ OB_MODULES["material_debugger"] =
   label = _("Material Options"),
 
   where = "debug",
-  engine = "!idtech_0",
-  port = "!limit_enforcing",
   priority = 5,
 
   tooltip = _("Debugging options related to textures and flats"),
@@ -234,8 +230,6 @@ OB_MODULES["pickup_params"] =
   label = _("Pickup Options"),
 
   where = "experimental",
-  engine = "!idtech_0",
-  port = "!limit_enforcing",
   priority = 5,
 
   tooltip = _("Experimental options related to pickups (items, weapons, etc)"),

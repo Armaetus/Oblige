@@ -60,8 +60,6 @@ static uint16_t *block_dups;
 static int block_compression;
 static int block_overflowed;
 
-static constexpr uint16_t BLOCK_LIMIT = 16000;
-
 static constexpr uint16_t DUMMY_DUP = 0xFFFF;
 
 void GetBlockmapBounds(int *x, int *y, int *w, int *h)
@@ -311,7 +309,6 @@ static void CompressBlockmap(void)
 {
     int i;
     int cur_offset;
-    int dup_count = 0;
 
     int orig_size, new_size;
 
@@ -362,8 +359,6 @@ static void CompressBlockmap(void)
             // free the memory of the duplicated block
             UtilFree(block_lines[blk_num]);
             block_lines[blk_num] = NULL;
-
-            dup_count++;
 
             orig_size += count;
             continue;
@@ -1204,7 +1199,7 @@ void GetLinedefs()
 
         // check for zero-length line
         line->zero_len =
-            (fabs(start->x - end->x) < OBSIDIAN_DIST_EPSILON) && (fabs(start->y - end->y) < OBSIDIAN_DIST_EPSILON);
+            (fabs(start->x - end->x) < OBSIDIAN_EPSILON) && (fabs(start->y - end->y) < OBSIDIAN_EPSILON);
 
         line->type     = LE_U16(raw.type);
         uint16_t flags = LE_U16(raw.flags);
@@ -1267,7 +1262,7 @@ void GetLinedefsHexen()
 
         // check for zero-length line
         line->zero_len =
-            (fabs(start->x - end->x) < OBSIDIAN_DIST_EPSILON) && (fabs(start->y - end->y) < OBSIDIAN_DIST_EPSILON);
+            (fabs(start->x - end->x) < OBSIDIAN_EPSILON) && (fabs(start->y - end->y) < OBSIDIAN_EPSILON);
 
         line->type     = (uint8_t)raw.type;
         uint16_t flags = LE_U16(raw.flags);
@@ -2084,7 +2079,7 @@ void SortSegs()
     // do a sanity check
     for (int i = 0; i < (int)lev_segs.size(); i++)
         if (lev_segs[i]->index < 0)
-            FatalError("Seg %p never reached a subsector!\n", i);
+            FatalError("Seg %d never reached a subsector!\n", i);
 
     // sort segs into ascending index
     std::sort(lev_segs.begin(), lev_segs.end(), Compare_seg_pred());

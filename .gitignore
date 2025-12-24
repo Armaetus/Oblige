@@ -31,6 +31,8 @@ cmake-build-*
 # Pure CMake (appeared from COMPILING.md)
 build/
 
+!libraries/fltk/libdecor/build
+
 # User dirs
 !addons/.gitkeep
 

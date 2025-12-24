@@ -38,13 +38,13 @@
 #include "sys_assert.h"
 #include "sys_endian.h"
 #include "sys_macro.h"
-#include "sys_xoshiro.h"
-
-// SLUMP for Vanilla Doom
-#include "slump.h"
+#include "sys_twister.h"
 
 extern void        CSG_DOOM_Write();
 extern std::string BestDirectory();
+#ifndef OBSIDIAN_CONSOLE_ONLY
+extern std::string DLG_OutputFilename(const char *ext, const char *preset);
+#endif
 
 extern int ef_solid_type;
 extern int ef_liquid_type;
@@ -309,22 +309,11 @@ bool BuildNodes(std::string filename)
     // Prep AJBSP parameters
     ajbsp::buildinfo_t build_info;
     build_info.fast = true;
-    if (StringCompare(current_port, "limit_enforcing") == 0 || StringCompare(current_port, "boom") == 0)
-    {
-        build_info.gl_nodes    = false;
-        build_info.force_v5    = false;
-        build_info.force_xnod  = false;
-        build_info.do_blockmap = true;
-        build_info.do_reject   = true;
-    }
-    else
-    { // ZDoom
-        build_info.gl_nodes       = true;
-        build_info.do_reject      = false;
-        build_info.do_blockmap    = false;
-        build_info.force_xnod     = true;
-        build_info.force_compress = true;
-    }
+    build_info.gl_nodes    = false;
+    build_info.force_v5    = false;
+    build_info.force_xnod  = false;
+    build_info.do_blockmap = true;
+    build_info.do_reject   = true;
 
     if (ajbsp::BuildNodes(filename, &build_info) != 0)
     {
@@ -549,12 +538,6 @@ void Doom::BeginLevel()
     }
 }
 
-int Doom::v094_begin_level(lua_State *L)
-{
-    BeginLevel();
-    return 0;
-}
-
 void Doom::EndLevel(const std::string &level_name)
 {
     // terminate header lump with trailing NUL
@@ -563,9 +546,6 @@ void Doom::EndLevel(const std::string &level_name)
         const uint8_t nuls[4] = {0, 0, 0, 0};
         header_lump->Append(nuls, 1);
     }
-
-    // in case we need it
-    std::string level_wad = PathAppend(home_dir, StringFormat("%s.wad", level_name.c_str()));
 
     WriteLump(level_name, header_lump);
 
@@ -600,13 +580,6 @@ void Doom::EndLevel(const std::string &level_name)
     }
 
     FreeLumps();
-}
-
-int Doom::v094_end_level(lua_State *L)
-{
-    const char *levelname = luaL_checkstring(L, 1);
-    EndLevel(levelname);
-    return 0;
 }
 
 //------------------------------------------------------------------------
@@ -652,14 +625,6 @@ void Doom::AddVertex(int x, int y)
     }
 }
 
-int Doom::v094_add_vertex(lua_State *L)
-{
-    int x = luaL_checkinteger(L, 1);
-    int y = luaL_checkinteger(L, 2);
-    AddVertex(x, y);
-    return 0;
-}
-
 void Doom::AddSector(int f_h, const std::string &f_tex, int c_h, const std::string &c_tex, int light, int special,
                      int tag)
 {
@@ -693,19 +658,6 @@ void Doom::AddSector(int f_h, const std::string &f_tex, int c_h, const std::stri
     }
 }
 
-int Doom::v094_add_sector(lua_State *L)
-{
-    int         f_h     = luaL_checkinteger(L, 1);
-    int         c_h     = luaL_checkinteger(L, 2);
-    const char *f_tex   = luaL_checkstring(L, 3);
-    const char *c_tex   = luaL_checkstring(L, 4);
-    int         light   = luaL_checkinteger(L, 5);
-    int         special = luaL_checkinteger(L, 6);
-    int         tag     = luaL_checkinteger(L, 7);
-    AddSector(f_h, f_tex, c_h, c_tex, light, special, tag);
-    return 0;
-}
-
 void Doom::AddSidedef(int sector, const std::string &l_tex, const std::string &m_tex, const std::string &u_tex,
                       int x_offset, int y_offset)
 {
@@ -735,18 +687,6 @@ void Doom::AddSidedef(int sector, const std::string &l_tex, const std::string &m
         textmap_lump->Printf("}\n");
         udmf_sidedefs += 1;
     }
-}
-
-int Doom::v094_add_sidedef(lua_State *L)
-{
-    int         sector   = luaL_checkinteger(L, 1);
-    const char *l_tex    = luaL_checkstring(L, 2);
-    const char *m_tex    = luaL_checkstring(L, 3);
-    const char *u_tex    = luaL_checkstring(L, 4);
-    int         x_offset = luaL_checkinteger(L, 5);
-    int         y_offset = luaL_checkinteger(L, 6);
-    AddSidedef(sector, l_tex, m_tex, u_tex, x_offset, y_offset);
-    return 0;
 }
 
 void Doom::AddLinedef(int vert1, int vert2, int side1, int side2, int type, int flags, int tag, const uint8_t *args)
@@ -950,53 +890,6 @@ void Doom::AddLinedef(int vert1, int vert2, int side1, int side2, int type, int 
     }
 }
 
-int v094_grab_args(lua_State *L, uint8_t *args, int stack_pos)
-{
-
-    int what = lua_type(L, stack_pos);
-
-    if (what == LUA_TNONE || what == LUA_TNIL)
-    {
-        return 0;
-    }
-
-    if (what != LUA_TTABLE)
-    {
-        return luaL_argerror(L, stack_pos, "expected a table");
-    }
-
-    for (int i = 0; i < 5; i++)
-    {
-        lua_pushinteger(L, i + 1);
-        lua_gettable(L, stack_pos);
-
-        if (lua_isnumber(L, -1))
-        {
-            args[i] = lua_tointeger(L, -1);
-        }
-
-        lua_pop(L, 1);
-    }
-
-    return 0;
-}
-
-int Doom::v094_add_linedef(lua_State *L)
-{
-    int      vert1 = luaL_checkinteger(L, 1);
-    int      vert2 = luaL_checkinteger(L, 2);
-    int      side1 = luaL_checkinteger(L, 3);
-    int      side2 = luaL_checkinteger(L, 4);
-    int      type  = luaL_checkinteger(L, 5);
-    int      flags = luaL_checkinteger(L, 6);
-    int      tag   = luaL_checkinteger(L, 7);
-    uint8_t *args  = new uint8_t[5];
-    v094_grab_args(L, args, 8);
-    AddLinedef(vert1, vert2, side1, side2, type, flags, tag, args);
-    delete[] args;
-    return 0;
-}
-
 void Doom::AddThing(int x, int y, int h, int type, int angle, int options, int tid, uint8_t special,
                     const uint8_t *args)
 {
@@ -1195,23 +1088,6 @@ void Doom::AddThing(int x, int y, int h, int type, int angle, int options, int t
     }
 }
 
-int Doom::v094_add_thing(lua_State *L)
-{
-    int      x       = luaL_checkinteger(L, 1);
-    int      y       = luaL_checkinteger(L, 2);
-    int      h       = luaL_checkinteger(L, 3);
-    int      type    = luaL_checkinteger(L, 4);
-    int      angle   = luaL_checkinteger(L, 5);
-    int      options = luaL_checkinteger(L, 6);
-    int      tid     = luaL_checkinteger(L, 7);
-    uint8_t  special = luaL_checkinteger(L, 8);
-    uint8_t *args    = new uint8_t[5];
-    v094_grab_args(L, args, 9);
-    AddThing(x, y, h, type, angle, options, tid, special, args);
-    delete[] args;
-    return 0;
-}
-
 int Doom::NumVertexes()
 {
     if (!UDMF_mode)
@@ -1353,21 +1229,6 @@ bool Doom::game_interface_c::Start(const char *preset)
         Main::BackupFile(filename);
     }
 
-    // Need to preempt the rest of this process for now if we are using Vanilla
-    // Doom
-    if (StringCompare(current_port, "limit_enforcing") == 0)
-    {
-        map_format  = FORMAT_BINARY;
-        build_nodes = true;
-#ifndef OBSIDIAN_CONSOLE_ONLY
-        if (main_win)
-        {
-            main_win->build_box->Prog_Init(0, "");
-        }
-#endif
-        return true;
-    }
-
     if (compress_output)
     {
         if (FileExists(zip_filename))
@@ -1398,12 +1259,7 @@ bool Doom::game_interface_c::Start(const char *preset)
     }
 #endif
 
-    if (StringCompare(current_port, "zdoom") == 0)
-    {
-        map_format  = FORMAT_UDMF;
-        build_nodes = ob_mod_enabled("build_nodes");
-    }
-    else if (StringCompare(current_port, "edge") == 0)
+    if (StringCompare(current_port, "zdoom") == 0 || StringCompare(current_port, "edge") == 0)
     {
         map_format  = FORMAT_UDMF;
         build_nodes = false;
@@ -1427,16 +1283,8 @@ bool Doom::game_interface_c::Start(const char *preset)
 
 bool Doom::game_interface_c::Finish(bool build_ok)
 {
-    // Skip DM_EndWAD if using Vanilla Doom
-    if (StringCompare(current_port, "limit_enforcing") != 0)
-    {
-        // TODO: handle write errors
-        EndWAD();
-    }
-    else
-    {
-        build_ok = slump::BuildLevels(filename);
-    }
+    // TODO: handle write errors
+    EndWAD();
 
     if (UDMF_mode)
     {
@@ -1451,10 +1299,7 @@ bool Doom::game_interface_c::Finish(bool build_ok)
     if (!build_ok)
     {
         // remove the WAD if an error occurred
-        if (!preserve_failures)
-        {
-            FileDelete(filename);
-        }
+        FileDelete(filename);
     }
     else
     {
@@ -1582,7 +1427,7 @@ void Doom::game_interface_c::EndLevel()
 
     Doom::EndLevel(level_name);
 
-    level_name = "";
+    level_name.clear();
 }
 
 game_interface_c *Doom_GameObject()

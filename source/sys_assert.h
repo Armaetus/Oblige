@@ -21,38 +21,14 @@
 
 #pragma once
 
-// -------- the macros --------
+#include <source_location>
 
-#ifdef SYS_NDEBUG
-#define SYS_ASSERT(cond) ((void)0)
+[[noreturn]] void AssertFail(const char *condition,
+    const std::source_location location =
+          std::source_location::current());
 
-#elif defined(__GNUC__)
 #define SYS_ASSERT(cond)                                                                                               \
-    ((cond) ? (void)0                                                                                                  \
-            : AssertFail("Assertion (%s) failed\nIn function %s (%s:%d)\n", #cond, __func__, __FILE__, __LINE__))
-
-#else
-#define SYS_ASSERT(cond)                                                                                               \
-    ((cond) ? (void)0 : AssertFail("Assertion (%s) failed\nIn file %s:%d\n", #cond, __FILE__, __LINE__))
-
-#endif // NDEBUG
-
-#ifdef SYS_NDEBUG
-#define SYS_ASSERT_MSG(cond, arglist) ((void)0)
-#else
-#define SYS_ASSERT_MSG(cond, arglist) ((cond) ? (void)0 : AssertFail arglist)
-#endif
-
-#define SYS_NULL_CHECK(ptr)   SYS_ASSERT((ptr) != NULL)
-#define SYS_ZERO_CHECK(value) SYS_ASSERT((value) != 0)
-
-// -------- the support code --------
-
-#ifdef __GNUC__
-__attribute__((noreturn))
-#endif
-void AssertFail(const char *msg, ...);
-// throw an assertion exception with the given message.
+    ((cond) ? (void)0 : AssertFail(#cond))
 
 //--- editor settings ---
 // vi:ts=4:sw=4:noexpandtab

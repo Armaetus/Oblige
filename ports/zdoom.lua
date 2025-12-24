@@ -44,7 +44,7 @@ ZDOOM.PARAMETERS =
   bridges = true,
   extra_floors = true,
   liquid_floors = true,
-  tga_images = true
+  png_images = true
 }
 
 function ZDOOM.setup()
@@ -63,11 +63,6 @@ OB_PORTS["zdoom"] =
   priority = 100,
 
   extends = "advanced",
-
-  game =
-  {
-    chex1=0, doom1=1, doom2=1, heretic=1, hacx=0, harmony=0, strife=0, rekkr=0
-  },
 
   tables =
   {

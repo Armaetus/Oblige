@@ -51,11 +51,8 @@ gui.set_import_dir("data/text/")
 
 gui.import("random_words_en.lua")
 gui.import("random_words_en_m.lua")
-gui.import("dialogues.lua")
 
 gui.set_import_dir("")
-
-gui.import("094/oblige_v094.lua")
 
 function ob_ref_table(op, t)
   if not gui.___REFS then
@@ -86,44 +83,9 @@ end
 
 ------------------------------------------------------------------------
 
-function ob_datetime_format_string()
-  local current_date = os.date("*t")
-
-  local formatstring
-
-  if current_date.month < 10 then
-    formatstring = "0%M"
-  else
-    formatstring = "%M"
-  end
-  if current_date.day < 10 then
-    formatstring = formatstring .. "-0%D"
-  else
-    formatstring = formatstring .. "-%D"
-  end
-  
-  formatstring = "%Y-" .. formatstring .. "-"
-
-  if current_date.hour < 10 then
-    formatstring = formatstring .. "0%h"
-  else
-    formatstring = formatstring .. "%h"
-  end
-
-  if current_date.min < 10 then
-    formatstring = formatstring .. "0%m"
-  else
-    formatstring = formatstring .. "%m"
-  end
-
-  return formatstring
-end
-
 function ob_check_ui_module(def)
   return string.match(def.name, "^ui") ~= nil
 end
-
-
 
 function ob_match_word_or_table(tab, conf)
   if type(tab) == "table" then
@@ -132,8 +94,6 @@ function ob_match_word_or_table(tab, conf)
     return tab == conf
   end
 end
-
-
 
 function ob_match_game(T)
   if not T.game then return true end
@@ -172,46 +132,6 @@ function ob_match_game(T)
     end
 
     game_def = OB_GAMES[game_def.extends]
-  end
-
-  return not result
-end
-
-
-function ob_match_engine(T)
-  if not T.engine then return true end
-  if T.engine == "any" then return true end
-
-  local engine = T.engine
-  local result = true
-
-  -- negated check?
-  if type(engine) == "string" and string.sub(engine, 1, 1) == '!' then
-    engine = string.sub(engine, 2)
-    result = not result
-  end
-
-  -- normal check
-  if ob_match_word_or_table(engine, OB_CONFIG.engine) then
-    return result
-  end
-  
-  
-
-  -- handle extended engines
-
-  local engine_def = OB_ENGINES[OB_CONFIG.engine]
-
-  while engine_def do
-    if not engine_def.extends then
-      break;
-    end
-
-    if ob_match_word_or_table(engine, engine_def.extends) then
-      return result
-    end
-
-    engine_def = OB_ENGINES[engine_def.extends]
   end
 
   return not result
@@ -481,11 +401,9 @@ end
 
 
 function ob_match_conf(T)
-  assert(OB_CONFIG.engine)
   assert(OB_CONFIG.game)
   assert(OB_CONFIG.port)
 
-  if not ob_match_engine(T)     then return false end
   if not ob_match_game(T)     then return false end
   if not ob_match_port(T)   then return false end
   if not ob_match_port2(T)  then return false end
@@ -544,11 +462,7 @@ function ob_update_games()
   end
 
   if need_new then
-    if OB_CONFIG.engine == "idtech_0" then
-      OB_CONFIG.game = "wolf"
-    else
-      OB_CONFIG.game = "doom2"
-    end
+    OB_CONFIG.game = "doom2"
     gui.set_button("game", OB_CONFIG.game)
   end
 end
@@ -567,17 +481,7 @@ function ob_update_ports()
   end
 
   if need_new then
-    if OB_CONFIG.engine == "idtech_0" then
-      OB_CONFIG.port = "vanilla"
-    elseif OB_CONFIG.engine == "idtech_1" then
-      if OB_CONFIG.game == "chex1" or OB_CONFIG.game == "hacx" or OB_CONFIG.game == "harmony" or OB_CONFIG.game == "strife" or OB_CONFIG.game == "rekkr" then  -- Ugh
-        OB_CONFIG.port = "limit_enforcing"
-      else
-        OB_CONFIG.port = "boom"
-      end
-    else -- shouldn't get here - Dasho
-      OB_CONFIG.port = "vanilla"
-    end
+    OB_CONFIG.port = "boom"
     gui.set_button("port", OB_CONFIG.port)
   end
 end
@@ -609,11 +513,7 @@ function ob_update_themes()
     end
 
     -- otherwise revert to As Original
-    if OB_CONFIG.port == "limit_enforcing" then
-      OB_CONFIG.theme = "default"
-    else
-      OB_CONFIG.theme = "original"
-    end
+    OB_CONFIG.theme = "original"
     gui.set_button("theme", OB_CONFIG.theme)
   end
 end
@@ -806,13 +706,7 @@ function ob_set_config(name, value)
 
 
   -- validate some important variables
-  if name == "engine" then
-    assert(OB_CONFIG.engine)
-    if not OB_ENGINES[value] then
-      gui.printf("Ignoring unknown engine: %s\n", value)
-      return
-    end
-  elseif name == "game" then
+  if name == "game" then
       assert(OB_CONFIG.game)
       if not OB_GAMES[value] then
         gui.printf("Ignoring unknown game: %s\n", value)
@@ -834,13 +728,13 @@ function ob_set_config(name, value)
 
   OB_CONFIG[name] = value
 
-  if name == "engine" or name == "game" or name == "port" then
+  if name == "game" or name == "port" then
     ob_update_all()
   end
 
   -- this is required for parsing the CONFIG.TXT file
   -- [ but redundant when the user merely changed the widget ]
-  if name == "game"  or name == "engine" or name == "port"
+  if name == "game"  or name == "port"
      or name == "theme" or name == "length"
   then
     gui.set_button(name, OB_CONFIG[name])
@@ -926,7 +820,6 @@ function ob_read_all_config(need_full, log_only)
   do_line("---- Game Settings ----")
   do_line("")
 
-  do_value("engine",   OB_CONFIG.engine)
   do_value("game",     OB_CONFIG.game)
   do_value("port",     OB_CONFIG.port)
   do_value("length",   OB_CONFIG.length)
@@ -1130,26 +1023,6 @@ function ob_load_all_games()
   end
 end
 
-
-function ob_load_all_engines()
-
-  local list = gui.scan_directory("engines", "*.lua")
-
-  if not list then
-    gui.printf("FAILED: scan 'engines' directory\n")
-    return
-  end
-
-  gui.set_import_dir("engines")
-
-  for _,filename in pairs(list) do
-    gui.debugf("  %s\n", filename)
-    gui.import(filename)
-  end
-
-  gui.set_import_dir("")
-end
-
 function ob_load_all_ports()
 
   local list = gui.scan_directory("ports", "*.lua")
@@ -1217,12 +1090,10 @@ function ob_restart()
 
   -- load definitions for all games
   
-  ob_load_all_engines()
   ob_load_all_games()
   ob_load_all_ports()
   ob_load_all_modules()
 
-  table.name_up(OB_ENGINES)
   table.name_up(OB_GAMES)
   table.name_up(OB_PORTS)
   table.name_up(OB_THEMES)
@@ -1245,7 +1116,6 @@ function ob_restart()
     end
   end
 
-  preinit_all(OB_ENGINES)
   preinit_all(OB_GAMES)
   preinit_all(OB_PORTS)
   preinit_all(OB_THEMES)
@@ -1298,12 +1168,6 @@ function ob_restart()
         end
       else
         gui.add_choice(what, def.name, def.label)
-      end
-
-      -- TODO : review this, does it belong HERE ?
-      if what == "engine" then
-        assert(def.name)
-        gui.enable_choice("engine", def.name, true)
       end
     end
 
@@ -1412,7 +1276,6 @@ function ob_restart()
 
   OB_CONFIG.seed = 0,
 
-  create_buttons("engine",   OB_ENGINES)
   create_buttons("game",   OB_GAMES)
   create_buttons("port", OB_PORTS)
   create_buttons("theme",  OB_THEMES)
@@ -1424,7 +1287,6 @@ function ob_restart()
 
   ob_update_all()
 
-  gui.set_button("engine",   OB_CONFIG.engine)
   gui.set_button("game",     OB_CONFIG.game)
   gui.set_button("port",   OB_CONFIG.port)
   gui.set_button("length",   OB_CONFIG.length)
@@ -1494,8 +1356,6 @@ function ob_init()
 
   -- load definitions for all games
 
-  gui.printf("Loading all engines...\n")
-  ob_load_all_engines()
   gui.printf("Loading all games...\n")
   ob_load_all_games()
   gui.printf("Loading all ports...\n")
@@ -1503,7 +1363,6 @@ function ob_init()
   gui.printf("Loading all modules...\n")
   ob_load_all_modules()
 
-  table.name_up(OB_ENGINES)
   table.name_up(OB_GAMES)
   table.name_up(OB_PORTS)
   table.name_up(OB_THEMES)
@@ -1526,7 +1385,6 @@ function ob_init()
     end
   end
 
-  preinit_all(OB_ENGINES)
   preinit_all(OB_GAMES)
   preinit_all(OB_PORTS)
   preinit_all(OB_THEMES)
@@ -1581,12 +1439,6 @@ function ob_init()
       else
         assert(def.name and def.label)
         gui.add_choice(what, def.name, def.label)
-      end
-
-      -- TODO : review this, does it belong HERE ?
-      if what == "engine" then
-        assert(def.name)
-        gui.enable_choice("engine", def.name, true)
       end
     end
 
@@ -1696,7 +1548,6 @@ function ob_init()
 
   OB_CONFIG.seed = 0,
 
-  create_buttons("engine", OB_ENGINES)
   create_buttons("game",   OB_GAMES)
   create_buttons("port", OB_PORTS)
   create_buttons("theme",  OB_THEMES)
@@ -1706,11 +1557,8 @@ function ob_init()
   create_buttons("module", OB_MODULES)
   create_mod_options()
 
-  OB_CONFIG.engine = "idtech_1"
-
   ob_update_all()
 
-  gui.set_button("engine",   OB_CONFIG.engine)
   gui.set_button("game",     OB_CONFIG.game)
   gui.set_button("port",   OB_CONFIG.port)
   gui.set_button("length",   OB_CONFIG.length)
@@ -1854,23 +1702,6 @@ function ob_get_random_words()
   end
 end
 
-local last_Clippy_advice_index = -1       -- Like "static last_Clippy_advice_index = -1;"...
-function ob_random_advice()
-  if #HELPFUL_ADVICE == 0 then
-    return nil
-  end
-
-  if last_Clippy_advice_index < 0 then
-    -- Randomize first index:
-    last_Clippy_advice_index = rand.irange(1, #HELPFUL_ADVICE)
-  else
-    -- Avoiding previous advice index:
-    last_Clippy_advice_index = 1 + ( (last_Clippy_advice_index + rand.irange(1, #HELPFUL_ADVICE - 2)) % #HELPFUL_ADVICE )
-  end
-
-  return HELPFUL_ADVICE[ last_Clippy_advice_index ]
-end
-
 function ob_default_filename()
   -- create a default filename [ WITHOUT any extension ]
 
@@ -1879,29 +1710,23 @@ function ob_default_filename()
   assert(OB_CONFIG)
   assert(OB_CONFIG.game)
   
-  -- I don't like doing this, but I'd rather not try to reorder
-  -- the normal GAME table merge stuff - Dasho
-  if ob_match_game({game = {wolf=1, spear=1, noah=1, obc=1}}) then
-    return "unused.filename"
-  else
-    local name_tab = {}
-    if OB_CONFIG.game == "chex1" then
-      name_tab = CHEX1.NAMES
-    elseif ob_match_game({game = "doomish"}) then
-      name_tab = DOOM.NAMES
-    elseif OB_CONFIG.game == "hacx" then
-      name_tab = HACX.NAMES
-    elseif OB_CONFIG.game == "harmony" then
-      name_tab = HARMONY.NAMES
-    elseif OB_CONFIG.game == "heretic" then
-      name_tab = HERETIC.NAMES
-    elseif OB_CONFIG.game == "strife" then
-      name_tab = STRIFE.NAMES
-    elseif OB_CONFIG.game == "rekkr" then
-      name_tab = REKKR.NAMES
-    end
-    Naming_init(name_tab)
+  local name_tab = {}
+  if OB_CONFIG.game == "chex1" then
+    name_tab = CHEX1.NAMES
+  elseif ob_match_game({game = "doomish"}) then
+    name_tab = DOOM.NAMES
+  elseif OB_CONFIG.game == "hacx" then
+    name_tab = HACX.NAMES
+  elseif OB_CONFIG.game == "harmony" then
+    name_tab = HARMONY.NAMES
+  elseif OB_CONFIG.game == "heretic" then
+    name_tab = HERETIC.NAMES
+  elseif OB_CONFIG.game == "strife" then
+    name_tab = STRIFE.NAMES
+  elseif OB_CONFIG.game == "rekkr" then
+    name_tab = REKKR.NAMES
   end
+  Naming_init(name_tab)
 
   OB_CONFIG.title = Naming_grab_one("TITLE")
   GAME.title = OB_CONFIG.title
@@ -1936,7 +1761,7 @@ function ob_default_filename()
     end
         
     if OB_CONFIG.filename_prefix == "datetime" then
-      formatstring = ob_datetime_format_string() .. "_"
+      formatstring = "%Y-%M-%D-%h%m_"
     elseif OB_CONFIG.filename_prefix == "numlevels" then
       formatstring = "ob" .. levelcount .. "_"
     elseif OB_CONFIG.filename_prefix == "game" then
@@ -2192,12 +2017,9 @@ function ob_build_setup()
     RANDOMIZE_GROUPS = gui.get_batch_randomize_groups()
   end
 
-  if not ob_match_game({game = {wolf=1,spear=1,noah=1,obc=1}}) then
-    Naming_init(GAME.NAMES)
-  end
+  Naming_init(GAME.NAMES)
 
   ob_invoke_hook("setup")
-  ob_invoke_hook("factory_setup") -- Some historical versions of Oblige use this
 
   Fab_load_all_definitions()
 
@@ -2278,20 +2100,6 @@ local function ob_get_module_refs()
           option_refs[vv.name].tooltip = gui.gettext(vv.tooltip)
         end
         if vv.randomize_group then option_refs[vv.name].random_group = vv.randomize_group end
-        if not v.engine then
-          option_refs[vv.name].engine = {}
-          table.add_unique(option_refs[vv.name].engine, "ALL")
-        else
-          if type(v.engine) == "string" then
-            option_refs[vv.name].engine = {}
-            table.add_unique(option_refs[vv.name].engine, v.engine)
-          else
-            option_refs[vv.name].engine = {}
-            for engine,_ in pairs(v.engine) do
-              table.add_unique(option_refs[vv.name].engine, engine)
-            end
-          end
-        end
         if not v.game then
           option_refs[vv.name].game = {}
           table.add_unique(option_refs[vv.name].game, "ALL")
@@ -2346,49 +2154,25 @@ local function ob_get_module_refs()
     module_refs[v.name] = option_refs
   end
   module_refs["main_build_settings"] = {
-    engine = {
-      tooltip = _("Choose which engine to build maps for:\n  id Tech 0: Wolfenstein 3D and similar games\n  id Tech 1: Doom and similar games\n"),
-      engine = {_("ALL")},
-      game = {_("ALL")},
-      port = {_("ALL")},
-      choices = {
-        "idtech_0",
-        "idtech_1",
-      },
-      default = "idtech_1",
-    },
     game = {
       tooltip = _("Choose which game to build maps for."),
-      engine = {_("ALL")},
       game = {_("ALL")},
       port = {_("ALL")},
       choices = {
-        "chex1",
         "doom1",
         "doom2",
         "ultdoom",
         "tnt",
         "plutonia",
-        "hacx",
-        "harmony",
         "heretic",
-        "rekkr",
-        "strife",
-        "wolf3d",
-        "spear",
-        "noah",
-        "obc",
       },
       default = "doom2",
     },
     port = {
-      tooltip = _("Choose which port to build maps for.\n  Vanilla is the only option for id Tech 0; the remaining options are for id Tech 1.\n"),
-      engine = {_("ALL")},
+      tooltip = _("Choose which port to build maps for.\n"),
       game = {_("ALL")},
       port = {_("ALL")},
       choices = {
-        "vanilla",
-        "limit_enforcing",
         "boom",
         "zdoom",
         "edge",
@@ -2397,7 +2181,6 @@ local function ob_get_module_refs()
     },
     length = {
       tooltip = _("Choose how many levels to create."),
-      engine = {_("ALL")},
       game = {_("ALL")},
       port = {_("ALL")},
       choices = {
@@ -2410,7 +2193,6 @@ local function ob_get_module_refs()
     },
     theme = {
       tooltip = _("The following values are game-specific:\n  Ultimate Doom/Doom 1: deimos,flesh\n  Ultimate Doom/Doom 1/Doom 2/TNT/Plutonia: tech,urban,hell\n  TNT: egypt\n  HacX: hacx_urban\n  Heretic: city,maw,dome,ossuary,demense\n\n  Note: This setting currently does nothing for id Tech 0 games!\n"),
-      engine = {_("ALL")},
       game = {_("ALL")},
       port = {_("ALL")},
       choices = {
@@ -2425,7 +2207,6 @@ local function ob_get_module_refs()
         "deimos",
         "flesh",
         "egypt",
-        "hacx_urban",
         "city",
         "maw",
         "dome",
@@ -2449,14 +2230,6 @@ function ob_print_reference()
       gui.ref_print("\n" .. gui.gettext("option: ") .. name .. "\n")
       gui.console_print(gui.gettext("comment: ") .. option.tooltip .. "\n")
       gui.ref_print(gui.gettext("comment: ") .. option.tooltip .. "\n")
-      gui.console_print(gui.gettext("engine: "))
-      gui.ref_print(gui.gettext("engine: "))
-      for _,engine in pairs(option.engine) do
-        gui.console_print(engine .. " ")
-        gui.ref_print(engine .. " ")
-      end
-      gui.console_print("\n")
-      gui.ref_print("\n")
       gui.console_print(gui.gettext("game: "))
       gui.ref_print(gui.gettext("game: "))
       for _,game in pairs(option.game) do
@@ -2534,20 +2307,6 @@ function ob_print_reference_json()
       local tooltip = option.tooltip
       tooltip = tooltip:gsub("\n", "\\n")
       gui.console_print("      \"" .. gui.gettext("tooltip") .. "\": \"" .. tooltip .. "\",\n")
-      gui.console_print("      \"" .. gui.gettext("engine") .. "\": ")
-      if #option.engine == 1 and option.engine[1] == "ALL" then
-        gui.console_print("\"" .. gui.gettext("ALL") .. "\",\n")
-      else
-        gui.console_print("[")
-        for j,engine in pairs(option.engine) do
-          if j ~= #option.engine then
-            gui.console_print("\"" .. engine .. "\", ")
-          else
-            gui.console_print("\"" .. engine .. "\"")
-          end
-        end
-        gui.console_print("],\n")
-      end
       gui.console_print("    \"" .. gui.gettext("game") .. "\": ")
       if #option.game == 1 and option.game[1] == gui.gettext("ALL") then
         gui.console_print("\"" .. gui.gettext("ALL") .. "\",\n")
@@ -2653,36 +2412,9 @@ function ob_build_cool_shit()
     
   ob_read_all_config(false, "log_only")
 
-  if OB_CONFIG.engine == "idtech_1" and OB_CONFIG.port == "limit_enforcing" then
-    ob_clean_up()
-    ob_transfer_ui_options()
-    ob_sort_modules()
-    ob_add_current_game()
-    ob_add_current_port()
-    for index,mod in pairs(GAME.modules) do
-      if index > 2 and mod.tables then
-        ob_merge_table_list(mod.tables)
-      end
-    end
-    ob_invoke_hook("slump_setup")
-    ob_invoke_hook("setup")
-    assert(PARAM.slump_config)
-    gui.minimap_disable(gui.gettext("SLUMP"))
-    return "ok" 
-  end -- Skip the rest if using Vanilla Doom/SLUMP
-
   gui.ticker()
   
   ob_build_setup()
-
-  -- Hijack here if Wolf3D is selected
-
-  if OB_CONFIG.engine == "idtech_0" then
-    gui.minimap_disable(gui.gettext("id Tech 0"))
-    local result = v094_build_wolf3d_shit()
-    ob_clean_up()
-    return result
-  end
 
   if PARAM["bool_save_gif"] == 1 then
     -- Set frame delay based on how detailed the live minimap is - Dasho

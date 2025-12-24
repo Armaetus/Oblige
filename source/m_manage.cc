@@ -21,6 +21,8 @@
 
 #include <FL/Fl_Native_File_Chooser.H>
 
+#include <format>
+
 #include "lib_util.h"
 #include "m_cookie.h"
 #include "m_lua.h"
@@ -318,18 +320,18 @@ class UI_Manage_Config : public Fl_Double_Window
         return want_quit;
     }
 
-    void MarkSource(const char *where)
+    void MarkSource(std::string_view where)
     {
-        std::string full = StringFormat("[ %s ]", where);
+        std::string full = std::format("[ {} ]", where);
 
         conf_disp->copy_label(full.c_str());
 
         redraw();
     }
 
-    void MarkSource_FILE(std::string filename)
+    void MarkSource_FILE(std::string_view filename)
     {
-        conf_disp->copy_label(StringFormat("[ %s ]", filename.c_str()).c_str());
+        conf_disp->copy_label(std::format("[ %s ]", filename).c_str());
 
         redraw();
     }
@@ -794,7 +796,7 @@ UI_Manage_Config::UI_Manage_Config(int W, int H, const char *label) : Fl_Double_
     close_but->box(button_style);
     close_but->visible_focus(0);
     close_but->color(BUTTON_COLOR);
-    close_but->labelfont(font_style | FL_BOLD);
+    close_but->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
     close_but->labelcolor(FONT2_COLOR);
     close_but->labelsize(FL_NORMAL_SIZE + 2);
     close_but->callback(callback_Quit, this);

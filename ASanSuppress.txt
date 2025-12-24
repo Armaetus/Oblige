@@ -1,0 +1,26 @@
+##################################################
+# Setup Info
+##################################################
+# Set OBSIDIAN_SANITIZE cmake option 
+# export ASAN_OPTIONS=detect_leaks=1
+# export LSAN_OPTIONS=suppressions=ASanSuppress.txt
+
+##################################################
+# Investigate: High Priority
+##################################################
+
+
+##################################################
+# Investigate: Low Priority
+##################################################
+
+
+##################################################
+# Ignore
+##################################################
+
+leak:libglib*
+leak:libgtk*
+leak:libpango*
+leak:fontconfig*
+leak:Fl_Posix_System_Driver::putenv

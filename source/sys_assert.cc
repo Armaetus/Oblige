@@ -19,26 +19,19 @@
 //
 //----------------------------------------------------------------------------
 
+#include "sys_assert.h"
+
+#include <format>
+
+#include "lib_util.h"
 #include "main.h"
-#include "sys_macro.h"
 
-#include <stdarg.h>
-
-//----------------------------------------------------------------------------
-
-void AssertFail(const char *msg, ...)
+[[noreturn]] void AssertFail(const char *condition,
+    const std::source_location location)
 {
-    static char buffer[OBSIDIAN_MSG_BUF_LEN];
-
-    va_list argptr;
-
-    va_start(argptr, msg);
-    vsnprintf(buffer, OBSIDIAN_MSG_BUF_LEN - 1, msg, argptr);
-    va_end(argptr);
-
-    buffer[OBSIDIAN_MSG_BUF_LEN - 2] = 0;
-
-    FatalError("Sorry, an internal error occurred.\n%s", buffer);
+    FatalError("Sorry, an internal error occurred.\n%s",
+        std::format("Assertion ({}) failed\nIn function {} ({}:{})", condition, 
+        location.function_name(), GetFilename(location.file_name()), location.line()).c_str());
 }
 
 //--- editor settings ---

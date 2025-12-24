@@ -72,7 +72,7 @@ class csg_property_set_c
     void Add(const std::string &key, std::string_view value);
     void Remove(const std::string &key);
 
-    std::string getStr(const std::string &key, std::string_view def_val = "") const;
+    std::string getStr(const std::string &key) const;
 
     double getDouble(const std::string &key, double def_val = 0) const;
     int    getInt(const std::string &key, int def_val = 0) const;

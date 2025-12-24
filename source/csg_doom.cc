@@ -931,8 +931,12 @@ static void MakeSector(region_c *R)
         S->c_h = S->f_h;
     }
 
-    S->f_tex = f_face->getStr("tex", dummy_plane_tex);
-    S->c_tex = c_face->getStr("tex", dummy_plane_tex);
+    S->f_tex = f_face->getStr("tex");
+    if (S->f_tex.empty())
+        S->f_tex = dummy_plane_tex;
+    S->c_tex = c_face->getStr("tex");
+    if (S->c_tex.empty())
+        S->c_tex = dummy_plane_tex;
 
     int f_mark = f_face->getInt("mark");
     int c_mark = c_face->getInt("mark");
@@ -1243,7 +1247,9 @@ static sidedef_c *MakeSidedef(linedef_c *L, sector_c *sec, sector_c *back, snag_
         }
         else
         {
-            SD->mid = lower->face.getStr("tex", dummy_tex);
+            SD->mid = lower->face.getStr("tex");
+            if (SD->mid.empty())
+                SD->mid = dummy_tex;
 
             int ox = lower->face.getInt("u1", IVAL_NONE);
             int oy = lower->face.getInt("v1", IVAL_NONE);
@@ -1281,7 +1287,7 @@ static sidedef_c *MakeSidedef(linedef_c *L, sector_c *sec, sector_c *back, snag_
 
         if (rail)
         {
-            std::string rail_tex = rail->face.getStr("tex", "");
+            std::string rail_tex = rail->face.getStr("tex");
 
             if (!rail_tex.empty())
             {
@@ -1352,8 +1358,12 @@ static sidedef_c *MakeSidedef(linedef_c *L, sector_c *sec, sector_c *back, snag_
             upper = u_brush->verts[0];
         }
 
-        SD->lower = lower->face.getStr("tex", dummy_tex);
-        SD->upper = upper->face.getStr("tex", dummy_tex);
+        SD->lower = lower->face.getStr("tex");
+        if (SD->lower.empty())
+            SD->lower = dummy_tex;
+        SD->upper = upper->face.getStr("tex");
+        if (SD->upper.empty())
+            SD->upper = dummy_tex;
     }
 
     SD->y_offset = NormalizeYOffset(SD->y_offset);
@@ -1399,7 +1409,7 @@ static csg_property_set_c *FindTrigger(snag_c *S, sector_c *front, sector_c *bac
                 continue;
             }
 
-            if ((V->face.getStr("special")).empty())
+            if (V->face.getStr("special").empty())
             {
                 continue;
             }
@@ -1497,7 +1507,7 @@ static brush_vert_c *FindRail(const snag_c *S, const region_c *R, const region_c
             continue;
         }
 
-        if (!(V->face.getStr("tex", "")).empty())
+        if (!V->face.getStr("tex").empty())
         {
             return V; // found it!
         }
@@ -2537,12 +2547,18 @@ static void SolidExtraFloor(sector_c *sec, gap_c *gap1, gap_c *gap2)
     EF->top_h    = OBSIDIAN_I_ROUND(gap2->bottom->t.z);
     EF->bottom_h = OBSIDIAN_I_ROUND(gap1->top->b.z);
 
-    EF->top    = gap2->bottom->t.face.getStr("tex", dummy_plane_tex);
-    EF->bottom = gap1->top->b.face.getStr("tex", dummy_plane_tex);
+    EF->top    = gap2->bottom->t.face.getStr("tex");
+    if (EF->top.empty())
+        EF->top = dummy_plane_tex;
+    EF->bottom = gap1->top->b.face.getStr("tex");
+    if (EF->bottom.empty())
+        EF->bottom = dummy_plane_tex;
 
     brush_vert_c *V = gap2->bottom->verts[0];
 
-    EF->wall = V->face.getStr("tex", dummy_wall_tex);
+    EF->wall = V->face.getStr("tex");
+    if (EF->wall.empty())
+        EF->wall = dummy_wall_tex;
 }
 
 static void LiquidExtraFloor(sector_c *sec, csg_brush_c *liquid)
@@ -2573,12 +2589,16 @@ static void LiquidExtraFloor(sector_c *sec, csg_brush_c *liquid)
         EF->top_h    = EF->bottom_h + 128; // not significant
     }
 
-    EF->top    = liquid->t.face.getStr("tex", dummy_plane_tex);
+    EF->top    = liquid->t.face.getStr("tex");
+    if (EF->top.empty())
+        EF->top = dummy_plane_tex;
     EF->bottom = EF->top;
 
     brush_vert_c *V = liquid->verts[0];
 
-    EF->wall = V->face.getStr("tex", dummy_wall_tex);
+    EF->wall = V->face.getStr("tex");
+    if (EF->wall.empty())
+        EF->wall = dummy_wall_tex;
 }
 
 static void ExtraFloors(sector_c *S, region_c *R)
@@ -2982,7 +3002,7 @@ static void WriteLinedefs()
 static void AddThing_FraggleScript(int x, int y, int z, csg_entity_c *E, int type, int angle, int options)
 {
     // this is set in the Lua code (raw_add_entity)
-    std::string fs_name = E->props.getStr("fs_name", "");
+    std::string fs_name = E->props.getStr("fs_name");
 
     if (fs_name.empty())
     {
