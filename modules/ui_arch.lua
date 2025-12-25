@@ -61,15 +61,23 @@ UI_ARCH.SIZE_BIAS =
   "large",   _("Larger"),
 }
 
+UI_ARCH.SIZE_MODE =
+{
+  "num",   _("Static"),
+  "mixed", _("Mix It Up"),
+  "epi",   _("Episodic"),
+  "prog",  _("Progressive")
+}
+
 function UI_ARCH.setup(self)
 
   module_param_up(self)
 
-  if OB_CONFIG.batch == "yes" and type(PARAM.float_size) ~= "string" then
+  if OB_CONFIG.batch == "yes" and PARAM.level_size_mode ~= "num" then --type(PARAM.float_size) ~= "string" then
     SEED_W = 90
     SEED_H = 90
   else
-    if type(PARAM.float_size) == "string" then -- Use upper bound for Mix It Up, Progressive, and Episodic level sizes - Dasho
+    if PARAM.level_size_mode ~= "num" then -- Use upper bound for Mix It Up, Progressive, and Episodic level sizes - Dasho
     -- MSSP: the absolute maximum size is tightened down to the largest
     -- agreed map size for performance's sake. Current agreed maximum is 74 W.
     -- any higher will cause skyboxes and teleporter rooms to start merging with
@@ -122,13 +130,29 @@ OB_MODULES["ui_arch"] =
       max = 75,
       increment = 1,
       default = 36,
-      nan = _("Mix It Up,Episodic,Progressive"),
+      --nan = _("Mix It Up,Episodic,Progressive"),
       presets = _("10:10 (Microscopic),16:16 (Miniature),22:22 (Tiny),30:30 (Small),36:36 (Average),42:42 (Large),48:48 (Huge),58:58 (Colossal),66:66 (Gargantuan),75:75 (Transcendent)"),
       tooltip = _("Determines size of map (Width x Height) in grid squares."),
       longtip = _("If you are planning to generate Binary format maps at sizes of 50 and above, Autodetailing will be enabled by default. The stability of maps with sizes 60 and beyond is not predictable unless using UDMF map format (supported engines only)."),
       priority = 100,
       randomize_group="architecture"
     },
+
+
+    {
+      name="level_size_mode",
+      label = _("Level Size Mode"),
+      choices = UI_ARCH.SIZE_MODE,
+      default = "num",
+      priority = 99.5,
+      randomize_group="architecture"
+      tooltip = _("Changes Level Size behavior.\n\n" ..
+      "Static - Level Size parameter determines size.\n" ..
+      "Mix It Up - Level Size will be generated with random numbers between Lower Bound and Upper Bound\n" ..
+      "Progressive - Levels will be generated in sequential size based on the Lower Bound (as starting bound) to Upper Bound (as end).\n" ..
+      "Episodic - Similar to Progressive, but level scaling is between Episodes."
+      )
+    }
 
 
     {

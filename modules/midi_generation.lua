@@ -24,7 +24,7 @@ OB_MODULES["midi_generation"] =
 
   name = "midi_generation",
 
-  label = _("MIDI Generation"),
+  label = _("MIDI Generation [Unstable]"),
 
   where = "experimental",
   priority = 5,
