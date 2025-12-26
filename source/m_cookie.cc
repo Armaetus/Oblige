@@ -143,7 +143,8 @@ static bool Cookie_ParseLine(std::string_view buf)
     }
     if (name.empty() || value.empty())
     {
-        LogPrint("Name or value missing!\n");
+        LogPrint("Config get: Name empty=%d, Value empty=%d\n",
+             name.empty(), value.empty());
         return false;
     }
 

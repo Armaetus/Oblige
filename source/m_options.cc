@@ -137,7 +137,8 @@ static bool Options_ParseLine(const std::string &buf)
 
     if (name.empty() || value.empty())
     {
-        printf("%s\n", _("Name or value missing!"));
+        printf("Options: Name empty=%d, Value empty=%d\n",
+             name.empty(), value.empty());
         return false;
     }
 

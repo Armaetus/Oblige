@@ -19,20 +19,23 @@ std::string steve_generate(const char *config_file) {
   steve::note_name_init();
 
   steve::ConfigJson config;
-  std::string music_string;
-
   config.parse_file(config_file);
-
   config.compute_cache();
 
   steve::Music music(config);
-  std::ostringstream fs(music_string);
+
+  std::ostringstream fs;
   steve::MidiOutput::write(music, fs);
-  fs.flush();
-  std::string music_debug;
-  std::ostringstream ss(music_debug);
+
+  if (!fs.good()) {
+      LogPrint("Steve MIDI write failed (fail=%d bad=%d)\n",
+               fs.fail(), fs.bad());
+      return {};
+  }
+
+  std::ostringstream ss;
   steve::TextOutput::write(music, ss);
-  ss.flush();
+
   LogPrint("MIDI Statistics:\n");
   LogPrint("%s\n", ss.str().c_str());
 

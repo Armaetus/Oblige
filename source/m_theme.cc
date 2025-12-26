@@ -288,7 +288,8 @@ static bool Theme_Options_ParseLine(std::string buf)
 
     if (name.empty() || value.empty())
     {
-        LogPrint("Name or value missing!\n");
+        LogPrint("Theme: Name empty=%d, Value empty=%d\n",
+             name.empty(), value.empty());
         return false;
     }
 
