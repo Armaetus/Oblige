@@ -8969,6 +8969,7 @@ GROW_MAZE_ZIGZAG =
     "x..x","x%1x",
     "x..x","x#1x",
     "....","#/1#",
+    "....","#11#",
     "....","#1/#",
     "x..x","x1#x",
     "x..x","x1%x",
@@ -10230,7 +10231,7 @@ SQUARE_OUT_SMOOTH_PLATFORM =
   },
 },
 
-SQUARE_OUT_REMOVE_TRIANGLE =
+--[[SQUARE_OUT_REMOVE_TRIANGLE =
 {
   pass = "square_out",
 
@@ -10246,7 +10247,7 @@ SQUARE_OUT_REMOVE_TRIANGLE =
   {
     "1.",
   },
-},
+},]]
 
 --MSSP's random negative features [FEATURES] - 'negative' because they attempt to modify an existing room if it has too much clean space.
 
@@ -18657,7 +18658,7 @@ SPROUT_TELEPORTER_1x1_EMERGENCY =
   },
 },
 
-SQUARE_OUT_1 =
+--[[SQUARE_OUT_1 =
 {
   pass = "square_out",
 
@@ -18863,7 +18864,7 @@ SQUARE_OUT_15 =
     "11111", "11111",
     "11111", "11111",
   },
-},
+},]]
 
 DECORATE_CLOSET_2x1 =
 {
@@ -21992,19 +21993,6 @@ SPROUT_TELEPORTER_1x1 =
   closet =
   {
     from_dir = 2,
-  },
-},
-
-SQUARE_OUT_FROM_CORNER_2X =
-{
-  pass = "square_out",
-
-  prob = 100,
-
-  structure =
-  {
-    ".",".",
-    "1","1",
   },
 },
 
