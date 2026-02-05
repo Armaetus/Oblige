@@ -973,7 +973,7 @@ OB_MODULES["otex_proc_module"] =
 
   name = "otex_proc_module",
 
-  label = _("OTEX Resource Pack [PRE-ALPHA]"),
+  label = _("OTEX Resource Pack"),
 
   where = "other",
   priority = 75,

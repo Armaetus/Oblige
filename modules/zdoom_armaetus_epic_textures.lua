@@ -1342,7 +1342,7 @@ OB_MODULES["armaetus_epic_textures"] =
 
     {
       name = "bool_orp_room_theme_synthesizer",
-      label = _("Room Theme Synthesizer [Experimental]"),
+      label = _("Room Theme Synthesizer"),
       valuator = "button",
       default = 1,
       priority = -4,
