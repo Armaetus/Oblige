@@ -3096,7 +3096,109 @@ AUX_LIQUID_3 =
 -------------------------
 -- GROW RULES EXPANDED --
 -------------------------
--- MsrSgtShooterPerson's kool x-perimental shapes of definite kool
+
+GROW_CURVE_3 =
+{
+  prob = 25,
+  skip_prob = 50,
+
+  structure =
+  {
+    "xxxx...","xxxx111",
+    "xxx....","xxx/111",
+    "xx.....","xx/1111",
+    "1......","111111/",
+    "1.....x","11111/x",
+    "x....xx","x111/xx",
+  },
+
+  diagonals =
+  {
+    ".1",
+    ".1",
+    "1.",
+    "1.",
+    "1."
+  }
+},
+
+GROW_CURVE_3_NEW_AREA =
+{
+  prob = 25,
+  skip_prob = 85,
+
+  structure =
+  {
+    "xxx....","xxx/111",
+    "xx.....","xx/A111",
+    "x......","x/A/111",
+    "1......","11111%A",
+    "1......","1111%A/",
+    "x.....x","x111A/x",
+  },
+
+  diagonals =
+  {
+    ".A",
+    ".A",
+    ".A","A1",
+    "1A",
+    "1A","A.",
+    "A."
+  }
+},
+
+GROW_CURVE_3_STEEPNESS =
+{
+  prob = 25,
+  skip_prob = 85,
+
+  structure =
+  {
+    "xxx....","xxx/111",
+    "xx.....","xx/A111",
+    "x......","x/A/11v",
+    "1......","11111%A",
+    "1......","1111%A/",
+    "x.....x","x11>A/x",
+  },
+
+  diagonals =
+  {
+    ".A",
+    ".A",
+    ".A","A1",
+    "1A",
+    "1A","A.",
+    "A."
+  }
+},
+
+GROW_CURVE_3_LIQ =
+{
+  prob = 25,
+  skip_prob = 85,
+
+  structure =
+  {
+    "xxx....","xxx/111",
+    "xx.....","xx/~%11",
+    "x......","x/~~~%v",
+    "1......","11%~~%A",
+    "1......","111%%A/",
+    "x.....x","x11>A/x",
+  },
+
+  diagonals =
+  {
+    ".~",
+    ".~","~1",
+    ".~","~1",
+    "1~","~A",
+    "1~","~A","A.",
+    "A."
+  }
+},
 
 GROW_STAIR_TRI =
 {
@@ -6781,7 +6883,7 @@ GROW_CAUSEWAY_SINGLE_THICC_CORNER_PILLAR =
 
   structure =
   {
-    ".........1","%111111111",
+    ".........1","/111111111",
     ".........1","1111111111",
     ".........x","11/##v~~~x",
     ".........x","11###v~~~x",
@@ -9958,8 +10060,8 @@ GROW_LAKE_CROSS_NEW_AREA_STRAIGHT =
 
 GROW_LAKE_BIG_X_NEW_AREA =
 {
-  prob = 45,
-  skip_prob = 60,
+  prob = 35,
+  skip_prob = 85,
 
   structure =
   {
