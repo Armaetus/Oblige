@@ -42,6 +42,9 @@
 
 extern void        CSG_DOOM_Write();
 extern std::string BestDirectory();
+#ifndef OBSIDIAN_CONSOLE_ONLY
+extern std::string DLG_OutputFilename(const char *ext, const char *preset);
+#endif
 
 extern int ef_solid_type;
 extern int ef_liquid_type;
@@ -1296,10 +1299,7 @@ bool Doom::game_interface_c::Finish(bool build_ok)
     if (!build_ok)
     {
         // remove the WAD if an error occurred
-        if (!preserve_failures)
-        {
-            FileDelete(filename);
-        }
+        FileDelete(filename);
     }
     else
     {
@@ -1427,7 +1427,7 @@ void Doom::game_interface_c::EndLevel()
 
     Doom::EndLevel(level_name);
 
-    level_name = "";
+    level_name.clear();
 }
 
 game_interface_c *Doom_GameObject()

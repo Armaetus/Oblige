@@ -2,8 +2,10 @@ MIDI_CONFIG = {}
 
 MIDI_CONFIG.CHOICES =
 {
-  "safe",  _("Safe Defaults"),
-  "relaxed",   _("Relaxed (May Sound Weird)")
+  "sane",  _("Safe Defaults"),
+  "classical", _("Classical"),
+  "doom", _("Doomish"),
+  "jazz", _("Jazz"),
 }
 
 function MIDI_CONFIG.setup(self)
@@ -13,10 +15,7 @@ end
 function MIDI_CONFIG.all_done()
   for _,song in pairs(GAME.RESOURCES.MUSIC_LUMPS) do
     gui.prog_step("Generating MIDI...")
-    if gui.generate_midi_track("scripts/midi/" .. PARAM.midi_config_selection .. ".json", "temp/" .. song .. ".mid") == 1 then
-      gui.wad_insert_file("temp/" .. song .. ".mid", song)
-      gui.remove_temp_file(song .. ".mid")
-    end
+    gui.generate_midi_track("scripts/midi/" .. PARAM.midi_config_selection .. ".steve.json", song)
   end
 end
 
@@ -25,7 +24,7 @@ OB_MODULES["midi_generation"] =
 
   name = "midi_generation",
 
-  label = _("MIDI Generation"),
+  label = _("MIDI Generation [Unstable]"),
 
   where = "experimental",
   priority = 5,
@@ -44,7 +43,7 @@ OB_MODULES["midi_generation"] =
       name = "midi_config_selection",
       label=_("Generator Config"),
       choices=MIDI_CONFIG.CHOICES,
-      default = "safe",
+      default = "doom",
       tooltip = _("Choose which procedural MIDI config to use")
     },
   },

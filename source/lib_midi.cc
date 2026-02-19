@@ -1,59 +1,43 @@
 #include <fstream>
 #include <sstream>
 
-#include "ConfigJson.h"
+#include "cfg/ConfigJson.h"
 #include "Music.h"
 #include "Steve.h"
+#include "out/MidiOutput.h"
+#include "out/TextOutput.h"
 #include "lib_util.h"
 #include "main.h"
 #include "physfs.h"
 #include "sys_assert.h"
 #include "sys_debug.h"
 
-bool steve_generate(const char *config_file, const char *out_file) {
+std::string steve_generate(const char *config_file) {
 
-  SYS_ASSERT(config_file && out_file);
+  SYS_ASSERT(config_file);
 
   steve::note_name_init();
 
   steve::ConfigJson config;
-
-  PHYSFS_File *config_fp = PHYSFS_openRead(config_file);
-
-  if (!config_fp)
-  {
-    LogPrint("Unable to open MIDI generator config %s!\n", config_file);
-    return false;
-  }
-
-  size_t len = PHYSFS_fileLength(config_fp);
-  uint8_t *buf = new uint8_t[len];
-
-  if (PHYSFS_readBytes(config_fp, buf, len) != len)
-  {
-    PHYSFS_close(config_fp);
-    delete[] buf;
-    LogPrint("Unable to read MIDI generator config %s!\n", config_file);
-    return false;
-  }
-
-  PHYSFS_close(config_fp);
-
-  config.parse_buffer((const char *)buf, len);
-
-  delete[] buf;
-  
+  config.parse_file(config_file);
   config.compute_cache();
 
   steve::Music music(config);
-  std::ofstream fs(PathAppend(home_dir, out_file), std::ofstream::binary);
-  music.write_mid(fs);
-  std::string music_debug;
-  std::ostringstream ss(music_debug);
-  music.write_txt(ss);
-  ss.flush();
-  LogPrint("MIDI Statistics for %s:\n", out_file);
+
+  std::ostringstream fs;
+  steve::MidiOutput::write(music, fs);
+
+  if (!fs.good()) {
+      LogPrint("Steve MIDI write failed (fail=%d bad=%d)\n",
+               fs.fail(), fs.bad());
+      return {};
+  }
+
+  std::ostringstream ss;
+  steve::TextOutput::write(music, ss);
+
+  LogPrint("MIDI Statistics:\n");
   LogPrint("%s\n", ss.str().c_str());
 
-  return true;
+  return fs.str();
 }

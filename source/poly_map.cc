@@ -274,7 +274,7 @@ void ParseSidedefField(sidedef_c *side, const std::string &key, ajparse::token_k
         if (num < 0 || num >= num_sectors)
             FatalError("AJ_Poly: illegal sector number #%d\n", (int)num);
 
-        side->sector = all_sectors[num];
+        side->sector = SafeLookupSector(num);
     }
     else
     {
@@ -373,7 +373,7 @@ void ParseLinedefField(linedef_c *line, const std::string &key, ajparse::token_k
         if (num < 0 || num >= (int)num_sidedefs)
             line->right = NULL;
         else
-            line->right = all_sidedefs[num];
+            line->right = SafeLookupSidedef(num);
     }
     else if (key == "sideback")
     {
@@ -382,7 +382,7 @@ void ParseLinedefField(linedef_c *line, const std::string &key, ajparse::token_k
         if (num < 0 || num >= (int)num_sidedefs)
             line->left = NULL;
         else
-            line->left = all_sidedefs[num];
+            line->left = SafeLookupSidedef(num);
     }
     else
     {

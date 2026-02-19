@@ -104,7 +104,6 @@ void VFS_InitAddons()
     VFS_AddFolder("ports");
     VFS_AddFolder("presets");
     VFS_AddFolder("addons");
-    VFS_AddFolder("temp");
 
     LogPrint("DONE.\n\n");
 }

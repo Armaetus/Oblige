@@ -288,7 +288,8 @@ static bool Theme_Options_ParseLine(std::string buf)
 
     if (name.empty() || value.empty())
     {
-        LogPrint("Name or value missing!\n");
+        LogPrint("Theme: Name empty=%d, Value empty=%d\n",
+             name.empty(), value.empty());
         return false;
     }
 
@@ -613,7 +614,7 @@ class UI_ThemeWin : public Fl_Window
         fl_message_font(font_style, FL_NORMAL_SIZE);
         main_win->menu_bar->textfont(font_style);
         main_win->menu_bar->redraw();
-        main_win->game_box->heading->labelfont(font_style | FL_BOLD);
+        main_win->game_box->heading->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
         main_win->game_box->game_help->labelfont(font_style);
         main_win->game_box->game_help->copy_label("");
         main_win->game_box->game->labelfont(font_style);
@@ -636,7 +637,7 @@ class UI_ThemeWin : public Fl_Window
         main_win->game_box->theme->textfont(font_style);
         main_win->game_box->theme->copy_label("                                "
                                               "        ");
-        main_win->game_box->build->labelfont(font_style | FL_BOLD);
+        main_win->game_box->build->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
         main_win->game_box->quit->labelfont(font_style);
         for (int x = 0; x < main_win->game_box->children(); x++)
         {
@@ -666,7 +667,7 @@ class UI_ThemeWin : public Fl_Window
                 SYS_ASSERT(M);
                 if (!M->Is_UI())
                 {
-                    M->heading->labelfont(font_style | FL_BOLD);
+                    M->heading->labelfont(font_style == 13 ? (font_style + 1) : (font_style == 14 ? font_style : (font_style | FL_BOLD)));
                     M->redraw();
                 }
                 std::map<std::string, UI_RChoice *>::const_iterator IT;
@@ -728,11 +729,9 @@ class UI_ThemeWin : public Fl_Window
         case 3:
             Fl::scheme("plastic");
             break;
-#if FL_MINOR_VERSION > 3
         case 4:
             Fl::scheme("oxy");
             break;
-#endif
         // Shouldn't be reached, but still
         default:
             Fl::scheme("gtk+");
@@ -779,11 +778,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     box_style = FL_PLASTIC_DOWN_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     box_style = FL_OXY_DOWN_BOX;
                     break;
-#endif
                 default:
                     box_style = FL_GTK_DOWN_BOX;
                     break;
@@ -804,11 +801,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     box_style = FL_PLASTIC_THIN_UP_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     box_style = FL_OXY_THIN_UP_BOX;
                     break;
-#endif
                 default:
                     box_style = FL_GTK_THIN_UP_BOX;
                     break;
@@ -836,11 +831,9 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     button_style = FL_PLASTIC_DOWN_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     button_style = FL_OXY_DOWN_BOX;
                     break;
-#endif
                 default:
                     button_style = FL_GTK_DOWN_BOX;
                     break;
@@ -861,18 +854,16 @@ class UI_ThemeWin : public Fl_Window
                 case 3:
                     button_style = FL_PLASTIC_UP_BOX;
                     break;
-#if FL_MINOR_VERSION > 3
                 case 4:
                     button_style = FL_OXY_UP_BOX;
                     break;
-#endif
                 default:
                     button_style = FL_GTK_UP_BOX;
                     break;
                 }
                 break;
             case 2:
-                button_style = static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 2);
+                button_style = (Fl_Boxtype)(FL_FREE_BOXTYPE + 2);
                 break;
             case 3:
                 button_style = FL_EMBOSSED_BOX;
@@ -984,11 +975,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 box_style = FL_PLASTIC_DOWN_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 box_style = FL_OXY_DOWN_BOX;
                 break;
-#endif
             default:
                 box_style = FL_GTK_DOWN_BOX;
                 break;
@@ -1009,11 +998,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 box_style = FL_PLASTIC_THIN_UP_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 box_style = FL_OXY_THIN_UP_BOX;
                 break;
-#endif
             default:
                 box_style = FL_GTK_THIN_UP_BOX;
                 break;
@@ -1068,11 +1055,9 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 button_style = FL_PLASTIC_DOWN_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 button_style = FL_OXY_DOWN_BOX;
                 break;
-#endif
             default:
                 button_style = FL_GTK_DOWN_BOX;
                 break;
@@ -1093,18 +1078,16 @@ class UI_ThemeWin : public Fl_Window
             case 3:
                 button_style = FL_PLASTIC_UP_BOX;
                 break;
-#if FL_MINOR_VERSION > 3
             case 4:
                 button_style = FL_OXY_UP_BOX;
                 break;
-#endif
             default:
                 button_style = FL_GTK_UP_BOX;
                 break;
             }
             break;
         case 2:
-            button_style = static_cast<Fl_Boxtype>(FL_FREE_BOXTYPE + 2);
+            button_style = (Fl_Boxtype)(FL_FREE_BOXTYPE + 2);
             break;
         case 3:
             button_style = FL_EMBOSSED_BOX;
@@ -1754,11 +1737,7 @@ UI_ThemeWin::UI_ThemeWin(int W, int H, const char *label) : Fl_Window(W, H, labe
     opt_widget_theme = new UI_CustomMenu(cx + W * .38, cy, listwidth, KromulentHeight(24), "");
     opt_widget_theme->copy_label(_("Widget Theme: "));
     opt_widget_theme->align(FL_ALIGN_LEFT);
-#if FL_MINOR_VERSION > 3
     opt_widget_theme->add(_("Default|Gleam|Win95|Plastic|Oxy"));
-#else
-    opt_widget_theme->add(_("Default|Gleam|Win95|Plastic"));
-#endif
     opt_widget_theme->callback(callback_WidgetTheme, this);
     opt_widget_theme->value(widget_theme);
     opt_widget_theme->labelfont(font_style);

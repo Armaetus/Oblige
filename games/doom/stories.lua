@@ -1160,7 +1160,7 @@ DOOM.STORIES.TEXT =
       unexpectedly long, taking many minutes before you finally hit the
       floor and snap awake.
       _SPACE
-      Your blood rushes, as you listen to the sounds of in your
+      Your blood rushes, as you listen to the sounds of your
       surroundings, checking your gear as you do. Then, you rise to your
       feet to face the blood-red dawn.]]
     },

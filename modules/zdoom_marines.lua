@@ -190,6 +190,15 @@ ZDOOM_MARINE.FACTORS =
   heaps  = 2.5,
 }
 
+ZDOOM_MARINE.SLIDER_PRESETS =
+_("0:0 (None at all)," ..
+".02:0.02 (Scarce)," ..
+".14:0.14 (Less)," ..
+".5:0.5 (Plenty)," ..
+"1.0:1.0 (DEFAULT)," ..
+"1.2:1.2 (More)," ..
+"3:3 (Heaps)," ..
+"20:20 (INSANE)")
 
 function ZDOOM_MARINE.setup(self)
 
@@ -262,7 +271,7 @@ function ZDOOM_MARINE.control_setup(self)
 
     local M = GAME.MONSTERS[string.sub(opt.name, 7)]
 
-    if M and PARAM[opt.name] ~= gui.gettext("Default") then
+    if M and PARAM[opt.name] ~= 1 then
       M.prob    = PARAM[opt.name] * 100
       M.density = M.prob * .006 + .1
 
@@ -318,10 +327,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Fist-wielding ZDoom Marines."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -332,10 +340,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Berserked ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -346,10 +353,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Chainsaw-wielding ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -360,10 +366,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Pistol-wielding ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -374,10 +379,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Shotgun-wielding ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -388,10 +392,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Super Shotgun-wielding ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -402,10 +405,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Chaingun-wielding ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -416,10 +418,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Rocket Launcher-wielding ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -430,10 +431,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Plasma Rifle-wielding ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -444,10 +444,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of Railgun-wielding ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -458,10 +457,9 @@ OB_MODULES["zdoom_marine_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1,
       tooltip = _("Control the number of BFG 9000-wielding ZDoom Marines."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = ZDOOM_MARINE.SLIDER_PRESETS
       randomize_group="monsters",
     },
   },

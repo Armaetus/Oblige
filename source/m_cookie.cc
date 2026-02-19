@@ -81,33 +81,10 @@ static void Cookie_SetValue(std::string name, const std::string &value)
 
         if (context == cookie_context_e::Arguments || keep_seed)
         {
-            try
-            {
-                next_rand_seed = stoull(value);
-                return;
-            }
-            catch (std::invalid_argument &e)
-            {
-                (void)e;
-                if (!value.empty())
-                {
-                    string_seed = value;
-                    ob_set_config("string_seed", value.c_str());
-                    next_rand_seed = StringHash64(string_seed);
-                }
-                else
-                {
-                    LogPrint("Invalid argument. Will generate new seed.\n");
-                }
-            }
-            catch (std::out_of_range &e)
-            {
-                (void)e;
-                LogPrint("Resulting number would be out of range. Will generate new "
-                         "seed.\n");
-            }
+            string_seed = value;
+            ob_set_config("seed", value);
+            next_rand_seed = StringHash64(string_seed);
         }
-
         return;
     }
 
@@ -166,7 +143,8 @@ static bool Cookie_ParseLine(std::string_view buf)
     }
     if (name.empty() || value.empty())
     {
-        LogPrint("Name or value missing!\n");
+        LogPrint("Config get: Name empty=%d, Value empty=%d\n",
+             name.empty(), value.empty());
         return false;
     }
 

@@ -25,9 +25,18 @@
 #include "m_trans.h"
 #include "main.h"
 
-#if (FL_MAJOR_VERSION != 1 || FL_MINOR_VERSION < 3)
-#error "Require FLTK version 1.3.0 or later"
+#if (FL_MAJOR_VERSION != 1 || FL_MINOR_VERSION < 4)
+#error "Require FLTK version 1.4.0 or later"
 #endif
+
+// Program menu stuff
+extern void DLG_AboutText();
+extern void DLG_OptionsEditor();
+extern void DLG_ThemeEditor();
+extern void DLG_EditSeed();
+extern void DLG_ViewLogs();
+extern void DLG_ViewGlossary();
+extern void DLG_ManageConfig();
 
 static constexpr uint16_t BASE_WINDOW_W = 816;
 static constexpr uint16_t BASE_WINDOW_H = 512;

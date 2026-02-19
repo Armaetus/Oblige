@@ -243,6 +243,16 @@ STEALTH.CHOICES =
   "more",   _("More"),
 }
 
+STEALTH.SLIDER_PRESETS =
+_("0:0 (None at all)," ..
+".02:0.02 (Scarce)," ..
+".14:0.14 (Less)," ..
+".5:0.5 (Plenty)," ..
+"1.0:1.0 (DEFAULT)," ..
+"1.2:1.2 (More)," ..
+"3:3 (Heaps)," ..
+"20:20 (INSANE)")
+
 
 function STEALTH.setup(self)
 
@@ -321,7 +331,7 @@ function STEALTH.control_setup(self)
 
     local M = GAME.MONSTERS[string.sub(opt.name, 7)]
 
-    if M and PARAM[opt.name] ~= gui.gettext("Default") then
+    if M and PARAM[opt.name] ~= 1 then
       M.prob    = PARAM[opt.name] * 100
       M.density = M.prob * .006 + .1
 
@@ -377,10 +387,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Zombiemen."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -391,10 +400,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Shotgunners."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -405,10 +413,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Imps."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -419,10 +426,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Pinkies."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -433,10 +439,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"), 
+      default = 1.0, 
       tooltip = _("Control the number of Stealth Cacodemons."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -447,10 +452,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Barons of Hell."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -461,10 +465,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Chaingunners."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -475,10 +478,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Hell Knights."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -489,10 +491,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"), 
+      default = 1.0, 
       tooltip = _("Control the number of Stealth Revenants."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -503,10 +504,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Mancubi."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -517,10 +517,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Arachnotrons."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
 
@@ -531,10 +530,9 @@ OB_MODULES["stealth_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the number of Stealth Arch-Viles."),  
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = STEALTH.SLIDER_PRESETS
       randomize_group="monsters",
     },
   },

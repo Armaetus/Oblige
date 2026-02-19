@@ -18,6 +18,17 @@
 
 CTL_HERETIC = {}
 
+CTL_HERETIC.SLIDER_PRESETS =
+_("0:0 (None at all)," ..
+".02:0.02 (Scarce)," ..
+".14:0.14 (Less)," ..
+".5:0.5 (Plenty)," ..
+"1.0:1.0 (DEFAULT)," ..
+"1.2:1.2 (More)," ..
+"3:3 (Heaps)," ..
+"20:20 (INSANE)")
+
+
 function CTL_HERETIC.monster_setup(self)
 
   module_param_up(self)
@@ -26,7 +37,7 @@ function CTL_HERETIC.monster_setup(self)
 
     local M = GAME.MONSTERS[string.sub(opt.name, 7)]
 
-    if M and PARAM[opt.name] ~= gui.gettext("Default") then
+    if M and PARAM[opt.name] ~= 1 then
       M.prob    = PARAM[opt.name] * 100
       M.density = M.prob * .006 + .1
 
@@ -76,10 +87,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Gargoyles."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -90,10 +100,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Fire Gargoyles."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -104,10 +113,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Warriors."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -118,10 +126,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Warrior Ghosts."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -132,10 +139,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Golems."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -146,10 +152,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Golem Ghosts."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -160,10 +165,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Nitrogolems."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -174,10 +178,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Nitrogolem Ghosts."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -188,10 +191,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Disciples."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -202,10 +204,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Sabreclaws."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -216,10 +217,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Weredragons."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -230,10 +230,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Ophidians."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -244,10 +243,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Ironliches."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -258,10 +256,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Maulotaurs."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      },
 
@@ -272,10 +269,9 @@ OB_MODULES["heretic_mon_control"] =
       min = 0,
       max = 20,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of D'Sparils."), 
-      presets = _("0:0 (None at all),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),20:20 (INSANE)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "monsters"
      }
   }
@@ -292,7 +288,7 @@ function CTL_HERETIC.weapon_setup(self)
 
     local W = GAME.WEAPONS[string.sub(opt.name, 7)] -- Strip the float_ prefix from the weapon name for table lookup
 
-    if W and PARAM[opt.name] ~= gui.gettext("Default") then
+    if W and PARAM[opt.name] ~= 1 then
       W.add_prob = PARAM[opt.name] * 100
       W.pref     = W.add_prob * 0.28 + 1 -- Complete guesswork right now - Dasho
 
@@ -329,10 +325,9 @@ OB_MODULES["heretic_weapon_control"] =
       min = 0,
       max = 10,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the likelihood of finding the Gauntlets of the Necromancer."), 
-      presets = _("0:0 (None),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),10:10 (I LOVE IT)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "pickups"
      },
      
@@ -343,10 +338,9 @@ OB_MODULES["heretic_weapon_control"] =
       min = 0,
       max = 10,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Crossbows."), 
-      presets = _("0:0 (None),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),10:10 (I LOVE IT)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "pickups"
      },
      
@@ -357,10 +351,9 @@ OB_MODULES["heretic_weapon_control"] =
       min = 0,
       max = 10,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Dragon Claws."), 
-      presets = _("0:0 (None),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),10:10 (I LOVE IT)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "pickups"
      },
 
@@ -371,10 +364,9 @@ OB_MODULES["heretic_weapon_control"] =
       min = 0,
       max = 10,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Hellstaves."), 
-      presets = _("0:0 (None),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),10:10 (I LOVE IT)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "pickups"
      },
      
@@ -385,10 +377,9 @@ OB_MODULES["heretic_weapon_control"] =
       min = 0,
       max = 10,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Phoenix Rods."), 
-      presets = _("0:0 (None),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),10:10 (I LOVE IT)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "pickups"
      },
 
@@ -399,10 +390,9 @@ OB_MODULES["heretic_weapon_control"] =
       min = 0,
       max = 10,
       increment = .02,
-      default = _("Default"),
-      nan = _("Default"),
+      default = 1.0,
       tooltip = _("Control the amount of Fire Maces."), 
-      presets = _("0:0 (None),.02:0.02 (Scarce),.14:0.14 (Less),.5:0.5 (Plenty),1.2:1.2 (More),3:3 (Heaps),10:10 (I LOVE IT)"),
+      presets = CTL_HERETIC.SLIDER_PRESETS,
       randomize_group = "pickups"
      }
   }

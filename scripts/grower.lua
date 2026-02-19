@@ -4042,7 +4042,11 @@ function Grower_sprout_room(SEEDS, LEVEL, R)
   if R.is_dead then return end
 
   if rand.odds(LEVEL.squareishness) and not R.is_cave and not R.is_park
-  and not R.is_hallway and not R.is_street then
+  and not R.is_hallway 
+  and not R.is_street
+  and not PARAM.float_grammar_backhalls
+  and not PARAM.float_grammar_boxes_of_death 
+  and not PARAM.float_grammar_oblige_745 then
 
     -- square_out pass - makes rooms a bit more buff and square
     -- to distort the layout a bit more

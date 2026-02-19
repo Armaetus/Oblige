@@ -1,1 +1,3 @@
-bool steve_generate(const char *config_file, const char *out_file);
+#include <string>
+
+std::string steve_generate(const char *config_file);

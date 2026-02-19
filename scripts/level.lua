@@ -170,8 +170,10 @@ function Level_determine_map_size(LEV)
   -- there is no real "progression" when making a single level.
   -- hence use the average size instead.
   if OB_CONFIG.length == "single" then
-    if ob_size == gui.gettext("Episodic") or 
-    ob_size == gui.gettext("Progressive") then
+    --if ob_size == gui.gettext("Episodic") or 
+    --ob_size == gui.gettext("Progressive") then
+    if PARAM.level_size_mode == "epi" or
+    PARAM.level_size_mode == "prog" then
       ob_size = (PARAM.float_level_lower_bound
       + PARAM.float_level_upper_bound) / 2
       or 36
@@ -182,7 +184,8 @@ function Level_determine_map_size(LEV)
 
   -- Readjusted probabilities once again, added "Micro" size as suggested by activity
   -- in the Discord server. -Reisal, June 30th, 2019,
-  if ob_size == gui.gettext("Mix It Up") then
+  --if ob_size == gui.gettext("Mix It Up") then
+  if PARAM.level_size_mode == "mixed" then
 
     local result_skew = 1.0
     local low = PARAM.float_level_lower_bound or 10
@@ -199,9 +202,10 @@ function Level_determine_map_size(LEV)
     ob_size = math.clamp(low, math.floor(rand.irange(low, high) * result_skew), high)
   end
 
-  if ob_size == gui.gettext("Episodic") or 
-  ob_size == gui.gettext("Progressive") then
-
+  --if ob_size == gui.gettext("Episodic") or 
+  --ob_size == gui.gettext("Progressive") then
+  if PARAM.level_size_mode == "epi" or
+  PARAM.level_size_mode == "prog" then
     -- Progressive --
 
     local ramp_factor = 0.66
@@ -212,7 +216,8 @@ function Level_determine_map_size(LEV)
 
     local along = LEV.game_along ^ ramp_factor
 
-    if ob_size == gui.gettext("Episodic") then along = LEV.ep_along end
+    --if ob_size == gui.gettext("Episodic") then along = LEV.ep_along end
+    if PARAM.level_size_mode == "epi" then along = LEV.ep_along end
 
     along = math.clamp(0, along, 1)
 
@@ -435,7 +440,8 @@ function Episode_plan_monsters()
     local ramp_up = PARAM.float_ramp_up or 1
 
     -- this is for Doom 1 / Ultimate Doom / Heretic
-    if PARAM.episodic_monsters or ramp_up == gui.gettext("Episodic") then
+    if PARAM.episodic_monsters --or ramp_up == gui.gettext("Episodic") then
+    or PARAM.bool_epi_ramp_up == 1 then
       mon_along = (LEV.ep_along + LEV.game_along) / 2
     end
 
@@ -459,7 +465,8 @@ function Episode_plan_monsters()
 
     local factor
 
-    if ramp_up ~= gui.gettext("Episodic") then
+    --if ramp_up ~= gui.gettext("Episodic") then
+    if PARAM.bool_epi_ramp_up == 0 then
       factor = ramp_up
     else
       factor = 1.0

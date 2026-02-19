@@ -72,7 +72,7 @@ bool WAD_OpenRead(const std::string &filename)
 
     if (wad_R_header.num_entries >= 5000) // sanity check
     {
-        LogPrint("WAD_OpenRead: bad header (%u entries?)\n", static_cast<unsigned int>(wad_R_header.num_entries));
+        LogPrint("WAD_OpenRead: bad header (%u entries?)\n", wad_R_header.num_entries);
         PHYSFS_close(wad_R_fp);
         return false;
     }
@@ -80,7 +80,7 @@ bool WAD_OpenRead(const std::string &filename)
     if (!PHYSFS_seek(wad_R_fp, wad_R_header.dir_start))
     {
         LogPrint("WAD_OpenRead: cannot seek to directory (at 0x%u)\n",
-                 static_cast<unsigned int>(wad_R_header.dir_start));
+                 wad_R_header.dir_start);
         PHYSFS_close(wad_R_fp);
         return false;
     }

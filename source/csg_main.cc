@@ -213,16 +213,18 @@ void csg_property_set_c::Remove(const std::string &key)
     dict.erase(key);
 }
 
-std::string csg_property_set_c::getStr(const std::string &key, std::string_view def_val) const
+std::string csg_property_set_c::getStr(const std::string &key) const
 {
     std::map<std::string, std::string>::const_iterator PI = dict.find(key);
 
-    if (PI == dict.end())
+    std::string ret;
+
+    if (PI != dict.end())
     {
-        return std::string(def_val);
+        return PI->second;
     }
 
-    return PI->second;
+    return ret;
 }
 
 double csg_property_set_c::getDouble(const std::string &key, double def_val) const
@@ -373,8 +375,6 @@ const char *csg_brush_c::Validate()
     // make sure brush is convex (co-linear lines is OK), and
     // that the vertices run anti-clockwise
 
-    double average_ang = 0;
-
     bflags |= BRU_IF_Quad;
 
     for (unsigned int k = 0; k < verts.size(); k++)
@@ -406,15 +406,11 @@ const char *csg_brush_c::Validate()
             return "Line loop is not convex!";
         }*/
 
-        average_ang += diff;
-
         if (fabs(v1->x - v2->x) >= EPSILON && fabs(v1->y - v2->y) >= EPSILON)
         {
             bflags &= ~BRU_IF_Quad; // not a quad
         }
     }
-
-    average_ang /= (double)verts.size();
 
     // fprintf(stderr, "Average angle = %1.4f\n\n", average_ang);
 
@@ -530,7 +526,7 @@ int csg_brush_c::CalcMedium() const
         return MEDIUM_SOLID;
 
     case BKIND_Liquid: {
-        std::string str = props.getStr("medium", "");
+        std::string str = props.getStr("medium");
 
         if (StringCompare(str, "slime") == 0)
         {
@@ -1549,7 +1545,7 @@ int CSG_add_entity(lua_State *L)
 
     Grab_Properties(L, 1, &E->props);
 
-    E->id = E->props.getStr("id", "");
+    E->id = E->props.getStr("id");
 
     E->x = E->props.getDouble("x");
     E->y = E->props.getDouble("y");

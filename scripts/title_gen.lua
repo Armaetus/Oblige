@@ -2054,7 +2054,7 @@ function Title_make_interpic()
   local lump   = PARAM.interpic_lump
   local format = PARAM.interpic_format
 
-  if PARAM.tga_images then format = "tga" end
+  if PARAM.png_images then format = "png" end
 
   gui.title_write(lump, format)
   gui.title_free()
@@ -2091,7 +2091,7 @@ function Title_make_titlepic()
   local lump   = PARAM.titlepic_lump
   local format = PARAM.titlepic_format
 
-  if PARAM.tga_images then format = "tga" end
+  if PARAM.png_images then format = "png" end
 
   gui.title_write(lump, format)
   gui.title_free()
