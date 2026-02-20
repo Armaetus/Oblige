@@ -3635,6 +3635,7 @@ HERETIC.NAMES =
         Slayer = 10,
 
         Unbeliever = 10,
+        Edgelords = 10,
         -- Reisal adds things here
         ["Sin Bringer"] = 10,
         ["The Icon"] = 10,
