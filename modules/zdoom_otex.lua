@@ -930,10 +930,10 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   -- create liquid attachments
   if PARAM.bool_otex_liquids == 1 then
 
-    --[[local liquid_tab = table.copy(OTEX_SPECIAL_RESOURCES.liquid_materials)
+    local liquid_tab = table.copy(OTEX_SPECIAL_RESOURCES.liquid_materials)
     for liquid_mat,_ in pairs(liquid_tab) do
       GAME.MATERIALS[liquid_mat]={t=_.t, f=_.f}
-    end]]
+    end
 
     table.deep_merge(GAME.MATERIALS, OTEX_SPECIAL_RESOURCES.liquid_materials, 2)
 
