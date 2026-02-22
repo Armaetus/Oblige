@@ -3082,11 +3082,11 @@ function Quest_room_themes(LEVEL)
 
     visit_room(LEVEL.start_room, nil, nil, building_tab)
 
-    --local max_wall_groups = math.floor(PARAM.float_max_indoor_wall_groups or 2)
+    local max_wall_groups = math.floor(PARAM.float_max_indoor_wall_groups or 2)
 
-    local the_wall_group_tab --= table.copy(LEVEL.theme.wall_groups)
+    local the_wall_group_tab = table.copy(LEVEL.theme.wall_groups)
 
-    --[[if not PARAM.bool_avoid_wall_group_reuse or (PARAM.bool_avoid_wall_group_reuse and PARAM.bool_avoid_wall_group_reuse == 1) then
+    if not PARAM.bool_avoid_wall_group_reuse or (PARAM.bool_avoid_wall_group_reuse and PARAM.bool_avoid_wall_group_reuse == 1) then
       for group,odds in pairs(the_wall_group_tab) do
         if table.has_elem(SEEN_WALL_GROUPS, group) then
           the_wall_group_tab[group] = nil
@@ -3113,7 +3113,7 @@ function Quest_room_themes(LEVEL)
     for set,prob in pairs(the_wall_group_tab) do
       prob_modifier = prob_modifier / 2
       the_wall_group_tab[set] = prob_modifier
-    end]]
+    end
     the_wall_group_tab = choose_wall_groups()
 
     for _,R in pairs(LEVEL.rooms) do
