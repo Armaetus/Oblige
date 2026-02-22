@@ -2308,8 +2308,7 @@ function Room_choose_size(LEVEL, R, not_big)
       R.size_limit = LEVEL.map_W * 5
       R.floor_limit = R.floor_limit * 2
       R.is_big = true
-
-      -- extra code for single-room gotchas
+w
       if PARAM.bool_boss_gen == 1 then
         R.size_limit = LEVEL.map_W * 20
       end
@@ -2318,9 +2317,9 @@ function Room_choose_size(LEVEL, R, not_big)
   elseif not LEVEL.is_procedural_gotcha then
 
     if R.is_start then
-      R.size_limit = math.floor(R.size_limit / 2)
       R.floor_limit = math.floor(R.floor_limit / 2)
-      R.size_limit = math.clamp(rand.pick({4,8,12,16}),R.size_limit,EXTREME_H)
+      R.size_limit = rand.pick({4,8,12,16})
+      R.size_limit = math.clamp(4,R.size_limit,(LEVEL.map_W*LEVEL.map_H) * 0.25) -- no larger than 1/4th of the map
     end
 
   end
