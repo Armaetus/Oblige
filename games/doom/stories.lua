@@ -1591,7 +1591,7 @@ DOOM.STORIES.TEXT =
       adding doom2.wad
       commercial version.
       M_Init: Init miscellaneous info.
-      R_Init: Inid DOOM refresh daemon [........................] ]],
+      R_Init: Init DOOM refresh daemon [........................] ]],
     },
 
     -- Error messages
