@@ -2308,7 +2308,7 @@ function Room_choose_size(LEVEL, R, not_big)
       R.size_limit = LEVEL.map_W * 5
       R.floor_limit = R.floor_limit * 2
       R.is_big = true
-w
+
       if PARAM.bool_boss_gen == 1 then
         R.size_limit = LEVEL.map_W * 20
       end
