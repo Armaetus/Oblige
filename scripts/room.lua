@@ -2318,8 +2318,8 @@ function Room_choose_size(LEVEL, R, not_big)
 
     if R.is_start then
       R.floor_limit = math.floor(R.floor_limit / 2)
-      R.size_limit = rand.pick({4,8,12,16})
-      R.size_limit = math.clamp(4,R.size_limit,(LEVEL.map_W*LEVEL.map_H) * 0.25) -- no larger than 1/4th of the map
+      --R.size_limit = rand.pick({4,8,12,16})
+      R.size_limit = math.clamp(4,R.size_limit,(LEVEL.map_W*LEVEL.map_H) * 0.2) -- no larger than 1/5th of the map
     end
 
   end
