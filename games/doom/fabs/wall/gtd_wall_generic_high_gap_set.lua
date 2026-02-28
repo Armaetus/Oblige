@@ -180,3 +180,117 @@ PREFABS.Wall_generic_gtd_high_gap_hell_diagonal_alt =
   tex_STEP4 = "STEPTOP",
   flat_FLAT19 = "CEIL5_2",
 }
+
+--
+
+PREFABS.Wall_generic_gtd_high_gap_protrude_straight =
+{
+  template = "Wall_generic_gtd_high_gap_straight",
+
+  map = "MAP10",
+  group = "gtd_wall_high_gap_protrude_set",
+
+  z_fit = "top"
+}
+
+PREFABS.Wall_generic_gtd_high_gap_protrude_blue_straight =
+{
+  template = "Wall_generic_gtd_high_gap_straight",
+
+  map = "MAP10",
+  group = "gtd_wall_high_gap_protrude_blue_set",
+
+  z_fit = "top",
+  tex_LITE3 = "LITEBLU4"
+}
+
+PREFABS.Wall_generic_gtd_high_gap_protrude_hell_straight =
+{
+  template = "Wall_generic_gtd_high_gap_straight",
+  theme = "hell",
+
+  rank = 1,
+
+  map = "MAP10",
+  group = "gtd_wall_high_gap_protrude_set",
+
+  z_fit = "top",
+  tex_LITE3 = "FIRELAVA",
+  tex_STEP4 = "STEPTOP",
+  tex_SHAWN2 = "METAL"
+}
+
+PREFABS.Wall_generic_gtd_high_gap_protrude_hell_alt_straight =
+{
+  template = "Wall_generic_gtd_high_gap_straight",
+  theme = "hell",
+
+  rank = 1,
+
+  map = "MAP10",
+  group = "gtd_wall_high_gap_protrude_blue_set",
+
+  z_fit = "top",
+  tex_LITE3 = "FIREBLU1",
+  tex_STEP4 = "STEPTOP",
+  tex_SHAWN2 = "METAL"
+}
+
+--
+
+PREFABS.Wall_generic_gtd_high_gap_protrude_diagonal =
+{
+  template = "Wall_generic_gtd_high_gap_straight",
+  map = "MAP11",
+
+  where = "diagonal",
+  group = "gtd_wall_high_gap_protrude_set",
+
+  z_fit = "top"
+}
+
+PREFABS.Wall_generic_gtd_high_gap_protrude_blue_diagonal =
+{
+  template = "Wall_generic_gtd_high_gap_straight",
+  map = "MAP11",
+
+  where = "diagonal",
+  group = "gtd_wall_high_gap_protrude_blue_set",
+
+  z_fit = "top",
+  tex_LITE3 = "LITEBLU4"
+}
+
+PREFABS.Wall_generic_gtd_high_gap_protrude_hell_diagonal =
+{
+  template = "Wall_generic_gtd_high_gap_straight",
+  theme = "hell",
+  map = "MAP11",
+
+  rank = 1,
+
+  where = "diagonal",
+  group = "gtd_wall_high_gap_protrude_set",
+
+  z_fit = "top",
+  tex_LITE3 = "FIRELAVA",
+  tex_STEP4 = "STEPTOP",
+  tex_SHAWN2 = "METAL"
+}
+
+PREFABS.Wall_generic_gtd_high_gap_protrude_hell_alt_diagonal =
+{
+  template = "Wall_generic_gtd_high_gap_straight",
+  theme = "hell",
+  map = "MAP11",
+
+  rank = 1,
+
+  where = "diagonal",
+  group = "gtd_wall_high_gap_protrude_blue_set",
+
+  z_fit = "top",
+  tex_LITE3 = "FIREBLU1",
+  tex_STEP4 = "STEPTOP",
+  tex_SHAWN2 = "METAL"
+}

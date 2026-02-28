@@ -1107,8 +1107,10 @@ ULTDOOM.THEMES =
       gtd_ribbed_lights_tekmachine_alt = 9,
       gtd_ribbed_lights_very_blue = 18,
       --
-      gtd_wall_high_gap_set = 25,
-      gtd_wall_high_gap_alt_set = 25,
+      gtd_wall_high_gap_set = 12,
+      gtd_wall_high_gap_alt_set = 12,
+      gtd_wall_high_gap_protrude_set = 12,
+      gtd_wall_high_gap_protrude_blue_set = 12,
       --
       gtd_generic_half_floor = 20,
       gtd_generic_half_floor_no_trim = 20,
@@ -1473,8 +1475,10 @@ ULTDOOM.THEMES =
       gtd_wall_quakish_insets = 50,
       gtd_wall_hell_ossuary = 50,
       --
-      gtd_wall_high_gap_set = 25,
-      gtd_wall_high_gap_alt_set = 25,
+      gtd_wall_high_gap_set = 12,
+      gtd_wall_high_gap_alt_set = 12,
+      gtd_wall_high_gap_protrude_set = 12,
+      gtd_wall_high_gap_protrude_blue_set = 12,
       --
       gtd_generic_half_floor = 20,
       gtd_generic_half_floor_no_trim = 20,
@@ -1668,8 +1672,10 @@ ULTDOOM.THEMES =
       gtd_wall_grated_machines = 20,
       gtd_wall_quakish_insets = 25,
       gtd_ribbed_lights = 15,
-      gtd_wall_high_gap_set = 8,
-      gtd_wall_high_gap_alt_set = 8,
+      gtd_wall_high_gap_set = 4,
+      gtd_wall_high_gap_alt_set = 4,
+      gtd_wall_high_gap_protrude_set = 4,
+      gtd_wall_high_gap_protrude_blue_set = 4,
       gtd_generic_half_floor = 15,
       gtd_wall_urban_cement_frame = 10,
       gtd_generic_ceilwall = 25,
@@ -1917,8 +1923,10 @@ ULTDOOM.THEMES =
       gtd_wall_quakish_insets = 50,
       gtd_wall_hell_ossuary = 50,
       --
-      gtd_wall_high_gap_set = 25,
-      gtd_wall_high_gap_alt_set = 25,
+      gtd_wall_high_gap_set = 12,
+      gtd_wall_high_gap_alt_set = 12,
+      gtd_wall_high_gap_protrude_set = 12,
+      gtd_wall_high_gap_protrude_blue_set = 12,
       --
       gtd_generic_half_floor = 20,
       gtd_generic_half_floor_no_trim = 20,
@@ -2359,8 +2367,10 @@ ULTDOOM.THEMES =
       gtd_wall_quakish_insets = 50,
       gtd_wall_hell_ossuary = 50,
       --
-      gtd_wall_high_gap_set = 25,
-      gtd_wall_high_gap_alt_set = 25,
+      gtd_wall_high_gap_set = 12,
+      gtd_wall_high_gap_alt_set = 12,
+      gtd_wall_high_gap_protrude_set = 12,
+      gtd_wall_high_gap_protrude_blue_set = 12,
       --
       gtd_generic_half_floor = 20,
       gtd_generic_half_floor_no_trim = 20,
