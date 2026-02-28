@@ -414,7 +414,7 @@ OTEX_SPECIAL_RESOURCES =
   liquid_materials =
   {
     OBLODA01 = { t="OFALLB01", f="OBLODA01"},
-    OGOOPY01 = { t="OFALLG01", f="OPOOPY01"},
+    OGOOPY01 = { t="OFALLG01", f="OGOOPY01"},
     OICYWA01 = { t="OFALLW11", f="OICYWA01"},
 
     OLAVAA01 = { t="OFALLL01", f="OLAVAA01"},
