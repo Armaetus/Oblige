@@ -217,7 +217,8 @@ PREFABS.Wall_generic_gtd_high_gap_protrude_hell_straight =
   z_fit = "top",
   tex_LITE3 = "FIRELAVA",
   tex_STEP4 = "STEPTOP",
-  tex_SHAWN2 = "METAL"
+  tex_SHAWN2 = "METAL",
+  flat_FLAT19 = "CEIL5_2"
 }
 
 PREFABS.Wall_generic_gtd_high_gap_protrude_hell_alt_straight =
@@ -233,7 +234,8 @@ PREFABS.Wall_generic_gtd_high_gap_protrude_hell_alt_straight =
   z_fit = "top",
   tex_LITE3 = "FIREBLU1",
   tex_STEP4 = "STEPTOP",
-  tex_SHAWN2 = "METAL"
+  tex_SHAWN2 = "METAL",
+  flat_FLAT19 = "CEIL5_2"
 }
 
 --
@@ -275,7 +277,8 @@ PREFABS.Wall_generic_gtd_high_gap_protrude_hell_diagonal =
   z_fit = "top",
   tex_LITE3 = "FIRELAVA",
   tex_STEP4 = "STEPTOP",
-  tex_SHAWN2 = "METAL"
+  tex_SHAWN2 = "METAL",
+  flat_FLAT19 = "CEIL5_2"
 }
 
 PREFABS.Wall_generic_gtd_high_gap_protrude_hell_alt_diagonal =
@@ -292,5 +295,6 @@ PREFABS.Wall_generic_gtd_high_gap_protrude_hell_alt_diagonal =
   z_fit = "top",
   tex_LITE3 = "FIREBLU1",
   tex_STEP4 = "STEPTOP",
-  tex_SHAWN2 = "METAL"
+  tex_SHAWN2 = "METAL",
+  flat_FLAT19 = "CEIL5_2"
 }

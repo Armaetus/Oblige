@@ -1635,6 +1635,8 @@ ULTDOOM.THEMES =
       beam_lights_vertical_tech = 25,
       beam_lights_vertical_hell = 25,
       beam_textured = 50,
+      beam_arched = 25,
+      beam_arched_fixed = 25
     },
 
    -- This is because of the slow Hellification of the Deimos base, hence a few Hell wall prefabs are here.
@@ -1877,6 +1879,8 @@ ULTDOOM.THEMES =
       beam_lights_vertical_hell = 50,
       beam_wood = 50,
       beam_textured = 50,
+      beam_arched = 25,
+      beam_arched_fixed = 25
     },
 
     wall_groups =
@@ -2321,6 +2325,8 @@ ULTDOOM.THEMES =
       beam_lights_vertical_hell = 50,
       beam_wood = 80,
       beam_textured = 50,
+      beam_arched = 25,
+      beam_arched_fixed = 25
     },
 
     wall_groups =
