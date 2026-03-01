@@ -28,8 +28,6 @@ gui.import("zdoom_armaetus_epic_texturex_lump.lua")
 
 gui.import("zdoom_orp_generative_resources.lua")
 
--- Rename to OBSIDIAN_TEXTURES? I am not the only author putting the
--- texture pack together, includes MSSP and Craneo as well.
 OBS_RESOURCE_PACK_EPIC_TEXTURES = { }
 
 OBS_RESOURCE_PACK_EPIC_TEXTURES.SOUCEPORT_CHOICES =
@@ -51,8 +49,6 @@ OBS_RESOURCE_PACK_EPIC_TEXTURES.ENVIRONMENT_THEME_CHOICES =
   "no",        _("No"),
 }
 
--- Reisal: Do we really need the template here anymore? I have not
--- seen this in use or was superceded by the Tree/Flora module.
 OBS_RESOURCE_PACK_EPIC_TEXTURES.TEMPLATES =
 {
    ZS_TREES =
