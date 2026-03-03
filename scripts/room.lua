@@ -1526,7 +1526,12 @@ function Room_border_up(LEVEL, SEEDS)
       return false
     end
 
+    -- no beams on dead ends
     if A1.dead_end and A2.dead_end then return false end
+
+    -- no beams if the ceiling on either area is way too high
+    if ((A1.floor_h + A1.ceil_h) > 512)
+    and ((A2.floor_h + A2.ceil_h > 512)) then return false end
 
     -- beams can be between floors and liquids
     if (A1.mode == "floor" or A1.mode == "liquid") and
@@ -1773,7 +1778,7 @@ function Room_border_up(LEVEL, SEEDS)
       -- beams --
 
       if not A1.is_outdoor and not A2.is_outdoor then
-        if can_beam(A1, A2, junc) and A1.room.beamable then
+        if can_beam(A1, A2, junc) and A1.beamable then
           Junction_make_beams(junc)
         end
       end
@@ -1803,7 +1808,8 @@ function Room_border_up(LEVEL, SEEDS)
           if A1.is_porch or A2.is_porch then
             Junction_make_empty(junc)
             return
-          elseif not A1.is_porch or not A2.is_porch then
+          elseif not A1.is_porch or not A2.is_porch 
+          and (A1.room and A1.room.beamable) then
             Junction_make_beams(junc)
             return
           end
@@ -1835,7 +1841,7 @@ function Room_border_up(LEVEL, SEEDS)
         if (A1.floor_h == A2.floor_h)
         or A1.mode == "liquid" or A2.mode == "liquid" then
           if can_beam(A1, A2, junc) then
-            if A1.room.is_outdoor and rand.odds(style_sel("beams",0,25,50,75)) then
+            if A1.room.is_outdoor and A1.room.beamable then
               Junction_make_beams(junc)
             end
           end
@@ -1870,7 +1876,7 @@ function Room_border_up(LEVEL, SEEDS)
       if ((A1.mode == "liquid" and A2.mode == "floor")
       or (A1.mode == "floor" and A2.mode == "liquid"))
       and A1.room == A2.room 
-      and A1.room.beamable then
+      and A1.beamable or A2.beamable then
         Junction_make_beams(junc)
       end
 
@@ -1943,7 +1949,7 @@ function Room_border_up(LEVEL, SEEDS)
 
   local function assign_beam_density()
     for _,R in pairs(LEVEL.rooms) do
-      if style_sel("beams",0,20,40,60) / (LEVEL.autodetail_group_walls_factor/3) then
+      if rand.odds(style_sel("beams",0,20,40,60)) then
         R.beamable = true
 
         if rand.odds(75) then
@@ -1959,43 +1965,24 @@ function Room_border_up(LEVEL, SEEDS)
       end
     end
 
-    -- handling for making beams consistently in symmetric areas
-    -- areas with the same exact svolume are considered 'beamable'
-    -- to ensure beams purposefully appear in structurally sensible zones
-    for _,R in pairs(LEVEL.rooms) do
-
+    -- mark areas as beamable based on their floor group affiliation
+    for _,R in pairs(LEVEL.rooms)do
       if R.beamable then
-        for _,A1 in pairs(R.areas) do
-          for _,A2 in pairs(R.areas) do
-            if (A1 ~= A2) 
-            and A1.svolume == A2.svolume 
-            and ((A1.mode == "floor"
-            and A2.mode == "floor")
-            or (A1.mode == "cage")
-            and A2.mode == "cage") then
-              A1.beamable = true
-              A2.beamable = true
-              R.has_beam_symmetry = true
-            end
+        for _,fg in pairs(R.floor_groups) do
+          if rand.odds(style_sel("beams",0,20,40,60) / (LEVEL.autodetail_group_walls_factor/3)) then
+            fg.beamable = true
           end
         end
-      end
 
-    end
-  
-    -- handling for rooms where no areas seemingly actually have
-    -- any easily distinguishable areas to have beams on
-    for _,R in pairs(LEVEL.rooms) do
-      if not R.has_beam_symmetry and R.beamable then
         for _,A in pairs(R.areas) do
-          if A.mode == "floor" or A.mode == "cage" 
-          and style_sel("beams",0,10,20,30) / (LEVEL.autodetail_group_walls_factor/3) then
+          if A.floor_group and A.floor_group.beamable then
             A.beamable = true
           end
+
+          if A.is_porch then A.beamable = true end
         end
       end
     end
-  
   end
 
   local function decide_fenced_rooms()
