@@ -1773,9 +1773,7 @@ function Room_border_up(LEVEL, SEEDS)
       -- beams --
 
       if not A1.is_outdoor and not A2.is_outdoor then
-        local beam_prob = style_sel("beams",0,10,20,30)
-          / (LEVEL.autodetail_group_walls_factor/3)
-        if can_beam(A1, A2, junc) and rand.odds(beam_prob) then
+        if can_beam(A1, A2, junc) and A1.room.beamable then
           Junction_make_beams(junc)
         end
       end
@@ -1872,7 +1870,7 @@ function Room_border_up(LEVEL, SEEDS)
       if ((A1.mode == "liquid" and A2.mode == "floor")
       or (A1.mode == "floor" and A2.mode == "liquid"))
       and A1.room == A2.room 
-      and rand.odds(style_sel("beams",0,25,50,75)) then
+      and A1.room.beamable then
         Junction_make_beams(junc)
       end
 
@@ -1945,16 +1943,59 @@ function Room_border_up(LEVEL, SEEDS)
 
   local function assign_beam_density()
     for _,R in pairs(LEVEL.rooms) do
-      if rand.odds(75) then
-        if rand.odds(50) then
-          R.beam_density = "sparse-even"
+      if style_sel("beams",0,20,40,60) / (LEVEL.autodetail_group_walls_factor/3) then
+        R.beamable = true
+
+        if rand.odds(75) then
+          if rand.odds(50) then
+            R.beam_density = "sparse-even"
+          else
+            R.beam_density = "sparse-odd"
+          end
         else
-          R.beam_density = "sparse-odd"
+          R.beam_density = "dense"
         end
-      else
-        R.beam_density = "dense"
+
       end
     end
+
+    -- handling for making beams consistently in symmetric areas
+    -- areas with the same exact svolume are considered 'beamable'
+    -- to ensure beams purposefully appear in structurally sensible zones
+    for _,R in pairs(LEVEL.rooms) do
+
+      if R.beamable then
+        for _,A1 in pairs(R.areas) do
+          for _,A2 in pairs(R.areas) do
+            if (A1 ~= A2) 
+            and A1.svolume == A2.svolume 
+            and ((A1.mode == "floor"
+            and A2.mode == "floor")
+            or (A1.mode == "cage")
+            and A2.mode == "cage") then
+              A1.beamable = true
+              A2.beamable = true
+              R.has_beam_symmetry = true
+            end
+          end
+        end
+      end
+
+    end
+  
+    -- handling for rooms where no areas seemingly actually have
+    -- any easily distinguishable areas to have beams on
+    for _,R in pairs(LEVEL.rooms) do
+      if not R.has_beam_symmetry and R.beamable then
+        for _,A in pairs(R.areas) do
+          if A.mode == "floor" or A.mode == "cage" 
+          and style_sel("beams",0,10,20,30) / (LEVEL.autodetail_group_walls_factor/3) then
+            A.beamable = true
+          end
+        end
+      end
+    end
+  
   end
 
   local function decide_fenced_rooms()
