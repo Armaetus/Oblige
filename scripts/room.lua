@@ -1530,8 +1530,8 @@ function Room_border_up(LEVEL, SEEDS)
     if A1.dead_end and A2.dead_end then return false end
 
     -- no beams if the ceiling on either area is way too high
-    if ((A1.floor_h + A1.ceil_h) > 512)
-    and ((A2.floor_h + A2.ceil_h > 512)) then return false end
+    if ((A1.floor_h + A1.ceil_h) > 256)
+    and ((A2.floor_h + A2.ceil_h > 256)) then return false end
 
     -- beams can be between floors and liquids
     if (A1.mode == "floor" or A1.mode == "liquid") and
@@ -1949,7 +1949,7 @@ function Room_border_up(LEVEL, SEEDS)
 
   local function assign_beam_density()
     for _,R in pairs(LEVEL.rooms) do
-      if rand.odds(style_sel("beams",0,20,40,60)) then
+      if rand.odds(style_sel("beams",0,26,53,80)) then
         R.beamable = true
 
         if rand.odds(75) then
@@ -1962,27 +1962,51 @@ function Room_border_up(LEVEL, SEEDS)
           R.beam_density = "dense"
         end
 
-      end
-    end
-
-    -- mark areas as beamable based on their floor group affiliation
-    for _,R in pairs(LEVEL.rooms)do
-      if R.beamable then
+        -- set areas as beamable based on their floor group affiliation
         for _,fg in pairs(R.floor_groups) do
           if rand.odds(style_sel("beams",0,20,40,60) / (LEVEL.autodetail_group_walls_factor/3)) then
             fg.beamable = true
           end
         end
 
-        for _,A in pairs(R.areas) do
-          if A.floor_group and A.floor_group.beamable then
-            A.beamable = true
+        -- transmit beamable flag to areas
+        for _,A1 in pairs(R.areas) do
+          for _,A2 in pairs(R.areas) do
+            if A1 ~= A2 
+            and A1.svolume == A2.svolume 
+            and A1.mode == "floor" and A2.mode == "floor" then
+              A1.beamable = true
+              A2.beamable = true
+            end
+          end
+  
+          if A1.floor_group and A1.floor_group.beamable then
+            A1.beamable = true
           end
 
-          if A.is_porch then A.beamable = true end
+          if A1.is_porch then A1.beamable = true end
         end
+
+        -- TO-DO: group more areas by their volume and
+        -- evaluate their beamable status individually
+        -- instead of just whether it works for the whole
+        -- room or not
+        if rand.odds(style_sel("beams",0,15,30,45)) then
+          for _,A1 in pairs(R.areas) do
+            for _,A2 in pairs(R.areas) do
+              if A1 ~= A2 
+              and A1.svolume == A2.svolume 
+              and A1.mode == "floor" and A2.mode == "floor" then
+                A1.beamable = true
+                A2.beamable = true
+              end
+            end
+          end
+        end
+
       end
     end
+
   end
 
   local function decide_fenced_rooms()
