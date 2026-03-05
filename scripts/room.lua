@@ -2223,6 +2223,13 @@ function Room_choose_size(LEVEL, R, not_big)
 
   local sum = LEVEL.map_W * 2/3 + rand.range( 10,50 )
 
+  -- the base sum of rooms is now reduced by the current
+  -- for every succeeding room to prevent hogging out
+  if LEVEL.cur_coverage then
+    local max_size = sum
+    sum = math.clamp(4, LEVEL.cur_coverage - sum, max_size)
+  end
+
 
   -- some extra size experiments - should be revised for
   -- more direct control. In fact, maybe this whole size
@@ -2265,7 +2272,8 @@ function Room_choose_size(LEVEL, R, not_big)
 
   if R.is_cave then
     R.size_limit  = sum * rand.range( 1.7,3 )
-    R.floor_limit = rand.key_by_probs(
+    -- caves don't actually use floor limits
+    --[[R.floor_limit = rand.key_by_probs(
       {
         [6]=3,
         [7]=2,
@@ -2273,7 +2281,7 @@ function Room_choose_size(LEVEL, R, not_big)
         [9]=1,
         [10]=1,
       }
-    )
+    )]]
 
   --Make secret rooms smaller
   elseif R.is_secret then
@@ -2351,13 +2359,13 @@ function Room_choose_size(LEVEL, R, not_big)
 
     if not R.is_start then -- main arena size
 
-      R.size_limit = LEVEL.map_W*20
+      R.size_limit = LEVEL.map_W^2
       R.floor_limit = rand.irange(20,80)
       R.is_big = true
 
     elseif R.is_start then -- start room size
 
-      R.size_limit = LEVEL.map_W * 5
+      R.size_limit = LEVEL.map_W^2
       R.floor_limit = R.floor_limit * 2
       R.is_big = true
 
@@ -2376,13 +2384,6 @@ function Room_choose_size(LEVEL, R, not_big)
 
   end
 
-  if R.is_street then
-    R.size_limit = (LEVEL.map_W*LEVEL.map_H) * 1.3
-    R.floor_limit = tonumber((LEVEL.map_W*LEVEL.map_H) * 0.3) -- number to be recalculated
-    R.is_big = true
-    R.is_outdoor = true
-  end
-
   -- tame teleporter trunks and hallway exits
   if (not R.grow_parent and not R.is_start)
   or (R.grow_parent and R.grow_parent.is_hallway) then
@@ -2390,6 +2391,21 @@ function Room_choose_size(LEVEL, R, not_big)
     R.floor_limit = math.floor(R.floor_limit / 2)
     R.is_big = false
   end
+
+  if R.is_street then
+    R.size_limit = LEVEL.map_W^2
+    R.floor_limit = tonumber((LEVEL.map_W^2) * 0.3) -- number to be recalculated
+    R.is_big = true
+    R.is_outdoor = true
+  end
+
+  gui.printf(
+    "ROOM_" .. R.id .. "\n" ..
+    "size: " .. R.size_limit .. "\n" ..
+    "floor: " .. R.floor_limit .. "\n" ..
+    "sum: " .. sum .. "\n"
+  )
+
 end
 
 
