@@ -16658,18 +16658,18 @@ GROW_TRENCH_CURVE_INNER_SOLID =
 
   structure =
   {
-    "xxxx..","xxxxAA",
-    "xxxx..","xxxxAA",
-    "xxxx..","xxxxA1",
-    "xxx...","xxx/A1",
-    "1.....","1>AA/1",
-    "1.....","111111",
+    "xxxx...","xxxxA11",
+    "xxx....","xxx/A11",
+    ".......","1>AA/11",
+    ".......","1111111",
+    "11.....","111111/",
   },
 
   diagonals =
   {
     ".A",
     "A1",
+    "1.",
   },
 },
 
@@ -16680,12 +16680,12 @@ GROW_TRENCH_CURVE_INNER_SOLID_RING =
 
   structure =
   {
-    "xxxxx..","xxxxxAA",
-    "xx.....","xx/AAAA",
-    "xx.....","xxA/#A1",
-    "xx.....","xxA#/A1",
-    "1......","1>AAA/1",
-    "1......","1111111",
+    "xx......","xx/AAA11",
+    "xx......","xxA/#A11",
+    "xx......","xxA#/A11",
+    "........","1>AAA/11",
+    "........","11111111",
+    "11......","1111111/",
   },
 
   diagonals =
@@ -16694,6 +16694,7 @@ GROW_TRENCH_CURVE_INNER_SOLID_RING =
     "A.",
          ".A",
     "A1",
+    "1.",
   },
 },
 
@@ -16718,7 +16719,7 @@ GROW_TRENCH_CURVE_INNER_SOLID_RING_LIQUID =
     "A.",
          ".A",
     "A~",
-  },
+  }
 },
 
 GROW_TRENCH_CURVE_OUTER_SOLID =
@@ -16730,12 +16731,12 @@ GROW_TRENCH_CURVE_OUTER_SOLID =
 
   structure =
   {
-    "xxx...","xxx11A",
-    "x.....","x/111A",
-    "x.....","x1/#1A",
-    "x.....","x1#/1A",
-    "1.....","1111/A",
-    "1.....","1>AAA/",
+    "x......","x/111AA",
+    "x......","x1/#1AA",
+    "x......","x1#/1AA",
+    "1......","1111/AA",
+    "1......","1>AAAA/",
+    "1.....x","1>AAA/x",
   },
 
   diagonals =
@@ -16744,6 +16745,7 @@ GROW_TRENCH_CURVE_OUTER_SOLID =
     "1.",
          ".1",
     "1A",
+    "A.",
     "A.",
   },
 },
