@@ -1804,6 +1804,23 @@ SMOOTHER_1 =
 },
 
 
+SMOOTHER_2 =
+{
+  pass = "smoother",
+  prob = 75, --50,
+
+  env = "outdoor"
+
+  structure =
+  {
+    "...", "...",
+    "1..", "1%.",
+    "11.", "11.",
+  },
+
+  diagonals = { "1." }
+},
+
 ------------------------------------------
 --   Cave stuff
 ------------------------------------------
@@ -10191,15 +10208,16 @@ GROW_PRIMITIVE_CIRCLE_2X =
 
 -- MSSP's shape tamers. Tries to get rid of strange architectural decisions such as pointy walls. [TAMERS]
 
-SERRATED_EDGE_SMOOTHER =
+SMOOTHER_3 =
 {
   pass = "smoother",
   prob = 35,
 
   structure =
   {
-    "1","1",
-    "/","1",
+    "11","11",
+    "/1","11",
+    "11","11",
   },
 
   diagonals =
@@ -10208,21 +10226,23 @@ SERRATED_EDGE_SMOOTHER =
   },
 },
 
-SERRATED_LIQUID_SMOOTHER3 =
+SMOOTHER_4 =
 {
   pass = "smoother",
-
-  prob = 15,
+  prob = 35,
 
   structure =
   {
-    "~~1","~~1",
-    "/~1","~~1",
+    "x1/","x1/",
+    "11.","1/.",
+    "/..","/..",
   },
 
   diagonals =
   {
-    ".~",
+    "1.","1.",
+         "1.",
+    "1.","1.",
   },
 },
 
