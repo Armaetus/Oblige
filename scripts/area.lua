@@ -886,6 +886,8 @@ function Junction_make_beams(junc)
   junc.E1.peer = junc.E2
   junc.E2.peer = junc.E1
 
+  junc.beamed = true
+
 end
 
 
