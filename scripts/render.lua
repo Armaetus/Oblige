@@ -665,14 +665,14 @@ function Render_edge(LEVEL, E, SEEDS)
 
     local z = assert(E.beam_z)
 
-    if E.area.room and E.area.room.beam_density then
+    --[[if E.area.room and E.area.room.beam_density then
       local beam_density = E.area.room.beam_density
 
       if not E.count then E.count = 1 end
       if E.count then E.count = E.count + 1 end
       if beam_density == "sparse-even" and E.count%2 == 0 then return end
       if beam_density == "sparse-odd" and E.count%2 ~= 0 then return end
-    end
+    end]]
 
     local T
 

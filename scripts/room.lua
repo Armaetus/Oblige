@@ -1952,7 +1952,7 @@ function Room_border_up(LEVEL, SEEDS)
       if rand.odds(style_sel("beams",0,26,53,80)) then
         R.beamable = true
 
-        if rand.odds(75) then
+        --[[if rand.odds(75) then
           if rand.odds(50) then
             R.beam_density = "sparse-even"
           else
@@ -1960,7 +1960,7 @@ function Room_border_up(LEVEL, SEEDS)
           end
         else
           R.beam_density = "dense"
-        end
+        end]]
 
         -- set areas as beamable based on their floor group affiliation
         for _,fg in pairs(R.floor_groups) do
