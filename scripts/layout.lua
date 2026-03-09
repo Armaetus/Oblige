@@ -2754,6 +2754,8 @@ function Layout_handle_corners(LEVEL)
       or near_indoor_fence(junc) then
         pillar_it = true
       end
+
+      if junc.beamed then pillar_it = ture end
     end
 
     if pillar_it then

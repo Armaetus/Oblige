@@ -753,3 +753,17 @@ PREFABS.Joiner_scionox_simple_lights_door_59 =
   tag_1  = "?door_tag",
   door_action = "S1_OpenDoor",
 }
+
+PREFABS.Joiner_scionox_simple_lights_door_59_tech =
+{
+  template = "Joiner_scionox_simple_lights_door_59",
+  theme    = "tech",
+
+  tex_WOODMET4 =
+  {
+    SPCDOOR1 = 1,
+    SPCDOOR2 = 1,
+    SPCDOOR3 = 1,
+    SPCDOOR4 = 1
+  }
+}
