@@ -6887,7 +6887,7 @@ GROW_CAUSEWAY_SINGLE_CORNER_PILLAR =
 
   diagonals =
   {
-    "1.",
+    ".1",
     "1.",
     ".A"
   }
@@ -6913,7 +6913,7 @@ GROW_CAUSEWAY_SINGLE_THICC_CORNER_PILLAR =
 
   diagonals =
   {
-    "1.",
+    ".1",
     "1.",
     ".A"
   }
@@ -14749,6 +14749,34 @@ GROW_DEUCE_DIAMONDS =
     ".1","1.",".1","1.",
         ".1","1.",
         ".1","1."
+  }
+},
+
+GROW_SHOTGUN =
+{
+  prob = 10,
+  skip_prob = 90,
+
+  structure =
+  {
+    "xxxx..xxxxxx...x","xxxx11xxxxxx/11x",
+    "x...............","x/11AAAA1111AAAA",
+    "................","/111111111111111",
+    "......xxxx....xx","11/~//xxxxA1A1xx",
+    ".....xxxxxxxxxxx","11~//xxxxxxxxxxx",
+    "....xxxxxxxxxxxx","111/xxxxxxxxxxxx",
+    "..xxxxxxxxxxxxxx","11xxxxxxxxxxxxxx",
+    "11xxxxxxxxxxxxxx","11xxxxxxxxxxxxxx"
+  },
+
+  diagonals =
+  {
+    ".1",
+    ".1",
+    ".1",
+    "1~","~1","1.",
+    "~1","1.",
+    "1."
   }
 },
 
