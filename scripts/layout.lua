@@ -2352,12 +2352,28 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
     local def = Fab_pick(LEVEL, reqs, "none_ok")
 
+    if A.is_porch then
+      if not A.room.porch_light then
+        A.room.porch_light = def
+      else
+        def = A.room.porch_light
+      end
+    end
+
+    if A.mode == "liquid" then
+      if not A.room.liquid_light then
+        A.room.liquid_light = def
+      else
+        def = A.room.liquid_light
+      end
+    end
+
     if not def then
       reqs.light_color = nil
       def = Fab_pick(LEVEL, reqs, "none_ok")
     end
 
-    return Fab_pick(LEVEL, reqs, "none_ok")
+    return def
   end
 
 
