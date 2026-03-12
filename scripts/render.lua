@@ -1393,7 +1393,7 @@ end
 
 
 
-function Render_sink_part(LEVEL, A, S, where, sink)
+function Render_sink_part(LEVEL, A, S, where, sink, SEEDS)
 
   local corner_field = where .. "_inner"
 
@@ -1623,7 +1623,83 @@ stderrf("away = %s\n\n", string.bool(away))
   local p7 = check_inner_point(S.sx    , S.sy + 1)
   local p9 = check_inner_point(S.sx + 1, S.sy + 1)
 
+  -- because ungrouped areas have missing corner information...
+  if where == "ceil" and S.area.mode == "liquid" then
 
+    if S.diagonal == 1 then
+      p1, p3, p7, p9 = true, false, false, false
+    elseif S.diagonal == 3 then
+      p1, p3, p7, p9 = false, true, false, false
+    elseif S.diagonal == 7 then
+      p1, p3, p7, p9 = false, false, true, false
+    elseif S.diagonal == 9 then
+      p1, p3, p7, p9 = false, false, false, true
+    end
+
+    if not S.diagonal then
+      p1, p3, p7, p9 = true, true, true, true
+      local A1 = S.area
+      local A2, S1
+
+      -- south
+      S1 = SEEDS[S.sx][S.sy - 1]
+      A2 = S1.area
+      if A2 ~= A1 and not S1.diagonal then
+        p1, p3 = false, false
+      end
+
+      -- west
+      S1 = SEEDS[S.sx - 1][S.sy]
+      A2 = S1.area
+      if A2 ~= A1 and not S1.diagonal  then
+        p1, p7 = false, false
+      end
+
+      -- east
+      S1 = SEEDS[S.sx + 1][S.sy]
+      A2 = S1.area
+      if A2 ~= A1 and not S1.diagonal  then
+        p3, p9 = false, false
+      end
+
+      -- north
+      S1 = SEEDS[S.sx][S.sy + 1]
+      A2 = S1.area
+      if A2 ~= A1 then
+        p7, p9 = false, false
+      end
+
+      -- SW
+      S1 = SEEDS[S.sx - 1][S.sy - 1]
+      A2 = S1.area
+      if A2 ~= A1 and not S1.diagonal then
+        p1 = false
+      end
+
+      -- SE
+      S1 = SEEDS[S.sx + 1][S.sy - 1]
+      A2 = S1.area
+      if A2 ~= A1 and not S1.diagonal then
+        p3 = false
+      end
+
+      -- NW
+      S1 = SEEDS[S.sx - 1][S.sy + 1]
+      A2 = S1.area
+      if A2 ~= A1 then
+        p7 = false
+      end
+
+      -- NE
+      S1 = SEEDS[S.sx + 1][S.sy + 1]
+      A2 = S1.area
+      if A2 ~= A1 then
+        p9 = false
+      end
+
+    end
+  end
+  
   if S.diagonal == 1 then
     local p_val = sel(p1,1,0) + sel(p3,2,0) + sel(p7,4,0)
 
@@ -1726,8 +1802,6 @@ stderrf("away = %s\n\n", string.bool(away))
       if p_val == 11 then do_triangle(3,7,1, "outie")  ; do_triangle(9,7,3, "outie")  end
       if p_val ==  7 then do_triangle(1,9,7, "outie")  ; do_triangle(3,9,1, "outie")  end
     end
-
-
   end
 end
 
@@ -1745,7 +1819,7 @@ end
 
 
 
-function Render_floor(LEVEL, A)
+function Render_floor(LEVEL, A, SEEDS)
 
   local function should_do_seed(S)
     assert(not S.is_dead)
@@ -1794,7 +1868,7 @@ function Render_floor(LEVEL, A)
       render_seed(S)
 
       if A.floor_group and A.floor_group.sink then
-        Render_sink_part(LEVEL, A, S, "floor",   A.floor_group.sink)
+        Render_sink_part(LEVEL, A, S, "floor", A.floor_group.sink, SEEDS)
       end
     end
   end
@@ -1802,7 +1876,7 @@ end
 
 
 
-function Render_ceiling(LEVEL, A)
+function Render_ceiling(LEVEL, A, SEEDS)
 
   local function should_do_seed(S)
     assert(not S.is_dead)
@@ -1819,14 +1893,7 @@ function Render_ceiling(LEVEL, A)
 
   local function render_seed(S)
     local c_h = S.ceil_h or A.ceil_h
-
-    if not c_h then
-      gui.printf("%s : %s\n", (A.chunk and A.chunk.kind) or "-", table.tostr(A))
-      gui.printf("\nblah:\n\n " .. table.tostr(S))
-      gui.printf("\nblah:\n\n " .. table.tostr(A.room))
-      gui.printf("\nblah:\n\n " .. table.tostr(S.room))
-      assert(c_h)
-    end
+    assert(c_h)
 
     local c_mat  = S.ceil_mat  or A.ceil_mat
     local c_side = S.ceil_side or S.ceil_mat or A.ceil_side or c_mat
@@ -1848,8 +1915,13 @@ function Render_ceiling(LEVEL, A)
       render_seed(S)
 
       if A.ceil_group and A.ceil_group.sink then
-        Render_sink_part(LEVEL, A, S, "ceil", A.ceil_group.sink)
+        Render_sink_part(LEVEL, A, S, "ceil", A.ceil_group.sink, SEEDS)
       end
+
+      if A.ceil_sink and not A.ceil_group then
+        Render_sink_part(LEVEL, A, S, "ceil", A.ceil_sink, SEEDS)
+      end
+
     end
   end
 end
@@ -2887,11 +2959,11 @@ function Render_area(LEVEL, A, SEEDS)
     if A.mode == "nature" or A.mode == "scenic" then
       Render_cells(LEVEL, A)
     else
-      Render_floor(LEVEL, A)
+      Render_floor(LEVEL, A, SEEDS)
     end
 
     if not (A.mode == "nature" or A.mode == "scenic") or A.external_sky then
-      Render_ceiling(LEVEL, A)
+      Render_ceiling(LEVEL, A, SEEDS)
     end
   end
 
