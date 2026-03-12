@@ -18,7 +18,7 @@ PREFABS.Beam_arched =
   deep   = 8,
   over   = 8,
 
-  z_fit = { 56,62 },
+  z_fit = "bottom",
 
   bound_z1 = 0,
   bound_z2 = 96
