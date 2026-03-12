@@ -2291,7 +2291,9 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
   end
 
 
-  local function select_lamp_for_porch(A)
+  -- select_lamp function that does not use ceil_groups
+  -- merge with select_lamp_for_group eventually?
+  local function select_lamp(A)
     local reqs =
     {
       kind = "light",
@@ -2399,7 +2401,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         if A.is_porch then
           if not rand.odds(prob) then goto skip end
 
-          A.lamp_def = select_lamp_for_porch(A)
+          A.lamp_def = select_lamp(A)
           if not A.lamp_def then goto skip end
         end
         ::skip::
@@ -2426,6 +2428,37 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       end
     end
 
+    -- allow fabrication of ceiling lights in liquid areas (ungrouped area)
+    for _,A in pairs(R.areas) do
+      if A.mode == "liquid" then
+        if not rand.odds(prob) then goto skip end
+
+        A.lamp_def = select_lamp(A)
+        if not A.lamp_def then goto skip end
+      end
+      ::skip::
+    end
+
+    for _,chunk in pairs(R.ceil_chunks) do
+      if chunk.area.lamp_def then
+        if chunk.content then goto skip end
+        if chunk.floor_below and chunk.floor_below.content then goto skip end
+
+        if chunk.area.lamp_def.height > (chunk.area.ceil_h - chunk.area.floor_h) then
+          goto skip end
+
+        chunk.content = "DECORATION"
+        chunk.kind = "ceil"
+        chunk.prefab_def = chunk.area.lamp_def
+        chunk.prefab_dir = 2
+
+        chunk.area.bump_light = 16
+
+        chunk.ceil_above = true
+        ::skip::
+      end
+    end
+  
   end
 
 

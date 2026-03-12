@@ -1531,7 +1531,7 @@ function Area_locate_chunks(LEVEL, SEEDS)
     end
 
     -- TODO : review the liquid check here
-    if not A.is_outdoor and A.mode ~= "liquid" then
+    if not A.is_outdoor then
       local CEIL = make_chunk("ceil", A, sx1,sy1, sx2,sy2)
       table.insert(R.ceil_chunks, CEIL)
 
