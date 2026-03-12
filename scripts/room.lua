@@ -2398,14 +2398,6 @@ function Room_choose_size(LEVEL, R, not_big)
     R.is_big = true
     R.is_outdoor = true
   end
-
-  gui.printf(
-    "ROOM_" .. R.id .. "\n" ..
-    "size: " .. R.size_limit .. "\n" ..
-    "floor: " .. R.floor_limit .. "\n" ..
-    "sum: " .. sum .. "\n"
-  )
-
 end
 
 
