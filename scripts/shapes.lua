@@ -14780,6 +14780,34 @@ GROW_SHOTGUN =
   }
 },
 
+GROW_PEWPEW =
+{
+  prob = 10,
+  skip_prob = 90,
+
+  structure =
+  {
+    "xxxxxx...x","xxxxxx/11x",
+    "x.........","x/11AA11AA",
+    "..........","/1111111AA",
+    "......xxxx","11/~//xxxx",
+    ".....xxxxx","11~//xxxxx",
+    "....xxxxxx","111/xxxxxx",
+    "..xxxxxxxx","11xxxxxxxx",
+    "11xxxxxxxx","11xxxxxxxx"
+  },
+
+  diagonals =
+  {
+    ".1",
+    ".1",
+    ".1",
+    "1~","~1","1.",
+    "~1","1.",
+    "1."
+  }
+},
+
 -- MSSP's rooms shaped like English alphabet letters. [LETTERS]
 
 GROW_SKULL_P1_NEW_AREA =
