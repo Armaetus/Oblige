@@ -2257,6 +2257,37 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       end
       ::skip::
     end
+
+    -- sinks for non-ceil_group areas
+    for _,A in pairs(R.areas) do
+      if not A.mode == "liquid" then goto skip end
+      if A.openness < 0.4 then goto skip end
+
+      local height = A.ceil_h - A.floor_h
+      if height < 128 then goto skip end
+
+      local tab = grab_usable_sinks(R, nil, "ceiling")
+      if tab == nil then return end
+      if table.empty(tab) then return end
+
+      local name = rand.key_by_probs(tab)
+
+      -- PLAIN keyword for sinks should now be ignored in
+      -- favor of this direct prob
+      -- if rand.odds(75) then name = "PLAIN" end
+
+      if name ~= "PLAIN" then
+        A.ceil_sink = GAME.SINKS[name]
+
+        -- inhibit ceiling lights and pillars
+        for _,chunk in pairs(R.ceil_chunks) do
+          if chunk.area == A and not chunk.content then
+            chunk.content = "NOTHING"
+          end
+        end
+      end
+      ::skip::
+    end
   end
 
 
