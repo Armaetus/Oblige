@@ -3116,7 +3116,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
   local function do_liquid_areas(R)
     -- give liquid areas some nice variation
-    local liquid_ceil_h_delta = rand.key_by_probs({
+    local add_h = rand.key_by_probs({
       [-32]=1,
       [-16]=3,
       [0]=5,
@@ -3126,9 +3126,32 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       [128]=2,
       [256]=1,
     })
+    local invert_h = rand.pick({true, false})
+    local have_h = rand.pick({true, false})
 
     for _,A in pairs(R.areas) do
       if A.mode == "liquid" then
+        if have_h then
+           add_h = 0 
+        else
+          if R.height_profile == "normal" then
+            if group.vol <  8 then add_h = 16
+            elseif group.vol < 16 then add_h = 32
+            elseif group.vol < 32 then add_h = 64
+            elseif group.vol < 48 then add_h = 128
+            else                       add_h = 256
+            end
+          elseif R.height_profile == "inverse" then
+            if group.vol     < 16 then add_h = 128
+            elseif group.vol < 32 then add_h = 64
+            elseif group.vol < 48 then add_h = 32
+            else                       add_h = 16
+            end
+          end
+        end
+
+        if invert_h then add_h == add_h * -1 end
+
         local N = A:lowest_neighbor()
         local N2 = A:highest_neighbor()
 
@@ -3141,7 +3164,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         end
 
         A.floor_h  = N.floor_h - (THEME.pool_depth or 16)
-        A.ceil_h   = N2.ceil_h + liquid_ceil_h_delta
+        A.ceil_h   = N2.ceil_h + add_h
         A.ceil_mat = N2.ceil_mat
         ::skip::
       end
