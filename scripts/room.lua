@@ -3135,16 +3135,16 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
            add_h = 0 
         else
           if R.height_profile == "normal" then
-            if group.vol <  8 then add_h = 16
-            elseif group.vol < 16 then add_h = 32
-            elseif group.vol < 32 then add_h = 64
-            elseif group.vol < 48 then add_h = 128
+            if A.svolume     <  8 then add_h = 16
+            elseif A.svolume < 16 then add_h = 32
+            elseif A.svolume < 32 then add_h = 64
+            elseif A.svolume < 48 then add_h = 128
             else                       add_h = 256
             end
           elseif R.height_profile == "inverse" then
-            if group.vol     < 16 then add_h = 128
-            elseif group.vol < 32 then add_h = 64
-            elseif group.vol < 48 then add_h = 32
+            if A.svolume     < 16 then add_h = 128
+            elseif A.svolume < 32 then add_h = 64
+            elseif A.svolume < 48 then add_h = 32
             else                       add_h = 16
             end
           end
@@ -3157,7 +3157,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
         if not N then
 --!!!! FIXME : temp stuff for park-border experiment....
---!!!!    error("failed to find liquid neighbor")
+          error("failed to find liquid neighbor")
           A.floor_h = 977
           A.ceil_h  = 999
           goto skip
@@ -3165,7 +3165,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
         A.floor_h  = N.floor_h - (THEME.pool_depth or 16)
         if not R.is_outdoor then
-          A.ceil_h   = N2.ceil_h + add_h
+          A.ceil_h = N2.ceil_h + add_h
+        else
+          A.ceil_h = N2.ceil_h + add_h
         end
         A.ceil_mat = N2.ceil_mat
         ::skip::
