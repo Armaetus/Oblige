@@ -3664,10 +3664,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         A.ceil_h = N.ceil_h
         A.floor_h = (N.floor_h or N.chunk.floor_h) + 24
 
-        local h_diff
-        h_diff = A.ceil_h - A.floor_h
-        if h_diff < 96 then
-          A.floor_h = A.ceil_h - 96
+        local h_diff = A.ceil_h - A.floor_h
+        if h_diff < 72 then
+          A.ceil_h = A.floor_h + 72
         end
         A.cage_mode = "fancy"
       end
