@@ -3184,8 +3184,9 @@ GROW_CURVE_3_STEEPNESS =
   diagonals =
   {
     ".A",
-    ".A",
     ".A","A1",
+    ".A","A1",
+    "A1",
     "1A",
     "1A","A.",
     "A."
