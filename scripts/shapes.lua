@@ -9296,6 +9296,8 @@ GROW_MAZE_STRAIGHT_STAIRED_LONG =
   prob = 10,
   skip_prob = 35,
 
+  never_absurdify = true,
+
   structure =
   {
     "x..","xAA",
@@ -9305,7 +9307,7 @@ GROW_MAZE_STRAIGHT_STAIRED_LONG =
     "...","#^#",
     "x11","x11",
   }
-},
+}
 
 GROW_MAZE_L =
 {
@@ -9442,7 +9444,7 @@ GROW_MAZE_U =
   }
 },
 
-GROW_MAZE_ =
+GROW_MAZE_INTERSECTION =
 {
   prob = 8,
   skip_prob = 50,
@@ -9466,10 +9468,38 @@ GROW_MAZE_ =
   }
 },
 
---[[GROW_MAZE_SQUARE =
+GROW_MAZE_INTERSECTION_CAGE =
+{
+  prob = 8,
+  skip_prob = 50,
+
+  structure =
+  {
+    "xxxx..xxx","xxxx11xxx",
+    "xxxx..xxx","xxxx11xxx",
+    "xx.....xx","xx/C1C%xx",
+    "xx.....xx","xxC/1%Cxx",
+    ".........","111111111",
+    ".........","11C%1/C11",
+    "xx.....xx","xx%C1C/xx",
+    "xxxx11xxx","xxxx11xxx"
+  },
+
+  diagonals =
+  {
+    ".C","C.",
+    "C1","1C",
+    "C1","1C",
+    ".C","C."
+  }
+},
+
+GROW_MAZE_SQUARE =
 {
   prob = 5,
   skip_prob = 50,
+
+  never_absurdify = true,
   
   structure =
   {
@@ -9480,12 +9510,15 @@ GROW_MAZE_ =
     "x1...x","x1111x",
     "x1..xx","x1##xx",
   }
-},]]
+},
 
 GROW_MAZE_STRAIGHT_CAGE =
 {
   prob = 8,
   skip_prob = 35,
+
+  never_absurdify = true,
+  
 
   structure =
   {
@@ -9504,6 +9537,8 @@ GROW_MAZE_STRAIGHT_CAGE_ALT =
   prob = 2,
   skip_prob = 35,
 
+  never_absurdify = true,
+  
   structure =
   {
     "x..","x11",
@@ -11115,19 +11150,73 @@ GROW_PILLAR_C_SHAPED_CAGE =
 
 GROW_PILLAR_STUPID_BRIDGE_CAGE =
 {
-  prob = 15,
-  skip_prob = 85,
+  prob = 10,
+  skip_prob = 90,
 
   structure =
   {
-    ".....","11111",
-    ".....","11111",
-    ".....","1#v#1",
-    ".....","1CAC1",
-    ".....","1CAC1",
-    ".....","1#^#1",
-    ".....","11111",
-    "11xxx","11xxx"
+    ".......","/11111%",
+    ".......","1111111",
+    ".......","11#v#11",
+    ".......","11CAC11",
+    ".......","11CAC11",
+    ".......","11#^#11",
+    ".......","%11111/",
+    "x11xxxx","x11xxxx"
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1.",
+  }
+},
+
+GROW_PILLAR_STUPID_BRIDGE_CAGE_ALT =
+{
+  prob = 10,
+  skip_prob = 90,
+
+  structure =
+  {
+    ".......","/11111%",
+    ".......","1111111",
+    ".......","11#v#CC",
+    ".......","11CAAAA",
+    ".......","11CAAAA",
+    ".......","11#^#CC",
+    ".......","%11111/",
+    "x11xxxx","x11xxxx"
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1.",
+  }
+},
+
+GROW_PILLAR_STUPID_BRIDGE_CAGE_INTERSECTION =
+{
+  prob = 10,
+  skip_prob = 90,
+
+  structure =
+  {
+    ".......","/11111%",
+    ".......","1111111",
+    ".......","CC#v#CC",
+    ".......","AAAAAAA",
+    ".......","AAAAAAA",
+    ".......","CC#^#CC",
+    ".......","%11111/",
+    "x11xxxx","x11xxxx"
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1.",
   }
 },
 
@@ -11191,8 +11280,8 @@ GROW_WATER_STRIPES_SIDE_SLOPE_CAGED =
 
 GROW_WATER_STRIPES_CURVE =
 {
-  prob = 10,
-  skip_prob = 80,
+  prob = 7,
+  skip_prob = 85,
 
   structure =
   {
@@ -11204,6 +11293,76 @@ GROW_WATER_STRIPES_CURVE =
     "........","11~11~~1",
     "........","11~11~11",
     "........","11111111"
+  }
+},
+
+GROW_WATER_STRIPES_CURVE_PILLAR =
+{
+  prob = 7,
+  skip_prob = 85,
+
+  structure =
+  {
+    "11......","11111111",
+    "11......","11111111",
+    "........","11~~~~~1",
+    "........","11~..A<1",
+    "........","11~..A<1",
+    "........","11~AA~~1",
+    "........","11~^^~11",
+    "........","11111111"
+  }
+},
+
+GROW_WATER_STRIPES_CURVE_DIAGONAL =
+{
+  prob = 7,
+  skip_prob = 85,
+
+  structure =
+  {
+    "11......","11111111",
+    "11......","11111111",
+    "........","11/~~~~1",
+    "........","11~/1111",
+    "........","11~11111",
+    "........","11~11/~1",
+    "........","11~11~/1",
+    "........","11111111"
+  },
+
+  diagonals =
+  {
+    "1~",
+    "~1",
+    "1~",
+    "~1"
+  }
+},
+
+GROW_WATER_STRIPES_CURVE_DIAGONAL_NEW_AREA =
+{
+  prob = 7,
+  skip_prob = 85,
+
+  structure =
+  {
+    "11......","11111111",
+    "11......","11111111",
+    "........","11/~~~~1",
+    "........","11~/AA<1",
+    "........","11~AAA<1",
+    "........","11~AA/~1",
+    "........","11~^^~/1",
+    "........","11111111"
+  },
+
+  diagonals =
+  {
+    "1~",
+    "~A",
+    "A~",
+    "~1"
   }
 },
 
@@ -19080,7 +19239,7 @@ SMOOTHER_1 =
 
   structure =
   {
-    "x.", "x.",
+    "1.", "1.",
     "1.", "1%",
     "11", "11",
   },
