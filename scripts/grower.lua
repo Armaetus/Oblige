@@ -964,6 +964,7 @@ function Grower_calc_rule_probs(LEVEL)
         and not LEVEL.liquid then return end
       if table.has_elem(rule.styles, "cages") 
         and not rand.odds(style_sel("cages", 0, 40, 70, 90)) then return end
+      if rule.never_absurdify then return end
 
       --if rand.odds(75) then
       new_factor = rand.range( 100,1000000 ) * rand.range( 0.75,1.25 )
