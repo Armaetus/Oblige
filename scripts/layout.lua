@@ -2350,22 +2350,17 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       reqs.theme_override = A.room.theme.theme_override
     end
 
-    local def = Fab_pick(LEVEL, reqs, "none_ok")
+    local def
 
-    if A.is_porch then
-      if not A.room.porch_light then
-        A.room.porch_light = def
-      else
-        def = A.room.porch_light
-      end
+    if (A.is_porch and not A.room.porch_light)
+    or (A.mode == "liquid" and not A.room.liquid_light) then
+      def = Fab_pick(LEVEL, reqs, "none_ok")
     end
 
-    if A.mode == "liquid" then
-      if not A.room.liquid_light then
-        A.room.liquid_light = def
-      else
-        def = A.room.liquid_light
-      end
+    if A.is_porch and A.room.porch_light then
+      def = A.room.porch_light
+    elseif A.mode == "liquid" and A.room.liquid_light then
+      def = A.room.liquid_light
     end
 
     if not def then

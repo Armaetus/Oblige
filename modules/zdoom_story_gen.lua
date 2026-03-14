@@ -60,6 +60,11 @@ function ZStoryGen_format_story_chunk(story_strings, info, store)
     if info.installation then
       story_strings = string.gsub(story_strings, "_INSTALLATION", info.installation)
     end
+
+    if info.enemy_name == "NOUNMEMBERS" then
+      gui.printf("Unreplaced story strings found: " .. table.tostr(info, 2) .. "\n")
+      assert(info.enemy_name == "NOUNMEMBERS")
+    end
   end
 
   -- dialogue quotes and apostrphes, man
