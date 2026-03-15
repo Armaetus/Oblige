@@ -956,8 +956,9 @@ function Grower_calc_rule_probs(LEVEL)
 
       local new_factor
   
-      if string.match(rule.name,"ROOT") then return end
-      if string.match(rule.name,"CAVE") then return end
+      if string.match(rule.name,"ROOT")
+      or string.match(rule.name,"CAVE")
+      or string.match(rule.name,"PARK") then return end
       if string.match(rule.name,"SPROUT") and rand.odds(50) then return end
       if rule.pass and rule.pass ~= "grow" then return end
       if table.has_elem(rule.styles, "liquids") 
