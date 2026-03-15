@@ -1463,7 +1463,10 @@ DOOM.NAMES =
         ["The Perfect Virus"]=10,
         ["To Thee We Confide"]=10,
         ["Window of Time"]=10,
-        ["Wounded Warsong"]=10 -- end marker
+        ["Wounded Warsong"]=10 
+        
+        -- 2026 stub
+        -- end marker
 
       }
     }
@@ -2610,7 +2613,77 @@ DOOM.NAMES =
         ["With Moon As Thy Robe"]=10,
         ["Winds of Northern Storms"]=10,
         ["Womb of Maggots"]=10,
-        ["Wrath of the Goat"]=10 -- end marker
+        ["Wrath of the Goat"]=10,
+
+        -- 2026 HELL marker!
+        ["A Song for the Morbid"]=10,
+        ["A Testament to Madness"]=10,
+        ["Adjacent to Purgatory"]=10,
+        ["Aftermath Bleeder"]=10,
+        ["Afterworld"]=10,
+        ["Aluminium Bat Domina"]=10,
+        ["Angel Hunter"]=10,
+        ["Apocalypse Principle"]=10,
+        ["Aroused Self-Extinction"]=10,
+        ["As Mankind Rots"]=10,
+        ["Ashes of Mourning Life"]=10,
+        ["Beneath the Soil"]=10,
+        ["Beyond the Accursed Portent"]=10,
+        ["Blades Will Cut"]=10,
+        ["Blessed Flesh"]=10,
+        ["Chainsaw Gutsfuck"]=10,
+        ["Chant of Rotting Tongues"]=10,
+        ["Chapter of Pain"]=10,
+        ["Chop, Slit, Flay"]=10,
+        ["Crispy Fried Human"]=10,
+        ["Chaos Fury"]=10,
+        ["Dark Gray Epoch"]=10,
+        ["De Mysteriis Dom Sathanas"]=10,
+        ["Demonic Unholy Night"]=10,
+        ["Demon's Divine"]=10,
+        ["Die Decay Devour"]=10,
+        ["Doctrine of the Black Arts"]=10,
+        ["Feeding on Fear"]=10,
+        ["Flame Within Flame"]=10,
+        ["Flesh Passion"]=10,
+        ["Flesh Requiem"]=10,
+        ["Hell Marked"]=10,
+        ["Herald of Demise"]=10,
+        ["Illuminated Eternal"]=10,
+        ["Just Another Doomsday"]=10,
+        ["Life of Decay"]=10,
+        ["Madness Prevails"]=10,
+        ["Morbid Courage"]=10,
+        ["Night of the Horrid"]=10,
+        ["No Hope No Light Only Death"]=10
+        ["Obliteration of Souls"]=10,
+        ["Ode to the Meat Saw"]=10,
+        ["One Way to the Grave"]=10,
+        ["Ordained and Adorned"]=10,
+        ["Partly Dead"]=10,
+        ["Redeemed in Flames"]=10,
+        ["Rites of Gore"]=10,
+        ["Rotting Hill"]=10,
+        ["Ruins of Bone and Ash"]=10,
+        ["Severed Survival"]=10,
+        ["Sin, Offer, Obey"]=10,
+        ["Soulless Feeding Machine"]=10,
+        ["Spinehammer"]=10,
+        ["Storm of Ashes"]=10,
+        ["Suffer Again"]=10,
+        ["Suffer to the Grave"]=10,
+        ["Tapestry of Scars"]=10,
+        ["Terrorize Brutalize Sodomize"]=10,
+        ["The Coming Prophecy"]=10,
+        ["The Eyes of Dread"]=10,
+        ["The Rotting End"]=10,
+        ["The Way of Decay"]=10,
+        ["Travelogue in Nightmares"]=10,
+        ["Under Clouds of Blood"]=10,
+        ["Ungodly Forms"]=10,
+        ["Well of Entrails"]=10
+        -- end marker
+      
 
       }
     }
@@ -3454,7 +3527,10 @@ DOOM.NAMES =
         ["Without Fear"]=10,
         ["White Roses, White Coffin"]=10,
         ["Wrapped in Solitude"]=10,
-        ["Your Beauty Measures More"]=10 -- end marker
+        ["Your Beauty Measures More"]=10 
+        
+        -- 2026 stub here
+        -- end marker
       }
     }
   },
