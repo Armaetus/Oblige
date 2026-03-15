@@ -3021,6 +3021,8 @@ function Fab_trim_list(LEVEL)
   -- unlikely to be picked, this is a function that simply
   -- trims the active prefabs list to a more manageable level
   -- based on certain initial guesses
+
+  -- TO-DO: Make the module
   PREFABS = nil
   PREFABS = {}
   PREFABS = PREFABS_FULL
