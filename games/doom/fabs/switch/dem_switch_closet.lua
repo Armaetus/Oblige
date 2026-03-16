@@ -69,6 +69,8 @@ PREFABS.Switch_Dem_closetamb1 =
   template  = "Switch_Dem_closet1",
   map    = "MAP05",
 
+  prob = 25,
+
   sound = "Water_Tank",
 
   seed_w = 3,
@@ -80,6 +82,8 @@ PREFABS.Switch_Dem_closetamb2 =
 {
   template  = "Switch_Dem_closet1",
   map    = "MAP06",
+
+  prob = 25,
 
   seed_w = 3,
 
@@ -93,6 +97,8 @@ PREFABS.Switch_Dem_closetamb3 =
   template  = "Switch_Dem_closet1",
   map    = "MAP07",
 
+  prob = 25,
+
   seed_w = 3,
 }
 
@@ -102,6 +108,8 @@ PREFABS.Switch_Dem_closetamb4 =
 {
   template  = "Switch_Dem_closet1",
   map    = "MAP08",
+
+  prob = 25,
 
   sound = "Electric_Sparks",
 }
