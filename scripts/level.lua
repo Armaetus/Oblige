@@ -2367,7 +2367,7 @@ end
 
 
 function Level_choose_misc(LEVEL)
-  LEVEL.squareishness = rand.pick({ 0,25,50,75,90 })
+  LEVEL.squareishness = rand.pick({ 0,7,12,16,20 })
 
   LEVEL.room_height_style = PARAM.room_heights or "mixed"
 
