@@ -1661,7 +1661,7 @@ PARK_ROOT_3x3 =
 
 PARK_GROW_1 =
 {
-  prob = 200, --100,
+  prob = 75, --100,
 
   structure =
   {
@@ -1674,7 +1674,7 @@ PARK_GROW_1 =
 
 PARK_GROW_2 =
 {
-  prob = 80, --30,
+  prob = 25, --30,
 
   structure =
   {
@@ -1687,7 +1687,7 @@ PARK_GROW_2 =
 
 PARK_GROW_3 =
 {
-  prob = 600, --500,
+  prob = 350, --500,
 
   structure =
   {
@@ -1755,8 +1755,8 @@ FILLER_1 =
 
   structure =
   {
-    "1..", "1..",
-    "1..", "11.",
+    "1..", "111",
+    "1..", "111",
     "111", "111",
   }
 },
@@ -1786,6 +1786,19 @@ FILLER_3 =
     "1111", "1111",
   }
 },
+
+FILLER_4 =
+{
+  pass = "filler",
+  prob = 50,
+
+  structure =
+  {
+    "111","111",
+    "1.1","111",
+    "111","111"
+  }
+}
 
 
 SMOOTHER_1 =
@@ -10390,24 +10403,6 @@ SQUARE_OUT_SMOOTH_PLATFORM =
   },
 },
 
---[[SQUARE_OUT_REMOVE_TRIANGLE =
-{
-  pass = "square_out",
-
-  prob = 15,
-
-  structure =
-  {
-    "1%","11",
-    "x1","x1",
-  },
-
-  diagonals =
-  {
-    "1.",
-  },
-},]]
-
 --MSSP's random negative features [FEATURES] - 'negative' because they attempt to modify an existing room if it has too much clean space.
 
 GROW_FEATURES_CENTER =
@@ -18998,214 +18993,6 @@ SPROUT_TELEPORTER_1x1_EMERGENCY =
     from_dir = 2,
   },
 },
-
---[[SQUARE_OUT_1 =
-{
-  pass = "square_out",
-
-  prob = 20000,
-
-  structure =
-  {
-    ".",".",
-    "1","1",
-  },
-},
-
-SQUARE_OUT_3 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1111", "x1111",
-    "11111", "11v11",
-    "11111", "1>A<1",
-    "11111", "11^11",
-    "11111", "11111",
-  },
-},
-
-SQUARE_OUT_4 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1x11", "x1x11",
-    "11111", "11111",
-    "11111", "1vvv1",
-    "11111", "AAAAA",
-    "11111", "AAAAA",
-  },
-},
-
-SQUARE_OUT_5 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1x11", "x1x11",
-    "11111", "11111",
-    "11111", "11v11",
-    "11111", "AAAAA",
-    "11111", "AAAAA",
-  },
-},
-
-SQUARE_OUT_6 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1x11", "x1x11",
-    "11111", "11111",
-    "11111", "1v1v1",
-    "11111", "AAAAA",
-    "11111", "AAAAA",
-  },
-},
-
-SQUARE_OUT_7 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1x11", "x1x11",
-    "11111", "11111",
-    "11111", "1vAv1",
-    "11111", "AvAvA",
-    "11111", "AAAAA",
-  },
-},
-
-SQUARE_OUT_8 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1x11", "x1x11",
-    "11111", "1A1A1",
-    "11111", "1AAA1",
-    "11111", "1A1A1",
-    "11x11", "11x11",
-  },
-},
-
-SQUARE_OUT_9 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1x11", "x1x11",
-    "11111", "11111",
-    "11111", "~~~~~",
-    "11111", "11111",
-    "11x11", "11x11",
-  },
-},
-
-SQUARE_OUT_10 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1x11", "x1x11",
-    "11111", "11111",
-    "11111", "11111",
-    "11111", "AvvvA",
-    "11111", "AAAAA",
-  },
-},
-
-SQUARE_OUT_11 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1x11", "x1x11",
-    "11111", "11111",
-    "11111", "11111",
-    "11111", "AAvAA",
-    "11111", "AAAAA",
-  },
-},
-
-SQUARE_OUT_12 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1111", "x1111",
-    "11111", "1AAA1",
-    "11111", "1AAA1",
-    "11111", "1AAA1",
-    "11111", "11111",
-  },
-},
-
-SQUARE_OUT_13 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1111", "x1111",
-    "11111", "1~~~1",
-    "11111", "1~~~1",
-    "11111", "1~~~1",
-    "11111", "11111",
-  },
-},
-
-SQUARE_OUT_14 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1111", "x1111",
-    "11111", "1vvv1",
-    "11111", "1AAA1",
-    "11111", "1^^^1",
-    "11111", "11111",
-  },
-},
-
-SQUARE_OUT_15 =
-{
-  prob = 1000,
-  pass = "square_out",
-
-  structure =
-  {
-    "x1111", "x1111",
-    "11111", "11111",
-    "11111", "1AAA1",
-    "11111", "11111",
-    "11111", "11111",
-  },
-},]]
 
 DECORATE_CLOSET_2x1 =
 {
