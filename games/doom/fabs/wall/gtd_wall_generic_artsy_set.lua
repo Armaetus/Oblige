@@ -339,6 +339,8 @@ PREFABS.Wall_generic_small_lite_tech =
   template = "Wall_generic_artsy_bedazzled",
   map = "MAP33",
 
+  rank = 1,
+
   theme = "tech",
 
   group = "gtd_generic_small_lite",
@@ -352,6 +354,8 @@ PREFABS.Wall_generic_small_lite_tech_diag =
 {
   template = "Wall_generic_artsy_bedazzled",
   map = "MAP34",
+
+  rank = 1,
 
   theme = "tech",
 
@@ -405,6 +409,8 @@ PREFABS.Wall_generic_small_lite_hell =
 
   theme = "hell",
 
+  rank = 2,
+
   group = "gtd_generic_small_lite",
 
   height = 96,
@@ -421,6 +427,8 @@ PREFABS.Wall_generic_small_lite_hell_diag =
   map = "MAP34",
 
   theme = "hell",
+
+  rank = 2,
 
   group = "gtd_generic_small_lite",
 
