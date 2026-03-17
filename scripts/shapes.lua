@@ -7568,130 +7568,159 @@ GROW_STAIRED_L =
 
 GROW_SQUEEZE_STRAIGHT_NEW_AREA =
 {
-  prob = 15,
+  prob = 20,
   skip_prob = 85,
 
   structure =
   {
     "...","AAA",
-    "...","AAA",
+    "...","%A/",
     "x.x","x1x",
     "x.x","x1x",
-    "x.x","x1x",
-    "x1x","x1x",
+    "...","/1%",
+    "111","111",
   },
+
+  diagonals =
+  {
+    ".A","A.",
+    ".1","1."
+  }
 },
 
 GROW_SQUEEZE_CURVE_NEW_AREA =
 {
-  prob = 10,
-  skip_prob = 70,
+  prob = 20,
+  skip_prob = 80,
 
   structure =
   {
-    "xxx..","xxxAA",
-    ".....","111AA",
-    ".xx..","1xxAA",
-    ".xxxx","1xxxx",
-    "1xxxx","1xxxx",
-  },
-},
-
-GROW_SQUEEZE_STAIRCASE =
-{
-  prob = 7,
-  skip_prob = 70,
-
-  structure =
-  {
-    "..","AA",
-    "..","AA",
-    "x.","x^",
-    "x1","x1",
-  },
-},
-
-GROW_SQUEEZE_EVEN_MORE_STAIRCASE =
-{
-  prob = 7,
-  skip_prob = 76,
-
-  structure =
-  {
-    "..","AA",
-    "..","AA",
-    "x.","x^",
-    "x.","x^",
-    "x.","x^",
-    "x1","x1",
-  },
-},
-
-GROW_SQUEEZE_LIQUID_ONE_SIDE =
-{
-  prob = 6,
-  skip_prob = 70,
-
-  structure =
-  {
-    "..x","AAx",
-    "..x","AAx",
-    "...","^~~",
-    "...","^~~",
-    "1xx","1xx",
-  },
-},
-
-GROW_SQUEEZE_LIQUID_BOTH_SIDES =
-{
-  prob = 6,
-  skip_prob = 65,
-
-  structure =
-  {
-    "x...x","xAAAx",
-    "x...x","xAAAx",
-    ".....","~~^~~",
-    ".....","~~^~~",
-    "xx1xx","xx1xx",
-  },
-},
-
-GROW_SQUEEZE_CURVE_LIQUID_SIDE =
-{
-  prob = 5,
-  skip_prob = 60,
-
-  structure =
-  {
-    "x...","x/AA",
-    "....","/AAA",
-    "....","A/~~",
-    "....","^~~~",
-    "1xxx","1xxx",
+    "xxxx..","xxxx/A",
+    "x.....","x111AA",
+    "x.xx..","x1xx%A",
+    "x.xxxx","x1xxxx",
+    "x.xxxx","x1xxxx",
+    "...xxx","/1%xxx",
+    "111xxx","111xxx",
   },
 
   diagonals =
   {
     ".A",
     ".A",
-    "A~",
-  },
+    ".1","1."
+  }
 },
 
-GROW_SQUEEZE_DRAIN =
+GROW_SQUEEZE_STAIRCASE =
 {
-  prob = 3,
+  prob = 25,
+  skip_prob = 80,
+
+  structure =
+  {
+    "...","AAA",
+    "...","%A/",
+    "x.x","x^x",
+    "...","/1%",
+    "111","111",
+  },
+
+  diagonals =
+  {
+    ".A","A.",
+    ".1","1."
+  }
+},
+
+GROW_SQUEEZE_EVEN_MORE_STAIRCASE =
+{
+  prob = 25,
+  skip_prob = 76,
+
+  structure =
+  {
+    "...","AAA",
+    "...","%A/",
+    "x.x","x^x",
+    "x.x","x^x",
+    "x.x","x^x",
+    "...","/1%",
+    "111","111"
+  },
+
+  diagonals =
+  {
+    ".A","A.",
+    ".1","1."
+  }
+},
+
+GROW_SQUEEZE_LIQUID_ONE_SIDE =
+{
+  prob = 10,
   skip_prob = 75,
 
   structure =
   {
-    "...","111",
-    "...","111",
-    "...","~1~",
-    "...","~1~",
-    "...","~1~",
-    "x1x","x1x",
+    "..x","AAx",
+    "...","A/~",
+    "...","^~~",
+    "...","1%~",
+    "11x","11x"
+  },
+
+  diagonals =
+  {
+    "A~",
+    "1~"
+  }
+},
+
+GROW_SQUEEZE_LIQUID_BOTH_SIDES =
+{
+  prob = 25,
+  skip_prob = 65,
+
+  structure =
+  {
+    "x...x","xAAAx",
+    ".....","~%A/~",
+    ".....","~~^~~",
+    ".....","~~^~~",
+    ".....","~/1%~",
+    "x111x","x111x",
+  },
+
+    diagonals =
+  {
+    "~A","A~",
+    "~1","1~"
+  }
+},
+
+GROW_SQUEEZE_CURVE_LIQUID_SIDE =
+{
+  prob = 5,
+  skip_prob = 85,
+
+  structure =
+  {
+    "x...","x/AA",
+    "....","/A/~",
+    "....","A/~~",
+    "....","^~~/",
+    ".xxx","1xxx",
+    ".xxx","1xxx",
+    "1xxx","1xxx",
+  },
+
+  diagonals =
+  {
+         ".A",
+    ".A","A~",
+    "A~",
+              "~."
   },
 },
 
