@@ -55,3 +55,47 @@ PREFABS.Beam_arched_diagonal_fixed_height =
 
   z_fit = "top"
 }
+
+--
+
+PREFABS.Beam_arched_angular =
+{
+  template = "Beam_arched",
+  map    = "MAP05",
+
+  group = "beam_arch_angular"
+}
+
+PREFABS.Beam_arched_angular_diagonal =
+{
+  template = "Beam_arched",
+  map    = "MAP06",
+
+  where  = "diagonal",
+
+  group = "beam_arch_angular",
+}
+
+--
+
+PREFABS.Beam_arched_angular_fixed =
+{
+  template = "Beam_arched",
+  map    = "MAP05",
+
+  group = "beam_arch_angular_fixed",
+  
+  z_fit = "top"
+}
+
+PREFABS.Beam_arched_angular_diagonal_fixed =
+{
+  template = "Beam_arched",
+  map    = "MAP06",
+
+  where  = "diagonal",
+
+  group = "beam_arch_angular_fixed",
+  
+  z_fit = "top"
+}

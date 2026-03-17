@@ -1228,7 +1228,9 @@ DOOM.THEMES =
       beam_lights = 50,
       beam_lights_white = 50,
       beam_lights_vertical_tech = 50,
-      beam_textured = 50
+      beam_textured = 50,
+      beam_arch_angular = 25,
+      beam_arch_angular_fixed = 25,
     },
 
     wall_groups =
@@ -1738,7 +1740,9 @@ DOOM.THEMES =
       beam_wood = 30,
       beam_textured = 50,
       beam_arched = 25,
-      beam_arched_fixed = 25
+      beam_arched_fixed = 25,
+      beam_arch_angular = 25,
+      beam_arch_angular_fixed = 25,
     },
 
     wall_groups =
@@ -2276,7 +2280,9 @@ DOOM.THEMES =
       beam_wood = 50,
       beam_textured = 50,
       beam_arched = 25,
-      beam_arched_fixed = 25
+      beam_arched_fixed = 25,
+      beam_arch_angular = 25,
+      beam_arch_angular_fixed = 25,
     },
 
     wall_group_prob = 65,
