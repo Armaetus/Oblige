@@ -12,7 +12,9 @@ PREFABS.Decor_gtd_fireblu_wim =
 
   size = 88,
 
-  z_fit = {82, 86}
+  z_fit = {82, 86},
+
+  bound_z1 = 0
 }
 
 PREFABS.Decor_gtd_fireblu_wim_2 =
@@ -103,7 +105,9 @@ PREFABS.Decor_gtd_fireblu_wim_boxes =
   group = "gtd_fireblu_where_its_made",
 
   size = 64,
-  height = 64
+  height = 64,
+
+  bound_z1 = 0
 }
 
 PREFABS.Decor_gtd_fireblu_wim_boxes_2 =
