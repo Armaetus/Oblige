@@ -1368,7 +1368,9 @@ DOOM.THEMES =
       gtd_door_storage = 25,
       --
       gtd_wall_lit_h_window_tall_gray = 35,
-      gtd_wall_lit_h_window_tall_brown = 15
+      gtd_wall_lit_h_window_tall_brown = 15,
+      --
+      gtd_fireblu_where_its_made = 50
     },
 
     outdoor_wall_groups =
@@ -1894,6 +1896,8 @@ DOOM.THEMES =
       gtd_prison_A = 50,
       --
       gtd_furnace_water = 15,
+      --
+      gtd_fireblu_where_its_made = 25
     },
 
     window_groups =

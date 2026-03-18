@@ -1177,7 +1177,9 @@ ULTDOOM.THEMES =
       gtd_sunderfall = 13,
       gtd_sunderfall_barred = 13,
       --
-      gtd_door_storage = 20
+      gtd_door_storage = 20,
+      --
+      gtd_fireblu_where_its_made = 50
     },
 
     outdoor_wall_groups =
@@ -1563,7 +1565,9 @@ ULTDOOM.THEMES =
       gtd_sunderfall = 25,
       gtd_sunderfall_barred = 25,
       --
-      gtd_door_storage = 15
+      gtd_door_storage = 15,
+      --
+      gtd_fireblu_where_its_made = 15
     },
 
     outdoor_wall_groups =
@@ -1644,6 +1648,10 @@ ULTDOOM.THEMES =
     },
 
    -- This is because of the slow Hellification of the Deimos base, hence a few Hell wall prefabs are here.
+
+   -- MSSP: we have two wall_groups here and I'm not sure which one of these is likely
+   -- to override the other.
+   -- TO-DO: We need to merge this with the one above.
     wall_groups =
     {
       low_gap = 7,
