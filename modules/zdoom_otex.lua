@@ -189,7 +189,14 @@ OTEX_DIRECT_REMOVALS =
       "OBKMTD92",
       "OBKMTD95",
       "OBKMTD96",
-      "OBKMTD97"
+      "OBKMTD97",
+
+      "OMETLN37",
+      "OMETLO37",
+      "OMETLP37",
+      "OMETLJ91",
+      "OMETLJ93",
+      "OMETLJ94"
     }
   },
 
@@ -634,6 +641,83 @@ OTEX_GLOWING_FLATS =
     OWATER08
 ]]
 
+OTEX_MATERIAL_MANUAL_ASSIGNMENTS =
+{
+  -- green BASE
+  OBASEN00 = {t="OBASEN30",f="OBASEN00"},
+
+  OBASEN30 = {t="OBASEN30",f="OBASEN00"},
+  OBASEN33 = {t="OBASEN33",f="OBASEN00"},
+  OBASEN34 = {t="OBASEN34",f="OBASEN00"},
+  OBASEN36 = {t="OBASEN36",f="OBASEN00"},
+  OBASEN39 = {t="OBASEN39",f="OBASEN00"},
+  OBASEN43 = {t="OBASEN43",f="OBASEN00"},
+  OBASEN44 = {t="OBASEN44",f="OBASEN00"},
+
+  -- blue BASE
+  OBASEN01 = {t="OBASER59",f="OBASEN01"}
+
+  OBASEP33 = {t="OBASEP33",f="OBASEN01"},
+  OBASEP34 = {t="OBASEP34",f="OBASEN01"},
+  OBASEP36 = {t="OBASEP36",f="OBASEN01"},
+  OBASEP39 = {t="OBASEP39",f="OBASEN01"},
+  OBASEP43 = {t="OBASEP33",f="OBASEN01"},
+  OBASEP44 = {t="OBASEP44",f="OBASEN01"},
+
+  OBASER19 = {t="OBASER19",f="OSTARA07"},
+  OBASER30 = {t="OBASER30",f="OSTARA07"},
+  OBASER50 = {t="OBASER50",f="OSTARA07"},
+  OBASER59 = {t="OBASER59",f="OSTARA07"},
+
+  -- red BASE
+  OBASEQ33 = {t="OBASEQ33",f="OBASEL22"},
+  OBASEQ34 = {t="OBASEQ34",f="OBASEL22"},
+  OBASEQ36 = {t="OBASEQ36",f="OBASEL22"},
+  OBASEQ39 = {t="OBASEQ39",f="OBASEL22"},
+  OBASEQ43 = {t="OBASEQ43",f="OBASEL22"},
+  OBASEQ44 = {t="OBASEQ44",f="OBASEL22"},
+
+  ----------
+  -- HELL --
+  ----------
+
+  OHELLA13 = {t="OHELLA13",f="OHELLA03"},
+  OHELLA03 = {t="OHELLA13",f="OHELLA03"},
+
+  -- pink walls
+  OMRBLK01 = {t="OMRBLK43",f="OMRBLK01"}
+  OMRBLK44 = {t="OMRBLK48",f="OMRBLK44"}
+  OMRBLK59 = {t="OMRBLK91",f="OMRBLK59"}
+
+  OMRBLK33 = {t="OMRBLK33",f="OMRBLK01"},
+  OMRBLK35 = {t="OMRBLK35",f="OMRBLK01"},
+  OMRBLK36 = {t="OMRBLK36",f="OMRBLK01"},
+  OMRBLK37 = {t="OMRBLK37",f="OMRBLK01"},
+  OMRBLK38 = {t="OMRBLK38",f="OMRBLK01"},
+  OMRBLK39 = {t="OMRBLK39",f="OMRBLK01"},
+  OMRBLK40 = {t="OMRBLK40",f="OMRBLK01"},
+  OMRBLK43 = {t="OMRBLK43",f="OMRBLK01"},
+  OMRBLK48 = {t="OMRBLK48",f="OMRBLK44"},
+  OMRBLK49 = {t="OMRBLK49",f="OMRBLK44"},
+  OMRBLK59 = {t="OMRBLK59",f="OMRBLK44"},
+  OMRBLK90 = {t="OMRBLK90",f="OMRBLK59"},
+  OMRBLK91 = {t="OMRBLK91",f="OMRBLK59"},
+
+  -- blue walls
+  OMRBLR00 = {t="OMRBLR00",f="OMRBLR33"},
+  OMRBLR14 = {t="OMRBLR14",f="OMRBLR33"},
+  OMRBLR19 = {t="OMRBLR19",f="OMRBLR39"},
+  OMRBLR22 = {t="OMRBLR22",f="OMRBLR39"},
+  OMRBLR40 = {t="OMRBLR40",f="OMRBLR44"},
+  OMRBLR43 = {t="OMRBLR43",f="OMRBLR44"},
+  OMRBLR48 = {t="OMRBLR48",f="OMRBLR44"},
+  OMRBLR49 = {t="OMRBLR49",f="OMRBLR44"},
+  OMRBLR91 = {t="OMRBLR91",f="OMRBLR44"},
+  OMRBLR92 = {t="OMRBLR92",f="OMRBLR44"},
+  OMRBLR93 = {t="OMRBLR93",f="OMRBLR44"},
+  OMRBLR95 = {t="OMRBLR95",f="OMRBLR44"}
+}
+
 function OTEX_PROC_MODULE.setup(self)
   PARAM.OTEX_module_activated = true
   module_param_up(self)
@@ -788,6 +872,15 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
         }
       end
     end
+  end
+
+  -- material group override for manual assignments
+  for _,M in pairs(OTEX_MATERIAL_MANUAL_ASSIGNMENTS) do
+    OTEX_MATERIALS[_]=
+    {
+      t=M.t,
+      f=M.f
+    }
   end
  
   -- resource_tab exclusions
