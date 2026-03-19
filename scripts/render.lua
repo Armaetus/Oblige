@@ -256,6 +256,7 @@ function Render_edge(LEVEL, E, SEEDS)
 
       if A.is_porch or A.is_porch_neighbor then
         reqs.env = "building"
+        reqs.porch = true
       end
     end
 

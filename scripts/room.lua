@@ -1535,6 +1535,9 @@ function Room_border_up(LEVEL, SEEDS)
     if ((A1.floor_h + A1.ceil_h) > 256)
     and ((A2.floor_h + A2.ceil_h > 256)) then return false end
 
+    -- don't put up beams if it's between the same ceiling
+    if A1.ceil_h == A2.ceil_h then return false end
+
     -- beams can be between floors and liquids
     if (A1.mode == "floor" or A1.mode == "liquid") and
         (A2.mode == "floor" or A2.mode == "liquid") then
