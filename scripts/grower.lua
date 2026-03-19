@@ -3584,6 +3584,15 @@ end
 
       cur_rule = assert(grammar[name])
 
+      -- record shape rules overall for HN debug
+      if cur_rule.is_absurd then
+        if R.absurd_shapes then
+          R.absurd_shapes[cur_rule.name] = {name = cur_rule.name, state="tried"}
+        else
+          R.absurd_shapes = {}
+        end
+      end
+  
       -- don't try this rule again
       rules[name] = nil
 
@@ -3642,11 +3651,10 @@ end
         R.shapes[cur_rule.name] = R.shapes[cur_rule.name] + 1
       end
 
+      -- record succesful shape rules for HN debug
       if cur_rule.is_absurd then
-        if R.absurd_shapes then
-          table.add_unique(R.absurd_shapes, cur_rule.name)
-        else
-          R.absurd_shapes = {}
+        if R.absurd_shapes and R.absurd_shapes[cur_rule.name] then
+          R.absurd_shapes[cur_rule.name].state="applied"
         end
       end
     end

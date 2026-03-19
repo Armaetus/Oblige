@@ -1694,7 +1694,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = " ROOM_" .. R.id .. " "
     end
 
-    if R.symmetry and R.symmetry.kind then
+    --[[if R.symmetry and R.symmetry.kind then
       shapes_string = shapes_string .. "[" .. R.symmetry.kind
       if R.symmetry.dir then
         shapes_string = shapes_string .. ":" .. R.symmetry.dir
@@ -1702,7 +1702,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "] "
     else
       shapes_string = shapes_string .. "[no symm] "
-    end
+    end]]
 
     shapes_string = shapes_string ..
       "(SZE " .. R.svolume .. "/" .. math.round(R.size_limit) .. ") "
@@ -1722,7 +1722,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     end
     shapes_string = shapes_string .. "] "
 
-    if R.transform_changes then
+    --[[if R.transform_changes then
       shapes_string = shapes_string .. "(TSRL " .. R.transform_changes .. ", "
     else
       shapes_string = shapes_string .. "(TSRL 0, "
@@ -1731,7 +1731,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "BASE " .. R.base_set_increase .. ") "
     else
       shapes_string = shapes_string .. "BASE 0) "
-    end
+    end]]
   
     shapes_string = shapes_string .. "(STAT " ..
       LEVEL.size_multiplier .. "x, " ..
@@ -1741,8 +1741,12 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     if LEVEL.is_absurd then
       shapes_string = shapes_string .. "(ARUL: "
       if R.absurd_shapes and not table.empty(R.absurd_shapes) then
-        for idx,shape in ipairs(R.absurd_shapes) do
-          shapes_string = shapes_string .. shape .. " " 
+        for _,shape in pairs(R.absurd_shapes) do
+          if shape.state == "tried" then
+            shapes_string = shapes_string .. "[N]" .. shape.name .. " "
+          elseif shape.state == "applied" then
+            shapes_string = shapes_string .. "[Y]" .. shape.name .. " "
+          end
         end
       else
         shapes_string = shapes_string .. "NONE"
