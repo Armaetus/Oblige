@@ -1508,6 +1508,8 @@ function Room_border_up(LEVEL, SEEDS)
 
 
   local function can_beam(A1, A2, junction)
+    local est_beam_height
+
     if not A1.room or not A2.room then
       return false
     end
@@ -3164,7 +3166,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         end
 
         A.floor_h  = N.floor_h - (THEME.pool_depth or 16)
-        A.ceil_h = math.clamp(A.floor_h + 64, 
+        A.ceil_h = math.clamp(A.floor_h + 96, 
           N2.ceil_h + add_h, 
           EXTREME_H)
         A.ceil_mat = N2.ceil_mat
