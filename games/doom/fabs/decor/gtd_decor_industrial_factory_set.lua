@@ -14,7 +14,8 @@ PREFABS.Decor_gtd_fireblu_wim =
 
   z_fit = {82, 86},
 
-  bound_z1 = 0
+  bound_z1 = 0,
+  bound_z2 = 96,
 }
 
 PREFABS.Decor_gtd_fireblu_wim_2 =
@@ -22,9 +23,11 @@ PREFABS.Decor_gtd_fireblu_wim_2 =
   template = "Decor_gtd_fireblu_wim",
   map = "MAP02",
 
-  height = 80,
+  height = 81,
 
-  z_fit = "top"
+  z_fit = "top",
+
+  bound_z2 = nil
 }
 
 PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
@@ -34,7 +37,7 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
 
   prob = 2500,
 
-  height = 128,
+  height = 129,
   size = 96,
 
   z_fit = "top",
@@ -44,23 +47,32 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
     CRATE3 = 2,
     CRATE2 = 2,
     CRATINY = 1
-  }
+  },
+
+  bound_z2 = nil
 }
 
-PREFABS.Decor_gtd_fireblu_wim_3_fire =
+PREFABS.Decor_gtd_fireblu_wim_3_box_with_fire_stuff =
 {
   template = "Decor_gtd_fireblu_wim",
   map = "MAP03",
 
   prob = 2500,
 
-  height = 128,
+  height = 129,
   size = 96,
 
   z_fit = "top",
 
   flat_CEIL4_2 = "FLAT5_3",
-  tex_COMPBLUE = "ROCKRED"
+  tex_COMPBLUE = "ROCKRED1",
+
+  tex_CRATE3 = 
+  {
+    CRATE3 = 2,
+    CRATE2 = 2,
+    CRATINY = 1
+  }
 }
 
 PREFABS.Decor_gtd_fireblu_wim_4 =
@@ -73,7 +85,9 @@ PREFABS.Decor_gtd_fireblu_wim_4 =
   height = 50,
   size = 72,
 
-  z_fit = "top"
+  z_fit = "top",
+
+  bound_z2 = nil
 }
 
 PREFABS.Decor_gtd_fireblu_wim_4_fire =
@@ -90,6 +104,8 @@ PREFABS.Decor_gtd_fireblu_wim_4_fire =
 
   flat_CEIL4_2 = "FLAT5_3",
   tex_COMPBLUE = "ROCKRED"
+
+  bound_z2 = nil
 }
 
 --
@@ -130,5 +146,5 @@ PREFABS.Decor_gtd_fireblu_wim_boxes_4 =
   map = "MAP04",
   
   size = 96,
-  height = 128
+  height = 129
 }

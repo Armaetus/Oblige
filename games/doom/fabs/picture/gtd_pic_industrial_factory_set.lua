@@ -17,6 +17,6 @@ PREFABS.Pic_gtd_fireblu_wim =
   bound_z1 = 0,
   bound_z2 = 96,
 
-  x_fit = {106,112 , 146,150},
+  x_fit = {106,110 , 146,150},
   y_fit = "top"
 }
