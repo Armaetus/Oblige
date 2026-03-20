@@ -3586,7 +3586,7 @@ end
 
       -- record shape rules overall for HN debug
       if cur_rule.is_absurd then
-        if R.absurd_shapes then
+        if R.absurd_shapes and not R.absurd_shapes[cur_rule.name] then
           R.absurd_shapes[cur_rule.name] = {name = cur_rule.name, state="tried"}
         else
           R.absurd_shapes = {}
