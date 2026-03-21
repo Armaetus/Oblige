@@ -2592,6 +2592,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     A.floor_group = grp
 
+    if not grp.volume then
+      grp.volume = 0
+    else
+      grp.volume = grp.volume + A.svolume
+    end
+
     for _,IC in pairs(R.internal_conns) do
       local A2 = areaconn_other(IC, A)
 
@@ -2739,6 +2745,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     for _,A in pairs(R.areas) do
       if A.ceil_group == group2 then
          A.ceil_group =  group1
+
+         A.ceil_group.volume = group1.volume + group2.volume
       end
     end
 
@@ -2787,9 +2795,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     for _,A in pairs(R.areas) do
       if A.ceil_group then
         table.add_unique(groups, A.ceil_group)
+        A.ceil_group.volume = A.svolume
       end
     end
-
+    
     if #groups < 2 then return false end
 
     rand.shuffle(groups)

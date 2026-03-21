@@ -2094,6 +2094,12 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
     for _,fg in pairs(R.floor_groups) do
       if rand.odds(prob) then
+
+        -- increase odds of grouped walls for floor groups with larger volumes
+        if fg.volume and fg.volume > 64 then
+          prob = math.clamp(0, prob + (fg.volume/16),100) 
+        end
+
         fg.wall_group = rand.key_by_probs(tab)
         if not PARAM.bool_avoid_wall_group_reuse
         or (PARAM.bool_avoid_wall_group_reuse
