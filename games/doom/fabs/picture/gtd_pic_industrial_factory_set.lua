@@ -20,3 +20,11 @@ PREFABS.Pic_gtd_fireblu_wim =
   x_fit = {106,110 , 146,150},
   y_fit = "top"
 }
+
+PREFABS.Pic_gtd_fireblu_wim_2 =
+{
+  template = "Pic_gtd_fireblu_wim",
+  map = "MAP02",
+
+  x_fit = {84,92 , 164,172}
+}
