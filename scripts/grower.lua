@@ -3586,13 +3586,12 @@ end
 
       -- record shape rules overall for HN debug
       if cur_rule.is_absurd then
-        if R.absurd_shapes and not R.absurd_shapes[cur_rule.name] then
+        if not R.absurd_shapes[cur_rule.name]
+        or (R.absurd_shapes[cur_rule.name] and R.absurd_shapes[cur_rule.name].state ~= "applied") then
           R.absurd_shapes[cur_rule.name] = {name = cur_rule.name, state="tried"}
-        else
-          R.absurd_shapes = {}
         end
       end
-  
+
       -- don't try this rule again
       rules[name] = nil
 
@@ -3653,7 +3652,7 @@ end
 
       -- record succesful shape rules for HN debug
       if cur_rule.is_absurd then
-        if R.absurd_shapes and R.absurd_shapes[cur_rule.name] then
+        if R.absurd_shapes[cur_rule.name] then
           R.absurd_shapes[cur_rule.name].state="applied"
         end
       end
@@ -3713,6 +3712,10 @@ end
   ---| Grower_grammatical_pass |---
 
   gui.debugf("Growing %s with [%s x %d].....\n", R.name, pass, apply_num)
+
+  if not R.absurd_shapes then
+    R.absurd_shapes = {}
+  end
 
   -- we should have a known bbox (unless creating a room)
   if not is_create then
