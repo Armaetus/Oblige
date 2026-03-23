@@ -9246,19 +9246,21 @@ GROW_MAZE_SIDE_BUMP =
   structure =
   {
     "x..x","x11x",
-    "xx.x","xx1x",
+    "x..x","x%1x",
     "xx..","xx1%",
     "xx..","xx11",
     "xx..","xx11",
     "xx..","xx1/",
-    "xx.x","xx1x",
+    "x..x","x/1x",
     "x11x","x11x"
   },
 
   diagonals =
   {
+    ".1",
     "1.",
-    "1."
+    "1.",
+    ".1"
   }
 },
 
@@ -9270,7 +9272,7 @@ GROW_MAZE_SIDE_BUMP_CAGE =
   structure =
   {
     "x..x","x11x",
-    "xx.x","xx1x",
+    "x..x","x%1x",
     "xx..","xx1%",
     "xx..","xx11",
     "xx..","xx1C",
@@ -9278,14 +9280,16 @@ GROW_MAZE_SIDE_BUMP_CAGE =
     "xx..","xx1C",
     "xx..","xx11",
     "xx..","xx1/",
-    "xx.x","xx1x",
+    "x..x","x/1x",
     "x11x","x11x"
   },
 
   diagonals =
   {
+    ".1",
     "1.",
-    "1."
+    "1.",
+    ".1"
   }
 },
 
