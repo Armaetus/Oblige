@@ -2011,7 +2011,7 @@ function MODDED_GAME_EXTRAS.generate_hn_decorate()
   for _,E in pairs(SCRIPTS.hn_id_table) do
     local s_tab = {
       name = E.name,
-      radius = 256,
+      radius = 128,
       editor_num = E.id
     }
     table.add_unique(HN_INFO_TABLE, s_tab)
