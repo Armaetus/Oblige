@@ -306,7 +306,7 @@ OTEX_SPECIAL_RESOURCES =
     OFENCF04 = {t="OFENCF04", rail_h=64},
     OFENCF05 = {t="OFENCF05", rail_h=128},
     OFENCF06 = {t="OFENCF06", rail_h=96},
-    OFENCF07 = {t="OFENCF07", rail_h=32},
+    OFENCF07 = {t="OFENCF07", rail_h=64},
     OFENCF08 = {t="OFENCF08", rail_h=32},
     OFENCF09 = {t="OFENCF09", rail_h=128},
     OFENCF10 = {t="OFENCF10", rail_h=96},
