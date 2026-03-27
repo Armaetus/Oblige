@@ -457,7 +457,9 @@ PROC_GOTCHA_MAP_SIZES =
   large = 30,
   regular = 26,
   small = 22,
-  tiny = 16
+  tiny = 16,
+  microscopic = 12,
+  room = 8
 }
 
 PROC_GOTCHA_STRENGTH_LEVEL =

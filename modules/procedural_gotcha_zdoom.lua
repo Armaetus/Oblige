@@ -165,6 +165,8 @@ PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.ARENA_STEEPNESS =
   "few",   _("Few"),
   "less",  _("Less"),
   "some",  _("Some"),
+  "more",  _("More"),
+  "heaps", _("Heaps"),
   "mixed", _("Mix It Up"),
 }
 
@@ -1704,7 +1706,9 @@ PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.GOTCHA_MAP_SIZES =
   "large", _("Large"),
   "regular", _("Regular"),
   "small", _("Small"),
-  "tiny", _("Tiny")
+  "tiny", _("Tiny"),
+  "micro", _("Microscopic"),
+  "room", _("Room")
 }
 
 PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.PROC_GOTCHA_CHOICES =
