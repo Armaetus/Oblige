@@ -65,6 +65,7 @@ SKY_GEN.CLOUD_COLOR_CHOICES =
   "WHITE_CLOUDS", _("White"),
   "PURPLE_CLOUDS", _("Purple"),
   "RAINBOW_CLOUDS", _("Rainbow"),
+  "blue_light_filter", _("* Blue Light Filter"),
 }
 
 SKY_GEN.TERRAIN_COLOR_CHOICES =
@@ -186,11 +187,15 @@ function SKY_GEN.generate_skies()
     --- Clouds ---
 
     if not is_starry then
+      if PARAM.cloud_color == "blue_light_filter" then
+        if cloud_tab["SKY_CLOUDS"] then cloud_tab["SKY_CLOUDS"] = 0 end
+      end
+
       cloud_palette = rand.key_by_probs(cloud_tab)
       -- don't use same one again
       cloud_tab[cloud_palette] = cloud_tab[cloud_palette] / 1000
 
-      if PARAM.cloud_color ~= "default" then
+      if PARAM.cloud_color ~= "default" and PARAM.cloud_color ~= "blue_light_filter" then
         cloud_palette = PARAM.cloud_color
       end
     end
@@ -384,7 +389,8 @@ OB_MODULES["sky_generator"] =
       label = _("Day Sky Color"),
       choices = SKY_GEN.CLOUD_COLOR_CHOICES,
       priority= 7,
-      tooltip = _("Picks the color of the sky if day. Default means random and theme-ish."),
+      tooltip = _("Picks the color of the sky if day. Default means random and theme-ish.\n\n"..
+      "Blue light filter removes the bright blue day sky from options."),
       default = "default",
       randomize_group = "misc",
     },
