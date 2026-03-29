@@ -10430,8 +10430,10 @@ FLOURISH_SMALL_1 =
 
   structure =
   {
+    "x1111x","x1111x",
     "111111","1AAAA1",
     "111111","1AAAA1",
+    "x1111x","x1111x",
   },
 
   auxiliary =
@@ -10448,8 +10450,10 @@ FLOURISH_SMALL_1_DIAGONAL =
 
   structure =
   {
+    "x1111x","x1111x",
     "111111","1/AA%1",
     "111111","1%AA/1",
+    "x1111x","x1111x",
   },
 
   diagonals =
@@ -10485,8 +10489,10 @@ FLOURISH_SMALL_2 =
 
   structure =
   {
+    "x111111x","x111111x",
     "11111111","1AAAAAA1",
     "11111111","1AAAAAA1",
+    "x111111x","x111111x",
   },
 
   auxiliary =
@@ -10503,8 +10509,10 @@ FLOURISH_SMALL_2_DIAGONAL =
 
   structure =
   {
+    "x111111x","x111111x",
     "11111111","1/AAAA%1",
     "11111111","1%AAAA/1",
+    "x111111x","x111111x",
   },
 
   diagonals =
@@ -10674,9 +10682,11 @@ FLOURISH_TEETH_5x3 =
 
   structure =
   {
+    "11111","11111",
     "11111","1A1A1",
     "11111","1AAA1",
     "11111","1A1A1",
+    "11111","11111",
   },
 },
 
@@ -10688,9 +10698,11 @@ FLOURISH_TEETH_7x3 =
 
   structure =
   {
+    "1111111","1111111",
     "1111111","1A1A1A1",
     "1111111","1AAAAA1",
     "1111111","1A1A1A1",
+    "1111111","1111111",
   },
 },
 
@@ -10702,12 +10714,14 @@ FLOURISH_TEETH_7x5 =
 
   structure =
   {
+    "1111111","1111111",
     "1111111","1A1A1A1",
     "1111111","1AAAAA1",
     "1111111","11AAA11",
     "1111111","1AAAAA1",
     "1111111","1A1A1A1",
-  }
+    "1111111","1111111",
+  },
 },
 
 FLOURISH_TEETH_7x7 =
@@ -10718,6 +10732,7 @@ FLOURISH_TEETH_7x7 =
 
   structure =
   {
+    "1111111","1111111",
     "1111111","1A1A1A1",
     "1111111","1AAAAA1",
     "1111111","11AAA11",
@@ -10725,31 +10740,58 @@ FLOURISH_TEETH_7x7 =
     "1111111","11AAA11",
     "1111111","1AAAAA1",
     "1111111","1A1A1A1",
-  }
+    "1111111","1111111",
+  },
 },
 
---MSSP's random negative features [FEATURES] - 'negative' because they attempt to modify an existing room if it has too much clean space.
-
-GROW_FEATURES_CENTER =
+FLOURISH_ROUND =
 {
-  prob = 25,
-  skip_prob = 30,
+  pass = "flourish",
+
+  prob = 10,
 
   structure =
   {
-    "1......","1111111",
-    "1......","11/A%11",
-    "x......","x1AAA11",
-    "x......","x1%A/11",
-    "x......","x111111",
+    "11111","11111",
+    "11111","1/A%1",
+    "11111","1AAA1",
+    "11111","1%A/1",
+    "11111","11111",
   },
 
   diagonals =
   {
-    "1.",".1",
-    "1.",".1",
+    "1A","A1",
+    "1A","A1",
+  },
+
+  auxiliary =
+  {
+    pass = "FLOURISH_ROUND_aux"
   },
 },
+
+FLOURISH_ROUND_aux =
+{
+  pass = "flourish",
+
+  prob = 10,
+
+  structure =
+  {
+    "2/1%2","2/A%2",
+    "21112","2AAA2",
+    "2%1/2","2%A/2",
+  },
+
+  diagonals =
+  {
+    "21","12","21","12",
+    "21","12","21","12",
+  }
+},
+
+--MSSP's random negative features [FEATURES] - 'negative' because they attempt to modify an existing room if it has too much clean space.
 
 GROW_FEATURES_CENTER_RAISED =
 {
