@@ -10329,111 +10329,403 @@ SMOOTHER_4 =
   },
 },
 
---MSSP's square-out. Makes rooms less... wormy or spaghetti-ish.
+--MSSP's FLOURISH pass. Formerly the square_out pass, retired to become means to create better looking ceilings
+--for indoor areas, especially matching some ceiling visuals in classic Oblige.
 
-SQUARE_OUT_FROM_CORNER_2X =
+FLOURISH_5x5 =
 {
-  pass = "square_out",
+  pass = "flourish",
 
-  prob = 100,
+  prob = 25,
 
   structure =
   {
-    "1..","111",
-    "x11","x11",
-  },
-},
-
-SQUARE_OUT_FROM_CORNER =
-{
-  pass = "square_out",
-
-  prob = 50,
-
-  structure =
-  {
-    "1.","11",
-    "x1","x1",
-  },
-},
-
-SQUARE_OUT_THICKEN_CLIFF_BOTH_SIDES =
-{
-  pass = "square_out",
-
-  prob = 150,
-
-  structure =
-  {
-    "..","11",
-    "11","11",
-    "22","22",
-    "..","22",
-  },
-},
-
-SQUARE_OUT_THICKEN_CLIFF_ONE_SIDE =
-{
-  pass = "square_out",
-
-  prob = 125,
-
-  structure =
-  {
-    "..","11",
-    "11","11",
-    "22","22",
-  },
-},
-
-SQUARE_OUT_EXTEND_AREA_BORDER =
-{
-  pass = "square_out",
-
-  prob = 80,
-
-  structure =
-  {
-    "x1","x1",
-    "2.","22",
-  },
-},
-
-SQUARE_OUT_SMOOTH_EDGE =
-{
-  pass = "square_out",
-
-  prob = 35,
-
-  structure =
-  {
-    "x1","x1",
-    "1.","1/",
+    "1111111","1111111",
+    "1111111","1/AAA%1",
+    "1111111","1AAAAA1",
+    "1111111","1AAAAA1",
+    "1111111","1AAAAA1",
+    "1111111","1%AAA/1",
+    "1111111","1111111",
   },
 
   diagonals =
   {
-    "1.",
+    "A1","A1",
+    "A1","A1",
+  },
+
+  auxiliary =
+  {
+    pass = "FLOURISH_5x5_aux",
   },
 },
 
-SQUARE_OUT_SMOOTH_PLATFORM =
+FLOURISH_5x5_aux =
 {
-  pass = "square_out",
+  pass = "flourish",
 
-  prob = 50,
+  prob = 10,
 
   structure =
   {
-    "x1x","x1x",
-    "122","1/2",
-    "x2x","x2x",
+    "2111112","2A111A2",
+    "2111112","2111112",
+    "2111112","2A111A2",
+  },
+},
+
+FLOURISH_5x7 =
+{
+  pass = "flourish",
+
+  prob = 30,
+
+  structure =
+  {
+    "1111111","1111111",
+    "1111111","1/AAA%1",
+    "1111111","1AAAAA1",
+    "1111111","1AAAAA1",
+    "1111111","1AAAAA1",
+    "1111111","1AAAAA1",
+    "1111111","1AAAAA1",
+    "1111111","1%AAA/1",
+    "1111111","1111111",
   },
 
   diagonals =
   {
-    "12",
+    "A1","A1",
+    "A1","A1",
   },
+
+  auxiliary =
+  {
+    pass = "FLOURISH_5x7_aux",
+  },
+},
+
+FLOURISH_5x7_aux =
+{
+  pass = "flourish",
+
+  prob = 10,
+
+  structure =
+  {
+    "2111112","2A111A2",
+    "2111112","2111112",
+    "2111112","2A111A2",
+    "2111112","2111112",
+    "2111112","2A111A2",
+  },
+},
+
+FLOURISH_SMALL_1 = 
+{
+  pass = "flourish",
+
+  prob = 10,
+
+  structure =
+  {
+    "111111","1AAAA1",
+    "111111","1AAAA1",
+  },
+
+  auxiliary =
+  {
+    pass = "FLOURISH_SMALL_1_aux",
+  },
+},
+
+FLOURISH_SMALL_1_DIAGONAL = 
+{
+  pass = "flourish",
+
+  prob = 10,
+
+  structure =
+  {
+    "111111","1/AA%1",
+    "111111","1%AA/1",
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "1A","A1",
+  },
+
+  auxiliary =
+  {
+    pass = "FLOURISH_SMALL_1_aux",
+  },
+},
+
+FLOURISH_SMALL_1_aux =
+{
+  pass = "flourish",
+
+  prob = 10,
+
+  structure =
+  {
+    "211112","21AA12",
+    "211112","21AA12",
+  },
+},
+
+FLOURISH_SMALL_2 = 
+{
+  pass = "flourish"
+
+  prob = 10,
+
+  structure =
+  {
+    "11111111","1AAAAAA1",
+    "11111111","1AAAAAA1",
+  },
+
+  auxiliary =
+  {
+    pass = "FLOURISH_SMALL_2_aux",
+  },
+},
+
+FLOURISH_SMALL_2_DIAGONAL = 
+{
+  pass = "flourish"
+
+  prob = 10,
+
+  structure =
+  {
+    "11111111","1/AAAA%1",
+    "11111111","1%AAAA/1",
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "1A","A1",
+  },
+
+  auxiliary =
+  {
+    pass = "FLOURISH_SMALL_2_aux",
+  },
+},
+
+FLOURISH_SMALL_2_aux =
+{
+  pass = "flourish",
+
+  prob = 1,
+
+  structure =
+  {
+    "21111112","21AAAA12",
+    "21111112","21AAAA12",
+  },
+},
+
+FLOURISH_MEDIUM =
+{
+  pass = "flourish",
+
+  prob = 20,
+
+  structure =
+  {
+    "111111","111111",
+    "111111","1/AA%1",
+    "111111","1AAAA1",
+    "111111","1AAAA1",
+    "111111","1AAAA1",
+    "111111","1%AA/1",
+    "111111","111111",
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "1A","A1",
+  },
+
+  auxiliary = 
+  {
+    pass = "FLOURISH_MEDIUM_TEETH",
+  },
+
+  auxiliary2 =
+  {
+    pass = "FLOURISH_MEDIUM_aux"
+  }
+},
+
+FLOURISH_MEDIUM_TEETH =
+{
+  pass = "flourish",
+
+  prob = 1,
+
+  structure =
+  {
+    "211112","211112",
+    "211112","2A11A2",
+    "211112","211112",
+  },
+},
+
+FLOURISH_MEDIUM_aux =
+{
+  pass = "flourish",
+
+  prob = 1,
+
+  structure =
+  {
+    "211112","21AA12",
+    "211112","21AA12",
+    "211112","21AA12",
+  }
+}
+
+FLOURISH_MEDIUM_2 =
+{
+  pass = "flourish",
+
+  prob = 20,
+
+  structure =
+  {
+    "1111111","1111111",
+    "1111111","1/AAA%1",
+    "1111111","1AAAAA1",
+    "1111111","1AAAAA1",
+    "1111111","1AAAAA1",
+    "1111111","1%AAA/1",
+    "1111111","1111111",
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "1A","A1",
+  },
+
+  auxiliary = 
+  {
+    pass = "FLOURISH_MEDIUM_TEETH_2",
+  },
+
+  auxiliary =
+  {
+    pass = "FLOURISH_MEDIUM_2_aux",
+  },
+},
+
+FLOURISH_MEDIUM_TEETH_2 =
+{
+  pass = "flourish",
+
+  prob = 20,
+
+  structure =
+  {
+    "2222222","2222222",
+    "2/111%2","2/1A1%2",
+    "2111112","2111112",
+    "2111112","2A111A2",
+    "2111112","2111112",
+    "2%111/2","2%1A1/2",
+    "2222222","2222222",
+  },
+
+  diagonals =
+  {
+    "21","12",  "21","12",
+    "21","12",  "21","12",
+  },
+},
+
+FLOURISH_MEDIUM_2_aux =
+{
+  pass = "flourish",
+
+  prob = 1,
+
+  structure =
+  {
+    "2111112","21AAA12",
+    "2111112","21AAA12",
+    "2111112","21AAA12",
+  },
+},
+
+FLOURISH_TEETH_5x3 =
+{
+  pass = "flourish",
+
+  prob = 10,
+
+  structure =
+  {
+    "11111","1A1A1",
+    "11111","1AAA1",
+    "11111","1A1A1",
+  },
+},
+
+FLOURISH_TEETH_7x3 =
+{
+  pass = "flourish",
+
+  prob = 12,
+
+  structure =
+  {
+    "1111111","1A1A1A1",
+    "1111111","1AAAAA1",
+    "1111111","1A1A1A1",
+  },
+},
+
+FLOURISH_TEETH_7x5 =
+{
+  pass = "flourish",
+
+  prob = 14,
+
+  structure =
+  {
+    "1111111","1A1A1A1",
+    "1111111","1AAAAA1",
+    "1111111","11AAA11",
+    "1111111","1AAAAA1",
+    "1111111","1A1A1A1",
+  }
+},
+
+FLOURISH_TEETH_7x7 =
+{
+  pass = "flourish",
+
+  prob = 15,
+
+  structure =
+  {
+    "1111111","1A1A1A1",
+    "1111111","1AAAAA1",
+    "1111111","11AAA11",
+    "1111111","1AAAAA1",
+    "1111111","11AAA11",
+    "1111111","1AAAAA1",
+    "1111111","1A1A1A1",
+  }
 },
 
 --MSSP's random negative features [FEATURES] - 'negative' because they attempt to modify an existing room if it has too much clean space.
@@ -17431,15 +17723,13 @@ GROW_SPIRAL_STAIR_SMALL =
 
   auxiliary =
   {
-    pass = "grow_spiral_stair_small_step_2"
+    pass = "GROW_SPIRAL_STAIR_SMALL_STEP_2"
   }
 },
 
 GROW_SPIRAL_STAIR_SMALL_STEP_2 =
 {
   prob = 10,
-
-  pass = "grow_spiral_stair_small_step_2",
   
   structure =
   {
@@ -17459,15 +17749,13 @@ GROW_SPIRAL_STAIR_SMALL_STEP_2 =
 
   auxiliary =
   {
-    pass = "grow_spiral_stair_small_step_3",
+    pass = "GROW_SPIRAL_STAIR_SMALL_STEP_3",
   }
 },
 
 GROW_SPIRAL_STAIR_SMALL_STEP_3 =
 {
   prob = 10,
-
-  pass = "grow_spiral_stair_small_step_3",
 
   structure =
   {
@@ -17490,8 +17778,8 @@ GROW_SPIRAL_STAIR =
   {
     "1.....","11>>A%",
     "1.....","11>>AA",
-    "x...xx","x111xx",
-    "x...xx","x111xx"
+    "x.....","x111AA",
+    "x.....","x111AA"
   },
 
   diagonals =
@@ -17501,7 +17789,7 @@ GROW_SPIRAL_STAIR =
 
   auxiliary =
   {
-    pass = "grow_spiral_stair_2",
+    pass = "GROW_SPIRAL_STAIR_STEP_2",
   }
 },
 
@@ -17512,12 +17800,12 @@ GROW_SPIRAL_STAIR_DOUBLE =
 
   structure =
   {
-    "x...xx","x111xx",
-    "x...xx","x111xx",
+    "x.....","x111AA",
+    "x.....","x111AA",
     "1.....","11>>AA",
     "1.....","11>>AA",
-    "x...xx","x111xx",
-    "x...xx","x111xx"
+    "x.....","x111AA",
+    "x.....","x111AA"
   },
 
   diagonals =
@@ -17527,7 +17815,7 @@ GROW_SPIRAL_STAIR_DOUBLE =
 
   auxiliary =
   {
-    pass = "grow_spiral_stair_2",
+    pass = "GROW_SPIRAL_STAIR_STEP_2",
 
     count = {1,2}
   }
@@ -17537,17 +17825,25 @@ GROW_SPIRAL_STAIR_STEP_2 =
 {
   prob = 40,
 
-  pass = "grow_spiral_stair_2",
-
   structure =
   {
-    "xx1x","xx1x",
-    "xx11","xx11",
-    "22..","22vv",
-    "22..","22vv",
-    "xx..","xxAA",
-    "xx..","xxA/"
+    "1xx2x","1xx2x",
+    "1xx22","1xx22",
+    "x1122","x11AA",
+    "x1122","x11AA",
+    "xxx..","xxxAA",
+    "xxx..","xxxA/"
   },
+
+  --[[structure =
+  {
+    "1xx2x","1xx2x",
+    "1xx22","1xx22",
+    "x1122","x11vv",
+    "x1122","x11vv",
+    "xxx..","xxxAA",
+    "xxx..","xxxA/"
+  },]]
 
   diagonals =
   {
@@ -17556,7 +17852,7 @@ GROW_SPIRAL_STAIR_STEP_2 =
 
   auxiliary =
   {
-    pass = "grow_spiral_stair_3",
+    pass = "GROW_SPIRAL_STAIR_STEP_3",
   }
 },
 
@@ -17564,14 +17860,12 @@ GROW_SPIRAL_STAIR_STEP_3 =
 {
   prob = 40,
 
-  pass = "grow_spiral_stair_3",
-
   structure =
   {
     "xx22xx","xx22xx",
     "xx22xx","xx22xx",
-    "....11","AA<<11",
-    "....1x","AA<<1x"
+    "..1111","AA<<11",
+    "..111x","AA<<1x"
   },
 },
 

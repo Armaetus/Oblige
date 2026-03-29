@@ -1764,6 +1764,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "(AUX) "
     end
 
+    if R.is_flourished then
+      shapes_string = shapes_string .. "(FLR) "
+    end
+
     if R.sprout_rule then
       shapes_string = shapes_string .. "(SPR: " .. R.sprout_rule
     end

@@ -65,6 +65,7 @@ function Grower_preprocess_grammar(test_grammar)
     if ch == 'f' then return { kind="magic", what="floor" } end
     if ch == 'o' then return { kind="magic", what="open" } end
     if ch == 'c' then return { kind="magic", what="closed" } end
+    if ch == 's' then return { kind="magic", what="stairs"} end
 
     -- other stuff
     if ch == 'A' then return { kind="new_area" } end
@@ -2293,6 +2294,15 @@ stderrf("prelim_conn %s --> %s : S=%s dir=%d\n", c_out.R1.name, c_out.R2.name, S
 
       return true
     end
+  
+    if E1.what == "stairs" then
+      if A.chunk and A.chunk.kind == "stairs" then return false end
+      if not A then return true end
+      if A.room ~= R then return true end
+      if S.disabled_R == R then return true end
+
+      return true
+    end
 
     error("Unknown element kind: magic/" .. tostring(E1.what))
   end
@@ -3822,17 +3832,15 @@ function Grower_grammatical_room(SEEDS, LEVEL, R, pass, is_emergency)
   elseif pass == "building_entrance" then
     apply_num = rand.irange(5,10)
 
-  elseif pass == "square_out" then
-
+  elseif pass == "flourish" then
+    apply_num = 2
     for _,A in pairs(R.areas) do
       A:calc_volume()
       R.svolume = R.svolume + A.svolume
     end
 
-    apply_num = math.floor(R.svolume/rand.irange(4,8))
-
-    if LEVEL.is_procedural_gotcha then
-      apply_num = math.ceil(apply_num * 0.25)
+    if R.svolume > 32 and #R.areas >= 5 then
+      apply_num = 10
     end
 
   else
@@ -4055,8 +4063,11 @@ end
 function Grower_sprout_room(SEEDS, LEVEL, R)
   if R.is_dead then return end
 
-  if rand.odds(LEVEL.squareishness) and not R.is_cave and not R.is_park
-  and not R.is_hallway 
+  if rand.odds(LEVEL.flourishes) 
+  and not R.is_cave 
+  and not R.is_park
+  and not R.is_outdoor
+  and not R.is_hallway
   and not R.is_street
   and not PARAM.float_grammar_backhalls
   and not PARAM.float_grammar_boxes_of_death 
@@ -4064,8 +4075,8 @@ function Grower_sprout_room(SEEDS, LEVEL, R)
 
     -- square_out pass - makes rooms a bit more buff and square
     -- to distort the layout a bit more
-    Grower_grammatical_room(SEEDS, LEVEL, R, "square_out")
-    R.is_squarified = true
+    Grower_grammatical_room(SEEDS, LEVEL, R, "flourish")
+    R.is_flourished = true
   end
 
   Grower_grammatical_room(SEEDS, LEVEL, R, "sprout")
