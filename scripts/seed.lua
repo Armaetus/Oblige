@@ -1009,7 +1009,15 @@ function Seed_draw_minimap(SEEDS, LEVEL)
     if R1 == R2 then
       -- in same room, draw area boundaries in a not-too-bright color
       if A1.name < A2.name then
-        draw_edge(S1, dir, "#aaaaaa")
+        if (A1 and A1.chunk and A1.chunk.kind == "stair")
+        or (A2 and A2.chunk and A2.chunk.kind == "stair") then 
+          draw_edge(S1, dir, "#af5757")
+        elseif (A1 and A1.mode and A1.mode == "liquid")
+        or (A2 and A2.mode and A2.mode == "liquid") then 
+          draw_edge(S1, dir, "#558dab")
+        else
+          draw_edge(S1, dir, "#aaaaaa")
+        end
       end
 
       return
