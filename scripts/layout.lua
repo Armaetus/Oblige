@@ -2422,6 +2422,12 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
     local prob = R.theme.ceil_light_prob or THEME.ceil_light_prob or 50
 
+    if rand.odds(prob) and not R.has_liquid_ceil_lights then 
+      R.has_liquid_ceil_lights = true 
+    else
+      R.has_liquid_ceil_lights = false
+    end       
+
     for _,cg in pairs(R.ceil_groups) do
       if not rand.odds(prob) then goto skip end
 
@@ -2485,10 +2491,10 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     -- allow fabrication of ceiling lights in liquid areas (ungrouped area)
     for _,A in pairs(R.areas) do
       if A.mode == "liquid" then
-        if not rand.odds(prob) then goto skip end
+        if not R.has_liquid_ceil_lights then goto skip end
 
-        A.lamp_def = select_lamp(A)
-        if not A.lamp_def then goto skip end
+        R.liquid_area_lamp_def = select_lamp(A)
+        if not R.liquid_area_lamp_def then goto skip end
       end
       ::skip::
     end
@@ -2503,7 +2509,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
         chunk.content = "DECORATION"
         chunk.kind = "ceil"
-        chunk.prefab_def = chunk.area.lamp_def
+        chunk.prefab_def = chunk.area.room.liquid_area_lamp_def
         chunk.prefab_dir = 2
 
         chunk.area.bump_light = 16
