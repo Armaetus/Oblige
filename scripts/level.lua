@@ -265,7 +265,6 @@ function Episode_determine_map_sizes()
       if PARAM.gotcha_map_size then
         W = PROC_GOTCHA_MAP_SIZES[PARAM.gotcha_map_size]
       end
-      if PARAM.bool_boss_gen == 1 then W = 16 end
       H = W
     end
 
