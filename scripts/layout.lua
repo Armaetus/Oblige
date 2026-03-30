@@ -2274,7 +2274,10 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
     -- PLAIN keyword for sinks should now be ignored in
     -- favor of this direct prob
-    if rand.odds(75) then name = "PLAIN" end
+    if not R.liquid_sink_prob then
+      R.liquid_sink_prob = rand.odds(75)
+    end
+    if R.liquid_sink_prob then name = "PLAIN" end
 
     if name ~= "PLAIN" then
       R.liquid_ceiling_sink = GAME.SINKS[name]
