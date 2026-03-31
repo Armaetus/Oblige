@@ -906,9 +906,6 @@ function Grower_calc_rule_probs(LEVEL)
   " / " .. PARAM.shape_rule_count .. "\n")
   gui.printf("Rules can be disabled via skip probability or level styles.\n")
 
-  -- Shape grouping system
-  PARAM.cur_shape_group = ""
-  PARAM.cur_shape_group_apply_count = 0
 
   -- Layout Absurdifier (AKA Layout Consistency)
 
@@ -3264,6 +3261,32 @@ end
     -- successful, pick it and apply the substitution.
     --
 
+    -- helper function to test transforms
+    local function try_transforms(transforms)
+      for _, transform in pairs(transforms) do
+        local T = calc_transform(transform[1], transform[2], transform[3])
+        local x1, y1, x2, y2 = get_iteration_range(T)
+
+        for x = x1, x2 do
+          for y = y1, y2 do
+            T.x, T.y = x, y
+
+            if match_all_focal_points(T) and match_or_install_pattern("TEST", T) then
+              best.T = table.copy(T)
+              best.score = 1
+
+              -- less memory hungry than copying the whole table
+              best.areas[1], best.areas[2], best.areas[3] = area_map[1], area_map[2], area_map[3]
+
+              best.link_chunk = link_chunk
+              return true -- early exit instead of goto
+            end
+          end
+        end
+      end
+      return false
+    end
+
     gui.debugf("  Trying rule '" .. cur_rule.name .. "' in ROOM_" .. R.id .. "\n")
 
     if R.shapes_tried then
@@ -3279,69 +3302,18 @@ end
     local T
     local x1, y1, x2, y2
 
+  
     -- exit rooms (and auxiliary pieces) do not rotate or mirror
+    local found
     if cur_rule.no_rotate then
-      T = calc_transform(0, 0, 0)
-      x1,y1, x2,y2 = get_iteration_range(T)
-  
-      for x = x1, x2 do
-        for y = y1, y2 do
-  
-          T.x = x
-          T.y = y
-  
-          if not match_all_focal_points(T) then goto skip end
-  
-          if match_or_install_pattern("TEST", T) then
-            best.T = table.copy(T)
-            best.score = 1
-  
-            -- this is less memory hungry than copying the whole table
-            best.areas[1] = area_map[1]
-            best.areas[2] = area_map[2]
-            best.areas[3] = area_map[3]
-  
-              best.link_chunk = link_chunk
-            goto justpickone
-          end
-          ::skip::
-        end -- x, y
-      end
+      found = try_transforms({ {0, 0, 0} })
     else
       if LEVEL.shape_transform_mode == "random" then
         LEVEL.shape_transform_possibilities = rand.shuffle(LEVEL.shape_transform_possiblities)
       end
-      for _,transform in pairs(LEVEL.shape_transform_possiblities) do
-        T = calc_transform(transform[1], transform[2], transform[3])
-        x1,y1, x2,y2 = get_iteration_range(T)
-  
-        for x = x1, x2 do
-          for y = y1, y2 do
-    
-            T.x = x
-            T.y = y
-    
-            if not match_all_focal_points(T) then goto skip end
-    
-            if match_or_install_pattern("TEST", T) then
-              best.T = table.copy(T)
-              best.score = 1
-    
-              -- this is less memory hungry than copying the whole table
-              best.areas[1] = area_map[1]
-              best.areas[2] = area_map[2]
-              best.areas[3] = area_map[3]
-    
-                best.link_chunk = link_chunk
-              goto justpickone
-            end
-            ::skip::
-          end -- x, y
-        end
-      end
+      found = try_transforms(LEVEL.shape_transform_possiblities)
     end
 
-    ::justpickone::
 
     if best.score < 0 then
       --gui.printf(" NOPE!\n")
@@ -3381,159 +3353,6 @@ end
     end
 
     R.aversions[rule.name] = R.aversions[rule.name] / rule.aversion
-  end
-
-
-  -- MSSP: update smart groupings
-  local function update_shape_groupings(rule, LEVEL)
-
-
-    local function style_factor(rule)
-      if not rule.styles then return 1 end
-
-      local factor = 1.0
-
-      for _,name in pairs(rule.styles) do
-        if STYLE[name] == nil then
-          error("Unknown style in grammar rule: " .. tostring(name))
-        end
-
-        factor = factor * style_sel(name, 0, 0.28, 1.0, 3.5)
-      end
-
-      return factor
-    end
-
-
-    local function random_factor(rule)
-      if not rule.prob_skew then return 1 end
-
-      local prob_skew = rule.prob_skew
-      local half_skew = (1.0 + prob_skew) / 2.0
-
-      return rand.pick({ 1 / prob_skew, 1 / half_skew, 1.0, half_skew, prob_skew })
-    end
-
-
-    local function calc_prob_absurdity(rule, x_prob, mode, LEVEL)
-      -- MSSP: this is a modification of calc_prob function.
-      -- x_prob is used for absurdity and shape groupings,
-      -- such that absurdification still runs through all
-      -- game filters and styles
-
-      if rule.skip_prob then
-        if rand.odds(rule.skip_prob) then return 0 end
-      end
-
-      if not ob_match_game(rule)     then return 0 end
-      if not ob_match_port(rule)   then return 0 end
-
-      if not LEVEL.liquid and rule.styles and
-         table.has_elem(rule.styles, "liquids")
-      then
-        return 0
-      end
-
-      if rule.new_room and rule.new_room.hall_type == "narrow" and
-         table.empty(THEME.narrow_halls or {})
-      then return 0 end
-
-      if rule.new_room and rule.new_room.hall_type == "wide" and
-         table.empty(THEME.wide_halls or {})
-      then return 0 end
-
-      local prob = rule.prob or 0
-
-      prob = prob *  style_factor(rule)
-      prob = prob * random_factor(rule)
-
-      if mode ~= "reset" then
-        if x_prob then
-          if mode == "multiply" or not mode then
-            prob = prob * x_prob
-          elseif mode == "divide" then
-            prob = prob / x_prob
-          end
-        end
-      end
-
-      return prob
-    end
-
-
-    local function change_group_probs(mode, LEVEL)
-      for name,cur_def in pairs(grammar) do
-        if rule.group == cur_def.group
-        and rule.group_pos ~= "entry" then
-          if mode == "highlight" then
-            calc_prob_absurdity(cur_def, 1000000, "multiply", LEVEL)
-          elseif mode == "reduce" then
-            calc_prob_absurdity(cur_def, 1.2, "divide", LEVEL)
-          elseif mode == "reset" then
-            calc_prob_absurdity(cur_def, 0, "reset", LEVEL)
-          end
-        end
-      end
-    end
-
-    if not rule.group then return end
-
-    if LEVEL.is_procedural_gotcha then return end
-
-    if LEVEL.is_absurd then return end
-
-    -- reset when rooms have changed
-    if PARAM.operated_room ~= R.id and PARAM.cur_shape_group then
-      PARAM.operated_room = R.id
-      change_group_probs("reset", LEVEL)
-      PARAM.cur_shape_groop = ""
-      PARAM.cur_shape_group_apply_count = 0
-    end
-
-    PARAM.operated_room = R.id
-
-    --[[if PARAM.cur_shape_group ~= ""
-    and PARAM.print_shape_steps
-    and PARAM.print_shape_steps ~= "no" then
-      gui.printf("Shape group: " .. PARAM.cur_shape_group .. "\n")
-      gui.printf("Shape count: " .. PARAM.cur_shape_group_apply_count .. "\n")
-    end]]
-
-    -- start it up
-    if (rule.group and PARAM.cur_shape_group == "")
-    and PARAM.cur_shape_group_apply_count == 0
-    and rand.odds(50) then
-      PARAM.cur_shape_group = rule.group
-
-      change_group_probs("highlight", LEVEL)
-
-      PARAM.cur_shape_group_apply_count = rand.irange(6,15)
-    end
-
-    -- behavior for subsequent use of the same rules
-    if (rule.group == PARAM.cur_shape_group) then
-      PARAM.cur_shape_group_apply_count = PARAM.cur_shape_group_apply_count - 1
-
-      -- decrease probability for rules as each rule in the same
-      -- 'smart group' is applied
-      if PARAM.cur_shape_group_apply_count > 0 then
-        change_group_probs("reduce", LEVEL)
-
-      -- reset the probabilities of all rules in the smart group
-      -- once the apply count has reached count
-      elseif PARAM.cur_shape_group_apply_count <= 0 then
-        change_group_probs("reset", LEVEL)
-
-        PARAM.cur_shape_group = ""
-      end
-
-    end
-
-    -- end of the rine - sometimes the shape group doesn't manifest
-    if PARAM.cur_shape_group_apply_count == 0 then
-      PARAM.cur_shape_group = ""
-    end
-
   end
 
 
@@ -3696,8 +3515,6 @@ end
     end
 
     update_aversions(cur_rule)
-
-    update_shape_groupings(cur_rule, LEVEL)
 
     -- apply any auxiliary rules
     if cur_rule.auxiliary then
@@ -4049,10 +3866,6 @@ function Grower_grow_room(SEEDS, LEVEL, R)
         end
       end
     end
-  end
-
-  if PARAM["live_minimap"] == "room" then
-    Seed_draw_minimap(SEEDS, LEVEL)
   end
 
   R.is_grown = true
@@ -4443,10 +4256,10 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
     local list = table.copy(LEVEL.rooms)
 
     for _,R in pairs(list) do
-      if not R.is_grown and not R.is_start then
+      if not R.is_grown and not R.is_start and not R.is_exit then
         if R.is_hallway then
           Grower_kill_room(SEEDS, LEVEL, R)
-        elseif R.prelim_conn_num == 1
+        elseif R.prelim_conn_num == 1 and not R.is_start and not R.is_exit
         and rand.odds(style_sel("sub_rooms", 100, 66, 33, 0)) then
           Grower_kill_room(SEEDS, LEVEL, R)
         else
@@ -4659,8 +4472,14 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
       gui.printf(table.tostr(R.trunk.rooms,1) .. "\n")
       gui.printf(table.tostr(R,2) .. "\n")
       Grower_kill_room(SEEDS, LEVEL, R)
-      --Grower_kill_a_trunk(LEVEL, R.trunk)
+      if R.trunk then
+        Grower_kill_a_trunk(LEVEL, R.trunk)
+      end
     end
+  end
+
+  if PARAM["live_minimap"] == "room" then
+    Seed_draw_minimap(SEEDS, LEVEL)
   end
 
 end
@@ -4679,9 +4498,6 @@ function Grower_decorate_rooms(SEEDS, LEVEL)
   for _,R in pairs(room_list) do
     if not R.is_hallway and not R.is_street then
       Grower_grammatical_room(SEEDS, LEVEL, R, "decorate")
-      if PARAM["live_minimap"] == "room" then
-        Seed_draw_minimap(SEEDS, LEVEL)
-      end
     end
   end
 end
@@ -4707,9 +4523,6 @@ function Grower_expand_parks(SEEDS, LEVEL)
   for _,R in pairs(room_list) do
     if R.is_outdoor and not R.is_street then
       Grower_grammatical_room(SEEDS, LEVEL, R, "smoother")
-    end
-    if PARAM["live_minimap"] == "room" then
-    Seed_draw_minimap(SEEDS, LEVEL)
     end
   end
 
