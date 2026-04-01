@@ -2085,12 +2085,12 @@ function namelib.generate_unique_noun(mode)
     return generate_community()
 
   else
-    str = ""
+    --[[str = ""
     mode = "anglican"
     for i=1, 40 do
       str = str .. generate_markov_mode() .. "\n"
     end
-    error(str)
+    error(str)]]
     return generate_markov_mode()
   end
 
