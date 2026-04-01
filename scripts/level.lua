@@ -2366,7 +2366,7 @@ end
 
 
 function Level_choose_misc(LEVEL)
-  --LEVEL.flourishes = rand.pick({ 0,25,50,75,100 })
+  LEVEL.flourishes = rand.pick({ 0,25,50,75,100 })
 
   LEVEL.room_height_style = PARAM.room_heights or "mixed"
 

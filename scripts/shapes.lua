@@ -4631,20 +4631,24 @@ GROW_357_ROUND_ARCH_DOUBLE =
 
   structure =
   { 
-    "11xxxxxxxx","11xxxxxxxx",
-    "..........","1111111111",
+    "x11xxxxxxx","x11xxxxxxx",
+    "..........","/11111111%",
     "..........","1/AAAAAA%1",
+    "..........","AAAAAAAAAA",
     "..........","AA##AA##AA",
     "..........","AA##AA##AA",
+    "..........","AAAAAAAAAA",
     "..........","1%AAAAAA/1",
     "..........","1111111111",
-    "..........","1111111111",
+    "..........","%11111111/",
   },
 
   diagonals =
   {
+    ".1","1.",
     "1A","A1",
     "1A","A1",
+    ".1","1.",
   }
 },
 
@@ -4655,19 +4659,24 @@ GROW_357_ROUND_ARCH_ALT_STAIRS =
 
   structure =
   { 
-    "11xxxxxxx","11xxxxxxx",
+    "x11xxxxxx","x11xxxxxx",
+    ".........","/1111111%",
     ".........","111111111",
     ".........","v/AAAAA%v",
+    ".........","AAAAAAAAA",
     ".........","AAA#A#AAA",
+    ".........","AAAAAAAAA",
     ".........","^%AAAAA/^",
     ".........","111111111",
-    ".........","111111111",
+    ".........","%1111111/",
   },
 
   diagonals =
   {
+    ".1","1.",
     "1A","A1",
     "1A","A1",
+    ".1","1.",
   }
 },
 
@@ -4680,9 +4689,13 @@ GROW_357_ROUND_ARCH_DOUBLE_STAIRS =
   { 
     "11xxxxxxxxxx","11xxxxxxxxxx",
     "............","111111111111",
+    "............","111111111111",
     "............","vv/AAAAAA%vv",
-    "............","AAAA#AA#AAAA",
-    "............","AAAA#AA#AAAA",
+    "............","AAAAAAAAAAAA",
+    "............","%AAAAAAAAAA/",
+    "............","#AAA#AA#AAA#",
+    "............","/AAAAAAAAAA%",
+    "............","AAAAAAAAAAAA",
     "............","^^%AAAAAA/^^",
     "............","111111111111",
     "............","111111111111",
@@ -4691,30 +4704,35 @@ GROW_357_ROUND_ARCH_DOUBLE_STAIRS =
   diagonals =
   {
     "1A","A1",
+    ".A","A.",
+    ".A","A.",
     "1A","A1",
   }
 },
 
 GROW_357_ROUND_ARCH_ALT_2 =
 {
-  prob = 40,
+  prob = 20,
   skip_prob = 80,
 
   structure =
   { 
-    "xx111xx","xx111xx",
-    ".......","11AAA11",
-    ".......","11AAA11",
-    ".......","1/A#A%1",
-    ".......","1AAAAA1",
-    ".......","1%A#A/1",
-    ".......","11AAA11",
+    "xxx11xxxx","xxx11xxxx",
+    "x.......x","x11AAA11x",
+    ".........","/11AAA11%",
+    ".........","11/A#A%11",
+    ".........","11AAAAA11",
+    ".........","11%A#A/11",
+    ".........","%11AAA11/",
+    "x.......x","x11AAA11x",
   },
 
   diagonals =
   {
+    ".1","1.",
     "1A","A1",
     "1A","A1",
+    ".1","1.",
   }
 },
 
@@ -9417,27 +9435,32 @@ GROW_MAZE_T =
   {
     ".......","11###11",
     ".......","1111111",
-    "xx...xx","xx#1#xx",
+    "xx...xx","xx%1/xx",
     "xx...xx","xx#1#xx",
     "xxx11xx","xxx11xx",
-  }
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+  },
 },
 
 GROW_MAZE_X =
 {
-  prob = 5,
+  prob = 7,
   skip_prob = 50,
 
   structure =
   {
-    "1...xxxx..","1111xxxx11",
-    "1....xx...","1111%xx/11",
-    "xxx......x","xxx%1%/1/x",
-    "xxxx....xx","xxxx%11/xx",
-    "xxxx....xx","xxxx/11%xx",
-    "xxx......x","xxx/1/%1%x",
-    "xx...xx...","xx11/xx%11",
-    "xx..xxxx..","xx11xxxx11",
+    "1..xxxx..","111xxxx11",
+    "1...xx...","111%xx/11",
+    "xx......x","xx%1%/1/x",
+    "xxx....xx","xxx%11/xx",
+    "xxx....xx","xxx/11%xx",
+    "xx......x","xx/1/%1%x",
+    "x...xx...","x11/xx%11",
+    "x..xxxx..","x11xxxx11",
   },
 
   diagonals =
@@ -9580,7 +9603,6 @@ GROW_MAZE_STRAIGHT_CAGE =
   skip_prob = 35,
 
   never_absurdify = true,
-  
 
   structure =
   {
@@ -9687,7 +9709,7 @@ GROW_LARGE_MAZE_CROSS =
     "..........","1111111111",
     "xx......xx","xx!!11!!xx",
     "xxx....xxx","xxx!11!xxx",
-    "xxxx11xxxx","xxxx11xxxx",
+    "xxxx..xxxx","xxxx11xxxx",
     "xxxx11xxxx","xxxx11xxxx",
   }
 },
@@ -9707,7 +9729,7 @@ GROW_LARGE_MAZE_CROSS_NEW_AREA =
     "..........","111A11A111",
     "xx......xx","xx!!AA!!xx",
     "xxx....xxx","xxx!11!xxx",
-    "xxxx11xxxx","xxxx11xxxx",
+    "xxxx..xxxx","xxxx11xxxx",
     "xxxx11xxxx","xxxx11xxxx",
   }
 },
@@ -9716,16 +9738,18 @@ GROW_LARGE_MAZE_CROSS_NEW_AREA =
 
 GROW_TWO_WAY_SMALL =
 {
-  prob = 20,
+  prob = 28,
   skip_prob = 75,
 
   structure =
   {
     "....","1111",
+    "....","1111",
     "....","11vv",
     "....","AAAA",
     "....","AAAA",
     "....","^^11",
+    "....","1111",
     "....","1111",
     "11xx","11xx",
   }
@@ -9733,16 +9757,18 @@ GROW_TWO_WAY_SMALL =
 
 GROW_THREE_WAY_SMALL =
 {
-  prob = 25,
+  prob = 22,
   skip_prob = 75,
 
   structure =
   {
     "......","111111",
+    "......","111111",
     "......","11vv11",
     "......","AAAAAA",
     "......","AAAAAA",
     "......","^^11^^",
+    "......","111111",
     "......","111111",
     "11xxxx","11xxxx",
   }
@@ -15494,6 +15520,52 @@ GROW_PEWPEW =
   }
 },
 
+GROW_BOOK =
+{
+  prob = 12,
+
+  skip_prob = 75,
+
+  structure =
+  {
+    "1........","1111%/AAA",
+    "1........","11111AAAA",
+    "x........","x1111AAAA",
+    "x........","x1111AAAA",
+    "x........","x1111AAAA",
+    "xxxx..xxx","xxxx%/xxx",
+  },
+
+  diagonals =
+  {
+    "1.",".A",
+    ".1","A.",
+  },
+},
+
+GROW_BOOK_STAIRS =
+{
+  prob = 10,
+
+  skip_prob = 75,
+
+  structure =
+  {
+    "1........","1111%/AAA",
+    "1........","1111>AAAA",
+    "x........","x111>AAAA",
+    "x........","x111>AAAA",
+    "x........","x111>AAAA",
+    "xxxx..xxx","xxxx%/xxx",
+  },
+
+  diagonals =
+  {
+    "1.",".A",
+    ".1","A.",
+  },
+}
+
 -- MSSP's rooms shaped like English alphabet letters. [LETTERS]
 
 GROW_SKULL_P1_NEW_AREA =
@@ -15698,8 +15770,8 @@ GROW_DIAGONAL_STALK_LIQUID =
 
 GROW_DIAGONAL_STALK_LIQUID_STAIRS =
 {
-  prob = 10,
-  skip_prob = 75,
+  prob = 15,
+  skip_prob = 85,
 
   structure =
   {
@@ -16381,8 +16453,9 @@ GROW_EXTRUSION_SINK =
 
   structure =
   {
-    "11.xx","111xx",
-    "11.xx","111xx",
+    "11xxx","11xxx"
+    "...xx","111xx",
+    "...xx","111xx",
     ".....","11vAA",
     ".....","11AAA",
     ".....","11^AA",
@@ -17588,111 +17661,57 @@ GROW_TRENCH_CURVE_OUTER_SOLID_RING_LIQUID =
 
 GROW_SEWER_ENTRY =
 {
-  prob = 25,
-  skip_prob = 25,
-
-  group = "sewer",
+  prob = 8,
+  skip_prob = 50,
 
   structure =
   {
-    "......","111111",
-    "......","111111",
-    "......","~~~~~1",
-    "1.....","111111",
-    "1.....","111111",
+    "x......","x111111",
+    "x......","x111111",
+    "x......","x~~~~11",
+    "1......","1111111",
+    "1......","1111111",
+  },
+
+  auxiliary = 
+  {
+    pass = "GROW_SEWER_ENTRY_aux",
+  },
+},
+
+GROW_SEWER_ENTRY_aux =
+{
+  prob = 10,
+
+  structure =
+  {
+    "111..","11111",
+    "111..","11111",
+    "~11..","~~~11",
+    "111..","11111",
+    "111..","11111",
   },
 },
 
 GROW_SEWER_STAIRS =
 {
-  prob = 30,
-  skip_prob = 25,
-
-  group = "sewer",
+  prob = 8,
+  skip_prob = 50,
 
   structure =
   {
-    "......","111>AA",
-    "......","111>AA",
-    "......","~~~~~A",
-    "1.....","111>AA",
-    "1.....","111>AA",
+    "x......","x11>AAA",
+    "x......","x11>AAA",
+    "x......","x~~~~AA",
+    "1......","111>AAA",
+    "1......","111>AAA",
   },
 },
-
-GROW_SEWER_SWERVE =
-{
-  prob = 35,
-  skip_prob = 10,
-
-  group = "sewer",
-
-  structure =
-  {
-    "1....x","1111%x",
-    "1.....","111111",
-    "......","~~~%11",
-    "......","11%~~1",
-    "......","111111",
-    "x.....","x%1111",
-  },
-
-  diagonals =
-  {
-    "1.",
-    "~1",
-    "1~",
-    ".1",
-  },
-},
-
-GROW_SEWER_CURVED =
-{
-  prob = 20,
-  skip_prob = 10,
-
-  group = "sewer",
-
-  structure =
-  {
-    "1.....","11111%",
-    "1.....","111111",
-    "......","~~~%11",
-    "......","11%~11",
-    "......","111~11",
-    "x.....","x11111",
-  },
-
-  diagonals =
-  {
-    "1.",
-    "~1",
-    "1~",
-  },
-},
-
--- crappy rule
---[[GROW_SEWER_CROSSING = 
-{
-  prob = 25,
-  skip_prob = 75,
-
-  group = "sewer",
-
-  structure =
-  {
-    ".....","11~11",
-    ".....","11~11",
-    ".....","~~~~~",
-    "1....","11~11",
-    "1....","11~11",
-  },
-},]]
 
 GROW_SEWER_CROSSING_CIRCLE_NEW_AREA =
 {
-  prob = 20,
-  skip_prob = 75,
+  prob = 15,
+  skip_prob = 60,
 
   structure =
   {
@@ -17713,8 +17732,8 @@ GROW_SEWER_CROSSING_CIRCLE_NEW_AREA =
 
 GROW_SEWER_CROSSING_CIRCLE_NEW_AREA_BIG =
 {
-  prob = 17,
-  skip_prob = 80,
+  prob = 12,
+  skip_prob = 60,
 
   structure =
   {
@@ -17769,12 +17788,12 @@ GROW_SEWER_STAIRS_SIDE_EXIT_NEW_AREA =
 
   structure =
   {
-    "xxxx..x","xxxxAAx",
-    "1......","11>>AA1",
-    "1......","11>>AA1",
-    ".......","1~~~~~1",
-    ".......","1111111",
-    ".......","1111111",
+    "xxxxx..x","xxxxxAAx",
+    "1.......","111>>AA1",
+    "1.......","111>>AA1",
+    "x.......","x1~~~~~1",
+    "x.......","x1111111",
+    "x.......","x1111111",
   },
 },
 
@@ -17782,7 +17801,7 @@ GROW_SEWER_STAIRS_SIDE_EXIT_NEW_AREA =
 
 GROW_PLUS_SINGLE_STAIR =
 {
-  prob = 40,
+  prob = 20,
   skip_prob = 80,
 
   structure =
@@ -17806,7 +17825,7 @@ GROW_PLUS_SINGLE_STAIR =
 
 GROW_PLUS_SINGLE_STAIR_OPPOSITE =
 {
-  prob = 40,
+  prob = 20,
   skip_prob = 80,
 
   structure =
@@ -18038,16 +18057,6 @@ GROW_SPIRAL_STAIR_STEP_2 =
     "xxx..","xxxAA",
     "xxx..","xxxA/"
   },
-
-  --[[structure =
-  {
-    "1xx2x","1xx2x",
-    "1xx22","1xx22",
-    "x1122","x11vv",
-    "x1122","x11vv",
-    "xxx..","xxxAA",
-    "xxx..","xxxA/"
-  },]]
 
   diagonals =
   {
@@ -18427,20 +18436,25 @@ SIDEWALK_EXTEND_SIDEWAYS =
     "111","111",
     "111","111",
   },
+
+  auxiliary =
+  {
+    pass = "SIDEWALK_EXTEND_SIDEWAYS_aux",
+  },
 },
 
-SIDEWALK_FILL_2X =
+SIDEWALK_EXTEND_SIDEWAYS_aux =
 {
-  prob = 25,
+  prob = 10,
 
-  pass = "sidewalk",
+  pass = "sidewak",
 
   structure =
   {
-    "2..2","2222",
-    "2..2","2222",
-    "x11x","x11x",
-    "1111","1111",
+    "2.","22",
+    "2.","22",
+    "11","11",
+    "11","11",
   },
 },
 

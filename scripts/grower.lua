@@ -3881,13 +3881,12 @@ function Grower_sprout_room(SEEDS, LEVEL, R)
   and not R.is_park
   and not R.is_outdoor
   and not R.is_hallway
-  and not R.is_street
   and not PARAM.float_grammar_backhalls
   and not PARAM.float_grammar_boxes_of_death 
   and not PARAM.float_grammar_oblige_745 then
 
-    -- square_out pass - makes rooms a bit more buff and square
-    -- to distort the layout a bit more
+    -- flourish pass - add more ornate ceilings to break up large
+    -- flat ceilings
     Grower_grammatical_room(SEEDS, LEVEL, R, "flourish")
     R.is_flourished = true
   end
@@ -4300,8 +4299,10 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
     local final_R = LEVEL.rooms[#LEVEL.rooms]
 
     if R then final_R = R end
-  
-    Seed_draw_minimap(SEEDS, LEVEL)
+
+    if PARAM["live_minimap"] == "room" then
+      Seed_draw_minimap(SEEDS, LEVEL)
+    end
 
     if final_R.is_hallway or final_R.is_grown then
       local found_room
