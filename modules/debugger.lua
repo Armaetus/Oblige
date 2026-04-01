@@ -34,9 +34,9 @@ DEBUG_CONTROL.TITLE_SCREEN_CHOICES =
 
 DEBUG_CONTROL.NAME_GEN_CHOICES =
 {
-  "32l",  _("Test Level Names"),
-  "32t",  _("Test Title Names"),
-  "none", _("None"),
+  "whole_only",  _("Only Whole Names"),
+  "pattern_only",  _("Only Pattern Names"),
+  "default", _("DEFAULT"),
 }
 
 DEBUG_CONTROL.GROWTH_STEP_CHOICES =
@@ -120,12 +120,16 @@ OB_MODULES["debugger"] =
     },
 
     {
-      name = "bool_whole_names_only",
-      label=_("Whole Name Gen Names Only"),
-      valuator = "button",
-      default = 0,
-      tooltip = _("Use only complete names from the Name Generator"),
-      longtip = _("Uses name generator names that are already complete phrases/sentences \ninstead of trying to procedurally generate them."),
+      name = "name_generator_mode",
+      label=_("Name Generator Setting"),
+      choices = DEBUG_CONTROL.NAME_GEN_CHOICES,
+      default = "default",
+      tooltip = _("Choose between whole names or pattern-based names only for levels."),
+      longtip = _("Choose between whole names or pattern-based names only for levels.\n\n" ..
+      "Whole names are full single strings e.g. boss maps.\n\n" ..
+      "Pattern names are generative and based on replacement formats e.g. 'Sludge Generator E-710' from '[adjective] + [noun] + [hash_number]\n\n" ..
+      "Default functionality obeys the probabilities set in names.lua\n\n" ..
+      "WAD sub titles and Boss maps will continue to use whole level names as they do not have pattern definitions."),
       priority=101,
     },
 

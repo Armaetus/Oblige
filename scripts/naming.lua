@@ -2306,25 +2306,311 @@ namelib.SYLLABLES =
   }
 }
 
+ANGEL_DEMON_NAMES =
+{
+  "Michael","Gabriel","Raphael","Uriel","Azrael","Sariel","Remiel","Zadkiel","Jophiel","Haniel",
+  "Raguel","Phanuel","Metatron","Sandalphon","Raziel","Cassiel","Barachiel","Jeremiel","Adriel","Anael",
+  "Zuriel","Othniel","Ithuriel","Ezekiel","Camael","Seraphiel","Tzaphkiel","Israfel","Kemuel","Ramiel",
+  "Gadreel","Castiel","Arael","Zerachiel","Lumiel","Thamiel","Oriphiel","Caelion","Azael","Nerathiel",
+  "Zaphiel","Eremiel","Kalziel","Morael","Azmiel","Tariel","Zadriel","Ormael","Selaphiel","Arkael",
+  "Beliel","Zamael","Rathiel","Damael","Keziel","Lumael","Tzarael","Ophiel","Mikael","Razael",
+  "Abriel","Samael","Zeriel","Thuriel","Amriel","Bariel","Carziel","Dariel","Eshmael","Farael",
+  "Gariel","Harael","Ishariel","Jariel","Karael","Larael","Marael","Narael","Oarael","Pariel",
+  "Qarael","Rarael","Sarael","Tarael","Uraiel","Varael","Warael","Xarael","Yarael","Zarael",
 
+  "Baal","Belial","Asmodeus","Beelzebub","Astaroth","Abaddon","Mammon","Moloch","Leviathan","Azazel",
+  "Samael","Lucifer","Belphegor","Lilith","Naamah","Baphomet","Dagon","Amon","Phenex","Forneus",
+  "Marchosias","Andras","Valefar","Sitri","Berith","Stolas","Furfur","Halphas","Malphas","Vepar",
+  "Zagan","Allocer","Shax","Vassago","Orobas","Barael","Zoroth","Malzeth","Korvax","Threxal",
+  "Velkior","Zamreth","Ormazel","Draugoth","Xerath","Balreth","Morvion","Zethar","Khalzor","Azgoth",
+  "Belzoth","Karvax","Morzak","Thalzor","Zarveth","Xalzor","Velrax","Korveth","Zalreth","Balthor",
+  "Morath","Zeroth","Karnax","Velthor","Xarneth","Zolgar","Threxor","Balzeth","Korzan","Zarnok",
+  "Velzoth","Morvax","Thalrex","Zarvok","Xelthor","Korzeth","Balneth","Morzel","Zarxoth","Velnax",
+
+  -- synthetic blend (angel/demon hybrid style)
+  "Zariel","Malachiel","Belthiel","Azrion","Zerathiel","Malzoriel","Balathiel","Thamziel","Koriel",
+  "Zaraelion","Velachiel","Morathiel","Zethiel","Barachor","Thraelion","Zamiel","Koraelion","Velariel",
+  "Moriel","Zaniel","Thariel","Baliel","Koriel","Zoriel","Veliel","Maliel","Zethiel","Xariel",
+  "Zorathiel","Velkariel","Morxiel","Balzriel","Thamriel","Korathiel","Zarviel","Velthoriel",
+  "Morathor","Zethoriel","Balxiel","Threxiel","Korviel","Zamthoriel","Velzriel","Morielion",
+
+  -- expand with patterned generation-like entries
+  "Arzoth","Belzior","Calreth","Dorvax","Erzoth","Falzor","Galreth","Harvax","Irzoth","Jalzor",
+  "Kalreth","Lorvax","Marzoth","Nalzor","Orvax","Palreth","Qarzoth","Ralzor","Sarvax","Talreth",
+  "Urzoth","Valzor","Warvax","Xarzoth","Yalzor","Zarvax",
+
+  -- repeated structured variations to reach ~500
+  "Azraelion","Barzoth","Calzeth","Darvion","Elzior","Farveth","Garzoth","Harzeth","Irzion","Jarveth",
+  "Karzoth","Larveth","Marzeth","Narvion","Orzoth","Parveth","Qarzeth","Rarvion","Sarveth","Tarzoth",
+  "Urveth","Varzoth","Warveth","Xarzeth","Yarvion","Zarveth",
+
+  "Belzor","Malzor","Korzor","Velzor","Zarzor","Thalzor","Xalzor","Morzor","Balzor","Kelzor",
+  "Nelzor","Pelzor","Selzor","Telzor","Velzor","Welzor","Xelzor","Yelzor","Zelzor",
+
+  "Azmoth","Belmoth","Cormoth","Darmoth","Elmoth","Felmoth","Galmoth","Harmoth","Irmoth","Jalmoth",
+  "Kelmoth","Larmoth","Marmoth","Nelmoth","Ormath","Palmoth","Qelmoth","Rarmoth","Sarmoth","Tarmoth",
+  "Ulmoth","Varmoth","Welmoth","Xarmoth","Yelmoth","Zarmoth",
+
+  "Zethion","Morion","Balion","Korion","Velion","Thalion","Xalion","Zalion","Malion","Belion",
+  "Kelion","Nelion","Pelion","Selion","Telion","Velion","Welion","Xelion","Yelion","Zelion"
+}
+
+COUNTY_TOWN_NAMES = {
+  "Springfield","Riverton","Fairview","Franklin","Greenville","Bristol","Clinton","Georgetown","Salem","Madison",
+  "Arlington","Ashland","Oxford","Jackson","Milton","Dayton","Clayton","Hudson","Kingston","Lancaster",
+  "Winchester","Farmington","Centerville","Lexington","Burlington","Manchester","Oakland","Newport","Dover","Somerset",
+  "Norwood","Danville","Cleveland","Plymouth","Canton","Bedford","Carlisle","Shelbyville","Harrison","Jefferson",
+
+  "New Haven","New London","New Albany","New Bedford","New Richmond","New Carlisle","New Hartford","New Brighton","New Franklin","New Salem",
+  "Fort Worth","Fort Wayne","Fort Smith","Fort Scott","Fort Dodge","Fort Benton","Fort Mason","Fort Grayson","Fort Caldwell","Fort Redfield",
+  "Port Arthur","Port Clinton","Port Townsend","Port Angeles","Port Gibson","Port Madison","Port Raleigh","Port Kingston","Port Mason","Port Sterling",
+  "Lakewood","Lakeland","Lakeview","Lakeport","Lakefield","Lakehurst","Lakeside","Lakehaven","Lakewood Hills","Lake Briar",
+  "Mount Vernon","Mount Pleasant","Mount Holly","Mount Sterling","Mount Carmel","Mount Zion","Mount Auburn","Mount Hope","Mount Olive","Mount Dora",
+
+  "San Marcos","San Angelo","San Rafael","San Mateo","San Bruno","San Leandro","San Ramon","San Jacinto","San Benito","San Gabriel",
+  "Santa Clara","Santa Rosa","Santa Fe","Santa Cruz","Santa Barbara","Santa Maria","Santa Paula","Santa Monica","Santa Teresa","Santa Lucia",
+
+  "Redwood","Oak Grove","Pine Hill","Cedar Falls","Maple Grove","Willow Creek","Birchwood","Elmwood","Cottonwood","Dogwood",
+  "Silver Creek","Clearwater","Blue Ridge","Green Valley","Golden Valley","White Plains","Black River","Rocky Ford","Dry Creek","Cold Spring",
+
+  "Ridgefield","Brookfield","Plainfield","Springdale","Rosedale","Greendale","Hillcrest","Fairmont","Westfield","Eastwood",
+  "Northfield","Southport","Westbrook","Easton","Northwood","Southdale","Westhaven","Easthaven","Northbrook","Southridge",
+
+  "Brighton","Claymont","Fairfax","Oakmont","Rosemont","Belmont","Richmond","Edgemont","Ashmont","Beaumont",
+  "Fairmont Heights","Oakwood Hills","Riverbend","Stonebridge","Woodland Park","Highland Park","Meadowbrook","Sunnyvale","Pleasant Hill","Rolling Hills",
+
+  "Kingsport","Clarksville","Huntsville","Jacksonville","Danville Heights","Greenville Junction","Farmville","Oakville","Roseville","Pineville",
+  "Lakeville","Brookville","Fairville","Grantville","Hopeville","Smithville","Clarkton","Brighton Falls","Cedarville","Elmville",
+
+  "Rockford","Hartford","Milford","Stratford","Ashford","Clifford","Bedford Falls","Kingsford","Langford","Redford",
+  "Oakford","Pineford","Rexford","Sanford","Whitford","Brentford","Glenford","Crawford","Stanford","Wolford",
+
+  "Greenburg","Harrisburg","Pittsburg","Gettysburg","Williamsburg","Fredericksburg","Leesburg","Jonesburg","Hendersonburg","Ellisburg",
+  "Kingsburg","Marlborough","Northburg","Southburg","Westburg","Eastburg","Stoneburg","Riverburg","Oakburg","Lakeburg",
+
+  "Fairton","Clayton","Brighton","Charleston","Princeton","Kingston Heights","Riverton Falls","Summerton","Chesterton","Fullerton",
+  "Silverton","Millerton","Georgetown Heights","Allentown","Beaverton","Jamestown","Harrison Heights","Edgerton","Bloomington","Lexington Falls",
+
+  -- Indigenous-inspired / phonetic blends
+  "Wakanda","Chillicothe","Tallulah","Catawba","Tuscaloosa","Yazoo","Kennebunk","Skowhegan","Massapequa","Patchogue",
+  "Shenandoah","Susquehanna","Allegheny","Potomac","Monongahela","Kalamazoo","Okeechobee","Apalachicola","Chattahoochee","Tallahassee",
+
+  "Wakarusa","Talawanda","Chesunka","Nokomis","Wabasha","Minnewaska","Onalaska","Kewanee","Kenosha","Winnebago",
+  "Shawano","Manitowoc","Oconto","Waupaca","Wausau","Menasha","Neenah","Ashwaubenon","Sheboygan","Kewaunee",
+
+  -- synthetic fillers with realistic structure
+  "Oakridge","Pineridge","Mapleridge","Cedaridge","Stone Ridge","River Ridge","Lake Ridge","Hill Ridge","North Ridge","South Ridge",
+  "West Ridge","East Ridge","Green Ridge","Blue Ridge Falls","Silver Ridge","Golden Ridge","Red Ridge","White Ridge","Black Ridge","Iron Ridge",
+
+  "Riverdale","Greendale Heights","Brookdale","Oakdale","Pinedale","Mapledale","Cedar Dale","Stone Dale","Hilldale","Northdale",
+  "Southdale Heights","Westdale","Eastdale","Greendale Park","Rosedale Heights","Fairdale","Sunnydale","Shadowdale","Wooddale","Parkdale",
+
+  "Meadowfield","Brookfield Heights","Oakfield","Pinefield","Maplefield","Cedarfield","Stonefield","Hillfield","Northfield Heights",
+  "Southfield","Westfield Park","Eastfield","Greenfield Heights","Bluefield","Fairfield Park","Sunnyfield","Shadowfield","Woodfield","Parkfield",
+
+  "Clearview","Grandview","Hillview","Lakeview Heights","Ridgeview","Brookview","Oakview","Pineview","Mapleview","Cedarview",
+  "Stoneview","Northview","Southview","Westview","Eastview","Greenview","Blueview","Fairview Heights","Sunnyview","Shadowview",
+
+  "Rockport","Bridgeport","Kingsport Heights","Lakeport Falls","Riverport","Northport","Southport Heights","Westport","Eastport",
+  "Greenport","Blueport","Fairport","Sunnyport","Shadowport","Woodport","Parkport","Stoneport","Ironport","Goldport","Silverport"
+}
 
 -- noun generator, creates nouns from syllables
 -- currently two modes:
--- "Exotic" - syllables come from country names
+-- "exotic" - syllables come from country names
 --            and solar system body names
--- "Anglican" - syllables come from US and UK towns
+-- "anglican" - syllables come from US and UK towns
 --              and places, usually emphasizes whole
 --              words as syllables
+
+-- Now uses Markov chains!
 function namelib.generate_unique_noun(m)
   local mode = m
 
-  local function make_placelike_syllable(style)
+  function build_chain(names, order)
+    local chain = {}
+    local start_token = string.rep("^", order)
+    
+    for _, name in ipairs(names) do
+      local clean = name:lower():gsub("[^a-z]", "")
+      clean = name:lower():gsub("%s+", "_")
+      local padded = start_token .. clean .. "$"
+
+      for i = 1, #padded - order do
+        local key = padded:sub(i, i + order - 1)
+        local next_char = padded:sub(i + order, i + order)
+        
+        if not chain[key] then
+            chain[key] = {}
+        end
+            
+        table.insert(chain[key], next_char)
+      end
+    end
+    
+    return chain
+  end
+
+  function is_weak_word(word)
+      local len = #word
+      if len > 3 then return false end
+
+      local vowel_count = 0
+      for c in word:gmatch(".") do
+          if c:match("[aeiou]") then
+              vowel_count = vowel_count + 1
+          end
+      end
+
+      return vowel_count >= len - 1 -- mostly vowels
+  end
+
+  function auto_fix_words(name)
+      local words = {}
+      for w in name:lower():gmatch("%S+") do
+          table.insert(words, w)
+      end
+
+      local result = {}
+      local i = 1
+
+      while i <= #words do
+          local word = words[i]
+
+          if is_weak_word(word) then
+              local next_word = words[i + 1]
+              local prev_word = result[#result]
+
+              if next_word then
+                  -- merge into next word (preferred)
+                  words[i + 1] = word .. next_word
+              elseif prev_word then
+                  -- merge into previous word
+                  result[#result] = prev_word .. word
+              end
+              -- skip adding this word
+          else
+              table.insert(result, word)
+          end
+
+          i = i + 1
+      end
+
+      return table.concat(result, " ")
+  end
+
+  function generate_name(chain, order, min_len, max_len)
+    local start_token = string.rep("^", order)
+    local current = start_token
+    local result = ""
+    local tries = 1
+
+    function try_complete_suffix(name)
+      local suffixes = {
+        "mount",
+        "view",
+        "ville",
+        "ton",
+        "burg",
+        "field",
+        "dale",
+        "port",
+        "wood",
+        "ridge",
+        "ranch",
+        "heights",
+        "mont",
+        "wark"
+      }
+
+      local lower_name = name:lower()
+      local best_suffix = nil
+      local best_overlap = 0
+
+      for _, s in ipairs(suffixes) do
+        local max_overlap = math.min(#s, #lower_name)
+        for i = max_overlap, 1, -1 do
+            if lower_name:sub(-i) == s:sub(1, i) then
+              if i > best_overlap then
+                best_overlap = i
+                best_suffix = s
+              end
+            break -- largest match found for this suffix
+          end
+        end
+      end
+
+      if best_suffix then
+        -- append only the missing part
+        return name .. best_suffix:sub(best_overlap + 1)
+      end
+
+      return name
+    end
+    
+    while true do
+      local options = chain[current]
+      if not options then break end
+      
+      local next_char = options[math.random(#options)]
+      
+      if next_char == "$" then
+        if #result >= min_len then
+          break
+        end
+        -- too short: restart
+        current = start_token
+        result = ""
+      else
+          result = result .. next_char
+        current = current:sub(2) .. next_char
+      end
+      
+      if #result >= max_len then
+        break
+      end
+    end
+
+    if m == "anglican" then
+      gui.printf(result .. "\n")
+  
+      result = result:gsub("_", " ")
+  
+      result = try_complete_suffix(result)
+      result = auto_fix_words(result)
+    end
+
+    result = result:gsub("_(%a)", function(c) return " " .. c:upper() end)
+    result = result:sub(1,1):upper() .. result:sub(2)
+
+    while #result > max_len + 2 do
+      result = generate_name(chain, order, min_len, max_len)
+    end
+    
+    return result
+  end
+
+  local tab = {}
+  if m == "exotic" or not m then
+    tab = ANGEL_DEMON_NAMES
+  elseif m == "anglican" then
+    tab = COUNTY_TOWN_NAMES
+  end
+  
+  local chain = build_chain(tab, 2)
+
+  if m == "exotic"
+  or m == "anglican" or not m then
+    name = generate_name(chain, 2, 4, 8)
+  end
+
+  --[[local function make_placelike_syllable(style)
     if style == "anglican" then
       return rand.key_by_probs(namelib.SYLLABLES.a)
     elseif style == "exotic" then
       return rand.key_by_probs(namelib.SYLLABLES.e)
     end
-  end
+  end]]
 
   local function make_random_hashes(a, b)
     local hash_string = ""
@@ -2361,7 +2647,7 @@ function namelib.generate_unique_noun(m)
     return hash_string
   end
 
-  local name = ""
+  --[[local name = ""
   local syllable_count
   if mode == "anglican" then
     syllable_count = 2
@@ -2378,7 +2664,7 @@ function namelib.generate_unique_noun(m)
     until i > syllable_count
   end
 
-  name = string.gsub(name,"^%l",string.upper)
+  name = string.gsub(name,"^%l",string.upper)]]
 
   if mode == "community_members" then
     local choice = rand.key_by_probs({c=6, r=2, o=2})
@@ -2531,7 +2817,7 @@ end
 
 
 function namelib.choose_one(DEF, max_len)
-  if PARAM.bool_whole_names_only and PARAM.bool_whole_names_only ~= 0 then
+  if PARAM.name_generator_mode and PARAM.name_generator_mode == "whole_only" then
     return rand.key_by_probs(DEF.lexicon.s)
   end
 
@@ -2586,6 +2872,12 @@ end
 
 function namelib.generate(theme_name, count, max_len)
   local DEF = namelib.merge_theme(theme_name)
+
+  if theme_name ~= "BOSS"
+  and theme_name ~= "SUB_TITLE"
+  and PARAM.name_generator_mode and PARAM.name_generator_mode == "pattern_only" then
+    DEF.patterns["%s"] = 0
+  end
 
   local list = {}
 
