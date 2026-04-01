@@ -1628,791 +1628,196 @@ namelib.HUMAN_NAMES =
   }
 }
 
-
-namelib.SYLLABLES =
+namelib.MARKOV_DB =
 {
-  e = -- EXOTIC names
+  ANGEL_DEMON_NAMES =
   {
-    -- country/place names
-    a = 50,
-    af = 50,
-    an = 50,
-    aq = 50,
-    ar = 50,
-    as = 50,
-    au = 50,
-    atia = 50,
-    ba = 50,
-    bab = 50,
-    bad = 50,
-    bah = 50,
-    bai = 50,
-    ban = 50,
-    bar = 50,
-    bang = 50,
-    be = 50,
-    ber = 50,
-    bi = 50,
-    bia = 50,
-    bis = 50,
-    bhu = 50,
-    bo = 50,
-    bon = 50,
-    bou = 50,
-    bourg = 50,
-    bos = 50,
-    bot = 50,
-    bra = 50,
-    bri = 50,
-    bru = 50,
-    bu = 50,
-    bul = 50,
-    cam = 50,
-    can = 50,
-    cco = 50,
-    co = 50,
-    con = 50,
-    ce = 50,
-    cent = 50,
-    cez = 50,
-    ci = 50,
-    cia = 50,
-    chad = 50,
-    chi = 50,
-    cho = 50,
-    co = 50,
-    cro = 50,
-    cu = 50,
-    cua = 50,
-    cy = 50,
-    da = 50,
-    dad = 50,
-    dan = 50,
-    de = 50,
-    den = 50,
-    desh = 50,
-    di = 50,
-    dia = 50,
-    dines = 50,
-    dives = 50,
-    dji = 50,
-    ["do"] = 50,
-    dom = 50,
-    dos = 50,
-    dor = 50,
-    du = 50,
-    e = 50,
-    el = 50,
-    eg = 50,
-    em = 50,
-    eng = 50,
-    er = 50,
-    es = 50,
-    fa = 50,
-    fra = 50,
-    fi = 50,
-    fin = 50,
-    ga = 50,
-    gal = 50,
-    gan = 50,
-    gam = 50,
-    gar = 50,
-    geor = 50,
-    ger = 50,
-    gre = 50,
-    gree = 50,
-    gha = 50,
-    gen = 50,
-    ger = 50,
-    gia = 50,
-    gium = 50,
-    go = 50,
-    gol = 50,
-    gov = 50,
-    gre = 50,
-    gro = 50,
-    gu = 50,
-    gua = 50,
-    guay = 50,
-    gyz = 50,
-    ham = 50,
-    her = 50,
-    hon = 50,
-    i = 50,
-    ia = 50,
-    iet = 50,
-    ["in"] = 50,
-    ice = 50,
-    ina = 50,
-    ion = 50,
-    ir = 50,
-    ire = 50,
-    is = 50,
-    ish = 50,
-    ja = 50,
-    ji = 50,
-    jian = 50,
-    jor = 50,
-    ka = 50,
-    ken = 50,
-    ki = 50,
-    kia = 50,
-    king = 50,
-    kis = 50,
-    --kitts = 50,
-    ko = 50,
-    ku = 50,
-    kyr = 50,
-    la = 50,
-    lan = 50,
-    land = 50,
-    lay = 50,
-    le = 50,
-    leo = 50,
-    les = 50,
-    li = 50,
-    lia = 50,
-    lib = 50,
-    lip = 50,
-    liech = 50,
-    lith = 50,
-    lize = 50,
-    lo = 50,
-    lom = 50,
-    lu = 50,
-    lua = 50,
-    lux = 50,
-    ma = 50,
-    mai = 50,
-    mal = 50,
-    mar = 50,
-    mark = 50,
-    mau = 50,
-    men = 50,
-    me = 50,
-    mex = 50,
-    mi = 50,
-    mo = 50,
-    moa = 50,
-    mor = 50,
-    mon = 50,
-    mya = 50,
-    na = 50,
-    nam = 50,
-    nau = 50,
-    ne = 50,
-    nea = 50,
-    nei = 50,
-    ni = 50,
-    nia = 50,
-    nis = 50,
-    no = 50,
-    nom = 50,
-    non = 50,
-    nor = 50,
-    nua = 50,
-    nin = 50,
-    ny = 50,
-    o = 50,
-    ["os"] = 50,
-    pa = 50,
-    pan = 50,
-    pe = 50,
-    po = 50,
-    por = 50,
-    phi = 50,
-    prin = 50,
-    prus = 50,
-    pua = 50,
-    qa = 50,
-    que = 50,
-    ra = 50,
-    rain = 50,
-    ras = 50,
-    rea = 50,
-    ria = 50,
-    ri = 50,
-    ru = 50,
-    roon = 50,
-    ros = 50,
-    rus = 50,
-    rwan = 50,
-    tal = 50,
-    tar = 50,
-    tain = 50,
-    ["tan"] = 50,
-    ted = 50,
-    thai = 50,
-    ther = 50,
-    ti = 50,
-    to = 50,
-    ton = 50,
-    tine = 50,
-    tri = 50,
-    tria = 50,
-    tu = 50,
-    sao = 50,
-    sah = 50,
-    sal = 50,
-    sau = 50,
-    scot = 50,
-    se = 50,
-    ser = 50,
-    sey = 50,
-    shall = 50,
-    sia = 50,
-    sier = 50,
-    slo = 50,
-    so = 50,
-    ["sin"] = 50,
-    sov = 50,
-    sla = 50,
-    sri = 50,
-    swa = 50,
-    swe = 50,
-    stan = 50,
-    stein = 50,
-    su = 50,
-    sy = 50,
-    tai = 50,
-    ["tan"] = 50,
-    ten = 50,
-    tho = 50,
-    ti = 50,
-    ton = 50,
-    tral = 50,
-    tu = 50,
-    tzer = 50,
-    u = 50,
-    ua = 50,
-    un = 50,
-    und = 50,
-    uz = 50,
-    va = 50,
-    ve = 50,
-    ver = 50,
-    vo = 50,
-    via = 50,
-    viet = 50,
-    vin = 50,
-    vis = 50,
-    wa = 50,
-    we = 50,
-    wait = 50,
-    way = 50,
-    wi = 50,
-    xi = 50,
-    y = 50,
-    ya = 50,
-    ye = 50,
-    yu = 50,
-    ypt = 50,
-    za = 50,
-    zam = 50,
-    zakh = 50,
-    zer = 50,
-    ze = 50,
-    zea = 50,
-    zi = 50,
-    zim = 50,
-    zil = 50,
-
-    -- celestials
-    -- note: some of the syllables are deliberately incomplete
-    -- because they already show up in the country syllables list
-    sol = 50, -- our sun
-
-    ry = 50, --mercury
-
-    nus = 50, --venus
-
-    rra = 50, --terra
-
-    mars = 50,
-
-    ju = 50, --jupiter
-    pi = 50,
-    ter = 50,
-
-    sa = 50, --saturn
-    turn = 50,
-
-    nep = 50, --neptune
-    tune = 50,
-
-    ur = 50, --uranus
-    us = 50,
-
-    plu = 50, -- pluto
-
-    cer = 50, -- ceres
-
-    -- minor celestial bodies
-    kui = 50, -- kuiper belt
-    per = 50,
-
-    dei = 50, -- deimos
-
-    pho = 50, -- phobos
-
-    pal = 50, -- pallas
-    las = 50,
-
-    ves = 50, -- vesta
-
-    hy = 50, --hygiea
-    giea = 50,
-
-    eu = 50, -- europa
-
-    mede = 50, -- ganymede
-
-    cal = 50, -- callisto
-    lis = 50,
-
-    en = 50, -- enceladus
-    dus = 50,
-
-    thys = 50, -- tethys
-
-    di = 50,
-    one = 50,
-
-    rhea = 50,
-
-    ia = 50, -- iapetus
-    tus = 50,
-
-    phoe = 50, --pheobe
-
-    ran = 50, -- miranda
-
-    riel = 50, -- ariel
-
-    umb = 50, -- umbriel
-
-    ron = 50, -- oberon
-
-    pro = 50, -- pro
-    teus = 50,
-
-    reid = 50, -- nereid
-
-    aurs = 50, -- centaurs
-
-    cloids = 50, -- damocloids
-
-    cha = 50, -- charon
-
-    vanth = 50,
-
-    hau = 50, -- haumea
-    mea = 50,
-
-    ris = 50, -- eris
-
-    dys = 50, -- dysnomia
-    mia = 50,
-
-    oort = 50 -- oort
-  },
-
-  -- MYTHIC
-  m =
-  {
-    p = --prefixes
+    order = {2},
+    words =
     {
-      ach = 1, aeth = 1, aion = 1, chro = 1, an = 1, anan = 1,
-      cha = 1, ere = 1, er = 1, eb = 1,
-      pha = 1, gai = 1, he = 1, me = 1, ou = 1, pont = 1, tha = 1, lass = 1,
-      tar = 1, ta = 1, at = 1, ro = 1, clo = 1, lach = 1, es = 1,
+      "Michael","Gabriel","Raphael","Uriel","Azrael","Sariel","Remiel","Zadkiel","Jophiel","Haniel",
+      "Raguel","Phanuel","Metatron","Sandalphon","Raziel","Cassiel","Barachiel","Jeremiel","Adriel","Anael",
+      "Zuriel","Othniel","Ithuriel","Ezekiel","Camael","Seraphiel","Tzaphkiel","Israfel","Kemuel","Ramiel",
+      "Gadreel","Castiel","Arael","Zerachiel","Lumiel","Thamiel","Oriphiel","Caelion","Azael","Nerathiel",
+      "Zaphiel","Eremiel","Kalziel","Morael","Azmiel","Tariel","Zadriel","Ormael","Selaphiel","Arkael",
+      "Beliel","Zamael","Rathiel","Damael","Keziel","Lumael","Tzarael","Ophiel","Mikael","Razael",
+      "Abriel","Samael","Zeriel","Thuriel","Amriel","Bariel","Carziel","Dariel","Eshmael","Farael",
+      "Gariel","Harael","Ishariel","Jariel","Karael","Larael","Marael","Narael","Oarael","Pariel",
+      "Qarael","Rarael","Sarael","Tarael","Uraiel","Varael","Warael","Xarael","Yarael","Zarael",
 
-      coe = 1, cri = 1, cro = 1, hy = 1, per = 1, ia = 1, pe = 1,
-      dio = 1, mne = 1, no = 1,
-      phoe = 1, rhea = 1, teth = 1, the = 1, them = 1,
-      eos = 1, hel = 1, sel = 1,
-      as = 1, ter = 1, pal = 1, per = 1,
-      at = 1, epi = 1, meth = 1, me = 1, no = 1, pro = 1
-    },
-    s = --suffixes
-    {
-      lys = 1, er = 2, on = 2, nos = 1, us = 3, nes = 1, ra = 2, rea = 2,
-      a = 5, nyx = 1, rus = 1, nus = 4, pos = 1, tho = 1, is = 2,
+      "Baal","Belial","Asmodeus","Beelzebub","Astaroth","Abaddon","Mammon","Moloch","Leviathan","Azazel",
+      "Samael","Lucifer","Belphegor","Lilith","Naamah","Baphomet","Dagon","Amon","Phenex","Forneus",
+      "Marchosias","Andras","Valefar","Sitri","Berith","Stolas","Furfur","Halphas","Malphas","Vepar",
+      "Zagan","Allocer","Shax","Vassago","Orobas","Barael","Zoroth","Malzeth","Korvax","Threxal",
+      "Velkior","Zamreth","Ormazel","Draugoth","Xerath","Balreth","Morvion","Zethar","Khalzor","Azgoth",
+      "Belzoth","Karvax","Morzak","Thalzor","Zarveth","Xalzor","Velrax","Korveth","Zalreth","Balthor",
+      "Morath","Zeroth","Karnax","Velthor","Xarneth","Zolgar","Threxor","Balzeth","Korzan","Zarnok",
+      "Velzoth","Morvax","Thalrex","Zarvok","Xelthor","Korzeth","Balneth","Morzel","Zarxoth","Velnax",
 
-      ion = 2, tus = 1,
-      ne = 1, syne = 1, be = 1, thys = 1, ia = 3,
-      ios = 1,
-      las = 2, ses = 1,
-      eus = 1, theus = 1
+      -- synthetic blend (angel/demon hybrid style)
+      "Zariel","Malachiel","Belthiel","Azrion","Zerathiel","Malzoriel","Balathiel","Thamziel","Koriel",
+      "Zaraelion","Velachiel","Morathiel","Zethiel","Barachor","Thraelion","Zamiel","Koraelion","Velariel",
+      "Moriel","Zaniel","Thariel","Baliel","Koriel","Zoriel","Veliel","Maliel","Zethiel","Xariel",
+      "Zorathiel","Velkariel","Morxiel","Balzriel","Thamriel","Korathiel","Zarviel","Velthoriel",
+      "Morathor","Zethoriel","Balxiel","Threxiel","Korviel","Zamthoriel","Velzriel","Morielion",
+
+      -- expand with patterned generation-like entries
+      "Arzoth","Belzior","Calreth","Dorvax","Erzoth","Falzor","Galreth","Harvax","Irzoth","Jalzor",
+      "Kalreth","Lorvax","Marzoth","Nalzor","Orvax","Palreth","Qarzoth","Ralzor","Sarvax","Talreth",
+      "Urzoth","Valzor","Warvax","Xarzoth","Yalzor","Zarvax",
+
+      -- repeated structured variations to reach ~500
+      "Azraelion","Barzoth","Calzeth","Darvion","Elzior","Farveth","Garzoth","Harzeth","Irzion","Jarveth",
+      "Karzoth","Larveth","Marzeth","Narvion","Orzoth","Parveth","Qarzeth","Rarvion","Sarveth","Tarzoth",
+      "Urveth","Varzoth","Warveth","Xarzeth","Yarvion","Zarveth",
+
+      "Belzor","Malzor","Korzor","Velzor","Zarzor","Thalzor","Xalzor","Morzor","Balzor","Kelzor",
+      "Nelzor","Pelzor","Selzor","Telzor","Velzor","Welzor","Xelzor","Yelzor","Zelzor",
+
+      "Azmoth","Belmoth","Cormoth","Darmoth","Elmoth","Felmoth","Galmoth","Harmoth","Irmoth","Jalmoth",
+      "Kelmoth","Larmoth","Marmoth","Nelmoth","Ormath","Palmoth","Qelmoth","Rarmoth","Sarmoth","Tarmoth",
+      "Ulmoth","Varmoth","Welmoth","Xarmoth","Yelmoth","Zarmoth",
+
+      "Zethion","Morion","Balion","Korion","Velion","Thalion","Xalion","Zalion","Malion","Belion",
+      "Kelion","Nelion","Pelion","Selion","Telion","Velion","Welion","Xelion","Yelion","Zelion"
     }
   },
 
-  a = --ANGLICAN names
+  COUNTY_TOWN_NAMES = {
+    order = {2,3,3},
+    words =
+    {
+      "Springfield","Riverton","Fairview","Franklin","Greenville","Bristol","Clinton","Georgetown","Salem","Madison",
+      "Arlington","Ashland","Oxford","Jackson","Milton","Dayton","Clayton","Hudson","Kingston","Lancaster",
+      "Winchester","Farmington","Centerville","Lexington","Burlington","Manchester","Oakland","Newport","Dover","Somerset",
+      "Norwood","Danville","Cleveland","Plymouth","Canton","Bedford","Carlisle","Shelbyville","Harrison","Jefferson",
+
+      "New Haven","New London","New Albany","New Bedford","New Richmond","New Carlisle","New Hartford","New Brighton","New Franklin","New Salem",
+      "Fort Worth","Fort Wayne","Fort Smith","Fort Scott","Fort Dodge","Fort Benton","Fort Mason","Fort Grayson","Fort Caldwell","Fort Redfield",
+      "Port Arthur","Port Clinton","Port Townsend","Port Angeles","Port Gibson","Port Madison","Port Raleigh","Port Kingston","Port Mason","Port Sterling",
+      "Lakewood","Lakeland","Lakeview","Lakeport","Lakefield","Lakehurst","Lakeside","Lakehaven","Lakewood Hills","Lake Briar",
+      "Mount Vernon","Mount Pleasant","Mount Holly","Mount Sterling","Mount Carmel","Mount Zion","Mount Auburn","Mount Hope","Mount Olive","Mount Dora",
+
+      "San Marcos","San Angelo","San Rafael","San Mateo","San Bruno","San Leandro","San Ramon","San Jacinto","San Benito","San Gabriel",
+      "Santa Clara","Santa Rosa","Santa Fe","Santa Cruz","Santa Barbara","Santa Maria","Santa Paula","Santa Monica","Santa Teresa","Santa Lucia",
+
+      "Redwood","Oak Grove","Pine Hill","Cedar Falls","Maple Grove","Willow Creek","Birchwood","Elmwood","Cottonwood","Dogwood",
+      "Silver Creek","Clearwater","Blue Ridge","Green Valley","Golden Valley","White Plains","Black River","Rocky Ford","Dry Creek","Cold Spring",
+
+      "Ridgefield","Brookfield","Plainfield","Springdale","Rosedale","Greendale","Hillcrest","Fairmont","Westfield","Eastwood",
+      "Northfield","Southport","Westbrook","Easton","Northwood","Southdale","Westhaven","Easthaven","Northbrook","Southridge",
+
+      "Brighton","Claymont","Fairfax","Oakmont","Rosemont","Belmont","Richmond","Edgemont","Ashmont","Beaumont",
+      "Fairmont Heights","Oakwood Hills","Riverbend","Stonebridge","Woodland Park","Highland Park","Meadowbrook","Sunnyvale","Pleasant Hill","Rolling Hills",
+
+      "Kingsport","Clarksville","Huntsville","Jacksonville","Danville Heights","Greenville Junction","Farmville","Oakville","Roseville","Pineville",
+      "Lakeville","Brookville","Fairville","Grantville","Hopeville","Smithville","Clarkton","Brighton Falls","Cedarville","Elmville",
+
+      "Rockford","Hartford","Milford","Stratford","Ashford","Clifford","Bedford Falls","Kingsford","Langford","Redford",
+      "Oakford","Pineford","Rexford","Sanford","Whitford","Brentford","Glenford","Crawford","Stanford","Wolford",
+
+      "Greenburg","Harrisburg","Pittsburg","Gettysburg","Williamsburg","Fredericksburg","Leesburg","Jonesburg","Hendersonburg","Ellisburg",
+      "Kingsburg","Marlborough","Northburg","Southburg","Westburg","Eastburg","Stoneburg","Riverburg","Oakburg","Lakeburg",
+
+      "Fairton","Clayton","Brighton","Charleston","Princeton","Kingston Heights","Riverton Falls","Summerton","Chesterton","Fullerton",
+      "Silverton","Millerton","Georgetown Heights","Allentown","Beaverton","Jamestown","Harrison Heights","Edgerton","Bloomington","Lexington Falls",
+
+      -- Indigenous-inspired / phonetic blends
+      "Wakanda","Chillicothe","Tallulah","Catawba","Tuscaloosa","Yazoo","Kennebunk","Skowhegan","Massapequa","Patchogue",
+      "Shenandoah","Susquehanna","Allegheny","Potomac","Monongahela","Kalamazoo","Okeechobee","Apalachicola","Chattahoochee","Tallahassee",
+
+      "Wakarusa","Talawanda","Chesunka","Nokomis","Wabasha","Minnewaska","Onalaska","Kewanee","Kenosha","Winnebago",
+      "Shawano","Manitowoc","Oconto","Waupaca","Wausau","Menasha","Neenah","Ashwaubenon","Sheboygan","Kewaunee",
+
+      -- synthetic fillers with realistic structure
+      "Oakridge","Pineridge","Mapleridge","Cedaridge","Stone Ridge","River Ridge","Lake Ridge","Hill Ridge","North Ridge","South Ridge",
+      "West Ridge","East Ridge","Green Ridge","Blue Ridge Falls","Silver Ridge","Golden Ridge","Red Ridge","White Ridge","Black Ridge","Iron Ridge",
+
+      "Riverdale","Greendale Heights","Brookdale","Oakdale","Pinedale","Mapledale","Cedar Dale","Stone Dale","Hilldale","Northdale",
+      "Southdale Heights","Westdale","Eastdale","Greendale Park","Rosedale Heights","Fairdale","Sunnydale","Shadowdale","Wooddale","Parkdale",
+
+      "Meadowfield","Brookfield Heights","Oakfield","Pinefield","Maplefield","Cedarfield","Stonefield","Hillfield","Northfield Heights",
+      "Southfield","Westfield Park","Eastfield","Greenfield Heights","Bluefield","Fairfield Park","Sunnyfield","Shadowfield","Woodfield","Parkfield",
+
+      "Clearview","Grandview","Hillview","Lakeview Heights","Ridgeview","Brookview","Oakview","Pineview","Mapleview","Cedarview",
+      "Stoneview","Northview","Southview","Westview","Eastview","Greenview","Blueview","Fairview Heights","Sunnyview","Shadowview",
+
+      "Rockport","Bridgeport","Kingsport Heights","Lakeport Falls","Riverport","Northport","Southport Heights","Westport","Eastport",
+      "Greenport","Blueport","Fairport","Sunnyport","Shadowport","Woodport","Parkport","Stoneport","Ironport","Goldport","Silverport"
+    }
+  },
+
+  LATIN =
   {
-    ["lower"] = 50,
-    ["or"] = 50,
-    ["read"] = 50,
-    ["tan"] = 50,
-    ["upper"] = 50,
-    acre = 50,
-    anna = 50,
-    apple = 50,
-    auburn = 50,
-    aus = 50,
-    away = 50,
-    bait = 50,
-    bath = 50,
-    bay = 50,
-    beach = 50,
-    belle = 50,
-    bello = 50,
-    benson = 50,
-    bick = 50,
-    bing = 50,
-    black = 50,
-    blaine = 50,
-    bloom = 50,
-    bob = 50,
-    body = 50,
-    booth = 50,
-    born = 50,
-    boro = 50,
-    bos = 50,
-    bowl = 50,
-    brent = 50,
-    briar = 50,
-    brick = 50,
-    bridge = 50,
-    brigh = 50,
-    bron = 50,
-    brook = 50,
-    broom = 50,
-    browns = 50,
-    bruns = 50,
-    buck = 50,
-    bur = 50,
-    burgh = 50,
-    bury = 50,
-    bush = 50,
-    ca = 50,
-    cal = 50,
-    car = 50,
-    carls = 50,
-    castle = 50,
-    cen = 50,
-    ches = 50,
-    chest = 50,
-    chester = 50,
-    chi = 50,
-    cho = 50,
-    cis = 50,
-    co = 50,
-    com = 50,
-    cour = 50,
-    cres = 50,
-    dale = 50,
-    dawn = 50,
-    dar = 50,
-    dave = 50,
-    dear = 50,
-    del = 50,
-    den = 50,
-    don = 50,
-    drive = 50,
-    east = 50,
-    elting = 50,
-    en = 50,
-    emers = 50,
-    ["end"] = 50,
-    es = 50,
-    eve = 50,
-    eye = 50,
-    fair = 50,
-    falls = 50,
-    far = 50,
-    field = 50,
-    flag = 50,
-    flat = 50,
-    ford = 50,
-    fran = 50,
-    frank = 50,
-    fy = 50,
-    galv = 50,
-    gar = 50,
-    gate = 50,
-    gie = 50,
-    gil = 50,
-    glen = 50,
-    go = 50,
-    grand = 50,
-    grant = 50,
-    grape = 50,
-    green = 50,
-    grove = 50,
-    gue = 50,
-    gulf = 50,
-    hack = 50,
-    ham = 50,
-    hamp = 50,
-    harl = 50,
-    harp = 50,
-    harris = 50,
-    hat = 50,
-    haven = 50,
-    head = 50,
-    hicks = 50,
-    hill = 50,
-    hol = 50,
-    home = 50,
-    hunt = 50,
-    hurst = 50,
-    ien = 50,
-    inns = 50,
-    ing = 50,
-    john = 50,
-    jones = 50,
-    kel = 50,
-    kers = 50,
-    kings = 50,
-    la = 50,
-    lake = 50,
-    land = 50,
-    lau = 50,
-    le = 50,
-    lees = 50,
-    ley = 50,
-    ling = 50,
-    lock = 50,
-    long = 50,
-    loo = 50,
-    lough = 50,
-    low = 50,
-    lyn = 50,
-    mac = 50,
-    mack = 50,
-    man = 50,
-    maple = 50,
-    mas = 50,
-    may = 50,
-    med = 50,
-    mi = 50,
-    mid = 50,
-    mint = 50,
-    mo = 50,
-    mond = 50,
-    mont = 50,
-    monte = 50,
-    moore = 50,
-    more = 50,
-    morris = 50,
-    morning = 50,
-    mound = 50,
-    mount = 50,
-    na = 50,
-    naan = 50,
-    nas = 50,
-    near = 50,
-    neo = 50,
-    new = 50,
-    nor = 50,
-    north = 50,
-    nuet = 50,
-    oak = 50,
-    pach = 50,
-    palm = 50,
-    pat = 50,
-    pea = 50,
-    pete = 50,
-    plains = 50,
-    ple = 50,
-    point = 50,
-    port = 50,
-    queens = 50,
-    ram = 50,
-    randall = 50,
-    red = 50,
-    rel = 50,
-    rich = 50,
-    rick = 50,
-    ridge = 50,
-    rock = 50,
-    rom = 50,
-    ross = 50,
-    row = 50,
-    roy = 50,
-    ry = 50,
-    sack = 50,
-    san = 50,
-    say = 50,
-    scran = 50,
-    sea = 50,
-    sey = 50,
-    shawn = 50,
-    shef = 50,
-    shir = 50,
-    shore = 50,
-    smith = 50,
-    son = 50,
-    sota = 50,
-    south = 50,
-    springs = 50,
-    staff = 50,
-    stam = 50,
-    stead = 50,
-    stee = 50,
-    stone = 50,
-    stream = 50,
-    tar = 50,
-    taunt = 50,
-    ter = 50,
-    thon = 50,
-    tic = 50,
-    tin = 50,
-    ton = 50,
-    town = 50,
-    tree = 50,
-    trent = 50,
-    ty = 50,
-    val = 50,
-    vale = 50,
-    ve = 50,
-    ver = 50,
-    vere = 50,
-    vi = 50,
-    ville = 50,
-    vine = 50,
-    wad = 50,
-    wake = 50,
-    walk = 50,
-    wald = 50,
-    wall = 50,
-    war = 50,
-    ward = 50,
-    wark = 50,
-    water = 50,
-    well = 50,
-    west = 50,
-    whit = 50,
-    white = 50,
-    wich = 50,
-    wick = 50,
-    williams = 50,
-    win = 50,
-    wind = 50,
-    wood = 50,
-    yard = 50,
-    yon = 50,
-    youngs = 50
-  }
-}
-
-ANGEL_DEMON_NAMES =
-{
-  "Michael","Gabriel","Raphael","Uriel","Azrael","Sariel","Remiel","Zadkiel","Jophiel","Haniel",
-  "Raguel","Phanuel","Metatron","Sandalphon","Raziel","Cassiel","Barachiel","Jeremiel","Adriel","Anael",
-  "Zuriel","Othniel","Ithuriel","Ezekiel","Camael","Seraphiel","Tzaphkiel","Israfel","Kemuel","Ramiel",
-  "Gadreel","Castiel","Arael","Zerachiel","Lumiel","Thamiel","Oriphiel","Caelion","Azael","Nerathiel",
-  "Zaphiel","Eremiel","Kalziel","Morael","Azmiel","Tariel","Zadriel","Ormael","Selaphiel","Arkael",
-  "Beliel","Zamael","Rathiel","Damael","Keziel","Lumael","Tzarael","Ophiel","Mikael","Razael",
-  "Abriel","Samael","Zeriel","Thuriel","Amriel","Bariel","Carziel","Dariel","Eshmael","Farael",
-  "Gariel","Harael","Ishariel","Jariel","Karael","Larael","Marael","Narael","Oarael","Pariel",
-  "Qarael","Rarael","Sarael","Tarael","Uraiel","Varael","Warael","Xarael","Yarael","Zarael",
-
-  "Baal","Belial","Asmodeus","Beelzebub","Astaroth","Abaddon","Mammon","Moloch","Leviathan","Azazel",
-  "Samael","Lucifer","Belphegor","Lilith","Naamah","Baphomet","Dagon","Amon","Phenex","Forneus",
-  "Marchosias","Andras","Valefar","Sitri","Berith","Stolas","Furfur","Halphas","Malphas","Vepar",
-  "Zagan","Allocer","Shax","Vassago","Orobas","Barael","Zoroth","Malzeth","Korvax","Threxal",
-  "Velkior","Zamreth","Ormazel","Draugoth","Xerath","Balreth","Morvion","Zethar","Khalzor","Azgoth",
-  "Belzoth","Karvax","Morzak","Thalzor","Zarveth","Xalzor","Velrax","Korveth","Zalreth","Balthor",
-  "Morath","Zeroth","Karnax","Velthor","Xarneth","Zolgar","Threxor","Balzeth","Korzan","Zarnok",
-  "Velzoth","Morvax","Thalrex","Zarvok","Xelthor","Korzeth","Balneth","Morzel","Zarxoth","Velnax",
-
-  -- synthetic blend (angel/demon hybrid style)
-  "Zariel","Malachiel","Belthiel","Azrion","Zerathiel","Malzoriel","Balathiel","Thamziel","Koriel",
-  "Zaraelion","Velachiel","Morathiel","Zethiel","Barachor","Thraelion","Zamiel","Koraelion","Velariel",
-  "Moriel","Zaniel","Thariel","Baliel","Koriel","Zoriel","Veliel","Maliel","Zethiel","Xariel",
-  "Zorathiel","Velkariel","Morxiel","Balzriel","Thamriel","Korathiel","Zarviel","Velthoriel",
-  "Morathor","Zethoriel","Balxiel","Threxiel","Korviel","Zamthoriel","Velzriel","Morielion",
-
-  -- expand with patterned generation-like entries
-  "Arzoth","Belzior","Calreth","Dorvax","Erzoth","Falzor","Galreth","Harvax","Irzoth","Jalzor",
-  "Kalreth","Lorvax","Marzoth","Nalzor","Orvax","Palreth","Qarzoth","Ralzor","Sarvax","Talreth",
-  "Urzoth","Valzor","Warvax","Xarzoth","Yalzor","Zarvax",
-
-  -- repeated structured variations to reach ~500
-  "Azraelion","Barzoth","Calzeth","Darvion","Elzior","Farveth","Garzoth","Harzeth","Irzion","Jarveth",
-  "Karzoth","Larveth","Marzeth","Narvion","Orzoth","Parveth","Qarzeth","Rarvion","Sarveth","Tarzoth",
-  "Urveth","Varzoth","Warveth","Xarzeth","Yarvion","Zarveth",
-
-  "Belzor","Malzor","Korzor","Velzor","Zarzor","Thalzor","Xalzor","Morzor","Balzor","Kelzor",
-  "Nelzor","Pelzor","Selzor","Telzor","Velzor","Welzor","Xelzor","Yelzor","Zelzor",
-
-  "Azmoth","Belmoth","Cormoth","Darmoth","Elmoth","Felmoth","Galmoth","Harmoth","Irmoth","Jalmoth",
-  "Kelmoth","Larmoth","Marmoth","Nelmoth","Ormath","Palmoth","Qelmoth","Rarmoth","Sarmoth","Tarmoth",
-  "Ulmoth","Varmoth","Welmoth","Xarmoth","Yelmoth","Zarmoth",
-
-  "Zethion","Morion","Balion","Korion","Velion","Thalion","Xalion","Zalion","Malion","Belion",
-  "Kelion","Nelion","Pelion","Selion","Telion","Velion","Welion","Xelion","Yelion","Zelion"
-}
-
-COUNTY_TOWN_NAMES = {
-  "Springfield","Riverton","Fairview","Franklin","Greenville","Bristol","Clinton","Georgetown","Salem","Madison",
-  "Arlington","Ashland","Oxford","Jackson","Milton","Dayton","Clayton","Hudson","Kingston","Lancaster",
-  "Winchester","Farmington","Centerville","Lexington","Burlington","Manchester","Oakland","Newport","Dover","Somerset",
-  "Norwood","Danville","Cleveland","Plymouth","Canton","Bedford","Carlisle","Shelbyville","Harrison","Jefferson",
-
-  "New Haven","New London","New Albany","New Bedford","New Richmond","New Carlisle","New Hartford","New Brighton","New Franklin","New Salem",
-  "Fort Worth","Fort Wayne","Fort Smith","Fort Scott","Fort Dodge","Fort Benton","Fort Mason","Fort Grayson","Fort Caldwell","Fort Redfield",
-  "Port Arthur","Port Clinton","Port Townsend","Port Angeles","Port Gibson","Port Madison","Port Raleigh","Port Kingston","Port Mason","Port Sterling",
-  "Lakewood","Lakeland","Lakeview","Lakeport","Lakefield","Lakehurst","Lakeside","Lakehaven","Lakewood Hills","Lake Briar",
-  "Mount Vernon","Mount Pleasant","Mount Holly","Mount Sterling","Mount Carmel","Mount Zion","Mount Auburn","Mount Hope","Mount Olive","Mount Dora",
-
-  "San Marcos","San Angelo","San Rafael","San Mateo","San Bruno","San Leandro","San Ramon","San Jacinto","San Benito","San Gabriel",
-  "Santa Clara","Santa Rosa","Santa Fe","Santa Cruz","Santa Barbara","Santa Maria","Santa Paula","Santa Monica","Santa Teresa","Santa Lucia",
-
-  "Redwood","Oak Grove","Pine Hill","Cedar Falls","Maple Grove","Willow Creek","Birchwood","Elmwood","Cottonwood","Dogwood",
-  "Silver Creek","Clearwater","Blue Ridge","Green Valley","Golden Valley","White Plains","Black River","Rocky Ford","Dry Creek","Cold Spring",
-
-  "Ridgefield","Brookfield","Plainfield","Springdale","Rosedale","Greendale","Hillcrest","Fairmont","Westfield","Eastwood",
-  "Northfield","Southport","Westbrook","Easton","Northwood","Southdale","Westhaven","Easthaven","Northbrook","Southridge",
-
-  "Brighton","Claymont","Fairfax","Oakmont","Rosemont","Belmont","Richmond","Edgemont","Ashmont","Beaumont",
-  "Fairmont Heights","Oakwood Hills","Riverbend","Stonebridge","Woodland Park","Highland Park","Meadowbrook","Sunnyvale","Pleasant Hill","Rolling Hills",
-
-  "Kingsport","Clarksville","Huntsville","Jacksonville","Danville Heights","Greenville Junction","Farmville","Oakville","Roseville","Pineville",
-  "Lakeville","Brookville","Fairville","Grantville","Hopeville","Smithville","Clarkton","Brighton Falls","Cedarville","Elmville",
-
-  "Rockford","Hartford","Milford","Stratford","Ashford","Clifford","Bedford Falls","Kingsford","Langford","Redford",
-  "Oakford","Pineford","Rexford","Sanford","Whitford","Brentford","Glenford","Crawford","Stanford","Wolford",
-
-  "Greenburg","Harrisburg","Pittsburg","Gettysburg","Williamsburg","Fredericksburg","Leesburg","Jonesburg","Hendersonburg","Ellisburg",
-  "Kingsburg","Marlborough","Northburg","Southburg","Westburg","Eastburg","Stoneburg","Riverburg","Oakburg","Lakeburg",
-
-  "Fairton","Clayton","Brighton","Charleston","Princeton","Kingston Heights","Riverton Falls","Summerton","Chesterton","Fullerton",
-  "Silverton","Millerton","Georgetown Heights","Allentown","Beaverton","Jamestown","Harrison Heights","Edgerton","Bloomington","Lexington Falls",
-
-  -- Indigenous-inspired / phonetic blends
-  "Wakanda","Chillicothe","Tallulah","Catawba","Tuscaloosa","Yazoo","Kennebunk","Skowhegan","Massapequa","Patchogue",
-  "Shenandoah","Susquehanna","Allegheny","Potomac","Monongahela","Kalamazoo","Okeechobee","Apalachicola","Chattahoochee","Tallahassee",
-
-  "Wakarusa","Talawanda","Chesunka","Nokomis","Wabasha","Minnewaska","Onalaska","Kewanee","Kenosha","Winnebago",
-  "Shawano","Manitowoc","Oconto","Waupaca","Wausau","Menasha","Neenah","Ashwaubenon","Sheboygan","Kewaunee",
-
-  -- synthetic fillers with realistic structure
-  "Oakridge","Pineridge","Mapleridge","Cedaridge","Stone Ridge","River Ridge","Lake Ridge","Hill Ridge","North Ridge","South Ridge",
-  "West Ridge","East Ridge","Green Ridge","Blue Ridge Falls","Silver Ridge","Golden Ridge","Red Ridge","White Ridge","Black Ridge","Iron Ridge",
-
-  "Riverdale","Greendale Heights","Brookdale","Oakdale","Pinedale","Mapledale","Cedar Dale","Stone Dale","Hilldale","Northdale",
-  "Southdale Heights","Westdale","Eastdale","Greendale Park","Rosedale Heights","Fairdale","Sunnydale","Shadowdale","Wooddale","Parkdale",
-
-  "Meadowfield","Brookfield Heights","Oakfield","Pinefield","Maplefield","Cedarfield","Stonefield","Hillfield","Northfield Heights",
-  "Southfield","Westfield Park","Eastfield","Greenfield Heights","Bluefield","Fairfield Park","Sunnyfield","Shadowfield","Woodfield","Parkfield",
-
-  "Clearview","Grandview","Hillview","Lakeview Heights","Ridgeview","Brookview","Oakview","Pineview","Mapleview","Cedarview",
-  "Stoneview","Northview","Southview","Westview","Eastview","Greenview","Blueview","Fairview Heights","Sunnyview","Shadowview",
-
-  "Rockport","Bridgeport","Kingsport Heights","Lakeport Falls","Riverport","Northport","Southport Heights","Westport","Eastport",
-  "Greenport","Blueport","Fairport","Sunnyport","Shadowport","Woodport","Parkport","Stoneport","Ironport","Goldport","Silverport"
+    order = {2,3,3},
+    words =
+    {
+      -- Continents & Regions
+      "Europa", "Asia", "Africa", "America", "Australis", "Antarctica", "Atlantica",
+      "Occidens", "Orientalis", "Septentrio", "Meridies", "Mediterranea", "Transalpina",
+      "Caucasia", "Sarmatia", "Scythia", "Hesperia", "Hyperborea", "Aethiopia",
+      
+      -- Oceans & Seas
+      "Oceanus Atlanticus", "Oceanus Pacificus", "Oceanus Indicus", "Oceanus Australis",
+      "Oceanus Borealis", "Oceanus Arcticus", "Oceanus Antarcticus",
+      "Mare Mediterraneum", "Mare Aegaeum", "Mare Adriaticum", "Mare Tyrrhenum",
+      "Mare Ionium", "Mare Balticum", "Mare Caspium", "Mare Rubrum", "Mare Nigra",
+      "Mare Japonicum", "Mare Philippinum", "Mare Caribicum", "Mare Nordicum",
+      
+      -- Rivers & Lakes
+      "Nilus", "Danubius", "Rhenus", "Tiberis", "Sequanus", "Amazonia Fluvius",
+      "Mississippus", "Gangis", "Indus", "Volga", "Lacus Superior", "Lacus Victoria",
+      "Lacus Baikal", "Lacus Titicaca", "Lacus Ontario", "Lacus Geneva",
+      
+      -- Solar System Entities
+      "Sol", "Luna", "Terra", "Mars", "Venus", "Mercurius", "Iuppiter", "Saturnus",
+      "Uranus", "Neptunus", "Pluto", "Ceres", "Vesta", "Pallas", "Eris",
+      "Titan", "Europa Luna", "Ganymedes", "Callisto", "Io", "Enceladus",
+      "Rhea", "Dione", "Tethys", "Hyperion", "Phoebe", "Charon",
+      
+      -- Synthetic Variants (Markov tempering)
+      "Oceanus Boreoatlanticus", "Oceanus Indoatlanticus", "Oceanus Transpacificus",
+      "Mare Austrinigrum", "Mare Boreotyrrhenum", "Mare Hyperionis",
+      "Continens Novaeuropa", "Continens Austrinova", "Continens Boreoafrica",
+      "Terra Novalis", "Terra Ultima", "Terra Incognita", "Terra Australis Obscura",
+      "Regio Lunaris", "Regio Solaria", "Regio Saturnalia", "Regio Joviana",
+      "Regio Martiana", "Regio Venerea", "Regio Mercurialis",
+      
+      -- Mythic/Poetic Expansions
+      "Oceanus Primordialis", "Oceanus Caelestis", "Oceanus Infernum",
+      "Mare Aeternum", "Mare Stellatum", "Mare Ignis", "Mare Ventorum",
+      "Mare Tenebrarum", "Mare Lucis", "Mare Somniorum", "Mare Novum",
+      "Continens Arcadia", "Continens Eldoria", "Continens Valeria",
+      "Continens Aurelia", "Continens Obscuria", "Continens Borealis Magna",
+      
+      -- Extra synthetic fillers
+      "Oceanus Boreopacificus", "Oceanus Austrinovus", "Oceanus Transindicus",
+      "Mare Boreophilippinum", "Mare Austricaribicum", "Mare Hyperboreum",
+      "Terra Solaris", "Terra Lunaris", "Terra Neptunia", "Terra Uranica",
+      "Terra Plutonia", "Terra Eridania", "Terra Cimmeria", "Terra Tharsis",
+      "Regio Boreomagna", "Regio Austrinova", "Regio Transmarina",
+      "Regio Ultima Thule", "Regio Arcana", "Regio Mystica",
+      
+      -- More expansions for density
+      "Oceanus Boreoatlanticus Magnus", "Oceanus Australis Magnus",
+      "Mare Mediterraneum Novum", "Mare Caspium Antiquum", "Mare Rubrum Novum",
+      "Continens Novae Terrae", "Continens Boreoamerica", "Continens Australis Nova",
+      "Terra Nova Borealis", "Terra Nova Australis", "Terra Nova Orientalis",
+      "Regio Solaris Magna", "Regio Lunaris Magna", "Regio Joviana Magna",
+      "Regio Saturnalia Magna", "Regio Venerea Magna", "Regio Mercurialis Magna",
+      
+      -- Synthetic planetary seas
+      "Mare Titanis", "Mare Europae", "Mare Ganymedis", "Mare Callisti",
+      "Mare Ioensis", "Mare Enceladi", "Mare Rheae", "Mare Dionis",
+      "Mare Tethyos", "Mare Hyperionis", "Mare Phoebis", "Mare Charoni",
+      
+      -- Closing fillers
+      "Oceanus Ultimus", "Oceanus Novissimus", "Oceanus Eternus",
+      "Mare Ultimum", "Mare Novissimum", "Mare Eternum",
+      "Terra Ultima Borealis", "Terra Ultima Australis", "Terra Ultima Orientalis",
+      "Regio Ultima Borealis", "Regio Ultima Australis", "Regio Ultima Orientalis"
+    },
+  },
 }
 
 -- noun generator, creates nouns from syllables
@@ -2424,288 +1829,271 @@ COUNTY_TOWN_NAMES = {
 --              words as syllables
 
 -- Now uses Markov chains!
-function namelib.generate_unique_noun(m)
-  local mode = m
+function namelib.generate_unique_noun(mode)
 
-  function build_chain(names, order)
+  -- ============================================================
+  -- Build Markov Chain
+  -- ============================================================
+  local function build_chain(names, order)
     local chain = {}
     local start_token = string.rep("^", order)
-    
+
     for _, name in ipairs(names) do
-      local clean = name:lower():gsub("[^a-z]", "")
-      clean = name:lower():gsub("%s+", "_")
+      local clean = name:lower()
+      clean = clean:gsub("[^a-z%s]", "")
+      clean = clean:gsub("%s+", "_")
+
       local padded = start_token .. clean .. "$"
 
       for i = 1, #padded - order do
         local key = padded:sub(i, i + order - 1)
         local next_char = padded:sub(i + order, i + order)
-        
-        if not chain[key] then
-            chain[key] = {}
-        end
-            
+
+        chain[key] = chain[key] or {}
         table.insert(chain[key], next_char)
       end
     end
-    
+
     return chain
   end
 
-  function is_weak_word(word)
-      local len = #word
-      if len > 3 then return false end
+  -- ============================================================
+  -- Weak word detection
+  -- ============================================================
+  local function is_weak_word(word)
+    if #word > 3 then return false end
 
-      local vowel_count = 0
-      for c in word:gmatch(".") do
-          if c:match("[aeiou]") then
-              vowel_count = vowel_count + 1
-          end
-      end
+    local vowels = 0
+    for c in word:gmatch(".") do
+      if c:match("[aeiou]") then vowels = vowels + 1 end
+    end
 
-      return vowel_count >= len - 1 -- mostly vowels
+    return vowels >= #word - 1
   end
 
-  function auto_fix_words(name)
-      local words = {}
-      for w in name:lower():gmatch("%S+") do
-          table.insert(words, w)
+  -- ============================================================
+  -- Auto-fix short junk words
+  -- ============================================================
+  local function auto_fix_words(name)
+    local words = {}
+    for w in name:lower():gmatch("%S+") do
+      table.insert(words, w)
+    end
+
+    local result = {}
+    local i = 1
+
+    while i <= #words do
+      local word = words[i]
+
+      if is_weak_word(word) then
+        local next_word = words[i + 1]
+        local prev_word = result[#result]
+
+        if next_word then
+          words[i + 1] = word .. next_word
+        elseif prev_word then
+          result[#result] = prev_word .. word
+        end
+      else
+        table.insert(result, word)
       end
 
-      local result = {}
-      local i = 1
+      i = i + 1
+    end
 
-      while i <= #words do
-          local word = words[i]
-
-          if is_weak_word(word) then
-              local next_word = words[i + 1]
-              local prev_word = result[#result]
-
-              if next_word then
-                  -- merge into next word (preferred)
-                  words[i + 1] = word .. next_word
-              elseif prev_word then
-                  -- merge into previous word
-                  result[#result] = prev_word .. word
-              end
-              -- skip adding this word
-          else
-              table.insert(result, word)
-          end
-
-          i = i + 1
-      end
-
-      return table.concat(result, " ")
+    return table.concat(result, " ")
   end
 
-  function generate_name(chain, order, min_len, max_len)
-    local start_token = string.rep("^", order)
-    local current = start_token
-    local result = ""
-    local tries = 1
+  -- ============================================================
+  -- Aggressive suffix completion
+  -- ============================================================
+  local function complete_suffix(name)
+    local suffixes = {
+      "mount","view","ville","ton","burg","field","dale",
+      "port","wood","ridge","ranch","heights","mont","wark"
+    }
 
-    function try_complete_suffix(name)
-      local suffixes = {
-        "mount",
-        "view",
-        "ville",
-        "ton",
-        "burg",
-        "field",
-        "dale",
-        "port",
-        "wood",
-        "ridge",
-        "ranch",
-        "heights",
-        "mont",
-        "wark"
-      }
+    local lower = name:lower()
+    local best_suffix, best_overlap = nil, 0
 
-      local lower_name = name:lower()
-      local best_suffix = nil
-      local best_overlap = 0
-
-      for _, s in ipairs(suffixes) do
-        local max_overlap = math.min(#s, #lower_name)
-        for i = max_overlap, 1, -1 do
-            if lower_name:sub(-i) == s:sub(1, i) then
-              if i > best_overlap then
-                best_overlap = i
-                best_suffix = s
-              end
-            break -- largest match found for this suffix
+    for _, s in ipairs(suffixes) do
+      local max_overlap = math.min(#s, #lower)
+      for i = max_overlap, 1, -1 do
+        if lower:sub(-i) == s:sub(1, i) then
+          if i > best_overlap then
+            best_overlap = i
+            best_suffix = s
           end
+          break
         end
       end
-
-      if best_suffix then
-        -- append only the missing part
-        return name .. best_suffix:sub(best_overlap + 1)
-      end
-
-      return name
     end
-    
+
+    if best_suffix then
+      return name .. best_suffix:sub(best_overlap + 1)
+    end
+
+    return name
+  end
+
+  -- ============================================================
+  -- Core Markov Generator
+  -- ============================================================
+  local function generate_markov(chain, order, min_len, max_len)
+    local start = string.rep("^", order)
+    local current = start
+    local result = ""
+
     while true do
       local options = chain[current]
       if not options then break end
-      
+
       local next_char = options[math.random(#options)]
-      
+
       if next_char == "$" then
-        if #result >= min_len then
-          break
-        end
-        -- too short: restart
-        current = start_token
+        if #result >= min_len then break end
+        current = start
         result = ""
       else
-          result = result .. next_char
+        result = result .. next_char
         current = current:sub(2) .. next_char
       end
-      
-      if #result >= max_len then
-        break
-      end
+
+      if #result >= max_len then break end
     end
 
-    if m == "anglican" then
-      gui.printf(result .. "\n")
-  
-      result = result:gsub("_", " ")
-  
-      result = try_complete_suffix(result)
-      result = auto_fix_words(result)
-    end
-
-    result = result:gsub("_(%a)", function(c) return " " .. c:upper() end)
-    result = result:sub(1,1):upper() .. result:sub(2)
-
-    while #result > max_len + 2 do
-      result = generate_name(chain, order, min_len, max_len)
-    end
-    
     return result
   end
 
-  local tab = {}
-  if m == "exotic" or not m then
-    tab = ANGEL_DEMON_NAMES
-  elseif m == "anglican" then
-    tab = COUNTY_TOWN_NAMES
-  end
-  
-  local chain = build_chain(tab, 2)
 
-  if m == "exotic"
-  or m == "anglican" or not m then
-    name = generate_name(chain, 2, 4, 8)
-  end
+  -- ============================================================
+  -- Formatting
+  -- ============================================================
+  local function format_name(name)
+    name = name:gsub("_", " ")
 
-  --[[local function make_placelike_syllable(style)
-    if style == "anglican" then
-      return rand.key_by_probs(namelib.SYLLABLES.a)
-    elseif style == "exotic" then
-      return rand.key_by_probs(namelib.SYLLABLES.e)
-    end
-  end]]
-
-  local function make_random_hashes(a, b)
-    local hash_string = ""
-
-    local number_list =
-    {
-      "0","1","2","3","4","5","6","7","8","9"
-    }
-
-    local alphabet_list =
-    {
-      "A","B","C","D","E","F","G","H","I",
-      "J","K","L","M","N","O","P","Q","R",
-      "S","T","U","V","W","X","Y","Z"
-    }
-
-    local function fetch_a_digit()
-      if rand.odds(75) then
-        return rand.pick(number_list)
-      else
-        return rand.pick(alphabet_list)
-      end
+    if mode == "anglican" then
+      name = complete_suffix(name)
+      name = auto_fix_words(name)
     end
 
-    if a == 0 then
-      hash_string = fetch_a_digit()
+    -- Title case
+    name = name:gsub("(%a)([%w']*)", function(a,b)
+      return a:upper() .. b
+    end)
+
+    return name
+  end
+
+
+  -- ============================================================
+  -- Markov Mode
+  -- ============================================================
+  local function generate_markov_mode()
+    local tab
+
+    if mode == "anglican" then
+      tab = rand.pick({
+        namelib.MARKOV_DB["LATIN"],
+        namelib.MARKOV_DB["COUNTY_TOWN_NAMES"]
+      })
     else
-      if rand.odds(20) then
-        hash_string = "-"
-      end
-      hash_string = hash_string .. fetch_a_digit()
+      tab = namelib.MARKOV_DB["ANGEL_DEMON_NAMES"]
     end
 
-    return hash_string
-  end
+    local order = rand.key_by_probs(tab.order)
+    local chain = build_chain(tab.words, order)
 
-  --[[local name = ""
-  local syllable_count
-  if mode == "anglican" then
-    syllable_count = 2
-  elseif mode == "exotic" then
-    syllable_count = rand.pick({2,2,2,2,3,3,3,3,3,3,4})
-  end
+    local min_len = rand.key_by_probs({[4]=1,[5]=4,[6]=2})
+    local max_len = rand.key_by_probs({[8]=10,[9]=2,[10]=1})
 
-  local i = 1
-
-  if mode == "anglican" or mode == "exotic" then
+    local name
     repeat
-      name = name .. make_placelike_syllable(mode)
-      i = i + 1
-    until i > syllable_count
+      name = generate_markov(chain, order, min_len, max_len)
+      name = format_name(name)
+    until #name <= max_len + 2
+
+    return name
   end
 
-  name = string.gsub(name,"^%l",string.upper)]]
 
-  if mode == "community_members" then
-    local choice = rand.key_by_probs({c=6, r=2, o=2})
-    if choice == "c" then
-      name = rand.pick(namelib.COMMUNITY_MEMBERS.contributors)
-    elseif choice == "r" then
-      name = rand.pick(namelib.COMMUNITY_MEMBERS.regulars)
-    elseif choice == "o" then
-      name = rand.pick(namelib.COMMUNITY_MEMBERS.oblige_folks)
+  -- ============================================================
+  -- Number Mode
+  -- ============================================================
+  local function generate_number()
+    local len = rand.pick({1,2,3,3,4,4,5,6})
+    local result = tostring(rand.irange(1,9))
+
+    for i = 2, len do
+      result = result .. tostring(rand.irange(0,9))
     end
+
+    return result
   end
 
-  local x = 0
-  local num_string = ""
-  if mode == "number" then
-    -- pick numbers
-    local num_length = rand.pick({1,2,3,3,4,4,5,6})
 
-    while x < num_length do
-      -- don't accept 0's for the first one
-      if num_string:len() == 0 then
-        num_string = tostring(rand.irange(1,9))
-      else
-        num_string = num_string .. tostring(rand.irange(0,9))
+  -- ============================================================
+  -- Serial Mode
+  -- ============================================================
+  local function generate_serial()
+    local len = rand.pick({3,4,4,5,5,5,6,7,8})
+    local result = ""
+
+    for i = 0, len - 1 do
+      if i > 0 and rand.odds(20) then
+        result = result .. "-"
       end
-      x = x + 1
+
+      if rand.odds(75) then
+        result = result .. tostring(rand.irange(0,9))
+      else
+        result = result .. string.char(rand.irange(65,90))
+      end
     end
 
-    name = num_string
-  elseif mode == "serial" then
-    local num_length = rand.pick({3,4,4,5,5,5,6,7,8})
-
-    while x < num_length do
-      num_string = num_string .. make_random_hashes(x, num_length)
-      x = x + 1
-    end
-
-    name = num_string
+    return result
   end
 
-  return name
+
+  -- ============================================================
+  -- Community Mode
+  -- ============================================================
+  local function generate_community()
+    local choice = rand.key_by_probs({c=6, r=2, o=2})
+
+    if choice == "c" then
+      return rand.pick(namelib.COMMUNITY_MEMBERS.contributors)
+    elseif choice == "r" then
+      return rand.pick(namelib.COMMUNITY_MEMBERS.regulars)
+    else
+      return rand.pick(namelib.COMMUNITY_MEMBERS.oblige_folks)
+    end
+  end
+
+
+  -- ============================================================
+  -- Dispatcher
+  -- ============================================================
+  if mode == "number" then
+    return generate_number()
+
+  elseif mode == "serial" then
+    return generate_serial()
+
+  elseif mode == "community_members" then
+    return generate_community()
+
+  else
+    str = ""
+    mode = "anglican"
+    for i=1, 40 do
+      str = str .. generate_markov_mode() .. "\n"
+    end
+    error(str)
+    return generate_markov_mode()
+  end
+
 end
 
 
