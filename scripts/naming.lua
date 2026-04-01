@@ -1393,7 +1393,7 @@ namelib.HUMAN_NAMES =
     Nemo = 1,
     Nero = 1,
     Newb = 1,
-    Nightmare = 1,
+    Night= 1,
     Nitro = 1,
     Nix = 1,
     Nobby = 1,
@@ -1632,7 +1632,14 @@ namelib.MARKOV_DB =
 {
   ANGEL_DEMON_NAMES =
   {
-    order = {2},
+    order = {2}, -- Refers to the memory of the Markov chain. 
+                 -- A number too low means gibberish, a number too high means outputting just the same words.
+
+    max_len = {8,8,8,9,9,10,10}, -- rand.pick() range of how long the name should be. 
+                                       -- Not recomended to go really long. 
+    min_len = {5,6,6,6,6},             -- rand.pick() range of how short the name can be. 
+                                       -- Too short results in easy collisions with common words... like "Meth" or "Cunt"
+
     words =
     {
       "Michael","Gabriel","Raphael","Uriel","Azrael","Sariel","Remiel","Zadkiel","Jophiel","Haniel",
@@ -1680,11 +1687,22 @@ namelib.MARKOV_DB =
 
       "Zethion","Morion","Balion","Korion","Velion","Thalion","Xalion","Zalion","Malion","Belion",
       "Kelion","Nelion","Pelion","Selion","Telion","Velion","Welion","Xelion","Yelion","Zelion"
-    }
+    },
+
+    -- Explicitly unused for ANGEL_DEMON_NAMES set, but is a host of common suffix repairs
+    -- In the case of the COUNTY_TOWN_NAMES, for example, "Kentvie" will be auto-completed as "Kentview"
+    --[[suffix_fixes =
+    {
+
+    }]]
   },
 
   COUNTY_TOWN_NAMES = {
     order = {2,3,3},
+
+    max_len = {8,8,8,8,9,9,10,10,10,10},
+    min_len = {5,6,6,6,6},
+
     words =
     {
       "Springfield","Riverton","Fairview","Franklin","Greenville","Bristol","Clinton","Georgetown","Salem","Madison",
@@ -1745,11 +1763,23 @@ namelib.MARKOV_DB =
       "Rockport","Bridgeport","Kingsport Heights","Lakeport Falls","Riverport","Northport","Southport Heights","Westport","Eastport",
       "Greenport","Blueport","Fairport","Sunnyport","Shadowport","Woodport","Parkport","Stoneport","Ironport","Goldport","Silverport"
     }
+
+    suffix_fixes =
+    {
+      "mount","view","ville","ton","burg","field","dale",
+      "port","wood","ridge","ranch","heights","mont","wark",
+      "falls","hill","plain","bend","cumb","brook","creek",
+      "green"
+    }
   },
 
   LATIN =
   {
     order = {2,3,3},
+
+    max_len = {8,8,8,8,8,8,8,8,9,9,9,9,10,10,11,12},
+    min_len = {6},
+
     words =
     {
       -- Continents & Regions
@@ -1758,11 +1788,11 @@ namelib.MARKOV_DB =
       "Caucasia", "Sarmatia", "Scythia", "Hesperia", "Hyperborea", "Aethiopia",
       
       -- Oceans & Seas
-      "Oceanus Atlanticus", "Oceanus Pacificus", "Oceanus Indicus", "Oceanus Australis",
-      "Oceanus Borealis", "Oceanus Arcticus", "Oceanus Antarcticus",
-      "Mare Mediterraneum", "Mare Aegaeum", "Mare Adriaticum", "Mare Tyrrhenum",
-      "Mare Ionium", "Mare Balticum", "Mare Caspium", "Mare Rubrum", "Mare Nigra",
-      "Mare Japonicum", "Mare Philippinum", "Mare Caribicum", "Mare Nordicum",
+      "Atlanticus", "Pacificus", "Indicus", "Australis",
+      "Borealis", "Arcticus", "Antarcticus",
+      "Mediterraneum", "Aegaeum", "Adriaticum", "Tyrrhenum",
+      "Ionium", "Balticum", "Caspium", "Rubrum", "Nigra",
+      "Japonicum", "Philippinum", "Caribicum", "Nordicum",
       
       -- Rivers & Lakes
       "Nilus", "Danubius", "Rhenus", "Tiberis", "Sequanus", "Amazonia Fluvius",
@@ -1776,46 +1806,47 @@ namelib.MARKOV_DB =
       "Rhea", "Dione", "Tethys", "Hyperion", "Phoebe", "Charon",
       
       -- Synthetic Variants (Markov tempering)
-      "Oceanus Boreoatlanticus", "Oceanus Indoatlanticus", "Oceanus Transpacificus",
-      "Mare Austrinigrum", "Mare Boreotyrrhenum", "Mare Hyperionis",
-      "Continens Novaeuropa", "Continens Austrinova", "Continens Boreoafrica",
-      "Terra Novalis", "Terra Ultima", "Terra Incognita", "Terra Australis Obscura",
-      "Regio Lunaris", "Regio Solaria", "Regio Saturnalia", "Regio Joviana",
-      "Regio Martiana", "Regio Venerea", "Regio Mercurialis",
+      "Boreoatlanticus", "Indoatlanticus", "Transpacificus",
+      "Austrinigrum", "Boreotyrrhenum", "Hyperionis",
+      "Novaeuropa", "Austrinova", "Boreoafrica",
+      "Novalis", "Ultima", "Incognita", "Australis Obscura",
+      "Lunaris", "Solaria", "Saturnalia", "Joviana",
+      "Martiana", "Venerea", "Mercurialis",
       
       -- Mythic/Poetic Expansions
-      "Oceanus Primordialis", "Oceanus Caelestis", "Oceanus Infernum",
-      "Mare Aeternum", "Mare Stellatum", "Mare Ignis", "Mare Ventorum",
-      "Mare Tenebrarum", "Mare Lucis", "Mare Somniorum", "Mare Novum",
-      "Continens Arcadia", "Continens Eldoria", "Continens Valeria",
-      "Continens Aurelia", "Continens Obscuria", "Continens Borealis Magna",
+      "Primordialis", "Caelestis", "Infernum",
+      "Aeternum", "Stellatum", "Ignis", "Ventorum",
+      "Tenebrarum", "Lucis", "Somniorum", "Novum",
+      "Arcadia", "Eldoria", "Valeria",
+      "Aurelia", "Obscuria", "Borealis Magna",
       
       -- Extra synthetic fillers
-      "Oceanus Boreopacificus", "Oceanus Austrinovus", "Oceanus Transindicus",
-      "Mare Boreophilippinum", "Mare Austricaribicum", "Mare Hyperboreum",
-      "Terra Solaris", "Terra Lunaris", "Terra Neptunia", "Terra Uranica",
-      "Terra Plutonia", "Terra Eridania", "Terra Cimmeria", "Terra Tharsis",
-      "Regio Boreomagna", "Regio Austrinova", "Regio Transmarina",
-      "Regio Ultima Thule", "Regio Arcana", "Regio Mystica",
+      "Boreopacificus", "Austrinovus", "Transindicus",
+      "Boreophilippinum", "Austricaribicum", "Hyperboreum",
+      "Solaris", "Lunaris", "Neptunia", "Uranica",
+      "Plutonia", "Eridania", "Cimmeria", "Tharsis",
+      "Boreomagna", "Austrinova", "Transmarina",
+      "Ultima Thule", "Arcana", "Mystica",
       
       -- More expansions for density
-      "Oceanus Boreoatlanticus Magnus", "Oceanus Australis Magnus",
-      "Mare Mediterraneum Novum", "Mare Caspium Antiquum", "Mare Rubrum Novum",
-      "Continens Novae Terrae", "Continens Boreoamerica", "Continens Australis Nova",
-      "Terra Nova Borealis", "Terra Nova Australis", "Terra Nova Orientalis",
-      "Regio Solaris Magna", "Regio Lunaris Magna", "Regio Joviana Magna",
-      "Regio Saturnalia Magna", "Regio Venerea Magna", "Regio Mercurialis Magna",
+      "Boreoatlanticus Magnus", "Australis Magnus",
+      "Mediterraneum Novum", "Caspium Antiquum", "Rubrum Novum",
+      "Novae Terrae", "Boreoamerica", "Australis Nova",
+      "Nova Borealis", "Nova Australis", "Nova Orientalis",
+      "Solaris Magna", "Lunaris Magna", "Joviana Magna",
+      "Saturnalia Magna", "Venerea Magna", "Mercurialis Magna",
       
       -- Synthetic planetary seas
-      "Mare Titanis", "Mare Europae", "Mare Ganymedis", "Mare Callisti",
-      "Mare Ioensis", "Mare Enceladi", "Mare Rheae", "Mare Dionis",
-      "Mare Tethyos", "Mare Hyperionis", "Mare Phoebis", "Mare Charoni",
+      "Titanis", "Europae", "Ganymedis", "Callisti",
+      "Ioensis", "Enceladi", "Rheae", "Dionis",
+      "Tethyos", "Hyperionis", "Phoebis", "Charoni",
       
       -- Closing fillers
-      "Oceanus Ultimus", "Oceanus Novissimus", "Oceanus Eternus",
-      "Mare Ultimum", "Mare Novissimum", "Mare Eternum",
-      "Terra Ultima Borealis", "Terra Ultima Australis", "Terra Ultima Orientalis",
-      "Regio Ultima Borealis", "Regio Ultima Australis", "Regio Ultima Orientalis"
+      "Ultimus", "Novissimus", "Eternus",
+      "Ultimum", "Novissimum", "Eternum",
+      "Ultima Borealis", "Ultima Australis", "Ultima Orientalis",
+      "Ultima Borealis", "Ultima Australis", "Ultima Orientalis",
+      "Terra", "Terrae", "Terranius"
     },
   },
 }
@@ -1875,6 +1906,22 @@ function namelib.generate_unique_noun(mode)
   -- Auto-fix short junk words
   -- ============================================================
   local function auto_fix_words(name)
+    
+    local function is_unpronounceable(word)
+      local len = #word
+      if len <= 1 then return false end
+
+      local vowels = 0
+      for c in word:gmatch(".") do
+        if c:match("[aeiou]") then
+          vowels = vowels + 1
+        end
+      end
+
+      -- no vowels OR extremely consonant-heavy
+      return (vowels == 0) or (vowels / len < 0.25)
+    end
+    
     local words = {}
     for w in name:lower():gmatch("%S+") do
       table.insert(words, w)
@@ -1886,7 +1933,7 @@ function namelib.generate_unique_noun(mode)
     while i <= #words do
       local word = words[i]
 
-      if is_weak_word(word) then
+      if is_weak_word(word) or is_unpronounceable(word) then
         local next_word = words[i + 1]
         local prev_word = result[#result]
 
@@ -1895,6 +1942,7 @@ function namelib.generate_unique_noun(mode)
         elseif prev_word then
           result[#result] = prev_word .. word
         end
+        -- skip
       else
         table.insert(result, word)
       end
@@ -1905,14 +1953,40 @@ function namelib.generate_unique_noun(mode)
     return table.concat(result, " ")
   end
 
+  local function fix_bad_start(name)
+    -- insert vowel if starts with harsh cluster
+    if name:match("^[^aeiou][^aeiou]") then
+      return name:sub(1,1) .. "a" .. name:sub(2)
+    end
+    return name
+  end
+
+  local function soften_clusters(name)
+    -- break 3+ consonant clusters
+    return name:gsub("([^aeiou])([^aeiou])([^aeiou])", function(a,b,c)
+      return a .. "a" .. b .. c
+    end)
+  end
+
+  local function ensure_vowels(name)
+    local count = 0
+    for c in name:gmatch("[aeiou]") do count = count + 1 end
+
+    if count < 2 then
+      -- inject a vowel near the middle
+      local mid = math.floor(#name / 2)
+      name = name:sub(1, mid) .. "a" .. name:sub(mid + 1)
+    end
+
+    return name
+  end
+
   -- ============================================================
   -- Aggressive suffix completion
   -- ============================================================
-  local function complete_suffix(name)
-    local suffixes = {
-      "mount","view","ville","ton","burg","field","dale",
-      "port","wood","ridge","ranch","heights","mont","wark"
-    }
+  local function complete_suffix(name, suffix_fixes)
+    local suffixes = suffix_fixes
+    if not suffixes or table.empty(suffixes) then return name end
 
     local lower = name:lower()
     local best_suffix, best_overlap = nil, 0
@@ -1970,13 +2044,15 @@ function namelib.generate_unique_noun(mode)
   -- ============================================================
   -- Formatting
   -- ============================================================
-  local function format_name(name)
+  local function format_name(name, suffix_fixes)
     name = name:gsub("_", " ")
 
-    if mode == "anglican" then
-      name = complete_suffix(name)
-      name = auto_fix_words(name)
-    end
+    name = complete_suffix(name, suffix_fixes)
+    name = auto_fix_words(name)
+
+    name = fix_bad_start(name)
+    name = soften_clusters(name)
+    name = ensure_vowels(name)
 
     -- Title case
     name = name:gsub("(%a)([%w']*)", function(a,b)
@@ -2005,14 +2081,14 @@ function namelib.generate_unique_noun(mode)
     local order = rand.key_by_probs(tab.order)
     local chain = build_chain(tab.words, order)
 
-    local min_len = rand.key_by_probs({[4]=1,[5]=4,[6]=2})
-    local max_len = rand.key_by_probs({[8]=10,[9]=2,[10]=1})
+    local min_len = rand.pick(tab.min_len)
+    local max_len = rand.pick(tab.max_len)
 
     local name
     repeat
       name = generate_markov(chain, order, min_len, max_len)
-      name = format_name(name)
-    until #name <= max_len + 2
+      name = format_name(name, tab.suffix_fixes)
+    until #name <= max_len + 2 and #name >= min_len
 
     return name
   end
@@ -2087,8 +2163,9 @@ function namelib.generate_unique_noun(mode)
   else
     --[[str = ""
     mode = "anglican"
-    for i=1, 40 do
-      str = str .. generate_markov_mode() .. "\n"
+    for i=1, 90 do
+      str = str .. "'" .. generate_markov_mode() .. "' "
+      if i%5 == 0 then str = str .. "\n" end
     end
     error(str)]]
     return generate_markov_mode()
