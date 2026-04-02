@@ -363,7 +363,7 @@ OB_MODULES["misc"] =
       label=_("Natural Cliffs"),
       tooltip=_("Percentage of parks that use completely naturalistic walls."),
       choices=STYLE_CHOICES,
-      default="none",
+      default="mixed",
       priority = 85,
       randomize_group="architecture",
       

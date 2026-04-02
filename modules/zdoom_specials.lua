@@ -138,46 +138,6 @@ ZDOOM_SPECIALS.MUSIC_DOOM2 =
   [32] = "$MUSIC_ULTIMA",
 }
 
-ZDOOM_SPECIALS.DOOM1_MAP_NOMENCLATURE =
-{
-  [1] = "E1M1",
-  [2] = "E1M2",
-  [3] = "E1M3",
-  [4] = "E1M4",
-  [5] = "E1M5",
-  [6] = "E1M6",
-  [7] = "E1M7",
-  [8] = "E1M8",
-  [9] = "E1M9",
-  [10] = "E2M1",
-  [11] = "E2M2",
-  [12] = "E2M3",
-  [13] = "E2M4",
-  [14] = "E2M5",
-  [15] = "E2M6",
-  [16] = "E2M7",
-  [17] = "E2M8",
-  [18] = "E2M9",
-  [19] = "E3M1",
-  [20] = "E3M2",
-  [21] = "E3M3",
-  [22] = "E3M4",
-  [23] = "E3M5",
-  [24] = "E3M6",
-  [25] = "E3M7",
-  [26] = "E3M8",
-  [27] = "E3M9",
-  [28] = "E4M1",
-  [29] = "E4M2",
-  [30] = "E4M3",
-  [31] = "E4M4",
-  [32] = "E4M5",
-  [33] = "E4M6",
-  [34] = "E4M7",
-  [35] = "E4M8",
-  [36] = "E4M9",
-}
-
 ZDOOM_SPECIALS.INTERPICS =
 {
   OBDNLOAD = 50,
@@ -217,6 +177,94 @@ ZDOOM_SPECIALS.FOG_COLORS =
   HELL_CLOUDS = "ff 00 00",
   PURPLE_CLOUDS = "ff 00 ff",
   RAINBOW_CLOUDS = "ff 00 ff"
+}
+
+ZDOOM_SPECIALS.FOG_INTENSITY =
+{
+  subtle = 16,
+  misty = 48,
+  smoky = 128,
+  foggy = 255,
+  dense = 368
+}
+
+ZDOOM_SPECIALS.MAP_NAMING =
+{
+  DOOM2 =
+  {
+    [1] = "MAP01",
+    [2] = "MAP02",
+    [3] = "MAP03",
+    [4] = "MAP04",
+    [5] = "MAP05",
+    [6] = "MAP06",
+    [7] = "MAP07",
+    [8] = "MAP08",
+    [9] = "MAP09",
+    [10] = "MAP10",
+    [11] = "MAP11",
+    [12] = "MAP12",
+    [13] = "MAP13",
+    [14] = "MAP14",
+    [15] = "MAP15",
+    [16] = "MAP16",
+    [17] = "MAP17",
+    [18] = "MAP18",
+    [19] = "MAP19",
+    [20] = "MAP20",
+    [21] = "MAP21",
+    [22] = "MAP22",
+    [23] = "MAP23",
+    [24] = "MAP24",
+    [25] = "MAP25",
+    [26] = "MAP26",
+    [27] = "MAP27",
+    [28] = "MAP28",
+    [29] = "MAP29",
+    [30] = "MAP30",
+    [31] = "MAP31",
+    [32] = "MAP32"
+  },
+
+  DOOM1 =
+  {
+    [1] = "E1M1",
+    [2] = "E1M2",
+    [3] = "E1M3",
+    [4] = "E1M4",
+    [5] = "E1M5",
+    [6] = "E1M6",
+    [7] = "E1M7",
+    [8] = "E1M8",
+    [9] = "E1M9",
+    [10] = "E2M1",
+    [11] = "E2M2",
+    [12] = "E2M3",
+    [13] = "E2M4",
+    [14] = "E2M5",
+    [15] = "E2M6",
+    [16] = "E2M7",
+    [17] = "E2M8",
+    [18] = "E2M9",
+    [19] = "E3M1",
+    [20] = "E3M2",
+    [21] = "E3M3",
+    [22] = "E3M4",
+    [23] = "E3M5",
+    [24] = "E3M6",
+    [25] = "E3M7",
+    [26] = "E3M8",
+    [27] = "E3M9",
+    [28] = "E4M1",
+    [29] = "E4M2",
+    [30] = "E4M3",
+    [31] = "E4M4",
+    [32] = "E4M5",
+    [33] = "E4M6",
+    [34] = "E4M7",
+    [35] = "E4M8",
+    [36] = "E4M9",
+  }
 }
 
 function ZDOOM_SPECIALS.setup(self)
@@ -291,7 +339,6 @@ function ZDOOM_SPECIALS.do_special_stuff()
     return color
   end
 
-
   local function pick_random_fog_color()
     local function give_random_hex()
       return rand.pick({'0','1','2','3','4','5','6','8','9','a','b','c','d','e','f'})
@@ -301,7 +348,6 @@ function ZDOOM_SPECIALS.do_special_stuff()
     local octet3 = give_random_hex() .. give_random_hex()
     return octet1 .. " " .. octet2 .. " " .. octet3
   end
-
 
   local function add_gamedef()
     local gamedef_lines = {}
@@ -347,20 +393,11 @@ function ZDOOM_SPECIALS.do_special_stuff()
 
     -- resolve map MAPINFO linkages
     if OB_CONFIG.game == "doom2" or OB_CONFIG.game == "tnt" or OB_CONFIG.game == "plutonia" then
-      if map_num < 10 then
-        map_id = "MAP0" .. map_num
-        if map_num < 9 then
-          map_id_next = "MAP0" .. map_num + 1
-        else
-          map_id_next = "MAP10"
-        end
-      else
-        map_id = "MAP" .. map_num
-        map_id_next = "MAP" .. map_num + 1
-      end
+      map_id = ZDOOM_SPECIALS.MAP_NAMING.DOOM2[map_num]
+      map_id_next = ZDOOM_SPECIALS.MAP_NAMING.DOOM2[map_num + 1]
     elseif OB_CONFIG.game == "doom1" or OB_CONFIG.game == "ultdoom" then
-      map_id = ZDOOM_SPECIALS.DOOM1_MAP_NOMENCLATURE[map_num]
-      map_id_next = ZDOOM_SPECIALS.DOOM1_MAP_NOMENCLATURE[map_num + 1]
+      map_id = ZDOOM_SPECIALS.MAP_NAMING.DOOM1[map_num]
+      map_id_next = ZDOOM_SPECIALS.MAP_NAMING.DOOM1[map_num + 1]
     end
 
     -- resolve proper episodic sky texture assignments
@@ -368,17 +405,17 @@ function ZDOOM_SPECIALS.do_special_stuff()
       if PARAM.sky_generator_active then
         if map_num <= 11 then
           sky_tex = "O_D2SKY1"
-        elseif map_num > 11 and map_num <= 20 then
+        elseif map_num <= 20 then
           sky_tex = "O_D2SKY2"
-        elseif map_num > 20 then
+        else
           sky_tex = "O_D2SKY3"
         end
       else
         if map_num <= 11 then
           sky_tex = "Sky1"
-        elseif map_num > 11 and map_num <= 20 then
+        elseif map_num <= 20 then
           sky_tex = "Sky2"
-        elseif map_num > 20 then
+        else
           sky_tex = "Sky3"
         end
       end
@@ -476,18 +513,11 @@ function ZDOOM_SPECIALS.do_special_stuff()
     local fog_intensity = "48"
 
     -- resolve fog intensity
-    if PARAM.fog_intensity == "subtle" then
-      fog_intensity = "16"
-    elseif PARAM.fog_intensity == "misty" then
-      fog_intensity = "48"
-    elseif PARAM.fog_intensity == "smoky" then
-      fog_intensity = "128"
-    elseif PARAM.fog_intensity == "foggy" then
-      fog_intensity = "255"
-    elseif PARAM.fog_intensity == "dense" then
-      fog_intensity = "368"
-    elseif PARAM.fog_intensity == "mixed" then
+
+    if PARAM.fog_intensity == "mixed" then
       fog_intensity = "" .. rand.irange(16,368)
+    else
+      fog_intensity = "" .. ZDOOM_SPECIALS.FOG_INTENSITY[PARAM.fog_intensity]
     end
 
     local fog_intensity_line = '  fogdensity = ' .. fog_intensity .. '\n'
@@ -500,7 +530,7 @@ function ZDOOM_SPECIALS.do_special_stuff()
 
     -- if fog tints sky, based on ZDoom GL specs
     if PARAM.bool_fog_affects_sky == 1 then
-      fog_intensity_line = fog_intensity_line .. '  skyfog = ' .. fog_intensity + 16 .. '\n'
+      fog_intensity_line = fog_intensity_line .. '  skyfog = ' .. fog_intensity .. '\n'
     end
 
     -- no fog in MAPINFO at all if the fog generator is off
@@ -514,15 +544,15 @@ function ZDOOM_SPECIALS.do_special_stuff()
 
     if PARAM.story_generator == "generic" then
       if OB_CONFIG.game == "doom2" or OB_CONFIG.game == "tnt" or OB_CONFIG.game == "plutonia"  then
-        if map_num >= 1 and map_num <= 5 then
+        if map_num <= 5 then
           cluster_line = "  Cluster = 5\n"
-        elseif map_num > 5 and map_num <= 11 then
+        elseif map_num <= 11 then
           cluster_line = "  Cluster = 6\n"
-        elseif map_num > 11 and map_num <= 14 then
+        elseif map_num <= 14 then
           cluster_line = "  Cluster = 7\n"
-        elseif map_num > 14 and map_num <= 20 then
+        elseif map_num <= 20 then
           cluster_line = "  Cluster = 8\n"
-        elseif map_num > 20 and map_num <= 30 then
+        elseif map_num <= 30 then
           cluster_line = "  Cluster = 9\n"
         elseif map_num == 31 then
           cluster_line = "  Cluster = 10\n"
@@ -532,19 +562,19 @@ function ZDOOM_SPECIALS.do_special_stuff()
       end
     elseif PARAM.story_generator == "proc" then
       if OB_CONFIG.game == "doom2" or OB_CONFIG.game == "tnt" or OB_CONFIG.game == "plutonia"  then
-        if map_num >= 1 and map_num <= 5 then
+        if map_num <= 5 then
           cluster_line = "  Cluster = 1\n"
-        elseif map_num > 5 and map_num <= 11 then
+        elseif map_num <= 11 then
           cluster_line = "  Cluster = 2\n"
         elseif map_num == 12 then
           cluster_line = "  Cluster = 3\n"
-        elseif map_num > 12 and map_num <= 14 then
+        elseif map_num <= 14 then
           cluster_line = "  Cluster = 4\n"
-        elseif map_num > 14 and map_num <= 20 then
+        elseif map_num <= 20 then
           cluster_line = "  Cluster = 5\n"
         elseif map_num == 21 then
           cluster_line = "  Cluster = 6\n"
-        elseif map_num > 21 and map_num <= 30 then
+        elseif map_num <= 30 then
           cluster_line = "  Cluster = 7\n"
         elseif map_num == 31 then
           cluster_line = "  Cluster = 8\n"
