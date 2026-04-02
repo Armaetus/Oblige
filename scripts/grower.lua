@@ -1190,14 +1190,11 @@ function Grower_decide_extents(LEVEL)
   end
 
   -- linear start code
-  if PARAM.linear_start 
-  and PARAM.linear_start ~= "default"
-  and PARAM.linear_start == "all" then
-    LEVEL.has_linear_start = true
-  end
-
-  if LEVEL.has_linear_start then
-    gui.printf("--==| Linear Start activated! |==--\n\n")
+  if PARAM.linear_start and PARAM.linear_start ~= "default" then
+    if rand.odds(tonumber(PARAM.linear_start)) then
+      LEVEL.has_linear_start = true
+      gui.printf("--==| Linear Start activated! |==--\n\n")
+    end
   end
 end
 
@@ -1837,14 +1834,6 @@ function Grower_grammatical_pass(SEEDS, LEVEL, R, pass, apply_num, stop_prob,
     if R.is_cave then return 0 end
 
     if R.is_street then return 0 end
-
-    if LEVEL.has_linear_start then
-      if R.is_start then return 0 end 
-      if not R.grow_parent and not R.is_start then
-        return 0 
-      end
-    end
-
  
     if R.is_outdoor then
       return style_sel("symmetry", 0,  5, 15, 50)
@@ -3565,11 +3554,16 @@ end
       break;
     end
 
-    if LEVEL.has_linear_start then
-      if pass == "sprout" then
-        if not R.is_street and R:prelim_conn_num(LEVEL) >= 1 and R.is_start then
-          break;
-        end
+    -- start rooms will only have one exit if linear start is on
+    if pass == "sprout" and R.is_start and R:prelim_conn_num(LEVEL) >= 1 and 
+    LEVEL.has_linear_start then
+      break;
+    end
+
+    -- procedural gotcha limiters
+    if pass == "sprout" and LEVEL.is_procedural_gotcha then 
+      if #LEVEL.rooms == 2 or (PARAM.bool_boss_gen and #LEVEL.rooms == 1) then
+        break;
       end
     end
 
@@ -3846,19 +3840,7 @@ function Grower_grow_room(SEEDS, LEVEL, R)
     end
   end
 
-  if LEVEL.is_procedural_gotcha then
-    if R.grow_parent and R.grow_parent.is_start then
-      if R.grow_parent:prelim_conn_num(LEVEL) > 1 then
-        if R.prelim_conn_num == 1 then
-          gui.debugf("Procedural Gotcha: ROOM " .. R.id .. " culled.\n")
-          Grower_kill_room(SEEDS, LEVEL, R)
-        end
-      end
-    end
-  end
-
-  if (LEVEL.has_linear_start and #LEVEL.rooms == 4) or
-  (LEVEL.is_procedural_gotcha and #LEVEL.rooms > 2) then
+  if (LEVEL.is_procedural_gotcha and #LEVEL.rooms > 2) then
     for _,R2 in pairs(LEVEL.rooms) do
       if #R2.conns == 1 and R2.grow_parent.is_start then
         if R.prelim_conn_num == 1 then
@@ -3946,10 +3928,6 @@ function Grower_make_street(R, SEEDS, LEVEL)
   R.floor_limit = math.clamp(5,R.areas[1].svolume/16,100)
 
   Grower_grammatical_room(SEEDS, LEVEL, R, "sidewalk")
-
-  --[[if not R.is_start then
-    Grower_grammatical_room(R, "building_entrance")
-  end]]
 
   for _,A in pairs(R.areas) do
     if not A.is_road then
