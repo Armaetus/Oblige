@@ -10870,65 +10870,11 @@ FLOURISH_TEETH_5x3 =
   },
 },
 
---[[FLOURISH_TEETH_7x3 =
-{
-  pass = "flourish",
-
-  prob = 12,
-
-  structure =
-  {
-    "1111111","1111111",
-    "1111111","1A1A1A1",
-    "1111111","1AAAAA1",
-    "1111111","1A1A1A1",
-    "1111111","1111111",
-  },
-},
-
-FLOURISH_TEETH_7x5 =
-{
-  pass = "flourish",
-
-  prob = 14,
-
-  structure =
-  {
-    "1111111","1111111",
-    "1111111","1A1A1A1",
-    "1111111","1AAAAA1",
-    "1111111","11AAA11",
-    "1111111","1AAAAA1",
-    "1111111","1A1A1A1",
-    "1111111","1111111",
-  },
-},
-
-FLOURISH_TEETH_7x7 =
-{
-  pass = "flourish",
-
-  prob = 15,
-
-  structure =
-  {
-    "1111111","1111111",
-    "1111111","1A1A1A1",
-    "1111111","1AAAAA1",
-    "1111111","11AAA11",
-    "1111111","1AAAAA1",
-    "1111111","11AAA11",
-    "1111111","1AAAAA1",
-    "1111111","1A1A1A1",
-    "1111111","1111111",
-  },
-},]]
-
 FLOURISH_ROUND =
 {
   pass = "flourish",
 
-  prob = 10,
+  prob = 15,
 
   structure =
   {
@@ -10948,7 +10894,7 @@ FLOURISH_ROUND =
   auxiliary =
   {
     pass = "FLOURISH_ROUND_aux"
-  },
+  }
 },
 
 FLOURISH_ROUND_aux =
@@ -10968,7 +10914,33 @@ FLOURISH_ROUND_aux =
   {
     "21","12","21","12",
     "21","12","21","12",
+  },
+
+  auxiliary = 
+  {
+    pass = "FLOURISH_ROUND_extend_aux",
+    count = {2,5}
   }
+},
+
+FLOURISH_ROUND_extend_aux =
+{
+  prob = 1,
+
+  pass = "flourish"
+
+  structure =
+  {
+    "2%33","22%3",
+    "1233","1123",
+    "2/33","22/3",
+  },
+
+  diagonals =
+  {
+    "23","23",
+    "23","23",
+  },
 },
 
 --MSSP's random negative features [FEATURES] - 'negative' because they attempt to modify an existing room if it has too much clean space.
@@ -15923,6 +15895,33 @@ GROW_O =
     ".1","1.",
     ".1","1.",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_O_aux"
+
+    count = 1
+  }
+},
+
+GROW_O_aux =
+{
+  prob = 1,
+
+  structure =
+  {
+    "1111","1111",
+    "1111","/AA%",
+    "1..1","A..A",
+    "1..1","A..A",
+    "1111","%AA/"
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "1A","A1"
+  }
 },
 
 GROW_O_STAIR =
@@ -16650,7 +16649,25 @@ GROW_INTO_CLIFF =
     "....","1111",
     "11xx","11xx",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_INTO_CLIFF_extend_aux"
+  }
 },
+
+GROW_INTO_CLIFF_extend_aux =
+{
+  prob = 1,
+
+  structure =
+  {
+    "....","2211",
+    "....","2211",
+    "2211","2211",
+    "2211","2211",
+  }
+}
 
 GROW_INTO_CLIFF_INVERSE =
 {
@@ -16662,48 +16679,6 @@ GROW_INTO_CLIFF_INVERSE =
     "....","1111",
     "....","1111",
     "....","11vv",
-    "....","11AA",
-    "....","11AA",
-    "....","11AA",
-    "11xx","11xx",
-  },
-},
-
-GROW_INTO_CLIFF_LONG =
-{
-  prob = 20,
-  skip_prob = 25,
-
-  structure =
-  {
-    "....","11AA",
-    "....","11AA",
-    "....","11AA",
-    "....","11AA",
-    "....","11AA",
-    "....","11AA",
-    "....","11AA",
-    "....","11AA",
-    "....","11^^",
-    "....","1111",
-    "11xx","11xx",
-  },
-},
-
-GROW_INTO_CLIFF_LONG_INVERSE =
-{
-  prob = 20,
-  skip_prob = 25,
-
-  structure =
-  {
-    "....","1111",
-    "....","1111",
-    "....","11vv",
-    "....","11AA",
-    "....","11AA",
-    "....","11AA",
-    "....","11AA",
     "....","11AA",
     "....","11AA",
     "....","11AA",
@@ -16733,7 +16708,25 @@ GROW_INTO_CLIFF_CURVE =
   {
     ".1","1A",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_INTO_CLIFF_CURVE_extend_aux"
+  }
 },
+
+GROW_INTO_CLIFF_CURVE_extend_aux =
+{
+  prob = 1,
+
+  structure =
+  {
+    "22..","2222",
+    "22..","2222",
+    "11..","1111",
+    "11..","1111",
+  }
+}
 
 GROW_INTO_CLIFF_CURVE =
 {
@@ -16755,6 +16748,24 @@ GROW_INTO_CLIFF_CURVE =
   {
     "A.","1A",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_INTO_CLIFF_CURVE_extend_aux"
+  }
+},
+
+GROW_INTO_CLIFF_CURVE_extend_aux =
+{
+  prob = 1,
+
+  structure =
+  {
+    "..11","1111",
+    "..11","1111",
+    "..22","2222",
+    "..22","2222",
+  }
 },
 
 GROW_JAGGED_LIQUID =
@@ -16780,6 +16791,13 @@ GROW_JAGGED_LIQUID =
     "1~",
     "1~",
     "1~"
+  },
+
+  auxiliary =
+  {
+    pass = "GROW_JAGGED_LIQUID_STEEPNESS_extend_aux",
+
+    count = {1,2}
   }
 },
 
@@ -16806,6 +16824,32 @@ GROW_JAGGED_LIQUID_STEEPNESS =
     "A~",
     "A~",
     "A~"
+  },
+
+  auxiliary =
+  {
+    pass = "GROW_JAGGED_LIQUID_STEEPNESS_extend_aux",
+
+    count = {1,2}
+  }
+},
+
+GROW_JAGGED_LIQUID_STEEPNESS_extend_aux =
+{
+  prob = 1,
+
+  structure =
+  {
+    "11~~~","11~~~",
+    ".....","11%~~",
+    ".....","11/~~",
+    ".....","11~~~",
+  },
+
+  diagonals =
+  {
+    "1~",
+    "1~",
   }
 },
 
@@ -16886,65 +16930,6 @@ GROW_JAGGED_LIQUID_EXTENDED_DOUBLE =
     "1~","~1",
     "1~","~1",
     "1~"
-  }
-},
-
-GROW_JAGGED_LIQUID_3X =
-{
-  prob = 25,
-  skip_prob = 80,
-
-  structure =
-  {
-    "11xxx","11xxx",
-    ".....","11~~~",
-    ".....","11%~~",
-    ".....","11/~~",
-    ".....","11%~~",
-    ".....","11/~~",
-    ".....","11%~~",
-    ".....","11/~~",
-    ".....","11~~~"
-  },
-
-  diagonals =
-  {
-    "1~",
-    "1~",
-    "1~",
-    "1~",
-    "1~",
-    "1~"
-  }
-},
-
-GROW_JAGGED_LIQUID_3X_STEEPNESS =
-{
-  prob = 25,
-  skip_prob = 80,
-
-  structure =
-  {
-    "11xxx","11xxx",
-    ".....","vv~~~",
-    ".....","AA~~~",
-    ".....","AA%~~",
-    ".....","AA/~~",
-    ".....","AA%~~",
-    ".....","AA/~~",
-    ".....","AA%~~",
-    ".....","AA/~~",
-    ".....","AA~~~"
-  },
-
-  diagonals =
-  {
-    "A~",
-    "A~",
-    "A~",
-    "A~",
-    "A~",
-    "A~"
   }
 },
 
@@ -17190,11 +17175,11 @@ GROW_LIQUID_POOL_PLACE_3x3 =
 
   structure =
   {
-    "x......","x111111",
-    "1......","11/~%11",
-    "1......","11~~~11",
-    "x......","x1%~/11",
-    "x......","x111111",
+    "x.......","x1111111",
+    "1.......","111/~%11",
+    "1.......","111~~~11",
+    "x.......","x11%~/11",
+    "x.......","x1111111",
   },
 
   diagonals =
@@ -17202,6 +17187,11 @@ GROW_LIQUID_POOL_PLACE_3x3 =
     "1~","~1",
     "1~","~1",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_LIQUID_POOL_PLACE_ceiling_aux"
+  }
 },
 
 GROW_LIQUID_POOL_PLACE_3x3_NEW_AREA =
@@ -17211,15 +17201,15 @@ GROW_LIQUID_POOL_PLACE_3x3_NEW_AREA =
 
   structure =
   {
-    "x......","xAAAAAA",
-    "x......","x111%AA",
-    "x......","x111111",
-    "1......","11/~%11",
-    "1......","11~~~11",
-    "x......","x1%~/11",
-    "x......","x111111",
-    "x......","x111/AA",
-    "x......","xAAAAAA",
+    "x.......","xAAAAAAA",
+    "x.......","x1111%AA",
+    "x.......","x1111111",
+    "1.......","111/~%11",
+    "1.......","111~~~11",
+    "x.......","x11%~/11",
+    "x.......","x1111111",
+    "x.......","x1111/AA",
+    "x.......","xAAAAAAA",
   },
 
   diagonals =
@@ -17229,6 +17219,33 @@ GROW_LIQUID_POOL_PLACE_3x3_NEW_AREA =
     "1~","~1",
       "1A",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_LIQUID_POOL_PLACE_ceiling_aux"
+  }
+},
+
+GROW_LIQUID_POOL_PLACE_ceiling_aux =
+{
+  prob = 1,
+
+  structure =
+  {
+    "111111","1/A%11",
+    "1o~o11","//~%%1",
+    "1~~~11","A~~~A1",
+    "1o~o11","%%~//1",
+    "111111","1%A/11",
+  },
+
+  diagonals =
+  {
+         "1A","A1",
+    "1A","A~","~A","A1",
+    "1A","A~","~A","A1",
+         "1A","A1"
+  }
 },
 
 GROW_LIQUID_POOL_PLACE_3x3_STAIRS =
@@ -17271,6 +17288,11 @@ GROW_LIQUID_POOL_PLACE_3x6 =
     "1~","~1",
     "1~","~1",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_LIQUID_POOL_PLACE_3x6_ceiling_aux"
+  }
 },
 
 GROW_LIQUID_POOL_PLACE_3x6_NEW_AREA =
@@ -17298,6 +17320,33 @@ GROW_LIQUID_POOL_PLACE_3x6_NEW_AREA =
     "1~","~1",
     "A1","1A"
   },
+
+  auxiliary =
+  {
+    pass = "GROW_LIQUID_POOL_PLACE_3x6_ceiling_aux"
+  }
+},
+
+GROW_LIQUID_POOL_PLACE_3x6_ceiling_aux =
+{
+  prob = 1,
+
+  structure =
+  {
+    "11111111","/AAAAA%1",
+    "1o~~~o11","A/~~~%A1",
+    "1~~~~~11","A~~~~~A1",
+    "1o~~~o11","A%~~~/A1",
+    "11111111","%AAAAA/1",
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "A~","~A",
+    "A~","~A",
+    "1A","A1",
+  }
 },
 
 GROW_LIQUID_POOL_PLACE_3x6_STAIRS =
@@ -17307,17 +17356,19 @@ GROW_LIQUID_POOL_PLACE_3x6_STAIRS =
 
   structure =
   {
-    "x........","x11>>>AAA",
-    "1........","11/~~~%AA",
-    "1........","11~~~~~AA",
-    "x........","x1%~~~/AA",
-    "x........","x11>>>AAA",
+    "x.........","x/11>>>AA%",
+    "1.........","111/~~~%AA",
+    "1.........","111~~~~~AA",
+    "x.........","x11%~~~/AA",
+    "x.........","x%11>>>AA/",
   },
 
   diagonals =
   {
+    ".1","A.",
     "1~","~A",
     "1~","~A",
+    ".1","A.",
   },
 },
 
@@ -17328,19 +17379,21 @@ GROW_LIQUID_POOL_PLACE_3x6_STAIRS_TRI =
 
   structure =
   {
-    "x........","x11>>>AAA",
-    "1........","11/~~~%AA",
-    "1........","11~~~~~AA",
-    "x........","x111>>>AA",
-    "x........","x1~~~~~AA",
-    "x........","x1%~~~/AA",
-    "x........","x11>>>AAA",
+    "x.........","x/11>>>AA%",
+    "1.........","111/~~~%AA",
+    "1.........","111~~~~~AA",
+    "x.........","x1111>>>AA",
+    "x.........","x11~~~~~AA",
+    "x.........","x11%~~~/AA",
+    "x.........","x%11>>>AA/",
   },
 
   diagonals =
   {
+    ".1","A.",
     "1~","~A",
     "1~","~A",
+    ".1","A.",
   },
 },
 
@@ -17400,7 +17453,27 @@ GROW_LIQUID_PILLAR =
     "....","11~~",
     "11xx","11xx",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_LIQUID_PILLAR_aux",
+
+    count = {2,3}
+  }
 },
+
+GROW_LIQUID_PILLAR_aux =
+{
+  prob = 1,
+
+  structure =
+  {
+    "....","11~~"
+    "....","11~~"
+    "11~~","11.~"
+    "11~~","11~~"
+  }
+}
 
 GROW_LIQUID_PILLAR_INWARD =
 {
@@ -17415,23 +17488,26 @@ GROW_LIQUID_PILLAR_INWARD =
     "....","11~~",
     "11xx","11xx",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_LIQUID_PILLAR_aux",
+
+    count = {2,3}
+  }
 },
 
-GROW_LIQUID_PILLAR_INWARD =
+GROW_LIQUID_PILLAR_INWARD_aux =
 {
-  prob = 20,
-  skip_prob = 50,
+  prob = 1,
 
   structure =
   {
-    "....","11~~",
-    "....","11~~",
-    "....","AA.~",
-    "....","11~~",
-    "....","AA.~",
-    "....","11~~",
-    "11xx","11xx",
-  },
+    "....","22~~"
+    "....","22~~"
+    "11~~","11.~"
+    "22~~","22~~"
+  }
 },
 
 -- MSSP's single-seed trenches. [TRENCHES]
@@ -17447,19 +17523,23 @@ GROW_TRENCH_STRAIGHT =
     "1......","11>>AAA",
     "1......","11111AA",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_TRENCH_extend_aux"
+  }
 },
 
-GROW_TRENCH_STRAIGHT_LONG =
+GROW_TRENCH_extend_aux =
 {
-  prob = 30,
-  skip_prob = 40,
+  prob = 1,
 
   structure =
   {
-    "1.........","11111111AA",
-    "1.........","11>>AAAAAA",
-    "1.........","11111111AA",
-  },
+    "211..","22211"
+    "111..","11111"
+    "211..","22211"
+  }
 },
 
 GROW_TRENCH_CURVE =
@@ -17508,6 +17588,13 @@ GROW_TRENCH_CURVE_INNER_SOLID =
     "A1",
     "1.",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_TRENCH_aux",
+
+    count = {2,3}
+  }
 },
 
 GROW_TRENCH_CURVE_INNER_SOLID_RING =
@@ -17533,6 +17620,25 @@ GROW_TRENCH_CURVE_INNER_SOLID_RING =
     "A1",
     "1.",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_TRENCH_aux",
+
+    count = {2,3}
+  }
+},
+
+GROW_TRENCH_aux =
+{
+  prob = 1,
+
+  structure =
+  {
+    "...","122",
+    "...","122",
+    "122","122",
+  }
 },
 
 GROW_TRENCH_CURVE_INNER_SOLID_RING_LIQUID =
@@ -17676,6 +17782,8 @@ GROW_SEWER_ENTRY =
   auxiliary = 
   {
     pass = "GROW_SEWER_ENTRY_aux",
+
+    count = {2,3}
   },
 },
 
