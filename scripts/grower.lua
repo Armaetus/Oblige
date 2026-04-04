@@ -37,6 +37,41 @@ function Grower_preprocess_grammar(test_grammar)
     error("Unknown pass for grammar " .. tostring(name))
   end
 
+--[[
+SHAPE RULE ELEMENTS:
+
+  .    represents a free "empty" SEED
+  !    represents an absolutely free "empty" SEED
+
+  ~    represents a liquid SEED
+  #    disable - disallows anything to be placed in this spot and only ! can match here
+  =    bridge, unused
+
+  1    represents match patterns for different AREAS in the same room
+  2
+  3
+
+  <    represents a stair SEED
+  >
+  ^
+  v
+  S    a stair SEED that requires a unique definition for its direction
+
+  x    match pattern for any SEED of any kind
+  r    match pattern for a SEED of any kind, but within the same room
+  f    match pattern for a SEED that is already marked as floor
+  o    match pattern for any SEED that isn't a closet, a stair, or a joiner
+  c    match pattern that is the opposite of 'o'
+  s    match pattern for stairs
+
+  A    represents a new AREA, where an AREA represent a new portion of the room with a new ceiling or floor height
+       all stairs must lead to a new AREA, but a new AREA can also be directly connected to the same floor
+  R    represents a new ROOM, usually used only in SPROUT rules to show where the imprint of a new ROOM begins
+
+  C    represents a CAGE seed
+  J    represents a JOINER chunk, a space for a prefabricate that joins two rooms
+  T    represents a CLOSET chunk, a space for a prefabricate of any other purpose, such as item closets, traps, pictures (prefab doodads)
+]]
 
   local function parse_element(ch, what)
     if ch == '.' then return { kind="free" } end
