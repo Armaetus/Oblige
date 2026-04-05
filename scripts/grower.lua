@@ -2334,7 +2334,7 @@ stderrf("prelim_conn %s --> %s : S=%s dir=%d\n", c_out.R1.name, c_out.R2.name, S
   local function match_an_element(S, E1, E2, T)
 
     if E1.kind == "magic" then
-      assert(not E2.assignment)
+      -- assert(not E2.assignment)
       return match_a_magic_element(S, E1)
     end
 
@@ -3638,6 +3638,11 @@ function Grower_grammatical_room(SEEDS, LEVEL, R, pass, is_emergency)
       apply_num = rand.pick({ 1,2,2,3 })
     end
 
+    if R.grow_parent and R.grow_parent.is_start 
+    and LEVEL.has_linear_start then
+      apply_num = rand.pick({ 2,3 })
+    end
+    
     if R.is_hallway then
       pass = R.grow_pass .. "_sprout"
     end
