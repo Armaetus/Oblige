@@ -10482,11 +10482,11 @@ FLOURISH_5x5 =
 
   auxiliary =
   {
-    pass = "FLOURISH_5x5_aux",
+    pass = "aux_FLOURISH_5x5",
   },
 },
 
-FLOURISH_5x5_aux =
+aux_FLOURISH_5x5 =
 {
   pass = "flourish",
 
@@ -10538,11 +10538,11 @@ FLOURISH_5x7 =
 
   auxiliary =
   {
-    pass = "FLOURISH_5x7_aux",
+    pass = "aux_FLOURISH_5x7",
   },
 },
 
-FLOURISH_5x7_aux =
+aux_FLOURISH_5x7 =
 {
   pass = "flourish",
 
@@ -10582,7 +10582,7 @@ FLOURISH_SMALL_1 =
 
   auxiliary =
   {
-    pass = "FLOURISH_SMALL_1_aux",
+    pass = "aux_FLOURISH_SMALL_1",
   },
 },
 
@@ -10608,11 +10608,11 @@ FLOURISH_SMALL_1_DIAGONAL =
 
   auxiliary =
   {
-    pass = "FLOURISH_SMALL_1_aux",
+    pass = "aux_FLOURISH_SMALL_1",
   },
 },
 
-FLOURISH_SMALL_1_aux =
+aux_FLOURISH_SMALL_1 =
 {
   pass = "flourish",
 
@@ -10641,7 +10641,7 @@ FLOURISH_SMALL_2 =
 
   auxiliary =
   {
-    pass = "FLOURISH_SMALL_2_aux",
+    pass = "aux_FLOURISH_SMALL_2",
   },
 },
 
@@ -10667,11 +10667,11 @@ FLOURISH_SMALL_2_DIAGONAL =
 
   auxiliary =
   {
-    pass = "FLOURISH_SMALL_2_aux",
+    pass = "aux_FLOURISH_SMALL_2",
   },
 },
 
-FLOURISH_SMALL_2_aux =
+aux_FLOURISH_SMALL_2 =
 {
   pass = "flourish",
 
@@ -10714,7 +10714,7 @@ FLOURISH_MEDIUM =
 
   auxiliary2 =
   {
-    pass = "FLOURISH_MEDIUM_aux"
+    pass = "aux_FLOURISH_MEDIUM"
   }
 },
 
@@ -10740,7 +10740,7 @@ FLOURISH_MEDIUM_TEETH =
   },
 },
 
-FLOURISH_MEDIUM_aux =
+aux_FLOURISH_MEDIUM =
 {
   pass = "flourish",
 
@@ -10792,7 +10792,7 @@ FLOURISH_MEDIUM_2 =
 
   auxiliary =
   {
-    pass = "FLOURISH_MEDIUM_2_aux",
+    pass = "aux_FLOURISH_MEDIUM_2",
   },
 },
 
@@ -10820,7 +10820,7 @@ FLOURISH_MEDIUM_TEETH_2 =
   },
 },
 
-FLOURISH_MEDIUM_2_aux =
+aux_FLOURISH_MEDIUM_2 =
 {
   pass = "flourish",
 
@@ -10873,11 +10873,11 @@ FLOURISH_ROUND =
 
   auxiliary =
   {
-    pass = "FLOURISH_ROUND_aux"
+    pass = "aux_FLOURISH_ROUND"
   }
 },
 
-FLOURISH_ROUND_aux =
+aux_FLOURISH_ROUND =
 {
   pass = "flourish",
 
@@ -10898,12 +10898,12 @@ FLOURISH_ROUND_aux =
 
   auxiliary = 
   {
-    pass = "FLOURISH_ROUND_extend_aux",
+    pass = "aux_FLOURISH_ROUND_extend",
     count = {2,5}
   }
 },
 
-FLOURISH_ROUND_extend_aux =
+aux_FLOURISH_ROUND_extend =
 {
   prob = 1,
 
@@ -17685,26 +17685,30 @@ GROW_TRENCH_CURVE_OUTER_SOLID =
 
   structure =
   {
-    "x......","x/111AA",
-    "x......","x1/#1AA",
-    "x......","x1#/1AA",
-    "1......","1111/AA",
-    "1......","1>AAAA/",
-    "1.....x","1>AAA/x",
+    "xx.......","xx/1111AA",
+    "x........","x/11111AA",
+    "x........","x11/#11AA",
+    "x........","x11#/11AA",
+    "x........","x11111/AA",
+    "x........","x1111/AA/",
+    "1.......x","11>AAAA/x",
+    "1......xx","11>AAA/xx",
   },
 
   diagonals =
   {
+         ".1",
     ".1",
     "1.",
          ".1",
-    "1A",
+         "1A",
+    "1A","A.",
     "A.",
     "A.",
   },
 },
 
-GROW_TRENCH_CURVE_OUTER_SOLID_LIQUID =
+GROW_TRENCH_CURVE_OUTER_LIQUID =
 {
   prob = 25,
   skip_prob = 80,
@@ -17713,12 +17717,13 @@ GROW_TRENCH_CURVE_OUTER_SOLID_LIQUID =
 
   structure =
   {
-    "xxxx..","xxxxAA",
-    "x.....","x/~~~A",
-    "x.....","x~/#~A",
-    "x.....","x~#/~A",
-    "1.....","1~~~/A",
-    "1.....","1>AAA/",
+    "xxxxx..","xxxxxAA",
+    "x......","x/~~~AA",
+    "x......","x~/#~AA",
+    "x......","x~#/~AA",
+    "x......","x~~~/AA",
+    "1......","1>AAAA/",
+    "1.....x","1>AAA/x",
   },
 
   diagonals =
@@ -17727,6 +17732,7 @@ GROW_TRENCH_CURVE_OUTER_SOLID_LIQUID =
     "~.",
          ".~",
     "~A",
+    "A.",
     "A.",
   },
 },
@@ -17771,6 +17777,58 @@ GROW_TRENCH_CURVE_OUTER_SOLID_RING_LIQUID =
     "~1",
     "1A",
     "A."
+  },
+},
+
+GROW_TRENCH_CURVE_OUTER_LARGE =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxx....","xxx11AA",
+    "xxx....","xxx11AA",
+    "xx.....","xx/11AA",
+    "x......","x/111AA",
+    "x......","x111/AA",
+    "1......","1>AAAA/",
+    "1.....x","1>AAA/x",
+  },
+
+  diagonals =
+  {
+    ".1",
+    ".1",
+    "1A",
+    "A.",
+    "A.",
+  },
+},
+
+GROW_TRENCH_CURVE_OUTER_LARGE_LIQUID =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxx....","xxx~~AA",
+    "xxx....","xxx~~AA",
+    "xx.....","xx/~~AA",
+    "x......","x/~~~AA",
+    "x......","x~~~/AA",
+    "1......","1>AAAA/",
+    "1.....x","1>AAA/x",
+  },
+
+  diagonals =
+  {
+    ".~",
+    ".~",
+    "~A",
+    "A.",
+    "A.",
   },
 },
 

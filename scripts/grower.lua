@@ -3597,10 +3597,6 @@ end
         break;
       end
     end
-  
-    if pass == "sprout" and R.is_start and #LEVEL.rooms > 3 and LEVEL.has_linear_start then
-      break;
-    end
 
     -- stderrf("LOOP %d\n", loop)
     apply_a_rule(LEVEL)
@@ -4117,6 +4113,8 @@ function Grower_begin_trunks(LEVEL, SEEDS)
     R = Grower_create_and_grow_room(SEEDS, LEVEL, new_trunk, nil, info)
   end
 
+  gui.printf("FAG!\n")
+  gui.printf(table.tostr(R,3))
   assert(not R.is_dead)  
 
   -- ensure the first floor of an exit room is kept usable for bosses
@@ -4447,7 +4445,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
     -- collect candidate rooms
     if LEVEL.has_linear_start and not LEVEL.linear_start_pruned then
       for _,R in ipairs(LEVEL.rooms) do
-        if R.grow_parent and R.grow_parent.is_start and R:prelim_conn_num(LEVEL) < 2 then
+        if R.grow_parent and R.grow_parent.is_start and not R.is_start and R:prelim_conn_num(LEVEL) < 2 then
           num_start_child_rooms = num_start_child_rooms + 1
           table.insert(candidate_rooms, R)
         end
@@ -4465,6 +4463,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
 
         -- kill the smallest room
         gui.printf(table.tostr(smallest_room,2))
+        smallest_room.linear_start_pruned = true
         Grower_kill_room(SEEDS, LEVEL, smallest_room)
         LEVEL.linear_start_pruned = true
       end
@@ -4853,6 +4852,8 @@ function Grower_create_rooms(LEVEL, SEEDS)
   Grower_calc_rule_probs(LEVEL)
 
   Grower_decide_extents(LEVEL)
+
+  Seed_draw_minimap(SEEDS, LEVEL)
 
   Grower_begin_trunks(LEVEL, SEEDS)
   Grower_grow_all_rooms(SEEDS, LEVEL)
