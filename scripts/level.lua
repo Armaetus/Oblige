@@ -2598,6 +2598,19 @@ function Level_make_level(LEV)
   assert(LEV)
   assert(LEV.name)
 
+  local function clear_level(LEVEL, SEEDS)
+    for _,k in pairs (LEVEL) do
+      LEVEL[k] = nil
+    end
+    for _,k in pairs (SEEDS) do
+      SEEDS[k] = nil
+    end
+    LEVEL = nil
+    SEEDS = nil
+    collectgarbage("collect")
+    collectgarbage("collect")
+  end
+
   local index = LEV.id
   local total = #GAME.levels
 
@@ -2655,29 +2668,11 @@ function Level_make_level(LEV)
 
     local pb_res = Level_handle_prebuilt(LEVEL)
     if pb_res ~= "ok" then
-      for _,k in pairs (LEVEL) do
-        LEVEL[k] = nil
-      end
-      for _,k in pairs (SEEDS) do
-        SEEDS[k] = nil
-      end
-      LEVEL = nil
-      SEEDS = nil
-      collectgarbage("collect")
-      collectgarbage("collect")
+      clear_level(LEVEL, SEEDS)
       return pb_res
     end
     ob_invoke_hook_with_table("end_level", LEVEL)
-    for _,k in pairs (LEVEL) do
-      LEVEL[k] = nil
-    end
-    for _,k in pairs (SEEDS) do
-      SEEDS[k] = nil
-    end
-    LEVEL = nil
-    SEEDS = nil
-    collectgarbage("collect")
-    collectgarbage("collect")
+    clear_level(LEVEL, SEEDS)
     return "ok"
   end
 
@@ -2732,18 +2727,11 @@ function Level_make_level(LEV)
   end
 
   if res ~= "ok" then
-    for _,k in pairs (LEVEL) do
-      LEVEL[k] = nil
-    end
-    for _,k in pairs (SEEDS) do
-      SEEDS[k] = nil
-    end
-    LEVEL = nil
-    SEEDS = nil
-    collectgarbage("collect")
-    collectgarbage("collect")
+    clear_level(LEVEL, SEEDS)
     if res == "abort" then return res end
+    
     retry_counter = retry_counter + 1
+    
     if retry_counter > retry_target then -- just move on I guess
       res = "ok"
     else
