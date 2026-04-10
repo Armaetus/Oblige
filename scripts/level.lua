@@ -2541,7 +2541,7 @@ end
 function Level_build_it(LEVEL, SEEDS)
   Level_init(LEVEL)
 
-  -- Can just uncomment and manuall set an ID to match if we really need this - Dasho
+  -- Can just uncomment and manual set an ID to match if we really need this - Dasho
 
   --[[if PARAM.float_build_levels then
     if PARAM.float_build_levels ~= 0 then
@@ -2551,6 +2551,8 @@ function Level_build_it(LEVEL, SEEDS)
 
   Area_create_rooms(LEVEL, SEEDS)
     if gui.abort() then return "abort" end
+
+  if LEVEL.is_dead then return "runt" end
 
   Quest_make_quests(LEVEL)
   -- do some prefab pre-filtering
@@ -2748,28 +2750,83 @@ function Level_make_level(LEV)
 
   gui.end_level()
 
-  if LEVEL then
-    for _,k in pairs (LEVEL) do
-      LEVEL[k] = nil
-    end
-  end
-  if SEEDS then
-    for _,k in pairs (SEEDS) do
-      SEEDS[k] = nil
-    end
-  end
-  LEVEL = nil
-  SEEDS = nil
-
-  collectgarbage("collect")
-  collectgarbage("collect")
-
+  clear_level(LEVEL, SEEDS)
+  
   if gui.abort() then return "abort" end
 
   return "ok"
 end
 
 function Level_make_all()
+
+  -- sanitize title string from filename
+  local function generate_title_from_filename()
+    local str = string.lower(OB_CONFIG.title)
+    str = string.gsub(str, "%p", "")
+    str = string.gsub(str, " ", "_")
+    str = string.gsub(str, ":", "")
+    str = string.gsub(str, "'", "")
+    str = string.gsub(str, ",", "")
+
+    if not string.match(gui.get_filename_base(), str) then
+      return gui.get_filename_base()
+    end
+    return nil
+  end
+
+  -- randomize case of a word
+  local function case_randomizer(random_word)
+    local case_odds =
+    {
+      default = 40,
+      capitalized = 30,
+      all_caps = 15,
+      alternating = 5
+    }
+
+    local case_pick = rand.key_by_probs(case_odds)
+
+    if case_pick == "default" then
+      return random_word
+    elseif case_pick == "capitalized" then
+      return string.upper(string.sub(random_word, 1, 1)) .. string.sub(random_word, 2)
+    elseif case_pick == "all_caps" then
+      return string.upper(random_word)
+    else
+      local alt_string = ""
+      for i = 1, #random_word do
+        local c = string.sub(random_word, i,i)
+        if i % 2 == 0 then
+          alt_string = alt_string .. string.upper(c)
+        else
+          alt_string = alt_string .. c
+        end
+      end
+      return alt_string
+    end 
+  end
+
+  -- generate random word title
+  local function generate_title_from_random_words()
+    local numwords = rand.irange(1, 3)
+    local words = {}
+    for i = 1, numwords do
+      table.insert(words, case_randomizer(rand.pick(RANDOM_WORDS_EN)))
+    end
+    return table.concat(words, " ")
+  end
+
+  -- title generator
+  local function generate_title()
+    if PARAM.title_screen_source == "filename" then
+      return generate_title_from_filename()
+    elseif PARAM.title_screen_source == "randomwords" then
+      return generate_title_from_random_words()
+    end
+    return nil
+  end
+
+  
   GAME.levels   = {}
   GAME.episodes = {}
 
@@ -2796,60 +2853,9 @@ function Level_make_all()
 
   Episode_plan_game()
  
-  if PARAM.title_screen_source then
-    if PARAM.title_screen_source == "filename" then
-      local str = string.lower(OB_CONFIG.title)
-      str = string.gsub(str, "%p", "")
-      str = string.gsub(str, " ", "_")
-      str = string.gsub(str, ":", "")
-      str = string.gsub(str, "'", "")
-      str = string.gsub(str, ",", "")
-      if not string.match(gui.get_filename_base(), str) then
-        GAME.title = gui.get_filename_base()
-      end
-    elseif PARAM.title_screen_source == "randomwords" then
-      local function case_randomizer(random_word)
-
-        local case_odds =
-        {
-          default = 40,
-          capitalized = 30,
-          all_caps = 15,
-          alternating = 5
-        }
-        
-        local case_pick = rand.key_by_probs(case_odds)
-
-        if case_pick == "default" then
-          return random_word
-        elseif case_pick == "capitalized" then
-          return string.upper(string.sub(random_word, 1, 1)) .. string.sub(random_word, 2)
-        elseif case_pick == "all_caps" then
-          return string.upper(random_word)
-        else
-          local alt_string = ""
-          for i = 1, #random_word do
-            local c = string.sub(random_word, i,i)
-            if i % 2 == 0 then
-              alt_string = alt_string .. string.upper(c)
-            else
-              alt_string = alt_string .. c
-            end
-          end
-          return alt_string
-        end 
-      end
-
-      local numwords = rand.irange(1, 3)
-
-      if numwords == 1 then
-        GAME.title = case_randomizer(rand.pick(RANDOM_WORDS_EN))
-      elseif numwords == 2 then
-        GAME.title = case_randomizer(rand.pick(RANDOM_WORDS_EN)) .. " " .. case_randomizer(rand.pick(RANDOM_WORDS_EN))
-      else
-        GAME.title = case_randomizer(rand.pick(RANDOM_WORDS_EN)) .. " " .. case_randomizer(rand.pick(RANDOM_WORDS_EN)) .. " " .. case_randomizer(rand.pick(RANDOM_WORDS_EN))
-      end
-    end
+  local title = generate_title()
+  if title then
+    GAME.title = title
   end
 
   if PARAM.bool_sub_titles and PARAM.bool_sub_titles == 1 then

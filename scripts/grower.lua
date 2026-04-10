@@ -3593,7 +3593,7 @@ end
 
     -- procedural gotcha limiters
     if pass == "sprout" and LEVEL.is_procedural_gotcha then 
-      if #LEVEL.rooms == 2 or (PARAM.bool_boss_gen and #LEVEL.rooms == 1) then
+      if #LEVEL.rooms == 2 then
         break;
       end
     end
@@ -4113,8 +4113,10 @@ function Grower_begin_trunks(LEVEL, SEEDS)
     R = Grower_create_and_grow_room(SEEDS, LEVEL, new_trunk, nil, info)
   end
 
-  gui.printf("FAG!\n")
-  gui.printf(table.tostr(R,3))
+  if R.is_dead then
+    LEVEL.is_dead = true
+    return
+  end
   assert(not R.is_dead)  
 
   -- ensure the first floor of an exit room is kept usable for bosses
@@ -4856,6 +4858,7 @@ function Grower_create_rooms(LEVEL, SEEDS)
   Seed_draw_minimap(SEEDS, LEVEL)
 
   Grower_begin_trunks(LEVEL, SEEDS)
+  if LEVEL.is_dead then return end
   Grower_grow_all_rooms(SEEDS, LEVEL)
   Grower_cave_stats(LEVEL)
 

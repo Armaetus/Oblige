@@ -2916,6 +2916,8 @@ function Area_create_rooms(LEVEL, SEEDS)
 
   Grower_create_rooms(LEVEL, SEEDS)
 
+  if LEVEL.is_dead then return end
+
   gui.at_level(LEVEL.name .. " (Rooms)", LEVEL.id, #GAME.levels)
   Area_divvy_up_borders(LEVEL, SEEDS)
 
