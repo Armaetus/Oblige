@@ -1603,7 +1603,7 @@ function Grower_kill_room(SEEDS, LEVEL, R)
 
     for _,PC in pairs(LEVEL.prelim_conns) do
       if PC.R1 == R or PC.R2 == R then
-        gui.debugf("  killing prelim conn %s -> %s\n", PC.R1.name, PC.R2.name)
+        gui.printf("  killing prelim conn %s -> %s\n", PC.R1.name, PC.R2.name)
 
         local other = sel(PC.R1 == R, PC.R2, PC.R1)
 
@@ -3536,7 +3536,7 @@ end
     -- debug statistics
     GROWER_DEBUG_INFO[cur_rule.name].applied = GROWER_DEBUG_INFO[cur_rule.name].applied + 1
 
-    if PARAM["live_minimap"] == "step" then
+    if PARAM["live_minimap"] == "livemap_step" then
       Seed_draw_minimap(SEEDS, LEVEL)
     end
 
@@ -3591,17 +3591,15 @@ end
       break;
     end
 
-    -- start rooms will only have one exit if linear start is on
-    if pass == "sprout" and R.is_start and R:prelim_conn_num(LEVEL) >= 1 and 
-    LEVEL.has_linear_start then
-      break;
-    end
-
     -- procedural gotcha limiters
     if pass == "sprout" and LEVEL.is_procedural_gotcha then 
       if #LEVEL.rooms == 2 or (PARAM.bool_boss_gen and #LEVEL.rooms == 1) then
         break;
       end
+    end
+  
+    if pass == "sprout" and R.is_start and #LEVEL.rooms > 3 and LEVEL.has_linear_start then
+      break;
     end
 
     -- stderrf("LOOP %d\n", loop)
@@ -4320,7 +4318,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
 
     if R then final_R = R end
 
-    if PARAM["live_minimap"] == "room" then
+    if PARAM["live_minimap"] == "livemap_room" then
       Seed_draw_minimap(SEEDS, LEVEL)
     end
 
@@ -4441,49 +4439,39 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
 
     end
 
-    --[[if LEVEL.cur_coverage <= LEVEL.min_coverage / 4
-    and PARAM.bool_allow_teleporter_emergency_breaks == 1 then
-      for _,R in pairs(LEVEL.rooms) do
-        if not R.shapes_applied or 
-        (R.shaped_applied and R.shapes_applied == 0) then
-          Grower_add_teleporter_trunk(SEEDS, LEVEL, R, true)
+    -- delete lower-scoring child room from start for linear_start mode
+    local score_tab = {}
+    local num_start_child_rooms = 0
+    local candidate_rooms = {}
+
+    -- collect candidate rooms
+    if LEVEL.has_linear_start and not LEVEL.linear_start_pruned then
+      for _,R in ipairs(LEVEL.rooms) do
+        if R.grow_parent and R.grow_parent.is_start and R:prelim_conn_num(LEVEL) < 2 then
+          num_start_child_rooms = num_start_child_rooms + 1
+          table.insert(candidate_rooms, R)
         end
       end
-    end]]
-  end
 
-  -- force grow child rooms from start rooms
-  if #LEVEL.rooms == 2 then
-    gui.printf("BALLS! " .. MAX_LOOP .. "\n")
-    for _,R in pairs(LEVEL.rooms) do
-      if R.grow_parent and R.grow_parent.is_start then
-        gui.printf("SHIT HAPPENED! " .. LEVEL.name .. "\n")
-        Grower_kill_room(SEEDS, LEVEL, R)
-        Grower_sprout_room(SEEDS, LEVEL, R.grow_parent)
+      -- if at least two, find the one with smallest svolume
+      if num_start_child_rooms == 2 then
+        local smallest_room = candidate_rooms[1]
+        for i = 2, #candidate_rooms do
+          local R = candidate_rooms[i]
+          if R.svolume < smallest_room.svolume then
+            smallest_room = R
+          end
+        end
+
+        -- kill the smallest room
+        gui.printf(table.tostr(smallest_room,2))
+        Grower_kill_room(SEEDS, LEVEL, smallest_room)
+        LEVEL.linear_start_pruned = true
       end
     end
 
-    for _,R in pairs(LEVEL.rooms) do
-      if R.grow_parent and R.grow_parent.is_start then
-        Grower_grow_room(SEEDS, LEVEL, R)
-        Grower_sprout_room(SEEDS, LEVEL, R)
-        MAX_LOOP = 10
-        MAX_RETRIES = 5
-      end
-    end
   end
 
-  if LEVEL.rooms == 1 then
-    for _,R in pairs(LEVEL.rooms) do
-      if R.is_start then
-        Grower_sprout_room(SEEDS, LEVEL, R)
-        Grower_grow_room(SEEDS, LEVEL, R)
-        Grower_sprout_room(SEEDS, LEVEL, R)
-        Grower_sprout_room(SEEDS, LEVEL, R)
-        Grower_sprout_room(SEEDS, LEVEL, R)
-      end
-    end
-  end
 
   -- remove ungrown teleporter trunks
   for _,R in pairs(LEVEL.rooms) do
@@ -4499,7 +4487,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
     end
   end
 
-  if PARAM["live_minimap"] == "room" then
+  if PARAM["live_minimap"] == "livemap_room" then
     Seed_draw_minimap(SEEDS, LEVEL)
   end
 

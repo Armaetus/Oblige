@@ -2418,9 +2418,9 @@ function ob_build_cool_shit()
 
   if PARAM["bool_save_gif"] == 1 then
     -- Set frame delay based on how detailed the live minimap is - Dasho
-    if PARAM["live_minimap"] == "step" then
+    if PARAM["live_minimap"] == "livemap_step" then
       gui.minimap_gif_start(10)
-    elseif PARAM["live_minimap"] == "room" then
+    elseif PARAM["live_minimap"] == "livemap_room" then
       gui.minimap_gif_start(75)
     else
       gui.minimap_gif_start(175)
