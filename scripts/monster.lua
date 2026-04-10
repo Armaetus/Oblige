@@ -1561,9 +1561,29 @@ function Monster_fill_room(LEVEL, R, SEEDS)
   end
 
 
-  local function place_monster(mon, spot, x, y, z, all_skills, mode)
-    -- mode is usually NIL, can be "cage" or "trap",
+  local function pick_replacement(mon, info, condition, filter)
+    for _, v in pairs(R.monster_list) do
+      if v.info == info then
+        local candidates = {}
+        for k,_ in pairs(LEVEL.global_pal) do
+          local m = GAME.MONSTERS[k]
+          local allowed = (not LEVEL.theme.monster_prefs or not LEVEL.theme.monster_prefs[k] or LEVEL.theme.monster_prefs[k] > 0)
+          if filter(m) and allowed then
+            table.insert(candidates, k)
+          end
+        end
+        if not table.empty(candidates) then
+          mon = rand.pick(candidates)
+          info = assert(GAME.MONSTERS[mon])
+          v.info = info
+        end
+        break
+      end
+    end
+    return mon, info
+  end
 
+  local function place_monster(mon, spot, x, y, z, all_skills, mode)
     local info = GAME.MONSTERS[mon]
 
     -- handle replacements
@@ -1574,79 +1594,29 @@ function Monster_fill_room(LEVEL, R, SEEDS)
 
     table.insert(R.monster_list, { info=info, is_cage=(mode == "cage") })
 
-    -- decide deafness and where to look
-    local deaf, focus
-
+    -- check if spot is in water
     local spot_in_water = false
     for _, chunk in pairs(R.liquid_chunks) do
-      if spot.x1 >= chunk.x1 and spot.x2 <= chunk.x2 and spot.y1 >= chunk.y1 and spot.y2 <= chunk.y2 then
+      if spot.x1 >= chunk.x1 and spot.x2 <= chunk.x2 and
+        spot.y1 >= chunk.y1 and spot.y2 <= chunk.y2 then
         spot_in_water = true
+        break
       end
     end
 
-    -- if spot is in liquid, place a random liquid_only monster from the global pal if one exists since liquid spots are fairly rare
-    -- if spot is outside liquid, make sure it's not a liquid_only monster that's placed
-    if spot_in_water == true then
-      if not info.liquid_only then
-        for _,v in pairs(R.monster_list) do
-          if v.info == info then
-            local liquid_mon_list = {}
-            for k,_ in pairs(LEVEL.global_pal) do
-              if GAME.MONSTERS[k].liquid_only and (not LEVEL.theme.monster_prefs or not LEVEL.theme.monster_prefs[k] or LEVEL.theme.monster_prefs[k] > 0) then table.insert(liquid_mon_list, k) end
-            end
-            if not table.empty(liquid_mon_list) then
-              mon = rand.pick(liquid_mon_list)
-              info = assert(GAME.MONSTERS[mon])
-              v.info = info
-            end
-            goto liquidstuffdone
-          end
-        end
-      end
-    else
-      if info.liquid_only then
-        for _,v in pairs(R.monster_list) do
-          if v.info == info then
-            local new_mon
-            ::tryagain::
-            new_mon = rand.key_by_probs(LEVEL.global_pal)
-            if new_mon == mon or GAME.MONSTERS[new_mon].liquid_only or (LEVEL.theme.monster_prefs and LEVEL.theme.monster_prefs[new_mon] and LEVEL.theme.monster_prefs[new_mon] == 0) then 
-              goto tryagain 
-            end
-            mon = new_mon
-            info = assert(GAME.MONSTERS[mon])
-            v.info = info
-            goto liquidstuffdone
-          end
-        end
-      end
+    -- liquid handling
+    if spot_in_water and not info.liquid_only then
+      mon, info = pick_replacement(mon, info, spot_in_water, function(m) return m.liquid_only end)
+    elseif not spot_in_water and info.liquid_only then
+      mon, info = pick_replacement(mon, info, spot_in_water, function(m) return not m.liquid_only end)
     end
 
-    ::liquidstuffdone::
-
-    -- if room is outdoors, make sure it's not an indoor_only monster that's placed
-    if R.is_outdoor == true then
-      if info.indoor_only then
-        for _,v in pairs(R.monster_list) do
-          if v.info == info then
-            local outdoor_mon_list = {}
-            for k,_ in pairs(LEVEL.global_pal) do
-              if not GAME.MONSTERS[k].indoor_only and (not LEVEL.theme.monster_prefs or not LEVEL.theme.monster_prefs[k] or LEVEL.theme.monster_prefs[k] > 0) then table.insert(outdoor_mon_list, k) end
-            end
-            if not table.empty(outdoor_mon_list) then
-              mon = rand.pick(outdoor_mon_list)
-              info = assert(GAME.MONSTERS[mon])
-              v.info = info
-            end
-            goto indoorstuffdone
-          end
-        end
-      end
+    -- outdoor handling
+    if R.is_outdoor and info.indoor_only then
+      mon, info = pick_replacement(mon, info, R.is_outdoor, function(m) return not m.indoor_only end)
     end
 
-    ::indoorstuffdone::
-
-    -- monsters in traps are never deaf (esp. monster depots)
+    local deaf, focus
     if mode then
       deaf = false
     elseif spot.ambush or info.boss_type or R.is_hallway then
@@ -1662,32 +1632,16 @@ function Monster_fill_room(LEVEL, R, SEEDS)
       focus = R.entry_coord
     end
 
-    local angle
+    local angle = (mode or R.is_hallway) and spot.angle or monster_angle(spot, x, y, z, focus)
 
-    if (mode or R.is_hallway) and spot.angle then
-      angle = spot.angle
-    else
-      angle = monster_angle(spot, x, y, z, focus)
-    end
-
-    -- minimum skill needed for the monster to appear
     local skill = calc_min_skill(all_skills)
+    local props = { angle = angle, flags = DOOM_FLAGS.HARD }
 
-    local props = {}
-
-    props.angle = angle
-
-    props.flags = DOOM_FLAGS.HARD
-
-    if deaf then
-      props.flags = props.flags + DOOM_FLAGS.DEAF
-    end
-
-    if (skill <= 1) then props.flags = props.flags + DOOM_FLAGS.EASY end
-    if (skill <= 2) then props.flags = props.flags + DOOM_FLAGS.MEDIUM end
+    if deaf then props.flags = props.flags + DOOM_FLAGS.DEAF end
+    if skill <= 1 then props.flags = props.flags + DOOM_FLAGS.EASY end
+    if skill <= 2 then props.flags = props.flags + DOOM_FLAGS.MEDIUM end
 
     LEVEL.mon_count = LEVEL.mon_count + 1
-
     Trans.entity(mon, x, y, z, props)
   end
 
