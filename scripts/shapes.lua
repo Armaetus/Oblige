@@ -13136,6 +13136,53 @@ GROW_ZIGZAG_AI =
   }
 },
 
+GROW_E1M1 =
+{
+  prob = 8,
+  skip_prob = 95,
+
+  structure =
+  {
+    ".......","/111111",
+    ".......","111#AAA",
+    ".......","111AAAA",
+    ".......","111AAAA",
+    ".......","111AAAA",
+    ".......","111#AAA",
+    ".......","%111111",
+    "xxx11xx","xxx11xx",
+  },
+
+  diagonals =
+  {
+    ".1",
+    ".1",
+  },
+
+  auxiliary =
+  {
+    pass = "aux_GROW_E1"
+  }
+},
+
+aux_GROW_E1M1 =
+{
+  prob = 1,
+  
+  structure =
+  {
+    "........222111","A%222%!/222111",
+    "........222111","AA<<2222222111",
+    "........222111","A/222/!%222111",
+  },
+
+  diagonals =
+  {
+    "A2","2.",".2",
+    "A2","2.",".2",
+  }
+},
+
 -- [4x3_ALPHABET]
 
 
@@ -14256,7 +14303,8 @@ GROW_3x_L_SHORTCUT =
 
   structure =
   {
-    "11...x","1111%x",
+    "11xxxx","11xxxx",
+    ".....x","1111%x",
     ".....x","11111x",
     "..x..x","vvx11x",
     "..x..x","AAx11x",
@@ -14282,7 +14330,8 @@ GROW_3x_L_SHORTCUT_ALT =
 
   structure =
   {
-    "11...x","11>A%x",
+    "11xxxx","11xxxx",
+    ".....x","11>A%x",
     ".....x","11>AAx",
     "..x..x","11xAAx",
     "..x..x","11xAAx",
@@ -14308,7 +14357,8 @@ GROW_3x_L_SHORTCUT_LIQUID =
 
   structure =
   {
-    "11...x","1111%x",
+    "11xxxx","11xxxx",
+    ".....x","1111%x",
     ".....x","11111x",
     ".....x","vv~11x",
     ".....x","AA~11x",
@@ -16254,13 +16304,13 @@ GROW_ARROW =
 
   structure =
   {
-    "xx/%xx","xx..xx",
-    "x/11%x","x....x",
-    "/1111%","......",
-    "xx11xx","xx..xx",
-    "xx11xx","xx..xx",
-    "xx11xx","xx..xx",
-    "xx11xx","xx..xx",
+    "xx..xx","xx/%xx",
+    "x....x","x/11%x",
+    "......","/1111%",
+    "xx..xx","xx11xx",
+    "xx..xx","xx11xx",
+    "xx..xx","xx11xx",
+    "xx..xx","xx11xx",
     "xx11xx","xx11xx"
   },
 
@@ -16272,6 +16322,35 @@ GROW_ARROW =
   }
 },
 
+GROW_ARROW_CHEVRON_NEW_AREA =
+{
+  prob = 10,
+  prob = 80,
+
+  structure =
+  {
+    "xx..xx","xx/%xx",
+    "x....x","x/AA%x",
+    "......","/A/%A%",
+    ".....x","A/11%A",
+    "x....x","x1111x",
+    "x....x","x1111x",
+    "x....x","x%11/x",
+    "xx11xx","xx11xx"
+    "xx11xx","xx11xx"
+    "xx11xx","xx11xx"
+  },
+
+  diagonals =
+  {
+         ".A","A.",
+         ".A","A.",
+    ".A","A1","1A","A.",
+         "A1","1A",
+         ".1","1.",
+  }
+},
+
 GROW_ARROW_DOUBLE =
 {
   prob = 20,
@@ -16279,16 +16358,16 @@ GROW_ARROW_DOUBLE =
 
   structure =
   {
-    "xx/%xx","xx..xx",
-    "x/11%x","x....x",
-    "/1111%","......",
-    "xx11xx","xx..xx",
-    "1111xx","1...xx",
-    "1111xx","1...xx",
-    "xx11xx","xx..xx",
-    "%1111/","......",
-    "x%11/x","x....x",
-    "xx%/xx","xx..xx"
+    "xxx..xx","xxx/%xx",
+    "xx....x","xx/11%x",
+    "x......","x/1111%",
+    "xxx..xx","xxx11xx",
+    "1....xx","11111xx",
+    "1....xx","11111xx",
+    "xxx..xx","xxx11xx",
+    "x......","x%1111/",
+    "xx....x","xx%11/x",
+    "xxx..xx","xxx%/xx"
   },
 
   diagonals =
@@ -16303,36 +16382,6 @@ GROW_ARROW_DOUBLE =
 },
 
 -- MSSP's huge-arse rooms. [HUGE]
-
-GROW_EXTRUSION_CORNER_4x4 =
-{
-  prob = 40,
-  skip_prob = 10,
-
-  structure =
-  {
-    "x....","x1111",
-    "x....","x1111",
-    "1....","11111",
-    "1....","11111",
-    "x11xx","x11xx",
-  },
-},
-
-GROW_EXTRUSION_CORNER_4x4_NEW_AREA =
-{
-  prob = 40,
-  skip_prob = 10,
-
-  structure =
-  {
-    "x....","xAAAA",
-    "x....","xAAAA",
-    "1....","1AAAA",
-    "1....","1AAAA",
-    "x11xx","x11xx",
-  },
-},
 
 GROW_EXTRUSION_4X6 =
 {
