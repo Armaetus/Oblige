@@ -3787,6 +3787,44 @@ GROW_COLONNADE_510_FANCY_CEILING_HORSESHOE_STAIRS =
   }
 },
 
+GROW_COLONNADE_PERCH =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "........","11AAAA11",
+    "........","1>AAAA<1",
+    "........","1>AAAA<1",
+    "........","11AAAA11",
+    "........","11AAAA11",
+    "........","1>AAAA<1",
+    "........","1>AAAA<1",
+    "........","11AAAA11",
+    "xxxxxx11","xxxxxx11",
+  }
+},
+
+GROW_COLONNADE_PERCH_SNIP0R =
+{
+  prob = 25,
+  skip_prob = 80,
+
+  structure =
+  {
+    "............","1111AAAA1111",
+    "............","1#1>AAAA<1#1",
+    "............","1#1>AAAA<1#1",
+    "............","1111AAAA1111",
+    "............","1111AAAA1111",
+    "............","1#1>AAAA<1#1",
+    "............","1#1>AAAA<1#1",
+    "............","1111AAAA1111",
+    "xxxxxxxxxx11","xxxxxxxxxx11",
+  }
+},
+
 GROW_COLONNADE_VAULT =
 {
   prob = 20,
@@ -16182,7 +16220,7 @@ GROW_ELEVATED_T_STALK_ENTRY =
   prob = 15,
   skip_prob = 20,
 
-  aversion = 5,
+  aversion = 0.25,
 
   structure =
   {
@@ -16202,7 +16240,7 @@ GROW_ELEVATED_O_QUARTER =
   prob = 15,
   skip_prob = 20,
 
-  aversion = 5,
+  aversion = 0.25,
 
   structure =
   {
@@ -16325,8 +16363,10 @@ GROW_ARROW =
 
 GROW_ARROW_CHEVRON_NEW_AREA =
 {
-  prob = 10,
+  prob = 5,
   prob = 80,
+
+  aversion = 0.25,
 
   structure =
   {
@@ -16354,8 +16394,10 @@ GROW_ARROW_CHEVRON_NEW_AREA =
 
 GROW_ARROW_DOUBLE =
 {
-  prob = 20,
+  prob = 7,
   prob = 80,
+
+  aversion = 0.25,
 
   structure =
   {
