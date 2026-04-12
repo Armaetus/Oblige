@@ -2707,25 +2707,27 @@ function Level_make_level(LEV)
 
   if coverage_target == 0 then coverage_target = LEVEL.min_coverage end
 
-  if not SHAPE_GRAMMAR.ignore_coverage then
-    if LEVEL.cur_coverage < coverage_target then
-      res = "runt"
+  if res ~= "runt" or not LEVEL.is_dead then
+    if not SHAPE_GRAMMAR.ignore_coverage then
+      if LEVEL.cur_coverage < coverage_target then
+        res = "runt"
+      end
     end
-  end
 
-  if LEVEL.is_procedural_gotcha then
-    local exit_R = LEVEL.exit_room
-    local start_R = LEVEL.start_room
+    if LEVEL.is_procedural_gotcha then
+      local exit_R = LEVEL.exit_room
+      local start_R = LEVEL.start_room
 
-    if exit_R ~= start_R and start_R.svolume > exit_R.svolume then
-      res = "runt"
+      if exit_R ~= start_R and start_R.svolume > exit_R.svolume then
+        res = "runt"
+      end
     end
-  end
 
-  if res == "runt" then
-    print("STUNTED LEVEL!\nCOVERAGE: " .. LEVEL.cur_coverage 
-    .. "\nMIN COVERAGE: " .. coverage_target .. "\nROOMS: " 
-    .. #LEVEL.rooms .. "\nMIN ROOMS: " .. LEVEL.min_rooms .. "\n")
+    if res == "runt" then
+      print("STUNTED LEVEL!\nCOVERAGE: " .. LEVEL.cur_coverage 
+      .. "\nMIN COVERAGE: " .. coverage_target .. "\nROOMS: " 
+      .. #LEVEL.rooms .. "\nMIN ROOMS: " .. LEVEL.min_rooms .. "\n")
+    end
   end
 
   if res ~= "ok" then
