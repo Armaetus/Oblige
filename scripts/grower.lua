@@ -3597,7 +3597,7 @@ end
         break;
       end
     end
-
+  
     -- stderrf("LOOP %d\n", loop)
     apply_a_rule(LEVEL)
 
@@ -3626,7 +3626,8 @@ function Grower_grammatical_room(SEEDS, LEVEL, R, pass, is_emergency)
     end
 
   elseif pass == "sprout" then
-    if R.is_exit then
+    if R.is_exit 
+    or (R.is_start and LEVEL.has_linear_start) then
       apply_num = 1
     else
       apply_num = rand.pick({ 1,2,2,3 })
@@ -3876,7 +3877,7 @@ function Grower_grow_room(SEEDS, LEVEL, R)
     end
   end
 
-  if (LEVEL.is_procedural_gotcha and #LEVEL.rooms > 2) then
+  --[[if (LEVEL.is_procedural_gotcha and #LEVEL.rooms > 2) then
     for _,R2 in pairs(LEVEL.rooms) do
       if #R2.conns == 1 and R2.grow_parent.is_start then
         if R.prelim_conn_num == 1 then
@@ -3884,7 +3885,7 @@ function Grower_grow_room(SEEDS, LEVEL, R)
         end
       end
     end
-  end
+  end]]
 
   R.is_grown = true
 end

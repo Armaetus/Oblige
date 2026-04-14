@@ -2723,11 +2723,16 @@ function Level_make_level(LEV)
       end
     end
 
-    if res == "runt" then
-      print("STUNTED LEVEL!\nCOVERAGE: " .. LEVEL.cur_coverage 
-      .. "\nMIN COVERAGE: " .. coverage_target .. "\nROOMS: " 
-      .. #LEVEL.rooms .. "\nMIN ROOMS: " .. LEVEL.min_rooms .. "\n")
-    end
+  end
+
+  if LEVEL.is_dead then
+    print("LEVEL GENERATION FAILURE!\n")
+  end
+
+  if res == "runt" then
+    print("STUNTED LEVEL!\nCOVERAGE: " .. LEVEL.cur_coverage 
+    .. "\nMIN COVERAGE: " .. coverage_target .. "\nROOMS: " 
+    .. #LEVEL.rooms .. "\nMIN ROOMS: " .. LEVEL.min_rooms .. "\n")
   end
 
   if res ~= "ok" then
