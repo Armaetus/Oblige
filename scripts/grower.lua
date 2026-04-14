@@ -4264,6 +4264,10 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
       end
     end
 
+    if PARAM["live_minimap"] == "livemap_room" then
+      Seed_draw_minimap(SEEDS, LEVEL)
+    end
+
     return "none"
   end
 
@@ -4319,10 +4323,6 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
 
     if R then final_R = R end
 
-    if PARAM["live_minimap"] == "livemap_room" then
-      Seed_draw_minimap(SEEDS, LEVEL)
-    end
-
     if final_R.is_hallway or final_R.is_grown then
       local found_room
       local cur_id = #LEVEL.rooms
@@ -4362,6 +4362,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
     if not reached_coverage() then
 
       if R.is_hallway then return end
+      if LEVEL.has_linear_start and R.is_start then return end
 
       gui.printf("Oh noes! Attempting emergency sprout in ROOM_" .. R.id .. "!!!\n")
       Grower_grammatical_room(SEEDS, LEVEL, R, "sprout", "is_emergency")
@@ -4373,6 +4374,39 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
       return "oof"
     end
     return "yas queen"
+  end
+
+
+  local function linear_start_trim()
+    -- delete lower-scoring child room from start for linear_start mode
+    local score_tab = {}
+    LEVEL.num_start_child_rooms = 0
+    local candidate_rooms = {}
+
+    -- collect candidate rooms
+    for _,R in ipairs(LEVEL.rooms) do
+      if R.grow_parent and R.grow_parent.is_start and not R.is_start and R:prelim_conn_num(LEVEL) < 2 then
+        LEVEL.num_start_child_rooms = LEVEL.num_start_child_rooms + 1
+        table.insert(candidate_rooms, R)
+      end
+    end
+
+    -- if at least two, find the one with smallest svolume
+    while LEVEL.num_start_child_rooms > 1 do
+      local smallest_room = candidate_rooms[1]
+      for i = 1, #candidate_rooms do
+        local R = candidate_rooms[i]
+        if R.svolume < smallest_room.svolume and not R.is_dead then
+          smallest_room = R
+        end
+      end
+
+      -- kill the smallest room
+      LEVEL.num_start_child_rooms = LEVEL.num_start_child_rooms - 1
+      Grower_kill_room(SEEDS, LEVEL, smallest_room)
+    end
+
+    return true
   end
 
 
@@ -4403,6 +4437,10 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
 
     repeat
       kw = handle_next_room()
+
+      if LEVEL.has_linear_start then
+        linear_start_trim()
+      end
     until kw ~= "ok"
 
     if kw == "reached" then
@@ -4439,60 +4477,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
       end
 
     end
-
-    -- delete lower-scoring child room from start for linear_start mode
-    local score_tab = {}
-    local num_start_child_rooms = 0
-    local candidate_rooms = {}
-
-    -- collect candidate rooms
-    if LEVEL.has_linear_start and not LEVEL.linear_start_pruned then
-      for _,R in ipairs(LEVEL.rooms) do
-        if R.grow_parent and R.grow_parent.is_start and not R.is_start and R:prelim_conn_num(LEVEL) < 2 then
-          num_start_child_rooms = num_start_child_rooms + 1
-          table.insert(candidate_rooms, R)
-        end
-      end
-
-      -- if at least two, find the one with smallest svolume
-      if num_start_child_rooms == 2 then
-        local smallest_room = candidate_rooms[1]
-        for i = 2, #candidate_rooms do
-          local R = candidate_rooms[i]
-          if R.svolume < smallest_room.svolume then
-            smallest_room = R
-          end
-        end
-
-        -- kill the smallest room
-        gui.printf(table.tostr(smallest_room,2))
-        smallest_room.linear_start_pruned = true
-        Grower_kill_room(SEEDS, LEVEL, smallest_room)
-        LEVEL.linear_start_pruned = true
-      end
-    end
-
   end
-
-
-  -- remove ungrown teleporter trunks
-  for _,R in pairs(LEVEL.rooms) do
-    if R.is_root and R.is_grown and #R.trunk.rooms == 1 
-    and R:calc_walk_vol() <= 24 and not R.is_start and not R.emergency_sprouted then
-      gui.printf("Killed teleporter ROOM_" .. R.id .. "\n")
-      gui.printf(table.tostr(R.trunk.rooms,1) .. "\n")
-      gui.printf(table.tostr(R,2) .. "\n")
-      Grower_kill_room(SEEDS, LEVEL, R)
-      if R.trunk then
-        Grower_kill_a_trunk(LEVEL, R.trunk)
-      end
-    end
-  end
-
-  if PARAM["live_minimap"] == "livemap_room" then
-    Seed_draw_minimap(SEEDS, LEVEL)
-  end
-
 end
 
 
@@ -4912,6 +4897,16 @@ function Grower_create_rooms(LEVEL, SEEDS)
 
   Seed_draw_minimap(SEEDS, LEVEL)
 
+  --[[if LEVEL.has_linear_start and LEVEL.start_room:prelim_conn_num(LEVEL) > 2 then
+    gui.printf("Linear start info:\n" .. table.tostr(LEVEL.start_room,1))
+    for _,R in pairs(LEVEL.rooms) do
+      if R.grow_parent and R.grow_parent.is_start then
+        gui.printf(table.tostr(R,1))
+      end
+    end
+    error("Linear Start room with more than 2 connections remaining!")
+  end]]
+  
 -- FIXME : VALIDATION CRUD
     --for sx = 1, SEED_W do
     --for sy = 1, SEED_H do

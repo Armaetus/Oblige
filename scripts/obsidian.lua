@@ -2421,7 +2421,7 @@ function ob_build_cool_shit()
     if PARAM["live_minimap"] == "livemap_step" then
       gui.minimap_gif_start(10)
     elseif PARAM["live_minimap"] == "livemap_room" then
-      gui.minimap_gif_start(75)
+      gui.minimap_gif_start(200)
     else
       gui.minimap_gif_start(175)
     end
