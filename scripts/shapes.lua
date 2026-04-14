@@ -6190,7 +6190,7 @@ GROW_RAMP_ROUND_PACMAN_Z =
 GROW_RAMP_THIN_SINK =
 {
   prob = 20,
-  aversion = 5,
+  aversion = 0.25,
   skip_prob = 75,
 
   structure =
@@ -6212,7 +6212,7 @@ GROW_RAMP_THIN_SINK =
 GROW_RAMP_THIN_SINK_LIQUID =
 {
   prob = 20,
-  aversion = 5,
+  aversion = 0.25,
   skip_prob = 75,
 
   structure =
@@ -6284,7 +6284,7 @@ GROW_RAMP_INTERSECTION_QUARTERS =
 GROW_RAMP_THIN_RISE =
 {
   prob = 20,
-  aversion = 5,
+  aversion = 0.25,
   skip_prob = 75,
 
   structure =
@@ -6308,7 +6308,7 @@ GROW_RAMP_THIN_RISE =
 GROW_RAMP_THIN_RISE_LIQUID =
 {
   prob = 20,
-  aversion = 5,
+  aversion = 0.25,
   skip_prob = 75,
 
   structure =
@@ -6431,7 +6431,7 @@ GROW_RAMP_THIN_HALF_RISE_LIQUID =
 GROW_REVERSE_FUNNEL =
 {
   prob = 20,
-  aversion = 3,
+  aversion = 0.33,
   skip_prob = 60,
 
   structure =
@@ -6455,7 +6455,7 @@ GROW_REVERSE_FUNNEL =
 GROW_REVERSE_FUNNEL_LIQUID =
 {
   prob = 20,
-  aversion = 3,
+  aversion = 0.33,
   skip_prob = 60,
 
   structure =
@@ -7545,7 +7545,7 @@ GROW_STAIRED_HORSESHOE =
   prob = 20,
   skip_prob = 80,
 
-  aversion = 10,
+  aversion = 0.1,
 
   structure =
   {
@@ -7571,7 +7571,7 @@ GROW_STAIRED_HORSESHOE_TIGHTER =
   prob = 20,
   skip_prob = 80,
 
-  aversion = 10,
+  aversion = 0.1,
 
   structure =
   {
@@ -7596,7 +7596,7 @@ GROW_STAIRED_T =
   prob = 25,
   skip_prob = 50,
 
-  aversion = 10,
+  aversion = 0.1,
 
   structure =
   {
@@ -7620,7 +7620,7 @@ GROW_STAIRED_L =
   prob = 40,
   skip_prob = 50,
 
-  aversion = 5,
+  aversion = 0.25,
 
   structure =
   {
@@ -7888,7 +7888,7 @@ GROW_CAGE_BETWEEN_PILLAR =
   prob = 10,
   skip_prob = 70,
 
-  aversion = 10,
+  aversion = 0.1,
 
   structure =
   {
@@ -7974,7 +7974,7 @@ GROW_CAGE_Z =
   prob = 10,
   skip_prob = 70,
 
-  aversion = 5,
+  aversion = 0.25,
 
   structure =
   {
@@ -8148,7 +8148,7 @@ GROW_CAGE_ROUND_ARENA =
   prob = 15,
   skip_prob = 80,
 
-  aversion = 4,
+  aversion = 0.25,
 
   structure =
   {
@@ -11173,7 +11173,7 @@ GROW_WIDE_SPACE_DEPRESSION =
   prob = 38,
   skip_prob = 70,
 
-  aversion = 5,
+  aversion = 0.25,
 
   structure =
   {
@@ -16551,7 +16551,7 @@ GROW_EXTRUSION_SINK =
   prob = 25,
   skip_prob = 25,
 
-  aversion = 8,
+  aversion = 0.2,
 
   structure =
   {
@@ -17650,7 +17650,7 @@ GROW_TRENCH_CURVE =
   prob = 15,
   skip_prob = 70,
 
-  aversion = 10,
+  aversion = 0.1,
 
   structure =
   {
@@ -17674,7 +17674,7 @@ GROW_TRENCH_CURVE_INNER_SOLID =
   prob = 15,
   skip_prob = 70,
 
-  aversion = 6,
+  aversion = 0.3,
 
   structure =
   {
@@ -17773,7 +17773,7 @@ GROW_TRENCH_CURVE_OUTER_SOLID =
   prob = 15,
   skip_prob = 70,
 
-  aversion = 6,
+  aversion = 0.3,
 
   structure =
   {
@@ -17805,7 +17805,7 @@ GROW_TRENCH_CURVE_OUTER_LIQUID =
   prob = 25,
   skip_prob = 80,
 
-  aversion = 6,
+  aversion = 0.3,
 
   structure =
   {
