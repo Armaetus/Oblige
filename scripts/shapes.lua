@@ -16343,7 +16343,6 @@ GROW_ARROW =
 
   structure =
   {
-    "xx..xx","xx/%xx",
     "x....x","x/11%x",
     "......","/1111%",
     "xx..xx","xx11xx",
@@ -16360,6 +16359,32 @@ GROW_ARROW =
     ".1","1."
   }
 },
+
+GROW_ARROW_FORK_NEW_AREA =
+{
+  prob = 10,
+  prob = 80,
+
+  structure =
+  {
+    "........","AA%/%/AA",
+    "........","%A/11%A/",
+    "x......x","x/1111%x",
+    "xxx..xxx","xxx11xxx",
+    "xxx..xxx","xxx11xxx",
+    "xxx..xxx","xxx11xxx",
+    "xxx..xxx","xxx11xxx",
+    "xxx11xxx","xxx11xxx"
+  },
+
+  diagonals =
+  {
+    "A.",".1","1.",".A",
+    ".A",".1","1.","A.",
+         ".1","1."
+  }
+},
+
 
 GROW_ARROW_CHEVRON_NEW_AREA =
 {
@@ -16401,7 +16426,6 @@ GROW_ARROW_DOUBLE =
 
   structure =
   {
-    "xxx..xx","xxx/%xx",
     "xx....x","xx/11%x",
     "x......","x/1111%",
     "xxx..xx","xxx11xx",
@@ -16410,7 +16434,6 @@ GROW_ARROW_DOUBLE =
     "xxx..xx","xxx11xx",
     "x......","x%1111/",
     "xx....x","xx%11/x",
-    "xxx..xx","xxx%/xx"
   },
 
   diagonals =
@@ -16419,8 +16442,6 @@ GROW_ARROW_DOUBLE =
     ".1","1.",
     ".1","1.",
     ".1","1.",
-    ".1","1.",
-    ".1","1."
   }
 },
 
