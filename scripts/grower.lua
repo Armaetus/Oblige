@@ -4383,6 +4383,10 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
     LEVEL.num_start_child_rooms = 0
     local candidate_rooms = {}
 
+    if #LEVEL.rooms <= 2 then 
+      return
+    end
+
     -- collect candidate rooms
     for _,R in ipairs(LEVEL.rooms) do
       if R.grow_parent and R.grow_parent.is_start and not R.is_start and R:prelim_conn_num(LEVEL) < 2 then
@@ -4396,9 +4400,13 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
       local smallest_room = candidate_rooms[1]
       for i = 1, #candidate_rooms do
         local R = candidate_rooms[i]
-        if R.svolume < smallest_room.svolume and not R.is_dead then
+        if R.svolume < smallest_room.svolume then
           smallest_room = R
         end
+      end
+
+      if smallest_room.is_dead then 
+        return
       end
 
       -- kill the smallest room
