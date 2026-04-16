@@ -79,6 +79,7 @@ DOOM.NAMES =
         ["Agony"]=10,
         ["Anguish"]=10,
         ["Atonement"]=5,
+        ["Attrition"]=7,
         ["Battered"]=7,
         ["Betrayal"]=10,
         ["Chaos"]=10,
@@ -97,6 +98,7 @@ DOOM.NAMES =
         ["Euphoria"]=7,
         ["Evil"]=10,
         ["Fear"]=10, -- Why not?
+        ["Foresworn"]=10,
         ["Fury"]=7,
         ["Guilt"]=10,
         ["Hatred"]=10,
@@ -209,12 +211,12 @@ DOOM.NAMES =
         ["You Are Not Special"]=2,
 
         -- Other uncommon naming..
-        ["A Major Inconvenience"]=3,
-        ["Clockhand's Groaning Circles"]=3,
-        ["Die Insane"]=3,
-        ["Even More Pain"]=3,
-        ["Instant Justice"]=3,
-        ["You are Just a Number"]=3,
+        ["A Major Inconvenience"]=4,
+        ["Clockhand's Groaning Circles"]=4,
+        ["Die Insane"]=4,
+        ["Even More Pain"]=4,
+        ["Instant Justice"]=4,
+        ["You are Just a Number"]=4,
 
         ["Astronomical Union"]=5,
         ["Blueprint for the Apocalypse"]=5,
@@ -659,7 +661,7 @@ DOOM.NAMES =
         -- Marijuana related parody song names from death metal band Cannibis Corpse.
         -- Their songs and album names are based off of other metal bands, Cannibal Corpse,
         -- Bolt Thrower, Morbid Angel, etc. Made uncommon because of the silliness of the
-        -- track names. -A, Nov. 11th, 2022
+        -- track names. -R, Nov. 11th, 2022
         ["Blame it on Bud"]=3,
         ["Chapel of Bowls"]=3,
         ["Chronolith"]=3,
@@ -676,7 +678,48 @@ DOOM.NAMES =
         ["Slave to the Chron"]=3,
         ["Sworn to the Bag"]=3,
         ["The 420th Crusade"]=3,
-        ["Where the Kind Lives"]=3 -- end marker
+        ["Where the Kind Live"]=3,
+        
+        -- 2026 stuff
+        ["An Act of God"]=10,
+        ["Apotheosis"]=10,
+        ["Burning Black"]=10,
+        ["By Hatred Bound"]=10,
+        ["Chasing the Edge"]=10,
+        ["Contemptor"]=10,
+        ["Dead Hand Call"]=10,
+        ["Elements of Sin"]=10,
+        ["Endless Ambition"]=10,
+        ["Epidemic of Violence"]=10,
+        ["Failures for Gods"]=10,
+        ["False Ascent"]=10,
+        ["Guided by Evil"]=10,
+        ["Harnessing Ruin"]=10,
+        ["Horrordome"]=10,
+        ["Humanproof"]=10,
+        ["Locked Out"]=10,
+        ["Mindrot"]=10,
+        ["Morbid Courage"]=10,
+        ["Nothing is Sacred"]=10,
+        ["Obey"]=10,
+        ["Pandemia"]=10,
+        ["Path to Nowhere"]=10,
+        ["Perpetual Chaos"]=10,
+        ["Point of No Return"]=10,
+        ["Power Struggle"]=10,
+        ["Slave Machine"]=10,
+        ["Spinehammer"]=10,
+        ["Swarm of Terror"]=10,
+        ["The Crawling Chaos"]=10,
+        ["The Root of Evil"]=10,
+        ["Theatre of Pain"]=10,
+        ["Theory of Conspiracy"]=10,
+        ["Through Hellfire"]=10,
+        ["Towards Greater Gods"]=10,
+        ["Under the Gun"]=10,
+        ["Weapon against Oneself"]=10
+        
+        -- end marker
 
       },
     },
@@ -2566,7 +2609,6 @@ DOOM.NAMES =
         ["Frozen Nostalgia"]=10,
         ["Funeral Storm"]=10,
         ["Gravemonger"]=10,
-        ["Humanproof"]=10,
         ["Immolation Rites"]=10,
         ["In the Moonlight"]=10,
         ["Inescapable Dreams"]=10,
@@ -2653,7 +2695,6 @@ DOOM.NAMES =
         ["Just Another Doomsday"]=10,
         ["Life of Decay"]=10,
         ["Madness Prevails"]=10,
-        ["Morbid Courage"]=10,
         ["Night of the Horrid"]=10,
         ["No Hope No Light Only Death"]=10
         ["Obliteration of Souls"]=10,
@@ -3149,7 +3190,7 @@ DOOM.NAMES =
         ["Business District"]=10,
         ["Cacophobia"]=10,
         ["Carnival Bizarre"]=10,
-        ["Chasing Demomns"]=10,
+        ["Chasing Demons"]=10,
         ["Cisterne"]=10,
         ["Cloak of Midnight"]=10,
         ["Cold Comfort"]=10,
