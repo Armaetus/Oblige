@@ -2655,34 +2655,19 @@ brightmap texture SD_TWDL3
   map SDTDL3BR
 }
 
-brightmap texture SD_TWLW1
-{
-  map STWLW1BR
-}
-
 brightmap texture SD_TWLW2
 {
   map STWLW2BR
 }
 
-brightmap texture SD_TWLW5
+brightmap texture SD_TWLW3
 {
-  map STWLW5BR
-}
-
-brightmap texture SD_TWLW6
-{
-  map STWLW6BR
+  map STWLW3BR
 }
 
 brightmap texture SD_TWLW8
 {
   map STWLW8BR
-}
-
-brightmap texture SD_TWLWA
-{
-  map STWLWABR
 }
 
 brightmap texture SD_TSGW4

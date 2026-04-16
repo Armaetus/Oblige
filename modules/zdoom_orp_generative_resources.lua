@@ -4777,7 +4777,11 @@ OBS_RESOURCE_PACK_GENAI_THEMES =
       SD_TWLW2 = 20,
       SD_TWLW3 = 20,
       SD_TWLW4 = 20,
+      SD_TWLW6 = 20,
       SD_TWLW7 = 20,
+      SD_TWLW9 = 20,
+      SD_TWLWA = 20,
+      SD_TWLWB = 20,
       SD_TWLWC = 20,
 
       SD_TSGW1 = 20,
