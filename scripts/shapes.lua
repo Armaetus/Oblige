@@ -12045,6 +12045,27 @@ GROW_WATER_STRIPES_RETICULE_DIAGONAL_PILLARED =
   }
 },
 
+GROW_RETICULE_WALL =
+{
+  prob = 10,
+  skip_prob = 85,
+
+  structure =
+  {
+    "11xxxxxxxx","11xxxxxxxx",
+    "..........","1111111111",
+    "..........","1111111111",
+    "..........","11##AA##11",
+    "..........","11#AAAA#11",
+    "..........","11AAAAAA11",
+    "..........","11AAAAAA11",
+    "..........","11#AAAA#11",
+    "..........","11##AA##11",
+    "..........","1111111111",
+    "..........","1111111111",
+  }
+},
+
 --
 
 GROW_CHAMFER_WIDE_ROOM_CORNER =
@@ -16338,8 +16359,8 @@ GROW_SHARP_LIQUID =
 
 GROW_ARROW =
 {
-  prob = 15,
-  prob = 75,
+  prob = 7,
+  prob = 85,
 
   structure =
   {
@@ -16362,8 +16383,8 @@ GROW_ARROW =
 
 GROW_ARROW_FORK_NEW_AREA =
 {
-  prob = 10,
-  prob = 80,
+  prob = 6,
+  prob = 85,
 
   structure =
   {
@@ -16380,7 +16401,7 @@ GROW_ARROW_FORK_NEW_AREA =
   diagonals =
   {
     "A.",".1","1.",".A",
-    ".A",".1","1.","A.",
+    ".A","A1","1A","A.",
          ".1","1."
   }
 },
@@ -16402,8 +16423,8 @@ GROW_ARROW_CHEVRON_NEW_AREA =
     "x....x","x1111x",
     "x....x","x1111x",
     "x....x","x%11/x",
-    "xx11xx","xx11xx"
-    "xx11xx","xx11xx"
+    "xx..xx","xx11xx",
+    "xx..xx","xx11xx",
     "xx11xx","xx11xx"
   },
 
