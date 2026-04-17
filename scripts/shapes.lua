@@ -15613,6 +15613,37 @@ GROW_PEWPEW =
   }
 },
 
+GROW_CHICKEN_LEG =
+{
+  prob = 12,
+  skip_prob = 85,
+
+  structure =
+  {
+    "xxxxxx...","xxxxxx/AA",
+    "xxxxx....","xxxxx/AAA",
+    "xxxx.....","xxxx/AAA/",
+    "xxxx....x","xxxxAAA/x",
+    "xxx....xx","xxx/%A/xx",
+    "xx...xxxx","xx/1/xxxx",
+    "....xxxxx","111/xxxxx",
+    "...xxxxxx","111xxxxxx",
+    "...xxxxxx","111xxxxxx",
+    "11xxxxxxx","11xxxxxxx",
+  },
+
+  diagonals =
+  {
+    ".A",
+    ".A",
+    ".A","A.",
+         "A.",
+    ".1","1A","A.",
+    ".1","1.",
+    "1."
+  }
+},
+
 GROW_BOOK =
 {
   prob = 12,
