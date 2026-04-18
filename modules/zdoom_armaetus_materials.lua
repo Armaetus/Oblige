@@ -2665,11 +2665,6 @@ brightmap texture SD_TWLW3
   map STWLW3BR
 }
 
-brightmap texture SD_TWLW8
-{
-  map STWLW8BR
-}
-
 brightmap texture SD_TSGW4
 {
   map STGSW4BR
