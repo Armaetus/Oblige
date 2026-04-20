@@ -4385,17 +4385,23 @@ GROW_DOOM2_ENTRY_CAGE_ALT =
   }
 },
 
-GROW_MM2_ =
+GROW_MM2_A =
 {
   prob = 10,
   skip_prob = 75,
 
   structure =
   {
-    "/111%",
-    "11111",
-    "11111",
-    
+    "xx..xx..xx","xxAAxxAAxx",
+    "xx..xx..xx","xxAAxxAAxx",
+    "x........x","x/11%/11%x",
+    "1.........","1111111111",
+    "1.........","1111111111",
+  },
+
+  diagonals =
+  {
+    ".1","1.",".1","1."
   }
 },
 

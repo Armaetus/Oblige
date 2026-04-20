@@ -25,9 +25,9 @@ PREFABS.Decor_gtd_fireblu_wim_2 =
 
   height = 81,
 
-  z_fit = "top",
+  z_fit = nil,
 
-  bound_z2 = 80
+  bound_z2 = 81
 }
 
 PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
@@ -40,7 +40,7 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
   height = 129,
   size = 96,
 
-  z_fit = "top",
+  z_fit = nil,
 
   tex_CRATE3 = 
   {
@@ -49,7 +49,7 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
     CRATINY = 1
   },
 
-  bound_z2 = 128
+  bound_z2 = 129
 }
 
 PREFABS.Decor_gtd_fireblu_wim_3_box_with_fire_stuff =
