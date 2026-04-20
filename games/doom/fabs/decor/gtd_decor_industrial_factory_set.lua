@@ -27,7 +27,7 @@ PREFABS.Decor_gtd_fireblu_wim_2 =
 
   z_fit = "top",
 
-  bound_z2 = nil
+  bound_z2 = 80
 }
 
 PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
@@ -49,7 +49,7 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
     CRATINY = 1
   },
 
-  bound_z2 = nil
+  bound_z2 = 128
 }
 
 PREFABS.Decor_gtd_fireblu_wim_3_box_with_fire_stuff =
@@ -72,7 +72,9 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_fire_stuff =
     CRATE3 = 2,
     CRATE2 = 2,
     CRATINY = 1
-  }
+  },
+
+  bound_z2 = 128
 }
 
 PREFABS.Decor_gtd_fireblu_wim_4 =

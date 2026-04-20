@@ -4385,6 +4385,20 @@ GROW_DOOM2_ENTRY_CAGE_ALT =
   }
 },
 
+GROW_MM2_ =
+{
+  prob = 10,
+  skip_prob = 75,
+
+  structure =
+  {
+    "/111%",
+    "11111",
+    "11111",
+    
+  }
+},
+
 -- 3.57-style rules
 
 GROW_357_OPEN_ROOF_LIQUID =
@@ -13252,15 +13266,14 @@ GROW_3x_A =
 
   structure =
   {
-    "xx11xx","xx11xx",
-    "x....x","x/11%x",
-    "......","/1111%",
-    "..xx..","11xx11",
-    "..xx..","11xx11",
-    "......","111111",
-    "......","111111",
-    "..xx..","11xx11",
-    "..xx..","11xx11",
+    "xx....x","xx/11%x",
+    "x......","x/1111%",
+    "x..xx..","x11xx11",
+    "x..xx..","x11xx11",
+    "x......","x111111",
+    "x......","x111111",
+    "1..xx..","111xx11",
+    "1..xx..","111xx11",
   },
 
   diagonals =
@@ -13302,15 +13315,14 @@ GROW_3x_A_LIQUID =
 
   structure =
   {
-    "xx11xx","xx11xx",
-    "x....x","x/11%x",
-    "......","/1111%",
-    "......","11~~11",
-    "......","11~~11",
-    "......","111111",
-    "......","111111",
-    "......","11~~11",
-    "......","11~~11",
+    "xx....x","xx/11%x",
+    "x......","x/1111%",
+    "x......","x11~~11",
+    "x......","x11~~11",
+    "x......","x111111",
+    "x......","x111111",
+    "1......","111~~11",
+    "1......","111~~11",
   },
 
   diagonals =
@@ -13673,14 +13685,15 @@ GROW_3x_E_LIQUID =
 
   structure =
   {
-    "......1","1111111",
-    "......1","1111111",
-    "......x","11~~~~x",
-    "......x","1111~~x",
-    "......x","1111~~x",
-    "......x","11~~~~x",
-    "......x","111111x",
-    "......x","111111x",
+    "xxxx11","xxxx11",
+    "......","111111",
+    "......","111111",
+    "......","11~~~~",
+    "......","1111~~",
+    "......","1111~~",
+    "......","11~~~~",
+    "......","111111",
+    "......","111111",
   },
 },
 
@@ -15711,7 +15724,7 @@ GROW_SKULL_P1_NEW_AREA =
     "x.......x","x1A1A1A1x",
     "x.......x","x1111111x",
     "x.......x","x1111111x",
-    "xxx111xxx","xxx111xxx"
+    "x11xxxxxx","x11xxxxxx"
   },
 
   diagonals =
@@ -15743,7 +15756,7 @@ GROW_SKULL_P1_STEEPNESS =
     "x.......x","x1^1^1^1x",
     "x.......x","x1111111x",
     "x.......x","x1111111x",
-    "xxx111xxx","xxx111xxx"
+    "x11xxxxxx","x11xxxxxx"
   },
 
   diagonals =
@@ -15795,7 +15808,8 @@ GROW_X_SHIFTED =
   
   structure =
   {
-    "xxxx11xx..","xxxx11xx11",
+    "xxxx11xxxx","xxxx11xxxx",
+    "xxxx..xx..","xxxx11xx11",
     "xxxx..xx..","xxxx11xx11",
     "xxxx..x...","xxxx11x/11",
     "x.........","x/1111111/",
@@ -15821,7 +15835,8 @@ GROW_X_SHIFTED_NEW_AREA =
   
   structure =
   {
-    "xxxx11xx..","xxxx11xxAA",
+    "xxxx11xx..","xxxx11xx..",
+    "xxxx..xx..","xxxx11xxAA",
     "xxxx..xx..","xxxx11xxAA",
     "xxxx..x...","xxxx11x/AA",
     "x.........","x/AAAAAAA/",
@@ -16110,12 +16125,13 @@ GROW_HALF_C =
 
   structure =
   {
-    "x.......x","x/111111x",
-    "........1","/11111111",
-    "........1","111111111",
-    "........x","11111111x",
-    ".....xxxx","1111/xxxx",
-    "....xxxxx","1111xxxxx",
+    "x.......","x/111111",
+    "........","/1111111",
+    "........","11111111",
+    "........","11111111",
+    ".....xxx","1111/xxx",
+    "....xxxx","1111xxxx",
+    "xx11xxxx","xx11xxxx"
   },
 
   diagonals =
@@ -16134,13 +16150,13 @@ GROW_HALF_C_STAIR =
   structure =
   {
     "x.......x","x/111111x",
-    "........1","/11111111",
+    "........x","/1111111x",
     "........1","111111111",
-    "........x","11111111x",
+    "........1","111111111",
     ".....xxxx","1111/xxxx",
     "....xxxxx","vvvvxxxxx",
     "....xxxxx","AAAAxxxxx",
-    "....xxxxx","AAAAxxxxx",
+    "....xxxxx","AAAAxxxxx"
   },
 
   diagonals =
@@ -16158,7 +16174,7 @@ GROW_L =
 
   structure =
   {
-    "x11xxxxx","x11xxxxx",
+    "xx11xxxx","xx11xxxx",
     "....xxxx","1111xxxx",
     "....xxxx","1111xxxx",
     "....xxxx","1111xxxx",
@@ -16177,7 +16193,7 @@ GROW_L_STAIR =
 
   structure =
   {
-    "x11xxxxx","x11xxxxx",
+    "xx11xxxx","xx11xxxx",
     "....xxxx","1111xxxx",
     "....xxxx","1111xxxx",
     "....xxxx","1111xxxx",
@@ -16196,7 +16212,7 @@ GROW_L_STAIR_ALT =
 
   structure =
   {
-    "x11xxxxx","x11xxxxx",
+    "xx11xxxx","xx11xxxx",
     "....xxxx","1111xxxx",
     "....xxxx","1111xxxx",
     "....xxxx","vvvvxxxx",
@@ -16215,7 +16231,7 @@ GROW_T_STAIR =
 
   structure =
   {
-    "xxxxx11xxxxx","xxxxx11xxxxx",
+    "xxxx11xxxxxx","xxxx11xxxxxx",
     "xxxx....xxxx","xxxx1111xxxx",
     "xxxx....xxxx","xxxx1111xxxx",
     "xxxx....xxxx","xxxxvvvvxxxx",
@@ -16234,7 +16250,7 @@ GROW_T_STAIR_LIQUID =
 
   structure =
   {
-    "xxxxx11xxxxx","xxxxx11xxxxx",
+    "xxxx11xxxxxx","xxxx11xxxxxx",
     "xxxx....xxxx","xxxx1111xxxx",
     "xxxx....xxxx","xxxx1111xxxx",
     "xxxx....xxxx","xxxxvvvvxxxx",
@@ -16253,7 +16269,7 @@ GROW_T_STAIR_ALT =
 
   structure =
   {
-    "xxxxx11xxxxx","xxxxx11xxxxx",
+    "xxxx11xxxxxx","xxxx11xxxxxx",
     "xxxx....xxxx","xxxx1111xxxx",
     "xxxx....xxxx","xxxx1111xxxx",
     "xxxx....xxxx","xxxxvAAvxxxx",
