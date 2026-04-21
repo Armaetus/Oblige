@@ -1370,7 +1370,9 @@ DOOM.THEMES =
       gtd_wall_lit_h_window_tall_gray = 35,
       gtd_wall_lit_h_window_tall_brown = 15,
       --
-      gtd_fireblu_where_its_made = 50
+      gtd_fireblu_where_its_made = 50,
+      --
+      gtd_tech_barrier_tek = 50,
     },
 
     outdoor_wall_groups =
@@ -1897,7 +1899,9 @@ DOOM.THEMES =
       --
       gtd_furnace_water = 15,
       --
-      gtd_fireblu_where_its_made = 25
+      gtd_fireblu_where_its_made = 25,
+      --
+      gtd_tech_barrier_tek = 25
     },
 
     window_groups =

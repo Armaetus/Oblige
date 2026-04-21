@@ -156,3 +156,43 @@ PREFABS.Wall_tech_teklitecomp_blue_diag =
   tex_TEKWALL8 = "TEKWALLB",
   flat_TEK1 = "TEK4",
 }
+
+--
+--
+
+PREFABS.Wall_tech_barrier_tek1 =
+{
+  file   = "wall/gtd_wall_tech_teklitecomp_set.wad",
+  map    = "MAP11",
+
+  prob   = 50,
+
+  group = "gtd_tech_barrier_tek",
+
+  where  = "edge",
+  deep   = 16,
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit  = "top"
+}
+
+PREFABS.Wall_tech_barrier_tek2 =
+{
+  template = "Wall_tech_barrier_tek1",
+  map = "MAP12",
+
+  prob = 8,
+}
+
+PREFABS.Wall_tech_barrier_tek2 =
+{
+  template = "Wall_tech_barrier_tek1",
+  map = "MAP13",
+
+  where = "diagonal",
+
+  prob = 8,
+}
