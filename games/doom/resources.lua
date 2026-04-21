@@ -330,8 +330,8 @@ DOOM.RESOURCES.SKY_GEN_THEMES =
   {
     clouds =
     {
-      SKY_CLOUDS = 130,
-      BLUE_CLOUDS = 80,
+      SKY_CLOUDS = 40, --130
+      BLUE_CLOUDS = 50, --80
 
       WHITE_CLOUDS = 40, --80
       GREY_CLOUDS = 50, --100
@@ -370,8 +370,8 @@ DOOM.RESOURCES.SKY_GEN_THEMES =
   {
     clouds =
     {
-      SKY_CLOUDS = 130,
-      BLUE_CLOUDS = 80,
+      SKY_CLOUDS = 40, --130
+      BLUE_CLOUDS = 50, --80
 
       WHITE_CLOUDS = 40, --80
       GREY_CLOUDS = 50, --100
