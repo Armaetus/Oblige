@@ -15731,8 +15731,8 @@ GROW_CAKE =
   diagonals =
   {
     ".1","1.",".1","1.",".1","1.",
-    ".1","1.",
-    ".1","1.",
+              ".1","1.",
+              ".1","1.",
   }
 },
 
@@ -15759,6 +15759,72 @@ GROW_CAKE_STAIR =
     ".A","A.",".A","A.",".A","A.",
               ".A","A.",
               ".1","1.",
+  }
+},
+
+GROW_PIE =
+{
+  prob = 12,
+
+  skip_prob = 95,
+
+  structure =
+  {
+    "xx.....xx","xx/AAA%xx",
+    "x.......x","x/AAAAA%x",
+    ".........","/AA/1%AA%",
+    ".........","AA/111%AA",
+    ".........","AA11111AA",
+    ".........","AA%111/AA",
+    ".........","%AA%1/AA/",
+    "x.......x","x%AAAAA/x",
+    "xx.....xx","xx%AAA/xx",
+    "xxx11xxxx","xxx11xxxx",
+  },
+
+  diagonals =
+  {
+         ".A","A.",
+         ".A","A.",
+    ".A","A1","1A","A.",
+         "A1","1A",
+         "A1","1A",
+    ".A","A1","1A","A.",
+         ".A","A.",
+         ".A","A.",
+  }
+},
+
+GROW_PIE_SLICE =
+{
+  prob = 10,
+
+  skip_prob = 95,
+
+  structure =
+  {
+    "xxx....xx","xxxAAA%xx",
+    "xxx.....x","xxx%AAA%x",
+    "xxxx.....","xxxx1%AA%",
+    "..xx.....","A%xx11%AA",
+    ".........","AA11111AA",
+    ".........","AA%111/AA",
+    ".........","%AA%1/AA/",
+    "x.......x","x%AAAAA/x",
+    "xx.....xx","xx%AAA/xx",
+    "xxx11xxxx","xxx11xxxx",
+  },
+
+  diagonals =
+  {
+              "A.",
+         ".A","A.",
+              "1A","A.",
+    "A.",     "1A",
+         "A1","1A",
+    ".A","A1","1A","A.",
+         ".A","A.",
+         ".A","A.",
   }
 },
 
@@ -16468,6 +16534,8 @@ GROW_ARROW =
   prob = 4,
   prob = 85,
 
+  aversion = 0.25,
+
   structure =
   {
     "x....x","x/11%x",
@@ -16549,7 +16617,7 @@ GROW_ARROW_DOUBLE =
   prob = 3,
   prob = 80,
 
-  aversion = 0.25,
+  aversion = 0.1,
 
   structure =
   {
