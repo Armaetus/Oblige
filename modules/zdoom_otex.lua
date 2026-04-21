@@ -718,6 +718,52 @@ OTEX_MATERIAL_MANUAL_ASSIGNMENTS =
   OMRBLR95 = {t="OMRBLR95",f="OMRBLR44"}
 }
 
+-- table of too-colorful specific texture names
+OTEX_LIMITED_SAMPLES =
+{
+  "OHELLA13",
+  "OMRBLK43",
+}
+
+-- table of colorful texture groups
+OTEX_LIMITED_SAMPLES_SUB =
+{
+  -- BASE
+  "OBASEM",
+  "OBASEO",
+  "OBASEP",
+  "OBASEQ",
+  "OBASER",
+
+  "OSTARC",
+  "OSTARD",
+
+  -- HELL MARBLES
+  "OMRBLD",
+  "OMRBLK",
+  "OMRBLO",
+  "OMRBLR",
+  "OPALCB",
+  "OSPRTL",
+
+  -- CHROME
+  "OCHRMC",
+
+  -- PALACE
+  "OPALCA",
+  "OPALCB,"
+  "OPALCE",
+
+  -- CONS
+  "ONDSTB",
+  "ONDSTO",
+  "ONDSTP",
+
+  -- TECH
+  "TECHA",
+  "TECHB",
+}
+
 function OTEX_PROC_MODULE.setup(self)
   PARAM.OTEX_module_activated = true
   module_param_up(self)
@@ -907,7 +953,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   for i = 1, PARAM.float_otex_num_themes * 0.75 do
     for _,T in pairs(themes) do
       local grouping, room_theme = {}
-      local tab_pick, tex_pick, RT_name
+      local tab_pick, tex_pick, RT_name, tex_sub
 
       RT_name = T .. "_OTEX_cons_" .. i .. "_"
       room_theme =
@@ -922,8 +968,13 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
 
       tab_pick = rand.key_by_probs(group_pick_list[T].textures)
       for j = 1, 3 do
+        ::pick_cons_wall_again::
         tex_pick = rand.pick(resource_tab[tab_pick].textures)
         room_theme.walls[tex_pick] = 5
+
+        -- try again if picked a very colorful texture
+        tex_sub = tex_pick.sub(1,6)
+        if OTEX_LIMITED_SAMPLES_SUB[tex_sub] and rand.odds(75) then goto pick_cons_wall_again end
       end
       RT_name = RT_name .. tex_pick .. "_"
 
@@ -955,6 +1006,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     local RT_name = "any_OTEX_random_" .. i .. "_"
     local room_theme, tab_pick = {}
     local tex_pick
+    local tex_sub
 
     room_theme =
     {
@@ -966,9 +1018,12 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     room_theme.ceilings = {}
 
     tab_pick = rand.key_by_probs(group_pick_list["any"].textures)
+    ::pick_rand_wall_again::
     tex_pick = rand.pick(resource_tab[tab_pick].textures)
     room_theme.walls[tex_pick] = 5
     RT_name = RT_name .. tex_pick .. "_"
+    
+    if OTEX_LIMITED_SAMPLES_SUB[tex_sub] or rand.odds(75) then goto pick_rand_wall_again end
 
     tab_pick = rand.key_by_probs(group_pick_list["any"].flats)
     tex_pick = rand.pick(resource_tab[tab_pick].flats)
