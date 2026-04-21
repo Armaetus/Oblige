@@ -13264,31 +13264,6 @@ aux_GROW_E1M1 =
 
 -- [4x3_ALPHABET]
 
-
-GROW_3x_A =
-{
-  prob = 40,
-  skip_prob = 75,
-
-  structure =
-  {
-    "xx....x","xx/11%x",
-    "x......","x/1111%",
-    "x..xx..","x11xx11",
-    "x..xx..","x11xx11",
-    "x......","x111111",
-    "x......","x111111",
-    "1..xx..","111xx11",
-    "1..xx..","111xx11",
-  },
-
-  diagonals =
-  {
-    ".1","1.",
-    ".1","1.",
-  },
-},
-
 GROW_3x_A_STAIRS =
 {
   prob = 20,
@@ -13305,6 +13280,32 @@ GROW_3x_A_STAIRS =
     "......","AAAAAA",
     "..xx..","AAxxAA",
     "..xx..","AAxxAA",
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1.",
+  },
+},
+
+GROW_3x_A_STAIRS_EMPTY =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx11xx","xx11xx",
+    "x....x","x/11%x",
+    "......","/1111%",
+    "......","111111",
+    "......","vvAAvv",
+    "......","AAAAAA",
+    "......","AAAAAA",
+    "......","AA^^AA",
+    "......","AA11AA",
+    "......","AA11AA",
   },
 
   diagonals =
@@ -15707,7 +15708,59 @@ GROW_BOOK_STAIRS =
     "1.",".A",
     ".1","A.",
   },
-}
+},
+
+GROW_CAKE =
+{
+  prob = 12,
+
+  skip_prob = 95,
+
+  structure =
+  {
+    "xx..x..x..x","xx/%x/%x/%x",
+    "xx..x..x..x","xxAAxAAxAAx",
+    "x..........","x/11111111%",
+    "x..........","x1111111111",
+    "1..........","1AAAAAAAAAA",
+    "1..........","1AAAAAAAAAA",
+    "x..........","x1111111111",
+    "x..........","x%11111111/",
+  },
+
+  diagonals =
+  {
+    ".1","1.",".1","1.",".1","1.",
+    ".1","1.",
+    ".1","1.",
+  }
+},
+
+GROW_CAKE_STAIR =
+{
+  prob = 12,
+
+  skip_prob = 95,
+
+  structure =
+  {
+    "xx..x..x..x","xx/%x/%x/%x",
+    "xx..x..x..x","xxAAxAAxAAx",
+    "x..........","x/AAAAAAAA%",
+    "x..........","xAAAAAAAAAA",
+    "x..........","xA^^A^^A^^A",
+    "1..........","11111111111",
+    "1..........","11111111111",
+    "x..........","x%11111111/",
+  },
+
+  diagonals =
+  {
+    ".A","A.",".A","A.",".A","A.",
+              ".A","A.",
+              ".1","1.",
+  }
+},
 
 -- MSSP's rooms shaped like English alphabet letters. [LETTERS]
 
@@ -16412,7 +16465,7 @@ GROW_SHARP_LIQUID =
 
 GROW_ARROW =
 {
-  prob = 7,
+  prob = 4,
   prob = 85,
 
   structure =
@@ -16436,7 +16489,7 @@ GROW_ARROW =
 
 GROW_ARROW_FORK_NEW_AREA =
 {
-  prob = 6,
+  prob = 3,
   prob = 85,
 
   structure =
@@ -16455,14 +16508,14 @@ GROW_ARROW_FORK_NEW_AREA =
   {
     "A.",".1","1.",".A",
     ".A","A1","1A","A.",
-         ".1","1."
+         "A1","1A"
   }
 },
 
 
 GROW_ARROW_CHEVRON_NEW_AREA =
 {
-  prob = 5,
+  prob = 3,
   prob = 80,
 
   aversion = 0.25,
@@ -16493,7 +16546,7 @@ GROW_ARROW_CHEVRON_NEW_AREA =
 
 GROW_ARROW_DOUBLE =
 {
-  prob = 7,
+  prob = 3,
   prob = 80,
 
   aversion = 0.25,
