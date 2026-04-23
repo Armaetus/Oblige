@@ -787,6 +787,33 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     return tex
   end
 
+  local function pick_texture_with_filter(tex_group, pick, mode)
+    local tex
+    local filtered_color_texes = {}
+
+    tex = pick
+
+    -- special handling for high-saturation colored textures
+    if OTEX_LIMITED_SAMPLES_SUB[tex.sub(1,6)] then
+      -- create table of colored textures to pick from
+      for _,T in pairs(tex_group) do
+        if mode == "match_color" then
+          if T.sub(1,6) == tex.sub(1,6) then
+            table.insert(filtered_color_texes, T)
+          end
+        else
+          if T.sub(1,6) ~= tex.sub(1,6) then
+            table.insert(filtered_color_texes, T)
+          end
+        end
+      end
+
+      tex = rand.pick(filtered_color_texes)
+    end
+
+    return tex
+  end
+
   local function check_elem(t, v)
     for _,val in pairs(t) do
       if val == v then 
@@ -879,14 +906,14 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
         OTEX_MATERIALS[T]=
         {
           t=T,
-          f=rand.pick(resource_group.flats)
+          f=pick_texture_with_filter(resource_group.flats, T, "match_color")
         }
       end
       for _,F in pairs(resource_group.flats) do
         OTEX_MATERIALS[F]=
         {
           f=F,
-          t=rand.pick(resource_group.textures)
+          t=pick_texture_with_filter(resource_group.textures, F, "match_color")
         }
       end
     end
