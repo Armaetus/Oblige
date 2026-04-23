@@ -16647,7 +16647,6 @@ GROW_ARROW_CHEVRON_NEW_AREA =
 
   structure =
   {
-    "xx..xx","xx/%xx",
     "x....x","x/AA%x",
     "......","/A/%A%",
     ".....x","A/11%A",
@@ -16671,7 +16670,7 @@ GROW_ARROW_CHEVRON_NEW_AREA =
 
 GROW_ARROW_DOUBLE =
 {
-  prob = 3,
+  prob = 2,
   prob = 80,
 
   aversion = 0.1,
