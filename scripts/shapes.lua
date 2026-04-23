@@ -3127,6 +3127,35 @@ AUX_LIQUID_3 =
 -- GROW RULES EXPANDED --
 -------------------------
 
+GROW_STAIR_2x2 =
+{
+  prob = 15,
+
+  structure =
+  {
+    "..","AA",
+    "..","AA",
+    "..","^^",
+    "..","^^",
+    "11","11",
+  }
+},
+
+GROW_STAIR_2x3 =
+{
+  prob = 25,
+
+  structure =
+  {
+    "...","AAA",
+    "...","AAA",
+    "...","AAA",
+    "...","^^^",
+    "...","^^^",
+    "11.","111",
+  }
+},
+
 GROW_CURVE_3 =
 {
   prob = 25,
@@ -3254,12 +3283,12 @@ GROW_STAIR_5_MIRRORED_A =
 
   structure =
   {
-    "11...","11>AA",
-    "11...","11>AA",
-    ".....","vvAAA",
-    ".....","AAA^^",
-    ".....","AA<11",
-    ".....","AA<11"
+    "1......","111>AAA",
+    "1......","111>AAA",
+    "x......","xvvAAAA",
+    "x......","xAAAA^^",
+    "x......","xAAA<11",
+    "x......","xAAA<11"
   }
 },
 
@@ -3270,12 +3299,12 @@ GROW_STAIR_5_MIRRORED_B =
 
   structure =
   {
-    "11....","11>>AA",
-    "11....","111AAA",
-    "......","v1/AA^",
-    "......","vAA/1^",
-    "......","AAA111",
-    "......","AA<<11"
+    "1......","111>>AA",
+    "1......","1111AAA",
+    "x......","xv1/AA^",
+    "x......","xvAA/1^",
+    "x......","xAAA111",
+    "x......","xAA<<11"
   },
 
   diagonals =
@@ -3789,7 +3818,7 @@ GROW_COLONNADE_510_FANCY_CEILING_HORSESHOE_STAIRS =
 
 GROW_COLONNADE_PERCH =
 {
-  prob = 20,
+  prob = 30,
   skip_prob = 75,
 
   structure =
@@ -3808,8 +3837,8 @@ GROW_COLONNADE_PERCH =
 
 GROW_COLONNADE_PERCH_SNIP0R =
 {
-  prob = 25,
-  skip_prob = 80,
+  prob = 30,
+  skip_prob = 75,
 
   structure =
   {
@@ -3822,6 +3851,33 @@ GROW_COLONNADE_PERCH_SNIP0R =
     "............","1#1>AAAA<1#1",
     "............","1111AAAA1111",
     "xxxxxxxxxx11","xxxxxxxxxx11",
+  }
+},
+
+GROW_COLONNADE_PERCH_SNIP0R_V2 =
+{
+  prob = 30,
+  skip_prob = 75,
+
+  structure =
+  {
+    "............","111>AAAA<111",
+    "............","111>AAAA<111",
+    "............","1111AAAA1111",
+    "............","1111AAAA1111",
+    "............","1111%AA/1111",
+    ".xx......xx.","1xx11AA11xx1",
+    ".xx......xx.","1xx11AA11xx1",
+    "............","1111/AA%1111",
+    "............","1111AAAA1111",
+    "............","1111AAAA1111",
+    "xxxxxxxxxx11","xxxxxxxxxx11",
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "1A","A1"
   }
 },
 
@@ -15447,6 +15503,7 @@ GROW_HALF_EIGHT =
     "......","/1111%",
     "......","11/%11",
     "......","11##11",
+    "......","111111",
     "......","%1111/",
     "xx11xx","xx11xx"
   },

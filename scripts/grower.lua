@@ -1736,9 +1736,9 @@ function Grower_grammatical_pass(SEEDS, LEVEL, R, pass, apply_num, stop_prob,
     if S.area then
       if S.area.room ~= R then
         gui.printf("seed does not belong to the same room:\n")
-        gui.printf(table.tostr(S.area .. "\n", 1))
-        gui.printf(table.tostr(S.area.room .. "\n", 1))
-        gui.printf(table.tostr(R .. "\n", 1))
+        gui.printf(table.tostr(S.area, 1) .. "\n")
+        gui.printf(table.tostr(S.area.room, 1) .. "\n")
+        gui.printf(table.tostr(R, 1) .. "\n")
       end
       assert(S.area.room == R)
       unset_seed(S)
