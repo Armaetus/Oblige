@@ -2655,11 +2655,6 @@ brightmap texture SD_TWDL3
   map SDTDL3BR
 }
 
-brightmap texture SD_TWLW2
-{
-  map STWLW2BR
-}
-
 brightmap texture SD_TWLW3
 {
   map STWLW3BR
@@ -2881,11 +2876,6 @@ brightmap texture SDIPHWL5
   map SDIPHBR5
 }
 
-brightmap texture SDIPHWL7
-{
-  map SDIPHBR7
-}
-
 brightmap texture SDIPHWL8
 {
   map SDIPHBR8
@@ -2894,11 +2884,6 @@ brightmap texture SDIPHWL8
 brightmap texture SDIPHWL9
 {
   map SDIPHBR9
-}
-
-brightmap texture SDIPHWLA
-{
-  map SDIPHBRA
 }
 ]]
 
