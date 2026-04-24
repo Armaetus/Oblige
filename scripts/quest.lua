@@ -3094,7 +3094,6 @@ function Quest_room_themes(LEVEL)
 
       -- Empty seen wall groups if all options exhausted
       if table.empty(building_tab) then
-        SEEN_WALL_GROUPS = nil
         SEEN_WALL_GROUPS = {}
         the_wall_group_tab = table.copy(LEVEL.theme.wall_groups)
       end
