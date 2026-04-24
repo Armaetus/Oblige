@@ -49,3 +49,24 @@ PREFABS.Pic_gtd_teklite_blue =
   tex_TEKWALL8 = "TEKWALLB",
   tex_COMPRED = "COMPBLUE",
 }
+
+--
+
+PREFABS.Pic_gtd_barrier_tek_1 =
+{
+  file   = "wall/gtd_wall_tech_teklitecomp_set.wad",
+  map    = "MAP01",
+
+  prob   = 50,
+
+  group = "gtd_tech_barrier_tek",
+
+  where  = "picture",
+  deep   = 16,
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit  = { 86,87 },
+}
