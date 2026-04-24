@@ -74,7 +74,7 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_fire_stuff =
     CRATINY = 1
   },
 
-  bound_z2 = 128
+  bound_z2 = nil
 }
 
 PREFABS.Decor_gtd_fireblu_wim_4 =
@@ -105,7 +105,7 @@ PREFABS.Decor_gtd_fireblu_wim_4_fire =
   z_fit = "top",
 
   flat_CEIL4_2 = "FLAT5_3",
-  tex_COMPBLUE = "ROCKRED"
+  tex_COMPBLUE = "ROCKRED1"
 
   bound_z2 = nil
 }
