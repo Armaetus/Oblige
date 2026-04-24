@@ -15793,6 +15793,33 @@ GROW_CAKE =
   }
 },
 
+GROW_CAKE_LIQUID =
+{
+  prob = 12,
+
+  skip_prob = 95,
+
+  structure =
+  {
+    "xx..x..x..x","xx/%x/%x/%x",
+    "xx..x..x..x","xx%/x%/x%/x",
+    "x..........","x/%/1%/1%/%",
+    "x..........","x1111111111",
+    "1..........","1AAAAAAAAAA",
+    "1..........","1AAAAAAAAAA",
+    "x..........","x1111111111",
+    "x..........","x%11111111/",
+  },
+
+  diagonals =
+  {
+         ".~","~.",".~","~.",".~","~.",
+         "A~","~A","A~","~A","A~","~A",
+    ".1","1A","A1","1A","A1","1A","A1","1."
+              ".1","1.",
+  }
+},
+
 GROW_CAKE_STAIR =
 {
   prob = 12,
@@ -16661,7 +16688,6 @@ GROW_ARROW_CHEVRON_NEW_AREA =
   diagonals =
   {
          ".A","A.",
-         ".A","A.",
     ".A","A1","1A","A.",
          "A1","1A",
          ".1","1.",
@@ -16670,8 +16696,8 @@ GROW_ARROW_CHEVRON_NEW_AREA =
 
 GROW_ARROW_DOUBLE =
 {
-  prob = 2,
-  prob = 80,
+  prob = 1,
+  prob = 90,
 
   aversion = 0.1,
 
