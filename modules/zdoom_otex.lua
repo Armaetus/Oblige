@@ -793,23 +793,20 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
 
     tex = pick
 
-    -- special handling for high-saturation colored textures
-    if OTEX_LIMITED_SAMPLES_SUB[tex.sub(1,6)] then
-      -- create table of colored textures to pick from
-      for _,T in pairs(tex_group) do
-        if mode == "match_color" then
-          if T.sub(1,6) == tex.sub(1,6) then
-            table.insert(filtered_color_texes, T)
-          end
-        else
-          if T.sub(1,6) ~= tex.sub(1,6) then
-            table.insert(filtered_color_texes, T)
-          end
+    -- create table of colored textures to pick from
+    for _,T in pairs(tex_group) do
+      if mode == "match_color" then
+        if T.sub(1,6) == tex.sub(1,6) then
+          table.insert(filtered_color_texes, T)
+        end
+      else
+        if T.sub(1,6) ~= tex.sub(1,6) then
+          table.insert(filtered_color_texes, T)
         end
       end
-
-      tex = rand.pick(filtered_color_texes)
     end
+
+    tex = rand.pick(filtered_color_texes)
 
     return tex
   end
