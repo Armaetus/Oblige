@@ -3028,27 +3028,25 @@ function Quest_room_themes(LEVEL)
 
     local function choose_wall_groups()
       local wg_tab = {}
-      local max_room_themes = math.floor(PARAM.float_max_room_themes or 2)
-  
-      for _,T in pairs(GAME.THEMES) do
-        local iterations
+      local max_wgs = math.floor(PARAM.float_max_indoor_wall_groups or 2)
+
+      for _, T in pairs(GAME.THEMES) do
         local theme_name = T.name
 
-        if theme_name == "exclusions" 
-        or theme_name == "DEFAULTS" then
-          -- do nothing
-        else
+        if theme_name ~= "exclusions" and theme_name ~= "DEFAULTS" then
+          local source = T.wall_groups
+          local pool = table.copy(source)
 
           wg_tab[theme_name] = {}
-          for iterations = 1, max_room_themes+1 do
-            local pick_tab = table.copy(GAME.THEMES[theme_name].wall_groups)
-            local pick = rand.key_by_probs(pick_tab)
 
-            if wg_tab[theme_name] and wg_tab[theme_name][pick] then
-              iterations = iterations - 1
-            end
+          local i = 1
+          while i <= max_wgs and not table.empty(pool) do
+            local pick = rand.key_by_probs(pool)
 
-            wg_tab[theme_name][pick] = iterations * 2
+            wg_tab[theme_name][pick] = i * 2
+
+            pool[pick] = nil
+            i = i + 1
           end
         end
       end
@@ -3069,7 +3067,6 @@ function Quest_room_themes(LEVEL)
 
       -- Empty seen room themes if all options exhausted
       if table.empty(building_tab) then
-        SEEN_ROOM_THEMES = nil
         SEEN_ROOM_THEMES = {}
         building_tab = collect_usable_themes("building")
       end
@@ -3088,7 +3085,7 @@ function Quest_room_themes(LEVEL)
 
     local the_wall_group_tab = table.copy(LEVEL.theme.wall_groups)
 
-    if not PARAM.bool_avoid_wall_group_reuse or (PARAM.bool_avoid_wall_group_reuse and PARAM.bool_avoid_wall_group_reuse == 1) then
+    if not PARAM.bool_avoid_room_theme_reuse or PARAM.bool_avoid_room_theme_reuse == 1 then
       for group,odds in pairs(the_wall_group_tab) do
         if table.has_elem(SEEN_WALL_GROUPS, group) then
           the_wall_group_tab[group] = nil
@@ -3110,12 +3107,6 @@ function Quest_room_themes(LEVEL)
       end
     end
 
-    -- add prob bias for picked wall groups
-    local prob_modifier = 2
-    for set,prob in pairs(the_wall_group_tab) do
-      prob_modifier = prob_modifier / 2
-      the_wall_group_tab[set] = prob_modifier
-    end
     the_wall_group_tab = choose_wall_groups()
 
     for _,R in pairs(LEVEL.rooms) do
