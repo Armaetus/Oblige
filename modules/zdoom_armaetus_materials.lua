@@ -2885,6 +2885,11 @@ brightmap texture SDSLDWL1
 {
   map SDSLDBR1
 }
+
+brightmap texture SDSLDWL7
+{
+  map SDSLDBR7
+}
 ]]
 
 -- aliases - when you're too lazy to write down wall and flat names in every
