@@ -4,7 +4,7 @@
 --
 --
 --  Copyright (C) 2006-2017 Andrew Apted
---  Copyright (C) 2019-2023 MsrSgtShooterPerson
+--  Copyright (C) 2019-2026 MsrSgtShooterPerson
 --
 --  This program is free software; you can redistribute it and/or
 --  modify it under the terms of the GNU General Public License
@@ -768,7 +768,7 @@ function ob_read_all_config(need_full, log_only)
      need_full = false
   end
 
-  do_line("-- Obsidian (C) 2018-2023")
+  do_line("-- Obsidian (C) 2018-2026")
   do_line("-- MsrSgtShooterPerson")
   do_line("-- Reisal")
   do_line("-- Garrett")
