@@ -887,14 +887,12 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     end
   end
 
-  -- direct removals
+  --[[ direct removals
   for theme_group,_ in pairs(OTEX_DIRECT_REMOVALS) do
     for img_group,_ in pairs(OTEX_DIRECT_REMOVALS[theme_group]) do
-      for _,tex in pairs(OTEX_DIRECT_REMOVALS[theme_group][img_group]) do
-        table.kill_elem(resource_tab[theme_group][img_group], tex)
-      end
+      resource_tab[theme_group][img_group] = nil
     end
-  end
+  end]]
 
   -- create material mappings
   for group_name,resource_group in pairs(resource_tab) do
