@@ -718,11 +718,95 @@ OTEX_MATERIAL_MANUAL_ASSIGNMENTS =
   OMRBLR95 = {t="OMRBLR95",f="OMRBLR44"}
 }
 
+OTEX_SANE_FLOORS =
+{
+  all =
+  {
+    "DIAG",
+    "1DMD",
+    "2DMD",  
+    "3DMD",  
+    "4DMD",
+    "5DMD",  
+    "8DMD",
+    "9DMD",
+    "BSKT",
+    "DIAG",
+    "DMND",  
+    "GRBL",
+    "NMLM",
+    "PAVE",
+    "PENT",
+    "PLUS", 
+    "QSLP",
+    "TL08",
+    "TL16",
+    "TL32",    
+    "TLMX",  
+    "TRHX",  
+    "TMPL"  
+  },
+
+  industrial =
+  {
+    "GRAT",
+  },
+
+  gothic =
+  {
+    "CBBL",
+    "DMUD",
+    "FNCY",
+    "HERR",  
+  }
+--[[
+  "DIRT",
+  "GRSS",  
+  "GRVL",
+  "LLLL",
+  "MRLT",  
+  "ROOF",  
+  "SNOW",  
+  "SAND",]]
+}
+
 -- table of too-colorful specific texture names
 OTEX_LIMITED_SAMPLES =
 {
   "OHELLA13",
   "OMRBLK43",
+
+  -- specific floors
+  "O1DMDA05",
+  "O1DMDA06",
+  "O1DMDA07",
+  "O8DMDA12",
+  "O8DMDA13",
+  "O9DMDA01",
+
+  "OFNCYA21",
+  "OFNCYA22",
+  "OFNCYA23",
+  "OFNCYA24",
+
+  "OFNCYA31",
+  "OFNCYA32",
+  "OFNCYA33",
+  "OFNCYA34",
+
+  "OPLUSB08",
+  "OPLUSB09",
+
+  "OTL08A11",
+  "OTL16B11",
+
+  "OTRHXD06",
+  "OTRHXD07",
+  "OTRHXD08",
+
+  "OTRHXE05",
+  "OTRHXE06",
+  "OTRHXE07",
 }
 
 -- table of colorful texture groups
@@ -785,6 +869,28 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     end
 
     return tex
+  end
+
+  local function otex_match_theme(theme1, theme2)
+    if theme1 == "all" or theme2 == "all" then return true end
+    if theme1 == theme2 then return true end
+
+    if theme1 == "industrial" then
+      if theme2 == "tech" then return true end
+      if theme2 == "urban" then return true end
+    end
+
+    if theme1 == "gothic" then
+      if theme2 == "urban" then return true end
+      if theme2 == "hell" then return true end
+    end
+
+    if theme1 == "deimos" then
+      if theme2 == "tech" then return true end
+      if theme2 == "hell" then return true end
+    end
+
+    return false
   end
 
   local function pick_texture_with_filter(tex_group, pick, mode)
@@ -876,14 +982,24 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     end
   end
 
-  -- special handling for DMD floors
+  -- special handling for floors without corresponding group textures
+  local generic_floor_groups = {}
+  for _,sane_floor_themes in pairs(OTEX_SANE_FLOORS) do
+    for _,group in pairs(sane_floor_themes) do
+      table.insert(generic_floor_groups, group)
+    end
+  end
+
+  -- for now, all generic floors are assigned to all themes
+  -- should be upgraded to distribute into appropriate themes later
   local generic_floors_list = {}
-  for G,_ in pairs(resource_tab) do
-    if string.find(G, "DMD") then
-      for _,T in pairs(resource_tab[G].flats) do
-        local prob = table.size(resource_tab[G].flats)
-        generic_floors_list[T] = prob
+  for _,G in pairs(generic_floor_groups) do
+    for _,T in pairs(resource_tab[G].flats) do
+      local prob = table.size(resource_tab[G].flats)
+      if OTEX_LIMITED_SAMPLES[T] then
+        prob = math.floor(prob * 0.75)
       end
+      generic_floors_list[T] = prob
     end
   end
 
@@ -913,17 +1029,19 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       end
     end
 
+    -- handling for groups that have textures but no flats, will use generic floors instead
     if resource_group.has_textures and
     not resource_group.has_flats then
       for _,T in pairs(resource_group.textures) do
         OTEX_MATERIALS[T]=
         {
           t=T,
-          f="CEIL5_2"
+          f=rand.key_by_probs(generic_floors_list)
         }
       end
     end
 
+    -- handling for groups with flats but no textures
     if resource_group.has_flats and
     not resource_group.has_textures then
       for _,F in pairs(resource_group.flats) do
@@ -950,7 +1068,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       f=M.f
     }
   end
- 
+
   -- resource_tab exclusions
   for k,v in pairs(OTEX_EXCLUSIONS) do
     if v == "textures" then
