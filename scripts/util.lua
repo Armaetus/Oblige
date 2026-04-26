@@ -766,7 +766,7 @@ function rand.index_by_probs(p)
   -- each element in the table is a probability.
   -- returns a random index based on the probabilities
   -- (e.g. the highest value is returned more often).
-  assert(#p > 0)
+  assert(#p > 0, "index_by_probs: table is empty")
 
   local total = 0
   for _,prob in ipairs(p) do

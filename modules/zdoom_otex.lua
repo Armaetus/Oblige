@@ -722,7 +722,6 @@ OTEX_SANE_FLOORS =
 {
   all =
   {
-    "DIAG",
     "1DMD",
     "2DMD",  
     "3DMD",  
@@ -844,8 +843,8 @@ OTEX_LIMITED_SAMPLES_SUB =
   "ONDSTP",
 
   -- TECH
-  "TECHA",
-  "TECHB",
+  "OTECHA",
+  "OTECHB",
 }
 
 function OTEX_PROC_MODULE.setup(self)
@@ -858,37 +857,32 @@ end
 function OTEX_PROC_MODULE.synthesize_procedural_themes()
   local resource_tab = {}
 
-  local function pick_unique_texture(table, tex_group, total_tries)
-    local tex
-    local tries = 0
+  local function otex_match_theme(comp_theme, base_theme)
+    if comp_theme == "all" or base_theme == "all" then return true end
+    if comp_theme == base_theme then return true end
 
-    tex = rand.pick(tex_group)
-    while not table[tex] and tries < (total_tries or 5) do
-      tex = rand.pick(tex_group)
-      tries = tries + 1
+    if comp_theme == "industrial" then
+      if base_theme == "tech" then return true end
+      if base_theme == "urban" then return true end
     end
 
-    return tex
+    if comp_theme == "gothic" then
+      if base_theme == "urban" then return true end
+      if base_theme == "hell" then return true end
+    end
+
+    if comp_theme == "deimos" then
+      if base_theme == "tech" then return true end
+      if base_theme == "hell" then return true end
+    end
+
+    return false
   end
 
-  local function otex_match_theme(theme1, theme2)
-    if theme1 == "all" or theme2 == "all" then return true end
-    if theme1 == theme2 then return true end
+  local function tex_is_colorful(tex)
+    if OTEX_LIMITED_SAMPLES[tex] then return true end
 
-    if theme1 == "industrial" then
-      if theme2 == "tech" then return true end
-      if theme2 == "urban" then return true end
-    end
-
-    if theme1 == "gothic" then
-      if theme2 == "urban" then return true end
-      if theme2 == "hell" then return true end
-    end
-
-    if theme1 == "deimos" then
-      if theme2 == "tech" then return true end
-      if theme2 == "hell" then return true end
-    end
+    if OTEX_LIMITED_SAMPLES_SUB[tex.sub(1,6)] then return true end
 
     return false
   end
@@ -902,19 +896,53 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     -- create table of colored textures to pick from
     for _,T in pairs(tex_group) do
       if mode == "match_color" then
-        if T.sub(1,6) == tex.sub(1,6) then
+        if T.sub(2,6) == tex.sub(2,6) then
           table.insert(filtered_color_texes, T)
         end
       else
-        if T.sub(1,6) ~= tex.sub(1,6) then
+        if T.sub(2,6) ~= tex.sub(2,6) then
           table.insert(filtered_color_texes, T)
         end
       end
     end
 
-    tex = rand.pick(filtered_color_texes)
+    if not table.empty(filtered_color_texes) then
+      tex = rand.pick(filtered_color_texes)
+    end
 
     return tex
+  end
+
+  local function pick_generic_flat(theme, floors)
+    local tex_groups = {}
+    local flat_themes = {}
+    local tex_list = {}
+
+    -- gather available themes
+    for k,_ in pairs(OTEX_SANE_FLOORS) do
+      if otex_match_theme(k, theme) then
+        table.insert(flat_themes, k)
+      end
+    end
+
+    -- gather groups
+    for _,T in pairs(flat_themes) do
+      for _,G in pairs(OTEX_SANE_FLOORS[T]) do
+        table.insert(tex_groups, G)
+      end
+    end
+    local group_pick = rand.pick(tex_groups)
+
+    -- pick a texture from generic_floors based on group limit
+    for tex, prob in pairs(floors) do
+      if string.sub(tex,2,5) == group_pick then
+        tex_list[tex] = prob
+      end
+    end
+
+    assert(not table.empty(tex_list), "no textures found for theme")
+    
+    return rand.key_by_probs(tex_list)
   end
 
   local function check_elem(t, v)
@@ -930,7 +958,6 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   table.name_up(resource_tab)
 
   -- create pick list
-  local validity_list = {}
   local group_pick_list = {
     tech = {textures = {}, flats = {}},
     urban = {textures = {}, flats = {}},
@@ -939,6 +966,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   }
   local av_themes = {"hell","urban","tech","any"}
 
+  -- associate Doom themes with OTEX texture groups
   for group,_ in pairs(resource_tab) do
     for _,theme in pairs(av_themes) do
 
@@ -1046,10 +1074,15 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     not resource_group.has_textures then
       for _,F in pairs(resource_group.flats) do
         local side_tex, group_pick
-        -- hack fix to assign DMD flats a side texture rather than just a default
+
+        -- hack fix to assign flats-only groups a side texture rather than just a default
         if not OTEX_MATERIALS[F] then
           group_pick = rand.key_by_probs(group_pick_list["urban"].textures)
+          ::pick_wall_for_lone_flats_again::
           side_tex = rand.pick(resource_tab[group_pick].textures)
+          if tex_is_colorful(side_tex) and rand.odds(75) then
+            goto pick_wall_for_lone_flats_again
+          end
         end
         OTEX_MATERIALS[F] =
         {
@@ -1106,6 +1139,8 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       room_theme.floors = {}
       room_theme.ceilings = {}
 
+      -- pick walls
+  
       tab_pick = rand.key_by_probs(group_pick_list[T].textures)
       for j = 1, 3 do
         ::pick_cons_wall_again::
@@ -1118,20 +1153,32 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       end
       RT_name = RT_name .. tex_pick .. "_"
 
-      if rand.odds(25) or resource_tab[tab_pick].has_flats == false then
-        tab_pick = rand.key_by_probs(group_pick_list[T].flats)
-      end
-      for j = 1, 3 do
-        tex_pick = rand.pick(resource_tab[tab_pick].flats)
-        room_theme.floors[tex_pick] = 5
-      end
-      RT_name = RT_name .. tex_pick .. "_"
+      -- pick floors
 
       if rand.odds(25) or resource_tab[tab_pick].has_flats == false then
         tab_pick = rand.key_by_probs(group_pick_list[T].flats)
       end
       for j = 1, 3 do
-        tex_pick = rand.pick(resource_tab[tab_pick].flats)
+        if rand.odds(66) then
+          tex_pick = rand.pick(resource_tab[tab_pick].flats)
+        else
+          tex_pick = pick_generic_flat(T, generic_floors_list)
+        end
+        room_theme.floors[tex_pick] = 5
+      end
+      RT_name = RT_name .. tex_pick .. "_"
+
+      -- pick ceilings
+  
+      if rand.odds(25) or resource_tab[tab_pick].has_flats == false then
+        tab_pick = rand.key_by_probs(group_pick_list[T].flats)
+      end
+      for j = 1, 3 do
+        if rand.odds(66) then
+          tex_pick = rand.pick(resource_tab[tab_pick].flats)
+        else
+          tex_pick = pick_generic_flat(T, generic_floors_list)
+        end
         room_theme.ceilings[tex_pick] = 5
       end
       RT_name = RT_name .. tex_pick
@@ -1157,6 +1204,8 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     room_theme.floors = {}
     room_theme.ceilings = {}
 
+    -- pick walls
+
     tab_pick = rand.key_by_probs(group_pick_list["any"].textures)
     ::pick_rand_wall_again::
     tex_pick = rand.pick(resource_tab[tab_pick].textures)
@@ -1165,13 +1214,23 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     
     if OTEX_LIMITED_SAMPLES_SUB[tex_sub] or rand.odds(75) then goto pick_rand_wall_again end
 
+    -- pick floors
     tab_pick = rand.key_by_probs(group_pick_list["any"].flats)
-    tex_pick = rand.pick(resource_tab[tab_pick].flats)
+    if rand.odds(66) then
+      tex_pick = rand.pick(resource_tab[tab_pick].flats)
+    else
+      tex_pick = pick_generic_flat(T, generic_floors_list)
+    end
     room_theme.floors[tex_pick] = 5
     RT_name = RT_name .. tex_pick .. "_"
 
+    -- pick ceilings
     tab_pick = rand.key_by_probs(group_pick_list["any"].flats)
-    tex_pick = rand.pick(resource_tab[tab_pick].flats)
+    if rand.odds(66) then
+      tex_pick = rand.pick(resource_tab[tab_pick].flats)
+    else
+      tex_pick = pick_generic_flat(T, generic_floors_list)
+    end
     room_theme.ceilings[tex_pick] = 5
     RT_name = RT_name .. tex_pick
 
