@@ -896,11 +896,11 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     -- create table of colored textures to pick from
     for _,T in pairs(tex_group) do
       if mode == "match_color" then
-        if T.sub(2,6) == tex.sub(2,6) then
+        if string.sub(T,2,6) == tex.sub(2,6) then
           table.insert(filtered_color_texes, T)
         end
       else
-        if T.sub(2,6) ~= tex.sub(2,6) then
+        if string.sub(T,2,6) ~= tex.sub(2,6) then
           table.insert(filtered_color_texes, T)
         end
       end
@@ -1031,12 +1031,12 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     end
   end
 
-  --[[ direct removals
-  for theme_group,_ in pairs(OTEX_DIRECT_REMOVALS) do
-    for img_group,_ in pairs(OTEX_DIRECT_REMOVALS[theme_group]) do
-      resource_tab[theme_group][img_group] = nil
+  -- direct removals
+  for theme_name,theme_tab in pairs(OTEX_DIRECT_REMOVALS) do
+    for group_name,tex in pairs(theme_tab.textures) do
+      resource_tab[theme_name][tex] = nil
     end
-  end]]
+  end
 
   -- create material mappings
   for group_name,resource_group in pairs(resource_tab) do
@@ -1337,9 +1337,8 @@ OB_MODULES["otex_proc_module"] =
   },
 
   tooltip = _("If enabled, generates room themes using OTEX based on a resource table. ".. 
-  "OTEX WAD (not pk3 version) must be manually loaded in the sourceport. " ..
-  "Includes textures and flats only, no patches.\n\n" ..
-  "Currently does not make any kind of sensibly curated room themes."),
+  "OTEX WAD (not pk3 version) must be manually loaded in the sourceport.\n\n" ..
+  "Tries to use all textures and flats as much as possible organized into room themes."),
 
   options =
   {
