@@ -887,7 +887,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     return false
   end
 
-  local function pick_texture_with_filter(tex_group, pick, mode)
+  local function pick_texture_with_filter(tex_group, pick, mode, fallback_group)
     local tex
     local filtered_color_texes = {}
 
@@ -908,6 +908,8 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
 
     if not table.empty(filtered_color_texes) then
       tex = rand.pick(filtered_color_texes)
+    else
+      tex = rand.key_by_probs(fallback_group)
     end
 
     return tex
@@ -1045,14 +1047,14 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
         OTEX_MATERIALS[T]=
         {
           t=T,
-          f=pick_texture_with_filter(resource_group.flats, T, "match_color")
+          f=pick_texture_with_filter(resource_group.flats, T, "match_color", generic_floors_list)
         }
       end
       for _,F in pairs(resource_group.flats) do
         OTEX_MATERIALS[F]=
         {
           f=F,
-          t=pick_texture_with_filter(resource_group.textures, F, "match_color")
+          t=pick_texture_with_filter(resource_group.textures, F, "match_color", generic_floors_list)
         }
       end
     end
