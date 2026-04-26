@@ -16,12 +16,14 @@ PREFABS.Item_gtd_closet_simple_1 =
 
   tex_MODWALL1 =
   {
-    MODWALL = 1,
+    MODWALL1 = 1,
     BROWNPIP = 1,
     CEMENT9 = 1,
     PIPES = 1,
     PIPEWAL2 = 1,
-    STONE1 = 1,
+    STONE = 1,
+    STONE2 = 1,
+    STONE3 = 1,
     TEKWALL1 = 1,
     TEKWALL4 = 1
   },
