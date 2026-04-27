@@ -1036,7 +1036,9 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   -- direct removals
   for theme_name,theme_tab in pairs(OTEX_DIRECT_REMOVALS) do
     for group_name,tex in pairs(theme_tab.textures) do
-      resource_tab[theme_name][tex] = nil
+      --error(theme_name .. " " .. tex .. " BALLS!")
+      resource_tab[theme_name].flats[tex] = nil
+      resource_tab[theme_name].textures[tex] = nil
     end
   end
 
