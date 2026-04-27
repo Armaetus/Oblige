@@ -509,8 +509,8 @@ function ZDOOM_SPECIALS.do_special_stuff()
     end
 
     local fog_color_line = '  fade = "' .. fog_color .. '"\n'
-
     local fog_intensity = "48"
+    local fog_intensity_sky = "48"
 
     -- resolve fog intensity
 
@@ -518,6 +518,13 @@ function ZDOOM_SPECIALS.do_special_stuff()
       fog_intensity = "" .. rand.irange(16,368)
     else
       fog_intensity = "" .. ZDOOM_SPECIALS.FOG_INTENSITY[PARAM.fog_intensity]
+    end
+    fog_intensity_sky = fog_intensity
+
+    -- if fog is black, boost fog_intensity a bit
+    if fog_color == "01 01 01" then
+      fog_intensity = math.clamp(0, fog_intensity + 128, 510)
+      fog_intensity_sky = 0 -- no black fog on the skybox
     end
 
     local fog_intensity_line = '  fogdensity = ' .. fog_intensity .. '\n'
@@ -530,7 +537,7 @@ function ZDOOM_SPECIALS.do_special_stuff()
 
     -- if fog tints sky, based on ZDoom GL specs
     if PARAM.bool_fog_affects_sky == 1 then
-      fog_intensity_line = fog_intensity_line .. '  skyfog = ' .. fog_intensity .. '\n'
+      fog_intensity_line = fog_intensity_line .. '  skyfog = ' .. fog_intensity_sky .. '\n'
     end
 
     -- no fog in MAPINFO at all if the fog generator is off
