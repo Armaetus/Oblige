@@ -328,7 +328,7 @@ function ZDOOM_SPECIALS.do_special_stuff()
   end
 
   local function pick_sky_color_from_skygen_map(epi_num)
-    local color = "00 00 00"
+    local color = "01 01 01"
 
     local skyname = PARAM.episode_sky_color[epi_num]
 
@@ -881,7 +881,7 @@ function ZDOOM_SPECIALS.do_special_stuff()
             if i <= 11 then
               info.fog_color = "93 7b 63"
             elseif i > 11 and i <= 20 then
-              info.fog_color = "00 00 00"
+              info.fog_color = "01 01 01"
             elseif i > 20 then
               info.fog_color = "bf 00 00"
             end

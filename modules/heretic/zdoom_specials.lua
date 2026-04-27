@@ -226,7 +226,7 @@ function ZDOOM_SPECIALS_HERETIC.do_special_stuff()
   local level_count = #GAME.levels
 
   local function pick_sky_color_from_skygen_map(epi_num)
-    local color = "00 00 00"
+    local color = "01 01 01"
 
     local skyname = PARAM.episode_sky_color[epi_num]
 
