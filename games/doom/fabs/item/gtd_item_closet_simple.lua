@@ -28,9 +28,9 @@ PREFABS.Item_gtd_closet_simple_1 =
     TEKWALL4 = 1
   },
 
-  tex_TLITE3 = 
+  tex_LITE3 = 
   {
-    TLITE3 = 4,
+    LITE3 = 4,
     LITE5 = 4,
     LITEBLU1 = 1,
     LITEBLU4 = 1
@@ -132,4 +132,24 @@ PREFABS.Item_gtd_closet_simple_4 =
 
   bound_z1 = 0,
   bound_z2 = 96
+}
+
+PREFABS.Item_gtd_closet_simple_5 =
+{
+  template = "Item_gtd_closet_simple_1",
+  map = "MAP07",
+
+  y_fit = "top",
+  x_fit = {40,88 , 168,216},
+
+  tex_LITE3 = "LITE3"
+}
+
+PREFABS.Item_gtd_closet_simple_6 =
+{
+  template = "Item_gtd_closet_simple_1",
+  map = "MAP08",
+
+  y_fit = "top",
+  x_fit = {72,88 , 168,184},
 }
