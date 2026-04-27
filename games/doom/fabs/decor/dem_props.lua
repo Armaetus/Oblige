@@ -214,9 +214,9 @@ PREFABS.Decor_advert_board1 =
     ADVDE2 = 50,
     ADVDE3 = 50,
     ADVDE5 = 50,
-    ADVDE7 = 50
+    ADVDE7 = 50,
+    ADVMS1 = 50,
   }
-
 }
 
 -- ground advert board
@@ -243,9 +243,9 @@ PREFABS.Decor_advert_board2 =
     ADVDE2 = 50,
     ADVDE3 = 50,
     ADVDE5 = 50,
-    ADVDE7 = 50
+    ADVDE7 = 50,
+    ADVMS1 = 50,
   }
-
 }
 
 -- small advert board

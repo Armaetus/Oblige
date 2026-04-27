@@ -1364,6 +1364,9 @@ OBS_RESOURCE_PACK_MATERIALS = {
   ADVDE6 = { t="ADVDE6", f="CEIL4_3"},
   ADVDE7 = { t="ADVDE7", f="CEIL4_3"},
 
+  -- MSSP: Me toooooo
+  ADVDE8 = { t="ADVMS1", f="CEIL4_3"},
+
 
   ----------------------------------------------
   -- Demiosis decorative tags/bloody writings --
