@@ -242,7 +242,14 @@ OTEX_DIRECT_REMOVALS =
 
       "OMETLN37",
       "OMETLO37",
-      "OEMTLP37",
+      "OMETLP37",
+    }
+  },
+
+  NDST =
+  {
+    textures =
+    {
       "ONDSTJ91",
       "ONDSTJ93",
       "ONDSTJ94"
@@ -290,6 +297,8 @@ OTEX_SPECIAL_RESOURCES =
 {
   rail_materials =
   {
+    OIRONK28 = {t="OIRONK28", rail_h=128},
+
     OBASEE70 = {t="OBASEE70", rail_h=128},
     OBASEE38 = {t="OBASEE38", rail_h=128},
 
@@ -362,6 +371,8 @@ OTEX_SPECIAL_RESOURCES =
   {
     tech =
     {
+      OIRONK28 = 20,
+
       OBASEE70 = 20,
       OBASEE70 = 20,
 
