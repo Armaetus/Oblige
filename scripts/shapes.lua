@@ -16806,6 +16806,36 @@ GROW_ARROW_DOUBLE =
   }
 },
 
+GROW_ARROW_DOUBLE_NEW_AREA =
+{
+  prob = 1,
+  prob = 95,
+
+  aversion = 0.1,
+
+  structure =
+  {
+    "xx....x","xx/11%x",
+    "x......","x/1111%",
+    "x......","xA%11/A",
+    "1......","1AA11AA",
+    "1......","1AA11AA",
+    "x......","xA/11%A",
+    "x......","x%1111/",
+    "xx....x","xx%11/x",
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1.",
+    "A1","1A",
+    "A1","1A",
+    ".1","1.",
+    ".1","1.",
+  }
+},
+
 -- MSSP's huge-arse rooms. [HUGE]
 
 GROW_EXTRUSION_4X6 =
