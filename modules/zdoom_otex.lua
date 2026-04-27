@@ -907,17 +907,17 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   local function pick_texture_with_filter(tex_group, pick, mode, fallback_group)
     local tex
     local filtered_color_texes = {}
-
+ 
     tex = pick
 
     -- create table of colored textures to pick from
     for _,T in pairs(tex_group) do
       if mode == "match_color" then
-        if string.sub(T,2,6) == tex.sub(2,6) then
+        if T.sub(2,6) == tex.sub(2,6) then
           table.insert(filtered_color_texes, T)
         end
       else
-        if string.sub(T,2,6) ~= tex.sub(2,6) then
+        if T.sub(2,6) ~= tex.sub(2,6) then
           table.insert(filtered_color_texes, T)
         end
       end
@@ -1037,8 +1037,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     end
   end
 
-  -- for now, all generic floors are assigned to all themes
-  -- should be upgraded to distribute into appropriate themes later
+  -- create a list of all ungrouped floors (generic floors)
   local generic_floors_list = {}
   for _,G in pairs(generic_floor_groups) do
     for _,T in pairs(resource_tab[G].flats) do
@@ -1048,6 +1047,20 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       end
       generic_floors_list[T] = prob
     end
+  end
+
+  -- create a generic walls resource table for re-usable walls
+  -- to be assigned to groupless flats
+  local generic_walls_merge = {}
+  local generic_walls_tab = {}
+  table.merge_w_copy(generic_walls_merge, resource_tab["BASE"].textures)
+  table.merge_w_copy(generic_walls_merge, resource_tab["STAR"].textures)
+  table.merge_w_copy(generic_walls_merge, resource_tab["BKMT"].textures)
+  table.merge_w_copy(generic_walls_merge, resource_tab["CONC"].textures)
+  table.merge_w_copy(generic_walls_merge, resource_tab["IRON"].textures)
+  table.merge_w_copy(generic_walls_merge, resource_tab["NDST"].textures)
+  for _,T in pairs(generic_walls_merge) do
+    generic_walls_tab[T] = 1
   end
 
   -- direct removals
@@ -1060,6 +1073,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
 
   -- create material mappings
   for group_name,resource_group in pairs(resource_tab) do
+
     if resource_group.has_all then
       for _,T in pairs(resource_group.textures) do
         OTEX_MATERIALS[T]=
@@ -1072,14 +1086,14 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
         OTEX_MATERIALS[F]=
         {
           f=F,
-          t=pick_texture_with_filter(resource_group.textures, F, "match_color", generic_floors_list)
+          t=pick_texture_with_filter(resource_group.textures, F, "match_color", generic_walls_tab)
         }
       end
     end
 
     -- handling for groups that have textures but no flats, will use generic floors instead
-    if resource_group.has_textures and
-    not resource_group.has_flats then
+    if resource_group.has_textures == true and
+    resource_group.has_flats == false then
       for _,T in pairs(resource_group.textures) do
         OTEX_MATERIALS[T]=
         {
@@ -1090,19 +1104,16 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     end
 
     -- handling for groups with flats but no textures
-    if resource_group.has_flats and
-    not resource_group.has_textures then
+    if resource_group.has_flats == true and
+    resource_group.has_textures == false then
       for _,F in pairs(resource_group.flats) do
-        local side_tex, group_pick
+        local side_tex
 
         -- hack fix to assign flats-only groups a side texture rather than just a default
-        if not OTEX_MATERIALS[F] then
-          group_pick = rand.key_by_probs(group_pick_list["urban"].textures)
-          ::pick_wall_for_lone_flats_again::
-          side_tex = rand.pick(resource_tab[group_pick].textures)
-          if tex_is_colorful(side_tex) and rand.odds(75) then
-            goto pick_wall_for_lone_flats_again
-          end
+        ::pick_wall_for_lone_flats_again::
+        side_tex = rand.key_by_probs(generic_walls_tab)
+        if tex_is_colorful(side_tex) and rand.odds(75) then
+          goto pick_wall_for_lone_flats_again
         end
         OTEX_MATERIALS[F] =
         {
