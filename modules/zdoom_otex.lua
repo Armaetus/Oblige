@@ -290,6 +290,9 @@ OTEX_SPECIAL_RESOURCES =
 {
   rail_materials =
   {
+    OBASEE70 = {t="OBASEE70", rail_h=128},
+    OBASEE38 = {t="OBASEE38", rail_h=128},
+
     OFENCA01 = {t="OFENCA01", rail_h=128},
     OFENCA02 = {t="OFENCA02", rail_h=128},
     OFENCB01 = {t="OFENCB01", rail_h=56},
@@ -359,6 +362,9 @@ OTEX_SPECIAL_RESOURCES =
   {
     tech =
     {
+      OBASEE70 = 20,
+      OBASEE70 = 20,
+
       OFENCA01 = 20,
       OFENCA02 = 20,
 
@@ -1036,7 +1042,6 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   -- direct removals
   for theme_name,theme_tab in pairs(OTEX_DIRECT_REMOVALS) do
     for group_name,tex in pairs(theme_tab.textures) do
-      --error(theme_name .. " " .. tex .. " BALLS!")
       resource_tab[theme_name].flats[tex] = nil
       resource_tab[theme_name].textures[tex] = nil
     end
