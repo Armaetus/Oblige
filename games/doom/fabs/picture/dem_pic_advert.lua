@@ -33,11 +33,14 @@ PREFABS.Pic_dem_advert =
     ADVCR1 = 50,
     ADVCR2 = 50,
     ADVCR4 = 50,
+    ADVCR6 = 50,
+
     ADVDE1 = 50,
     ADVDE2 = 50,
     ADVDE3 = 50,
     ADVDE5 = 50,
     ADVDE7 = 50,
+
     ADVMS1 = 50,
   }
 

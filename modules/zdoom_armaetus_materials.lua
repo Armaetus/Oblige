@@ -1356,6 +1356,8 @@ OBS_RESOURCE_PACK_MATERIALS = {
   ADVCR3 = { t="ADVCR3", f="CEIL4_3"},
   ADVCR4 = { t="ADVCR4", f="CEIL4_3"},
   ADVCR5 = { t="ADVCR5", f="CEIL4_3"},
+  ADVCR6 = { t="ADVCR6", f="CEIL4_3"},
+
   ADVDE1 = { t="ADVDE1", f="CEIL4_3"},
   ADVDE2 = { t="ADVDE2", f="CEIL4_3"},
   ADVDE3 = { t="ADVDE3", f="CEIL4_3"},
