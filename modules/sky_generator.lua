@@ -142,8 +142,6 @@ function SKY_GEN.generate_skies()
       is_starry = true
     elseif PARAM.force_sky == "sky_75_day" and rand.odds(25) then
       is_starry = true
-    else
-      is_starry = false
     end
 
     gui.printf("Forced sky: " .. PARAM.force_sky .. "\n")
