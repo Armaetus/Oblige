@@ -1700,7 +1700,7 @@ namelib.MARKOV_DB =
   COUNTY_TOWN_NAMES = {
     order = {2,3,3},
 
-    max_len = {8,8,8,8,9,9,10,10,10,10},
+    max_len = {8,8,8,8,9,9},
     min_len = {5,6,6,6,6},
 
     words =
@@ -1777,7 +1777,7 @@ namelib.MARKOV_DB =
   {
     order = {2,3,3},
 
-    max_len = {8,8,8,8,8,8,8,8,9,9,9,9,10,10,11,12},
+    max_len = {8,8,8,8,8,8,8,8,9,9,9,9,10},
     min_len = {6},
 
     words =
