@@ -86,25 +86,31 @@ constexpr T OBSIDIAN_CLAMP(L low, T x, U high) {
 // colors
 inline uint32_t OBSIDIAN_MAKE_RGBA(int r, int g, int b, int a)
 {
-    return (((r) << 24) | ((g) << 16) | ((b) << 8) | (a));
+    return ((uint32_t)a << 24) |
+           ((uint32_t)b << 16) |
+           ((uint32_t)g << 8)  |
+           ((uint32_t)r);
 }
 
 // these return wider on purpose as some functions will multiply/add/etc beyond 255
 inline uint32_t OBSIDIAN_RGB_RED(uint32_t col)
 {
-    return ((col >> 24) & 255);
+    return (col & 255);
 }
+
 inline uint32_t OBSIDIAN_RGB_GREEN(uint32_t col)
-{
-    return ((col >> 16) & 255);
-}
-inline uint32_t OBSIDIAN_RGB_BLUE(uint32_t col)
 {
     return ((col >> 8) & 255);
 }
+
+inline uint32_t OBSIDIAN_RGB_BLUE(uint32_t col)
+{
+    return ((col >> 16) & 255);
+}
+
 inline uint32_t OBSIDIAN_RGB_ALPHA(uint32_t col)
 {
-    return ((col) & 255);
+    return ((col >> 24) & 255);
 }
 
 //--- editor settings ---
