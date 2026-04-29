@@ -35,3 +35,39 @@ PREFABS.Decor_tech_comp_lite5_big =
 
   size = 112
 }
+
+--
+
+PREFABS.Decor_tech_data_center_rack_1 =
+{
+  template = "Decor_tech_comp_lite5_1",
+  map = "MAP04",
+
+  prob = 5000,
+
+  group = "gtd_data_center",
+
+  size = 112,
+  height = 96,
+
+  bound_z2 = 96,
+
+  z_fit = {84, 86}
+}
+
+PREFABS.Decor_tech_data_center_rack_2 =
+{
+  template = "Decor_tech_comp_lite5_1",
+  map = "MAP05",
+
+  prob = 7500,
+
+  group = "gtd_data_center",
+
+  size = 112,
+  height = 96,
+
+  bound_z2 = 96,
+
+  z_fit = {84, 86}
+}

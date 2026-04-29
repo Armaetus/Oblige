@@ -1273,6 +1273,8 @@ DOOM.THEMES =
       gtd_computers_lite5 = 25,
       gtd_computers_blue_shawn = 25,
       --
+      gtd_data_center = 50,
+      --
       gtd_writhing_mass = 10,
       gtd_wall_octagon_insets = 50,
       gtd_wall_grated_machines = 50,
@@ -1778,6 +1780,8 @@ DOOM.THEMES =
       gtd_computers = 12,
       gtd_computers_lite5 = 18,
       gtd_computers_blue_shawn = 18,
+      --
+      gtd_data_center = 35,
       --
       gtd_drywall = 50,
       gtd_writhing_mass = 20,

@@ -262,3 +262,41 @@ PREFABS.Wall_gtd_computer_blue_shawn_diag =
 
   bound_z2 = 112
 }
+
+--
+
+PREFABS.Wall_gtd_data_center_wall_1 =
+{
+  file   = "wall/gtd_wall_tech_comp_set.wad",
+  map    = "MAP15",
+
+  prob   = 50,
+  group  = "gtd_data_center",
+
+  where  = "edge",
+
+  deep   = 16,
+
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit  = "top",
+}
+
+PREFABS.Wall_gtd_data_center_wall_2 =
+{
+  template = "Wall_gtd_data_center_wall_1",
+  map = "MAP16",
+
+  probs = 8,
+}
+
+PREFABS.Wall_gtd_data_center_wall_diag =
+{
+  template = "Wall_gtd_data_center_wall_1",
+  map = "MAP17",
+
+  where = "diagonal"
+}

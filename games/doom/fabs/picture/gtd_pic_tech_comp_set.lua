@@ -80,3 +80,49 @@ PREFABS.Pic_tech_comp_console_compstation =
     COMPSTAB = 1
   }
 }
+
+--
+
+PREFABS.Pic_tech_data_center_pic_1 =
+{
+  template = "Pic_tech_comp_console_1",
+  map = "MAP04",
+
+  group = "gtd_data_center",
+
+  x_fit = "frame",
+  y_fit = "top",
+
+  bound_z2 = 96,
+
+  tex_DFAN1 = "METAL5"
+}
+
+PREFABS.Pic_tech_data_center_pic_1_EPIC =
+{
+  template = "Pic_tech_comp_console_1",
+  map = "MAP04",
+
+  replaces = "Pic_tech_data_center_pic_1",
+  texture_pack = "armaetus",
+
+  group = "gtd_data_center",
+
+  x_fit = "frame",
+  y_fit = "top",
+
+  bound_z2 = 96
+}
+
+PREFABS.Pic_tech_data_center_pic_2 =
+{
+  template = "Pic_tech_comp_console_1",
+  map = "MAP05",
+
+  group = "gtd_data_center",
+
+  x_fit = "frame",
+  y_fit = "top",
+
+  bound_z2 = 96
+}
