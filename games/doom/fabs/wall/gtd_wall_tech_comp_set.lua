@@ -300,3 +300,41 @@ PREFABS.Wall_gtd_data_center_wall_diag =
 
   where = "diagonal"
 }
+
+--
+
+PREFABS.Wall_gtd_dh_comp = -- inspired by a fab that has survived since Oblige 7.7
+{
+  file   = "wall/gtd_wall_tech_comp_set.wad",
+  map    = "MAP20",
+
+  prob   = 50,
+  group  = "gtd_dh_comp",
+
+  where  = "edge",
+
+  deep   = 16,
+
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit  = "top",
+
+  tex_COMPTALL =
+  {
+    COMPTALL = 1,
+    SPACEW3 = 5
+  },
+
+  sector_1  = { [0]=75, [1]=15, [2]=5, [3]=5, [8]=10, [12]=5, [13]=5 }
+}
+
+PREFABS.Wall_gtd_dh_comp_diag =
+{
+  template = "Wall_gtd_dh_comp",
+  map = "MAP21",
+
+  where = "diagonal"
+}

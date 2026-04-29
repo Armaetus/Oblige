@@ -22,3 +22,14 @@ PREFABS.Decor_dittohead_computer =
 
   z_fit  = { 128,136 }
 }
+
+--
+
+-- this is just a grouped version of dittohead's original fab so it appears
+-- logically alongside similar-looking fabs too
+PREFABS.Decor_gtd_dh_comp_grouped =
+{
+  template = "Decor_dittohead_computer",
+
+  group = "gtd_dh_comp"
+}
