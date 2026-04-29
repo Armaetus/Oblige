@@ -16699,8 +16699,8 @@ GROW_SHARP_LIQUID =
 
 GROW_ARROW =
 {
-  prob = 4,
-  prob = 85,
+  prob = 1,
+  prob = 95,
 
   aversion = 0.25,
 
@@ -16708,7 +16708,7 @@ GROW_ARROW =
   {
     "x....x","x/11%x",
     "......","/1111%",
-    "xx..xx","xx11xx",
+    "....xx","%A11A/",
     "xx..xx","xx11xx",
     "xx..xx","xx11xx",
     "xx..xx","xx11xx",
@@ -16719,13 +16719,14 @@ GROW_ARROW =
   {
     ".1","1.",
     ".1","1.",
-    ".1","1."
+    ".1","1.",
+    "A1","1A"
   }
 },
 
 GROW_ARROW_FORK_NEW_AREA =
 {
-  prob = 3,
+  prob = 2,
   prob = 85,
 
   structure =
@@ -16733,7 +16734,7 @@ GROW_ARROW_FORK_NEW_AREA =
     "........","AA%/%/AA",
     "........","%A/11%A/",
     "x......x","x/1111%x",
-    "xxx..xxx","xxx11xxx",
+    "xxx..xxx","x%A11A/x",
     "xxx..xxx","xxx11xxx",
     "xxx..xxx","xxx11xxx",
     "xxx..xxx","xxx11xxx",
@@ -16744,7 +16745,8 @@ GROW_ARROW_FORK_NEW_AREA =
   {
     "A.",".1","1.",".A",
     ".A","A1","1A","A.",
-         "A1","1A"
+         "A1","1A",
+         ".A","A."
   }
 },
 
@@ -16775,34 +16777,6 @@ GROW_ARROW_CHEVRON_NEW_AREA =
     ".A","A1","1A","A.",
          "A1","1A",
          ".1","1.",
-  }
-},
-
-GROW_ARROW_DOUBLE =
-{
-  prob = 1,
-  prob = 90,
-
-  aversion = 0.1,
-
-  structure =
-  {
-    "xx....x","xx/11%x",
-    "x......","x/1111%",
-    "xxx..xx","xxx11xx",
-    "1....xx","11111xx",
-    "1....xx","11111xx",
-    "xxx..xx","xxx11xx",
-    "x......","x%1111/",
-    "xx....x","xx%11/x",
-  },
-
-  diagonals =
-  {
-    ".1","1.",
-    ".1","1.",
-    ".1","1.",
-    ".1","1.",
   }
 },
 
