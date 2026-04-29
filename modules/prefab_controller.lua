@@ -142,11 +142,13 @@ function PREFAB_CONTROL.fine_tune_filters()
   }
   local new_fab_groups_multipliers =
   {
-    gtd_wall_hell_engraving_top_band = 2
+    gtd_fireblu_where_its_made = 2
+    gtd_tech_barrier_tek = 4
+    gtd_data_center = 4
   }
   local new_themes_multipliers =
   {
-    tech_cableSocketCatacombs = 1,
+    --[[tech_cableSocketCatacombs = 1,
     tech_bumblebee = 1.5,
     tech_aww2 = 1.5,
     tech_iStuff = 1.5,
@@ -154,7 +156,7 @@ function PREFAB_CONTROL.fine_tune_filters()
     urban_beigetownTech = 1.5,
     urban_iStuff = 1.5,
     --
-    hell_cableSocketCatacombs = 1.25
+    hell_cableSocketCatacombs = 1.25]]
   }
   local themes =
   {
