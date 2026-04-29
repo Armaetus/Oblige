@@ -37,10 +37,10 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
 
   prob = 2500,
 
-  height = 129,
+  height = 128,
   size = 96,
 
-  z_fit = nil,
+  z_fit = "top",
 
   tex_CRATE3 = 
   {
@@ -59,7 +59,7 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_fire_stuff =
 
   prob = 2500,
 
-  height = 129,
+  height = 128,
   size = 96,
 
   z_fit = "top",
