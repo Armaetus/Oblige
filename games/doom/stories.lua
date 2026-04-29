@@ -2706,6 +2706,8 @@ DOOM.STORIES.QUIT_MESSAGES =
   [[If you don't love yourself, how the hell you gonna love somebody else?]],
   [[Chads press N, Virgins press Y.]],
 
+  -- guilt-tripping
+  [[You paid electricity to generate a WAD so if you're leaving it unfinished, just think about what you've done.]],
 
   -- hardcore philosophy
   [[Are you quitting because you realized no matter how much hellspawn you mow down, Obsidian will just give you more?]],
@@ -2738,6 +2740,8 @@ DOOM.STORIES.QUIT_MESSAGES =
   [[Map sizes too big? Reduce the Map Size or Upper Bound size if using Mix It Up.]],
   [[Gargantuan or Transcendent maps looking like Minecraft Far Lands? Please keep Auto Detail on if you're using binary format, otherwise use UDMF format which allows unlimited detail.]],
   [[Too hard? Turn down Quantity and/or Strength. Same applies to too easy: Turn Quantity up.]],
+  [[Setting certain architectural elements to Heaps will actually give you less variety. Instead, set it to Mix It Up and let randomness control variation as maps progress!]],
+  [[Feeling like seeing the same thing over and over? Turn on the Obsidian Resource Pack for even more content! Then check our Discord's addons channel for even more content!]],
 
   -- important facts
   [[By exiting, you are agreeing to subscribe to Cat Facts.]],
@@ -2760,7 +2764,9 @@ DOOM.STORIES.QUIT_MESSAGES =
   [[Phobos is about 6,000 km (or about 3,700mi) from Mars's surface, compared to our moon's 384,402 km (or 238,856 mi)]],
 
   [[This is an actual line of code in Oblige:\n `if not is_big(mon) then has_small = true end`]],
+  [[If someone tells you they've seen everything in Obsidian, they're lying, we devs included.]],
 
+  -- quotes from our/not our users/developers
   [[Some people want to watch the world segfault. -dashodanger, 2021]],
   [[Another satisfied customer. -dashodanger, 2022]],
   [[Sometimes, you're invited to play fruit basket turnover and you're the rice ball.]],
