@@ -21,7 +21,7 @@
 -- josh771
 -- dashodanger
 -- Phytolizer
--- https://github.com/obsidian-level-maker/Obsidian/
+-- https://github.com/GTD-Carthage/Obsidian-Content/
 
 ---- Game Settings ----
 

@@ -57,7 +57,7 @@
 
 -- KadKad1
 
--- https://github.com/obsidian-level-maker/Obsidian/
+-- https://github.com/GTD-Carthage/Obsidian-Content/
 
 ---- Game Settings ----
 
