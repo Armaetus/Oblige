@@ -805,7 +805,7 @@ function ob_read_all_config(need_full, log_only)
   do_line("-- Xenamta\n")
   do_line("-- KadKad1\n")
   do_line("-- DaveFriedLiver\n")
-  do_line("-- https://github.com/obsidian-level-maker/Obsidian/\n")
+  do_line("-- https://github.com/GTD-Carthage/Obsidian-Content/\n")
 
   if OB_CONFIG.seed and OB_CONFIG.seed ~= 0 then
     if OB_CONFIG.string_seed then
@@ -1348,7 +1348,7 @@ function ob_init()
   gui.printf("         DaveFriedLiver\n")
   gui.printf("    And All of Our Fans!\n\n")
   gui.printf("--------------------------------------------\n")
-  gui.printf("-- https://github.com/obsidian-level-maker/Obsidian/ --\n")
+  gui.printf("-- https://github.com/GTD-Carthage/Obsidian-Content/ --\n")
   gui.printf("--------------------------------------------\n\n")
 
   gui.printf("~~ Obsidian Lua initialization begun ~~\n\n")
