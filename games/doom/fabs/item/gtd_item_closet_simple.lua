@@ -153,3 +153,12 @@ PREFABS.Item_gtd_closet_simple_6 =
   y_fit = "top",
   x_fit = {72,88 , 168,184},
 }
+
+PREFABS.Item_gtd_closet_simple_7 =
+{
+  template = "Item_gtd_closet_simple_1",
+  map = "MAP09",
+
+  y_fit = "top",
+  y_fit = "frame"
+}
