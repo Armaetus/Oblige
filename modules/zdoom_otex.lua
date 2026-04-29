@@ -1029,6 +1029,14 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     end
   end
 
+  -- direct removals
+  for theme_name,theme_tab in pairs(OTEX_DIRECT_REMOVALS) do
+    for group_name,tex in pairs(theme_tab.textures) do
+      resource_tab[theme_name].flats[tex] = nil
+      resource_tab[theme_name].textures[tex] = nil
+    end
+  end
+
   -- special handling for floors without corresponding group textures
   local generic_floor_groups = {}
   for _,sane_floor_themes in pairs(OTEX_SANE_FLOORS) do
@@ -1061,14 +1069,6 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   table.merge_w_copy(generic_walls_merge, resource_tab["NDST"].textures)
   for _,T in pairs(generic_walls_merge) do
     generic_walls_tab[T] = 1
-  end
-
-  -- direct removals
-  for theme_name,theme_tab in pairs(OTEX_DIRECT_REMOVALS) do
-    for group_name,tex in pairs(theme_tab.textures) do
-      resource_tab[theme_name].flats[tex] = nil
-      resource_tab[theme_name].textures[tex] = nil
-    end
   end
 
   -- create material mappings
