@@ -16761,7 +16761,7 @@ GROW_ARROW_CHEVRON_NEW_AREA =
   structure =
   {
     "x....x","x/AA%x",
-    "......","/A/%A%",
+    "......","/AAAA%",
     ".....x","A/11%A",
     "x....x","x1111x",
     "x....x","x1111x",
@@ -16773,10 +16773,10 @@ GROW_ARROW_CHEVRON_NEW_AREA =
 
   diagonals =
   {
-         ".A","A.",
-    ".A","A1","1A","A.",
-         "A1","1A",
-         ".1","1.",
+    ".A","A.",
+    ".A","A.",
+    "A1","1A",
+    ".1","1."
   }
 },
 
@@ -18268,15 +18268,14 @@ GROW_TRENCH_CURVE_OUTER_LARGE =
     "xxx....","xxx11AA",
     "xxx....","xxx11AA",
     "xx.....","xx/11AA",
-    "x......","x/111AA",
-    "x......","x111/AA",
+    ".......","11111AA",
+    ".......","1111/AA",
     "1......","1>AAAA/",
     "1.....x","1>AAA/x",
   },
 
   diagonals =
   {
-    ".1",
     ".1",
     "1A",
     "A.",
@@ -18291,18 +18290,17 @@ GROW_TRENCH_CURVE_OUTER_LARGE_LIQUID =
 
   structure =
   {
-    "xxx....","xxx~~AA",
-    "xxx....","xxx~~AA",
-    "xx.....","xx/~~AA",
-    "x......","x/~~~AA",
-    "x......","x~~~/AA",
-    "1......","1>AAAA/",
-    "1.....x","1>AAA/x",
+    "xxxx....","xxxx~~AA",
+    "xxxx....","xxxx~~AA",
+    "xxx.....","xxx/~~AA",
+    "x.......","x~~~~~AA",
+    "x.......","x~~~~/AA",
+    "1.......","11>AAAA/",
+    "1......x","11>AAA/x",
   },
 
   diagonals =
   {
-    ".~",
     ".~",
     "~A",
     "A.",
