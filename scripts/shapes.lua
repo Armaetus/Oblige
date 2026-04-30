@@ -1798,7 +1798,7 @@ FILLER_4 =
     "1.1","111",
     "111","111"
   }
-}
+},
 
 
 SMOOTHER_1 =
@@ -1822,7 +1822,7 @@ SMOOTHER_2 =
   pass = "smoother",
   prob = 75, --50,
 
-  env = "outdoor"
+  env = "outdoor",
 
   structure =
   {
@@ -9465,7 +9465,7 @@ GROW_MAZE_STRAIGHT_STAIRED_LONG =
     "...","#^#",
     "x11","x11",
   }
-}
+},
 
 GROW_MAZE_L =
 {
@@ -10741,7 +10741,7 @@ aux_FLOURISH_SMALL_1 =
 
 FLOURISH_SMALL_2 = 
 {
-  pass = "flourish"
+  pass = "flourish",
 
   prob = 10,
 
@@ -10761,7 +10761,7 @@ FLOURISH_SMALL_2 =
 
 FLOURISH_SMALL_2_DIAGONAL = 
 {
-  pass = "flourish"
+  pass = "flourish",
 
   prob = 10,
 
@@ -11021,7 +11021,7 @@ aux_FLOURISH_ROUND_extend =
 {
   prob = 1,
 
-  pass = "flourish"
+  pass = "flourish",
 
   structure =
   {
@@ -11950,7 +11950,7 @@ GROW_WATER_STRIPES_CURVE_DIAGONAL_NEW_AREA =
     ".........","11~AAA<11",
     ".........","11~AA/~11",
     ".........","11~^^~/11",
-    ".........","111111111"
+    ".........","111111111",
     ".........","11111111/",
   },
 
@@ -15899,7 +15899,7 @@ GROW_CAKE_LIQUID =
   {
          ".~","~.",".~","~.",".~","~.",
          "A~","~A","A~","~A","A~","~A",
-    ".1","1A","A1","1A","A1","1A","A1","1."
+    ".1","1A","A1","1A","A1","1A","A1","1.",
               ".1","1.",
   }
 },
@@ -16358,7 +16358,7 @@ GROW_O =
 
   auxiliary =
   {
-    pass = "GROW_O_aux"
+    pass = "GROW_O_aux",
 
     count = 1
   }
@@ -16697,10 +16697,10 @@ GROW_SHARP_LIQUID =
   }
 },
 
-GROW_ARROW =
+GROW_ARROW_NEW_AREA =
 {
   prob = 1,
-  prob = 95,
+  skip_prob = 95,
 
   aversion = 0.25,
 
@@ -16727,13 +16727,13 @@ GROW_ARROW =
 GROW_ARROW_FORK_NEW_AREA =
 {
   prob = 2,
-  prob = 85,
+  skip_prob = 85,
 
   structure =
   {
     "........","AA%/%/AA",
-    "........","%A/11%A/",
-    "x......x","x/1111%x",
+    "........","AA/11%AA",
+    "x......x","%/1111%/",
     "xxx..xxx","x%A11A/x",
     "xxx..xxx","xxx11xxx",
     "xxx..xxx","xxx11xxx",
@@ -16744,8 +16744,8 @@ GROW_ARROW_FORK_NEW_AREA =
   diagonals =
   {
     "A.",".1","1.",".A",
-    ".A","A1","1A","A.",
          "A1","1A",
+    ".A","A1","1A","A.",
          ".A","A."
   }
 },
@@ -16754,7 +16754,7 @@ GROW_ARROW_FORK_NEW_AREA =
 GROW_ARROW_CHEVRON_NEW_AREA =
 {
   prob = 3,
-  prob = 80,
+  skip_prob = 80,
 
   aversion = 0.25,
 
@@ -16783,7 +16783,7 @@ GROW_ARROW_CHEVRON_NEW_AREA =
 GROW_ARROW_DOUBLE_NEW_AREA =
 {
   prob = 1,
-  prob = 95,
+  skip_prob = 95,
 
   aversion = 0.1,
 
@@ -16941,15 +16941,15 @@ GROW_EXTRUSION_SINK =
 
   structure =
   {
-    "11xxx","11xxx"
+    "11xxx","11xxx",
     "...xx","111xx",
     "...xx","111xx",
     ".....","11vAA",
     ".....","11AAA",
     ".....","11^AA",
     "...xx","111xx",
-    "...xx","111xx",
-  },
+    "...xx","111xx"
+  }
 },
 
 DECORATE_CAGE_CANALS_STRAIGHT_3X =
@@ -17156,7 +17156,7 @@ GROW_INTO_CLIFF_extend_aux =
     "2211","2211",
     "2211","2211",
   }
-}
+},
 
 GROW_INTO_CLIFF_INVERSE =
 {
@@ -17215,7 +17215,7 @@ GROW_INTO_CLIFF_CURVE_extend_aux =
     "11..","1111",
     "11..","1111",
   }
-}
+},
 
 GROW_INTO_CLIFF_CURVE =
 {
@@ -17957,12 +17957,12 @@ GROW_LIQUID_PILLAR_aux =
 
   structure =
   {
-    "....","11~~"
-    "....","11~~"
-    "11~~","11.~"
+    "....","11~~",
+    "....","11~~",
+    "11~~","11.~",
     "11~~","11~~"
   }
-}
+},
 
 GROW_LIQUID_PILLAR_INWARD =
 {
@@ -17992,9 +17992,9 @@ GROW_LIQUID_PILLAR_INWARD_aux =
 
   structure =
   {
-    "....","22~~"
-    "....","22~~"
-    "11~~","11.~"
+    "....","22~~",
+    "....","22~~",
+    "11~~","11.~",
     "22~~","22~~"
   }
 },
@@ -18025,8 +18025,8 @@ GROW_TRENCH_extend_aux =
 
   structure =
   {
-    "211..","22211"
-    "111..","11111"
+    "211..","22211",
+    "111..","11111",
     "211..","22211"
   }
 },

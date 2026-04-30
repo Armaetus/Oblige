@@ -1762,7 +1762,7 @@ namelib.MARKOV_DB =
 
       "Rockport","Bridgeport","Kingsport Heights","Lakeport Falls","Riverport","Northport","Southport Heights","Westport","Eastport",
       "Greenport","Blueport","Fairport","Sunnyport","Shadowport","Woodport","Parkport","Stoneport","Ironport","Goldport","Silverport"
-    }
+    },
 
     suffix_fixes =
     {

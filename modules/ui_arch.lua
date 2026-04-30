@@ -145,14 +145,14 @@ OB_MODULES["ui_arch"] =
       choices = UI_ARCH.SIZE_MODE,
       default = "num",
       priority = 99.5,
-      randomize_group="architecture"
+      randomize_group="architecture",
       tooltip = _("Changes Level Size behavior.\n\n" ..
       "Static - Level Size parameter determines size.\n" ..
       "Mix It Up - Level Size will be generated with random numbers between Lower Bound and Upper Bound\n" ..
       "Progressive - Levels will be generated in sequential size based on the Lower Bound (as starting bound) to Upper Bound (as end).\n" ..
       "Episodic - Similar to Progressive, but level scaling is between Episodes."
       )
-    }
+    },
 
 
     {

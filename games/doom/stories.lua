@@ -2081,7 +2081,6 @@ DOOM.STORIES.EVIL_TITLES =
   Empyrean=5,
   Enslaver=5,
   Eternal=5,
-  Eternal=5,
   Evocator=5,
   Exanguinator=5,
   Execrable=5,

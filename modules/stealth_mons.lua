@@ -389,7 +389,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Zombiemen."), 
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -402,7 +402,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Shotgunners."),  
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -415,7 +415,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Imps."),  
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -428,7 +428,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Pinkies."),  
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -441,7 +441,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0, 
       tooltip = _("Control the number of Stealth Cacodemons."), 
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -454,7 +454,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Barons of Hell."),  
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -467,7 +467,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Chaingunners."),  
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -480,7 +480,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Hell Knights."),  
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -493,7 +493,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0, 
       tooltip = _("Control the number of Stealth Revenants."), 
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -506,7 +506,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Mancubi."),  
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -519,7 +519,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Arachnotrons."),  
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
 
@@ -532,7 +532,7 @@ OB_MODULES["stealth_mon_control"] =
       increment = .02,
       default = 1.0,
       tooltip = _("Control the number of Stealth Arch-Viles."),  
-      presets = STEALTH.SLIDER_PRESETS
+      presets = STEALTH.SLIDER_PRESETS,
       randomize_group="monsters",
     },
   },
