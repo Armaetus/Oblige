@@ -44,7 +44,7 @@ PREFABS.Decor_craneo_bloodtubes_hell =
   tex_TEKGREN4 = "SKSPINE2",
   tex_TEKGREN5 = "GSTONE1",
   tex_SHAWN2 = "STONE4",
-  tex_DOORSTOP = "METAL",
+
   tex_PIPEWAL2 = "SKSPINE2",
   tex_008800 = "FF0000",
   tex_BROWNGRN = "MARBLE1",
