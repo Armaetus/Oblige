@@ -904,8 +904,8 @@ SPROUT_CASTLE_2 =
     conn = { x=4, y=2, w=2, dir=8 },
 
     symmetry = { kind="mirror", x=4, y=5, w=4, dir=4 },
-    symmetry = { kind="mirror", x=4, y=5, w=4, dir=6 },
-    symmetry = { kind="rotate", x=3, y=4, x2=6, y2=7 }
+    symmetry2 = { kind="mirror", x=4, y=5, w=4, dir=6 },
+    symmetry3 = { kind="rotate", x=3, y=4, x2=6, y2=7 }
   }
 },
 
@@ -1155,8 +1155,8 @@ SPROUT_JOINER_2x2 =
   new_room =
   {
     symmetry = { kind="mirror", x=2, y=4, dir=8 },
-    symmetry = { kind="mirror", x=2, y=4, dir=4 },
-    symmetry = { kind="rotate", x=2, y=4, x2=3, y2=5 }
+    symmetry2 = { kind="mirror", x=2, y=4, dir=4 },
+    symmetry3 = { kind="rotate", x=2, y=4, x2=3, y2=5 }
   },
 
   joiner =
@@ -3685,7 +3685,7 @@ GROW_COLONNADE_510_STAIRS_STRAIGHT =
   }
 },
 
-GROW_COLONNADE_510_STAIRS_STRAIGHT =
+GROW_COLONNADE_510_STAIRS_STRAIGHT_LIQ =
 {
   prob = 40,
   skip_prob = 75,
@@ -10904,7 +10904,7 @@ FLOURISH_MEDIUM_2 =
     pass = "FLOURISH_MEDIUM_TEETH_2",
   },
 
-  auxiliary =
+  auxiliary2 =
   {
     pass = "aux_FLOURISH_MEDIUM_2",
   },
@@ -13038,7 +13038,7 @@ GROW_36_HEXAGON_INSET =
   },
 },
 
-GROW_36_HEXAGON_INSET =
+GROW_36_HEXAGON_INSET_PILLAR =
 {
   prob = 12,
   skip_prob = 50,
@@ -16980,21 +16980,6 @@ DECORATE_CAGE_CANALS_STRAIGHT_2X =
   cage_mode = "fancy",
 },
 
-DECORATE_CAGE_CANALSWIDE_STRAIGHT_3X =
-{
-  prob = 10,
-
-  structure =
-  {
-    "...","CCC",
-    "~~~","~~~",
-    "~~~","~~~",
-    "111","111",
-  },
-
-  cage_mode = "fancy",
-},
-
 DECORATE_CAGE_CANALSWIDE_STRAIGHT_2X =
 {
   prob = 5,
@@ -17175,7 +17160,7 @@ GROW_INTO_CLIFF_INVERSE =
   },
 },
 
-GROW_INTO_CLIFF_CURVE =
+GROW_INTO_CLIFF_CURVE_RH =
 {
   prob = 35,
   skip_prob = 15,
@@ -17200,11 +17185,11 @@ GROW_INTO_CLIFF_CURVE =
 
   auxiliary =
   {
-    pass = "GROW_INTO_CLIFF_CURVE_extend_aux"
+    pass = "GROW_INTO_CLIFF_CURVE_RH_extend_aux"
   }
 },
 
-GROW_INTO_CLIFF_CURVE_extend_aux =
+GROW_INTO_CLIFF_CURVE_RH_extend_aux =
 {
   prob = 1,
 
@@ -17217,7 +17202,7 @@ GROW_INTO_CLIFF_CURVE_extend_aux =
   }
 },
 
-GROW_INTO_CLIFF_CURVE =
+GROW_INTO_CLIFF_CURVE_LH =
 {
   prob = 35,
   skip_prob = 15,
@@ -17240,11 +17225,11 @@ GROW_INTO_CLIFF_CURVE =
 
   auxiliary =
   {
-    pass = "GROW_INTO_CLIFF_CURVE_extend_aux"
+    pass = "GROW_INTO_CLIFF_CURVE_LH_extend_aux"
   }
 },
 
-GROW_INTO_CLIFF_CURVE_extend_aux =
+GROW_INTO_CLIFF_CURVE_LH_extend_aux =
 {
   prob = 1,
 
@@ -18406,7 +18391,7 @@ GROW_SEWER_CROSSING_CIRCLE_NEW_AREA_BIG =
   }
 },
 
-GROW_SEWER_CROSSING_CIRCLE_NEW_AREA_BIG =
+GROW_SEWER_CROSSING_CIRCLE_NEW_AREA_BIGGER =
 {
   prob = 17,
   skip_prob = 80,
@@ -23408,12 +23393,8 @@ SPROUT_DIRECT_1_cave =
 
   new_room =
   {
-    env = "cave"
-  },
-
-  new_room =
-  {
-    conn = { x=1, y=1, w=1, dir=8 },
+    env = "cave",
+    conn = { x=1, y=1, w=1, dir=8 }
   },
 
 },
