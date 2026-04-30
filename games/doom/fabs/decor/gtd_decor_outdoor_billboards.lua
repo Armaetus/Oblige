@@ -5,11 +5,11 @@ PREFABS.Decor_outdoor_billboard_UAC =
 
   where  = "point",
 
-  prob   = 1250,
+  prob   = 2000,
   theme  = "!hell",
   env    = "outdoor",
 
-  size   = 104,
+  size   = 112,
   height = {128, 512},
 
   bound_z1 = 0,
@@ -27,11 +27,11 @@ PREFABS.Decor_outdoor_billboard_UAC_sheet =
 
   where  = "point",
 
-  prob   = 1250,
+  prob   = 2000,
   theme  = "!hell",
   env    = "outdoor",
 
-  size   = 104,
+  size   = 112,
   height = 160,
 
   bound_z1 = 0,
