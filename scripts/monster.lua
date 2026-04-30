@@ -1085,7 +1085,7 @@ function Monster_fill_room(LEVEL, R, SEEDS)
     if not    R.room_size then return 1 end
     if not info.room_size then return 1 end
 
-    if room_size == "any" then return 1 end
+    if R.room_size == "any" then return 1 end
 
     -- a good match
     if info.room_size == R.room_size then return 1 end

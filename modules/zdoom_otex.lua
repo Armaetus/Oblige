@@ -374,7 +374,6 @@ OTEX_SPECIAL_RESOURCES =
       OIRONK28 = 20,
 
       OBASEE70 = 20,
-      OBASEE70 = 20,
 
       OFENCA01 = 20,
       OFENCA02 = 20,
@@ -716,7 +715,6 @@ OTEX_MATERIAL_MANUAL_ASSIGNMENTS =
   OMRBLK43 = {t="OMRBLK43",f="OMRBLK01"},
   OMRBLK48 = {t="OMRBLK48",f="OMRBLK44"},
   OMRBLK49 = {t="OMRBLK49",f="OMRBLK44"},
-  OMRBLK59 = {t="OMRBLK59",f="OMRBLK44"},
   OMRBLK90 = {t="OMRBLK90",f="OMRBLK59"},
   OMRBLK91 = {t="OMRBLK91",f="OMRBLK59"},
 
@@ -1156,7 +1154,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   }
   for i = 1, PARAM.float_otex_num_themes * 0.75 do
     for _,T in pairs(themes) do
-      local grouping, room_theme = {}
+      local room_theme = {}
       local tab_pick, tex_pick, RT_name, tex_sub
 
       RT_name = T .. "_OTEX_cons_" .. i .. "_"
@@ -1176,6 +1174,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       for j = 1, 3 do
         ::pick_cons_wall_again::
         tex_pick = rand.pick(resource_tab[tab_pick].textures)
+        assert(tex_pick)
         room_theme.walls[tex_pick] = 5
 
         -- try again if picked a very colorful texture
@@ -1195,6 +1194,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
         else
           tex_pick = pick_generic_flat(T, generic_floors_list)
         end
+        assert(tex_pick)
         room_theme.floors[tex_pick] = 5
       end
       RT_name = RT_name .. tex_pick .. "_"
@@ -1210,6 +1210,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
         else
           tex_pick = pick_generic_flat(T, generic_floors_list)
         end
+        assert(tex_pick)
         room_theme.ceilings[tex_pick] = 5
       end
       RT_name = RT_name .. tex_pick
@@ -1222,7 +1223,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   -- try a completely random theme
   for i = 1, PARAM.float_otex_num_themes * 0.25 do
     local RT_name = "any_OTEX_random_" .. i .. "_"
-    local room_theme, tab_pick = {}
+    local room_theme, tab_pick = {}, {}
     local tex_pick
     local tex_sub
 
@@ -1240,6 +1241,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     tab_pick = rand.key_by_probs(group_pick_list["any"].textures)
     ::pick_rand_wall_again::
     tex_pick = rand.pick(resource_tab[tab_pick].textures)
+    assert(tex_pick)
     room_theme.walls[tex_pick] = 5
     RT_name = RT_name .. tex_pick .. "_"
     
@@ -1250,8 +1252,9 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     if rand.odds(66) then
       tex_pick = rand.pick(resource_tab[tab_pick].flats)
     else
-      tex_pick = pick_generic_flat(T, generic_floors_list)
+      tex_pick = pick_generic_flat("any", generic_floors_list)
     end
+    assert(tex_pick)
     room_theme.floors[tex_pick] = 5
     RT_name = RT_name .. tex_pick .. "_"
 
@@ -1260,8 +1263,9 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     if rand.odds(66) then
       tex_pick = rand.pick(resource_tab[tab_pick].flats)
     else
-      tex_pick = pick_generic_flat(T, generic_floors_list)
+      tex_pick = pick_generic_flat("any", generic_floors_list)
     end
+    assert(tex_pick)
     room_theme.ceilings[tex_pick] = 5
     RT_name = RT_name .. tex_pick
 
@@ -1271,7 +1275,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
 
   -- insert into outdoor facades
   for theme,table_group in pairs(GAME.THEMES) do
-    local tab_pick, tex_pick, pick_num = 0
+    local tab_pick, tex_pick
 
     if GAME.THEMES[theme].facades then
       for i = 1, 50 do
@@ -1282,6 +1286,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
         tab_pick = rand.key_by_probs(group_pick_list[theme].textures)
         while not GAME.THEMES[theme].facades[tex_pick] and pick_num < 5 do
           tex_pick = rand.pick(resource_tab[tab_pick].textures)
+          assert(tex_pick)
           GAME.THEMES[theme].facades[tex_pick] = rand.pick({15,20,25,30})
           pick_num = pick_num + 1
         end

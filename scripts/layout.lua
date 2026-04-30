@@ -1240,6 +1240,8 @@ gui.debugf("MonRelease in %s : kind --> %s\n",
 
     -- do not trap the exit switch, as player may exit too soon and
     -- not notice the released monsters
+    assert(goal)
+
     if goal.kind == "START" or
        goal.kind == "EXIT" or
        goal.kind == "SECRET_EXIT"

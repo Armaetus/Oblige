@@ -1030,7 +1030,7 @@ function PLUTONIA.setup(self)
     GAME.MONSTERS["ss_nazi"] = nil
   end
 
-  for name,_ in pairs(pairs(PLUTONIA.MONSTERS)) do
+  for name,_ in pairs(PLUTONIA.MONSTERS) do
     local M = GAME.MONSTERS[name]
 
     if M and factor then

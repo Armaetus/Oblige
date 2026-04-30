@@ -255,7 +255,6 @@ OBS_RESOURCE_PACK_DOOM1_ROOM_THEMES =
       FLAT9  = 30,
       FLAT19 = 20,
       FLAT4  = 20,
-      FLAT9  = 15,
       FLAT23 = 5,
     },
   },
@@ -424,7 +423,6 @@ OBS_RESOURCE_PACK_DOOM1_ROOM_THEMES =
       CEIL4_1 = 30,
       CEIL4_2 = 30,
       CEIL4_4 = 30,
-      FLOOR1_1 = 50,
       FLAT14 = 35,
 
       FLOOR1_1 = 15,
@@ -679,7 +677,6 @@ OBS_RESOURCE_PACK_DOOM1_ROOM_THEMES =
       CEIL3_5 = 30,
       FLAT5_4 = 20,
       MFLR8_1 = 15,
-      FLAT5_2 = 5,
       CEIL1_1 = 5,
       FLAT5_2 = 5,
       GRATE4  = 10,
@@ -974,7 +971,6 @@ OBS_RESOURCE_PACK_DOOM1_ROOM_THEMES =
       MFLR8_1 = 15,
       FLAT5_2 = 5,
       CEIL1_1 = 5,
-      FLAT5_2 = 5,
       GRATE4  = 10,
     },
   },
@@ -1083,7 +1079,6 @@ OBS_RESOURCE_PACK_DOOM1_ROOM_THEMES =
       FLAT5_1  = 30,
       FLOOR7_1 = 30,
       DEM1_6   = 15,
-      FLAT5_1  = 5,
       FLAT5_2  = 5,
 
       FLAT10   = 10,
@@ -1207,7 +1202,6 @@ OBS_RESOURCE_PACK_DOOM1_ROOM_THEMES =
       MFLR8_1 = 15,
       FLAT5_2 = 5,
       CEIL1_1 = 5,
-      FLAT5_2 = 5,
       GRATE4  = 10,
       GRATE8  = 10,
 
@@ -1469,63 +1463,12 @@ OBS_RESOURCE_PACK_DOOM1_ROOM_THEMES =
 
     ceilings =
     {
-    CEIL1_1 = 70,
-    FLAT5_2 = 50,
-    GSTN01  = 30,
-    GSTN02  = 30,
-    SLIME14 = 20,
-    SLIME15 = 20,
-
-    },
-  },
-
-  flesh_MoreWood =
-  {
-    env = "building",
-    prob = 150,
-
-    walls =
-    {
-      WOOD1 = 50,
-      WOOD3 = 50,
-      WOOD5 = 50,
-      WD03   = 50,
-      WD04   = 50,
-      WOOD15 = 50,
-      WOOD16 = 50,
-      WOOD17 = 50,
-      WOOD18 = 35,
-    },
-
-    floors =
-    {
-      FLAT5_1 = 80,
-      FLAT5_2 = 80,
-      FLAT5_5 = 50,
-
-      CARPET1 = 15,
-      CARPET2 = 15,
-      CARPET3 = 15,
-      CARPET4 = 15,
-      CARPET5 = 15,
-      CARPET6 = 15,
-      CARPET7 = 15,
-      CARPET8 = 15,
-
-      WOODTIL = 30,
-      WOODTI2 = 30,
-      FFLAT01 = 30,
-    },
-
-    ceilings =
-    {
-    CEIL1_1 = 70,
-    FLAT5_2 = 50,
-    GSTN01  = 30,
-    GSTN02  = 30,
-    SLIME14 = 20,
-    SLIME15 = 20,
-
+      CEIL1_1 = 70,
+      FLAT5_2 = 50,
+      GSTN01  = 30,
+      GSTN02  = 30,
+      SLIME14 = 20,
+      SLIME15 = 20,
     },
   },
 
@@ -2498,17 +2441,6 @@ OBS_RESOURCE_PACK_DOOM1_SINK_DEFS =
   },
 
   --
-  light_GLITE05_BLUE =
-  {
-    mat = "T_GLT5BL",
-    dz  = 8,
-    light = 32,
-
-    trim_mat = "METAL",
-    trim_dz  = -5,
-    trim_light = 16,
-  },
-
   light_GLITE05_BLUE =
   {
     mat = "T_GLT5BL",
