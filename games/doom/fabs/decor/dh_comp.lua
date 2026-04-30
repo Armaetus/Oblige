@@ -31,5 +31,5 @@ PREFABS.Decor_gtd_dh_comp_grouped =
 {
   template = "Decor_dittohead_computer",
 
-  group = "gtd_dh_comp"
+  group = "gtd_dh_comp",
 }

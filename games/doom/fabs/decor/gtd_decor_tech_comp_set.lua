@@ -71,3 +71,15 @@ PREFABS.Decor_tech_data_center_rack_2 =
 
   z_fit = {84, 86}
 }
+
+--
+
+PREFABS.Decor_gtd_dh_comp_2 =
+{
+  template = "Decor_dittohead_computer",
+  map = "MAP06",
+
+  group = "gtd_dh_comp",
+
+  size = 112
+}
