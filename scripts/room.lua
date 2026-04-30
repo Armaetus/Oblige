@@ -3403,6 +3403,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
 
   local function do_stairs(R)
+    if not R.stair_ceil_mode then
+      R.stair_ceil_mode = rand.pick({"higher_ceil_h", "lower_ceil_h"})
+    end
+
     for _,chunk in pairs(R.stairs) do
       local A = chunk.area
 
@@ -3422,8 +3426,13 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         N1 = N2
       end
 
-      A.ceil_h   = N1.ceil_h
-      A.ceil_mat = N1.ceil_mat
+      if R.stair_ceil_mode == "lower_ceil_h" then
+        A.ceil_h   = N1.ceil_h
+        A.ceil_mat = N1.ceil_mat
+      else
+        A.ceil_h   = N2.ceil_h
+        A.ceil_mat = N2.ceil_mat
+      end
       ::skip::
     end
 

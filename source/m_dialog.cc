@@ -266,7 +266,6 @@ std::string DLG_OutputFilename(const char *ext, const char *preset = nullptr)
     }
     else
     {
-        std::string best_dir = "C:\\";
         chooser.directory(best_dir.c_str());
     }
 
