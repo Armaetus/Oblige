@@ -1133,7 +1133,6 @@ DOOM.THEMES =
       METAL1   = 60,
       METAL2   = 60,
       BROWN144 = 60,
-      STONE    = 60,
       ICKWALL2 = 40,
       ICKWALL3 = 40,
       SILVER1  = 40,
@@ -2874,7 +2873,6 @@ DOOM.ROOM_THEMES =
       FLOOR5_1 = 50,
       FLOOR5_3 = 30,
       FLOOR0_3 = 30,
-      FLOOR5_1 = 25,
       FLOOR3_3 = 20,
       FLOOR0_2 = 20,
       FLOOR0_1 = 20,
@@ -2903,7 +2901,6 @@ DOOM.ROOM_THEMES =
       FLAT9  = 30,
       FLAT19 = 20,
       FLAT4  = 20,
-      FLAT9  = 15,
       FLAT23 = 5
     }
   },
@@ -2949,7 +2946,6 @@ DOOM.ROOM_THEMES =
       FLAT1   = 15,
       CEIL3_5 = 5,
       SLIME15 = 5,
-      SLIME14 = 5,
 
       SLIME14 = 20,
       SLIME16 = 10
@@ -3573,7 +3569,6 @@ DOOM.ROOM_THEMES =
     {
       GRNROCK  = 30,
       FLAT5_4  = 30,
-      FLAT5_1  = 30,
       FLOOR7_1 = 30,
       DEM1_6   = 15,
       FLAT5_1  = 5,
@@ -4159,7 +4154,6 @@ DOOM.ROOM_THEMES =
 
     ceilings =
     {
-      CEIL3_5 = 50,
       RROCK09 = 50,
       RROCK12 = 50,
       RROCK13 = 50,
@@ -4372,7 +4366,6 @@ DOOM.ROOM_THEMES =
       FLAT8 = 20,
       FLAT5_4 = 35,
       FLAT5_5 = 20,
-      FLAT5_1 = 50,
       SLIME14 = 15,
       SLIME15 = 15
     },
@@ -4429,7 +4422,6 @@ DOOM.ROOM_THEMES =
       FLOOR5_4 = 20,
       FLOOR6_1 = 30,
       FLAT5_1 = 20,
-      FLAT8 = 20,
 
       CEIL3_3 = 20,
       CEIL3_5 = 20,

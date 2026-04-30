@@ -59,8 +59,6 @@ PREFABS.Hallway_conveyorh_locked_red2 =
   port = "zdoom",
   key    = "k_red",
 
-  port = "zdoom",
-
   thing_20 =
   {
     gibs = 50,

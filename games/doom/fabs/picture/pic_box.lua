@@ -159,7 +159,7 @@ PREFABS.Pic_box_gargoyles2 =
   prob  = 150,
   theme = "!tech",
 
-  tex_PIPES = { SW1GARG=20, SW1LION=20, SW1GARG=20 },
+  tex_PIPES = { SW1LION=20, SW1GARG=20 },
   offset_2  = 55,
 }
 
