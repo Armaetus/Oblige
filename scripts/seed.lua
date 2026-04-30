@@ -628,7 +628,7 @@ function Seed_block_valid_and_free(x1,y1, x2,y2)
 
   for x = x1,x2 do
   for y = y1,y2 do
-    local S = SEEDS[x][y][z]
+    local S = SEEDS[x][y]
     if S.room then
       return false
     end
