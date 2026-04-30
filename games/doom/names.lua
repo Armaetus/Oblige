@@ -338,7 +338,6 @@ DOOM.NAMES =
         ["Prismatic Firestorm"]=10,
         ["Purity of the Planets"]=10,
         ["Quantum Consciousness Deviation"]=10,
-        ["Rain"]=10,
         ["Razor Red Prismatic Death"]=10,
         ["Ruins of the Solar Towers"]=10,
         ["Sabbath Burning Sabbath"]=10, -- Play on Black Sabbath's "Sabbath Bloody Sabbath"
@@ -453,7 +452,6 @@ DOOM.NAMES =
         ["So Grim So True So Real"]=10,
         ["Struck by Fate"]=10,
         ["Take a Turn"]=10,
-        ["The Broken Ones"]=10,
         ["The Chaos Drains"]=10,
         ["The Cruel Transcendency"]=10,
         ["The Emerald Parallax"]=10,
@@ -878,7 +876,7 @@ DOOM.NAMES =
         Manufacturing=3, Maintenance=3,
         Industrial=3, Engineering=5,
         Processing=10, Refueling=5, Supply=15,
-        Construction=5, Assembly=5,
+        Assembly=5,
         --+ residential
         Refuge=5, Pods=5,
 
@@ -899,7 +897,6 @@ DOOM.NAMES =
         Distribution=5, Trafficking=5,
         --+ military
         Operations=5, Training=5, Treatment=5,
-        Security=5,
         --+ IT
         Communications=5, Programming=5, Comms=5,
         Singularity=3, Infosec=3,
@@ -942,7 +939,6 @@ DOOM.NAMES =
         -- mechanical
         Mining=15, Fusion=15, Thermal=10,
         Infrared=10, Pressure=5, Counteraction=3,
-        Pneumatic=3,
 
         -- electronic structures
         Data=10, Tesla=5, Quantum=5,
@@ -959,7 +955,7 @@ DOOM.NAMES =
         Dilithium=7, Verteron=5, --nerd
         Deuterium=5, Antimatter=5, Isotope=3,
         Syngas=5, Flux=10, Rubidium=3, Magmatic=3,
-        Silicone=5, Hadron=5,
+        Silicone=5,
 
         -- can't get enough weird sci-fi buzzwords -MSSP
         Axioinic=3, Gravimetric=5,
@@ -1005,7 +1001,7 @@ DOOM.NAMES =
         Dead=10, ["Not So"]=10, Not=10, ["Surely Isn't"]=10, Somewhat=10,
         Deadly=10, ["Fuck, Not"]=10, Delightfully=10, Simply=10, ["Hard, Yet"]=10,
         Cheerfully=10, ["Not Really"]=10, Outright=10, Utterly=10, ["This Ain't"]=10,
-        ["Totally Not"]=10, Totally=10, Absolutely=10, ["Not So"]=10, Gleefully=10,
+        ["Totally Not"]=10, Totally=10, Absolutely=10, Gleefully=10,
         ["Is It"]=10, Joyfully=10, ["Not That"]=10, ["Deadly and"]=10, Stupidly=10,
         Painfully=10, Quite=10, Obsidian=10, ["Hell's Not"]=10, ["Dude, Dead"]=10,
         ["Memories of Dead"]=10, ["Is This"]=10, ["Might Be"]=10, ["Not Made"]=10,
@@ -1441,7 +1437,6 @@ DOOM.NAMES =
         ["Manifest"]=10,
         ["Quantum Dissolution"]=10,
         ["Shut It Down"]=10,
-        ["Space Debris"]=10,
         ["Terminal Resistance"]=10,
         ["The Rubicon"]=10,
         ["The Warzone Within"]=10,
@@ -1561,11 +1556,11 @@ DOOM.NAMES =
         -- Judeo-Christian literature evil stuff (includes Ars Goetia)
         Satan=10, ["The Devil"]=7, Lucifer=7, Amon=3, Agares=3,
         Malthus=3, Beelzebub=3, Moloch=3,
-        Xezbeth=3, Botis=2, Sitri=2, Mammon=3, Saleos=3,
+        Botis=2, Mammon=3, Saleos=3,
         Haborym=3, Raum=2, Forcas=3,
         Ipos=3, Xezbeth=3, Abaddon=3, Phenex=2,
         Baal=3, Berith=3, -- isn't this like the same guy, just his first and last name?
-        Haagenti=3, Caim=2, Seir=3, Nybbas=2,
+        Haagenti=3, Cain=2, Seir=3,
         Astaroth=2, Leviathan=1,
         Pithius=3, Lempo=3, Kasdeya=3,
 
@@ -1596,7 +1591,7 @@ DOOM.NAMES =
         Samael=3, Sitri=2, Soneillon=3,
         Salpsan=3, Shedim=3, Stolas=3, Surgat=3,
         Tannin=3, Ukobach=3, Valac=3, Vapula=3,
-        Valac=2, Vepar=3, Zagan=3, Zepar=3, Ziminar=3,
+        Vepar=3, Zagan=3, Zepar=3, Ziminar=3,
 
         Titivullus=3, Belphegor=3,
 
@@ -1656,7 +1651,7 @@ DOOM.NAMES =
         Ninurta=3, ["Ardat Lili"]=2, Asag=2,
 
         -- Diablo games
-        Diablo=7, Andariel=3, Duriel=3, Belial=3,
+        Diablo=7, Andariel=3, Duriel=3,
         Azmodan=3, Rakanoth=3, Inarius=3, Izual=3,
         Adria=1, ["Tal Rasha"]=2,
 
@@ -1789,7 +1784,7 @@ DOOM.NAMES =
 
         -- danger/fatalism
         Brutal=20, Grisly=15, Tortuous=10,
-        Disastrous=2, Ill_fated=10, Frail=3,
+        Disastrous=2, Ill_fated=10,
         Fatal=10, Final=5, Terminal=2, Painful=5,
         Deadly=3,
 
@@ -1891,9 +1886,9 @@ DOOM.NAMES =
         Sacrament=5, Plight=5, Liturgy=5,
         Choir=5,
 
-        -- Shadiversity approved castle parts -MSSP
+        -- approved castle parts -MSSP
         Ramparts=8, Keep=10, Gatehouse=8,
-        Bailey=5, Barbican=5, Well=10,
+        Bailey=5, Barbican=5,
         Motte=4, Battlements=10, Ward=7,
         Turrets=3, Oubliette=3, Stockades=3,
         Bartizan=3, Brattice=3, Postern=3,
@@ -1901,8 +1896,7 @@ DOOM.NAMES =
 
         -- temples of sorts
         Temple=20,
-        Basillica=3, Chapel=10, Monastery=10,
-        Abbey=10, Monastery=10, Friary=3,
+        Basillica=3, Monastery=10, Friary=3,
         Priorate=5, Lamasery=3, Convent=10,
         Hermitage=5, Ziggurat=10, Bethel=3,
         Parish=3, Sacellum=3,
@@ -1921,7 +1915,7 @@ DOOM.NAMES =
         Clerestory=3, Transept=5, Scriptorium=7,
         Synagogue=10, Belfries=2, Pulpitum=3,
         Dais=3, Feretory=5, Maqsurah=3,
-        Peripteral=3, Chantry=3, Font=2,
+        Chantry=3, Font=2,
         Sacristy=3, Narthex=5, Altar=7,
         Shrine=10,
 
@@ -1967,7 +1961,7 @@ DOOM.NAMES =
         Solar=5, Cellars=10, Alcoves=3,
 
         -- other synonyms for arena
-        Gridiron=3, Hippodrome=3, Pit=3,
+        Gridiron=3, Hippodrome=3,
         Grounds=3, Stade=3, Strand=3,
         Coliseum=3,
 
@@ -2432,7 +2426,6 @@ DOOM.NAMES =
         ["Bodies for Sale"]=10,
         ["Bodily Assimilation"]=10,
         ["Chains of Suffering"]=10,
-        ["Death's Gratification"]=10,
         ["Devil's Dilemma"]=10,
         ["Divine Abjuration"]=10,
         ["Doors To Nowhere"]=10,
@@ -2822,7 +2815,6 @@ DOOM.NAMES =
 
         --+ distance/inaccessibility
         Furthest=5, Isolated=10, Remote=5, Obscure=10,
-        Lost=5,
         Cordoned=5, Quarantined=5, Sequestered=5,
         Confined=5, Secluded=5, Sealed=3,
         Restricted=5, Blocked=3, Segregated=3,
@@ -2886,7 +2878,7 @@ DOOM.NAMES =
 
         --+ abandonment
         Bleak=20, Abandoned=15, Forsaken=10,
-        Deserted=5, Vacated=5, Forgotten=12,
+        Deserted=5, Vacated=5,
         Derelict=15, Desolate=5, Forlorn=3,
         Bereft=3, Stranded=2, Vacant=15, Empty=7,
         Dead=15,
@@ -4264,8 +4256,6 @@ DOOM.NAMES =
       ["Wading through the %j"] = 5,
       ["Endless %j"] = 10,
 
-      ["Wading through the %j"] = 5,
-
       -- using the noun generator
       ["The %p of NOUNGENEXOTIC"] = 25,
       ["Attack on NOUNGENANGLICAN"] = 12,
@@ -4321,7 +4311,6 @@ DOOM.NAMES =
       -- E.T.'s additions
       ["%p of the %a %j"]=4,
       ["%p of %a %j"]=4,
-      ["%p of %j"]=4
     },
 
     lexicon =
@@ -4437,8 +4426,6 @@ DOOM.NAMES =
         Crypt = 5,
         Dungeons = 10,
         Hollow = 10,
-        Maze = 10,
-        Labyrinth = 7,
         Pits = 10,
         Warrens = 10,
         Underworld = 10,
@@ -5124,7 +5111,6 @@ DOOM.NAMES =
       ["%a Witchcraft"] = 3,
       ["%a Hellcraft"] = 3,
       ["%d! Oh My Oh My"] = 3,
-      ["Is %c %a?"]=3
     },
 
     lexicon =
@@ -5171,7 +5157,6 @@ DOOM.NAMES =
         Grievious = 15,
         Grim = 15,
         Lonely = 10,
-        Malevolent = 10,
         Maleficent = 5,
         Malignant = 7,
         Melancholic = 5,
@@ -5201,7 +5186,6 @@ DOOM.NAMES =
         Desolate = 15,
         Forgotten = 10,
         Forsaken = 10,
-        Lonely = 10,
         Lost  = 10,
         Neglected = 10,
         Oppressive = 10,
@@ -5538,13 +5522,11 @@ DOOM.NAMES =
         -- states of mind, states in mind
         Bliss = 10,
         Dreams = 20,
-        Chaos = 10,
         Nightmares = 20,
         Insanity = 10,
         Transience = 10,
 
         -- story devices
-        Bane = 10,
         Legends = 10,
         Genesis = 10,
         Heroes = 10,
@@ -5613,11 +5595,9 @@ DOOM.NAMES =
 
         -- cups of metaphorical substrate
         Canon = 8,
-        Dogma = 10,
         Maxims = 8,
         Piety = 8,
         Precepts = 10,
-        Tenets = 10,
 
         -- secret organizations
         Cabal = 10,
