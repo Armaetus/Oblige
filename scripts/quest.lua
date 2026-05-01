@@ -269,17 +269,19 @@ function Quest_create_initial_quest(LEVEL)
     end
     score = score * (score_mult or 1)
 
-    -- caves are not ideal
-    if R.is_cave then score = score / 4 end
+    --[[caves are not ideal
+    if R.is_cave then score = score / 4 end]]
+
     -- sub rooms that are too small
     if R.is_sub_room and R.svolume < 16 and not secret_mode then 
       score = score / 48
     end
 
-    --[[if not R.is_sub_room then
-      score = score + gui.random() * 10
-    end]]
-
+    -- more likely to pick a room with a closet
+    if R.closets and not table.empty(R.closets) then
+      score = score + (#R.closets * 5)
+    end
+  
     if R:total_conns() > 1 then
       score = score / 10
     end
@@ -1128,9 +1130,9 @@ do return false end
   -- double switched door?
   -- [ never make them if disabled by "switches" style ]
 
-  if not table.empty(goal_list) then
+  --[[if not table.empty(goal_list) then
     lock_up_double_doors(goal_list)
-  end
+  end]]
 
 
   -- lastly, normal switched doors
@@ -1262,8 +1264,6 @@ function Quest_create_zones(LEVEL)
     end
 
 -- stderrf("spread_zones_via_conns: done = %s\n", string.bool(is_done))
-
-    return is_done
   end
 
 
@@ -1579,7 +1579,7 @@ function Quest_start_room(LEVEL)
     -- room to be blocked off be an intraroom lock.
     --
 
-    local set1, set2,
+    local set1, set2
 
     set1 = { "player1", "player3" }
     set2 = { "player2", "player4" }
@@ -3074,6 +3074,8 @@ function Quest_room_themes(LEVEL)
 
     while table.size(building_tab) > max_room_theme do
       local theme, odds = rand.table_pair(building_tab)
+      assert(theme)
+
       if rand.odds(math.max(5, 100 - odds)) then -- Always give at least some chance to prevent infinite loop in case odds are all 100+
         building_tab[theme] = nil
       end
@@ -3101,6 +3103,8 @@ function Quest_room_themes(LEVEL)
 
     while table.size(the_wall_group_tab) > max_wall_groups do
       local group, odds = rand.table_pair(the_wall_group_tab)
+      assert(group)
+
       if rand.odds(math.max(5, 100 - odds)) then -- Always give at least some chance to prevent infinite loop in case odds are all 100+
         the_wall_group_tab[group] = nil
       end
@@ -3127,7 +3131,7 @@ function Quest_room_themes(LEVEL)
       if R.is_hallway then
         local tab = collect_usable_themes("hallway", R.hall_group)
 
-        local name = rand.key_by_probs(tab, {})
+        local name = rand.key_by_probs(tab)
 
         R.theme = GAME.ROOM_THEMES[name]
         assert(R.theme)

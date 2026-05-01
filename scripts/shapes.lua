@@ -14438,7 +14438,7 @@ GROW_3x_L_CAGE =
 GROW_3x_L_CAGE_alt =
 {
   prob = 10,
-  skip_prob = 86,
+  skip_prob = 80,
 
   structure =
   {

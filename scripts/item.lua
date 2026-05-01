@@ -66,7 +66,7 @@ function Player_give_weapon(LEVEL, weapon, only_CL)
 end
 
 
-function Player_give_class_weapon(slot)
+function Player_give_class_weapon(slot, LEVEL)
   for name,W in pairs(GAME.WEAPONS) do
     for CL,hmodel in pairs(LEVEL.hmodels) do
       if W.slot == slot and W.class == CL then
@@ -80,9 +80,9 @@ end
 function Player_give_map_stuff(LEVEL)
   if LEVEL.assume_weapons then
     for name,_ in pairs(LEVEL.assume_weapons) do
-          if name == "weapon2" then Player_give_class_weapon(2)
-      elseif name == "weapon3" then Player_give_class_weapon(3)
-      elseif name == "weapon4" then Player_give_class_weapon(4)
+          if name == "weapon2" then Player_give_class_weapon(2, LEVEL)
+      elseif name == "weapon3" then Player_give_class_weapon(3, LEVEL)
+      elseif name == "weapon4" then Player_give_class_weapon(4, LEVEL)
       else
         Player_give_weapon(name)
       end

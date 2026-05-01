@@ -975,7 +975,6 @@ MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS =
     damage = 6.0,
     attack = "missile",
     density = 0.6,
-    weap_min_damage = 40,
     float = true,
     weap_needed = { chain=true },
     weap_prefs = { launch=1.25, super=1.75, chain=1.2, shotty=0.7, plasma=1.2 },
