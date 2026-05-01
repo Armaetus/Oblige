@@ -10,7 +10,6 @@ PREFABS.Start_beed28_fireblu_exit =
   seed_h = 2,
 
   deep  =  16,
-  over  = -16,
 
   x_fit = "frame",
 

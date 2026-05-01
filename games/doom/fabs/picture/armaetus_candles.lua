@@ -20,7 +20,6 @@ PREFABS.Pic_armaetus_candles =
   bound_z2 = 128,
 
   deep =  16,
-  over = -16,
 
   x_fit = { 56,72 },
   y_fit = "top",
