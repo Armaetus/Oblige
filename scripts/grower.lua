@@ -4338,7 +4338,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
           local cur_R = LEVEL.rooms[id]
 
           if not cur_R.is_hallway or not cur_R.is_grown then
-            final_r = cur_R
+            final_R = cur_R
             found_room = true
           end
         end
