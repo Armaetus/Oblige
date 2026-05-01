@@ -261,7 +261,7 @@ function ZStoryGen_quitmessages()
 
     -- generate a monster name (format of "Snowball the Terrible") 
     -- for quit messages that use it
-    enemy_name = namelib.generate_unique_noun("exotic") .. " the " ..
+    local enemy_name = namelib.generate_unique_noun("exotic") .. " the " ..
                  rand.key_by_probs(namelib.NAMES["TITLE"].lexicon.a)
     info.enemy_name = enemy_name
 

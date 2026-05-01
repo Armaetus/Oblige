@@ -160,5 +160,5 @@ PREFABS.Item_gtd_closet_simple_7 =
   map = "MAP09",
 
   y_fit = "top",
-  y_fit = "frame"
+  x_fit = "frame"
 }

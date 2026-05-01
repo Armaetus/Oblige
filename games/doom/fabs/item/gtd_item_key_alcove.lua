@@ -39,7 +39,7 @@ PREFABS.Item_gtd_alcove2_urban =
 
   tex_COMPTALL =
   {
-    CEMENT9 = 4, BRICK11 = 1, BRICK12 = 1, BRICK7,
+    CEMENT9 = 4, BRICK11 = 1, BRICK12 = 1, BRICK7 = 1,
     REDWALL = 1, SLADWALL = 1, WOODGARG = 1,
   },
   tex_METAL5 = "BRICKLIT",

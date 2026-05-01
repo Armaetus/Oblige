@@ -208,25 +208,11 @@ PREFABS.Item_secret_yard_closet1 =
 
   jump_crouch = true,
 
-  deep = 16,
-  over = -16,
-
   x_fit = "frame",
   y_fit = "frame",
   z_fit = "top",
 
   can_flip = true,
-
-  tex_BRICK9 = {
-    BRICK1=50, BRICK10=50, BRICK11=50,
-    BRICK2=50, BRICK4=50,
-    BRICK6=50, BRICK7=50, BRICK8=50,
-    BIGBRIK1=50, BIGBRIK2=50, STONE2=50,
-    STONE3=50, BRICK12=50, BRICK5=50,
-    BRONZE1=50, BROWN1=50, BROWN96=50,
-    BROWNGRN=50, CEMENT7=50,
-    CEMENT9=50,
-  },
 
   tex_BRICK9 = {
     BRICK1=50,
@@ -248,7 +234,7 @@ PREFABS.Item_secret_yard_closet1 =
     BROWN96=50,
     BROWNGRN=50,
     CEMENT7=50,
-	CEMENT9=50,
+  	CEMENT9=50,
   }
 }
 --double porch Appartment secret
