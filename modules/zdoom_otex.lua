@@ -1520,8 +1520,8 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       f = pick_generic_flat("all", generic_floors_list)
     }
 
-    if string.gsub(name,2,5) then
-      local prob = 2
+    if string.sub(name,2,5) == "LGHT" then
+      local prob = 6
       if info.color == "violet" then
         prob = 0.75
       end
@@ -1529,7 +1529,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       OTEX_THEMES.urban.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.hell.ceiling_sinks[sink_name] = prob
     else
-      local prob = 5
+      local prob = 18
       OTEX_THEMES.tech.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.urban.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.hell.ceiling_sinks[sink_name] = prob
