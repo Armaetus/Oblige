@@ -3431,6 +3431,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       else
         A.ceil_h   = N2.ceil_h
         A.ceil_mat = N2.ceil_mat
+        if N2.ceil_group then A.ceil_group = N2.ceil_group end
       end
       ::skip::
     end
@@ -4295,14 +4296,18 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         SA.ceil_h = math.clamp(A.floor_h + 96, A.ceil_h + R.dead_end_add_h, EXTREME_H)
 
         -- affix textures
-        if A.room:get_env() == "outdoor" then
-          A.source_mat = R.floor_mats[A.floor_h] --or SAS.floor_mat 
-          SA.source_mat = R.floor_mats[SA.floor_h] --or SAS.floor_mat
-        end
-
         if A.room:get_env() == "building" then
-          A.ceil_mat = R.ceil_mats[A.floor_h] --or SAS.ceil_mat
-          SA.ceil_mat = R.ceil_mats[SA.ceil_h] --or SAS.ceil_mat
+          local ceil_tex = SAS.ceil_mat
+          if A.ceil_mats then
+            if  A.ceil_mats[A.ceil_h] then
+              ceil_tex = A.ceil_mats[A.ceil_h]
+            else
+              ceil_tex = rand.pick(A.ceil_mats)
+            end
+          end
+          assert(ceil_tex, "no ceiling texture for room %s", A.room.name)
+          A.ceil_mat = ceil_tex
+          SA.ceil_mat = ceil_tex
         end
 
         fixup_neighbors(A)
