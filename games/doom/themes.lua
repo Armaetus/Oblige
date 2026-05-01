@@ -781,7 +781,7 @@ DOOM.SINKS =
     trim_dz  = 0,
   },
 
-   ceil_vdark2 =
+  ceil_vdark2 =
   {
     mat   = "CEIL4_1",
     dz    = 64,
@@ -867,6 +867,60 @@ DOOM.SINKS =
     trim_dz  = -8,
   },
 
+  ceil_mix_with_f =
+  {
+    mat = "_FLOOR",
+    dz = 128,
+
+    trim_mat = "_WALL",
+    trim_dz = 64
+  },
+
+  ceil_mix_with_w =
+  {
+    mat = "_WALL",
+    dz = 128,
+
+    trim_mat = "_FLOOR",
+    trim_dz = 64
+  },
+
+  ceil_mix_with_f_tall =
+  {
+    mat = "_FLOOR",
+    dz = 256,
+
+    trim_mat = "_WALL",
+    trim_dz = 128
+  },
+
+  ceil_mix_with_w_tall =
+  {
+    mat = "_WALL",
+    dz = 256,
+
+    trim_mat = "_FLOOR",
+    trim_dz = 128
+  },
+
+  ceil_mix_with_f_ultratall =
+  {
+    mat = "_FLOOR",
+    dz = 512,
+
+    trim_mat = "_WALL",
+    trim_dz = 256
+  },
+
+  ceil_mix_with_w_ultratall =
+  {
+    mat = "_WALL",
+    dz = 512,
+
+    trim_mat = "_FLOOR",
+    trim_dz = 256
+  },
+
   -- fantastic floors
   floor_sky =
   {
@@ -902,6 +956,15 @@ DOOM.SINKS =
 
     trim_mat = "_WALL",
     trim_dz = -4,
+  },
+
+  floor_mixup_alt =
+  {
+    mat = "_WALL",
+    dz = -8,
+
+    trim_mat = "_CEIL",
+    trim_dz = -4
   },
 
   floor_shawn_wall =
@@ -1024,11 +1087,19 @@ DOOM.THEMES =
     floor_sinks =
     {
       PLAIN = 0.01,
+      floor_mixup = 25,
+      floor_mixup_alt = 25
     },
 
     ceiling_sinks =
     {
       PLAIN = 0.01,
+      ceil_mix_with_f = 70,
+      ceil_mix_with_w = 30,
+      ceil_mix_with_f_tall = 70,
+      ceil_mix_with_w_tall = 30,
+      ceil_mix_with_f_ultratall = 7,
+      ceil_mix_with_w_ultratall = 7
     },
 
     wall_groups =
@@ -2237,7 +2308,6 @@ DOOM.THEMES =
       floor_sky = 5,
       floor_trim_sky = 7,
       floor_trim_liquid = 8,
-      floor_mixup = 17,
       floor_metal_wall = 17,
       floor_metal_c = 17
     },
