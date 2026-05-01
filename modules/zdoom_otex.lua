@@ -22,6 +22,7 @@ OTEX_PROC_MODULE = { }
 
 OTEX_MATERIALS = { }
 OTEX_ROOM_THEMES = { }
+OTEX_THEMES = { }
 
 OTEX_EXCLUSIONS = 
 {
@@ -862,6 +863,166 @@ OTEX_LIMITED_SAMPLES_SUB =
   "OTECHB",
 }
 
+OTEX_SINK_BASES =
+{
+  OLGHTA01 = {dz = 128},
+  OLGHTA02 = {dz = 128},
+  OLGHTA03 = {dz = 128},
+  OLGHTA04 = {dz = 128},
+  OLGHTA05 = {dz = 128, color = "violet"},
+  OLGHTA06 = {dz = 128},
+  OLGHTA07 = {dz = 128},
+
+  OLGHTB01 = {dz = 8},
+  OLGHTB02 = {dz = 8},
+  OLGHTB03 = {dz = 8},
+  OLGHTB04 = {dz = 8},
+  OLGHTB05 = {dz = 8},
+  OLGHTB06 = {dz = 8, color = "violet"},
+  OLGHTB07 = {dz = 8},
+  OLGHTB08 = {dz = 8},
+
+  OLGHTC01 = {dz = 128},
+  OLGHTC02 = {dz = 64},
+  OLGHTC03 = {dz = 128},
+  OLGHTC04 = {dz = 64},
+  OLGHTC05 = {dz = 128},
+  OLGHTC06 = {dz = 64},
+  OLGHTC07 = {dz = 128},
+  OLGHTC08 = {dz = 64},
+  --
+  OLGHTC11 = {dz = 64},
+  OLGHTC13 = {dz = 64},
+  OLGHTC15 = {dz = 64},
+  OLGHTC17 = {dz = 64},
+  --
+  OLGHTD01 = {dz = 64},
+  OLGHTD02 = {dz = 32},
+  OLGHTD03 = {dz = 64},
+  OLGHTD04 = {dz = 32},
+  OLGHTD05 = {dz = 64},
+  OLGHTD06 = {dz = 32},
+  --
+  OLGHTF01 = {dz = 64},
+  OLGHTF02 = {dz = 16},
+  OLGHTF03 = {dz = 64},
+  OLGHTF04 = {dz = 16},
+  OLGHTF05 = {dz = 64},
+  OLGHTF06 = {dz = 16},
+  OLGHTF07 = {dz = 64},
+  OLGHTF08 = {dz = 16},
+  OLGHTF09 = {dz = 64},
+  OLGHTF10 = {dz = 16},
+  OLGHTF11 = {dz = 64},
+  OLGHTF12 = {dz = 16},
+  OLGHTG34 = {dz = 64},
+  OLGHTG35 = {dz = 64},
+  OLGHTG36 = {dz = 64},
+  OLGHTG37 = {dz = 64},
+  OLGHTG38 = {dz = 64},
+  OLGHTG39 = {dz = 64},
+  OLGHTG3A = {dz = 64},
+  --
+  OLGHTK01 = {dz = 8},
+  OLGHTK02 = {dz = 8},
+  OLGHTK03 = {dz = 8},
+  OLGHTK04 = {dz = 8},
+  OLGHTK05 = {dz = 8},
+  OLGHTK06 = {dz = 8, color = "violet"},
+  OLGHTK07 = {dz = 8},
+  OLGHTK08 = {dz = 8},
+  --
+  OLGHTL01 = {dz = 16},
+  OLGHTL02 = {dz = 16},
+  OLGHTL03 = {dz = 16},
+  OLGHTL04 = {dz = 16},
+  OLGHTL05 = {dz = 16},
+  OLGHTL06 = {dz = 16, color = "violet"},
+  OLGHTL07 = {dz = 16},
+  OLGHTL08 = {dz = 16},
+  --
+  OLGHTM11 = {dz = 8},
+  OLGHTM12 = {dz = 8},
+  OLGHTM21 = {dz = 8},
+  OLGHTM22 = {dz = 8},
+  OLGHTM29 = {dz = 8},
+  OLGHTM31 = {dz = 8},
+  OLGHTM32 = {dz = 8},
+  OLGHTM39 = {dz = 8},
+  OLGHTM41 = {dz = 8},
+  OLGHTM42 = {dz = 8},
+  OLGHTM49 = {dz = 8},
+  OLGHTM51 = {dz = 8},
+  OLGHTM52 = {dz = 8},
+  OLGHTM59 = {dz = 8},
+  OLGHTM61 = {dz = 8, color = "violet"},
+  OLGHTM62 = {dz = 8, color = "violet"},
+  OLGHTM69 = {dz = 8, color = "violet"},
+  OLGHTM71 = {dz = 8},
+  OLGHTM72 = {dz = 8},
+  OLGHTM79 = {dz = 8},
+  OLGHTM81 = {dz = 8},
+  OLGHTM82 = {dz = 8},
+  OLGHTM89 = {dz = 8},
+  --
+  OLGHTO01 = {dz = 64},
+  OLGHTO02 = {dz = 64},
+  OLGHTO03 = {dz = 64},
+  OLGHTO04 = {dz = 64},
+  OLGHTO05 = {dz = 64},
+  OLGHTO11= {dz = 64},
+  OLGHTO12 = {dz = 64},
+  OLGHTO13 = {dz = 64},
+  OLGHTO14 = {dz = 64},
+  OLGHTO15 = {dz = 64},
+  OLGHTP01 = {dz = 64},
+  OLGHTP02 = {dz = 64},
+  OLGHTP03 = {dz = 64},
+  OLGHTP04 = {dz = 64},
+  OLGHTP05 = {dz = 64},
+
+  OLGHTQ01 = {dz = 128},
+  OLGHTQ02 = {dz = 128},
+  OLGHTQ03 = {dz = 128},
+  OLGHTQ04 = {dz = 128},
+  OLGHTQ05 = {dz = 128},
+  OLGHTQ06 = {dz = 128, color = "violet"},
+  OLGHTQ07 = {dz = 128},
+  OLGHTQ08 = {dz = 128},
+  --
+  OLGHTQ11 = {dz = 64},
+  OLGHTQ12 = {dz = 64},
+  OLGHTQ13 = {dz = 64},
+  OLGHTQ14 = {dz = 64},
+  OLGHTQ15 = {dz = 64},
+  OLGHTQ16 = {dz = 64, color = "violet"},
+  OLGHTQ17 = {dz = 64},
+  OLGHTQ18 = {dz = 64},
+
+  OMETLC80 = {dz = 128},
+  OMETLC81 = {dz = 128},
+  OMETLC82 = {dz = 64},
+  OMETLC83 = {dz = 64},
+
+  OMETLD95 = {dz = 128},
+  OMETLD96 = {dz = 128},
+  OMETLD97 = {dz = 64},
+
+  OMETLE95 = {dz = 128},
+  OMETLE96 = {dz = 128},
+  OMETLE97 = {dz = 64},
+
+  OMETLF95 = {dz = 128},
+  OMETLF96 = {dz = 128},
+  OMETLF97 = {dz = 64},
+
+  OMETLH97 = {dz = 64},
+
+  OMETLJ90 = {dz = 72},
+  OMETLJ96 = {dz = 72},
+  OMETLJ98 = {dz = 72}
+}
+
 function OTEX_PROC_MODULE.setup(self)
   PARAM.OTEX_module_activated = true
   module_param_up(self)
@@ -1332,12 +1493,56 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     end
   end
 
+  -- create liquid sink defs
+  OTEX_THEMES =
+  {
+    tech = {ceiling_sinks = {}},
+    urban = {ceiling_sinks = {}},
+    hell = {ceiling_sinks = {}},
+  }
+  for name,info in pairs(OTEX_SINK_BASES) do
+    local sink_name = "light_" .. name
+
+    GAME.SINKS[sink_name] =
+    {
+      mat = "_WALL",
+      dz = info.dz,
+      light = 16,
+
+      trim_mat = info.name,
+      trim_dz = 0,
+      trim_light = 16
+    }
+
+    OTEX_MATERIALS[name] =
+    {
+      t = name,
+      f = pick_generic_flat("all", generic_floors_list)
+    }
+
+    if string.gsub(name,2,5) then
+      local prob = 2
+      if info.color == "violet" then
+        prob = 0.75
+      end
+      OTEX_THEMES.tech.ceiling_sinks[sink_name] = prob
+      OTEX_THEMES.urban.ceiling_sinks[sink_name] = prob
+      OTEX_THEMES.hell.ceiling_sinks[sink_name] = prob
+    else
+      local prob = 5
+      OTEX_THEMES.tech.ceiling_sinks[sink_name] = prob
+      OTEX_THEMES.urban.ceiling_sinks[sink_name] = prob
+      OTEX_THEMES.hell.ceiling_sinks[sink_name] = prob
+    end
+  end
+
 end
 
 
 function OTEX_PROC_MODULE.get_levels_after_themes()
   table.deep_merge(GAME.MATERIALS, OTEX_MATERIALS, 2)
   table.deep_merge(GAME.ROOM_THEMES, OTEX_ROOM_THEMES, 2)
+  table.deep_merge(GAME.THEMES, OTEX_THEMES, 3)
 end
 
 
