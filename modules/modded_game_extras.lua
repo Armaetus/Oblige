@@ -2048,7 +2048,7 @@ MODDED_GAME_EXTRAS.ACTOR_NAME_SCRIPT =
 
 class bossNameHandler : EventHandler
 {
-  string exoticSyllables[SYL_NUM + 1];
+  string demonNames[1000];
   string demonTitles[TITLE_NUM + 1];
   string humanFirstNames[F_NUM];
   string humanLastNames[L_NUM];
@@ -2131,37 +2131,16 @@ class bossNameHandler : EventHandler
 
   void nameGenInit()
   {
-    SYLLABLE_LIST
+    DEMON_NAME_LIST
     EVIL_TITLE_LIST
     FIRST_NAMES_LIST
     LAST_NAMES_LIST
     HUMAN_TITLES_LIST
   }
 
-  string getExoticSyls()
-  {
-    return exoticSyllables[Random(0,SYL_NUM)];
-  }
-
   string getExoticName()
   {
-    string tmp;
-
-    switch(Random(1,6))
-    {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-        tmp = getExoticSyls() .. getExoticSyls();
-        break;
-      case 6:
-        tmp = getExoticSyls() .. getExoticSyls() .. getExoticSyls();
-        break;
-    }
-
-    return tmp;
+    return demonNames[Random(0,999)];
   }
 
   string getDemonTitles()
@@ -2353,11 +2332,11 @@ class ObAddonNameToken : Inventory
 function MODDED_GAME_EXTRAS.generate_custom_actor_names()
   local actor_name_script = ""
 
-  local syl_list = "\n"
+  local demon_list = "\n"
   local title_list = "\n"
 
   local title_num = 0
-  local syl_num = 0
+  local demon_num = 0
 
   local first_name_list = "\n"
   local last_name_list = "\n"
@@ -2369,12 +2348,11 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
 
   actor_name_script = actor_name_script .. MODDED_GAME_EXTRAS.ACTOR_NAME_SCRIPT
 
-  for name,prob in pairs(namelib.SYLLABLES.e) do
-    syl_list = syl_list .. '    exoticSyllables[' .. syl_num .. ']="' .. name .. '";\n'
-    syl_num = syl_num + 1
+  for demon_num = 0, 999 do
+    demon_list = demon_list .. '    demonNames[' .. demon_num .. ']="' .. namelib.generate_unique_noun("demon_names") .. '";\n'
   end
 
-  for name,prob in pairs(GAME.STORIES.EVIL_TITLES) do
+  for name,_ in pairs(GAME.STORIES.EVIL_TITLES) do
     title_list = title_list .. '    demonTitles[' .. title_num .. ']="' .. name .. '";\n'
     title_num = title_num + 1
   end
@@ -2388,21 +2366,20 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
     end
   end
 
-  for name,prob in pairs(namelib.HUMAN_NAMES.l) do
+  for name,_ in pairs(namelib.HUMAN_NAMES.l) do
     last_name_list = last_name_list .. '    humanLastNames[' .. l_num .. ']="' .. name .. '";\n'
     l_num = l_num + 1
   end
 
-  for name,prob in pairs(namelib.HUMAN_NAMES.t) do
+  for name,_ in pairs(namelib.HUMAN_NAMES.t) do
     human_titles_list = human_titles_list .. '    humanNicknames[' .. t_num .. ']="' .. name .. '";\n'
     t_num = t_num + 1
   end
 
 
-  actor_name_script = string.gsub( actor_name_script, "SYLLABLE_LIST", syl_list )
+  actor_name_script = string.gsub( actor_name_script, "DEMON_NAME_LIST", demon_list )
   actor_name_script = string.gsub( actor_name_script, "EVIL_TITLE_LIST", title_list )
 
-  actor_name_script = string.gsub( actor_name_script, "SYL_NUM", syl_num - 1 )
   actor_name_script = string.gsub( actor_name_script, "TITLE_NUM", title_num - 1 )
 
   actor_name_script = string.gsub( actor_name_script, "FIRST_NAMES_LIST", first_name_list)
@@ -2480,7 +2457,7 @@ function MODDED_GAME_EXTRAS.add_complex_doom_things()
 
   for name,_ in pairs(MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS) do
     local M = GAME.MONSTERS[name]
-
+    
     if M and factor then
       M.prob = M.prob * factor
       M.crazy_prob = (M.crazy_prob or M.prob) * factor
