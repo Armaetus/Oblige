@@ -77,6 +77,8 @@ PREFABS.Decor_tech_data_center_rack_2 =
 PREFABS.Decor_gtd_dh_comp_2 =
 {
   template = "Decor_dittohead_computer",
+
+  file = "decor/gtd_decor_tech_comp_set.wad",
   map = "MAP06",
 
   group = "gtd_dh_comp",
