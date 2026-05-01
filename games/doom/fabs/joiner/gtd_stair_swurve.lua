@@ -139,8 +139,6 @@ PREFABS.Joiner_stairs_swurve_deimos_mirrored =
 
   x_fit = { 104,120 },
 
-  tex_PANEL5 = "LITEBLU1",
-
   tex_PANEL5 =
   {
     GSTGARG=1,

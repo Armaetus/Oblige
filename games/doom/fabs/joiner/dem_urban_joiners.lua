@@ -820,7 +820,7 @@ PREFABS.Joiner_yard_joiner3 =
 
   neighbor = "outdoor",
 
-  z_fit  = "top",
+  z_fit = { 254,256 },
 
   seed_w = 2,
   seed_h = 3,
@@ -850,7 +850,6 @@ PREFABS.Joiner_yard_joiner3 =
     CITY14 = 25,
   },
 
-  z_fit = { 254,256 },
   bound_z1 = 0,
   bound_z2 = 256
 }
