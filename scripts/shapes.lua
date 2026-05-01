@@ -4921,25 +4921,6 @@ GROW_OBHACK_CORNER_NEW_AREA =
   }
 },
 
-
-GROW_OBHACK_CORNER_NEW_AREA =
-{
-  prob = 10,
-  skip_prob = 75,
-
-  structure =
-  {
-    "xxxxx11","xxxxx11",
-    "xxxxx..","xxxxx11",
-    "xxxx...","xxxx111",
-    "xx.....","xx11111",
-    "xx.....","xx111AA",
-    "x.....x","x111AAx",
-    ".....xx","111AAxx",
-    "....xxx","111Axxx",
-  }
-},
-
 GROW_OBHACK_T_JUNCTION =
 {
   prob = 8,
@@ -4973,6 +4954,25 @@ GROW_OBHACK_T_JUNCTION_NEW_AREA =
     "x..........x","x11AAAAAA11x",
     ".....xx.....","111AAxxAA111",
     "....xxxx....","111AxxxxA111",
+  }
+},
+
+GROW_OBHACK_SQUARE_STAIR =
+{
+  prob = 20,
+  skip_prob = 50,
+
+  structure =
+  {
+    "xx11xxxx","xx11xxxx",
+    "x......x","x111111x",
+    "........","11111111",
+    "........","11111111",
+    "x......x","xv1111vx",
+    "x......x","xAAAAAAx",
+    "........","AAAAAAAA",
+    "........","AAAAAAAA",
+    "x......x","xAAAAAAx"
   }
 },
 

@@ -511,6 +511,7 @@ function ZDOOM_SPECIALS.do_special_stuff()
     local fog_color_line = '  fade = "' .. fog_color .. '"\n'
     local fog_intensity = "48"
     local fog_intensity_sky = "48"
+    local night_fog_intensity = "48"
 
     -- resolve fog intensity
 
@@ -519,12 +520,19 @@ function ZDOOM_SPECIALS.do_special_stuff()
     else
       fog_intensity = "" .. ZDOOM_SPECIALS.FOG_INTENSITY[PARAM.fog_intensity]
     end
+
+    if PARAM.night_fog_intensity == "mixed" then
+      night_fog_intensity = "" .. rand.irange(16,368)
+    else
+      night_fog_intensity = "" .. ZDOOM_SPECIALS.FOG_INTENSITY[PARAM.fog_intensity]
+    end
+
     fog_intensity_sky = fog_intensity
 
     -- if fog is black, boost fog_intensity a bit
     if fog_color == "01 01 01" then
-      fog_intensity = math.clamp(0, fog_intensity + 128, 510)
-      fog_intensity_sky = 0 -- no black fog on the skybox
+      fog_intensity = night_fog_intensity
+      fog_intensity_sky = "0"  -- no black fog on the skybox
     end
 
     local fog_intensity_line = '  fogdensity = ' .. fog_intensity .. '\n'
@@ -1104,6 +1112,16 @@ OB_MODULES["zdoom_specials"] =
       name = "fog_intensity",
       label = _("Fog Intensity"),
       priority = 10,
+      choices = ZDOOM_SPECIALS.FOG_DENSITY_CHOICES,
+      default = "subtle",
+      tooltip = _("Determines thickness and intensity of fog, if the Fog Generator is enabled. Subtle or Misty is recommended."),
+      randomize_group="misc",
+    },
+
+    {
+      name = "fog_night_intensity",
+      label = _("Night Fog Intensity"),
+      priority = 9.5,
       choices = ZDOOM_SPECIALS.FOG_DENSITY_CHOICES,
       default = "subtle",
       tooltip = _("Determines thickness and intensity of fog, if the Fog Generator is enabled. Subtle or Misty is recommended."),
