@@ -4851,6 +4851,131 @@ GROW_357_ROUND_ARCH_ALT_2 =
   }
 },
 
+-- classic ObHack-inspired shape rules
+
+GROW_OBHACK_CURVE =
+{
+  prob = 5,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxxx11","xxxxx11",
+    "xxxxx..","xxxxx11",
+    "xxxx...","xxxx111",
+    "xx.....","xx11111",
+    "xx.....","xx11111",
+    "x.....x","x11111x",
+    ".....xx","11111xx",
+    "....xxx","1111xxx",
+  }
+},
+
+GROW_OBHACK_CURVE_NEW_AREA =
+{
+  prob = 10,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxxxx11","xxxxx11",
+    "xxxxx..","xxxxx11",
+    "xxxx...","xxxx111",
+    "xx.....","xx11111",
+    "xx.....","xx111AA",
+    "x.....x","x111AAx",
+    ".....xx","111AAxx",
+    "....xxx","111Axxx",
+  }
+},
+
+GROW_OBHACK_CORNER =
+{
+  prob = 3,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxx11","xxxx11",
+    "xxxx..","xxxx11",
+    "xx....","xx1111",
+    "xx....","xx1111",
+    "....xx","1111xx",
+    "....xx","1111xx",
+  }
+},
+
+GROW_OBHACK_CORNER_NEW_AREA =
+{
+  prob = 12,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxx11","xxxx11",
+    "xxxx..","xxxx11",
+    "xx....","xx111A",
+    "xx....","xx1AAA",
+    "....xx","111Axx",
+    "....xx","11AAxx",
+  }
+},
+
+
+GROW_OBHACK_CORNER_NEW_AREA =
+{
+  prob = 10,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxxxx11","xxxxx11",
+    "xxxxx..","xxxxx11",
+    "xxxx...","xxxx111",
+    "xx.....","xx11111",
+    "xx.....","xx111AA",
+    "x.....x","x111AAx",
+    ".....xx","111AAxx",
+    "....xxx","111Axxx",
+  }
+},
+
+GROW_OBHACK_T_JUNCTION =
+{
+  prob = 8,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxxx11xxxxx","xxxxx11xxxxx",
+    "xxxxx..xxxxx","xxxxx11xxxxx",
+    "xxxx....xxxx","xxxx1111xxxx",
+    "xx........xx","xx11111111xx",
+    "xx........xx","xx11111111xx",
+    "x..........x","x1111111111x",
+    ".....xx.....","11111xx11111",
+    "....xxxx....","1111xxxx1111",
+  }
+},
+
+GROW_OBHACK_T_JUNCTION_NEW_AREA =
+{
+  prob = 14,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxxx11xxxxx","xxxxx11xxxxx",
+    "xxxxx..xxxxx","xxxxx11xxxxx",
+    "xxxx....xxxx","xxxx1111xxxx",
+    "xx........xx","xx11111111xx",
+    "xx........xx","xx11111111xx",
+    "x..........x","x11AAAAAA11x",
+    ".....xx.....","111AAxxAA111",
+    "....xxxx....","111AxxxxA111",
+  }
+},
+
 -- MSSP's liquid tiles. [MSSPLIQUID]
 
 GROW_LIQUID_GUTTER_SIDE =
