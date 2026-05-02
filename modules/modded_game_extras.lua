@@ -2122,8 +2122,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
   end
 
   --== Hellscape Navigator init ==--
-  for _,Z in pairs(LEVEL.zones) do
-    generate_name(Z)
+  if LEVEL.zones and not table.empty(LEVEL.zones) then
+    for _,Z in pairs(LEVEL.zones) do
+      generate_name(Z)
+    end
   end
 
   PARAM.hn_secret_count = 1
