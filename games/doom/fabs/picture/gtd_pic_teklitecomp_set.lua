@@ -54,7 +54,7 @@ PREFABS.Pic_gtd_teklite_blue =
 
 PREFABS.Pic_gtd_barrier_tek_1 =
 {
-  file   = "wall/gtd_wall_tech_teklitecomp_set.wad",
+  file   = "wall/gtd_pic_teklitecomp_set.wad",
   map    = "MAP11",
 
   prob   = 50,
