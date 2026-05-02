@@ -2836,16 +2836,20 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       group_ceiling_pass(R)
     end
 
+    if not R.stair_ceil_mode then
+      R.stair_ceil_mode = rand.pick({"use_dest", "use_from"})
+    end
+
     -- handle stairs
     for _,A in pairs(R.areas) do
       if A.chunk and A.chunk.kind == "stair" and not A.chunk.prefab_def.plain_ceiling then
-        local N1 = A.chunk.from_area
-        local N2 = A.chunk.dest_area
+        local fromA = A.chunk.from_area
+        local destA = A.chunk.dest_area
 
-        if N1.floor_h < N2.floor_h then
-          A.ceil_group = N1.ceil_group
+        if R.stair_ceil_mode == "use_dest" then
+          A.ceil_group = destA.ceil_group
         else
-          A.ceil_group = N2.ceil_group
+          A.ceil_group = fromA.ceil_group
         end
 
       end
@@ -3402,9 +3406,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
 
   local function do_stairs(R)
-    if not R.stair_ceil_mode then
-      R.stair_ceil_mode = rand.pick({"higher_ceil_h", "lower_ceil_h"})
-    end
 
     for _,chunk in pairs(R.stairs) do
       local A = chunk.area
@@ -3415,33 +3416,24 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         goto skip
       end
 
-      local N1 = chunk.from_area
-      local N2 = chunk.dest_area
-      assert(N1.ceil_h)
-      assert(N2.ceil_h)
+      local fromA = chunk.from_area
+      local destA = chunk.dest_area
+      assert(fromA.ceil_h)
+      assert(destA.ceil_h)
 
-      if N1.ceil_h < (N2.floor_h + 96) then
-        N1.ceil_h = N2.ceil_h
-        N1 = N2
+      if fromA.ceil_h < (destA.floor_h + 96) then
+        fromA.ceil_h = destA.ceil_h
+        fromA = destA
       end
 
-      if R.stair_ceil_mode == "lower_ceil_h" then
-        A.ceil_h   = N1.ceil_h
-        A.ceil_mat = N1.ceil_mat
+      if R.stair_ceil_mode == "from_dest" then
+        A.ceil_h   = fromA.ceil_h
+        A.ceil_mat = fromA.ceil_mat
       else
-        A.ceil_h   = N2.ceil_h
-        A.ceil_mat = N2.ceil_mat
-        if N2.ceil_group then A.ceil_group = N2.ceil_group end
+        A.ceil_h   = destA.ceil_h
+        A.ceil_mat = destA.ceil_mat
       end
       ::skip::
-    end
-
-    -- MSSP: second pass
-    for _,chunk in pairs(R.stairs) do
-      local A = chunk.area
-      local N = chunk.from_area
-
-      A.ceil_h = N.ceil_h
     end
   end
 
