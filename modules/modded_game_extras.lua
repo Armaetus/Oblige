@@ -2083,7 +2083,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
   -- generate information for the HN marker
   local function make_room_info(R)
-    local info = {}
+    local info, hn_marker = {},{}
 
     -- pick different info classes
     if PARAM.hn_info_type == "hn_info_debug" 

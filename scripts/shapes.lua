@@ -4975,6 +4975,25 @@ GROW_OBHACK_SQUARE_STAIR =
   }
 },
 
+GROW_OBHACK_SQUARE_STAIR_MIDDLE =
+{
+  prob = 20,
+  skip_prob = 50,
+
+  structure =
+  {
+    "xx11xxxx","xx11xxxx",
+    "x......x","x111111x",
+    "........","11111111",
+    "........","11111111",
+    "...xx...","A<1xx1>A",
+    "...xx...","AAAxxAAA",
+    "........","AAAAAAAA",
+    "........","AAAAAAAA",
+    "x......x","xAAAAAAx"
+  }
+},
+
 -- MSSP's liquid tiles. [MSSPLIQUID]
 
 GROW_LIQUID_GUTTER_SIDE =
