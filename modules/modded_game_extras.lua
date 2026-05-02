@@ -334,6 +334,30 @@ MODDED_GAME_EXTRAS.SQUAD_NAMES =
     "LtGen", -- Lieutenant General
     "Gen"    -- General
     ]]
+  },
+
+  divisions =
+  {
+    "Orbital Defense",
+    "Expeditionary Assault",
+    "Hazard Response",
+    "Corp Security",
+    "Logistics Engineering",
+    "Biotech",
+    "Dimensional Ops",
+    "Psych Ops",
+    "Experimental Weapons",
+    "Planetary Garrison",
+    "Special Recon",
+    "Cyber Warfare",
+    "Armored Cavalry",
+    "Aerospace Command",
+    "Energy Research",
+    "Terraforming Support",
+    "Deep Space Patrol",
+    "Xeno Containment",
+    "Rapid Deployment",
+    "Strategic Command"
   }
 }
 
@@ -2180,6 +2204,8 @@ class bossNameHandler : EventHandler
   string humanFirstNames[F_NUM];
   string humanLastNames[L_NUM];
   string humanNicknames[NICK_NUM];
+  string squadNames[33];
+  string milRanks[RANK_NUM];
 
   string mon_name;
   string obit;
@@ -2256,6 +2282,13 @@ class bossNameHandler : EventHandler
     return false;
   }
 
+  bool isAIMarine(Actor a)
+  {
+    if (a is "AIMarine") return true;
+
+    return false;
+  }
+
   void nameGenInit()
   {
     DEMON_NAME_LIST
@@ -2263,6 +2296,8 @@ class bossNameHandler : EventHandler
     FIRST_NAMES_LIST
     LAST_NAMES_LIST
     HUMAN_TITLES_LIST
+    SQUAD_LIST
+    RANK_LIST
   }
 
   string getExoticName()
@@ -2321,6 +2356,16 @@ class bossNameHandler : EventHandler
     return tmp;
   }
 
+  string getMilRank()
+  {
+    return milRanks[Random(0, RANK_NUM - 1)];
+  }
+
+  string getSquadName()
+  {
+    return squadNames[Random(0,32)];
+  }
+
   string bootifyName(string inputName)
   {
     string firstLetter;
@@ -2362,6 +2407,11 @@ class bossNameHandler : EventHandler
       if (isHuman(e.Thing))
       {
         mon_name = getHumanTag();
+      }
+      
+      if (isAIMarine(e.Thing))
+      {
+        mon_name = getMilRank() .. '. ' .. getHumanTag() .. getSquadName();
       }
 
       // universal check if all other checks failed
@@ -2463,17 +2513,35 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
   local title_list = "\n"
 
   local title_num = 0
-  local demon_num = 0
 
   local first_name_list = "\n"
   local last_name_list = "\n"
   local human_titles_list = "\n"
+  local squad_list = "\n"
+  local rank_list = "\n"
 
   local f_num = 0
   local l_num = 0
   local t_num = 0
+  local r_num = 0
 
   actor_name_script = actor_name_script .. MODDED_GAME_EXTRAS.ACTOR_NAME_SCRIPT
+  
+  local function ordinal(n)
+    local suffix = "th"
+    local last_digit = n % 10
+    local last_two = n % 100
+
+    if last_digit == 1 and last_two ~= 11 then
+      suffix = "st"
+    elseif last_digit == 2 and last_two ~= 12 then
+      suffix = "nd"
+    elseif last_digit == 3 and last_two ~= 13 then
+      suffix = "rd"
+    end
+
+    return tostring(n) .. suffix
+  end
 
   for demon_num = 0, 999 do
     demon_list = demon_list .. '    demonNames[' .. demon_num .. ']="' .. namelib.generate_unique_noun("demon_names") .. '";\n'
@@ -2503,6 +2571,23 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
     t_num = t_num + 1
   end
 
+  for i = 0, 32 do
+    local squad_num = "" .. 
+      ordinal(
+        rand.sel(50,
+        rand.irange(1,99),
+        rand.irange(100,900))
+      )
+    local squad_name = rand.pick(MODDED_GAME_EXTRAS.SQUAD_NAMES.callsigns)
+    local division_name = rand.pick(MODDED_GAME_EXTRAS.SQUAD_NAMES.divisions)
+    local squad_str = ", " .. squad_name .. " Squad, " .. squad_num .. " " .. division_name
+    squad_list = squad_list .. '    squadNames[' .. i .. ']="' .. squad_str .. '";\n'
+  end
+
+  for tab,name in pairs(MODDED_GAME_EXTRAS.SQUAD_NAMES.ranks) do
+    rank_list = rank_list .. '    milRanks[' .. r_num .. ']="' .. name .. '";\n'
+    r_num = r_num + 1
+  end
 
   actor_name_script = string.gsub( actor_name_script, "DEMON_NAME_LIST", demon_list )
   actor_name_script = string.gsub( actor_name_script, "EVIL_TITLE_LIST", title_list )
@@ -2512,10 +2597,13 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
   actor_name_script = string.gsub( actor_name_script, "FIRST_NAMES_LIST", first_name_list)
   actor_name_script = string.gsub( actor_name_script, "LAST_NAMES_LIST", last_name_list)
   actor_name_script = string.gsub( actor_name_script, "HUMAN_TITLES_LIST", human_titles_list)
+  actor_name_script = string.gsub( actor_name_script, "SQUAD_LIST", squad_list)
+  actor_name_script = string.gsub( actor_name_script, "RANK_LIST", rank_list)
 
   actor_name_script = string.gsub( actor_name_script, "F_NUM", f_num)
   actor_name_script = string.gsub( actor_name_script, "L_NUM", l_num)
   actor_name_script = string.gsub( actor_name_script, "NICK_NUM", t_num)
+  actor_name_script = string.gsub( actor_name_script, "RANK_NUM", r_num)
 
   actor_name_script = string.gsub( actor_name_script, "HUMAN_COMPAT_CHECKS", " ")
   actor_name_script = string.gsub( actor_name_script, "LDEMONS_COMPAT_CHECKS", " ")
