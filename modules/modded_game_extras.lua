@@ -212,6 +212,131 @@ MODDED_GAME_EXTRAS.D4T_MONS =
   },
 }
 
+MODDED_GAME_EXTRAS.SQUAD_NAMES =
+{
+  callsigns =
+  {
+    -- inspired by Quake 4
+    "Badger",
+    "Bison",
+    "Cobra",
+    "Cougar",
+    "Eagle",
+    "Fox",
+    "Grizzly",
+    "Kodiak",
+    "Raven",
+    "Rhino",
+    "Scorpion",
+    "Viper",
+    "Warthog",
+    "Wolf",
+
+    -- military
+    "Ironclad",
+    "Warhammer",
+    "Steel Talon",
+    "Bloodfang",
+    "Shockwave",
+    "Bulldog",
+    "Ghost",
+    "Hellfire",
+    "Blackout",
+    "Warpath",
+    "Sentinel",
+    "Juggernaut",
+    "Overlord",
+    "Sabre",
+    "Thunderstrike",
+
+    -- Doom
+    "Hellhound",
+    "Cerberus",
+    "Fiend",
+    "Ogre",
+    "Direwolf",
+    "Hydra",
+    "Kraken",
+    "Basilisk",
+    "Minotaur",
+    "Chimera",
+    "Gargoyle",
+    "Phantom",
+    "Specter",
+    "Sentinel",
+    "Juggernaut",
+    "Behemoth",
+    "Leviathan",
+
+    -- NATO alphabet
+    "Alpha",
+    "Bravo",
+    "Charlie",
+    "Delta",
+    "Echo",
+    "Foxtrot",
+    "Golf",
+    "Hotel",
+    "India",
+    "Juliett",
+    "Kilo",
+    "Lima",
+    "Mike",
+    "November",
+    "Oscar",
+    "Papa",
+    "Quebec",
+    "Romeo",
+    "Sierra",
+    "Tango",
+    "Uniform",
+    "Victor",
+    "Whiskey",
+    "X-ray",
+    "Yankee",
+    "Zulu"
+  },
+
+  number_suffixes =
+  {
+    "11th",
+    "12th",
+    "13th",
+    "1st",
+    "2nd",
+    "3rd"
+  },
+
+  ranks =
+  {
+    "Pvt",   -- Private
+    "PFC",   -- Private First Class
+    "LCpl",  -- Lance Corporal
+    "Cpl",   -- Corporal
+    "Sgt",   -- Sergeant
+    "SSgt",  -- Staff Sergeant
+    "GySgt", -- Gunnery Sergeant
+    "MSgt",  -- Master Sergeant
+    "1stSgt",-- First Sergeant
+    "MGySgt",-- Master Gunnery Sergeant
+    "SgtMaj",-- Sergeant Major
+    "2ndLt", -- Second Lieutenant
+    "1stLt", -- First Lieutenant
+    "Capt",  -- Captain
+    "Maj",   -- Major
+    -- these ranks are extremely rare and probably don't show up
+    -- for most friendly marines
+    --[[
+    "LtCol", -- Lieutenant Colonel
+    "Col",   -- Colonel
+    "BGen",  -- Brigadier General
+    "MajGen",-- Major General
+    "LtGen", -- Lieutenant General
+    "Gen"    -- General
+    ]]
+  }
+}
+
 MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS_X =
 {
   -- zombieman replacements

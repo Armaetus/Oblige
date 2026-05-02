@@ -45,8 +45,6 @@ namelib.IGNORE_WORDS =
   ["for"]=1, ["in"]=1, ["on"]=1, ["to"]=1
 }
 
-
-
 namelib.COMMUNITY_MEMBERS =
 {
 
@@ -128,7 +126,6 @@ namelib.COMMUNITY_MEMBERS =
     --"Thexare",
   }
 }
-
 
 namelib.HUMAN_NAMES =
 {
