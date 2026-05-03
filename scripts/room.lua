@@ -3426,12 +3426,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         fromA = destA
       end
 
-      if R.stair_ceil_mode == "from_dest" then
-        A.ceil_h   = fromA.ceil_h
-        A.ceil_mat = fromA.ceil_mat
-      else
+      if R.stair_ceil_mode == "use_dest" then
         A.ceil_h   = destA.ceil_h
         A.ceil_mat = destA.ceil_mat
+      else
+        A.ceil_h   = fromA.ceil_h
+        A.ceil_mat = fromA.ceil_mat
       end
       ::skip::
     end
