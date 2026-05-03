@@ -83,5 +83,8 @@ PREFABS.Decor_gtd_dh_comp_2 =
 
   group = "gtd_dh_comp",
 
-  size = 112
+  height = 128,
+  size = 96,
+
+  z_fit = {114,116}
 }
