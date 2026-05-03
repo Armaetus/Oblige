@@ -1424,7 +1424,7 @@ function Layout_decorate_rooms(LEVEL, pass, SEEDS)
       end
 
       if chunk.kind ~= "closet" and chunk.prefab_dir then
-        local A = chunk.area
+        A = chunk.area
         assert(A.room.symmetry)
         peer.prefab_dir = A.room.symmetry:conv_dir(chunk.prefab_dir)
       end
@@ -2233,8 +2233,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
   end
 
 
-  local function pick_ceiling_sinks(R, LEVEL)
-    if R.is_cave or R.is_outdoor then return end
+  local function pick_ceiling_sinks(R)
+    if R.is_cave then return end
 
     for _,cg in pairs(R.ceil_groups) do
       if cg.openness < 0.4 then goto skip end
@@ -2304,7 +2304,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         ::skip::
       end
     end
-  
+
   end
 
 
@@ -2428,10 +2428,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     local prob = R.theme.ceil_light_prob or THEME.ceil_light_prob or 50
 
     if rand.odds(prob) and not R.has_liquid_ceil_lights then 
-      R.has_liquid_ceil_lights = true 
-    else
-      R.has_liquid_ceil_lights = false
-    end       
+      R.has_liquid_ceil_lights = true
+    end
 
     for _,cg in pairs(R.ceil_groups) do
       if not rand.odds(prob) then goto skip end
@@ -2591,7 +2589,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     pick_wall_detail(R)
 
     pick_floor_sinks(R, LEVEL)
-    pick_ceiling_sinks(R, LEVEL)
+    pick_ceiling_sinks(R)
 
     unsink_importants(R)
 

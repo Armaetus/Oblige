@@ -2715,11 +2715,18 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
   local function ceilings_must_stay_separated(R, A1, A2)
     assert(A1 ~= A2)
 
+    local function is_porch(area)
+      if area.is_porch or area.is_porch_neighbor then return true end
+
+      return false
+    end
+
     for _,IC in pairs(R.internal_conns) do
       if (IC.A1 == A1 and IC.A2 == A2) or
          (IC.A1 == A2 and IC.A2 == A1)
       then
-        if IC.foobie_bletch then return false end
+        if is_porch(A1) and not is_porch(A2) then return false end
+        if is_porch(A2) and not is_porch(A1) then return false end
 
         return (IC.kind == "direct")
       end
@@ -2765,9 +2772,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
       if ceilings_must_stay_separated(R, A1, A2) then return false end
 
-      -- do not merge ciel groups seperated by porch areas
-      if A1.is_porch or A2.is_porch then return false end
-
       if A1:touches(A2) then do_touch = true end
 
       for _,IC in pairs(R.internal_conns) do
@@ -2797,7 +2801,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         A.ceil_group.volume = A.svolume
       end
     end
-    
+
     if #groups < 2 then return false end
 
     rand.shuffle(groups)
@@ -2815,10 +2819,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
 
   local function group_ceilings(R)
-    if R.is_outdoor then return end
-
     for _,A in pairs(R.areas) do
-      if A.mode == "floor" then
+      if A.mode == "floor"
+      or (R.is_outdoor and A.mode == "floor" 
+      and (A.is_porch or A.is_porch_neighbor)) then
         A.ceil_group = { id=alloc_id(LEVEL, "ceil_group") }
       end
     end
@@ -3546,6 +3550,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       R.height_profile = rand.pick({"normal","inverse","random"})
     end
 
+    if not R.openness_affects_height and rand.odds(50) then
+      R.openness_affects_height = rand.pick({"yes", "no"})
+    end
+
     if R.height_profile == "normal" then
           if group.vol <  8 then add_h = 96
       elseif group.vol < 16 then add_h = 128
@@ -3561,6 +3569,16 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
     else
       add_h = rand.pick({128, 160, 192, 224, 256})
+    end
+
+    if R.openness_affects_height == "yes" then
+      if group.openness < 0.1     then add_h = add_h + 16
+      elseif group.openness < 0.2 then add_h = add_h + 32
+      elseif group.openness < 0.3 then add_h = add_h + 64
+      elseif group.openness < 0.4 then add_h = add_h + 128
+      elseif group.openness < 0.5 then add_h = add_h + 256
+      elseif group.openness < 0.6 then add_h = add_h + 384
+      end
     end
 
     -- MSSP: code for the height style control
@@ -3754,11 +3772,13 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
 
   local function do_ceilings(R)
+    -- MSSP: get certain areas neighboring porches to also adopt
+    -- the porch's ceiling heights and materials
+    porch_fixup_neighbors(R)
+
     group_ceilings(R)
 
-    if not R.is_outdoor then
-      ceiling_group_heights(R)
-    end
+    ceiling_group_heights(R)
 
     for _,A in pairs(R.areas) do
       if A.mode ~= "floor" then goto skip end
@@ -3798,10 +3818,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       ::skip::
     end
 
-    -- MSSP: get certain areas neighboring porches to also adopt
-    -- the porch's ceiling heights and materials
-    porch_fixup_neighbors(R)
-
     -- now pick textures
     select_ceiling_mats(R)
   end
@@ -3823,7 +3839,7 @@ end
 
   ---| Room_floor_ceil_heights |---
 
-  local first = LEVEL.start_room or LEVEL.blue_base or LEVEL.rooms[1]
+  local first = LEVEL.start_room or LEVEL.rooms[1]
 
   -- recursively visit all rooms
   visit_room(first)
