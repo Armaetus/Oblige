@@ -1456,6 +1456,18 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
 
   end
 
+  -- insert some floors into outdoor generics
+  
+  for _,T in pairs(av_themes) do
+    if T ~= "any" then
+      for i = 1, 20 do
+        local pick_tex = pick_generic_flat(T, generic_floors_list)
+        GAME.ROOM_THEMES[T .. "_Outdoors_generic"].floors[pick_tex] = rand.pick({5,10,15})
+        GAME.ROOM_THEMES[T .. "_Outdoors_generic"].porch_floors[pick_tex] = rand.pick({5,10,15})
+      end
+    end
+  end
+
   -- create scenic fences
   local rail_tab = table.copy(OTEX_SPECIAL_RESOURCES.rail_materials)
   for rail_mat,_ in pairs(rail_tab) do
