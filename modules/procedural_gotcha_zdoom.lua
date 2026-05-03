@@ -1464,11 +1464,12 @@ end
 
 function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.check_monsters_enabled()
   if PARAM.float_mons == 0 and PARAM.bool_boss_gen == 1 then
-    error("Monsters must be enabled for boss generator!")
+    gui.printf("Boss generator is on but monsters disabled!")
   end
 end
 
 function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.end_lvl(self, LEVEL)
+  if PARAM.float_mons == 0 then return end
 
   if PARAM.bool_boss_gen == 1 then
 
@@ -1513,6 +1514,8 @@ function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.end_lvl(self, LEVEL)
 end
 
 function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.boss_info(self, info)
+  if PARAM.float_mons == 0 then return end
+
   local btype = {}
 
   btype.attack = info.attack
@@ -1522,6 +1525,7 @@ function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.boss_info(self, info)
 end
 
 function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.all_done()
+  if PARAM.float_mons == 0 then return end
 
   if PARAM.bool_boss_gen == 1 then
 
