@@ -1596,7 +1596,7 @@ function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.all_done()
     local traitstack = {}
     local ttrait
 
-    if(boss_trait_diff == "harder" or (boss_trait_diff == "default" and rand.odds(50))) then
+    if(PARAM.boss_trait_diff == "harder" or (PARAM.boss_trait_diff == "default" and rand.odds(50))) then
       ttrait = PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.grab_random_trait(batk,traitstack)
       table.insert(traitstack, ttrait)
       btrait2 = PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.syntaxize(btrait2,ttrait)
@@ -1604,7 +1604,7 @@ function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.all_done()
       btrait2 = PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.syntaxize(btrait2,'"bossabilitygiver_nothing"')
     end
 
-    if(boss_trait_diff == "nightmare") then
+    if(PARAM.boss_trait_diff == "nightmare") then
       ttrait = PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.grab_random_trait(batk,traitstack)
       table.insert(traitstack, ttrait)
       btrait3 = PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.syntaxize(btrait3,ttrait)

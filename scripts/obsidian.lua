@@ -1641,7 +1641,7 @@ function ob_get_password()
     "A","S","D","F","G","H","J","K","L",":","Z","X","C","V","B","N","M","<",">","?","\""
   }
 
-  pass_string = ""
+  local pass_string = ""
   for i=1,20 do
     pass_string = pass_string .. rand.pick(pass_chars)
   end

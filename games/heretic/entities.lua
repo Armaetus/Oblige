@@ -67,6 +67,8 @@ HERETIC.ENTITIES =
 
   secret = { id="oblige_secret", r=1, h=1, pass=true },
 
+  depot_ref = { id="oblige_depot", r=1, h=1, pass=true },
+
   --- ambient sounds ---
   amb_scream = { id=1200 },
   amb_squish = { id=1201 },
@@ -83,8 +85,6 @@ HERETIC.ENTITIES =
   env_wind   = { id=42 },
 
   light  = { id="light", r=1, h=1, pass=true },
-  secret = { id="oblige_secret", r=1, h=1, pass=true },
-  depot_ref = { id="oblige_depot", r=1, h=1, pass=true },
 }
 
 HERETIC.PLAYER_MODEL =

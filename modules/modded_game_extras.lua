@@ -212,6 +212,155 @@ MODDED_GAME_EXTRAS.D4T_MONS =
   },
 }
 
+MODDED_GAME_EXTRAS.SQUAD_NAMES =
+{
+  callsigns =
+  {
+    -- inspired by Quake 4
+    "Badger",
+    "Bison",
+    "Cobra",
+    "Cougar",
+    "Eagle",
+    "Fox",
+    "Grizzly",
+    "Kodiak",
+    "Raven",
+    "Rhino",
+    "Scorpion",
+    "Viper",
+    "Warthog",
+    "Wolf",
+
+    -- military
+    "Ironclad",
+    "Warhammer",
+    "Steel Talon",
+    "Bloodfang",
+    "Shockwave",
+    "Bulldog",
+    "Ghost",
+    "Hellfire",
+    "Blackout",
+    "Warpath",
+    "Sentinel",
+    "Juggernaut",
+    "Overlord",
+    "Sabre",
+    "Thunderstrike",
+
+    -- Doom
+    "Hellhound",
+    "Cerberus",
+    "Fiend",
+    "Ogre",
+    "Direwolf",
+    "Hydra",
+    "Kraken",
+    "Basilisk",
+    "Minotaur",
+    "Chimera",
+    "Gargoyle",
+    "Phantom",
+    "Specter",
+    "Sentinel",
+    "Juggernaut",
+    "Behemoth",
+    "Leviathan",
+
+    -- NATO alphabet
+    "Alpha",
+    "Bravo",
+    "Charlie",
+    "Delta",
+    "Echo",
+    "Foxtrot",
+    "Golf",
+    "Hotel",
+    "India",
+    "Juliett",
+    "Kilo",
+    "Lima",
+    "Mike",
+    "November",
+    "Oscar",
+    "Papa",
+    "Quebec",
+    "Romeo",
+    "Sierra",
+    "Tango",
+    "Uniform",
+    "Victor",
+    "Whiskey",
+    "X-ray",
+    "Yankee",
+    "Zulu"
+  },
+
+  number_suffixes =
+  {
+    "11th",
+    "12th",
+    "13th",
+    "1st",
+    "2nd",
+    "3rd"
+  },
+
+  ranks =
+  {
+    "Pvt",   -- Private
+    "PFC",   -- Private First Class
+    "LCpl",  -- Lance Corporal
+    "Cpl",   -- Corporal
+    "Sgt",   -- Sergeant
+    "SSgt",  -- Staff Sergeant
+    "GySgt", -- Gunnery Sergeant
+    "MSgt",  -- Master Sergeant
+    "1stSgt",-- First Sergeant
+    "MGySgt",-- Master Gunnery Sergeant
+    "SgtMaj",-- Sergeant Major
+    "2ndLt", -- Second Lieutenant
+    "1stLt", -- First Lieutenant
+    "Capt",  -- Captain
+    "Maj",   -- Major
+    -- these ranks are extremely rare and probably don't show up
+    -- for most friendly marines
+    --[[
+    "LtCol", -- Lieutenant Colonel
+    "Col",   -- Colonel
+    "BGen",  -- Brigadier General
+    "MajGen",-- Major General
+    "LtGen", -- Lieutenant General
+    "Gen"    -- General
+    ]]
+  },
+
+  divisions =
+  {
+    "Orbital Defense",
+    "Expeditionary Assault",
+    "Hazard Response",
+    "Corp Security",
+    "Logistics Engineering",
+    "Biotech",
+    "Dimensional Ops",
+    "Psych Ops",
+    "Experimental Weapons",
+    "Planetary Garrison",
+    "Special Recon",
+    "Cyber Warfare",
+    "Armored Cavalry",
+    "Aerospace Command",
+    "Energy Research",
+    "Terraforming Support",
+    "Deep Space Patrol",
+    "Xeno Containment",
+    "Rapid Deployment",
+    "Strategic Command"
+  }
+}
+
 MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS_X =
 {
   -- zombieman replacements
@@ -975,7 +1124,6 @@ MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS =
     damage = 6.0,
     attack = "missile",
     density = 0.6,
-    weap_min_damage = 40,
     float = true,
     weap_needed = { chain=true },
     weap_prefs = { launch=1.25, super=1.75, chain=1.2, shotty=0.7, plasma=1.2 },
@@ -1959,7 +2107,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
   -- generate information for the HN marker
   local function make_room_info(R)
-    local info = {}
+    local info, hn_marker = {},{}
 
     -- pick different info classes
     if PARAM.hn_info_type == "hn_info_debug" 
@@ -1998,8 +2146,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
   end
 
   --== Hellscape Navigator init ==--
-  for _,Z in pairs(LEVEL.zones) do
-    generate_name(Z)
+  if LEVEL.zones and not table.empty(LEVEL.zones) then
+    for _,Z in pairs(LEVEL.zones) do
+      generate_name(Z)
+    end
   end
 
   PARAM.hn_secret_count = 1
@@ -2049,11 +2199,13 @@ MODDED_GAME_EXTRAS.ACTOR_NAME_SCRIPT =
 
 class bossNameHandler : EventHandler
 {
-  string exoticSyllables[SYL_NUM + 1];
+  string demonNames[1000];
   string demonTitles[TITLE_NUM + 1];
   string humanFirstNames[F_NUM];
   string humanLastNames[L_NUM];
   string humanNicknames[NICK_NUM];
+  string squadNames[33];
+  string milRanks[RANK_NUM];
 
   string mon_name;
   string obit;
@@ -2130,39 +2282,27 @@ class bossNameHandler : EventHandler
     return false;
   }
 
+  bool isAIMarine(Actor a)
+  {
+    if (a is "AIMarine") return true;
+
+    return false;
+  }
+
   void nameGenInit()
   {
-    SYLLABLE_LIST
+    DEMON_NAME_LIST
     EVIL_TITLE_LIST
     FIRST_NAMES_LIST
     LAST_NAMES_LIST
     HUMAN_TITLES_LIST
-  }
-
-  string getExoticSyls()
-  {
-    return exoticSyllables[Random(0,SYL_NUM)];
+    SQUAD_LIST
+    RANK_LIST
   }
 
   string getExoticName()
   {
-    string tmp;
-
-    switch(Random(1,6))
-    {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-        tmp = getExoticSyls() .. getExoticSyls();
-        break;
-      case 6:
-        tmp = getExoticSyls() .. getExoticSyls() .. getExoticSyls();
-        break;
-    }
-
-    return tmp;
+    return demonNames[Random(0,999)];
   }
 
   string getDemonTitles()
@@ -2216,6 +2356,16 @@ class bossNameHandler : EventHandler
     return tmp;
   }
 
+  string getMilRank()
+  {
+    return milRanks[Random(0, RANK_NUM - 1)];
+  }
+
+  string getSquadName()
+  {
+    return squadNames[Random(0,32)];
+  }
+
   string bootifyName(string inputName)
   {
     string firstLetter;
@@ -2257,6 +2407,11 @@ class bossNameHandler : EventHandler
       if (isHuman(e.Thing))
       {
         mon_name = getHumanTag();
+      }
+      
+      if (isAIMarine(e.Thing))
+      {
+        mon_name = getMilRank() .. '. ' .. getHumanTag() .. getSquadName();
       }
 
       // universal check if all other checks failed
@@ -2354,28 +2509,45 @@ class ObAddonNameToken : Inventory
 function MODDED_GAME_EXTRAS.generate_custom_actor_names()
   local actor_name_script = ""
 
-  local syl_list = "\n"
+  local demon_list = "\n"
   local title_list = "\n"
 
   local title_num = 0
-  local syl_num = 0
 
   local first_name_list = "\n"
   local last_name_list = "\n"
   local human_titles_list = "\n"
+  local squad_list = "\n"
+  local rank_list = "\n"
 
   local f_num = 0
   local l_num = 0
   local t_num = 0
+  local r_num = 0
 
   actor_name_script = actor_name_script .. MODDED_GAME_EXTRAS.ACTOR_NAME_SCRIPT
+  
+  local function ordinal(n)
+    local suffix = "th"
+    local last_digit = n % 10
+    local last_two = n % 100
 
-  for name,prob in pairs(namelib.SYLLABLES.e) do
-    syl_list = syl_list .. '    exoticSyllables[' .. syl_num .. ']="' .. name .. '";\n'
-    syl_num = syl_num + 1
+    if last_digit == 1 and last_two ~= 11 then
+      suffix = "st"
+    elseif last_digit == 2 and last_two ~= 12 then
+      suffix = "nd"
+    elseif last_digit == 3 and last_two ~= 13 then
+      suffix = "rd"
+    end
+
+    return tostring(n) .. suffix
   end
 
-  for name,prob in pairs(GAME.STORIES.EVIL_TITLES) do
+  for demon_num = 0, 999 do
+    demon_list = demon_list .. '    demonNames[' .. demon_num .. ']="' .. namelib.generate_unique_noun("demon_names") .. '";\n'
+  end
+
+  for name,_ in pairs(GAME.STORIES.EVIL_TITLES) do
     title_list = title_list .. '    demonTitles[' .. title_num .. ']="' .. name .. '";\n'
     title_num = title_num + 1
   end
@@ -2389,30 +2561,49 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
     end
   end
 
-  for name,prob in pairs(namelib.HUMAN_NAMES.l) do
+  for name,_ in pairs(namelib.HUMAN_NAMES.l) do
     last_name_list = last_name_list .. '    humanLastNames[' .. l_num .. ']="' .. name .. '";\n'
     l_num = l_num + 1
   end
 
-  for name,prob in pairs(namelib.HUMAN_NAMES.t) do
+  for name,_ in pairs(namelib.HUMAN_NAMES.t) do
     human_titles_list = human_titles_list .. '    humanNicknames[' .. t_num .. ']="' .. name .. '";\n'
     t_num = t_num + 1
   end
 
+  for i = 0, 32 do
+    local squad_num = "" .. 
+      ordinal(
+        rand.sel(50,
+        rand.irange(1,99),
+        rand.irange(100,900))
+      )
+    local squad_name = rand.pick(MODDED_GAME_EXTRAS.SQUAD_NAMES.callsigns)
+    local division_name = rand.pick(MODDED_GAME_EXTRAS.SQUAD_NAMES.divisions)
+    local squad_str = ", " .. squad_name .. " Squad, " .. squad_num .. " " .. division_name
+    squad_list = squad_list .. '    squadNames[' .. i .. ']="' .. squad_str .. '";\n'
+  end
 
-  actor_name_script = string.gsub( actor_name_script, "SYLLABLE_LIST", syl_list )
+  for tab,name in pairs(MODDED_GAME_EXTRAS.SQUAD_NAMES.ranks) do
+    rank_list = rank_list .. '    milRanks[' .. r_num .. ']="' .. name .. '";\n'
+    r_num = r_num + 1
+  end
+
+  actor_name_script = string.gsub( actor_name_script, "DEMON_NAME_LIST", demon_list )
   actor_name_script = string.gsub( actor_name_script, "EVIL_TITLE_LIST", title_list )
 
-  actor_name_script = string.gsub( actor_name_script, "SYL_NUM", syl_num - 1 )
   actor_name_script = string.gsub( actor_name_script, "TITLE_NUM", title_num - 1 )
 
   actor_name_script = string.gsub( actor_name_script, "FIRST_NAMES_LIST", first_name_list)
   actor_name_script = string.gsub( actor_name_script, "LAST_NAMES_LIST", last_name_list)
   actor_name_script = string.gsub( actor_name_script, "HUMAN_TITLES_LIST", human_titles_list)
+  actor_name_script = string.gsub( actor_name_script, "SQUAD_LIST", squad_list)
+  actor_name_script = string.gsub( actor_name_script, "RANK_LIST", rank_list)
 
   actor_name_script = string.gsub( actor_name_script, "F_NUM", f_num)
   actor_name_script = string.gsub( actor_name_script, "L_NUM", l_num)
   actor_name_script = string.gsub( actor_name_script, "NICK_NUM", t_num)
+  actor_name_script = string.gsub( actor_name_script, "RANK_NUM", r_num)
 
   actor_name_script = string.gsub( actor_name_script, "HUMAN_COMPAT_CHECKS", " ")
   actor_name_script = string.gsub( actor_name_script, "LDEMONS_COMPAT_CHECKS", " ")
@@ -2481,7 +2672,7 @@ function MODDED_GAME_EXTRAS.add_complex_doom_things()
 
   for name,_ in pairs(MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS) do
     local M = GAME.MONSTERS[name]
-
+    
     if M and factor then
       M.prob = M.prob * factor
       M.crazy_prob = (M.crazy_prob or M.prob) * factor

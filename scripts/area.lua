@@ -2788,7 +2788,7 @@ local test_textures =
   end
 
 
-  local function is_straddling_joiner(A)
+  local function is_straddling_joiner(A, Z)
     if A.chunk and A.chunk.kind == "joiner" then
       return (A.chunk.from_area.zone == Z) or
              (A.chunk.dest_area.zone == Z)
@@ -2802,7 +2802,7 @@ local test_textures =
     if A.zone == Z then return true end
 
     -- allow joiners which straddle two zones
-    if is_straddling_joiner(A) then return true end
+    if is_straddling_joiner(A, Z) then return true end
 
     return false
   end
@@ -2826,7 +2826,7 @@ local test_textures =
   local function visit_zone(Z)
     for _,A in pairs(LEVEL.areas) do
       if not A.facade_group and kinda_in_zone(A, Z) and A:is_indoor() then
-        A.facade_group = new_group(A)
+        A.facade_group = new_group()
 
         spread_facade(Z, A)
       end

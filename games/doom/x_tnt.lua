@@ -109,7 +109,6 @@ TNT.MATERIALS =
   DOKGRIR  = { t="DOKGRIR",  f="RROCK09" },
   DOKODO1B = { t="DOKODO1B", f="FLAT5" },
   DOKODO2B = { t="DOKODO2B", f="FLAT5" },
-  DOKGRIR  = { t="DOKGRIR",  f="RROCK20" },
   DOPUNK4  = { t="DOPUNK4",  f="CEIL5_1" },
   DORED    = { t="DORES",    f="CEIL5_1" },
 

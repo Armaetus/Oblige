@@ -904,8 +904,8 @@ SPROUT_CASTLE_2 =
     conn = { x=4, y=2, w=2, dir=8 },
 
     symmetry = { kind="mirror", x=4, y=5, w=4, dir=4 },
-    symmetry = { kind="mirror", x=4, y=5, w=4, dir=6 },
-    symmetry = { kind="rotate", x=3, y=4, x2=6, y2=7 }
+    symmetry2 = { kind="mirror", x=4, y=5, w=4, dir=6 },
+    symmetry3 = { kind="rotate", x=3, y=4, x2=6, y2=7 }
   }
 },
 
@@ -1155,8 +1155,8 @@ SPROUT_JOINER_2x2 =
   new_room =
   {
     symmetry = { kind="mirror", x=2, y=4, dir=8 },
-    symmetry = { kind="mirror", x=2, y=4, dir=4 },
-    symmetry = { kind="rotate", x=2, y=4, x2=3, y2=5 }
+    symmetry2 = { kind="mirror", x=2, y=4, dir=4 },
+    symmetry3 = { kind="rotate", x=2, y=4, x2=3, y2=5 }
   },
 
   joiner =
@@ -1798,7 +1798,7 @@ FILLER_4 =
     "1.1","111",
     "111","111"
   }
-}
+},
 
 
 SMOOTHER_1 =
@@ -1822,7 +1822,7 @@ SMOOTHER_2 =
   pass = "smoother",
   prob = 75, --50,
 
-  env = "outdoor"
+  env = "outdoor",
 
   structure =
   {
@@ -3242,9 +3242,9 @@ GROW_CURVE_3_LIQ =
 
   structure =
   {
-    "xxx....","xxx/111",
-    "xx.....","xx/~%11",
-    "x......","x/~~~%v",
+    "xxxx...","xxxx111",
+    "xxx....","xxx/%11",
+    "xx.....","xx/~~%v",
     "1......","11%~~/A",
     "1......","111%/A/",
     "x.....x","x11>A/x",
@@ -3252,7 +3252,6 @@ GROW_CURVE_3_LIQ =
 
   diagonals =
   {
-    ".~",
     ".~","~1",
     ".~","~1",
     "1~","~A",
@@ -3685,7 +3684,7 @@ GROW_COLONNADE_510_STAIRS_STRAIGHT =
   }
 },
 
-GROW_COLONNADE_510_STAIRS_STRAIGHT =
+GROW_COLONNADE_510_STAIRS_STRAIGHT_LIQ =
 {
   prob = 40,
   skip_prob = 75,
@@ -4848,6 +4847,150 @@ GROW_357_ROUND_ARCH_ALT_2 =
     "1A","A1",
     "1A","A1",
     ".1","1.",
+  }
+},
+
+-- classic ObHack-inspired shape rules
+
+GROW_OBHACK_CURVE =
+{
+  prob = 5,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxxx11","xxxxx11",
+    "xxxxx..","xxxxx11",
+    "xxxx...","xxxx111",
+    "xx.....","xx11111",
+    "xx.....","xx11111",
+    "x.....x","x11111x",
+    ".....xx","11111xx",
+    "....xxx","1111xxx",
+  }
+},
+
+GROW_OBHACK_CURVE_NEW_AREA =
+{
+  prob = 10,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxxxx11","xxxxx11",
+    "xxxxx..","xxxxx11",
+    "xxxx...","xxxx111",
+    "xx.....","xx11111",
+    "xx.....","xx111AA",
+    "x.....x","x111AAx",
+    ".....xx","111AAxx",
+    "....xxx","111Axxx",
+  }
+},
+
+GROW_OBHACK_CORNER =
+{
+  prob = 3,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxx11","xxxx11",
+    "xxxx..","xxxx11",
+    "xx....","xx1111",
+    "xx....","xx1111",
+    "....xx","1111xx",
+    "....xx","1111xx",
+  }
+},
+
+GROW_OBHACK_CORNER_NEW_AREA =
+{
+  prob = 12,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxx11","xxxx11",
+    "xxxx..","xxxx11",
+    "xx....","xx111A",
+    "xx....","xx1AAA",
+    "....xx","111Axx",
+    "....xx","11AAxx",
+  }
+},
+
+GROW_OBHACK_T_JUNCTION =
+{
+  prob = 8,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxxx11xxxxx","xxxxx11xxxxx",
+    "xxxxx..xxxxx","xxxxx11xxxxx",
+    "xxxx....xxxx","xxxx1111xxxx",
+    "xx........xx","xx11111111xx",
+    "xx........xx","xx11111111xx",
+    "x..........x","x1111111111x",
+    ".....xx.....","11111xx11111",
+    "....xxxx....","1111xxxx1111",
+  }
+},
+
+GROW_OBHACK_T_JUNCTION_NEW_AREA =
+{
+  prob = 14,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxxx11xxxxx","xxxxx11xxxxx",
+    "xxxxx..xxxxx","xxxxx11xxxxx",
+    "xxxx....xxxx","xxxx1111xxxx",
+    "xx........xx","xx11111111xx",
+    "xx........xx","xx11111111xx",
+    "x..........x","x11AAAAAA11x",
+    ".....xx.....","111AAxxAA111",
+    "....xxxx....","111AxxxxA111",
+  }
+},
+
+GROW_OBHACK_SQUARE_STAIR =
+{
+  prob = 20,
+  skip_prob = 50,
+
+  structure =
+  {
+    "xx11xxxx","xx11xxxx",
+    "x......x","x111111x",
+    "........","11111111",
+    "........","11111111",
+    "x......x","xv1111vx",
+    "x......x","xAAAAAAx",
+    "........","AAAAAAAA",
+    "........","AAAAAAAA",
+    "x......x","xAAAAAAx"
+  }
+},
+
+GROW_OBHACK_SQUARE_STAIR_MIDDLE =
+{
+  prob = 20,
+  skip_prob = 50,
+
+  structure =
+  {
+    "xx11xxxx","xx11xxxx",
+    "x......x","x111111x",
+    "........","11111111",
+    "........","11111111",
+    "...xx...","A<1xx1>A",
+    "...xx...","AAAxxAAA",
+    "........","AAAAAAAA",
+    "........","AAAAAAAA",
+    "x......x","xAAAAAAx"
   }
 },
 
@@ -9465,7 +9608,7 @@ GROW_MAZE_STRAIGHT_STAIRED_LONG =
     "...","#^#",
     "x11","x11",
   }
-}
+},
 
 GROW_MAZE_L =
 {
@@ -10741,7 +10884,7 @@ aux_FLOURISH_SMALL_1 =
 
 FLOURISH_SMALL_2 = 
 {
-  pass = "flourish"
+  pass = "flourish",
 
   prob = 10,
 
@@ -10761,7 +10904,7 @@ FLOURISH_SMALL_2 =
 
 FLOURISH_SMALL_2_DIAGONAL = 
 {
-  pass = "flourish"
+  pass = "flourish",
 
   prob = 10,
 
@@ -10904,7 +11047,7 @@ FLOURISH_MEDIUM_2 =
     pass = "FLOURISH_MEDIUM_TEETH_2",
   },
 
-  auxiliary =
+  auxiliary2 =
   {
     pass = "aux_FLOURISH_MEDIUM_2",
   },
@@ -11021,7 +11164,7 @@ aux_FLOURISH_ROUND_extend =
 {
   prob = 1,
 
-  pass = "flourish"
+  pass = "flourish",
 
   structure =
   {
@@ -11950,7 +12093,7 @@ GROW_WATER_STRIPES_CURVE_DIAGONAL_NEW_AREA =
     ".........","11~AAA<11",
     ".........","11~AA/~11",
     ".........","11~^^~/11",
-    ".........","111111111"
+    ".........","111111111",
     ".........","11111111/",
   },
 
@@ -13038,7 +13181,7 @@ GROW_36_HEXAGON_INSET =
   },
 },
 
-GROW_36_HEXAGON_INSET =
+GROW_36_HEXAGON_INSET_PILLAR =
 {
   prob = 12,
   skip_prob = 50,
@@ -14438,7 +14581,7 @@ GROW_3x_L_CAGE =
 GROW_3x_L_CAGE_alt =
 {
   prob = 10,
-  skip_prob = 86,
+  skip_prob = 80,
 
   structure =
   {
@@ -15899,7 +16042,7 @@ GROW_CAKE_LIQUID =
   {
          ".~","~.",".~","~.",".~","~.",
          "A~","~A","A~","~A","A~","~A",
-    ".1","1A","A1","1A","A1","1A","A1","1."
+    ".1","1A","A1","1A","A1","1A","A1","1.",
               ".1","1.",
   }
 },
@@ -16358,7 +16501,7 @@ GROW_O =
 
   auxiliary =
   {
-    pass = "GROW_O_aux"
+    pass = "GROW_O_aux",
 
     count = 1
   }
@@ -16697,10 +16840,10 @@ GROW_SHARP_LIQUID =
   }
 },
 
-GROW_ARROW =
+GROW_ARROW_NEW_AREA =
 {
   prob = 1,
-  prob = 95,
+  skip_prob = 95,
 
   aversion = 0.25,
 
@@ -16727,13 +16870,13 @@ GROW_ARROW =
 GROW_ARROW_FORK_NEW_AREA =
 {
   prob = 2,
-  prob = 85,
+  skip_prob = 85,
 
   structure =
   {
     "........","AA%/%/AA",
-    "........","%A/11%A/",
-    "x......x","x/1111%x",
+    "........","AA/11%AA",
+    "x......x","%/1111%/",
     "xxx..xxx","x%A11A/x",
     "xxx..xxx","xxx11xxx",
     "xxx..xxx","xxx11xxx",
@@ -16744,8 +16887,8 @@ GROW_ARROW_FORK_NEW_AREA =
   diagonals =
   {
     "A.",".1","1.",".A",
-    ".A","A1","1A","A.",
          "A1","1A",
+    ".A","A1","1A","A.",
          ".A","A."
   }
 },
@@ -16754,7 +16897,7 @@ GROW_ARROW_FORK_NEW_AREA =
 GROW_ARROW_CHEVRON_NEW_AREA =
 {
   prob = 3,
-  prob = 80,
+  skip_prob = 80,
 
   aversion = 0.25,
 
@@ -16783,7 +16926,7 @@ GROW_ARROW_CHEVRON_NEW_AREA =
 GROW_ARROW_DOUBLE_NEW_AREA =
 {
   prob = 1,
-  prob = 95,
+  skip_prob = 95,
 
   aversion = 0.1,
 
@@ -16941,15 +17084,15 @@ GROW_EXTRUSION_SINK =
 
   structure =
   {
-    "11xxx","11xxx"
+    "11xxx","11xxx",
     "...xx","111xx",
     "...xx","111xx",
     ".....","11vAA",
     ".....","11AAA",
     ".....","11^AA",
     "...xx","111xx",
-    "...xx","111xx",
-  },
+    "...xx","111xx"
+  }
 },
 
 DECORATE_CAGE_CANALS_STRAIGHT_3X =
@@ -16975,21 +17118,6 @@ DECORATE_CAGE_CANALS_STRAIGHT_2X =
     "..","CC",
     "~~","~~",
     "11","11",
-  },
-
-  cage_mode = "fancy",
-},
-
-DECORATE_CAGE_CANALSWIDE_STRAIGHT_3X =
-{
-  prob = 10,
-
-  structure =
-  {
-    "...","CCC",
-    "~~~","~~~",
-    "~~~","~~~",
-    "111","111",
   },
 
   cage_mode = "fancy",
@@ -17156,7 +17284,7 @@ GROW_INTO_CLIFF_extend_aux =
     "2211","2211",
     "2211","2211",
   }
-}
+},
 
 GROW_INTO_CLIFF_INVERSE =
 {
@@ -17175,7 +17303,7 @@ GROW_INTO_CLIFF_INVERSE =
   },
 },
 
-GROW_INTO_CLIFF_CURVE =
+GROW_INTO_CLIFF_CURVE_RH =
 {
   prob = 35,
   skip_prob = 15,
@@ -17186,10 +17314,10 @@ GROW_INTO_CLIFF_CURVE =
     "......","111111",
     "......","11/AAA",
     "......","11AAAA",
-    "......","11AAxx",
-    "......","11AAxx",
-    "......","11^^xx",
-    "......","1111xx",
+    "....xx","11AAxx",
+    "....xx","11AAxx",
+    "....xx","11^^xx",
+    "....xx","1111xx",
     "11xxxx","11xxxx",
   },
 
@@ -17200,11 +17328,11 @@ GROW_INTO_CLIFF_CURVE =
 
   auxiliary =
   {
-    pass = "GROW_INTO_CLIFF_CURVE_extend_aux"
+    pass = "GROW_INTO_CLIFF_CURVE_RH_extend_aux"
   }
 },
 
-GROW_INTO_CLIFF_CURVE_extend_aux =
+GROW_INTO_CLIFF_CURVE_RH_extend_aux =
 {
   prob = 1,
 
@@ -17215,9 +17343,9 @@ GROW_INTO_CLIFF_CURVE_extend_aux =
     "11..","1111",
     "11..","1111",
   }
-}
+},
 
-GROW_INTO_CLIFF_CURVE =
+GROW_INTO_CLIFF_CURVE_LH =
 {
   prob = 35,
   skip_prob = 15,
@@ -17240,11 +17368,11 @@ GROW_INTO_CLIFF_CURVE =
 
   auxiliary =
   {
-    pass = "GROW_INTO_CLIFF_CURVE_extend_aux"
+    pass = "GROW_INTO_CLIFF_CURVE_LH_extend_aux"
   }
 },
 
-GROW_INTO_CLIFF_CURVE_extend_aux =
+GROW_INTO_CLIFF_CURVE_LH_extend_aux =
 {
   prob = 1,
 
@@ -17957,12 +18085,12 @@ GROW_LIQUID_PILLAR_aux =
 
   structure =
   {
-    "....","11~~"
-    "....","11~~"
-    "11~~","11.~"
+    "....","11~~",
+    "....","11~~",
+    "11~~","11.~",
     "11~~","11~~"
   }
-}
+},
 
 GROW_LIQUID_PILLAR_INWARD =
 {
@@ -17992,9 +18120,9 @@ GROW_LIQUID_PILLAR_INWARD_aux =
 
   structure =
   {
-    "....","22~~"
-    "....","22~~"
-    "11~~","11.~"
+    "....","22~~",
+    "....","22~~",
+    "11~~","11.~",
     "22~~","22~~"
   }
 },
@@ -18025,8 +18153,8 @@ GROW_TRENCH_extend_aux =
 
   structure =
   {
-    "211..","22211"
-    "111..","11111"
+    "211..","22211",
+    "111..","11111",
     "211..","22211"
   }
 },
@@ -18406,7 +18534,7 @@ GROW_SEWER_CROSSING_CIRCLE_NEW_AREA_BIG =
   }
 },
 
-GROW_SEWER_CROSSING_CIRCLE_NEW_AREA_BIG =
+GROW_SEWER_CROSSING_CIRCLE_NEW_AREA_BIGGER =
 {
   prob = 17,
   skip_prob = 80,
@@ -23408,12 +23536,8 @@ SPROUT_DIRECT_1_cave =
 
   new_room =
   {
-    env = "cave"
-  },
-
-  new_room =
-  {
-    conn = { x=1, y=1, w=1, dir=8 },
+    env = "cave",
+    conn = { x=1, y=1, w=1, dir=8 }
   },
 
 },

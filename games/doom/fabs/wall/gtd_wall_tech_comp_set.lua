@@ -315,10 +315,10 @@ PREFABS.Wall_gtd_dh_comp = -- inspired by a fab that has survived since Oblige 7
 
   deep   = 16,
 
-  height = 96,
+  height = 112,
 
   bound_z1 = 0,
-  bound_z2 = 96,
+  bound_z2 = 112,
 
   z_fit  = "top",
 
@@ -336,5 +336,9 @@ PREFABS.Wall_gtd_dh_comp_diag =
   template = "Wall_gtd_dh_comp",
   map = "MAP21",
 
-  where = "diagonal"
+  where = "diagonal",
+
+  height = 112,
+
+  bound_z2 = 112
 }

@@ -782,7 +782,7 @@ ULTDOOM.MATERIALS =
   FLOOR4_5 = { t="BROWN1", f="FLOOR4_5" },
   FLOOR5_4 = { t="BROWN1", f="FLOOR5_4" },
   FLAT18 = { t="GRAY1", f="FLAT18" },
-  FLAT18 = { t="GRAY7", f="FLAT20" },
+  FLAT20 = { t="GRAY7", f="FLAT20" },
 
   -- hex colors used in some Set Line specials - these are NOT actually usable materials
   -- and are just here to suppress warnings regarding them
@@ -1440,90 +1440,90 @@ ULTDOOM.THEMES =
 
     wall_groups =
     {
-      torches2 = 30, --red
-      torches3 = 30, --blue
-      torches1 = 30, --green
-      torches6 = 10, --candelabra
-      torches8 = 10, --evil eye
-      torches10 = 7, --skull rock
-      --
+      torches2 = 30,
+      torches3 = 30,
+      torches1 = 30,
+      torches6 = 10,
+      torches8 = 10,
+      torches10 = 7,
+
       lowhell1 = 16,
       lowhell2 = 16,
       lowhell3 = 16,
-      --
+
       runes1 = 10,
       runes2 = 10,
       runes3 = 10,
       runes4 = 10,
       runes5 = 10,
-      --
-      cross1 = 7, --7
-      cross2 = 15, --15
-      cross3 = 7, --7
-      cross4 = 10, --5
-      cross5 = 15, --10
-      --
+
+      cross1 = 7,
+      cross2 = 15,
+      cross3 = 7,
+      cross4 = 10,
+      cross5 = 15,
+
       mid_band_hell = 25,
-      --
+
       gtd_wall_hell_bloodgutters = 25,
       gtd_wall_tech_top_corner_light_set = 50,
-      --
+
       gtd_generic_beamed_inset = 35,
       gtd_generic_beamed_brown_inset = 35,
-      --
+
       gtd_writhing_mass = 50,
       gtd_library = 50,
-      --
+
       gtd_furnace = 20,
       gtd_furnace_face = 20,
       gtd_furnace_water = 20,
-      --
+
       gtd_wall_marbface = 50,
       gtd_wall_quakish_insets = 50,
       gtd_wall_hell_ossuary = 50,
-      --
+
       gtd_wall_high_gap_set = 12,
       gtd_wall_high_gap_alt_set = 12,
       gtd_wall_high_gap_protrude_set = 12,
       gtd_wall_high_gap_protrude_blue_set = 12,
-      --
+
       gtd_generic_half_floor = 20,
       gtd_generic_half_floor_no_trim = 20,
       gtd_generic_half_floor_inverted_braced = 20,
-      --
+
       gtd_woodframe = 15,
       gtd_woodframe_green = 15,
       gtd_woodframe_alt = 15,
       gtd_woodframe_alt_green = 15,
-      --
+
       gtd_round_inset = 50,
-      --
+
       gtd_generic_ceilwall = 30,
       gtd_generic_ceilwall_2 = 30,
       gtd_generic_ceilwall_3 = 30,
       gtd_generic_ceilwall_silver_frame = 30,
       gtd_generic_ceilwall_double_silver_frame = 30,
-      --
+
       gtd_generic_glow_wall = 30,
       gtd_generic_double_banded_ceil = 30,
-      --
+
       gtd_wall_hell_vaults = 50,
       gtd_wall_hell_vaults_ftex = 50,
-      --
+
       gtd_generic_frame_light_band = 50,
       gtd_generic_frame_metal = 50,
-      --
+
       gtd_generic_d64_1x = 10,
       gtd_generic_d64_1x_yellow = 10,
       gtd_generic_d64_1x_blue = 10,
       gtd_generic_d64_2x = 10,
       gtd_generic_d64_2x_yellow = 10,
       gtd_generic_d64_2x_blue = 10,
-      --
+
       gtd_generic_tek_grate = 25,
       gtd_generic_tek_grate_bottom_slope = 25,
       gtd_generic_tek_grate_xit_machine = 25,
-      --
+
       gtd_generic_artsy_bedazzled = 20,
       gtd_generic_alt_colors = 20,
       gtd_generic_mid_band = 20,
@@ -1535,14 +1535,14 @@ ULTDOOM.THEMES =
       gtd_generic_small_lite = 20,
       gtd_generic_artsy_lite_box = 20,
       gtd_generic_artsy_chequered = 20,
-      --
+
       gtd_ind_modwall_1 = 20,
       gtd_ind_modwall_2 = 20,
       gtd_ind_modwall_3 = 20,
-      --
+
       gtd_greywall_1 = 25,
       gtd_greytall_trim = 25,
-      --
+
       gtd_modquake_set = 11,
       gtd_modquake_jawlike = 11,
       gtd_modquake_top_heavy_brace = 11,
@@ -1550,27 +1550,45 @@ ULTDOOM.THEMES =
       gtd_modquake_ex_light_slope_brace = 11,
       gtd_modquake_round_braced_lit_pillar = 11,
       gtd_modquake_hexagon_inset_braced = 11,
-      --
+
       gtd_wall_candalebra = 12,
       gtd_wall_blue_torch = 12,
       gtd_wall_green_torch = 12,
       gtd_wall_red_torch = 12,
-      --
+
       gtd_wall_hell_mindscrew = 25,
       gtd_wall_hell_mindscrew_skywall = 25,
-      --
+
       gtd_gothic_ceilwall_arch = 18,
       gtd_gothic_ceilwall_doublet_arch = 18,
       gtd_gothic_ceilwall_braced_arch = 18,
       gtd_gothic_ceilwall_xzibit_arch = 18,
       gtd_gothic_ceilwall_inner_framed_arch = 18,
-      --
+
       gtd_sunderfall = 25,
       gtd_sunderfall_barred = 25,
-      --
+
       gtd_door_storage = 15,
-      --
-      gtd_fireblu_where_its_made = 15
+      gtd_fireblu_where_its_made = 15,
+
+      low_gap = 7,
+      mid_band = 5,
+      lite2 = 5,
+      torches7 = 50,
+      torches11 = 15,
+
+      gtd_wall_urban_storage = 20,
+      gtd_wall_server_room = 30,
+      gtd_wall_sewer = 10,
+
+      gtd_computers = 45,
+      gtd_dh_comp = 30,
+
+      gtd_wall_octagon_insets = 25,
+      gtd_wall_grated_machines = 20,
+
+      gtd_ribbed_lights = 15,
+      gtd_wall_urban_cement_frame = 10,
     },
 
     outdoor_wall_groups =
@@ -1648,55 +1666,6 @@ ULTDOOM.THEMES =
       beam_arched_fixed = 25,
       beam_arch_angular = 25,
       beam_arch_angular_fixed = 25,
-    },
-
-   -- This is because of the slow Hellification of the Deimos base, hence a few Hell wall prefabs are here.
-
-   -- MSSP: we have two wall_groups here and I'm not sure which one of these is likely
-   -- to override the other.
-   -- TO-DO: We need to merge this with the one above.
-    wall_groups =
-    {
-      low_gap = 7,
-      mid_band = 5,
-      lite2 = 5,
-      torches1 = 5,
-      torches2 = 5,
-      torches3 = 3,
-      torches6 = 10,
-      torches7 = 50,
-      torches8 = 10,
-      torches11 = 15,
-      runes1 = 1,
-      runes2 = 1,
-      runes3 = 1,
-      runes4 = 1,
-      runes5 = 1,
-      cross1 = 1,
-      cross2 = 3,
-      cross3 = 1,
-      cross4 = 1,
-      cross5 = 3,
-      mid_band_hell = 1,
-      gtd_wall_urban_storage = 20,
-      gtd_wall_tech_top_corner_light_set = 30,
-      gtd_wall_server_room = 30,
-      gtd_wall_sewer = 10,
-      gtd_generic_beamed_inset = 10,
-      gtd_computers = 45,
-      gtd_dh_comp = 30,
-      gtd_writhing_mass = 4,
-      gtd_wall_octagon_insets = 25,
-      gtd_wall_grated_machines = 20,
-      gtd_wall_quakish_insets = 25,
-      gtd_ribbed_lights = 15,
-      gtd_wall_high_gap_set = 4,
-      gtd_wall_high_gap_alt_set = 4,
-      gtd_wall_high_gap_protrude_set = 4,
-      gtd_wall_high_gap_protrude_blue_set = 4,
-      gtd_generic_half_floor = 15,
-      gtd_wall_urban_cement_frame = 10,
-      gtd_generic_ceilwall = 25,
     },
 
     fence_groups =
@@ -2061,7 +2030,7 @@ ULTDOOM.THEMES =
       hell_o_gothic_skin_red = 1,
       hell_o_marb_icon_bfalls = 1,
       hell_o_egyptish = 1,
-      hell_o_blood_ocatgon = 1,
+      hell_o_blood_octagon = 1,
       hell_o_catamet = 1,
       hell_o_crematorium_windows = 1,
       hell_o_orange_arch_window = 1,
@@ -2509,7 +2478,7 @@ ULTDOOM.THEMES =
       hell_o_gothic_skin_red = 1,
       hell_o_marb_icon_bfalls = 1,
       hell_o_egyptish = 1,
-      hell_o_blood_ocatgon = 1,
+      hell_o_blood_octagon = 1,
       hell_o_catamet = 1,
       hell_o_crematorium_windows = 1,
       hell_o_orange_arch_window = 1,
@@ -3078,7 +3047,6 @@ ULTDOOM.ROOM_THEMES =
       STARTAN3 = 10,
       STARTAN2 = 5,
       STARTAN1 = 5,
-      STARG2 = 15,
       ICKWALL1 = 15,
       STARBR2 = 15,
       STARGR2 = 10,
@@ -3784,7 +3752,6 @@ ULTDOOM.ROOM_THEMES =
       CEIL5_2 = 10,
       FLAT1_1 = 10,
       FLAT1_2 = 10,
-      FLAT5_3 = 5,
       FLAT5_3 = 10,
     },
   },
@@ -3873,7 +3840,6 @@ ULTDOOM.ROOM_THEMES =
       DEM1_5 = 50,
       DEM1_6 = 50,
       CEIL3_2 = 50,
-      CEIL3_5 = 50,
     },
   },
 
@@ -4108,7 +4074,6 @@ ULTDOOM.ROOM_THEMES =
     floors =
     {
       ASHWALL = 12,
-      FLAT1_1 = 15,
       FLAT5_4 = 10,
       FLAT10 = 20,
       FLAT5_7 = 10,

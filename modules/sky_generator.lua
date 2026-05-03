@@ -130,7 +130,7 @@ function SKY_GEN.generate_skies()
 
     local seed = gui.random_int()
 
-    is_starry = (index == starry_ep)
+    local is_starry = (index == starry_ep)
 
     if PARAM.force_sky == "sky_day" then
       is_starry = false

@@ -54,7 +54,7 @@ OB_MODULES["ui_useful_links"] =
       label=_("Harmony Compatible"),
       url="https://www.doomworld.com/idgames/levels/doom2/Ports/g-i/harmonyc",
       gap=1
-    }
+    },
 
     --[[{
       name = "header_addons",
@@ -96,7 +96,7 @@ OB_MODULES["ui_useful_links"] =
       label=_("MsrSgtShooterPerson's Delta Resource Pack"),
       url="https://obsidian-level-maker.github.io/addons.html",
       gap=4
-    },]]--
+    },]]
 
     {
       name = "header_source_ports",

@@ -15,7 +15,6 @@ PREFABS.Pic_dem_commercial_set1 =
   height = 104,
   deep = 16,
 
-  theme  = "urban",
   env = "building",
 
   seed_w = 2,
@@ -45,7 +44,7 @@ PREFABS.Pic_dem_commercial_set2 =
 
   x_fit = "stretch",
 
-  tex_DNSTOR07 = { DNSTOR07 = 50, DNSTOR07=50, DNSTOR08=50, DNSTOR09=50, },
+  tex_DNSTOR07 = { DNSTOR07=50, DNSTOR08=50, DNSTOR09=50, },
 
   sound = "Electric_Sparks"
 }

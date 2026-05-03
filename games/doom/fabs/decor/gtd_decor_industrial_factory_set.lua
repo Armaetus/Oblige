@@ -8,7 +8,7 @@ PREFABS.Decor_gtd_fireblu_wim =
 
   group = "gtd_fireblu_where_its_made",
 
-  height = {80 , 160}
+  height = {80 , 160},
 
   size = 88,
 
@@ -105,7 +105,7 @@ PREFABS.Decor_gtd_fireblu_wim_4_fire =
   z_fit = "top",
 
   flat_CEIL4_2 = "FLAT5_3",
-  tex_COMPBLUE = "ROCKRED1"
+  tex_COMPBLUE = "ROCKRED1",
 
   bound_z2 = nil
 }

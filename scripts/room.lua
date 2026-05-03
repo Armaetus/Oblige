@@ -325,7 +325,7 @@ end
 function ROOM_CLASS.has_sky_neighbor(R)
   for _,C in pairs(R.conns) do
     if C.A1.room == C.A2.room then goto skip end
-    local N = C:other_room(A)
+    local N = C:other_room(R)
     if N.is_outdoor and N.mode ~= "void" then return true end
     ::skip::
   end
@@ -796,13 +796,11 @@ function Room_pick_joiner_prefab(LEVEL, C, chunk)
   C:get_lock_reqs(reqs)
 
   if C.kind == "terminator" then
-    none_ok = nil
-
     -- if it ends up here, something's wrong with growth
     if reqs.shape == "N" then reqs.shape = "I" end
   end
 
-  chunk.prefab_def = Fab_pick(LEVEL, reqs, none_ok)
+  chunk.prefab_def = Fab_pick(LEVEL, reqs)
   if not chunk.prefab_def then
     reqs.group = nil
     chunk.prefab_def = Fab_pick(LEVEL, reqs)
@@ -2631,6 +2629,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     repeat
       start_area = rand.pick(R.areas)
+      assert(start_area)
     until start_area.mode == "floor"
 
     visit_floor_area(R, start_area, "new")
@@ -2837,16 +2836,20 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       group_ceiling_pass(R)
     end
 
+    if not R.stair_ceil_mode then
+      R.stair_ceil_mode = rand.pick({"use_dest", "use_from"})
+    end
+
     -- handle stairs
     for _,A in pairs(R.areas) do
       if A.chunk and A.chunk.kind == "stair" and not A.chunk.prefab_def.plain_ceiling then
-        local N1 = A.chunk.from_area
-        local N2 = A.chunk.dest_area
+        local fromA = A.chunk.from_area
+        local destA = A.chunk.dest_area
 
-        if N1.floor_h < N2.floor_h then
-          A.ceil_group = N1.ceil_group
+        if R.stair_ceil_mode == "use_dest" then
+          A.ceil_group = destA.ceil_group
         else
-          A.ceil_group = N2.ceil_group
+          A.ceil_group = fromA.ceil_group
         end
 
       end
@@ -3403,6 +3406,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
 
   local function do_stairs(R)
+
     for _,chunk in pairs(R.stairs) do
       local A = chunk.area
 
@@ -3412,27 +3416,24 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         goto skip
       end
 
-      local N1 = chunk.from_area
-      local N2 = chunk.dest_area
-      assert(N1.ceil_h)
-      assert(N2.ceil_h)
+      local fromA = chunk.from_area
+      local destA = chunk.dest_area
+      assert(fromA.ceil_h)
+      assert(destA.ceil_h)
 
-      if N1.ceil_h < (N2.floor_h + 96) then
-        N1.ceil_h = N2.ceil_h
-        N1 = N2
+      if fromA.ceil_h < (destA.floor_h + 96) then
+        fromA.ceil_h = destA.ceil_h
+        fromA = destA
       end
 
-      A.ceil_h   = N1.ceil_h
-      A.ceil_mat = N1.ceil_mat
+      if R.stair_ceil_mode == "from_dest" then
+        A.ceil_h   = fromA.ceil_h
+        A.ceil_mat = fromA.ceil_mat
+      else
+        A.ceil_h   = destA.ceil_h
+        A.ceil_mat = destA.ceil_mat
+      end
       ::skip::
-    end
-
-    -- MSSP: second pass
-    for _,chunk in pairs(R.stairs) do
-      local A = chunk.area
-      local N = chunk.from_area
-
-      A.ceil_h = N.ceil_h
     end
   end
 
@@ -3856,7 +3857,7 @@ end
 
     do_closets(R)
 
-    Room_cleanup_stairs_to_nowhere(R)
+    Room_cleanup_stairs_to_nowhere(LEVEL, R)
     calc_min_max_h(R, "ceilz_with_feelz")
   end
 end
@@ -3872,6 +3873,8 @@ function Room_add_cage_rails(LEVEL)
       if N.zone ~= A.zone then goto skip end
 
       local junc = Junction_lookup(LEVEL, A, N)
+
+      assert(junc)
 
       if junc.E1 and junc.E1.kind ~= "nothing" then goto skip end
       if junc.E2 and junc.E2.kind ~= "nothing" then goto skip end
@@ -4001,7 +4004,7 @@ end
 
 
 
-function Room_cleanup_stairs_to_nowhere(R)
+function Room_cleanup_stairs_to_nowhere(LEVEL, R)
 
   local function area_leads_to_nowhere(A)
 
@@ -4020,7 +4023,6 @@ function Room_cleanup_stairs_to_nowhere(R)
 
     local same_room_neighbors = 0
     local stair_neighbors = 0
-    local from_area
     for _,N in pairs(A.neighbors) do
 
       if N.room == A.room then
@@ -4134,7 +4136,7 @@ function Room_cleanup_stairs_to_nowhere(R)
   end
 
 
-  local function fixup_cages()
+  local function fixup_cages(LEVEL)
     for _,A in pairs(LEVEL.areas) do
       if A.mode == "cage" and A.floor_h then
         local tallest_ceiling = -EXTREME_H
@@ -4214,12 +4216,21 @@ function Room_cleanup_stairs_to_nowhere(R)
   end
 
 
-  local SA -- source stair area
-  local SAS -- source stair area's source area. Yes, that's not intuitive
-            -- to think about, is it?
-
+  local SA -- source stair chunk
+  local SAS -- stair chunk's source area
+  R.dead_end_add_h = rand.key_by_probs(
+    {
+      [0] = 10,
+      [16] = 2,
+      [32] = 4,
+      [64] = 6,
+      [128] = 2
+    }
+  )
+  R.dead_end_add_h = R.dead_end_add_h * rand.sel(25, -1, 1)
+  
   for _,A in pairs(R.areas) do
-    if area_leads_to_nowhere(A, R) then
+    if area_leads_to_nowhere(A) then
       SA, SAS = get_area_entry_stair(A)
 
       gui.printf("AREA_"..A.id.." leads to nowhere. "..
@@ -4259,28 +4270,36 @@ function Room_cleanup_stairs_to_nowhere(R)
 
         SA.floor_mat = SAS.floor_mat
 
+        -- use the floor group of the source area
+        A.floor_group = SAS.floor_group
         SA.floor_group = SAS.floor_group
-        SA.ceil_group = SAS.ceil_group
+
+        -- use the ceil group of the "dead end" for the stair chunk
+        SA.ceil_group = A.ceil_group
 
         A.dead_end = true
         SA.dead_end = true
 
         -- unify heights
-        if A.ceil_h - A.floor_h < 96
-        or SA.ceil_h - SA.floor_h < 96 then
-          A.ceil_h = A.floor_h + 96
-          SA.ceil_h = A.ceil_h
-        end
+        A.ceil_h = SAS.ceil_h
+        A.floor_h = SAS.floor_h
+
+        A.ceil_h = math.clamp(A.floor_h + 96, A.ceil_h + R.dead_end_add_h, EXTREME_H)
+        SA.ceil_h = math.clamp(A.floor_h + 96, A.ceil_h + R.dead_end_add_h, EXTREME_H)
 
         -- affix textures
-        if A.room:get_env() == "outdoor" then
-          A.source_mat = R.floor_mats[A.floor_h] --or SAS.floor_mat 
-          SA.source_mat = R.floor_mats[SA.floor_h] --or SAS.floor_mat
-        end
-
         if A.room:get_env() == "building" then
-          A.ceil_mat = R.ceil_mats[A.floor_h] --or SAS.ceil_mat
-          SA.ceil_mat = R.ceil_mats[SA.ceil_h] --or SAS.ceil_mat
+          local ceil_tex = SAS.ceil_mat
+          if A.ceil_mats then
+            if  A.ceil_mats[A.ceil_h] then
+              ceil_tex = A.ceil_mats[A.ceil_h]
+            else
+              ceil_tex = rand.pick(A.ceil_mats)
+            end
+          end
+          assert(ceil_tex, "no ceiling texture for room %s", A.room.name)
+          A.ceil_mat = ceil_tex
+          SA.ceil_mat = ceil_tex
         end
 
         fixup_neighbors(A)
@@ -4291,7 +4310,7 @@ function Room_cleanup_stairs_to_nowhere(R)
   select_porch_floor_mats(R)
 
   --[[if not R.is_park then
-    fixup_cages()
+    fixup_cages(LEVEL)
   end]]
 
 end

@@ -522,7 +522,7 @@ PREFABS.Wall_hell_blood_ocatgon = --#
   template = "Wall_hell_stone_brace",
   map = "MAP20",
 
-  group = "hell_o_blood_ocatgon",
+  group = "hell_o_blood_octagon",
 
   tex_DESBRIK3 = "BSTONE2",
 

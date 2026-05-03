@@ -666,7 +666,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.synthesize_procedural_themes()
   end
 
   local function pick_element(lev_theme, texture_type)
-    local t, RT = {}
+    local t, RT = {}, {}
     local result
     RT = table.copy(GAME.ROOM_THEMES)
     table.name_up(RT)
@@ -952,7 +952,6 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   local snow_hell_floors = OBS_RESOURCE_PACK_SNOW_OUTDOORS.hell.floors
 
   local snow_naturals = OBS_RESOURCE_PACK_SNOW_OUTDOORS.naturals
-  local snow_facades = OBS_RESOURCE_PACK_SNOW_FACADE
 
   --sand
   local sand_tech_floors = OBS_RESOURCE_PACK_DESERT_OUTDOORS.tech.floors
@@ -960,7 +959,6 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   local sand_hell_floors = OBS_RESOURCE_PACK_DESERT_OUTDOORS.hell.floors
 
   local sand_naturals = OBS_RESOURCE_PACK_DESERT_OUTDOORS.naturals
-  local sand_facades = OBS_RESOURCE_PACK_DESERT_FACADE
 
   if OB_CONFIG.game == "doom2" then
     if LEVEL.outdoor_theme == "snow" then
@@ -1111,11 +1109,11 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.put_new_materials()
     -- SINKS
     GAME.SINKS = table.deep_merge(GAME.SINKS, OBS_RESOURCE_PACK_DOOM1_SINK_DEFS, 2)
 
-    -- inserts for hallways
+    --[[inserts for hallways
     GAME.THEMES.tech.wide_halls = OBS_RESOURCE_PACK_TECH_WIDE_HALLS
     GAME.THEMES.deimos.wide_halls = OBS_RESOURCE_PACK_TECH_WIDE_HALLS
     GAME.THEMES.hell.wide_halls = OBS_RESOURCE_PACK_HELL_WIDE_HALLS
-    GAME.THEMES.flesh.wide_halls = OBS_RESOURCE_PACK_HELL_WIDE_HALLS
+    GAME.THEMES.flesh.wide_halls = OBS_RESOURCE_PACK_HELL_WIDE_HALLS]]
   end
 
   if PARAM.bool_include_generative_AI_textures == 1 then

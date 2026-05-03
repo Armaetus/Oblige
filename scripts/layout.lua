@@ -740,8 +740,8 @@ function Layout_place_all_importants(LEVEL, SEEDS)
 end
 
 
-
-function Layout_choose_face_area(A)
+-- not used
+--[[function Layout_choose_face_area(A, LEVEL)
   -- used for scenic liquid pools
 
   local best
@@ -761,6 +761,7 @@ function Layout_choose_face_area(A)
     -- ok --
 
     local junc = Junction_lookup(LEVEL, A, N)
+    assert(junc)
 
     local score = junc.perimeter + 2.2 * gui.random() ^ 3
 
@@ -772,7 +773,7 @@ function Layout_choose_face_area(A)
   end
 
   return best
-end
+end]]
 
 
 
@@ -1054,7 +1055,7 @@ gui.debugf("MonRelease in %s : kind --> %s\n",
 
     local qty = rand.index_by_probs({ 40,40,20,5 })
 
-    if STYLE.traps == "few"   then math.floor((qty + 1) / 2) end
+    if STYLE.traps == "few"   then qty = math.floor((qty + 1) / 2) end
     if STYLE.traps == "more"  then qty = qty + 1 end
     if STYLE.traps == "heaps" then qty = qty + 2 end
 
@@ -1240,6 +1241,8 @@ gui.debugf("MonRelease in %s : kind --> %s\n",
 
     -- do not trap the exit switch, as player may exit too soon and
     -- not notice the released monsters
+    assert(goal)
+
     if goal.kind == "START" or
        goal.kind == "EXIT" or
        goal.kind == "SECRET_EXIT"
@@ -2032,8 +2035,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     gui.printf(R.secondary_important.kind .. " placed in ROOM_" .. R.id .. "\n")
     
     local usable_chunks = {}
-    local preferred_chunk
-    local def
+    local preferred_chunk, def, reqs
 
     for _,chunk in pairs(R.closets) do
       if (not chunk.content or chunk.content == "DECORATION")
@@ -2046,7 +2048,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     if table.empty(usable_chunks) then return end
 
     preferred_chunk = rand.pick(usable_chunks)
-    -- gui.printf(table.tostr(usable_chunks,2))
+    assert(preferred_chunk)
 
     reqs = preferred_chunk:base_reqs(preferred_chunk.from_dir)
 
@@ -2401,7 +2403,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
     for _,chunk in pairs(R.floor_chunks) do
       if chunk.content == nil and not chunk.is_bossy and rand.odds(decor_prob) then
-        try_decoration_in_chunk(chunk, nil, LEVEL)
+        try_decoration_in_chunk(chunk, nil)
       end
     end
   end
@@ -2412,7 +2414,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
     for _,chunk in pairs(R.floor_chunks) do
       if chunk.content == nil and not chunk.is_bossy and rand.odds(decor_prob) then
-        try_decoration_in_chunk(chunk, "is_cave", LEVEL)
+        try_decoration_in_chunk(chunk, "is_cave")
       end
     end
   end
@@ -2851,7 +2853,7 @@ function Layout_handle_corners(LEVEL)
         pillar_it = true
       end
 
-      if junc.beamed then pillar_it = ture end
+      if junc.beamed then pillar_it = true end
     end
 
     if pillar_it then

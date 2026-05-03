@@ -308,7 +308,10 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       OBTBSTX3 = 30,
 
       OBTBSLB1 = 30,
-      OBTBSLB1 = 30,
+      OBTBSLB2 = 30,
+      OBTBSLB3 = 30,
+      OBTBSLB4 = 30,
+      OBTBSLB5 = 30,
 
       G8_BR1GY = 20,
       G8_BR2GY = 20,
@@ -377,7 +380,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       FLAT9  = 30,
       FLAT19 = 20,
       FLAT4  = 20,
-      FLAT9  = 15,
       FLAT23 = 5,
 
       OBTBSFL3 = 10
@@ -815,7 +817,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       FLAT19 = 50,
       FLAT5_4 = 20,
       MFLR8_1 = 15,
-      FLAT5_2 = 5,
       CEIL1_1 = 5,
       FLAT5_2 = 5,
       GRATE4  = 10
@@ -1587,7 +1588,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       FLAT5_1  = 30,
       FLOOR7_1 = 30,
       DEM1_6   = 15,
-      FLAT5_1  = 5,
       FLAT5_2  = 5,
 
       FLAT10   = 10,
@@ -1728,7 +1728,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       FLAT19 = 50,
       FLAT5_4 = 20,
       MFLR8_1 = 15,
-      FLAT5_2 = 5,
       CEIL1_1 = 5,
       FLAT5_2 = 5,
       GRATE4  = 10,
@@ -1799,7 +1798,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       FLAT19 = 50,
       FLAT5_4 = 20,
       MFLR8_1 = 15,
-      FLAT5_2 = 5,
       CEIL1_1 = 5,
       FLAT5_2 = 5,
       GRATE4  = 10,
@@ -2245,9 +2243,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GRATE6 = 8,
       GRATE7 = 8,
       GRATE8 = 8,
-
-      GRATE3 = 5,
-      GRATE4 = 5,
 
       QFLAT05 = 5,
       QFLAT06 = 5,
@@ -2901,7 +2896,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       FLAT5_2 = 30,
       FLOOR7_1 = 20,
       FLAT5_4 = 8,
-      FLAT5_5 = 20,
       FLOOR4_6 = 10,
       FLAT5_5  = 15,
       DEM1_5   = 10,
@@ -3621,7 +3615,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       BMARB1 = 15,
       BMARB2 = 25,
       BMARB3 = 15,
-      RROCK13 = 25,
       BLACK0 = 25,
       DARKF03 = 25,
       FFLAT01 = 25,
@@ -4098,7 +4091,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "METAL7",
     trim_dz = -8,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_TEKWALL9 = -- green
@@ -4109,7 +4102,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "METAL7",
     trim_dz = -8,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_TEKWALLA = -- purple
@@ -4120,7 +4113,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "METAL7",
     trim_dz = -8,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_TEKWALLB = -- blue
@@ -4131,7 +4124,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "METAL7",
     trim_dz = -8,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_TEKWALLC = -- pink
@@ -4142,7 +4135,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "METAL7",
     trim_dz = -8,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_TEKWALLD = -- cyan
@@ -4153,7 +4146,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "METAL7",
     trim_dz = -8,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_TEKWALLE = -- orange
@@ -4164,7 +4157,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "METAL7",
     trim_dz = -8,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_SILVER2R = -- silver lights red
@@ -4175,7 +4168,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SILVER2R",
     trim_dz = -16,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_SILVER2O = -- silver lights orange
@@ -4186,7 +4179,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SILVER2O",
     trim_dz = -16,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_SILVER2Y = -- silver lights yellow
@@ -4197,7 +4190,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SILVER2Y",
     trim_dz = -16,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_SILVER2W = -- silver lights white
@@ -4208,7 +4201,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SILVER2W",
     trim_dz = -16,
-    light = 16,
+    trim_light = 16,
   },
 
   ceiling_sink_SILVER2G = -- silver lights green
@@ -4219,7 +4212,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SILVER2G",
     trim_dz = -16,
-    light = 16,
+    trim_light = 16,
   },
 
   -- hell cielings
@@ -4232,7 +4225,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SKINLOW1",
     trim_dz = -16,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_SKINMET3 =
@@ -4243,7 +4236,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SKINMET3",
     trim_dz = -16,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_SKINMET4 =
@@ -4254,7 +4247,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SKINMET4",
     trim_dz = -16,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_SKINMET5 =
@@ -4265,7 +4258,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SKINMET5",
     trim_dz = -16,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_SKINMET6 =
@@ -4276,7 +4269,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SKINMET6",
     trim_dz = -16,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_SKINMET7 =
@@ -4287,7 +4280,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "SKINMET7",
     trim_dz = -16,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_GOTH18 = -- metal tiles
@@ -4298,7 +4291,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "GOTH18",
     trim_dz = 0,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_GOTH19 = -- tall red cross
@@ -4309,7 +4302,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "GOTH19",
     trim_dz = 0,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_GOTH20 = -- small red cross
@@ -4320,7 +4313,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "GOTH20",
     trim_dz = 0,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_GOTH21 = -- horizontal red line
@@ -4331,7 +4324,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "GOTH21",
     trim_dz = 0,
-    light = 8,
+    trim_light = 8,
   },
 
   -- based on composite textures from GOTH21,
@@ -4343,7 +4336,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "T_GTHLY",
     trim_dz = 0,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_GOTH21G =
@@ -4354,7 +4347,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "T_GTHLG",
     trim_dz = 0,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_GOTH21B =
@@ -4365,7 +4358,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "T_GTHLB",
     trim_dz = 0,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_GOTH21P =
@@ -4376,7 +4369,7 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "T_GTHLP",
     trim_dz = 0,
-    light = 8,
+    trim_light = 8,
   },
 
   ceiling_sink_GOTH15 = -- double dark trimmed
@@ -4453,39 +4446,12 @@ OBS_RESOURCE_PACK_SINK_DEFS =
     trim_dz = 0,
   },
 
-  floor_sink_CARPET1 =
-  {
-    mat = "CARPET1",
-    dz = 0,
-
-    trim_mat = "ORANFLOR",
-    trim_dz = 0,
-  },
-
-  floor_sink_CARPET1 =
-  {
-    mat = "CARPET1",
-    dz = 0,
-
-    trim_mat = "ORANFLOR",
-    trim_dz = 0,
-  },
-
   floor_sink_CARPET2 =
   {
     mat = "CARPET2",
     dz = 0,
 
     trim_mat = "ORANFLOR",
-    trim_dz = 0,
-  },
-
-  floor_sink_CARPET2 =
-  {
-    mat = "CARPET2",
-    dz = 0,
-
-    trim_mat = "CEIL5_1",
     trim_dz = 0,
   },
 

@@ -271,7 +271,6 @@ PREFABS.Wall_flat_accent =
     PIPEWAL1 = 1,
     PIPEWAL2 = 1,
     PIPES = 1,
-    PIPEWAL2 = 1,
     LITEBLU1 = 0.25,
     SHAWN1 = 1,
     TEKLITE = 1,

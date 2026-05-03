@@ -159,7 +159,6 @@ PREFABS.Pic_urban_downtown_facade1_EPIC =
     BIGDOORF = 5,
     BIGBRIK3 = 5,
     BRONZE4 = 5,
-    TEKGREN5 = 5,
     METAL6 = 5,
     METAL7 = 5,
 
@@ -412,7 +411,6 @@ PREFABS.Pic_urban_downtown_facade3_EPIC =
     BIGDOORF = 5,
     BIGBRIK3 = 5,
     BRONZE4 = 5,
-    TEKGREN5 = 5,
     METAL6 = 5,
     METAL7 = 5,
 

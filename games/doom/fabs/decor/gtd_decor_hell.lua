@@ -87,7 +87,7 @@ PREFABS.Decor_hell_gazebo =
   bound_z1 = 0,
   bound_z2 = 160,
 
-  z_fit  = top,
+  z_fit  = "top",
 
   sink_mode = "never",
 }

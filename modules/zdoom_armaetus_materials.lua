@@ -721,7 +721,6 @@ OBS_RESOURCE_PACK_MATERIALS = {
   TEKGRY02 = { t="TEKGRY02", f="RROCK21" },
   TEKSHAW = { t="TEKSHAW", f="SHINY02" },
   TEKWALL2 = { t="TEKWALL2", f="CEIL5_1" },
-  TEKWALL2 = { t="TEKWALL2", f="CEIL5_1" },
   TEKWALL7 = { t="TEKWALL7", f="FLOOR7_1" },
   TEKWALL8 = { t="TEKWALL8", f="TEK1" }, -- Red
   TEKWALL9 = { t="TEKWALL9", f="TEK2" }, -- Green
@@ -1170,7 +1169,6 @@ OBS_RESOURCE_PACK_MATERIALS = {
   SNOW6 = { t="SNOW10",  f="SNOW6" }, --Snow
   SNOW7 = { t="SNOW10",  f="SNOW7" }, --Snow
   SNOW8 = { t="SNOW10",  f="SNOW8" }, --Snow
-  SNOW9 = { t="ICEFALL",  f="SNOW9" }, --Ice
   SNOW10F = { t="SNOW10",  f="SNOW10F" }, -- Named like this to avoid texture conflict of the same name
   SNOW11F = { t="SNOW12",  f="SNOW11F" },
   SNOW12F = { t="SNOW15",  f="SNOW12F" },
@@ -1237,8 +1235,6 @@ OBS_RESOURCE_PACK_MATERIALS = {
 
   WFALL1   = { t="WFALL1", f="FWATER1", sane=1 },
   FWATER1  = { t="WFALL1", f="FWATER1", sane=1 },
-
-  LFALL1   = { t="LFALL1", f="LAVA1", sane=1 }, --FIREMAG1,
 
   BFALL1   = { t="BFAL1",  f="BLOOD1", sane=1 },
   BLOOD1   = { t="BFAL1",  f="BLOOD1", sane=1 },

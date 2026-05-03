@@ -45,8 +45,6 @@ namelib.IGNORE_WORDS =
   ["for"]=1, ["in"]=1, ["on"]=1, ["to"]=1
 }
 
-
-
 namelib.COMMUNITY_MEMBERS =
 {
 
@@ -128,7 +126,6 @@ namelib.COMMUNITY_MEMBERS =
     --"Thexare",
   }
 }
-
 
 namelib.HUMAN_NAMES =
 {
@@ -1254,6 +1251,7 @@ namelib.HUMAN_NAMES =
     Cyclone = 1,
     Cyclops = 1,
     DJ = 1,
+    ["Dadd'o'three"] = 1,
     Data = 1,
     Deacon = 1,
     Deadbolt = 1,
@@ -1287,6 +1285,7 @@ namelib.HUMAN_NAMES =
     Ensign = 1,
     Expendable = 1,
     Eyebags = 1,
+    Familyman = 1,
     FPS = 1,
     Fixer = 1,
     Flash = 1,
@@ -1434,6 +1433,7 @@ namelib.HUMAN_NAMES =
     Quitter = 1,
     Radio = 1,
     Radiohead = 1,
+    Rabbit = 1,
     Ragequit = 1,
     Rambo = 1,
     Ranger = 1,
@@ -1762,7 +1762,7 @@ namelib.MARKOV_DB =
 
       "Rockport","Bridgeport","Kingsport Heights","Lakeport Falls","Riverport","Northport","Southport Heights","Westport","Eastport",
       "Greenport","Blueport","Fairport","Sunnyport","Shadowport","Woodport","Parkport","Stoneport","Ironport","Goldport","Silverport"
-    }
+    },
 
     suffix_fixes =
     {

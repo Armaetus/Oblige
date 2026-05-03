@@ -682,7 +682,6 @@ DOOM.MATERIALS =
   XMETAL2 = { t="METAL2", f="METAL3" },
   XSILVER3 = { t="SILVER3", f="SILVER3" },
   XSHAWN2 = { t="SHAWN2", f="SHAWN2" },
-  XMETAL3 = { t="METAL3", f="METAL3" },
   XSTEPTOP = { t="STEPTOP", f="STEPTOP" },
   XCRATOP1 = { t="CRATOP1", f="CRATOP1" },
   XDOORTRA = { t="DOORTRAK", f="DOORTRAK" },
