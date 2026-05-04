@@ -61,12 +61,17 @@ PREFABS.Pic_gtd_barrier_tek_1 =
 
   group = "gtd_tech_barrier_tek",
 
-  where  = "picture",
+  where  = "seeds",
   deep   = 16,
   height = 96,
+
+  seed_w = 2,
+  seed_h = 1,
 
   bound_z1 = 0,
   bound_z2 = 96,
 
-  z_fit  = { 86,87 },
+  x_fit = "fame",
+  y_fit = "top",
+  z_fit = { 86,87 }
 }

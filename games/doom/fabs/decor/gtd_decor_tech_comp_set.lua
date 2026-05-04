@@ -90,3 +90,20 @@ PREFABS.Decor_gtd_dh_comp_2 =
 
   z_fit = {114,116}
 }
+
+PREFABS.Decor_gtd_dh_comp_3 =
+{
+  template = "Decor_dittohead_computer",
+
+  file = "decor/gtd_decor_tech_comp_set.wad",
+  map = "MAP07",
+
+  group = "gtd_dh_comp",
+
+  height = 96,
+  size = 80,
+
+  bound_z2 = 96,
+
+  z_fit = {82,84}
+}
