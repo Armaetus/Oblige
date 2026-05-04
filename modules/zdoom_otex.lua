@@ -822,6 +822,13 @@ OTEX_LIMITED_SAMPLES =
   "OTRHXE05",
   "OTRHXE06",
   "OTRHXE07",
+
+  --
+
+  "OBASEK29",
+  "OBASEK36",
+  "OBASEL29",
+  "OBASEL36"
 }
 
 -- table of colorful texture groups
@@ -829,6 +836,7 @@ OTEX_LIMITED_SAMPLES_SUB =
 {
   -- BASE
   "OBASEM",
+  "OBASEN",
   "OBASEO",
   "OBASEP",
   "OBASEQ",
