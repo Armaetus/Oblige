@@ -2803,11 +2803,7 @@ function Layout_handle_corners(LEVEL)
               goto skip
             end
 
-            if not A.fence_type then
-              tallest_h = math.max(tallest_h, A.floor_h)
-            else
-              tallest_h = math.max(tallest_h, A.floor_h + junc.E1.rail_offset)
-            end
+            tallest_h = math.max(tallest_h, A.floor_h + junc.E1.rail_offset)
             ::skip::
           end
 
