@@ -2715,19 +2715,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
   local function ceilings_must_stay_separated(R, A1, A2)
     assert(A1 ~= A2)
 
-    local function is_porch(area)
-      if area.is_porch or area.is_porch_neighbor then return true end
-
-      return false
-    end
-
     for _,IC in pairs(R.internal_conns) do
       if (IC.A1 == A1 and IC.A2 == A2) or
          (IC.A1 == A2 and IC.A2 == A1)
-      then
-        if is_porch(A1) and not is_porch(A2) then return false end
-        if is_porch(A2) and not is_porch(A1) then return false end
-
+      then        
         return (IC.kind == "direct")
       end
     end
@@ -2769,6 +2760,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     for _,A2 in pairs(R.areas) do
       if A1.ceil_group ~= group1 then goto skip end
       if A2.ceil_group ~= group2 then goto skip end
+
+      if A1.is_outdoor and not A2.is_outdoor then return false end
+      if A2.is_outdoor and not A1.is_outdoor then return false end
 
       if ceilings_must_stay_separated(R, A1, A2) then return false end
 
@@ -2821,8 +2815,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
   local function group_ceilings(R)
     for _,A in pairs(R.areas) do
       if A.mode == "floor"
-      or (R.is_outdoor and A.mode == "floor" 
-      and (A.is_porch or A.is_porch_neighbor)) then
+      or (R.is_outdoor and A.mode == "floor"
+      and A.is_porch) then
         A.ceil_group = { id=alloc_id(LEVEL, "ceil_group") }
       end
     end
@@ -3572,12 +3566,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     end
 
     if R.openness_affects_height == "yes" then
-      if group.openness < 0.1     then add_h = add_h + 16
-      elseif group.openness < 0.2 then add_h = add_h + 32
-      elseif group.openness < 0.3 then add_h = add_h + 64
-      elseif group.openness < 0.4 then add_h = add_h + 128
-      elseif group.openness < 0.5 then add_h = add_h + 256
-      elseif group.openness < 0.6 then add_h = add_h + 384
+      if group.openness < 0.1     then -- do nothing
+      elseif group.openness < 0.2 then add_h = add_h + 16
+      elseif group.openness < 0.3 then add_h = add_h + 32
+      elseif group.openness < 0.4 then add_h = add_h + 64
+      elseif group.openness < 0.5 then add_h = add_h + 96
+      elseif group.openness < 0.6 then add_h = add_h + 128
       end
     end
 
@@ -3797,12 +3791,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       if A.ceil_group then
         set_ceil(A, assert(A.ceil_group.h))
         goto skip
-      end
-
-      local height = rand.pick({ 128, 192,192,192, 256,320 })
-
-      if A.is_porch then
-        height = 144
       end
 
 ---## if not A.floor_h then

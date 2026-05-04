@@ -1915,7 +1915,7 @@ function Render_ceiling(LEVEL, A, SEEDS)
     if should_do_seed(S) then
       render_seed(S)
 
-      if A.ceil_group and A.ceil_group.sink then
+      if A.ceil_group and A.ceil_group.sink and not A.is_outdoor then
         Render_sink_part(LEVEL, A, S, "ceil", A.ceil_group.sink, SEEDS)
       end
 

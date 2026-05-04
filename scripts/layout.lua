@@ -2125,31 +2125,34 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         error("Unknown sink: " .. sink_name)
       end
 
-      if sink.mat == "_LIQUID" or sink.trim_mat == "_LIQUID" then
-        if not LEVEL.liquid then
-          tab[sink_name] = 0
-        end
-        if PARAM.liquid_sinks then
-          if PARAM.liquid_sinks == "no" then
-            tab[sink_name] = 0
-          end
-          if LEVEL.liquid then
-            if LEVEL.liquid.damage
-            and PARAM.liquid_sinks == "not_damaging" then
-              tab[sink_name] = 0
-            end
-            if LEVEL.liquid.damage and LEVEL.is_procedural_gotcha then
-              tab[sink_name] = 0
-            end
-          end
-        end
+      -- no liquid sinks of the level has no liquid
+      if (sink.mat == "_LIQUID" or sink.trim_mat == "_LIQUID") and not LEVEL.liquid then
+        tab[sink_name] = nil
+      -- no damaging liquid sinks if liquid sinks can be damaging, if damaging liquid sinks are disabled
+      elseif PARAM.liquid_sinks == "no" or
+      ((LEVEL.liquid and (LEVEL.liquid.damage and PARAM.liquid_sinks ~= "not_damaging")) or
+      (LEVEL.is_procedural_gotcha)) then
+          tab[sink_name] = nil
       end
 
       if (sink.trim_mat and sink.trim_mat == R.main_tex)
       then
         tab[sink_name] = nil
       end
+
+      -- remove sinks that are taller than the zone sky height
+      if R.is_outdoor then
+        if group and group.h >= 0 then
+          local h_diff = R.max_ceil_h - group.h
+          if h_diff > 0 then
+            if sink.dz and sink.dz > h_diff then
+              tab[sink_name] = nil
+            end
+          end
+        end
+      end
     end
+
     -- skip sinks whose texture(s) clash with the room or area
 
     local tab
@@ -2793,15 +2796,17 @@ function Layout_handle_corners(LEVEL)
           -- outdoor posts should meet up to the rail height
           for _,A in pairs(corner.areas) do
 
+            -- extend posts all the way to the roof if
+            -- neighboring porches
             if A.is_porch or A.is_porch_neighbor then
               tallest_h = EXTREME_H
               goto skip
             end
 
-            tallest_h = math.max(tallest_h, A.floor_h + assert(junc.E1.rail_offset))
-
-            if A.floor_h then
+            if not A.fence_type then
               tallest_h = math.max(tallest_h, A.floor_h)
+            else
+              tallest_h = math.max(tallest_h, A.floor_h + junc.E1.rail_offset)
             end
             ::skip::
           end
