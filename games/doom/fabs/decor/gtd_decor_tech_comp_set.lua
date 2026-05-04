@@ -86,5 +86,7 @@ PREFABS.Decor_gtd_dh_comp_2 =
   height = 128,
   size = 96,
 
+  bound_z2 = 128,
+
   z_fit = {114,116}
 }
