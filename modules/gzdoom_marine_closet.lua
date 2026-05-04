@@ -1287,7 +1287,7 @@ class BFGBallAIMarine : BFGBall
 		]],
 	DTHMSG = [[override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath)
 	{
-		A_Log(source.GetTag() .. " has been killed!");
+		A_Log(self.GetTag() .. " has been killed!");
 		super.Die(source,inflictor,dmgflags,meansofdeath);
 	}
 	]]

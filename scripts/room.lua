@@ -3541,7 +3541,14 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     local add_h
 
     if not R.height_profile then
-      R.height_profile = rand.pick({"normal","inverse","random"})
+      R.height_profile = rand.pick(
+      {
+        "normal",
+        "inverse",
+        "random",
+        "normal-openness",
+        "inverse-openness"
+      })
     end
 
     if not R.openness_affects_height and rand.odds(50) then
@@ -3556,10 +3563,25 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       else                       add_h = 256
       end
     elseif R.height_profile == "inverse" then
-      if group.vol     < 16 then add_h = 256
-      elseif group.vol < 32 then add_h = 192
-      elseif group.vol < 48 then add_h = 160
-      else                       add_h = 128
+      if group.vol     < 8 then add_h = 256
+      elseif group.vol < 16 then add_h = 192
+      elseif group.vol < 32 then add_h = 160
+      elseif group.vol < 48 then add_h = 128
+      else                       add_h = 96
+      end
+    elseif R.height_profile == "normal-openness" then
+      if group.openness < 0.15     then add_h = 96
+      elseif group.openness < 0.25 then add_h = 128
+      elseif group.openness < 0.35 then add_h = 160
+      elseif group.openness < 0.45 then add_h = 192
+      else                              add_h = 256
+      end
+    elseif R.height_profile == "inverse-openness" then
+      if group.openness < 0.15     then add_h = 256
+      elseif group.openness < 0.25 then add_h = 192
+      elseif group.openness < 0.35 then add_h = 160
+      elseif group.openness < 0.45 then add_h = 128
+      else                              add_h = 96
       end
     else
       add_h = rand.pick({128, 160, 192, 224, 256})
@@ -3571,7 +3593,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       elseif group.openness < 0.3 then add_h = add_h + 32
       elseif group.openness < 0.4 then add_h = add_h + 64
       elseif group.openness < 0.5 then add_h = add_h + 96
-      elseif group.openness < 0.6 then add_h = add_h + 128
+      else                             add_h = add_h + 128
       end
     end
 
@@ -3839,12 +3861,8 @@ end
     calc_min_max_h(R)
 
     -- corner style decision -MSSP
-    if THEME.sink_style and #THEME.sink_style > 0 then
-      R.corner_style = rand.key_by_probs(THEME.sink_style)
-    elseif R.is_outdoor then
-      R.corner_style = "curved"
-    else
-      R.corner_style = "sharp"
+    if THEME.sink_style and not table.empty(THEME.sink_style) then
+      R.corner_style = rand.key_by_probs(THEME.sink_style) or "sharp"
     end
 
     if not (R.is_cave or R.is_park) then
@@ -4123,12 +4141,10 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
       if N.mode == "liquid" then
         local initial_height = EXTREME_H
         local best_LN
-        for _,LN in pairs(N.neighbors) do
-          if LN.room == N.room then
-            if LN.mode == "floor" and LN.floor_h < initial_height then
-              initial_height = LN.floor_h
-              best_LN = LN
-            end
+        for _, LN in pairs(N.neighbors) do
+          if LN.room == N.room and LN.mode == "floor" then
+            initial_height = math.min(initial_height, LN.floor_h)
+            best_LN = (initial_height == LN.floor_h) and LN or best_LN
           end
         end
 
