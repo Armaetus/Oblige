@@ -319,7 +319,7 @@ function ScriptMan_assemble_mapinfo_lump()
   if SCRIPTS.zs_eventhandlers then
     eventhandler_lines = eventhandler_lines .. SCRIPTS.zs_eventhandlers
   end
-  if PARAM.bool_boss_gen == 1 and PARAM.boss_count ~= -1 then
+  if PARAM.BOSSLANG and PARAM.boss_count ~= -1 then
     eventhandler_lines = eventhandler_lines .. '"BossGenerator_Handler"'
   end
   eventhandler_lines = string.gsub(eventhandler_lines, ",$", "");
@@ -497,7 +497,7 @@ function ScriptMan_assemble_language_lump()
       "[enu default]\n",
   }
 
-  if PARAM.bool_boss_gen == 1 and PARAM.boss_count ~= -1 then
+  if PARAM.BOSSLANG and PARAM.boss_count ~= -1 then
     for _,line in pairs(PARAM.BOSSLANG) do
       table.insert(language_lines,line)
     end
