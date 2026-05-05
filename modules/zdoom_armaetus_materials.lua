@@ -1363,7 +1363,8 @@ OBS_RESOURCE_PACK_MATERIALS = {
   ADVDE7 = { t="ADVDE7", f="CEIL4_3"},
 
   -- MSSP: Me toooooo
-  ADVDE8 = { t="ADVMS1", f="CEIL4_3"},
+  ADVMS1 = { t="ADVMS1", f="CEIL4_3"},
+  ADVMS2 = { t="ADVMS2", f="CEIL4_3"},
 
 
   ----------------------------------------------
@@ -1846,7 +1847,11 @@ OBS_RESOURCE_PACK_ANIMDEFS =
   pic GRNSTON1 tics 2
   pic GRNSTON2 tics 2
   pic GRNSTON3 tics 2
-	
+
+  texture ADVMS2
+  allowdecals
+  pic ADVMS2 tics 35
+  pic ADVMS2B tics 35
 // Switches //
 
   switch doom 3 SW1CHN on pic SW2CHN tics 0

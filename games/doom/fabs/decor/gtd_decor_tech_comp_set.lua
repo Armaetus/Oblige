@@ -72,6 +72,23 @@ PREFABS.Decor_tech_data_center_rack_2 =
   z_fit = {84, 86}
 }
 
+PREFABS.Decor_tech_data_center_rack_2_melt =
+{
+  template = "Decor_tech_comp_lite5_1",
+  map = "MAP08",
+
+  prob = 2500,
+
+  group = "gtd_data_center",
+
+  size = 112,
+  height = 96,
+
+  bound_z2 = 96,
+
+  z_fit = {84, 86}
+}
+
 --
 
 PREFABS.Decor_gtd_dh_comp_2 =
