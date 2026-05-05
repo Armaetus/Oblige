@@ -307,7 +307,7 @@ function Layout_spot_for_wotsit(LEVEL, R, kind, required, SEEDS)
 
     -- in general, prefer closets over free-standing spots
     if chunk.kind == "closet" then
-      score = score + 22
+      score = score + 50 --22
     end
 
     if chunk.sw >= 2 or chunk.sh >= 2 then
@@ -2804,6 +2804,9 @@ function Layout_handle_corners(LEVEL)
             end
 
             tallest_h = math.max(tallest_h, A.floor_h + junc.E1.rail_offset)
+            if A.vista_type == "simple_fence" and A.fence_type ~= "railing" then
+              tallest_h = math.max(tallest_h, A.floor)
+            end
             ::skip::
           end
 

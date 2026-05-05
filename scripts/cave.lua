@@ -5058,6 +5058,8 @@ function Cave_build_a_scenic_vista(LEVEL, area, SEEDS)
     else
       area.fence_type = false
     end
+
+    area.vista_mode = "simple_fence"
   end
 
 
