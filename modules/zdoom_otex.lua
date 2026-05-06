@@ -1074,7 +1074,9 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   local function pick_texture_with_filter(tex_group, pick, mode, fallback_group)
     local tex
     local filtered_color_texes = {}
- 
+    local fallback_table = {}
+    fallback_table = table.copy(fallback_group)
+  
     tex = pick
 
     -- create table of colored textures to pick from
@@ -1089,11 +1091,17 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
         end
       end
     end
+  
+    for FG_tex,prob in pairs(fallback_table) do
+      if tex_is_colorful(FG_tex) then
+        fallback_table.FG_tex = 0
+      end
+    end
 
     if not table.empty(filtered_color_texes) then
       tex = rand.pick(filtered_color_texes)
     else
-      tex = rand.key_by_probs(fallback_group)
+      tex = rand.key_by_probs(fallback_table)
     end
 
     return tex
