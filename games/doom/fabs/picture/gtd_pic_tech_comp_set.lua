@@ -127,7 +127,7 @@ PREFABS.Pic_tech_data_center_pic_2 =
   bound_z2 = 96
 }
 
-PREFABS.Pic_tech_data_center_pic_2_melted =
+PREFABS.Pic_tech_data_center_pic_3_compscreen =
 {
   template = "Pic_tech_comp_console_1",
   map = "MAP06",
