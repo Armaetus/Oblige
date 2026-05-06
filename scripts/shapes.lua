@@ -16851,7 +16851,7 @@ GROW_ARROW_NEW_AREA =
   {
     "x....x","x/11%x",
     "......","/1111%",
-    "....xx","%A11A/",
+    "......","%A11A/",
     "xx..xx","xx11xx",
     "xx..xx","xx11xx",
     "xx..xx","xx11xx",
@@ -16876,8 +16876,8 @@ GROW_ARROW_FORK_NEW_AREA =
   {
     "........","AA%/%/AA",
     "........","AA/11%AA",
-    "x......x","%/1111%/",
-    "xxx..xxx","x%A11A/x",
+    "........","%/1111%/",
+    "x......x","x%A11A/x",
     "xxx..xxx","xxx11xxx",
     "xxx..xxx","xxx11xxx",
     "xxx..xxx","xxx11xxx",
