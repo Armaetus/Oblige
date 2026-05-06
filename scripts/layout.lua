@@ -276,8 +276,10 @@ function Layout_spot_for_wotsit(LEVEL, R, kind, required, SEEDS)
     score = score + gui.random() ^ 2
 
     -- the exit room generally has a closet pre-booked
-    if kind == "EXIT" and chunk.prefer_usage == "exit" then
-      score = score + 200
+    if kind == "EXIT" then 
+      if chunk.prefer_usage == "exit" then score = score + 200 end
+      -- ...and if not, mark up any closet anyway
+      if chunk.kind == "closet" then score = score * 2 end
     end
 
     -- start rooms and teleporter roots too
@@ -307,7 +309,7 @@ function Layout_spot_for_wotsit(LEVEL, R, kind, required, SEEDS)
 
     -- in general, prefer closets over free-standing spots
     if chunk.kind == "closet" then
-      score = score + 50 --22
+      score = score + 22
     end
 
     if chunk.sw >= 2 or chunk.sh >= 2 then
