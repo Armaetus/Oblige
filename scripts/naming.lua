@@ -60,6 +60,7 @@ namelib.COMMUNITY_MEMBERS =
     "EpicTyphlosion",
     "Frozsoul",
     "Garrett",
+    "MogWaltz",
     "Josh Seven", --josh771,
     "Phytolizer",
     "Sgt. Shooter", --MsrSgtShooterPerson
@@ -90,40 +91,16 @@ namelib.COMMUNITY_MEMBERS =
     "Samiam" -- Mr. ObHack!
   },
 
-  -- this is an arbitrary list of regulars at the Unofficial Oblige
-  -- Discord server. If you're a regular and you don't find your name
-  -- here, feel free to add it yourself! (or ask a contributor to do so!)
   regulars =
   {
     "Brad Man X",
-    "Cherry Bawble",
-    "Crowbars", -- crowbars82, Mr. Octothrop!
-    "Dan the Noob",
-    "Hexa Doken",
-    "Kinker 31",
-    "Kinsie",
-    "Magpie", --MagPie
-    "Mog Waltz",
-    "Monika",
-    "Mr. Liden", --mrliden, created the R667ized Obsidian
-    "Nisteth",
-    "Roundabout Lout",
-    "Sharahfluff",
-    "Sharp",
-    "TiZ",
-    "The Dude", --TheDude1,
-    "TTBNC",
+    "Mr. Liden",
+    "Magpie",
 
-    -- the following individuals are no longer active
-    -- or haven't been in the server for a while...
-    --"Big C",
-    --"DZ",
-    --"Elkinda",
-    --"Obsidian Plague",
-    --"Saint",
-    --"Sanser",
-    --"The Nate",
-    --"Thexare",
+    -- following folks have not been active since 2025, but that's fine
+    "Dan the Noob",
+    "Monika",
+    "TTBNC"
   }
 }
 
