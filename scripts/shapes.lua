@@ -4962,7 +4962,7 @@ GROW_OBHACK_CORNER =
   }
 },
 
-GROW_OBHACK_CORNER =
+GROW_OBHACK_CORNER_LIQUID =
 {
   prob = 2,
   skip_prob = 85,
