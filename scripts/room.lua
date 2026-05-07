@@ -1005,7 +1005,7 @@ function Room_detect_porches(LEVEL, R)
 
     -- MSSP: Overriden because junction code seems to
     -- skip out on room->scenics interactions...
-    A.is_outdoor = false
+    A.is_outdoor = nil
 
     if not A.room.porch_fence_type then
       A.room.porch_fence_type = rand.key_by_probs(
