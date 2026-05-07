@@ -1549,7 +1549,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     }
 
     if string.sub(name,2,5) == "LGHT" then
-      local prob = 6
+      local prob = 12
       if info.color == "violet" then
         prob = 0.75
       end
@@ -1557,7 +1557,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       OTEX_THEMES.urban.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.hell.ceiling_sinks[sink_name] = prob
     else
-      local prob = 18
+      local prob = 25
       OTEX_THEMES.tech.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.urban.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.hell.ceiling_sinks[sink_name] = prob
