@@ -4852,6 +4852,46 @@ GROW_357_ROUND_ARCH_ALT_2 =
 
 -- classic ObHack-inspired shape rules
 
+GROW_OBHACK_INTERSECTION_SMALL =
+{
+  prob = 5,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxxx11xxxx","xxxx11xxxx",
+    "xx......xx","xxAA11AAxx",
+    "x........x","xAA1111AAx",
+    "x........x","xA111111Ax",
+    "..........","1111111111",
+    "..........","1111111111",
+    "x........x","xA111111Ax",
+    "x........x","xAA1111AAx",
+    "xx......xx","xxAA11AAxx",
+    "xxxx..xxxx","xxxx11xxxx",
+  }
+},
+
+GROW_OBHACK_INTERSECTION_SMALL_LIQUID =
+{
+  prob = 3,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxxx11xxxx","xxxx11xxxx",
+    "xx......xx","xx~~11~~xx",
+    "x........x","x~~1111~~x",
+    "x........x","x~111111~x",
+    "..........","1111111111",
+    "..........","1111111111",
+    "x........x","x~111111~x",
+    "x........x","x~~1111~~x",
+    "xx......xx","xx~~11~~xx",
+    "xxxx..xxxx","xxxx11xxxx",
+  }
+},
+
 GROW_OBHACK_CURVE =
 {
   prob = 5,
@@ -4867,6 +4907,24 @@ GROW_OBHACK_CURVE =
     "x.....x","x11111x",
     ".....xx","11111xx",
     "....xxx","1111xxx",
+  }
+},
+
+GROW_OBHACK_CURVE_LIQUID =
+{
+  prob = 3,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xxxxx11","xxxxx11",
+    "xxxxx..","xxxxx11",
+    "xxxx...","xxxx111",
+    "xx.....","xx11111",
+    "xx.....","xx111~~",
+    "x.....x","x111~~x",
+    ".....xx","111~~xx",
+    "....xxx","111~xxx",
   }
 },
 
@@ -4901,6 +4959,22 @@ GROW_OBHACK_CORNER =
     "xx....","xx1111",
     "....xx","1111xx",
     "....xx","1111xx",
+  }
+},
+
+GROW_OBHACK_CORNER =
+{
+  prob = 2,
+  skip_prob = 85,
+
+  structure =
+  {
+    "xxxx11","xxxx11",
+    "xxxx..","xxxx11",
+    "xx....","xx1111",
+    "xx....","xx1~~~",
+    "....xx","111~xx",
+    "....xx","111~xx",
   }
 },
 
@@ -4998,8 +5072,8 @@ GROW_OBHACK_SQUARE_STAIR_MIDDLE =
 
 GROW_LIQUID_GUTTER_SIDE =
 {
-  prob = 5,
-  skip_prob = 40,
+  prob = 3,
+  skip_prob = 75,
 
   structure =
   {
@@ -5012,8 +5086,8 @@ GROW_LIQUID_GUTTER_SIDE =
 
 GROW_LIQUID_GUTTER_CORNER =
 {
-  prob = 30,
-  skip_prob = 40,
+  prob = 7,
+  skip_prob = 75,
 
   structure =
   {
@@ -15945,6 +16019,62 @@ GROW_CHICKEN_LEG =
     ".1","1A","A.",
     ".1","1.",
     "1."
+  }
+},
+
+GROW_CAT =
+{
+  prob = 40,
+  skip_prob = 70,
+
+  structure =
+  {
+    "....xxx....","AAA%xxx/AAA",
+    "x.........x","%AA/111%AA/",
+    "xx.......xx","x%/11111%/x",
+    "xx.......xx","xx11#1#11xx",
+    "xx.......xx","xx11~~~11xx",
+    "xx.......xx","xx%11111/xx",
+    "xxx.....xxx","xxx%111/xxx",
+    "xxxx111xxxx","xxxx111xxxx",
+  },
+
+  diagonals =
+  {
+         "A.",".A",
+    ".A","A1","1A","A.",
+    ".A","A1","1A","A.",
+         ".1","1.",
+         ".1","1."
+  }
+},
+
+GROW_CAT_D =
+{
+  prob = 40,
+  skip_prob = 70,
+
+  structure =
+  {
+    "....xxx....","~~~%xxx/~~~",
+    "x.........x","%~~/AAA%~~/",
+    "xx.......xx","x%/AAAAA%/x",
+    "xx.......xx","xxAAAAAAAxx",
+    "xx.......xx","xxAAAAAAAxx",
+    "xx.......xx","xx%/%/%/%xx",
+    "xx.......xx","xx%11111/xx",
+    "xxx.....xxx","xxx%111/xxx",
+    "xxxx111xxxx","xxxx111xxxx",
+  },
+
+  diagonals =
+  {
+              "A.",".A",
+          ".A","A1","1A","A.",
+          ".A","A1","1A","A.",
+    "1A","A1","1A","A1","1A","A1","1A",
+              ".1","1.",
+              ".1","1."
   }
 },
 
