@@ -4285,26 +4285,29 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
           SA.is_porch_neighbor = nil
         end
 
+        A.floor_h = SAS.floor_h
         SA.floor_h = SAS.floor_h
-        SA.ceil_h = SAS.ceil_h
 
+        A.floor_mat = SAS.floor_mat
         SA.floor_mat = SAS.floor_mat
 
         -- use the floor group of the source area
         A.floor_group = SAS.floor_group
         SA.floor_group = SAS.floor_group
 
-        -- use the ceil group of the "dead end" for the stair chunk
-        SA.ceil_group = A.ceil_group
-
         A.dead_end = true
         SA.dead_end = true
 
         -- unify heights
-        A.floor_h = SAS.floor_h
 
         A.ceil_h = math.clamp(A.floor_h + 96, SAS.ceil_h + R.dead_end_add_h, EXTREME_H)
         SA.ceil_h = math.clamp(A.floor_h + 96, SAS.ceil_h + R.dead_end_add_h, EXTREME_H)
+
+        -- use the ceil group of the "dead end" for the stair chunk, if it remains the same height
+        if A.ceil_h == SAS.ceil_h then
+          SAS.ceil_group = A.ceil_group
+          SA.ceil_group = A.ceil_group
+        end
 
         -- affix textures
         if A.room:get_env() == "building" then
