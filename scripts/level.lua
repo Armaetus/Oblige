@@ -2356,10 +2356,11 @@ function Level_choose_darkness(LEVEL)
     end
   end
 
-  LEVEL.sky_light = math.clamp(PARAM.wad_minimum_brightness or 0, 
-    LEVEL.sky_light, PARAM.wad_maximum_brightness or 255)
+  LEVEL.sky_light = math.clamp(PARAM.wad_minimum_brightness or 0,
+    LEVEL.sky_light, 
+    PARAM.wad_maximum_brightness or 255)
 
-    if (LEVEL.sky_light - LEVEL.sky_shadow) <= (PARAM.wad_minimum_brightness or 0) then
+  if (LEVEL.sky_light - LEVEL.sky_shadow) <= (PARAM.wad_minimum_brightness or 0) then
     LEVEL.sky_shadow = LEVEL.sky_light - (PARAM.wad_minimum_brightness or 0)
   end
 end
@@ -2499,10 +2500,8 @@ function Level_choose_skybox(LEVEL)
       end
 
       pick_attempts = pick_attempts + 1
-      if pick_attempts > 10 then 
-        gui.printf(table.tostr(OBS_RESOURCE_PACK_SKYBOX_EXCLUSIONS[LEVEL.outdoor_theme]))
-        error("Skybox pick repeated too many times!!!! Global warming is real and " ..
-        "a billion pigs have been killed by swine flu!!!!") 
+      if pick_attempts > 10 then
+        break;
       end
 
     end

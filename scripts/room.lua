@@ -4301,11 +4301,10 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         SA.dead_end = true
 
         -- unify heights
-        A.ceil_h = SAS.ceil_h
         A.floor_h = SAS.floor_h
 
-        A.ceil_h = math.clamp(A.floor_h + 96, A.ceil_h + R.dead_end_add_h, EXTREME_H)
-        SA.ceil_h = math.clamp(A.floor_h + 96, A.ceil_h + R.dead_end_add_h, EXTREME_H)
+        A.ceil_h = math.clamp(A.floor_h + 96, SAS.ceil_h + R.dead_end_add_h, EXTREME_H)
+        SA.ceil_h = math.clamp(A.floor_h + 96, SAS.ceil_h + R.dead_end_add_h, EXTREME_H)
 
         -- affix textures
         if A.room:get_env() == "building" then
