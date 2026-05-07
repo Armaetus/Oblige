@@ -3180,8 +3180,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         end
 
         A.floor_h  = N.floor_h - (THEME.pool_depth or 16)
-        A.ceil_h = math.clamp(A.floor_h + 96, 
-          N2.ceil_h + add_h, 
+        A.ceil_h = math.clamp(N2.floor_h + 96,
+          N2.ceil_h + add_h,
           EXTREME_H)
         A.ceil_mat = N2.ceil_mat
         ::skip::
