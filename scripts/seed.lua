@@ -716,7 +716,7 @@ function Seed_inside_boundary(LEVEL, sx, sy)
 end
 
 
-function Seed_inside_abs_limit(sx, sy)
+function Seed_inside_abs_limit(LEVEL, sx, sy)
   if sx < LEVEL.absolute_x1 or sx > LEVEL.absolute_x2 then return false end
   if sy < LEVEL.absolute_y1 or sy > LEVEL.absolute_y2 then return false end
 

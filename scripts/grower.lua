@@ -4262,7 +4262,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
         return "ok"
       end
 
-      if not R.shapes_applied or 
+      if not R.shapes_applied or
       (R.shapes_applied and R.shapes_applied == 0) and not R.is_start
       and R.shapes_tried <= 500 then
         Grower_grow_room(SEEDS, LEVEL, R)
@@ -4478,16 +4478,18 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
       -- levels that don't reach at least 
       -- half the amount of expected maximum rooms
       if (#LEVEL.rooms < ((LEVEL.min_rooms + LEVEL.max_rooms) / 2)) then
-        if emergency_linear_sprouts() == "oof" then
-          emergency_teleport_break(LEVEL)
-        end
+        emergency_linear_sprouts()
+        --[[if emergency_linear_sprouts() == "oof" then
+          --emergency_teleport_break(LEVEL)
+        end]]
       end
 
       -- levels that don't reach the prefered coverage
       if (LEVEL.cur_coverage <= LEVEL.min_coverage ) then
-        if emergency_linear_sprouts() == "oof" then
-          emergency_teleport_break(LEVEL)
-        end
+        emergency_linear_sprouts()
+        --[[if emergency_linear_sprouts() == "oof" then
+          --emergency_teleport_break(LEVEL)
+        end]]
       end
 
     end
