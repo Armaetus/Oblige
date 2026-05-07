@@ -572,7 +572,7 @@ OTEX_RESOURCE_DB = {
         has_textures = true,
         has_all = false,
         flats = {},
-        textures = {'OBOOKA03', 'OBOOKA07', 'OBOOKA04', 'OBOOKA02', 'OBOOKA10', 'OBOOKA05', 'OBOOKA06', 'OBOOKA08', 'OBOOKA11', 'OBOOKA12', 'OBOOKA01'}
+        textures = {'OBOOKA03', 'OBOOKA07', 'OBOOKA04', 'OBOOKA05', 'OBOOKA06', 'OBOOKA08'},
     },
     ["5DMD"] = {
         has_flats = true,
