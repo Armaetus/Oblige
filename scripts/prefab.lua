@@ -283,7 +283,7 @@ function Fab_load_all_definitions()
       fab_pick = table.copy(PREFABS[rand.pick(decor_tab)])
       fab_pick.group = nil
       fab_pick.rank = nil
-      fab_pick.prob = fab_pick.size * 24
+      if fab_pick.size then fab_pick.prob = fab_pick.size * 24 else fab_pick.prob = 2500 end
       fab_pick.use_prob = calc_prob(fab_pick)
       PREFABS[fab_pick.name .. "_ungrouped"] = fab_pick
 
