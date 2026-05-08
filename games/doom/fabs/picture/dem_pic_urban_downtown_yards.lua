@@ -122,7 +122,9 @@ PREFABS.Pic_urban_downtown_yards8 =
   template = "Pic_urban_downtown_yards1",
   map      = "MAP08",
 
-  in_porches = "never"
+  in_porches = "never",
+
+  z_fit = {58,60}
 }
 
 PREFABS.Pic_urban_downtown_yards9 =

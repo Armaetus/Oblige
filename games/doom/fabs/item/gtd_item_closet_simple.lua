@@ -116,7 +116,7 @@ PREFABS.Item_gtd_closet_simple_3 =
   z_fit = {92,94},
 
   bound_z1 = 0,
-  bound_z2 = 96
+  bound_z2 = 104
 }
 
 PREFABS.Item_gtd_closet_simple_4 =
