@@ -91,182 +91,115 @@ OTEX_EXCLUSIONS =
 -- some textures that must be removed manually from the DB
 OTEX_DIRECT_REMOVALS =
 {
-  MRBL =
-  {
-    textures =
-    {
-      "OMRBLA90",
-      "OMRBLA91",
-      "OMRBLA92",
-      "OMRBLA93",
-      "OMRBLA94",
-  
-      "OMRBLC90",
-  
-      "OMRBLF29",
-      "OMRBLF38",
-      "OMRBLF90",
-  
-      "OMRBLG90",
-  
-      "OMRBLI92",
-      "OMRBLI93",
-  
-      "OMRBLJ90",
-      "OMRBLJ93",
-  
-      "OMRBLK90",
-  
-      "OMRBLO28",
-      "OMRBLO29",
-  
-      "OMRBLP90",
-      "OMRBLP91",
-  
-      "OMRBLR90",
-      "OMRBLR94"
-    }
-  },
+  "OMRBLA90",
+  "OMRBLA91",
+  "OMRBLA92",
+  "OMRBLA93",
+  "OMRBLA94",
+  "OMRBLC90",
+  "OMRBLF28",
+  "OMRBLF29",
+  "OMRBLF38",
+  "OMRBLF90",
+  "OMRBLG90",
+  "OMRBLI92",
+  "OMRBLI93",
+  "OMRBLJ90",
+  "OMRBLJ93",
+  "OMRBLK90",
+  "OMRBLO28",
+  "OMRBLO29",
+  "OMRBLP90",
+  "OMRBLP91",
+  "OMRBLR90",
+  "OMRBLR94",
 
-  BRCK =
-  {
-    textures =
-    {
-      "OBRCKB10",
-      "OBRCKB11",
-      "OBRCKB12",
-      "OBRCKB13",
-      "OBRCKB20",
-      "OBRCKB21",
-      "OBRCKB22",
-      "OBRCKB23",
+  "OBRCKB10",
+  "OBRCKB11",
+  "OBRCKB12",
+  "OBRCKB13",
+  "OBRCKB20",
+  "OBRCKB21",
+  "OBRCKB22",
+  "OBRCKB23",
+  "OBRCKF11",
+  "OBRCKF12",
+  "OBRCKF13",
+  "OBRCKF14",
+  "OBRCKF21",
+  "OBRCKF22",
+  "OBRCKF23",
+  "OBRCKF24",
+  "OBRCKL10",
+  "OBRCKL11",
+  "OBRCKL21",
+  "OBRCKU03",
+  "OBRCKU04",
+  "OBRCKU05",
+  "OBRCKU06",
+  "OBRCKU13",
+  "OBRCKU14",
+  "OBRCKU15",
+  "OBRCKU16",
+  "OBRCKU23",
+  "OBRCKU24",
+  "OBRCKU25",
+  "OBRCKU26",
+  "OBRCKU3D",
+  "OBRCKU3E",
+  "OBRCKU3F",
+  "OBRCKU3G",
+  "OBRCKU3H",
+  "OBRCKU3I",
+  "OTUDRB80",
+  "OTUDRB81",
 
-      "OBRCKF11",
-      "OBRCKF12",
-      "OBRCKF13",
-      "OBRCKF14",
-      "OBRCKF21",
-      "OBRCKF22",
-      "OBRCKF23",
-      "OBRCKF24",
+  "OBKMTB04",
+  "OBKMTD90",
+  "OBKMTD91",
+  "OBKMTD92",
+  "OBKMTD95",
+  "OBKMTD96",
+  "OBKMTD97",
 
-      "OBRCKL10",
-      "OBRCKL11",
-      "OBRCKL21",
+  "OMETLJ91",
+  "OMETLJ93",
+  "OMETLJ94",
 
-      "OBRCKU03",
-      "OBRCKU04",
-      "OBRCKU05",
-      "OBRCKU06",
+  "OBOOKA01",
+  "OBOOKA02",
+  "OBOOKA05",
+  "OBOOKA10",
+  "OBOOKA11",
+  "OBOOKA12",
 
-      "OBRCKU13",
-      "OBRCKU14",
-      "OBRCKU15",
-      "OBRCKU16",
+  "OVENTE01",
+  "OVENTE02",
+  "OVENTE03",
+  "OVENTE04",
+  "OVENTE13",
+  "OVENTE14",
 
-      "OBRCKU23",
-      "OBRCKU24",
-      "OBRCKU25",
-      "OBRCKU26",
+  "OMETLC96",
+  "OMETLC97",
+  "OMETLC98",
+  "OMETLC99",
+  "OMETLC92",
+  "OMETLC93",
+  "OMETLC94",
+  "OMETLC95",
+  "OMETLN37",
+  "OMETLO37",
+  "OMETLP37",
 
-      "OBRCKU3D",
-      "OBRCKU3E",
-      "OBRCKU3F",
-      "OBRCKU3G",
-      "OBRCKU3H",
-      "OBRCKU3I",
+  "ONDSTJ91",
+  "ONDSTJ93",
+  "ONDSTJ94",
 
-      "OTUDRB80",
-      "OTUDRB81"
-    }
-  },
-
-  BKMT =
-  {
-    textures =
-    {
-      "OBKMTD90",
-      "OBKMTD91",
-      "OBKMTD92",
-      "OBKMTD95",
-      "OBKMTD96",
-      "OBKMTD97",
-
-      "OMETLN37",
-      "OMETLO37",
-      "OMETLP37",
-      "OMETLJ91",
-      "OMETLJ93",
-      "OMETLJ94"
-    }
-  },
-
-  BOOK =
-  {
-    textures =
-    {
-      "OBOOKA01",
-      "OBOOKA02",
-      "OBOOKA05",
-      "OBOOKA10",
-      "OBOOKA11",
-      "OBOOKA12"
-    }
-  },
-
-  VENT =
-  {
-    textures =
-    {
-      "OVENTE01",
-      "OVENTE02",
-      "OVENTE03",
-      "OVENTE04",
-      "OVENTE13",
-      "OVENTE14"
-    }
-  },
-
-  METL =
-  {
-    textures =
-    {
-      "OMETLC96",
-      "OMETLC97",
-      "OMETLC98",
-      "OMETLC99",
-
-      "OMETLC92",
-      "OMETLC93",
-      "OMETLC94",
-      "OMETLC95",
-
-      "OMETLN37",
-      "OMETLO37",
-      "OMETLP37",
-    }
-  },
-
-  NDST =
-  {
-    textures =
-    {
-      "ONDSTJ91",
-      "ONDSTJ93",
-      "ONDSTJ94"
-    }
-  },
-
-  TUDR =
-  {
-    textures =
-    {
-      "OTUDRA80",
-      "OTUDRA81",
-      "OTUDRB80",
-      "OTUDRB81"
-    }
-  }
+  "OTUDRA80",
+  "OTUDRA81",
+  "OTUDRB80",
+  "OTUDRB81"
 }
 
 OTEX_THEME_RESTRICTIONS =
@@ -461,7 +394,7 @@ OTEX_SPECIAL_RESOURCES =
     otex_blood = { mat="OBLODA01", special=0},
     otex_goop = { mat="OGOOPY01", light_add=16, special=0},
     otex_ice = { mat="OICYWA01", light_add=8, special=0},
-   
+
     otex_lavaA1 = { mat="OLAVAA01", light_add=56, special=5, damage=10},
     otex_lavaA2 = { mat="OLAVAA02", light_add=56, special=5, damage=10},
     otex_lavaB1 = { mat="OLAVAB01", light_add=56, special=5, damage=10},
@@ -469,9 +402,9 @@ OTEX_SPECIAL_RESOURCES =
     otex_lavaD1 = { mat="OLAVAD01", light_add=56, special=5, damage=10},
     otex_lavaE1 = { mat="OLAVAE01", light_add=56, special=5, damage=10},
     otex_lavaF1 = { mat="OLAVAF01", light_add=56, special=5, damage=10},
-  
+
     otex_nukage = { mat="ONUKEA01", light_add=24, special=7, damage=5},
-   
+
     otex_sludge = { mat="OSLUDG01", special=0},
     otex_poop = { mat="OPOOPY01", special=0},
     otex_tar = { mat="OTAR__01", special=0},
@@ -1205,10 +1138,10 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
   end
 
   -- direct removals
-  for theme_name,theme_tab in pairs(OTEX_DIRECT_REMOVALS) do
-    for group_name,tex in pairs(theme_tab.textures) do
-      resource_tab[theme_name].flats[tex] = nil
-      resource_tab[theme_name].textures[tex] = nil
+  for _,RT in pairs(OTEX_DIRECT_REMOVALS) do
+    for _,group in pairs(resource_tab) do
+      table.kill_elem(group.textures, RT)
+      table.kill_elem(group.flats, RT)
     end
   end
 
