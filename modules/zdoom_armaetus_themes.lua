@@ -5124,6 +5124,7 @@ OBS_RESOURCE_PACK_THEMES =
       Skybox_city_bridge_EPIC = 35,
       Skybox_urban_cyber_EPIC = 35,
       Skybox_char_EPIC = 50,
+      Skybox_gtd_monoliths_EPIC = 10,
     },
   },
 
@@ -5603,6 +5604,7 @@ OBS_RESOURCE_PACK_THEMES =
       Skybox_g99_hell_tower_EPIC = 15,
       Skybox_urban_cyber_EPIC = 50,
       Skybox_char_EPIC = 30,
+      Skybox_gtd_monoliths_EPIC = 30,
     },
   },
 
@@ -6035,6 +6037,7 @@ OBS_RESOURCE_PACK_THEMES =
       Skybox_g99_hell_tower_EPIC = 50,
       Skybox_city_hell_bloodfalls_EPIC = 50,
       Skybox_char_EPIC = 50,
+      Skybox_gtd_monoliths_EPIC = 50
     },
   },
 }
@@ -6051,6 +6054,7 @@ OBS_RESOURCE_PACK_SKYBOX_EXCLUSIONS =
   {
     "Skybox_craneo_egypt_EPIC",
     "Skybox_craneo_space_shuttle_EPIC",
+    "Skybox_gtd_monoliths_EPIC"
   },
 }
 
