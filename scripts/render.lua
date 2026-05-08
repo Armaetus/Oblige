@@ -1920,7 +1920,8 @@ function Render_ceiling(LEVEL, A, SEEDS)
         Render_sink_part(LEVEL, A, S, "ceil", A.ceil_group.sink, SEEDS)
       end
 
-      if A.ceil_sink and not A.ceil_group then
+      if A.ceil_sink and not A.ceil_group
+      and (A.ceil_mat and A.ceil_mat ~= "_SKY") then
         Render_sink_part(LEVEL, A, S, "ceil", A.ceil_sink, SEEDS)
       end
 
