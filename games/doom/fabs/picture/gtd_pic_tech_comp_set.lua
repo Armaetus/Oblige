@@ -132,7 +132,7 @@ PREFABS.Pic_tech_data_center_pic_3_compscreen =
   template = "Pic_tech_comp_console_1",
   map = "MAP06",
 
-  prob = 1500,
+  prob = 2500,
 
   group = "gtd_data_center",
   texture_pack = "armaetus",
