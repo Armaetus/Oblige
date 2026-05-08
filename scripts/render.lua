@@ -1648,12 +1648,20 @@ stderrf("away = %s\n\n", string.bool(away))
       if A2 ~= A1 and not S1.diagonal then
         p1, p3 = false, false
       end
+      if S1.diagonal == 1 then
+        p1 = true
+      elseif S1.diagonal == 3 then
+        p3 = true
+      end
 
       -- west
       S1 = SEEDS[S.sx - 1][S.sy]
       A2 = S1.area
       if A2 ~= A1 and not S1.diagonal  then
         p1, p7 = false, false
+      end
+      if S1.diagonal == 1 then
+        p1 = true
       end
 
       -- east
@@ -1662,12 +1670,20 @@ stderrf("away = %s\n\n", string.bool(away))
       if A2 ~= A1 and not S1.diagonal  then
         p3, p9 = false, false
       end
+      if S1.diagonal == 3 then
+        p3 = true
+      end
 
       -- north
       S1 = SEEDS[S.sx][S.sy + 1]
       A2 = S1.area
       if A2 ~= A1 then
         p7, p9 = false, false
+      end
+      if S1.diagonal == 9 then
+        p9 = true
+      elseif S1.diagonal == 7 then
+        p7 = true
       end
 
       -- SW
