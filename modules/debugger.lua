@@ -255,3 +255,36 @@ OB_MODULES["pickup_params"] =
     },
   },
 }
+
+OB_MODULES["arch_exp"] =
+{
+
+  name = "arch_exp",
+
+  label = _("Architecture Experimentals"),
+
+  where = "experimental",
+  priority = 5,
+
+  tooltip = _("Features related to likely radical level architecture and content curation changes."),
+
+  hooks =
+  {
+    setup = DEBUG_CONTROL.setup,
+  },
+
+  options =
+  {
+    {
+      name = "float_ungroup_fabs",
+      label=_("Ungroup Some Fabs"),
+      valuator = "slider",
+      min = 0,
+      max = 100,
+      increment = 10,
+      default = 10,
+      tooltip = _("Takes decor and picture fabs and allows them to spawn randomly around levels."),
+      priority=105,
+    },
+  },
+}

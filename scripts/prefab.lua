@@ -255,6 +255,48 @@ function Fab_load_all_definitions()
   end
 
 
+  -- purely cosmetic:
+  -- create copies of some fabs that are grouped
+  -- and represent them as groupless
+  local function ungroup_fabs()
+    if not PARAM.float_ungroup_fabs then return end
+    if PARAM.float_ungroup_fabs == 0 then return end
+
+    local picture_tab = {}
+    local decor_tab = {}
+
+    assert(PREFABS)
+
+    for _,def in pairs(PREFABS) do
+      if (def.where == "point" or def.where == "seeds") and def.group then
+        if def.kind == "decor" then
+          table.insert(decor_tab, def.name)
+        elseif def.kind == "picture" then
+          table.insert(picture_tab, def.name)
+        end
+      end
+    end
+
+    local fab_pick = {}
+
+    for i = 1, PARAM.float_ungroup_fabs do
+      fab_pick = table.copy(PREFABS[rand.pick(decor_tab)])
+      fab_pick.group = nil
+      fab_pick.rank = nil
+      fab_pick.prob = fab_pick.size * 24
+      fab_pick.use_prob = calc_prob(fab_pick)
+      PREFABS[fab_pick.name .. "_ungrouped"] = fab_pick
+
+      fab_pick = table.copy(PREFABS[rand.pick(picture_tab)])
+      fab_pick.group = nil
+      fab_pick.rank = nil
+      fab_pick.prob = fab_pick.seed_h * fab_pick.seed_w * 25
+      fab_pick.use_prob = calc_prob(fab_pick)
+      PREFABS[fab_pick.name .. "_ungrouped"] = fab_pick
+    end
+  end
+
+
   local function preprocess_all()
     table.name_up(PREFABS)
     table.expand_templates(PREFABS)
@@ -276,6 +318,8 @@ function Fab_load_all_definitions()
         count = count + 1
       end
     end
+
+    ungroup_fabs()
 
     gui.printf(count .. " prefabs loaded and usable!\n\n")
   end
