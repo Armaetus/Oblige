@@ -28,11 +28,10 @@ PREFABS.Item_gtd_closet_simple_1 =
     TEKWALL4 = 1
   },
 
-  tex_LITE3 = 
+  tex_LITE3 =
   {
     LITE3 = 4,
     LITE5 = 4,
-    LITEBLU1 = 1,
     LITEBLU4 = 1
   },
 
