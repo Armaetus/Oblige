@@ -167,6 +167,13 @@ function PREFAB_CONTROL.fine_tune_filters()
     "deimos"
   }
 
+  for _,T in pairs(GAME.THEMES) do
+    if T.skyboxes then
+      T.skyboxes["Skybox_gtd_monoliths_EPIC"] =
+      T.skyboxes["Skybox_gtd_monoliths_EPIC"] * 4
+    end
+  end
+
   if PARAM.bool_more_new_content == 1 then
     for WG,mult in pairs(new_fab_groups_multipliers) do
       for _,theme_name in pairs(themes) do
@@ -174,8 +181,7 @@ function PREFAB_CONTROL.fine_tune_filters()
           if GAME.THEMES[theme_name].wall_groups and 
           GAME.THEMES[theme_name].wall_groups[WG] then
             GAME.THEMES[theme_name].wall_groups[WG] =
-            GAME.THEMES[theme_name].wall_groups[WG] * 
-            mult
+            GAME.THEMES[theme_name].wall_groups[WG] * mult
           end
 
           if GAME.THEMES[theme_name].outdoor_wall_groups 

@@ -1464,85 +1464,128 @@ function ob_init()
   end
 
 
+  local function ensure_option_list(options)
+    if options[1] then
+      return options
+    end
+
+    local list = {}
+
+    for name, opt in pairs(options) do
+      opt.name = name
+      list[#list + 1] = opt
+    end
+
+    table.sort(list, button_sorter)
+
+    return list
+  end
+
+
+  local function pick_default_choice(opt)
+    return
+        table.has_elem(opt.choices, "default") and "default" or
+        table.has_elem(opt.choices, "normal")  and "normal"  or
+        table.has_elem(opt.choices, "medium")  and "medium"  or
+        table.has_elem(opt.choices, "mixed")   and "mixed"   or
+        opt.choices[1]
+  end
+
+
   local function create_mod_options()
     gui.debugf("creating module options\n", what)
 
-    for _,mod in pairs(OB_MODULES) do
-      if not mod.options then
-        mod.options = {}
-      else
-        local list = mod.options
+    for _, mod in pairs(OB_MODULES) do
+      mod.options = mod.options or {}
 
-        -- handle lists (for UI modules) different from key/value tables
-        if list[1] == nil then
-          list = {}
+      for _, opt in pairs(ensure_option_list(mod.options)) do
+        assert(opt.label)
 
-          for name,opt in pairs(mod.options) do
-            opt.name = name
-            table.insert(list, opt)
+        -- headers / urls
+        if opt.name:match("header_") then
+          gui.add_module_header(mod.name, opt.name, opt.label, opt.gap)
+
+        elseif opt.name:match("url_") then
+          assert(opt.url)
+          gui.add_module_url(mod.name, opt.name, opt.label, opt.url, opt.gap)
+
+        -- sliders
+        elseif opt.valuator == "slider" then
+          opt.default = opt.default or ((opt.min + opt.max) / 2)
+
+          gui.add_module_slider_option(
+            mod.name,
+            opt.name,
+            opt.label,
+            opt.tooltip,
+            opt.longtip,
+            opt.gap,
+            opt.min,
+            opt.max,
+            opt.increment,
+            opt.units or "",
+            opt.presets or "",
+            opt.nan or "",
+            opt.randomize_group or "",
+            tostring(opt.default)
+          )
+
+          opt.value = opt.default
+
+          gui.set_module_slider_option(mod.name, opt.name, opt.value)
+
+        -- buttons
+        elseif opt.valuator == "button" then
+          opt.default = opt.default or 0
+
+          gui.add_module_button_option(
+            mod.name,
+            opt.name,
+            opt.label,
+            opt.tooltip,
+            opt.longtip,
+            opt.gap,
+            opt.randomize_group or "",
+            tostring(opt.default)
+          )
+
+          opt.value = opt.default
+
+          gui.set_module_button_option(mod.name, opt.name, opt.value)
+
+        -- normal choice options
+        else
+          assert(opt.choices)
+
+          opt.default = opt.default or pick_default_choice(opt)
+
+          gui.add_module_option(
+            mod.name,
+            opt.name,
+            opt.label,
+            opt.tooltip,
+            opt.longtip,
+            opt.gap,
+            opt.randomize_group or "",
+            opt.default
+          )
+
+          opt.avail_choices = {}
+
+          for i = 1, #opt.choices, 2 do
+            local id    = opt.choices[i]
+            local label = opt.choices[i + 1]
+
+            gui.add_option_choice(mod.name, opt.name, id, label)
+            opt.avail_choices[id] = true
           end
 
-          table.sort(list, button_sorter)
+          opt.value = opt.default
+
+          gui.set_module_option(mod.name, opt.name, opt.value)
         end
-
-        for _,opt in pairs(list) do
-          assert(opt.label)
-          if string.match(opt.name, "header_") then
-            gui.add_module_header(mod.name, opt.name, opt.label, opt.gap)
-            goto justaheader
-          end
-          if string.match(opt.name, "url_") then
-            assert(opt.url)
-            gui.add_module_url(mod.name, opt.name, opt.label, opt.url, opt.gap)
-            goto justaheader
-          end
-          if not opt.valuator then
-            assert(opt.choices)
-          end
-                  
-          if opt.valuator then
-            if opt.valuator == "slider" then
-              if not opt.default then
-                opt.default = (opt.min + opt.max) / 2
-              end
-              gui.add_module_slider_option(mod.name, opt.name, opt.label, opt.tooltip, opt.longtip, opt.gap, opt.min, opt.max, opt.increment, opt.units or "", opt.presets or "", opt.nan or "", opt.randomize_group or "", tostring(opt.default))
-              opt.value = opt.default
-              gui.set_module_slider_option(mod.name, opt.name, opt.value)
-            elseif opt.valuator == "button" then
-              if not opt.default then
-                opt.default = 0
-              end
-              gui.add_module_button_option(mod.name, opt.name, opt.label, opt.tooltip, opt.longtip, opt.gap, opt.randomize_group or "", tostring(opt.default))
-              opt.value = opt.default
-              gui.set_module_button_option(mod.name, opt.name, opt.value)
-            end
-          else
-            -- select a default value
-            if not opt.default then
-              if table.has_elem(opt.choices, "default") then opt.default = "default"
-              elseif table.has_elem(opt.choices, "normal")  then opt.default = "normal"
-              elseif table.has_elem(opt.choices, "medium")  then opt.default = "medium"
-              elseif table.has_elem(opt.choices, "mixed")   then opt.default = "mixed"
-              else   opt.default = opt.choices[1]
-              end
-            end
-            gui.add_module_option(mod.name, opt.name, opt.label, opt.tooltip, opt.longtip, opt.gap, opt.randomize_group or "", opt.default)
-            opt.avail_choices = {}
-
-            for i = 1,#opt.choices,2 do
-              local id    = opt.choices[i]
-              local label = opt.choices[i+1]
-
-              gui.add_option_choice(mod.name, opt.name, id, label)
-              opt.avail_choices[id] = 1
-            end
-            opt.value = opt.default
-            gui.set_module_option(mod.name, opt.name, opt.value)
-          end
-          ::justaheader::
-        end -- for opt
       end
-    end -- for mod
+    end
   end
 
 

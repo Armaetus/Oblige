@@ -305,13 +305,15 @@ function Fab_load_all_definitions()
 
     process_resource_pack_fabs()
 
+    assert(PREFABS)
+
     for _,def in pairs(PREFABS) do
       if def.delete then error(table.tostr(def)) end
 
       if not def.kind then
         def.kind = kind_from_filename(def.file)
       end
-    
+
       def.use_prob = calc_prob(def)
 
       if def.use_prob > 0 then

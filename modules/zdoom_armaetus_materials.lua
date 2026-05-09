@@ -2896,6 +2896,56 @@ brightmap texture SDSLDWL7
 {
   map SDSLDBR7
 }
+
+brightmap texture ADVCR2
+{
+  map ADVERTBR
+}
+brightmap texture ADVCR4
+{
+  map ADVERTBR
+}
+brightmap texture ADVCR6
+{
+  map ADVERTBR
+}
+
+brightmap texture ADVDE1
+{
+  map ADVERTBR
+}
+brightmap texture ADVDE2
+{
+  map ADVERTBR
+}
+brightmap texture ADVDE3
+{
+  map ADVERTBR
+}
+brightmap texture ADVDE3
+{
+  map ADVERTBR
+}
+brightmap texture ADVDE5
+{
+  map ADVERTBR
+}
+brightmap texture ADVDE6
+{
+  map ADVERTBR
+}
+brightmap texture ADVDE7
+{
+  map ADVERTBR
+}
+brightmap texture ADVDE7
+{
+  map ADVERTBR
+}
+brightmap texture ADVMS1
+{
+  map ADVERTBR
+}
 ]]
 
 -- aliases - when you're too lazy to write down wall and flat names in every
