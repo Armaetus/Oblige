@@ -1412,7 +1412,12 @@ MARINE_CLOSET_OBIT =
   "Subject's corpse marked for biofuel reclamation.",
   "Subject's will and testament unactionable, corpsed marked for biofuel reclamation.",
   "Subject has no inheritors, assets liquidated for Office of Executive Beach Drinks.",
-  ""
+  "Subject's digital game library marked for deletion.",
+  "Subject is survived by offspring, now indentured for Deep Magma Mining Program.",
+  "Subject has an account but with empty friends list.",
+  "Subject and kin now has negative credit, obituary sent with credit warnings.",
+  "Subject identifies offspring with birthday the next day.",
+  "Subject identifies offspring to be birthed the next day."
 }
 
 function MARINE_CLOSET_TUNE.setup(self)
