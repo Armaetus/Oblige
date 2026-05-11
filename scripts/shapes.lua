@@ -16069,9 +16069,9 @@ GROW_CAT_D =
 
   diagonals =
   {
-              "A.",".A",
-          ".A","A1","1A","A.",
-          ".A","A1","1A","A.",
+              "~.",".~",
+         ".~","~A","A~","~.",
+         ".~","~A","A~","~.",
     "1A","A1","1A","A1","1A","A1","1A",
               ".1","1.",
               ".1","1."
@@ -16266,6 +16266,90 @@ GROW_PIE_SLICE =
     ".A","A1","1A","A.",
          ".A","A.",
          ".A","A.",
+  }
+},
+
+GROW_SK =
+{
+  prob = 40,
+  skip_prob = 90,
+
+  structure =
+  {
+    "x....xx....","x/11%xx/11%",
+    "x..........","x1111111111",
+    "x..........","x%11111111/",
+    "xx........x","xx%11vv11/x",
+    "xxx......xx","xxxAAAAAAxx",
+    "xxx......xx","xxxAAAAAAxx",
+    "xx........x","xx/AA^^AA%x",
+    "x..........","x/AAA11AAA%",
+    "x..........","xAAAA11AAAA",
+    "x..........","xAAA/11%AAA",
+    "1..........","11111111111",
+    "1..........","11111111111",
+  },
+
+  diagonals =
+  {
+    ".1","1.",".1","1.",
+    ".1","1.",
+    ".1","1.",
+    ".A","A.",
+    ".A","A.",
+    "A1","1A",
+  }
+},
+
+GROW_SH =
+{
+  prob = 30,
+  skip_prob = 87,
+
+  structure =
+  {
+    "xx11xxxxxxx","xx11xxxxxxx",
+    "x.....xxxxx","x/AAA%xxxxx",
+    "x.....xxxxx","x1A111xxxxx",
+    "x.....xxxxx","x1A111xxxxx",
+    ".......xxxx","/AAAAA%xxxx",
+    "........xxx","1A/%%/1%xxx",
+    "..xx.....xx","1Axx%1/A%xx",
+    "..xxx......","1Axxx%1111%",
+  },
+
+  diagonals =
+  {
+    ".A","A.",
+    ".A","A.",
+    "A.",".1","1A","A1","1.",
+         ".1","1A","1.",
+              ".1","1."
+  }
+},
+
+GROW_SP =
+{
+  prob = 15,
+  skip_prob = 90,
+
+  structure =
+  {
+    "xxxxxx11xxxxxx","xxxxxx11xxxxxx",
+    "xxxxx....xxxxx","xxxxx/11%xxxxx",
+    "xxxx......xxxx","xxxx/1111%xxxx",
+    "xxx........xxx","xxx/111111%xxx",
+    "..............","11111A%/A11111",
+    "..xxx....xxx..","1/xxxA/%Axxx%1",
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1.",
+    ".1","1.",
+    "A1","1A",
+    "1.","A1","1A",".1"
   }
 },
 
