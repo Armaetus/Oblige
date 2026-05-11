@@ -2127,14 +2127,20 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         error("Unknown sink: " .. sink_name)
       end
 
-      -- no liquid sinks of the level has no liquid
       if (sink.mat == "_LIQUID" or sink.trim_mat == "_LIQUID") and not LEVEL.liquid then
-        tab[sink_name] = nil
-      -- no damaging liquid sinks if liquid sinks can be damaging, if damaging liquid sinks are disabled
-      elseif PARAM.liquid_sinks == "no" or
-      ((LEVEL.liquid and (LEVEL.liquid.damage and PARAM.liquid_sinks ~= "not_damaging")) or
-      (LEVEL.is_procedural_gotcha)) then
+        -- no liquid sinks if the level has no liquid
+        if not LEVEL.liquid then
           tab[sink_name] = nil
+
+        -- no liquid sinks if:
+        -- * liquid sinks are disabled
+        -- * liquid sink settings disable damaging sinks
+        elseif LEVEL.liquid then
+          if PARAM.liquid_sinks == "no"
+          or (LEVEL.liquid.damage and PARAM_liquid_sinks ~= "not_damaging") then
+            tab[sink_name] = nil
+          end
+        end
       end
 
       if (sink.trim_mat and sink.trim_mat == R.main_tex)
