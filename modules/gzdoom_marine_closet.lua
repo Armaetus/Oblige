@@ -90,6 +90,13 @@ MARINE_CLOSET_TUNE.FRIENDLYFIRE =
   "no",  _("No"),
 }
 
+MARINE_CLOSET_TUNE.DEATHMESSAGES =
+{
+  "no", _("No"),
+  "yes", _("Yes"),
+  "guilt", _("Yes, and Guilt-inducing")
+}
+
 MARINE_CLOSET_TUNE.TEMPLATES =
 {
   ZSC =
@@ -1290,6 +1297,14 @@ class BFGBallAIMarine : BFGBall
 		A_Log(self.GetTag() .. " has been killed!");
 		super.Die(source,inflictor,dmgflags,meansofdeath);
 	}
+	]],
+  DHTMSG_EX = [[override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath)
+	{
+    OBITS_ARRAY
+
+		A_Log(self.GetTag() .. " has been killed! " .. OBITS[Random(0,OBITS_SIZE-1)]);
+		super.Die(source,inflictor,dmgflags,meansofdeath);
+	}
 	]]
 }
 
@@ -1335,6 +1350,69 @@ MARINE_CLOSET_TUNE.TECHWPN =
 [10] = { 31002, 31003, 31004, 31005, 31006, 31007 },
 [66] = { 31007 },
 [99] = { 31001, 31003, 31003, 31003, 31003, 31002, 31002, 31002, 31004, 31004, 31004, 31005, 31005, 31006, 31006, 31007 },
+}
+
+-- MSSP: Man, who hurt me, huh?
+MARINE_CLOSET_OBIT =
+{
+  "Subject was the sole income provider.",
+  "Subject's pet left at home now earmarked for biofuel.",
+  "Subject had finally quit smoking.",
+  "Subject's transfer request was approved prior.",
+  "Subject was cleared for shore leave next week.",
+  "Subject's replacement arrived too late.",
+  "Subject had unpaid debts, all kin to be held liable in triplicate.",
+  "Subject's wedding ring was recovered for munitions recycling.",
+  "Subject was marked fit for civilian reintegration.",
+  "Subject was finally getting better.",
+  "Subject's mother to receive the notice, lowest priority channel only.",
+  "Subject was considered expendable.",
+  "Subject died believing this mattered.",
+  "Subject had no surviving next of kin.",
+  "Subject's bunk and all contents marked for munitions recycling.",
+  "Subject was bound for return shuttle.",
+  "Subject was one signature away from discharge.",
+  "Subject's calls home became less frequent.",
+  "Subject was statistically unlikely to die here.",
+  "Subject's clone authorization was denied.",
+  "Subject had requested reassignment twice.",
+  "Subject's effects fit in one container.",
+  "Subject died before payroll processing.",
+  "Subject had already outlived expectations.",
+  "Subject's emergency contact did not answer.",
+  "Subject was promised hazard compensation.",
+  "Subject was the last surviving squad member.",
+  "Subject's medical coverage expired today.",
+  "Subject left instructions not to be forgotten.",
+  "Subject had stopped writing in their journal.",
+  "Subject was overheard making future plans.",
+  "Subject had begun decorating their locker.",
+  "Subject's service weapon was still under warranty.",
+  "Subject was pronounced replaceable at induction.",
+  "Subject had survived worse.",
+  "Subject's death lowered quarterly projections.",
+  "Subject had finally learned everyone's names.",
+  "Subject was due for psychological evaluation.",
+  "Subject's corpse retrieval unpayable by family.",
+  "Subject believed rescue was imminent.",
+  "Subject was only recently promoted.",
+  "Subject's sacrifice qualified for no additional benefits.",
+  "Subject was identified through dental records.",
+  "Subject's unsent letters to be memory-holed immediately.",
+  "Subject's belongings were recycled for executive toiletry supplies.",
+  "Subject requested not to die alone.",
+  "Subject's contract contained no exit clause.",
+
+  "Subject now unable to pay dues, kin to be expelled from advanced medical care.",
+  "Subject's home to be vacated, kin re-assigned to biofuel reclamation.",
+  "Subject's kin to be billed for munitions use.",
+  "Subject's mother's arterial stents to be repurposed for munitions.",
+  "Subject's death benefits reclaimed for Office of Executive Beach Drinks.",
+  "Subject's offspring to be activated for training and duty replacement.",
+  "Subject's corpse marked for biofuel reclamation.",
+  "Subject's will and testament unactionable, corpsed marked for biofuel reclamation.",
+  "Subject has no inheritors, assets liquidated for Office of Executive Beach Drinks.",
+  ""
 }
 
 function MARINE_CLOSET_TUNE.setup(self)
@@ -1467,6 +1545,7 @@ function MARINE_CLOSET_TUNE.all_done()
 
   scripty = string.gsub(scripty, "FOLLOW_DIST", PARAM.float_m_c_follow_distance)
 
+  -- actor wake type
   if PARAM.m_c_waker == "sight" then
     scripty = string.gsub(scripty, "WSTATE", MARINE_CLOSET_TUNE.TEMPLATES.WAKER1)
   elseif PARAM.m_c_waker == "range" then
@@ -1477,6 +1556,7 @@ function MARINE_CLOSET_TUNE.all_done()
     scripty = string.gsub(scripty, "WSTATE", MARINE_CLOSET_TUNE.TEMPLATES.WAKER4)
   end
 
+  -- friendly fire: yes
   if PARAM.m_c_ff ~= "yes" then
     scripty = scripty .. MARINE_CLOSET_TUNE.TEMPLATES.PROJREP
     scripty = string.gsub(scripty, "\"BulletPuff\"", "\"BulletPuffAIMarine\"")
@@ -1485,16 +1565,19 @@ function MARINE_CLOSET_TUNE.all_done()
     scripty = string.gsub(scripty, "\"BFGBall\"", "\"BFGBallAIMarine\"")
   end
 
+  -- friendly fire: no
   if PARAM.m_c_ff == "no2" then
     scripty = string.gsub(scripty, "MFRIENDLYFIREX", MARINE_CLOSET_TUNE.TEMPLATES.FFX)
   else
     scripty = string.gsub(scripty, "MFRIENDLYFIREX", "return 0;")
   end
 
+  -- merge custom sprites
   if PARAM.m_c_sprites == "yes1" then
     gui.wad_merge_sections("modules/zdoom_internal_scripts/AISprite.wad")
   end
 
+  -- color translations
   if PARAM.m_c_color == "MarAI1" then
     scripty = string.gsub(scripty, "MTRANSLATE", "")
   elseif PARAM.m_c_color == "rng" then
@@ -1506,17 +1589,35 @@ function MARINE_CLOSET_TUNE.all_done()
     scripty = string.gsub(scripty, "MTRANSDEF", "\"" .. PARAM.m_c_color .. "\"")
   end
 
+  -- player<->marine damage
   if PARAM.bool_m_c_pdamage == 1 then
     scripty = string.gsub(scripty, "MPLAYERDAMAGEX", MARINE_CLOSET_TUNE.TEMPLATES.PLDMG)
   else
     scripty = string.gsub(scripty, "MPLAYERDAMAGEX", "")
   end
 
-  if PARAM.bool_m_c_rip == 1 then
-    scripty = string.gsub(scripty, "MDEATHMESSAGEX", MARINE_CLOSET_TUNE.TEMPLATES.DTHMSG)
-  else
-    scripty = string.gsub(scripty, "MDEATHMESSAGEX", "")
+  -- death messages - insert into MDEATHMESSAGEX
+  local ex_dm_code = ""
+  if PARAM.m_c_rip == "yes" then
+    ex_dm_code = MARINE_CLOSET_TUNE.TEMPLATES.DTHMSG
+  elseif PARAM.m_c_rip == "no" then
+    ex_dm_code = ""
+  elseif PARAM.m_c_rip == "guilt" then
+    -- extended death messages
+    local ex_dm_arr = ""
+    local ex_dm_i = 0
+    for _,M in pairs(MARINE_CLOSET_OBIT) do
+      ex_dm_arr = ex_dm_arr .. "OBITS["..ex_dm_i.."]=\""..M.."\";\n"
+      ex_dm_i = ex_dm_i + 1
+    end
+    ex_dm_arr = "String OBITS["..ex_dm_i.."];\n" .. ex_dm_arr
+
+    ex_dm_code = MARINE_CLOSET_TUNE.TEMPLATES.DHTMSG_EX
+
+    ex_dm_code = string.gsub(ex_dm_code, "OBITS_ARRAY", ex_dm_arr)
+    ex_dm_code = string.gsub(ex_dm_code, "OBITS_SIZE", ex_dm_i)
   end
+  scripty = string.gsub(scripty, "MDEATHMESSAGEX", ex_dm_code)
 
   SCRIPTS.zscript = ScriptMan_combine_script(SCRIPTS.zscript,
     scripty)
@@ -1827,19 +1928,17 @@ OB_MODULES["gzdoom_marine_closets"] =
 
 
     {
-      name = "bool_m_c_rip",
+      name = "m_c_rip",
       label = _("Death Messages"),
       priority = 77,
-      valuator = "button",
-      default = 0,
-      tooltip = _("If enabled, will print a message in message log whenever a marine dies."),
+      choices = MARINE_CLOSET_TUNE.DEATHMESSAGES,
+      default = "yes",
+      tooltip = _("If enabled, will print a message in message log whenever a marine dies. Guilt-induced adds longer obituary text."),
     },
-
-
     {
       name = "bool_m_c_in_secret",
       label = _("In Secret Rooms"),
-      priority = 76,
+      priority = 75,
       valuator = "button",
       default = 0,
       tooltip = _("If enabled, allowed marine closets to be built in secret rooms.")
