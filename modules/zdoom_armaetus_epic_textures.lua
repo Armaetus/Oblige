@@ -896,6 +896,18 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   -- Style Update for Custom Elements --
   --------------------------------------
 
+  local function zero_out_elem(tab, ref)
+    local tab = table.copy(tab)
+
+    for key,prob in pairs(tab) do
+      if ref[key] then
+        tab[key] = 0
+      end
+    end
+
+    return tab
+  end
+
   -- covers hallways only for now
   -- MSSP-TODO: revise this code to be more generic for future expansion
   if THEME.wide_halls then
@@ -916,123 +928,22 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
 
   -- initialize default tables
   if not PARAM.default_environment_themes_init then
-    -- Doom 2
-    if OB_CONFIG.game == "doom2" then
-      -- floors
-      PARAM.def_tech_floors = GAME.ROOM_THEMES.tech_Outdoors_generic.floors
-      PARAM.def_urban_floors = GAME.ROOM_THEMES.urban_Outdoors_generic.floors
-      PARAM.def_hell_floors = GAME.ROOM_THEMES.hell_Outdoors_generic.floors
-      -- naturals
-      PARAM.def_tech_naturals = GAME.ROOM_THEMES.tech_Outdoors_generic.naturals
-      PARAM.def_urban_naturals = GAME.ROOM_THEMES.urban_Outdoors_generic.naturals
-      PARAM.def_hell_naturals = GAME.ROOM_THEMES.hell_Outdoors_generic.naturals
-
-    -- Doom 1
-    elseif OB_CONFIG.game == "doom1"
-    or OB_CONFIG.game == "ultdoom" then
-      -- floors
-      PARAM.def_tech_floors = GAME.ROOM_THEMES.tech_Outdoors.floors
-      PARAM.def_deimos_floors = GAME.ROOM_THEMES.deimos_Outdoors.floors
-      PARAM.def_hell_floors = GAME.ROOM_THEMES.hell_Outdoors.floors
-      PARAM.def_flesh_floors = GAME.ROOM_THEMES.flesh_Outdoors.floors
-      -- naturals
-      PARAM.def_tech_naturals = GAME.ROOM_THEMES.tech_Outdoors.naturals
-      PARAM.def_deimos_naturals = GAME.ROOM_THEMES.deimos_Outdoors.naturals
-      PARAM.def_hell_naturals = GAME.ROOM_THEMES.hell_Outdoors.naturals
-      PARAM.def_flesh_naturals = GAME.ROOM_THEMES.flesh_Outdoors.naturals
-    end
-
+    PARAM.default_room_themes = table.copy(GAME.ROOM_THEMES)
     PARAM.default_environment_themes_init = true
   end
 
-  -- checking in on custom outdoors
-  -- snow
-  local snow_tech_floors = OBS_RESOURCE_PACK_SNOW_OUTDOORS.tech.floors
-  local snow_urban_floors = OBS_RESOURCE_PACK_SNOW_OUTDOORS.urban.floors
-  local snow_hell_floors = OBS_RESOURCE_PACK_SNOW_OUTDOORS.hell.floors
+  -- reset room themes to default ("temperate")
+  GAME.ROOM_THEMES = PARAM.default_room_themes
 
-  local snow_naturals = OBS_RESOURCE_PACK_SNOW_OUTDOORS.naturals
-
-  --sand
-  local sand_tech_floors = OBS_RESOURCE_PACK_DESERT_OUTDOORS.tech.floors
-  local sand_urban_floors = OBS_RESOURCE_PACK_DESERT_OUTDOORS.urban.floors
-  local sand_hell_floors = OBS_RESOURCE_PACK_DESERT_OUTDOORS.hell.floors
-
-  local sand_naturals = OBS_RESOURCE_PACK_DESERT_OUTDOORS.naturals
-
+  -- modify themes if there's a non-"temperate" outdoor_theme
   if OB_CONFIG.game == "doom2" then
     if LEVEL.outdoor_theme == "snow" then
-      GAME.ROOM_THEMES.tech_Outdoors_generic.floors = snow_tech_floors
-      GAME.ROOM_THEMES.tech_Outdoors_generic.naturals = snow_naturals
-      GAME.ROOM_THEMES.urban_Outdoors_generic.floors = snow_urban_floors
-      GAME.ROOM_THEMES.urban_Outdoors_generic.naturals = snow_naturals
-      GAME.ROOM_THEMES.hell_Outdoors_generic.floors = snow_hell_floors
-      GAME.ROOM_THEMES.hell_Outdoors_generic.naturals = snow_naturals
+      table.deep_merge(GAME.ROOM_THEMES, ORP_SNOW_ROOM_THEMES, 2)
     elseif LEVEL.outdoor_theme == "desert" then
-      GAME.ROOM_THEMES.tech_Outdoors_generic.floors = sand_tech_floors
-      GAME.ROOM_THEMES.tech_Outdoors_generic.naturals = sand_naturals
-      GAME.ROOM_THEMES.urban_Outdoors_generic.floors = sand_urban_floors
-      GAME.ROOM_THEMES.urban_Outdoors_generic.naturals = sand_naturals
-      GAME.ROOM_THEMES.hell_Outdoors_generic.floors = sand_hell_floors
-      GAME.ROOM_THEMES.hell_Outdoors_generic.naturals = sand_naturals
-    elseif LEVEL.outdoor_theme == "temperate" then
-      GAME.ROOM_THEMES.tech_Outdoors_generic.floors = PARAM.def_tech_floors
-      GAME.ROOM_THEMES.tech_Outdoors_generic.naturals = PARAM.def_tech_naturals
-      GAME.ROOM_THEMES.urban_Outdoors_generic.floors = PARAM.def_urban_floors
-      GAME.ROOM_THEMES.urban_Outdoors_generic.naturals = PARAM.def_urban_naturals
-      GAME.ROOM_THEMES.hell_Outdoors_generic.floors = PARAM.def_hell_floors
-      GAME.ROOM_THEMES.hell_Outdoors_generic.naturals = PARAM.def_hell_naturals
-    end
-  -- MSSP-TODO: check cliff mats for Doom1
-  elseif OB_CONFIG.game == "doom1"
-  or OB_CONFIG.game == "ultdoom" then
-    if LEVEL.outdoor_theme == "snow" then
-      GAME.ROOM_THEMES.tech_Outdoors_generic.floors = snow_tech_floors
-      GAME.ROOM_THEMES.tech_Outdoors_generic.naturals = snow_naturals
-      GAME.ROOM_THEMES.urban_Outdoors_generic.floors = snow_urban_floors
-      GAME.ROOM_THEMES.urban_Outdoors_generic.naturals = snow_naturals
-      GAME.ROOM_THEMES.hell_Outdoors_generic.floors = snow_hell_floors
-      GAME.ROOM_THEMES.hell_Outdoors_generic.naturals = snow_naturals
-      GAME.ROOM_THEMES.tech_Outdoors.floors = snow_tech_floors
-      GAME.ROOM_THEMES.tech_Outdoors.naturals = snow_naturals
-      GAME.ROOM_THEMES.deimos_Outdoors.floors = snow_tech_floors
-      GAME.ROOM_THEMES.deimos_Outdoors.naturals = snow_naturals
-      GAME.ROOM_THEMES.hell_Outdoors.floors = sand_hell_floors
-      GAME.ROOM_THEMES.hell_Outdoors.naturals = snow_naturals
-      GAME.ROOM_THEMES.flesh_Outdoors.floors = snow_urban_floors
-      GAME.ROOM_THEMES.flesh_Outdoors.naturals = snow_naturals
-    elseif LEVEL.outdoor_theme == "desert" then
-      GAME.ROOM_THEMES.tech_Outdoors_generic.floors = sand_tech_floors
-      GAME.ROOM_THEMES.tech_Outdoors_generic.naturals = sand_naturals
-      GAME.ROOM_THEMES.urban_Outdoors_generic.floors = sand_urban_floors
-      GAME.ROOM_THEMES.urban_Outdoors_generic.naturals = sand_naturals
-      GAME.ROOM_THEMES.hell_Outdoors_generic.floors = sand_hell_floors
-      GAME.ROOM_THEMES.hell_Outdoors_generic.naturals = sand_naturals
-      GAME.ROOM_THEMES.tech_Outdoors.floors = sand_tech_floors
-      GAME.ROOM_THEMES.tech_Outdoors.naturals = sand_naturals
-      GAME.ROOM_THEMES.deimos_Outdoors.floors = snow_tech_floors
-      GAME.ROOM_THEMES.deimos_Outdoors.naturals = sand_naturals
-      GAME.ROOM_THEMES.hell_Outdoors.floors = sand_hell_floors
-      GAME.ROOM_THEMES.hell_Outdoors.naturals = sand_naturals
-      GAME.ROOM_THEMES.flesh_Outdoors.floors = snow_urban_floors
-      GAME.ROOM_THEMES.flesh_Outdoors.naturals = sand_naturals
-    elseif LEVEL.outdoor_theme == "temperate" then
-      GAME.ROOM_THEMES.tech_Outdoors_generic.floors = PARAM.def_tech_floors
-      GAME.ROOM_THEMES.tech_Outdoors_generic.naturals = PARAM.def_tech_naturals
-      GAME.ROOM_THEMES.urban_Outdoors_generic.floors = PARAM.def_urban_floors
-      GAME.ROOM_THEMES.urban_Outdoors_generic.naturals = PARAM.def_urban_naturals
-      GAME.ROOM_THEMES.hell_Outdoors_generic.floors = PARAM.def_hell_floors
-      GAME.ROOM_THEMES.hell_Outdoors_generic.naturals = PARAM.def_hell_naturals
-      GAME.ROOM_THEMES.tech_Outdoors.floors = PARAM.def_tech_floors
-      GAME.ROOM_THEMES.tech_Outdoors.naturals = PARAM.def_tech_naturals
-      GAME.ROOM_THEMES.deimos_Outdoors.floors = PARAM.def_deimos_floors
-      GAME.ROOM_THEMES.deimos_Outdoors.naturals = PARAM.def_deimos_naturals
-      GAME.ROOM_THEMES.hell_Outdoors.floors = PARAM.def_hell_naturals
-      GAME.ROOM_THEMES.hell_Outdoors.naturals = PARAM.def_hell_naturals
-      GAME.ROOM_THEMES.flesh_Outdoors.floors = PARAM.def_flesh_naturals
-      GAME.ROOM_THEMES.flesh_Outdoors.naturals = PARAM.def_flesh_naturals
+      table.deep_merge(GAME.ROOM_THEMES, ORP_DESERT_ROOM_THEMES, 2)
     end
   end
+  -- MSSP-TODO: do all proper substitutions for Doom1
 
   OBS_RESOURCE_PACK_EPIC_TEXTURES.decide_night_replacement_textures(LEVEL)
 end

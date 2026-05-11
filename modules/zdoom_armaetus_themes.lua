@@ -6060,9 +6060,9 @@ OBS_RESOURCE_PACK_SKYBOX_EXCLUSIONS =
 
 -- intercepts for the new environment theme feature
 
-OBS_RESOURCE_PACK_SNOW_OUTDOORS =
+ORP_SNOW_ROOM_THEMES =
 {
-  tech =
+  tech_Outdoors_generic =
   {
     floors =
     {
@@ -6095,11 +6095,26 @@ OBS_RESOURCE_PACK_SNOW_OUTDOORS =
       SNWTF5 = 8,
       SNWTF6 = 8,
       SNWTF7 = 8,
-      SNWTF8 = 8,
+      SNWTF8 = 8
     },
+
+    naturals =
+    {
+      SNOW03 = 5,
+      SNOW06 = 5,
+      SNOW07 = 5,
+      SNOW08 = 5,
+      SNOW09 = 5,
+      SNOW10 = 5,
+      SNOW11 = 5,
+      SNOW12 = 5,
+      SNOW13 = 3,
+      SNOW14 = 3,
+      SNOW15 = 5
+    }
   },
 
-  urban =
+  urban_Outdoors_generic =
   {
     floors =
     {
@@ -6127,11 +6142,26 @@ OBS_RESOURCE_PACK_SNOW_OUTDOORS =
       SNOW12 = 2,
       SNOW13 = 2,
       SNOW14 = 2,
-      SNOW15 = 2,
+      SNOW15 = 2
     },
+
+    naturals =
+    {
+      SNOW03 = 5,
+      SNOW06 = 5,
+      SNOW07 = 5,
+      SNOW08 = 5,
+      SNOW09 = 5,
+      SNOW10 = 5,
+      SNOW11 = 5,
+      SNOW12 = 5,
+      SNOW13 = 3,
+      SNOW14 = 3,
+      SNOW15 = 5
+    }
   },
 
-  hell =
+  hell_Outdoors_generic =
   {
     floors =
     {
@@ -6159,29 +6189,24 @@ OBS_RESOURCE_PACK_SNOW_OUTDOORS =
       SNOW12 = 2,
       SNOW13 = 2,
       SNOW14 = 2,
-      SNOW15 = 2,
+      SNOW15 = 2
     },
-  },
 
-  floors =
-  {
-
-  },
-
-  naturals =
-  {
-   SNOW03 = 5,
-   SNOW06 = 5,
-   SNOW07 = 5,
-   SNOW08 = 5,
-   SNOW09 = 5,
-   SNOW10 = 5,
-   SNOW11 = 5,
-   SNOW12 = 5,
-   SNOW13 = 3,
-   SNOW14 = 3,
-   SNOW15 = 5,
-  },
+    naturals =
+    {
+      SNOW03 = 5,
+      SNOW06 = 5,
+      SNOW07 = 5,
+      SNOW08 = 5,
+      SNOW09 = 5,
+      SNOW10 = 5,
+      SNOW11 = 5,
+      SNOW12 = 5,
+      SNOW13 = 3,
+      SNOW14 = 3,
+      SNOW15 = 5
+    }
+  }
 }
 
 -- Snowed-in building facades, per map theme type
@@ -6265,9 +6290,9 @@ OBS_RESOURCE_PACK_SNOW_HELL_FACADES =
   STONE10   = 15,
 }]]
 
-OBS_RESOURCE_PACK_DESERT_OUTDOORS =
+ORP_DESERT_ROOM_THEMES =
 {
-  tech =
+  tech_Outdoors_generic =
   {
     floors =
     {
@@ -6288,10 +6313,21 @@ OBS_RESOURCE_PACK_DESERT_OUTDOORS =
       T_SDTCH3 = 5,
       T_SDTCH4 = 5,
       T_SDTCH5 = 5
+    },
+
+    naturals =
+    {
+      ESAND1 = 45,
+      ESAND2 = 45,
+      DESROCK1 = 20,
+      DESROCK2 = 20,
+      DESROCK3 = 20,
+      DESROCK4 = 25,
+      DESROCK5 = 20
     }
   },
 
-  urban =
+  urban_Outdoors_generic =
   {
     floors =
     {
@@ -6307,10 +6343,21 @@ OBS_RESOURCE_PACK_DESERT_OUTDOORS =
       EG03  = 15,
       EG02  = 10,
       EG01  = 15
+    },
+
+    naturals =
+    {
+      ESAND1 = 45,
+      ESAND2 = 45,
+      DESROCK1 = 20,
+      DESROCK2 = 20,
+      DESROCK3 = 20,
+      DESROCK4 = 25,
+      DESROCK5 = 20
     }
   },
 
-  hell =
+  hell_Outdoors_generic =
   {
     floors =
     {
@@ -6326,20 +6373,21 @@ OBS_RESOURCE_PACK_DESERT_OUTDOORS =
       EG03  = 15,
       EG02  = 10,
       EG01  = 15
+    },
+
+    naturals =
+    {
+      ESAND1 = 45,
+      ESAND2 = 45,
+      DESROCK1 = 20,
+      DESROCK2 = 20,
+      DESROCK3 = 20,
+      DESROCK4 = 25,
+      DESROCK5 = 20
     }
   },
-
-  naturals =
-  {
-    ESAND1 = 45,
-    ESAND2 = 45,
-    DESROCK1 = 20,
-    DESROCK2 = 20,
-    DESROCK3 = 20,
-    DESROCK4 = 25,
-    DESROCK5 = 20
-  }
 }
+
 
 --[[OBS_RESOURCE_PACK_DESERT_FACADES =
 {
