@@ -262,38 +262,60 @@ function Fab_load_all_definitions()
     if not PARAM.float_ungroup_fabs then return end
     if PARAM.float_ungroup_fabs == 0 then return end
 
-    local picture_tab = {}
-    local decor_tab = {}
+    local theme_groups = {}
+    local theme_names = {}
 
-    assert(PREFABS)
+    -- gather themes
+    for theme_name,T in pairs(GAME.THEMES) do
+      if theme_name ~= "DEFAULTS" and theme_name ~= "exclusions" then
+        theme_groups[theme_name] = {}
+        table.insert(theme_names, theme_name)
 
-    for _,def in pairs(PREFABS) do
-      if (def.where == "point" or def.where == "seeds") and def.group then
-        if def.kind == "decor" then
-          table.insert(decor_tab, def.name)
-        elseif def.kind == "picture" then
-          table.insert(picture_tab, def.name)
+        -- pick specific wall groups from themes
+        if T.wall_groups then
+          theme_groups[theme_name] = table.copy(T.wall_groups)
         end
       end
     end
 
-    local fab_pick = {}
+    assert(PREFABS)
 
-    for i = 1, PARAM.float_ungroup_fabs do
-      fab_pick = table.copy(PREFABS[rand.pick(decor_tab)])
-      fab_pick.group = nil
-      fab_pick.rank = nil
-      if fab_pick.size then fab_pick.prob = fab_pick.size * 24 else fab_pick.prob = 2500 end
-      fab_pick.use_prob = calc_prob(fab_pick)
-      PREFABS[fab_pick.name .. "_ungrouped"] = fab_pick
+    -- gather prefabs
+    for theme_name,WG in pairs(theme_groups) do
+      local group_pick = rand.key_by_probs(WG)
+      local pick_list = {}
 
-      fab_pick = table.copy(PREFABS[rand.pick(picture_tab)])
-      fab_pick.group = nil
-      fab_pick.rank = nil
-      fab_pick.prob = fab_pick.seed_h * fab_pick.seed_w * 25
-      fab_pick.use_prob = calc_prob(fab_pick)
-      PREFABS[fab_pick.name .. "_ungrouped"] = fab_pick
+      for i = 1, PARAM.float_ungroup_fabs do
+        for _,def in pairs(PREFABS) do
+          if def.group and def.group == group_pick
+          and (def.kind == "decor" or def.kind == "picture") then
+            table.insert(pick_list, def)
+          end
+        end
+
+        local fab_pick = table.copy(rand.pick(pick_list))
+
+        if fab_pick and not table.empty(fab_pick) then
+          fab_pick.group = nil
+          fab_pick.rank = nil
+
+          if fab_pick.kind == "decor" then
+            if fab_pick.size then fab_pick.prob = fab_pick.size * 24 else fab_pick.prob = 2500 end
+            fab_pick.env = "building"
+          else
+            fab_pick.prob = fab_pick.seed_h * fab_pick.seed_w * 25
+          end
+
+          fab_pick.use_prob = calc_prob(fab_pick)
+          fab_pick.theme = theme_name
+
+          PREFABS[fab_pick.name .. "_ungrouped"] = fab_pick
+        end
+      end
+
     end
+
+
   end
 
 
