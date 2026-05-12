@@ -2877,11 +2877,6 @@ brightmap texture SDIPHWL5
   map SDIPHBR5
 }
 
-brightmap texture SDIPHWL8
-{
-  map SDIPHBR8
-}
-
 brightmap texture SDIPHWL9
 {
   map SDIPHBR9
