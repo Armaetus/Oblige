@@ -3432,7 +3432,7 @@ end
     local rules = table.copy(rule_tab)
 
     -- original qty is around 20, Obsidian base is 5
-    local tries = 20 -- Maybe tune this parameter to test build speed? - Dasho
+    local tries = PARAM.float_grower_tries or 20 -- Maybe tune this parameter to test build speed? - Dasho
 
     if tries > #rules then tries = #rules end
 

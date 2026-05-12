@@ -277,14 +277,27 @@ OB_MODULES["arch_exp"] =
   {
     {
       name = "float_ungroup_fabs",
-      label=_("Ungroup Some Fabs"),
+      label = _("Ungroup Some Fabs"),
       valuator = "slider",
       min = 0,
       max = 100,
       increment = 10,
       default = 10,
       tooltip = _("Takes decor and picture fabs and allows them to spawn randomly around levels."),
-      priority=105,
+      priority = 105
     },
+
+    {
+      name = "float_grower_tries",
+      label = _("Shape Grower Tries"),
+      valuator = "slider",
+      min = 5,
+      max = 100,
+      increment = 5,
+      default = 20,
+      tooltip = _("Changes the amount of shape grower tests per growth step. "..
+        "Default is 20. Higher values mean shapes can fit more snuggly, for longer generation time."),
+      priority = 104
+    }
   },
 }
