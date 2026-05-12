@@ -1384,9 +1384,14 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       GRAY9 = 5,
       GRAYMET5 = 5,
 
+      SHAWN01C = 5,
+      SHAWN01D = 5,
+      SHAWN01E = 5,
+      SHAWN01F = 5,
+
       SHAWN4 = 5,
       SHAWN5 = 5,
-      SHAWNS04 = 5,
+      SHAWSH04 = 5,
 
       SNOWWAL1 = 5,
       SNOWWAL2 = 5,
@@ -3809,9 +3814,14 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       GRAY9 = 5,
       GRAYMET5 = 5,
 
+      SHAWN01C = 5,
+      SHAWN01D = 5,
+      SHAWN01E = 5,
+      SHAWN01F = 5,
+
       SHAWN4 = 5,
       SHAWN5 = 5,
-      SHAWNS04 = 5,
+      SHAWSH04 = 5,
 
       SNOWWAL1 = 5,
       SNOWWAL2 = 5,
