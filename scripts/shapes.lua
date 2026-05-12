@@ -16353,6 +16353,35 @@ GROW_SP =
   }
 },
 
+GROW_COIN =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx....xx","xx/11%xx",
+    "x......x","x//11%%x",
+    "........","//A11A%%",
+    "........","11111111",
+    "........","11111111",
+    "........","%%A11A//",
+    "x......x","x%%11//x",
+    "xx....xx","xx%11/xx",
+    "xxx11xxx","xxx11xxx"
+  },
+
+  diagonals =
+  {
+         ".1","1.",
+    ".1","1A","A1","1.",
+    ".1","1A","A1","1.",
+    ".1","1A","A1","1.",
+    ".1","1A","A1","1.",
+         ".1","1."
+  }
+},
+
 -- MSSP's rooms shaped like English alphabet letters. [LETTERS]
 
 GROW_SKULL_P1_NEW_AREA =
