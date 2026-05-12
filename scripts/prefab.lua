@@ -281,11 +281,11 @@ function Fab_load_all_definitions()
     assert(PREFABS)
 
     -- gather prefabs
-    for theme_name,WG in pairs(theme_groups) do
-      local group_pick = rand.key_by_probs(WG)
-      local pick_list = {}
+    local pick_list = {}
+    for i = 1, PARAM.float_ungroup_fabs do
+      for theme_name,WG in pairs(theme_groups) do
+        local group_pick = rand.key_by_probs(WG)
 
-      for i = 1, PARAM.float_ungroup_fabs do
         for _,def in pairs(PREFABS) do
           if def.group and def.group == group_pick
           and (def.kind == "decor" or def.kind == "picture") then
@@ -294,6 +294,7 @@ function Fab_load_all_definitions()
         end
 
         local fab_pick = table.copy(rand.pick(pick_list))
+        if not fab_pick then i = i - 1 end
 
         if fab_pick and not table.empty(fab_pick) then
           fab_pick.group = nil
@@ -314,10 +315,7 @@ function Fab_load_all_definitions()
       end
 
     end
-
-
   end
-
 
   local function preprocess_all()
     table.name_up(PREFABS)
