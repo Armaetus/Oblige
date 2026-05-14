@@ -2137,7 +2137,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         -- * liquid sink settings disable damaging sinks
         elseif LEVEL.liquid then
           if PARAM.liquid_sinks == "no"
-          or (LEVEL.liquid.damage and PARAM_liquid_sinks ~= "not_damaging") then
+          or (LEVEL.liquid.damage and PARAM.liquid_sinks ~= "not_damaging") then
             tab[sink_name] = nil
           end
         end
@@ -2226,8 +2226,14 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       end
     end
 
-    if R.is_cave or
-    (R.is_outdoor and not R.is_street) then
+    -- street sink code
+    if R.is_street then
+      for _,fg in pairs(R.floor_groups) do
+        pick_street_sink(fg, LEVEL)
+      end
+    end
+
+    if R.is_cave or R.is_outdoor then
       return
     end
 
@@ -2235,12 +2241,6 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       pick_sink(fg, R, LEVEL)
     end
 
-    -- street sink code
-    if R.is_street then
-      for _,fg in pairs(R.floor_groups) do
-        pick_street_sink(fg, LEVEL)
-      end
-    end
   end
 
 
