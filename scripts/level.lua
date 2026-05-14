@@ -2757,7 +2757,7 @@ function Level_make_level(LEV)
   gui.end_level()
 
   clear_level(LEVEL, SEEDS)
-  
+
   if gui.abort() then return "abort" end
 
   return "ok"
@@ -2885,6 +2885,7 @@ function Level_make_all()
     end
   end
 
+  ob_invoke_hook("pre_all_done")
   ob_invoke_hook("all_done")
 
   ScriptMan_init()

@@ -28,7 +28,7 @@ function LLM_NAME.setup(self)
 
 end
 
-function LLM_NAME.all_done()
+function LLM_NAME.do_it(self, LEVEL)
 
   -- escape from JSON city
   local function escape_json(str)
@@ -53,7 +53,7 @@ function LLM_NAME.all_done()
       '"model":"' .. LLM_NAME.model .. '",' ..
       '"prompt":"' .. escape_json(prompt) .. '",' ..
       '"stream":false,' ..
-      '"raw":true,' ..
+      --'"raw":true,' ..
       '"options":{' ..
         '"temperature":' .. temperature .. ',' ..
         '"num_predict":' .. num_predict ..
@@ -130,6 +130,8 @@ function LLM_NAME.all_done()
 
     local response = extract_response(raw)
 
+    gui.printf("LLM Namer: Parsed response:\n" .. response .. "\n")
+
     if not response then
       return nil
     end
@@ -141,7 +143,7 @@ function LLM_NAME.all_done()
   end
 
   -- main name generator capsule
-  local function generate_level_name()
+  local function generate_level_name(level_data)
 
     local prompt =
 [[Generate a Doom map name.
@@ -160,17 +162,50 @@ Frozen Reactor
 Concrete Spiral
 Ashen Transit
 
-Map name:]]
+The following information is metadata for context.
+Be creative and avoid using words from the metadata wholesale.
+Use it only as context for a unique name.
+]]..
+level_data..
+[[
+]]
 
     return ask(prompt,
     {
-      temperature = 0.3,
-      num_predict = 8
+      temperature = 0.9,
+      num_predict = 12
     })
   end
 
+  -- level metadata collector
+  local function collect_level_data(level_tab)
+
+    local info
+
+    local cur_level = table.copy(level_tab)
+
+    info = "Level theme: " .. cur_level.theme_name .. "\n"
+
+
+    return info
+
+  end
+
   if PARAM.bool_llm_namer == 1 then
-    error("LLM test: " .. generate_level_name())
+
+
+    for _,epi in pairs(GAME.episodes) do
+      for _,L in pairs(epi.levels) do
+        local level_data = collect_level_data(L)
+        local name = generate_level_name(level_data)
+
+        if name then
+          gui.printf("LLM Namer: Level name '" .. L.description .. "' substituted with '" .. name .. "'!\n")
+          L.description = name
+
+        end
+      end
+    end
   end
 end
 
@@ -186,12 +221,12 @@ OB_MODULES["llm_namer"] =
   where = "experimental",
   priority = 5,
 
-  tooltip = _("Mehmehmeh."),
+  tooltip = _("Genarates level names using an LLM."),
 
   hooks =
   {
     setup = LLM_NAME.setup,
-    all_done = LLM_NAME.all_done
+    pre_all_done = LLM_NAME.do_it
   },
 
   options =
@@ -208,7 +243,7 @@ OB_MODULES["llm_namer"] =
         "To use this, just download Ollama and llama3.1:8b and keep it running all at default settings.\n\n" ..
         "This module uses Lua io:popen to access cURL, and may cause CMD to briefly appear. This is normal behavior.\n\n" ..
         "The module DOES NOT SEND DATA outside of your PC. " ..
-        "This module will not work if you do not have libcurl as it communicates in RESTful API style."),
+        "This module will not work if you do not have libcurl as it communicates in RESTful API style.\n\n"),
       priority = 100,
     },
   }
