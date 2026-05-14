@@ -4205,6 +4205,10 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
 
       R.emergency_sprouted = true
       Grower_grammatical_room(SEEDS, LEVEL, R, "sprout", "is_emergency")
+      Grower_grammatical_room(SEEDS, LEVEL, R, "grow", "is_emergency")
+
+      if reached_coverage() then return end
+
       ::skip::
     end
   end
