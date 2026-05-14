@@ -650,7 +650,7 @@ function ZDOOM_SPECIALS.do_special_stuff()
     special_attributes = special_attributes .. '  ClipMidTextures\n'
 
     local mapinfo =
-      'map ' .. map_id .. ' lookup ' .. PARAM.bex_map_prefix .. name_string_map_id ..'\n' ..
+      'map ' .. map_id .. ' lookup "' .. GAME.levels[map_num].description ..'"\n' ..
       '{\n' ..
       --'  cluster = 1\n'
       '  sky1 = "' .. sky_tex .. '"\n' ..

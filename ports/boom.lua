@@ -48,6 +48,9 @@ BOOM.PARAMETERS =
 
 function BOOM.create_dehacked()
 
+  -- we will no longer create a BEX lump if MAPINFO will be activated
+  if PARAM.zdoom_specials_active and PARAM.zdoom_specials_active == true then return end
+
   local data =
   {
     "#\n",
