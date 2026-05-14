@@ -2313,6 +2313,7 @@ function Level_choose_liquid(LEVEL)
   end
 
   LEVEL.liquid = liquid
+  LEVEL.liquid.name = name
 
   gui.printf("Liquid: " .. name .. ", usage: " .. LEVEL.liquid_usage .. "%%\n\n")
 

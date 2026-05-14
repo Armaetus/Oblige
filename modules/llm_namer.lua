@@ -29,7 +29,6 @@ function LLM_NAME.setup(self)
 end
 
 function LLM_NAME.get_some_info(self, lev)
-
   local function classify_ratio(ratio)
     if ratio > 0.99 then
       return "entirely"
@@ -54,8 +53,6 @@ function LLM_NAME.get_some_info(self, lev)
     cave_vol = 0
   }
   local total_vol = 0
-
-  local level_has_outdoors = false
 
   for _,R in pairs(lev.rooms) do
     local tab
@@ -113,16 +110,18 @@ function LLM_NAME.get_some_info(self, lev)
     info_str = info_str .. "*" .. I .."\n"
   end
 
-  if level_has_outdoors then
-    if lev.outdoor_theme == "snow" then
-      info_str = info_str .. "The level has cold, snowy outdoors."
-    elseif lev.outdoor_theme == "sand" then
-      info_str = info_str .. "The level has hot, sandy desert outdoors"
+  if room_scores.outdoor_vol > 0.33 then
+    if lev.outdoor_theme then
+      if lev.outdoor_theme == "snow" then
+        info_str = info_str .. "The level has cold, snowy outdoors.\n"
+      elseif lev.outdoor_theme == "sand" then
+        info_str = info_str .. "The level has hot, sandy desert outdoors.\n"
+      end
     end
   end
 
   if lev.liquid_usage ~= 0 then
-    info_str = info_str .. "The level's liquid is " .. lev.liquid .. "\n."
+    info_str = info_str .. "The level contains pools of " .. lev.liquid.name .. ".\n"
   end
 
   if lev.has_streets then
@@ -132,7 +131,7 @@ function LLM_NAME.get_some_info(self, lev)
   if lev.preferred_wall_groups and room_scores.building_vol > 0.33 then
     info_str = info_str .. "The following prefab set is found throughout the level: "
     for prefab,prob in pairs(lev.preferred_wall_groups[lev.theme_name]) do
-      info_str = info_str .. "* " .. prefab .. "\n"
+      info_str = info_str .. "* " .. prefab .. ", at " .. prob .. "x"
     end
   end
 
@@ -140,6 +139,23 @@ function LLM_NAME.get_some_info(self, lev)
 end
 
 function LLM_NAME.do_it()
+
+  -- rolling hash to convert OB_CONFIG.seed
+  -- to numbers
+  local function seed_to_number(seed)
+
+    local hash = 0
+    local prime = 31
+
+    seed = tostring(seed)
+
+    for i = 1, #seed do
+      local c = seed:byte(i)
+      hash = (hash * prime + c) % 2147483647
+    end
+
+    return hash
+  end
 
   -- escape from JSON city
   local function escape_json(str)
@@ -168,7 +184,7 @@ function LLM_NAME.do_it()
       '"options":{' ..
         '"temperature":' .. temperature .. ',' ..
         '"num_predict":' .. num_predict .. ',' ..
-        '"seed":' .. OB_CONFIG.seed ..
+        '"seed":' .. seed_to_number(OB_CONFIG.seed) ..
       '}' ..
       '}'
 
