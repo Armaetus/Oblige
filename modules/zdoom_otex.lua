@@ -1067,7 +1067,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       end
     end
 
-    assert(not table.empty(tex_list), "no textures found for theme")
+    assert(not table.empty(tex_list), "OTEX: No textures found for theme")
     
     return rand.key_by_probs(tex_list)
   end
@@ -1482,15 +1482,15 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     }
 
     if string.sub(name,2,5) == "LGHT" then
-      local prob = 12
+      local prob = 35
       if info.color == "violet" then
-        prob = 0.75
+        prob = 3
       end
       OTEX_THEMES.tech.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.urban.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.hell.ceiling_sinks[sink_name] = prob
     else
-      local prob = 25
+      local prob = 60
       OTEX_THEMES.tech.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.urban.ceiling_sinks[sink_name] = prob
       OTEX_THEMES.hell.ceiling_sinks[sink_name] = prob
