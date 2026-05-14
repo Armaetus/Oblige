@@ -59,11 +59,16 @@ function LLM_NAME.get_some_info(self, lev)
 
 
     if not R.is_outdoor then
+      local tab_name
       tab = table.copy(R.theme)
 
-      table.name_up(tab)
-
-      table.add_unique(room_themes, tab.name)
+      for name,info in pairs(tab) do
+        if type(info) == "table" then
+          tab_name = name
+        end
+      end
+      
+      table.add_unique(room_themes, tab_name)
     end
 
     -- count the volume of all rooms arranged by kind
