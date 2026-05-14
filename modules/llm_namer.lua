@@ -131,9 +131,11 @@ function LLM_NAME.get_some_info(self, lev)
   if lev.preferred_wall_groups and room_scores.building_vol > 0.33 then
     info_str = info_str .. "The following prefab set is found throughout the level: "
     for prefab,prob in pairs(lev.preferred_wall_groups[lev.theme_name]) do
-      info_str = info_str .. "* " .. prefab .. ", at " .. prob .. "x"
+      info_str = info_str .. "* " .. prefab .. ", at " .. prob .. "x\n"
     end
   end
+
+  info_str = info_str .. "The original map name is '" .. lev.description .. "' and is only related as a " .. lev.theme_name ..  "-themed name.\n"
 
   LLM_NAME.level_infos[lev.id] = info_str
 end
