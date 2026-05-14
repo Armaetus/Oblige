@@ -22,13 +22,124 @@ LLM_NAME.model = "llama3.1:8b"
 
 LLM_NAME.endpoint = "http://127.0.0.1:11434/api/generate"
 
+LLM_NAME.level_infos = {}
+
 function LLM_NAME.setup(self)
-
   module_param_up(self)
-
 end
 
-function LLM_NAME.do_it(self, LEVEL)
+function LLM_NAME.get_some_info(self, lev)
+
+  local function classify_ratio(ratio)
+    if ratio > 0.99 then
+      return "entirely"
+    elseif ratio > 0.8 then
+      return "almost entirely"
+    elseif ratio > 0.6 then
+      return "mostly"
+    elseif ratio > 0.4 then
+      return "roughly half"
+    end
+
+    return nil
+  end
+
+  local info_str = ""
+  local room_themes = {}
+  local room_scores = 
+  {
+    outdoor_vol = 0,
+    building_vol = 0,
+    park_vol = 0,
+    cave_vol = 0
+  }
+  local total_vol = 0
+
+  local level_has_outdoors = false
+
+  for _,R in pairs(lev.rooms) do
+    local tab
+
+
+    if not R.is_outdoor then
+      tab = table.copy(R.theme)
+
+      table.name_up(tab)
+
+      table.add_unique(room_themes, tab.name)
+    end
+
+    -- count the volume of all rooms arranged by kind
+    total_vol = total_vol + R.svolume
+    if R.is_outdoor then 
+      room_scores.outdoor_vol = room_scores.outdoor_vol + R.svolume
+    end
+    if R:get_env() == "building" then
+      room_scores.building_vol = room_scores.building_vol + R.svolume
+    end
+    if R:get_env() == "park" then
+      room_scores.park_vol = room_scores.park_vol + R.svolume
+    end
+    if R:get_env() == "cave" then
+      room_scores.cave_vol = room_scores.cave_vol + R.svolume
+    end
+  end
+
+  for factor,score in pairs(room_scores) do
+    room_scores[factor] = score / total_vol
+  end
+
+  -- create the info strings for what kind rooms we have
+  local classification
+  classification = classify_ratio(room_scores.outdoor_vol)
+  if classification then
+    info_str = info_str .. "The map is " .. classification .. " outdoors. "
+  end
+  classification = classify_ratio(room_scores.building_vol)
+  if classification then
+    info_str = info_str .. "The map is " .. classification .. " indoors. "
+  end
+  classification = classify_ratio(room_scores.cave_vol)
+  if classification then
+    info_str = info_str .. "The map is " .. classification .. " a cave. "
+  end
+  classification = classify_ratio(room_scores.park_vol)
+  if classification then
+    info_str = info_str .. "The map is " .. classification .. " a park. "
+  end
+
+  info_str = info_str .. "\nRooms in the map have the following room themes: "
+  for _,I in ipairs(room_themes) do
+    info_str = info_str .. "*" .. I .."\n"
+  end
+
+  if level_has_outdoors then
+    if lev.outdoor_theme == "snow" then
+      info_str = info_str .. "The level has cold, snowy outdoors."
+    elseif lev.outdoor_theme == "sand" then
+      info_str = info_str .. "The level has hot, sandy desert outdoors"
+    end
+  end
+
+  if lev.liquid_usage ~= 0 then
+    info_str = info_str .. "The level's liquid is " .. lev.liquid .. "\n."
+  end
+
+  if lev.has_streets then
+    info_str = info_str .. "There's a lot of city streets in the level."
+  end
+
+  if lev.preferred_wall_groups and room_scores.building_vol > 0.33 then
+    info_str = info_str .. "The following prefab set is found throughout the level: "
+    for prefab,prob in pairs(lev.preferred_wall_groups[lev.theme_name]) do
+      info_str = info_str .. "* " .. prefab .. "\n"
+    end
+  end
+
+  LLM_NAME.level_infos[lev.id] = info_str
+end
+
+function LLM_NAME.do_it()
 
   -- escape from JSON city
   local function escape_json(str)
@@ -56,7 +167,8 @@ function LLM_NAME.do_it(self, LEVEL)
       --'"raw":true,' ..
       '"options":{' ..
         '"temperature":' .. temperature .. ',' ..
-        '"num_predict":' .. num_predict ..
+        '"num_predict":' .. num_predict .. ',' ..
+        '"seed":' .. OB_CONFIG.seed ..
       '}' ..
       '}'
 
@@ -162,17 +274,15 @@ Frozen Reactor
 Concrete Spiral
 Ashen Transit
 
-The following information is metadata for context.
-Be creative and avoid using words from the metadata wholesale.
+The following information is the level metadata for context.
+Be creative and avoid using words from the metadata.
 Use it only as context for a unique name.
 ]]..
-level_data..
-[[
-]]
+level_data
 
     return ask(prompt,
     {
-      temperature = 0.9,
+      temperature = 1.2,
       num_predict = 12
     })
   end
@@ -184,7 +294,20 @@ level_data..
 
     local cur_level = table.copy(level_tab)
 
-    info = "Level theme: " .. cur_level.theme_name .. "\n"
+
+    local ascii_map = cur_level.ascii_map
+
+    info = "Level theme: " .. cur_level.theme_name .. "\n"..
+    "The following is an ASCII text map of the level.\n\n"..
+    ascii_map .. "\n\n"..
+    "Each character represents a grid space.\n"..
+    "Small letters refer to whole rooms. Capital letters refer to outdoors.\n"..
+    "Letters further in the alphabet represent rooms that are further from the starting position.\n"..
+    "Letters will just repeat if it reaches the end of the alphabet.\n"..
+    "Arrows represent stairs pointing to a destination, usually within the same area.\n"
+
+    -- get other info
+    info = info .. LLM_NAME.level_infos[cur_level.id]
 
 
     return info
@@ -202,7 +325,6 @@ level_data..
         if name then
           gui.printf("LLM Namer: Level name '" .. L.description .. "' substituted with '" .. name .. "'!\n")
           L.description = name
-
         end
       end
     end
@@ -213,7 +335,6 @@ end
 
 OB_MODULES["llm_namer"] =
 {
-
   name = "llm_namer",
 
   label = _("LLM Name Generator"),
@@ -226,6 +347,7 @@ OB_MODULES["llm_namer"] =
   hooks =
   {
     setup = LLM_NAME.setup,
+    end_level = LLM_NAME.get_some_info,
     pre_all_done = LLM_NAME.do_it
   },
 
