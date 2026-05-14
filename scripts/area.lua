@@ -2929,8 +2929,10 @@ function Area_create_rooms(LEVEL, SEEDS)
   Area_find_inner_points(LEVEL, SEEDS)
   Area_closet_edges(LEVEL, SEEDS)
 
-  gui.printf("Seed Map:\n")
-  Seed_dump_rooms(SEEDS)
+  gui.printf("Seed Map:\n\n")
+  local seed_map = Seed_dump_rooms(SEEDS)
+  GAME.levels[LEVEL.id].ascii_map = seed_map
+  gui.printf(seed_map .. "\n")
 
   for _,R in pairs(LEVEL.rooms) do
     gui.debugf("Final %s   size: %dx%d\n", R.name, R.sw, R.sh)

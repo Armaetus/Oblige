@@ -3388,30 +3388,6 @@ function Render_find_street_markings(LEVEL, SEEDS)
   LEVEL.road_marking_spots = {}
 
   local markable_seeds = 0
-  local marked_seeds = 0
-
-  local function debug_dump_seeds_by_table(mode)
-    local i, j
-    i = 1
-    j = 1
-    i_max = SEED_W
-    j_max = SEED_H
-    repeat
-      i = 1
-      repeat
-        S = SEEDS[i][j]
-        if not mode then
-          print(table.tostr(S))
-        elseif mode == "roads" then
-          if S.area and S.area.is_road then
-            print(table.tostr(S))
-          end
-        end
-        i = i + 1
-      until i >= i_max
-      j = j + 1
-    until j >= j_max
-  end
 
   local function update_seeds_table()
     for _,R in pairs(LEVEL.rooms) do
@@ -3427,7 +3403,7 @@ function Render_find_street_markings(LEVEL, SEEDS)
   end
 
   local function seed_from_nudge(seed, direction, distance)
-    x,y = geom.nudge(seed.sx, seed.sy, direction, distance)
+    local x,y = geom.nudge(seed.sx, seed.sy, direction, distance)
     return SEEDS[x][y]
   end
 

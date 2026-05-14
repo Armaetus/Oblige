@@ -751,6 +751,48 @@ end
 
 
 function Seed_dump_rooms(SEEDS)
+
+  local function crop_ascii_lines(lines)
+
+    local min_x = math.huge
+    local max_x = 0
+    local min_y = math.huge
+    local max_y = 0
+
+    -- find bounding box
+    for y, line in ipairs(lines) do
+
+      local first = line:find("%S")
+      local last  = line:match(".*()%S")
+
+      if first and last then
+
+        min_x = math.min(min_x, first)
+        max_x = math.max(max_x, last)
+
+        min_y = math.min(min_y, y)
+        max_y = math.max(max_y, y)
+      end
+    end
+
+    -- empty map
+    if min_x == math.huge then
+      return {}
+    end
+
+    local cropped = {}
+
+    for y = min_y, max_y do
+
+      local line = lines[y]
+
+      table.insert(cropped,
+        line:sub(min_x, max_x))
+    end
+
+    return cropped
+  end
+
   local function seed_to_char(S)
     if not S then return "!" end
     if S.custom then return S.custom end
@@ -791,16 +833,30 @@ function Seed_dump_rooms(SEEDS)
     return string.sub("ABCDEFGHIJKLMNOPQRSTUVWXYZ", n, n)
   end
 
+  -- collect all lines here
+  local lines = {}
+
   for y = SEED_H,1,-1 do
+
     local line = "  "
+
     for x = 1,SEED_W do
       line = line .. seed_to_char(SEEDS[x][y])
     end
+
     line = string.gsub(line, "  *$", "")
-    gui.printf("%s\n", line)
+
+    --gui.printf("%s\n", line)
+
+    table.insert(lines, line)
   end
 
-  gui.printf("\n")
+  --gui.printf("\n")
+
+  local cropped = crop_ascii_lines(lines)
+
+  -- return the entire ASCII map as one string
+  return table.concat(cropped, "\n")
 end
 
 
