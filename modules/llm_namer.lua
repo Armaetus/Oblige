@@ -29,6 +29,7 @@ function LLM_NAME.setup(self)
 end
 
 function LLM_NAME.get_some_info(self, lev)
+
   local function classify_ratio(ratio)
     if ratio > 0.99 then
       return "entirely"
@@ -43,6 +44,77 @@ function LLM_NAME.get_some_info(self, lev)
     return nil
   end
 
+  local function openness_description(v)
+
+    if v < 0.10 then
+      return rand.pick
+      {
+        "claustrophobic",
+        "cramped",
+        "suffocating",
+        "oppressive",
+        "extremely confined"
+      }
+
+    elseif v < 0.20 then
+      return rand.pick
+      {
+        "tight",
+        "narrow",
+        "confined",
+        "compressed",
+        "dense"
+      }
+
+    elseif v < 0.30 then
+      return rand.pick
+      {
+        "compact",
+        "structured",
+        "controlled",
+        "segmented"
+      }
+
+    elseif v < 0.40 then
+      return rand.pick
+      {
+        "balanced",
+        "moderately open",
+        "mixed",
+        "layered"
+      }
+
+    elseif v < 0.50 then
+      return rand.pick
+      {
+        "open",
+        "spacious",
+        "wide",
+        "expansive"
+      }
+
+    elseif v < 0.65 then
+      return rand.pick
+      {
+        "sprawling",
+        "broad",
+        "vast",
+        "sweeping"
+      }
+
+    else
+      return rand.pick
+      {
+        "massive",
+        "monumental",
+        "cavernous",
+        "boundless",
+        "immense"
+      }
+    end
+  end
+
+
   local info_str = ""
   local room_themes = {}
   local room_scores = 
@@ -53,11 +125,14 @@ function LLM_NAME.get_some_info(self, lev)
     cave_vol = 0
   }
   local total_vol = 0
+  local shape_rules = {}
+  local level_openness = 0
 
+  -- iterate through rooms to collect some data
   for _,R in pairs(lev.rooms) do
+
+    -- collect the used room themes    
     local tab
-
-
     if not R.is_outdoor then
       local tab_name
       tab = table.copy(R.theme)
@@ -67,8 +142,15 @@ function LLM_NAME.get_some_info(self, lev)
           tab_name = name
         end
       end
-      
+
       table.add_unique(room_themes, tab_name)
+    end
+
+    -- collect the used shape rules
+    if R.absurd_shapes then
+      for shape,_ in pairs(R.absurd_shapes) do
+        table.add_unique(shape_rules, shape)
+      end
     end
 
     -- count the volume of all rooms arranged by kind
@@ -85,6 +167,8 @@ function LLM_NAME.get_some_info(self, lev)
     if R:get_env() == "cave" then
       room_scores.cave_vol = room_scores.cave_vol + R.svolume
     end
+
+    level_openness = level_openness + R.openness
   end
 
   for factor,score in pairs(room_scores) do
@@ -95,19 +179,26 @@ function LLM_NAME.get_some_info(self, lev)
   local classification
   classification = classify_ratio(room_scores.outdoor_vol)
   if classification then
-    info_str = info_str .. "The map is " .. classification .. " outdoors. "
+    info_str = info_str .. "The map is " .. classification .. " outdoors.\n"
   end
   classification = classify_ratio(room_scores.building_vol)
   if classification then
-    info_str = info_str .. "The map is " .. classification .. " indoors. "
+    info_str = info_str .. "The map is " .. classification .. " indoors.\n"
   end
   classification = classify_ratio(room_scores.cave_vol)
   if classification then
-    info_str = info_str .. "The map is " .. classification .. " a cave. "
+    info_str = info_str .. "The map is " .. classification .. " a cave.\n"
   end
   classification = classify_ratio(room_scores.park_vol)
   if classification then
-    info_str = info_str .. "The map is " .. classification .. " a park. "
+    info_str = info_str .. "The map is " .. classification .. " natural terrain.\n"
+  end
+
+  if #shape_rules > 0 then
+    info_str = info_str .. "The map's layout is made of the following shape grammar rules with the following names: "
+    for _,rule in pairs(shape_rules) do
+      info_str = info_str .. "* " .. rule .. "\n"
+    end
   end
 
   info_str = info_str .. "\nRooms in the map have the following room themes: "
@@ -115,12 +206,45 @@ function LLM_NAME.get_some_info(self, lev)
     info_str = info_str .. "*" .. I .."\n"
   end
 
+  if lev.is_dark then
+    info_str = info_str .. "The level takes place during a dark night.\n"
+  end
+
+  level_openness = level_openness/#lev.rooms
+  info_str = info_str .. "The map has a " .. openness_description(level_openness) .. " layout.\n"
+
   if room_scores.outdoor_vol > 0.33 then
+    if lev.outdoor_wall_group and lev.outdoor_wall_group ~= "PLAIN" then
+      info_str = info_str .. "The outdoors use the " .. lev.outdoor_wall_group .. " prefab set.\n"
+    end
+  end
+
+  if room_scores.outdoor_vol > 0.5 then
     if lev.outdoor_theme then
+
       if lev.outdoor_theme == "snow" then
-        info_str = info_str .. "The level has cold, snowy outdoors.\n"
+
+        info_str = info_str ..
+          rand.pick
+          {
+            "The level has cold snowy outdoors.\n",
+            "The outdoors are frozen and snow covered.\n",
+            "The map takes place in a frigid snowy environment.\n",
+            "The exterior areas are icy and windswept.\n",
+            "The level features bleak frozen outdoors.\n"
+          }
+
       elseif lev.outdoor_theme == "sand" then
-        info_str = info_str .. "The level has hot, sandy desert outdoors.\n"
+
+        info_str = info_str ..
+          rand.pick
+          {
+            "The level has hot sandy desert outdoors.\n",
+            "The exterior areas are dry and desertlike.\n",
+            "The map takes place in a scorching desert environment.\n",
+            "The outdoors are dusty and sun blasted.\n",
+            "The level features arid sandy terrain.\n"
+          }
       end
     end
   end
@@ -140,7 +264,9 @@ function LLM_NAME.get_some_info(self, lev)
     end
   end
 
-  info_str = info_str .. "The original map name is '" .. lev.description .. "' and is only related as a " .. lev.theme_name ..  "-themed name.\n"
+  info_str = info_str .. "The original map name is '" .. lev.description .. "' and is only related as it is a " .. lev.theme_name ..  "-themed name.\n"
+
+  info_str = info_str .. "If the original map name sounds vaguely applicable enough given the context and/or just sounds plain cool, just write the same name!\n"
 
   LLM_NAME.level_infos[lev.id] = info_str
 end
@@ -327,7 +453,8 @@ level_data
     "Small letters refer to whole rooms. Capital letters refer to outdoors.\n"..
     "Letters further in the alphabet represent rooms that are further from the starting position.\n"..
     "Letters will just repeat if it reaches the end of the alphabet.\n"..
-    "Arrows represent stairs pointing to a destination, usually within the same area.\n"
+    "Arrows represent stairs pointing to a destination, usually within the same area.\n"..
+    "Try to infer a description of the layout based on the ASCII map too."
 
     -- get other info
     info = info .. LLM_NAME.level_infos[cur_level.id]
