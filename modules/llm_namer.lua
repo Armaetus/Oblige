@@ -22,6 +22,8 @@ LLM_NAME.model = "llama3.1:8b"
 
 LLM_NAME.endpoint = "http://127.0.0.1:11434/api/generate"
 
+LLM_NAME.test_endpoint = "http://127.0.0.1:11434/api/tags"
+
 LLM_NAME.level_infos = {}
 
 -- semantics translation table
@@ -135,6 +137,14 @@ LLM_NAME.semantics_grouping =
   gtd_generic_small_lite = "liminal_space",
   gtd_generic_artsy_lite_box = "liminal_space",
   gtd_generic_artsy_chequered = "liminal_space",
+  gtd_generic_ceilwall = "liminal_space",
+  gtd_generic_ceilwall_2 = "liminal_space",
+  gtd_generic_ceilwall_3 = "liminal_space",
+  gtd_generic_ceilwall_silver_frame = "liminal_space",
+  gtd_generic_ceilwall_double_silver_frame = "liminal_space",
+
+  gtd_wall_lit_h_window_tall_brown = "gtd_wall_lit_h_window_tall_gray",
+
 
   -- liquids
   otex_nukage = "nukage",
@@ -149,7 +159,7 @@ LLM_NAME.semantics =
 --[[ PRIMARY THEMES]]
   tech =
   {
-    "The level evokes a cold industrial megastructure.",
+    "The level evokes a foreboding industrial megastructure.",
     "The setting resembles a vast technological installation.",
     "The level feels mechanical, artificial, and industrial.",
     "The environment suggests a decaying high-tech complex.",
@@ -234,7 +244,8 @@ LLM_NAME.semantics =
   gtd_full_storage =
   {
     "packed storage sectors",
-    "industrial stockpiles"
+    "industrial stockpiles",
+    "overpacked warehouses"
   },
 
   gtd_wall_server_room =
@@ -585,12 +596,43 @@ LLM_NAME.semantics =
     "candelabra hallways"
   },
 
+  gtd_wall_lit_h_window_tall_gray =
+  {
+    "bare warehouse spaces",
+    "abandoned factory floors",
+    "emptied industrial chambers"
+  },
+
   liminal_space =
   {
-    "enigmatic transitional spaces",
-    "hauntingly elegant corridors",
-    "ethereal-looking halls",
-    "beautiful eerie empty zones"
+    -- pure liminality / void tone
+    "liminal, in-between architectural spaces",
+    "spaces that feel abandoned yet maintained",
+    "transitional environments with unclear purpose",
+    "quiet corridors between functional zones",
+
+    -- aesthetic uncanny
+    "hauntingly sterile interior spaces",
+    "strangely elegant empty corridors",
+    "uncannily clean and unoccupied halls",
+    "beautiful but unsettling architectural voids",
+
+    -- industrial liminality
+    "unfinished industrial corridors",
+    "maintenance spaces between major systems",
+    "service corridors with no clear destination",
+    "backstage infrastructure spaces",
+
+    -- spatial dislocation
+    "disorienting but orderly architectural interiors",
+    "spaces that feel partially constructed or erased",
+    "interior zones without narrative function",
+    "hallways that feel like memory fragments",
+
+    -- emotional neutrality
+    "quiet, unoccupied structural interiors",
+    "empty but structured architectural environments",
+    "minimal, non-descriptive interior spaces"
   },
 
 
@@ -615,7 +657,7 @@ LLM_NAME.semantics =
   tech_Doom3_all =
   {
     "harsh futuristic industry",
-    "cold UAC-style facilities",
+    "cold aerospace development facilities",
     "heavy sci-fi infrastructure"
   },
 
@@ -1478,6 +1520,21 @@ LLM_NAME.prompt_styles =
 }
 
 function LLM_NAME.setup(self)
+  local function ollama_is_alive(endpoint)
+    local cmd = 'curl -s --fail --max-time 2 ' .. endpoint
+    local pipe = io.popen(cmd)
+    if not pipe then return false end
+
+    local result = pipe:read("*a")
+    pipe:close()
+
+    return result ~= nil and result:match('"models"') ~= nil
+  end
+
+  if not ollama_is_alive(LLM_NAME.test_endpoint) then
+    error("LLM Namer: Could not detect Ollama instance.")
+  end
+
   module_param_up(self)
 end
 
@@ -1645,7 +1702,7 @@ function LLM_NAME.get_some_info(self, lev)
   local function add_ratio_line(key, label)
     local c = classify_ratio(room_scores[key])
     if c then
-      table.insert(lines, "The map is " .. c .. " " .. label .. ".\n")
+      table.insert(lines, "The map name is " .. c .. " " .. label .. ".\n")
     end
   end
 
@@ -1658,7 +1715,7 @@ function LLM_NAME.get_some_info(self, lev)
   -- SHAPES
   ----------------------------------------------------------------------
 
-  --[[if #shape_rules > 0 then
+  if #shape_rules > 0 then
     table.insert(lines,
       "The map's layout is made of the following shape grammar rules: "
     )
@@ -1668,7 +1725,7 @@ function LLM_NAME.get_some_info(self, lev)
     end
 
     table.insert(lines, "\n")
-  end]]
+  end
 
   ----------------------------------------------------------------------
   -- INDOOR DETAILS
@@ -1813,10 +1870,10 @@ function LLM_NAME.get_some_info(self, lev)
     table.insert(lines, Naming_grab_one(lev.name_class) .. "\n")
   end
 
-  table.insert(lines, "\n")
+  table.insert(lines, "\n\n")
 
   table.insert(lines,
-    "If the original name fits or sounds strong, reuse it.\n"
+    "If the original name fits the context enough or sounds strong overall, reuse it.\n"
   )
 
   ----------------------------------------------------------------------
@@ -1979,6 +2036,7 @@ Rules:
 - no explanation
 - no extra text
 - no quotes
+
 ]]..
 level_data
 
@@ -2028,12 +2086,18 @@ level_data
 
     for _,epi in pairs(GAME.episodes) do
       for _,L in pairs(epi.levels) do
-        local level_data = collect_level_data(L)
-        local name = generate_level_name(level_data, L.theme_name)
 
-        if name then
-          gui.printf("LLM Namer: Level name '" .. L.description .. "' substituted with '" .. name .. "'!\n")
-          L.description = name
+        if PARAM.bool_skip_boss_maps == 1 and L.is_procedural_gotcha then
+          -- do muffins
+        else
+          local level_data = collect_level_data(L)
+          local name = generate_level_name(level_data, L.theme_name)
+
+          if name then
+            gui.printf("LLM Namer: Level name '" .. L.description .. "' substituted with '" .. name .. "'!\n")
+            L.description = name
+          end
+
         end
       end
     end
@@ -2062,7 +2126,6 @@ OB_MODULES["llm_namer"] =
 
   options =
   {
-
     {
       name = "bool_llm_namer",
       label=_("LLM Name Generator"),
@@ -2076,6 +2139,15 @@ OB_MODULES["llm_namer"] =
         "The module DOES NOT SEND DATA outside of your PC. " ..
         "This module will not work if you do not have libcurl as it communicates in RESTful API style.\n\n"),
       priority = 100,
+    },
+
+    {
+      name = "bool_skip_boss_maps",
+      label = _("Skip Gotchas and Boss Maps"),
+      valuator = "button",
+      default = 1,
+      tooltip = _("Skips renaming Procedural Gotchas or Boss Maps when enabled."),
+      priority = 99
     }
   }
 }

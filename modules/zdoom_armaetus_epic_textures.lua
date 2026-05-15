@@ -799,32 +799,31 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.decide_environment_themes()
     end
   end
 
-  -- just like a bit mixed - every 2-6 levels, the theme will change
   if PARAM.environment_themes == "mixed" then
     local previous_theme
     local outdoor_theme_along
 
-    for _,L in pairs(GAME.levels) do
+    for _, L in pairs(GAME.levels) do
       if L.id == 1 then
-        L.outdoor_theme = rand.pick({"temperate","snow","desert"})
+        L.outdoor_theme = rand.pick({"temperate", "snow", "desert"})
         previous_theme = L.outdoor_theme
-        outdoor_theme_along = rand.irange(2,4)
+        outdoor_theme_along = rand.irange(2, 4)
       elseif L.id > 1 then
         -- continue the same theme until the countdown ends
         if outdoor_theme_along > 0 then
           L.outdoor_theme = previous_theme
           outdoor_theme_along = outdoor_theme_along - 1
-        -- decide a new theme when the countdown ends
-        -- logic goes that deserts cannot go to snow immediately
-        -- and vice versa
-        elseif outdoor_theme_along <= 0 then
+        else
+          -- decide a new theme when the countdown ends
+          -- logic: deserts cannot go to snow immediately and vice versa
           if previous_theme == "temperate" then
-            L.outdoor_theme = rand.pick({"snow","desert"})
+            L.outdoor_theme = rand.pick({"snow", "desert"})
           else
             L.outdoor_theme = "temperate"
           end
+
           previous_theme = L.outdoor_theme
-          outdoor_theme_along = rand.irange(2,4)
+          outdoor_theme_along = rand.irange(2, 4)
         end
       end
     end

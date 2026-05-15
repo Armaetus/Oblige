@@ -2740,7 +2740,10 @@ OB_MODULES["modded_game_extras"] =
       label=_("Custom Actor Names"),
       valuator = "button",
       default = 0,
-      tooltip = _("Renames tags of monsters with generated names. Humans recieve human names, demons recieve exotic names.\nBest used with TargetSpy or other healthbar mods to see the name.\nUses class inheritance and string comparisons to determine monster species (human or demon). Use compatibility options only when necessary, preferably use Universal option instead."),
+      tooltip = _("Renames tags of monsters with generated names. Humans recieve human names, demons recieve exotic names.\n"..
+      "Best used with TargetSpy or other healthbar mods to see the name.\n"..
+      "Uses class inheritance and string comparisons to determine monster species (human or demon). "..
+      "Use compatibility options only when necessary, preferably use Universal option instead."),
       priority = 4,
     },
 
