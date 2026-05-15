@@ -41,6 +41,7 @@ LLM_NAME.semantics_grouping =
   torches5 = "torches",
   torches6 = "torches",
   torches7 = "torches",
+  torches8 = "torches",
   torches9 = "torches",
   torches10 = "torches",
   torches11 = "torches",
@@ -116,8 +117,12 @@ LLM_NAME.semantics_grouping =
   gtd_wall_gothic_bottom_glass = "gtd_wall_churchy_glass",
 
   armaetus_catacobm_wall_set = "gtd_wall_hell_ossuary",
-  armaetus_catacombs_brown = "gtd_wall_hell_ossuary"
+  armaetus_catacombs_brown = "gtd_wall_hell_ossuary",
 
+  gtd_wall_hell_engraving_1 = "gtd_wall_marbface",
+  gtd_wall_hell_engraving_2 = "gtd_wall_marbface",
+  gtd_wall_hell_engraving_3 = "gtd_wall_marbface",
+  gtd_wall_hell_engraving_top_band = "gtd_wall_marbface"
 }
 
 LLM_NAME.semantics =
@@ -495,7 +500,8 @@ LLM_NAME.semantics =
   gtd_wall_marbface =
   {
     "marble gargoyle sculptures",
-    "hellish relief statues"
+    "hellish relief statues",
+    "eerie demonic stone figures"
   },
 
   gtd_wall_hell_mindscrew =
@@ -593,12 +599,7 @@ function LLM_NAME.get_some_info(self, lev)
     local tab = R.theme
     if not tab then return end
 
-    for name, info in pairs(tab) do
-      if type(info) == "table" then
-        table.add_unique(room_themes, name)
-        break
-      end
-    end
+    table.add_unique(room_themes, tab.name)
   end
 
   local function add_shape_rules(R)
@@ -672,7 +673,7 @@ function LLM_NAME.get_some_info(self, lev)
   table.insert(lines, "Examples from our internal generator:\n")
 
   for i = 1, 5 do
-    table.insert(lines, Naming_grab_one(lev.name_class))
+    table.insert(lines, Naming_grab_one(lev.name_class) .. "\n")
   end
 
   table.insert(lines, "\n")
@@ -703,7 +704,7 @@ function LLM_NAME.get_some_info(self, lev)
     )
 
     for _, rule in ipairs(shape_rules) do
-      table.insert(lines, "* " .. rule)
+      table.insert(lines, "* " .. rule .. "\n")
     end
 
     table.insert(lines, "\n")
@@ -713,11 +714,11 @@ function LLM_NAME.get_some_info(self, lev)
   -- THEMES
   ----------------------------------------------------------------------
 
-  if room_scores.outdoor_vol < 0.5 and #room_themes > 0 then
+  if room_scores.outdoor_vol < 0.75 and #room_themes > 0 then
     table.insert(lines, "Room themes:\n")
 
-    for _, t in ipairs(room_themes) do
-      table.insert(lines, "* " .. get_semantic(t))
+    for _, t in pairs(room_themes) do
+      table.insert(lines, "* " .. t)
     end
 
     table.insert(lines, "\n")
@@ -801,7 +802,7 @@ function LLM_NAME.get_some_info(self, lev)
     table.insert(lines, "Prefab set usage:\n")
 
     for prefab in pairs(lev.preferred_wall_groups[lev.theme_name]) do
-      table.insert(lines, "* " .. get_semantic(prefab))
+      table.insert(lines, "* " .. get_semantic(prefab) .. "\n")
     end
   end
 
@@ -887,9 +888,9 @@ function LLM_NAME.do_it()
     file:close()
 
     local cmd =
-      'start /b curl --max-time 30 -sS ' ..
-      '-H "Content-Type: application/json" ' ..
-      LLM_NAME.endpoint ..
+      'start "" /b curl --max-time 30 -sS ' ..
+      '-H "Content-Type: application/json" '..
+      '"' .. LLM_NAME.endpoint .. '"' ..
       ' -d @ollama_payload.json'
 
     gui.printf("\nCommand:\n\n")
@@ -990,16 +991,18 @@ level_data
 
     local ascii_map = cur_level.ascii_map
 
-    info = "Level theme: " .. cur_level.theme_name .. "\n"--[[..
-    "The following is an ASCII text map of the level.\n\n"..
+    info = "Level theme: " .. cur_level.theme_name .. "\n" ..
+    "The following is a top-down visual map of the level but as ASCII text.\n\n"..
     ascii_map .. "\n\n"..
     "Each character represents a grid space.\n"..
-    "Small letters refer to whole rooms. Capital letters refer to outdoors.\n"..
-    "Letters further in the alphabet represent rooms that are further from the starting position.\n"..
-    "Letters will just repeat if it reaches the end of the alphabet.\n"..
-    "Some rooms in the ASCII map may occasionally show diagonals.\n"..
-    "Arrows represent stairs pointing to a destination, usually within the same area.\n"..
-    "Try to infer a description of the layout based on the ASCII map too."]]
+    "Small letters - an indoor room.\n"..
+    "Big letters - an outdoor room.\n"..
+    "Letters are sequential and the same letters represent the same room only.\n"..
+    "/ and \\ - diagonal walls.\n"..
+    "^ > v < - directional stairs in the same room.\n"..
+    "~ - liquids, if present.\n" ..
+    "# - point of interest along a wall.\n" ..
+    "Try to infer a description of the layout based on the ASCII map too.\n"
 
     -- get other info
     info = info .. LLM_NAME.level_infos[cur_level.id]
