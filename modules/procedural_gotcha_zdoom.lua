@@ -1539,14 +1539,14 @@ function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.all_done()
 
   if PARAM.boss_count <= 1 then
     -- nothing happens and everyone is just sad
-    warning("No procedural gotchas found by boss generator")
+    warning("No procedural gotchas found by boss generator\n")
     PARAM.boss_count = -1
     return
   end
 
   if PARAM.float_mons == 0 then
     -- no monsters, no boss, duh
-    warning("No monsters found by boss generator")
+    warning("No monsters found by boss generator\n")
     PARAM.boss_count = -1
     return
   end
