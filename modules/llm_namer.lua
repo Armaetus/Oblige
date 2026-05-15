@@ -893,9 +893,9 @@ function LLM_NAME.do_it()
       '"' .. LLM_NAME.endpoint .. '"' ..
       ' -d @ollama_payload.json'
 
-    gui.printf("\nCommand:\n\n")
-    gui.printf(cmd)
-    gui.printf("\n")
+    gui.debugf("\nCommand:\n\n")
+    gui.debugf(cmd)
+    gui.debugf("\n")
 
     local pipe = io.popen(cmd)
 
@@ -908,7 +908,7 @@ function LLM_NAME.do_it()
 
     pipe:close()
 
-    gui.printf("LLM Namer: Raw response:\n%s\n", result)
+    gui.debugf("LLM Namer: Raw response:\n%s\n", result)
 
     return result
   end
@@ -946,7 +946,7 @@ function LLM_NAME.do_it()
 
     local response = extract_response(raw)
 
-    gui.printf("LLM Namer: Parsed response:\n" .. response .. "\n")
+    gui.debugf("LLM Namer: Parsed response:\n" .. response .. "\n")
 
     if not response then
       return nil
