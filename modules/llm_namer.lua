@@ -528,273 +528,300 @@ end
 
 function LLM_NAME.get_some_info(self, lev)
 
+  ----------------------------------------------------------------------
+  -- SEMANTIC HELPERS
+  ----------------------------------------------------------------------
+
   local function get_semantic(v)
-    local term = v
+    local term = LLM_NAME.semantics_grouping[v] or v
+    local pool = LLM_NAME.semantics[term]
 
-    if LLM_NAME.semantics_grouping[term] then
-      term = LLM_NAME.semantics_grouping[term]
-    end
-
-    if LLM_NAME.semantics[term] then
-      term = rand.pick(LLM_NAME.semantics[term])
+    if pool then
+      return rand.pick(pool)
     end
 
     return term
   end
 
   local function classify_ratio(ratio)
-    if ratio > 0.99 then
-      return "entirely"
-    elseif ratio > 0.8 then
-      return "almost entirely"
-    elseif ratio > 0.6 then
-      return "mostly"
-    elseif ratio > 0.4 then
-      return "roughly half"
+    if ratio > 0.99 then return "entirely"
+    elseif ratio > 0.8 then return "almost entirely"
+    elseif ratio > 0.6 then return "mostly"
+    elseif ratio > 0.4 then return "roughly half"
     end
-
     return nil
   end
 
   local function openness_description(v)
-
     if v < 0.10 then
-      return rand.pick
-      {
-        "claustrophobic",
-        "cramped",
-        "suffocating",
-        "oppressive",
-        "extremely confined"
-      }
-
+      return rand.pick({ "claustrophobic", "cramped", "suffocating", "oppressive", "extremely confined" })
     elseif v < 0.20 then
-      return rand.pick
-      {
-        "tight",
-        "narrow",
-        "confined",
-        "compressed",
-        "dense"
-      }
-
+      return rand.pick({ "tight", "narrow", "confined", "compressed", "dense" })
     elseif v < 0.30 then
-      return rand.pick
-      {
-        "compact",
-        "structured",
-        "controlled",
-        "segmented"
-      }
-
+      return rand.pick({ "compact", "structured", "controlled", "segmented" })
     elseif v < 0.40 then
-      return rand.pick
-      {
-        "balanced",
-        "moderately open",
-        "mixed",
-        "layered"
-      }
-
+      return rand.pick({ "balanced", "moderately open", "mixed", "layered" })
     elseif v < 0.50 then
-      return rand.pick
-      {
-        "open",
-        "spacious",
-        "wide",
-        "expansive"
-      }
-
+      return rand.pick({ "open", "spacious", "wide", "expansive" })
     elseif v < 0.65 then
-      return rand.pick
-      {
-        "sprawling",
-        "broad",
-        "vast",
-        "sweeping"
-      }
-
+      return rand.pick({ "sprawling", "broad", "vast", "sweeping" })
     else
-      return rand.pick
-      {
-        "massive",
-        "monumental",
-        "cavernous",
-        "boundless",
-        "immense"
-      }
+      return rand.pick({ "massive", "monumental", "cavernous", "boundless", "immense" })
     end
   end
 
-
-  local info_str = 
-    "The following information is the level metadata for context. " ..
-    "Be creative and avoid using words from the metadata. " ..
-    "Use it only as context for a unique name.\n"
+  ----------------------------------------------------------------------
+  -- DATA COLLECTION
+  ----------------------------------------------------------------------
 
   local room_themes = {}
-  local room_scores = 
-  {
+  local shape_rules = {}
+
+  local room_scores = {
     outdoor_vol = 0,
     building_vol = 0,
     park_vol = 0,
     cave_vol = 0
   }
+
   local total_vol = 0
-  local shape_rules = {}
   local level_openness = 0
 
-  -- grab some examples names from our generator
-  info_str = info_str .. "Examples from our internal generator:\n"
-  for i=1 , 5 do
-    info_str = info_str .. Naming_grab_one(lev.name_class) .. "\n"
-  end
-  info_str = info_str .. "\n"
+  local function add_room_theme(R)
+    if R.is_outdoor then return end
 
-  -- iterate through rooms to collect some data
-  for _,R in pairs(lev.rooms) do
+    local tab = R.theme
+    if not tab then return end
 
-    -- collect the used room themes    
-    local tab
-    if not R.is_outdoor then
-      local tab_name
-      tab = table.copy(R.theme)
-
-      for name,info in pairs(tab) do
-        if type(info) == "table" then
-          tab_name = name
-        end
-      end
-
-      table.add_unique(room_themes, tab_name)
-    end
-
-    -- collect the used shape rules
-    if R.absurd_shapes then
-      for shape,_ in pairs(R.absurd_shapes) do
-        table.add_unique(shape_rules, shape)
+    for name, info in pairs(tab) do
+      if type(info) == "table" then
+        table.add_unique(room_themes, name)
+        break
       end
     end
-
-    -- count the volume of all rooms arranged by kind
-    total_vol = total_vol + R.svolume
-    if R.is_outdoor then 
-      room_scores.outdoor_vol = room_scores.outdoor_vol + R.svolume
-    end
-    if R:get_env() == "building" then
-      room_scores.building_vol = room_scores.building_vol + R.svolume
-    end
-    if R:get_env() == "park" then
-      room_scores.park_vol = room_scores.park_vol + R.svolume
-    end
-    if R:get_env() == "cave" then
-      room_scores.cave_vol = room_scores.cave_vol + R.svolume
-    end
-
-    level_openness = level_openness + R.openness
   end
 
-  for factor,score in pairs(room_scores) do
-    room_scores[factor] = score / total_vol
+  local function add_shape_rules(R)
+    if not R.absurd_shapes then return end
+
+    for shape in pairs(R.absurd_shapes) do
+      table.add_unique(shape_rules, shape)
+    end
   end
 
-  -- create the info strings for what kind rooms we have
-  local classification
-  classification = classify_ratio(room_scores.outdoor_vol)
-  if classification then
-    info_str = info_str .. "The map is " .. classification .. " outdoors.\n"
+  local function accumulate_volume(R)
+    local v = R.svolume or 0
+    total_vol = total_vol + v
+
+    if R.is_outdoor then
+      room_scores.outdoor_vol = room_scores.outdoor_vol + v
+    end
+
+    local env = R.get_env and R:get_env()
+
+    if env == "building" then
+      room_scores.building_vol = room_scores.building_vol + v
+    elseif env == "park" then
+      room_scores.park_vol = room_scores.park_vol + v
+    elseif env == "cave" then
+      room_scores.cave_vol = room_scores.cave_vol + v
+    end
   end
-  classification = classify_ratio(room_scores.building_vol)
-  if classification then
-    info_str = info_str .. "The map is " .. classification .. " indoors.\n"
+
+  ----------------------------------------------------------------------
+  -- MAIN LOOP
+  ----------------------------------------------------------------------
+
+  for _, R in pairs(lev.rooms) do
+    add_room_theme(R)
+    add_shape_rules(R)
+    accumulate_volume(R)
+
+    level_openness = level_openness + (R.openness or 0)
   end
-  classification = classify_ratio(room_scores.cave_vol)
-  if classification then
-    info_str = info_str .. "The map is " .. classification .. " a cave.\n"
+
+  ----------------------------------------------------------------------
+  -- NORMALISE SCORES
+  ----------------------------------------------------------------------
+
+  if total_vol > 0 then
+    for k, v in pairs(room_scores) do
+      room_scores[k] = v / total_vol
+    end
   end
-  classification = classify_ratio(room_scores.park_vol)
-  if classification then
-    info_str = info_str .. "The map is " .. classification .. " natural terrain.\n"
+
+  local room_count = #lev.rooms
+  level_openness = room_count > 0 and (level_openness / room_count) or 0
+
+  ----------------------------------------------------------------------
+  -- BUILD PROMPT
+  ----------------------------------------------------------------------
+
+  local lines = {}
+
+  table.insert(lines,
+    "The following information is the level metadata for context. " ..
+    "Be creative and avoid using words from the metadata. " ..
+    "Use it only as context for a unique name.\n"
+  )
+
+  ----------------------------------------------------------------------
+  -- EXAMPLES
+  ----------------------------------------------------------------------
+
+  table.insert(lines, "Examples from our internal generator:\n")
+
+  for i = 1, 5 do
+    table.insert(lines, Naming_grab_one(lev.name_class))
   end
+
+  table.insert(lines, "\n")
+
+  ----------------------------------------------------------------------
+  -- ROOM DISTRIBUTION
+  ----------------------------------------------------------------------
+
+  local function add_ratio_line(key, label)
+    local c = classify_ratio(room_scores[key])
+    if c then
+      table.insert(lines, "The map is " .. c .. " " .. label .. ".\n")
+    end
+  end
+
+  add_ratio_line("outdoor_vol", "outdoors")
+  add_ratio_line("building_vol", "indoors")
+  add_ratio_line("cave_vol", "a cave")
+  add_ratio_line("park_vol", "natural terrain")
+
+  ----------------------------------------------------------------------
+  -- SHAPES
+  ----------------------------------------------------------------------
 
   if #shape_rules > 0 then
-    info_str = info_str .. "The map's layout is made of the following shape grammar rules with the following names: "
-    for _,rule in pairs(shape_rules) do
-      info_str = info_str .. "* " .. rule .. "\n"
+    table.insert(lines,
+      "The map's layout is made of the following shape grammar rules: "
+    )
+
+    for _, rule in ipairs(shape_rules) do
+      table.insert(lines, "* " .. rule)
     end
+
+    table.insert(lines, "\n")
   end
 
-  if room_scores.outdoor_vol < 0.5 then
-    info_str = info_str .. "\nRooms in the map have the following room themes: "
-    for _,I in ipairs(room_themes) do
-      info_str = info_str .. "*" .. get_semantic(I) .."\n"
+  ----------------------------------------------------------------------
+  -- THEMES
+  ----------------------------------------------------------------------
+
+  if room_scores.outdoor_vol < 0.5 and #room_themes > 0 then
+    table.insert(lines, "Room themes:\n")
+
+    for _, t in ipairs(room_themes) do
+      table.insert(lines, "* " .. get_semantic(t))
     end
+
+    table.insert(lines, "\n")
   end
+
+  ----------------------------------------------------------------------
+  -- ENVIRONMENT FLAGS
+  ----------------------------------------------------------------------
 
   if lev.is_dark then
-    info_str = info_str .. "The level takes place during a dark night.\n"
+    table.insert(lines, "The level takes place during a dark night.\n")
   end
 
-  level_openness = level_openness/#lev.rooms
-  info_str = info_str .. "The map has a " .. openness_description(level_openness) .. " layout.\n"
+  table.insert(lines,
+    "The map has a " .. openness_description(level_openness) .. " layout.\n"
+  )
+
+  ----------------------------------------------------------------------
+  -- OUTDOOR DETAILING
+  ----------------------------------------------------------------------
 
   if room_scores.outdoor_vol > 0.33 then
     if lev.outdoor_wall_group and lev.outdoor_wall_group ~= "PLAIN" then
-      info_str = info_str .. "The outdoors use the " .. lev.outdoor_wall_group .. " prefab set.\n"
+      table.insert(lines,
+        "The outdoors use the " .. lev.outdoor_wall_group .. " prefab set.\n"
+      )
     end
   end
 
-  if room_scores.outdoor_vol > 0.5 then
-    if lev.outdoor_theme then
+  if room_scores.outdoor_vol > 0.5 and lev.outdoor_theme then
+    local theme_lines = nil
 
-      if lev.outdoor_theme == "snow" then
+    if lev.outdoor_theme == "snow" then
+      theme_lines = {
+        "The exterior is frozen and snow covered.\n",
+        "The map takes place in a frigid snowy environment.\n",
+        "The outdoors are icy and windswept.\n"
+      }
 
-        info_str = info_str ..
-          rand.pick
-          {
-            "The level has cold snowy outdoors.\n",
-            "The outdoors are frozen and snow covered.\n",
-            "The map takes place in a frigid snowy environment.\n",
-            "The exterior areas are icy and windswept.\n",
-            "The level features bleak frozen outdoors.\n"
-          }
+    elseif lev.outdoor_theme == "sand" then
+      theme_lines = {
+        "The map takes place in a scorching desert environment.\n",
+        "The outdoors are dusty and sun blasted.\n",
+        "The exterior is dry and desertlike.\n"
+      }
+    end
 
-      elseif lev.outdoor_theme == "sand" then
-
-        info_str = info_str ..
-          rand.pick
-          {
-            "The level has hot sandy desert outdoors.\n",
-            "The exterior areas are dry and desertlike.\n",
-            "The map takes place in a scorching desert environment.\n",
-            "The outdoors are dusty and sun blasted.\n",
-            "The level features arid sandy terrain.\n"
-          }
-      end
+    if theme_lines then
+      table.insert(lines, rand.pick(theme_lines))
     end
   end
+
+  ----------------------------------------------------------------------
+  -- LIQUIDS
+  ----------------------------------------------------------------------
 
   if lev.liquid_usage ~= 0 then
-    info_str = info_str .. "The level contains  " ..
-    rand.pick({"pools","open pits","basins","rivers","channels","reservoirs"}) ..
-    " of " .. lev.liquid.name .. ".\n"
+    table.insert(lines,
+      "The level contains " ..
+      rand.pick({ "pools", "open pits", "basins", "rivers", "channels", "reservoirs" }) ..
+      " of " .. lev.liquid.name .. ".\n"
+    )
   end
+
+  ----------------------------------------------------------------------
+  -- STREET FLAG
+  ----------------------------------------------------------------------
 
   if lev.has_streets then
-    info_str = info_str .. "There's a lot of city streets in the level."
+    table.insert(lines, "The level contains extensive city streets.\n")
   end
 
-  if lev.preferred_wall_groups and room_scores.building_vol > 0.33 then
-    info_str = info_str .. "The following prefab set is found throughout the level: "
-    for prefab,prob in pairs(lev.preferred_wall_groups[lev.theme_name]) do
-      info_str = info_str .. "* " .. get_semantic(prefab) .. "\n"
+  ----------------------------------------------------------------------
+  -- PREFABS
+  ----------------------------------------------------------------------
+
+  if lev.preferred_wall_groups
+    and lev.preferred_wall_groups[lev.theme_name]
+    and room_scores.building_vol > 0.33 then
+
+    table.insert(lines, "Prefab set usage:\n")
+
+    for prefab in pairs(lev.preferred_wall_groups[lev.theme_name]) do
+      table.insert(lines, "* " .. get_semantic(prefab))
     end
   end
 
-  info_str = info_str .. "The original map name is '" .. lev.description .. "' and is only related as it is a " .. lev.theme_name ..  "-themed name.\n"
+  ----------------------------------------------------------------------
+  -- ORIGINAL NAME
+  ----------------------------------------------------------------------
 
-  info_str = info_str .. "If the original map name sounds vaguely applicable enough given the context and/or just sounds plain cool, just write the same name!\n"
+  table.insert(lines,
+    "Original map name: '" .. lev.description .. "' (theme: " .. lev.theme_name .. ")\n"
+  )
 
+  table.insert(lines,
+    "If the original name fits or sounds strong, you may reuse it.\n"
+  )
+
+  ----------------------------------------------------------------------
+  -- FINAL OUTPUT
+  ----------------------------------------------------------------------
+
+  local info_str = table.concat(lines)
   LLM_NAME.level_infos[lev.id] = info_str
 end
 
@@ -860,7 +887,7 @@ function LLM_NAME.do_it()
     file:close()
 
     local cmd =
-      'curl --max-time 30 -s ' ..
+      'start /b curl --max-time 30 -sS ' ..
       '-H "Content-Type: application/json" ' ..
       LLM_NAME.endpoint ..
       ' -d @ollama_payload.json'
@@ -961,10 +988,9 @@ level_data
 
     local cur_level = table.copy(level_tab)
 
-
     local ascii_map = cur_level.ascii_map
 
-    info = "Level theme: " .. cur_level.theme_name .. "\n"..
+    info = "Level theme: " .. cur_level.theme_name .. "\n"--[[..
     "The following is an ASCII text map of the level.\n\n"..
     ascii_map .. "\n\n"..
     "Each character represents a grid space.\n"..
@@ -973,7 +999,7 @@ level_data
     "Letters will just repeat if it reaches the end of the alphabet.\n"..
     "Some rooms in the ASCII map may occasionally show diagonals.\n"..
     "Arrows represent stairs pointing to a destination, usually within the same area.\n"..
-    "Try to infer a description of the layout based on the ASCII map too."
+    "Try to infer a description of the layout based on the ASCII map too."]]
 
     -- get other info
     info = info .. LLM_NAME.level_infos[cur_level.id]
@@ -1032,10 +1058,10 @@ OB_MODULES["llm_namer"] =
       longtip = _("Uses Ollama to generate a name for a level by sending level metadata to Ollama. " ..
         "Default model is llama3.1:8b. Using a different model or LLM platform requires modification of the script. " ..
         "To use this, just download Ollama and llama3.1:8b and keep it running all at default settings.\n\n" ..
-        "This module uses Lua io:popen to access cURL, and may cause CMD to briefly appear. This is normal behavior.\n\n" ..
+        "This module uses Lua io.popen to access cURL, and may cause CMD to briefly appear. This is normal behavior.\n\n" ..
         "The module DOES NOT SEND DATA outside of your PC. " ..
         "This module will not work if you do not have libcurl as it communicates in RESTful API style.\n\n"),
       priority = 100,
-    },
+    }
   }
 }
