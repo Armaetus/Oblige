@@ -5889,11 +5889,11 @@ OBS_RESOURCE_PACK_THEMES =
       gtd_tall_glass_epic_red = 15,
       gtd_tall_glass_epic_blue = 15,
       gtd_wall_churchy_glass = 30,
+      gtd_winglass_wall = 50,
       --
       armaetus_catacomb_wall_set = 50,
       armaetus_catacombs_brown = 50,
       --
-      gtd_winglass_wall = 50,
       gtd_collite_set_green = 6,
       gtd_collite_set_orange = 6,
       gtd_collite_set_blue = 6,

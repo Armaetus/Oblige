@@ -392,7 +392,7 @@ OTEX_SPECIAL_RESOURCES =
   liquid_defs =
   {
     otex_blood = { mat="OBLODA01", special=0},
-    otex_goop = { mat="OGOOPY01", light_add=16, special=0},
+    otex_purple_goop = { mat="OGOOPY01", light_add=16, special=0},
     otex_ice = { mat="OICYWA01", light_add=8, special=0},
 
     otex_lavaA1 = { mat="OLAVAA01", light_add=56, special=5, damage=10},
@@ -415,7 +415,7 @@ OTEX_SPECIAL_RESOURCES =
   {
     tech =
     {
-      otex_goop = 10,
+      otex_purple_goop = 10,
       otex_ice = 20,
 
       otex_lavaA1 = 3,
@@ -436,7 +436,7 @@ OTEX_SPECIAL_RESOURCES =
     urban =
     {
       otex_blood = 20,
-      otex_goop = 10,
+      otex_purple_goop = 10,
       otex_ice = 20,
 
       otex_lavaA1 = 2,
@@ -457,7 +457,7 @@ OTEX_SPECIAL_RESOURCES =
     hell =
     {
       otex_blood = 70,
-      otex_goop = 10,
+      otex_purple_goop = 10,
       otex_ice = 20,
 
       otex_lavaA1 = 12,

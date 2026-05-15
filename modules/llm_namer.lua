@@ -24,11 +24,523 @@ LLM_NAME.endpoint = "http://127.0.0.1:11434/api/generate"
 
 LLM_NAME.level_infos = {}
 
+-- semantics translation table
+LLM_NAME.semantics_grouping =
+{
+  low_gap2 = "low_gap",
+  low_gap3 = "low_gap",
+  low_gap4 = "low_gap",
+
+  mid_band2 = "mid_band",
+
+  lite2 = "lite1",
+
+  torches1 = "torches",
+  torches2 = "torches",
+  torches4 = "torches",
+  torches5 = "torches",
+  torches6 = "torches",
+  torches7 = "torches",
+  torches9 = "torches",
+  torches10 = "torches",
+  torches11 = "torches",
+
+  runes2 = "runes1",
+  runes3 = "runes1",
+  runes4 = "runes1",
+  runes5 = "runes1",
+
+  cross2 = "cross1",
+  cross3 = "cross1",
+  cross4 = "cross1",
+  cross5 = "cross1",
+
+  gtd_wall_tech_top_corner_light_set = "gtd_ribbed_lights",
+  gtd_ribbed_lights_no3d = "gtd_ribbed_lights",
+  gtd_ribbed_lights_slump = "gtd_ribbed_lights",
+  gtd_ribbed_lights_slump_two_color = "gtd_ribbed_lights",
+  gtd_ribbed_lights_very_blue = "gtd_ribbed_lights",
+
+  gtd_ribbed_lights_tekmachine = "gtd_ribbed_lights_tekmachine",
+  gtd_ribbed_lights_tekmachine_alt = "gtd_ribbed_lights_tekmachine",
+
+  gtd_woodframe_green = "gtd_woodframe",
+  gtd_woodframe_alt = "gtd_woodframe",
+  gtd_woodframe_alt_green = "gtd_woodframe",
+
+  gtd_generic_tek_grate_bottom_slope = "gtd_generic_tek_grate",
+  gtd_generic_tek_grate_xit_machine = "gtd_generic_tek_grate",
+  gtd_wall_grated_machines_epic = "gtd_generic_tek_grate",
+
+  gtd_ind_modwall_2 = "gtd_ind_modwall_1",
+  gtd_ind_modwall_3 = "gtd_ind_modwall_1",
+
+  gtd_sunderfall_barred = "gtd_sunderfall",
+
+  gtd_gothic_ceilwall_arch = "gtd_gothic_ceilwall",
+  gtd_gothic_ceilwall_doublet_arch = "gtd_gothic_ceilwall",
+  gtd_gothic_ceilwall_braced_arch = "gtd_gothic_ceilwall",
+  gtd_gothic_ceilwall_xzibit_arch = "gtd_gothic_ceilwall",
+  gtd_gothic_ceilwall_inner_framed_arch = "gtd_gothic_ceilwall",
+
+  gtd_wall_quakish_insets = "gtd_modquake_set",
+
+  gtd_wall_hell_mindscrew_skywall = "gtd_wall_hell_mindscrew",
+
+  gtd_power_plant_red_set = "gtd_power_plant_set",
+
+  gtd_computers_shawn = "gtd_computers",
+  gtd_computers_compsta = "gtd_computers",
+  gtd_comp_set_yellow_EPIC = "gtd_computers",
+  gtd_comp_set_green_EPIC = "gtd_computers",
+  gtd_comp_set_red_EPIC = "gtd_computers",
+  gtd_comptil_plain_red = "gtd_computers",
+  gtd_comptil_plain_green = "gtd_computers",
+  gtd_comptil_plain_yellow = "gtd_computers",
+  gtd_comptil_plain_purple = "gtd_computers",
+  gtd_comptil_plain_blue = "gtd_computers",
+  gtd_comptil_lite_red = "gtd_computers",
+  gtd_comptil_lite_green = "gtd_computers",
+  gtd_comptil_lite_yellow = "gtd_computers",
+  gtd_comptil_lite_purple = "gtd_computers",
+  gtd_comptil_lite_blue = "gtd_computers",
+
+  dem_wall_commercial = "gtd_grocery",
+  gtd_grocery_2 = "gtd_grocery",
+
+  gtd_tall_glass_epic_yellow = "gtd_wall_churchy_glass",
+  gtd_tall_glass_epic_orange = "gtd_wall_churchy_glass",
+  gtd_tall_glass_epic_red = "gtd_wall_churchy_glass",
+  gtd_tall_glass_epic_blue = "gtd_wall_churchy_glass",
+  gtd_winglass_wall = "gtd_wall_churchy_glass",
+  gtd_wall_gothic_bottom_glass = "gtd_wall_churchy_glass",
+
+  armaetus_catacobm_wall_set = "gtd_wall_hell_ossuary",
+  armaetus_catacombs_brown = "gtd_wall_hell_ossuary"
+
+}
+
+LLM_NAME.semantics =
+{
+  -- [[ WALL GROUPS ]]
+
+  -- TECH --
+  low_gap =
+  {
+    "narrow industrial spacing",
+    "compressed architecture"
+  },
+
+  mid_band =
+  {
+    "layered industrial walls",
+    "banded structural design"
+  },
+
+  lite1 =
+  {
+    "artificial lighting",
+    "illuminated interiors"
+  },
+
+  torches =
+  {
+    "ritual lighting",
+    "ominous flames",
+    "torchlit interiors"
+  },
+
+  gtd_wall_urban_storage =
+  {
+    "storage infrastructure",
+    "industrial warehouses",
+    "cargo facilities"
+  },
+
+  gtd_DMV_set =
+  {
+    "bureaucratic office halls",
+    "sterile civic waiting rooms",
+    "government processing offices"
+  },
+
+  gtd_full_storage =
+  {
+    "packed storage sectors",
+    "industrial stockpiles"
+  },
+
+  gtd_wall_server_room =
+  {
+    "server facilities",
+    "computer infrastructure",
+    "data processing systems"
+  },
+
+  gtd_data_center =
+  {
+    "massive data centers",
+    "digital infrastructure",
+    "machine archives"
+  },
+
+  gtd_computers =
+  {
+    "computerized facilities",
+    "industrial control systems",
+    "surveillance infrastructure",
+    "machine monitoring stations"
+  },
+
+  gtd_writhing_mass =
+  {
+    "hellified organic masses",
+    "infernal overgrowth"
+  },
+
+  gtd_wall_sewer =
+  {
+    "sewer infrastructure",
+    "industrial drainage systems",
+    "waste processing"
+  },
+
+  gtd_water_purifier =
+  {
+    "water treatment systems",
+    "purification facilities"
+  },
+
+  gtd_nukage_aquarium =
+  {
+    "toxic containment systems",
+    "industrial chemical reservoirs"
+  },
+
+  gtd_toilet_gallery =
+  {
+    "industrial sanitation systems",
+    "vast plumbing infrastructure",
+    "sterile maintenance facilities"
+  },
+
+  gtd_modquake_set =
+  {
+    "heavy brutalist architecture",
+    "massive industrial geometry"
+  },
+
+  gtd_ribbed_lights =
+  {
+    "ribbed illuminated machinery",
+    "glowing industrial structures"
+  },
+
+  gtd_ribbed_lights_tekmachine =
+  {
+    "advanced machinery",
+    "mechanized infrastructure"
+  },
+
+  cran_bunkbeds =
+  {
+    "sleeping quarters",
+    "common barracks",
+    "staff bedrooms"
+  },
+
+  gtd_craneo_bank_set =
+  {
+    "reinforced bank vaults",
+    "financial storage facilities",
+    "secure transaction halls"
+  },
+
+  gtd_mining_set =
+  {
+    "mining infrastructure",
+    "industrial excavation",
+    "resource extraction"
+  },
+
+  gtd_power_plant_set =
+  {
+    "power generation facilities",
+    "energy infrastructure",
+    "industrial reactors"
+  },
+
+  gtd_door_storage =
+  {
+    "industrial door storage chambers",
+    "door stockpiles",
+    "modular door depots"
+  },
+
+  gtd_fireblu_where_its_made =
+  {
+    "surreal technology",
+    "alien industrial systems",
+    "unstable dimensional machinery"
+  },
+
+  gtd_tech_barrier_tek =
+  {
+    "security barriers",
+    "containment structures",
+    "reinforced checkpoints"
+  },
+
+  gtd_generic_tek_grate =
+  {
+    "grate-protected machines",
+    "exposed industrial systems"
+  },
+
+  gtd_sunderfall =
+  {
+    "cascading industrial runoff",
+    "overflow drainage channels",
+    "vertical waste conduits"
+  },
+
+  gtd_lavafall =
+  {
+    "exposed magma falls",
+    "flowing lava openings"
+  },
+
+  gtd_wall_cafeteria_set =
+  {
+    "industrial mess halls",
+    "communal dining sectors",
+    "corporate food courts"
+  },
+
+  gtd_wall_hydroponics =
+  {
+    "hydroponics laboratory",
+    "climate-controlled interior farm",
+    "high-tech plant nursery"
+  },
+
+  gtd_wall_tech_oven =
+  {
+    "massive thermal exchangers",
+    "industrial heating systems",
+    "reactor cooling infrastructure"
+  },
+
+  gtd_wall_tech_freeze =
+  {
+    "industrial freezing units",
+    "ice manufacturing plant",
+    "cryogenics laboratory"
+  },
+
+  gtd_wall_air_vents =
+  {
+    "vast ventilation systems",
+    "industrial air ducts",
+    "labyrinthine maintenance shafts"
+  },
+
+  gtd_wall_of_guns =
+  {
+    "weapons storage facility",
+    "armory depot",
+    "gun displays"
+  },
+
+  gtd_bathwater =
+  {
+    "gamer girl bath water production facility",
+    "Instagram model's bath water interment unit"
+  },
+
+  gtd_mscottpaper =
+  {
+    "corporate office complexes",
+    "industrial paper processing",
+    "administrative workspaces"
+  },
+
+
+
+  -- URBAN
+  gtd_woodframe =
+  {
+    "wooden panel walls",
+    "ornate wood mouldings",
+    "wood wainscoting"
+  },
+
+  gtd_wall_urban_cement_frame = 
+  {
+    "concrete pillar corridors",
+    "cement commercial backrooms"
+  },
+
+  gtd_ind_modwall_1 = {
+    "metallic girders",
+    "silver support frames"
+  },
+
+  gtd_greywall_1 =
+  {
+    "bleak concrete corridors",
+    "utilitarian industrial walls",
+    "sterile cement structures"
+  },
+
+  cran_bloodtubes_set =
+  {
+    "experimental containment vats",
+    "biological suspension chambers",
+    "creature stasis facilities"
+  },
+
+  gtd_gothic_ceilwall =
+  {
+    "gothic arched walls",
+    "medieval vaulted chambers",
+    "cathedral ceilings"
+  },
+
+  gtd_prison_A =
+  {
+    "jail facility",
+    "interment structure",
+    "prison cell block"
+  },
+
+  gtd_furnace_water =
+  {
+    "boiler facility",
+    "centralized heating systems",
+    "water heating units"
+  },
+
+  gtd_grocery =
+  {
+    "massive supermarket",
+    "department store",
+    "general goods grocery"
+  },
+
+  gtd_wall_arcade =
+  {
+    "arcade center",
+    "gaming facility"
+  },
+
+  gtd_library_tall =
+  {
+    "towering archives",
+    "forbidden libraries",
+    "vaulted repositories of knowledge"
+  },
+
+  gtd_pools = 
+  {
+    "bleak recreational swimming pools",
+    "eerie maze-like pool facility"
+  },
+
+  dem_wall_hospital =
+  {
+    "clinical patient chambers",
+    "ecovery sick bays",
+    "advanced medical care center"
+  },
+
+
+
+  -- HELL
+  runes1 =
+  {
+    "hellish rune carvings",
+    "infernal symbols",
+    "ritualistic markings"
+  },
+
+  cross2 =
+  {
+    "desecrated sanctuaries",
+    "blasphemous shrines",
+    "inverted religious iconography"
+  },
+
+  gtd_furnace = 
+  {
+    "incinerator furnaces",
+    "cremation building"
+  },
+
+  gtd_furnace_face =
+  {
+    "tormented soul furnaces",
+    "spiritual oubliettes",
+    "infernal containment chambers"
+  },
+
+  gtd_wall_hell_ossuary =
+  {
+    "bone ossuaries",
+    "catacomb labyrinths",
+    "ancient mausoleums",
+    "crypt networks"
+  },
+
+  gtd_wall_marbface =
+  {
+    "marble gargoyle sculptures",
+    "hellish relief statues"
+  },
+
+  gtd_wall_hell_mindscrew =
+  {
+    "Escheresque dimensional breaches",
+    "non-Euclidean geometric hollows"
+  },
+
+  gtd_wall_churchy_glass =
+  {
+    "tall cathedral glass walls",
+    "stained glass halls",
+    "grand church windows"
+  },
+
+  gtd_wall_candles = 
+  {
+    "candlestand chambers",
+    "candelabra hallways"
+  }
+
+  -- layout
+
+  -- room themes
+}
+
 function LLM_NAME.setup(self)
   module_param_up(self)
 end
 
 function LLM_NAME.get_some_info(self, lev)
+
+  local function get_semantic(v)
+    local term = v
+
+    if LLM_NAME.semantics_grouping[term] then
+      term = LLM_NAME.semantics_grouping[term]
+    end
+
+    if LLM_NAME.semantics[term] then
+      term = rand.pick(LLM_NAME.semantics[term])
+    end
+
+    return term
+  end
 
   local function classify_ratio(ratio)
     if ratio > 0.99 then
@@ -115,7 +627,11 @@ function LLM_NAME.get_some_info(self, lev)
   end
 
 
-  local info_str = ""
+  local info_str = 
+    "The following information is the level metadata for context. " ..
+    "Be creative and avoid using words from the metadata. " ..
+    "Use it only as context for a unique name.\n"
+
   local room_themes = {}
   local room_scores = 
   {
@@ -127,6 +643,13 @@ function LLM_NAME.get_some_info(self, lev)
   local total_vol = 0
   local shape_rules = {}
   local level_openness = 0
+
+  -- grab some examples names from our generator
+  info_str = info_str .. "Examples from our internal generator:\n"
+  for i=1 , 5 do
+    info_str = info_str .. Naming_grab_one(lev.name_class) .. "\n"
+  end
+  info_str = info_str .. "\n"
 
   -- iterate through rooms to collect some data
   for _,R in pairs(lev.rooms) do
@@ -201,9 +724,11 @@ function LLM_NAME.get_some_info(self, lev)
     end
   end
 
-  info_str = info_str .. "\nRooms in the map have the following room themes: "
-  for _,I in ipairs(room_themes) do
-    info_str = info_str .. "*" .. I .."\n"
+  if room_scores.outdoor_vol < 0.5 then
+    info_str = info_str .. "\nRooms in the map have the following room themes: "
+    for _,I in ipairs(room_themes) do
+      info_str = info_str .. "*" .. get_semantic(I) .."\n"
+    end
   end
 
   if lev.is_dark then
@@ -250,7 +775,9 @@ function LLM_NAME.get_some_info(self, lev)
   end
 
   if lev.liquid_usage ~= 0 then
-    info_str = info_str .. "The level contains pools of " .. lev.liquid.name .. ".\n"
+    info_str = info_str .. "The level contains  " ..
+    rand.pick({"pools","open pits","basins","rivers","channels","reservoirs"}) ..
+    " of " .. lev.liquid.name .. ".\n"
   end
 
   if lev.has_streets then
@@ -260,7 +787,7 @@ function LLM_NAME.get_some_info(self, lev)
   if lev.preferred_wall_groups and room_scores.building_vol > 0.33 then
     info_str = info_str .. "The following prefab set is found throughout the level: "
     for prefab,prob in pairs(lev.preferred_wall_groups[lev.theme_name]) do
-      info_str = info_str .. "* " .. prefab .. ", at " .. prob .. "x\n"
+      info_str = info_str .. "* " .. get_semantic(prefab) .. "\n"
     end
   end
 
@@ -407,7 +934,8 @@ function LLM_NAME.do_it()
   local function generate_level_name(level_data)
 
     local prompt =
-[[Generate a Doom map name.
+[[Generate a Doom map name that is evocative, mythic, and cinematic.
+Feel free to use metaphor, mood, or unusual imagery.
 
 Rules:
 - 1 line only
@@ -416,22 +944,12 @@ Rules:
 - no explanation
 - no extra text
 - no quotes
-
-Examples:
-Iron Mausoleum
-Frozen Reactor
-Concrete Spiral
-Ashen Transit
-
-The following information is the level metadata for context.
-Be creative and avoid using words from the metadata.
-Use it only as context for a unique name.
 ]]..
 level_data
 
     return ask(prompt,
     {
-      temperature = 1.2,
+      temperature = 1.0,
       num_predict = 12
     })
   end
@@ -453,6 +971,7 @@ level_data
     "Small letters refer to whole rooms. Capital letters refer to outdoors.\n"..
     "Letters further in the alphabet represent rooms that are further from the starting position.\n"..
     "Letters will just repeat if it reaches the end of the alphabet.\n"..
+    "Some rooms in the ASCII map may occasionally show diagonals.\n"..
     "Arrows represent stairs pointing to a destination, usually within the same area.\n"..
     "Try to infer a description of the layout based on the ASCII map too."
 
