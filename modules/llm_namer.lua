@@ -124,6 +124,8 @@ LLM_NAME.semantics_grouping =
   gtd_wall_hell_engraving_1 = "gtd_wall_marbface",
   gtd_wall_hell_engraving_2 = "gtd_wall_marbface",
   gtd_wall_hell_engraving_3 = "gtd_wall_marbface",
+  gtd_wall_hell_engraving_dark = "gtd_wall_marbface",
+  gtd_wall_hell_engraving_arch = "gtd_wall_marbface",
   gtd_wall_hell_engraving_top_band = "gtd_wall_marbface",
 
   gtd_generic_artsy_bedazzled = "liminal_space",

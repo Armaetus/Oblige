@@ -2,6 +2,10 @@ version "3.2"
 
 class FancyObligeTree : BigTree replaces BigTree
 {
+	Default
+	{
+		+NOTONAUTOMAP
+	}
 
 	States
 	{

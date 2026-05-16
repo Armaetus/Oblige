@@ -54,6 +54,10 @@ OBS_RESOURCE_PACK_EPIC_TEXTURES.TEMPLATES =
    ZS_TREES =
 [[class FancyObligeTree : BigTree replaces BigTree
 {
+    Default
+    {
+        +NOTONAUTOMAP
+    }
 
     States
     {
@@ -476,6 +480,7 @@ class FancyObligeTree2 : FancyObligeTree replaces TorchTree
     Height 128
     ProjectilePassHeight -16
     +SOLID
+    +NOTONAUTOMAP
 
     States
     {
