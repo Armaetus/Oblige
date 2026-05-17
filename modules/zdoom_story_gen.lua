@@ -167,7 +167,6 @@ function ZStoryGen_init()
   local hooks = {}
   local conclusions = {}
   local x = 1
-  PARAM.language_lump = {}
 
   while x <= #GAME.episodes do
     local story_id = ZStoryGen_fetch_story_chunk()
@@ -205,23 +204,24 @@ function ZStoryGen_init()
   end
 
   x = 1
-  local y
-  while x <= #GAME.episodes do
+  if PARAM.bool_generate_stories ~= 1 then
+    while x <= #GAME.episodes do
 
-    -- insert story start sequence
-    table.insert(PARAM.language_lump, "STORYSTART" .. x .. " =\n")
-    for _,line in pairs(hooks[x]) do
-      table.insert(PARAM.language_lump, "  " .. line .. "\n")
-    end
-    table.insert(PARAM.language_lump, "\n")
+      -- insert story start sequence
+      table.insert(PARAM.language_lump, "STORYSTART" .. x .. " =\n")
+      for _,line in pairs(hooks[x]) do
+        table.insert(PARAM.language_lump, "  " .. line .. "\n")
+      end
+      table.insert(PARAM.language_lump, "\n")
 
-    -- insert story end sequences
-    table.insert(PARAM.language_lump, "STORYEND" .. x .. " =\n")
-    for _,line in pairs(conclusions[x]) do
-      table.insert(PARAM.language_lump, "  " .. line .. "\n")
+      -- insert story end sequences
+      table.insert(PARAM.language_lump, "STORYEND" .. x .. " =\n")
+      for _,line in pairs(conclusions[x]) do
+        table.insert(PARAM.language_lump, "  " .. line .. "\n")
+      end
+      table.insert(PARAM.language_lump, "\n")
+      x = x + 1
     end
-    table.insert(PARAM.language_lump, "\n")
-    x = x + 1
   end
 
 

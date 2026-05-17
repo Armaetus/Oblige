@@ -455,7 +455,7 @@ LLM_NAME.semantics =
     "wood wainscoting"
   },
 
-  gtd_wall_urban_cement_frame = 
+  gtd_wall_urban_cement_frame =
   {
     "concrete pillar corridors",
     "cement commercial backrooms"
@@ -521,7 +521,7 @@ LLM_NAME.semantics =
     "vaulted repositories of knowledge"
   },
 
-  gtd_pools = 
+  gtd_pools =
   {
     "bleak recreational swimming pools",
     "eerie maze-like pool facility"
@@ -551,7 +551,7 @@ LLM_NAME.semantics =
     "inverted religious iconography"
   },
 
-  gtd_furnace = 
+  gtd_furnace =
   {
     "incinerator furnaces",
     "cremation building"
@@ -592,7 +592,7 @@ LLM_NAME.semantics =
     "grand church windows"
   },
 
-  gtd_wall_candles = 
+  gtd_wall_candles =
   {
     "candlestand chambers",
     "candelabra hallways"
@@ -639,7 +639,7 @@ LLM_NAME.semantics =
 
 
 --[[LAYOUT (shape rules)]]
-  
+
 --[[ROOM THEMES]]
   -- TECH
   tech_Doom3_blue_hulls =
@@ -1388,7 +1388,7 @@ LLM_NAME.semantics =
     "radioactive coolant"
   },
 
-  slime = 
+  slime =
   {
     "industrial brown water",
     "run-off waste water",
@@ -1520,6 +1520,117 @@ LLM_NAME.prompt_styles =
     "Generate a Doom map name that suggests a domain where suffering becomes architectural form."
   }
 }
+
+LLM_NAME.prompt_flavors =
+{
+  -- these are substituted to the "Generate a Doom map name that " part of the instructional line
+  dn3d = "Generate a Doom map name that leans towards a euphemistic 80's comedic porn parody. The name ",
+  black_metal = "Generate a Doom map name that sounds like a hardcore black metal band song title. The name ",
+  ecchi = "Generate a Doom map name that sounds like a English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
+}
+
+LLM_NAME.PROMPT_FLAVOR_CHOICES =
+{
+  "default", _("DEFAULT"),
+  "dn3d", _("Duke Nukem"),
+  "black_metal", _("Black Metal"),
+  "ecchi", _("HDoom")
+}
+
+LLM_NAME.story_components =
+{
+  flavors = {
+    "A War on Two Fronts",
+    "The Unlikely Ally",
+    "Betrayal from Within",
+    "Invasion of the Unseen",
+    "Rebellion's Rise and Fall",
+    "Surviving a Hidden Uprising",
+    "Cursed by an Ancient Evil",
+    "A New Threat Emerges",
+    "Hunt for the Hidden Enemy",
+    "Lost Souls in Desperate Circumstances",
+    "Battle for the Soul of Humanity",
+    "Darkness that Spans the Ages",
+    "Unleashing a Terrible Terror",
+    "Beyond the Gates of Madness",
+    "Infernal Alliance Forms",
+    "Doomsday Prophecy Unfolds",
+    "Beneath the Shattered Surface",
+    "Purgatory's Gate Opens Wide",
+    "Fragile Balance of Power",
+    "Convergence of Fates",
+    "Sacrifice for the Greater Good",
+    "Abandoned World, Abandoned Souls",
+    "The Silent Observer Strikes",
+    "Battle for a Dying Earth",
+    "Shadows that Bind and Twist",
+    "Fighting Against All Odds",
+    "Eternal Night and Endless War",
+    "Last Stand on Uncertain Ground",
+    "Through the Eye of a Storm",
+    "Hunters Become the Hunted",
+    "A Desperate Bid for Salvation",
+    "Beyond the Veil of Deception",
+    "Infernal Machines Unleashed",
+    "Battle Scars Tell a Thousand Tales",
+    "Surviving on Borrowed Time",
+    "When the World is Lost, What Remains?",
+    "Unseen Hands Shape Fate",
+    "Lost in an Endless Expanse",
+    "The Price of Power Unleashed",
+    "Fractured Souls Reunite"
+  },
+
+  places = {
+    tech = {
+      "Cygnus Labs",
+      "Nova Terra Research Facility",
+      "Nexus Outpost",
+      "Illuminari Tower",
+      "Apex Lab",
+      "Elysium Cathedral",
+      "Spire of the Ancients",
+      "Crystal Spire",
+      "Aurora Institute",
+      "Helix-5 Facility",
+      "Spectral Research Lab",
+      "Olympus Citadel",
+      "Nova Haven",
+      "New Erebus City",
+      "Neo Tartarus Colony"
+    },
+
+    urban = {
+      "New Erebo",
+      "Korvus City",
+      "Aurora Heights",
+      "Stellar Overlook",
+      "Cathedral Heights",
+      "Elysium Plains",
+      "Paradise Junction",
+      "The Threshold",
+      "Ghoul's Garrison",
+      "Sentinel's Watch",
+      "Fortress of the Ancients",
+      "The Citadel"
+    },
+
+    hell = {
+      "Infernox Abyss",
+      "Magma Furnace",
+      "Furnacehold Citadel",
+      "Brimstone City",
+      "Emberfall Canyon",
+      "Infernox Ironworks",
+      "Blazing Heights",
+      "Firebrand's Folly",
+      "Tomb of the Damned"
+    }
+  }
+}
+
+LLM_NAME.history = {}
 
 function LLM_NAME.setup(self)
   local function ollama_is_alive(endpoint)
@@ -1874,10 +1985,6 @@ function LLM_NAME.get_some_info(self, lev)
 
   table.insert(lines, "\n\n")
 
-  table.insert(lines,
-    "If the original name fits the context enough or sounds strong overall, reuse it.\n"
-  )
-
   ----------------------------------------------------------------------
   -- FINAL OUTPUT
   ----------------------------------------------------------------------
@@ -1885,6 +1992,7 @@ function LLM_NAME.get_some_info(self, lev)
   local info_str = table.concat(lines)
   LLM_NAME.level_infos[lev.id] = info_str
 end
+
 
 function LLM_NAME.do_it()
 
@@ -1905,6 +2013,7 @@ function LLM_NAME.do_it()
     return hash
   end
 
+
   -- escape from JSON city
   local function escape_json(str)
     str = str:gsub("\\", "\\\\")
@@ -1914,6 +2023,7 @@ function LLM_NAME.do_it()
 
     return str
   end
+
 
   -- query structure
   local function query(prompt, options)
@@ -1973,86 +2083,285 @@ function LLM_NAME.do_it()
     return result
   end
 
-  -- extract response from JSON... response
-  local function extract_response(json)
+
+  -- extract response from JSON response
+  local function extract_response(json, mode)
 
     if not json then
       return nil
     end
 
-    local response =
-      json:match('"response"%s*:%s*"(.-)"')
+    local function extract_json_string(src, key)
+
+      local pattern = '"' .. key .. '"%s*:%s*"'
+      local start_pos = src:find(pattern)
+
+      if not start_pos then
+        return nil
+      end
+
+      -- locate opening quote of value
+      local i = src:find('"', start_pos + #key + 2)
+
+      if not i then
+        return nil
+      end
+
+      i = i + 1
+
+      local chars = {}
+      local escaped = false
+
+      while i <= #src do
+
+        local c = src:sub(i, i)
+
+        if escaped then
+
+          table.insert(chars, c)
+          escaped = false
+
+        elseif c == "\\" then
+
+          escaped = true
+          table.insert(chars, c)
+
+        elseif c == '"' then
+
+          break
+
+        else
+
+          table.insert(chars, c)
+
+        end
+
+        i = i + 1
+      end
+
+      return table.concat(chars)
+    end
+
+    local response = extract_json_string(json, "response")
 
     if not response then
       return nil
     end
 
-    response = response:gsub('\\"', '"')
     response = response:gsub("\\n", "\n")
     response = response:gsub("\\r", "\r")
+    response = response:gsub("\\t", "\t")
+    response = response:gsub('\\"', '"')
+    response = response:gsub("\\\\", "\\")
 
-    -- hard cleanup
-    response = response:match("^[^\r\n`]+")
+    -- mode cleanup
+    if mode == "name" then
 
+      -- force single line
+      response = response:match("^[^\r\n`]+")
+
+      -- remove accidental quotes/fences
+      response = response:gsub("[\"`]", "")
+
+    elseif mode == "story" then
+
+      -- remove markdown fences
+      response = response:gsub("^```[%w]*\n?", "")
+      response = response:gsub("\n?```$", "")
+
+    end
+
+    -- trim whitespaces
     response = response:gsub("^%s+", "")
     response = response:gsub("%s+$", "")
 
     return response
   end
 
-  -- perform a query 
-  local function ask(prompt, options)
+
+  -- perform a query
+  local function ask(prompt, options, mode)
+
     local raw = query(prompt, options)
 
-    local response = extract_response(raw)
-
-    gui.debugf("LLM Namer: Parsed response:\n" .. response .. "\n")
-
-    if not response then
+    if not raw then
+      gui.printf("LLM query failed: no response\n")
       return nil
     end
 
-    response = response:gsub("^%s+", "")
-    response = response:gsub("%s+$", "")
+    local response = extract_response(raw, mode)
+
+    gui.debugf(
+      "LLM Parsed response (%s):\n%s\n",
+      tostring(mode),
+      tostring(response)
+    )
+
+    if not response or response == "" then
+      return nil
+    end
 
     return response
   end
 
+
+  -- number range remap... why is this not in our utils?
+  local function map_value(value, in_min, in_max, out_min, out_max)
+    return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+  end
+
+
+  -- story chunk splitter
+  local function parse_story_chunks(text)
+
+    if not text then
+      return nil
+    end
+
+    local story = {}
+    local current_id = nil
+    local buffer = {}
+
+    for line in text:gmatch("([^\n]*)\n?") do
+
+      -- detect header like [STORY_1]
+      local id = line:match("^%s*%[STORY_(%d+)%]%s*$")
+
+      if id then
+
+        -- flush previous chunk
+        if current_id then
+          story[tonumber(current_id)] = table.concat(buffer, "\n")
+        end
+
+        current_id = id
+        buffer = {}
+
+      else
+
+        if current_id then
+          table.insert(buffer, line)
+        end
+
+      end
+    end
+
+    -- flush last chunk
+    if current_id then
+      story[tonumber(current_id)] = table.concat(buffer, "\n")
+    end
+
+    return story
+  end
+
+
+  local function format_story_string(text, max_chars)
+
+    local formatted_lines = {}
+
+    for paragraph in text:gmatch("([^\n]+)") do
+
+      local current_line = ""
+
+      for word in paragraph:gmatch("%S+") do
+
+        if #current_line + #word + 1 <= max_chars then
+
+          if current_line == "" then
+            current_line = word
+          else
+            current_line = current_line .. " " .. word
+          end
+
+        else
+
+          table.insert(formatted_lines, '"' .. current_line .. ' \\n"')
+          current_line = word
+
+        end
+
+      end
+
+      if current_line ~= "" then
+        table.insert(formatted_lines, '"' .. current_line .. ' \\n\\n"')
+      end
+
+    end
+
+    return table.concat(formatted_lines, "\n")
+
+  end
+
+
+
   -- main name generator capsule
-  local function generate_level_name(level_data, theme_name)
+  local function generate_level_name(level_data, episodic_level_data)
+
+    local epi_lev = episodic_level_data
 
     local style_line
-    if LLM_NAME.prompt_styles[theme_name] then
-      style_line = rand.pick(LLM_NAME.prompt_styles[theme_name]) .. "\n"
+    if LLM_NAME.prompt_styles[epi_lev.theme_name] then
+      style_line = rand.pick(LLM_NAME.prompt_styles[epi_lev.theme_name]) .. "\n"
     else
       style_line = "Generate a name for a Doom map.\n"
     end
+
+
+    local word_count_rule = rand.key_by_probs(
+      {
+        ["1 word only"] = 8,
+        ["2 words only"] = 10,
+        ["3 words only"] = 9,
+        ["4 words only"] = 8,
+        ["5 words only"] = 3,
+        ["6 words only"] = 2
+      }
+    )
 
     local prompt = style_line ..
 [[Feel free to use metaphor, mood, or unusual imagery.
 
 Rules:
 - 1 line only
-- maximum 4 words
-- no punctuation
+- ]] .. word_count_rule .. [[
 - no explanation
-- no extra text
 - no quotes
 
 ]]..
 level_data
 
+    -- prompt flavor injection
+    if PARAM.prompt_flavor ~= "default" then
+      prompt = string.gsub(prompt,
+      "Generate a Doom map name that ",
+      LLM_NAME.prompt_flavors[PARAM.prompt_flavor])
+    end
+
+    -- LLM temperature variation, later maps have crazier names
     local pick_tmp
-    if LLM_NAME.temperature_range[theme_name] then
+    if #GAME.levels > 4 and epi_lev.along then
+      pick_tmp = map_value(epi_lev.along, 0, 1, 0.25, 1.2)
+    end
+    --[[if LLM_NAME.temperature_range[theme_name] then
       pick_tmp = rand.pick(LLM_NAME.temperature_range[theme_name])
+    end]]
+
+    -- refer to name history to avoid name re-use
+    prompt = prompt .. "The following names are already used. Avoid re-using elements of them:\n"
+    if #LLM_NAME.history > 0 then
+      for _, name in ipairs(LLM_NAME.history) do
+        prompt = prompt .. "* " .. name .. "\n"
+      end
     end
 
     return ask(prompt,
     {
-      temperature = pick_tmp or 1.0,
-      num_predict = rand.pick({6, 8, 10, 12})
-    })
+      temperature = pick_tmp or 0.85,
+      num_predict = 20
+    },
+    "name")
   end
+
 
   -- level metadata collector
   local function collect_level_data(level_tab)
@@ -2083,9 +2392,105 @@ level_data
 
   end
 
+  local function generate_story()
+
+    local prompt =
+[[Write a uniquely engaging story for Doom's intermission screens.
+
+The story takes place over the course of the whole game.
+Each section of the story is read far apart from each other.
+
+Flavor: _FLAVOR_
+
+I need the story to be properly formatted.
+
+There are three chapters and the story is an intro and end for each,
+making six intermissions overall.
+
+Use exactly the following format:
+
+[STORY_1]
+<chapter 1 intro>
+
+[STORY_2]
+<chapter 1 ending>
+
+[STORY_3]
+<chapter 2 intro>
+
+[STORY_4]
+<chapter 2 ending>
+
+[STORY_5]
+<chapter 3 intro>
+
+[STORY_6]
+<chapter 3 ending>
+
+Rules:
+- narrate in second person
+- Doom fan fiction style
+- no explanation
+- no real-world locations
+- purely fan fiction location that is not mentioned to be anywhere
+- avoid using canonical Doom proper nouns
+- each section up to but no more than 150 words
+- each section should escalate dramatically
+- each section should introduce new revelations or consequences
+- use single quotes instead of double quotes
+
+The marine protagonist is the Doomslayer.
+]]
+    -- flavor injection
+    local story_flavor = rand.pick(LLM_NAME.story_components.flavors)
+    prompt = string.gsub(prompt,
+    "_FLAVOR_",
+    story_flavor)
+
+    -- temperature
+    local temp = rand.pick
+    {
+      0.85,
+      0.90,
+      0.95
+    }
+
+    -- prompt structure
+    local story_chunks = ask(prompt,
+    {
+      temperature = temp,
+      num_predict = 1500
+    },
+    "story")
+
+    local story_tab = {}
+    story_tab = parse_story_chunks(story_chunks)
+
+    gui.printf("LLM Namer: Story flavor -> " .. story_flavor .. "\n\n")
+
+    for s_pos = 1, 6 do
+
+      -- insert story sequences
+      local chunk_name
+      if s_pos%2 == 1 then
+        chunk_name = "STORYSTART"
+      else
+        chunk_name = "STORYEND"
+      end
+
+      gui.printf("LLM Namer: " .. chunk_name .. math.ceil(s_pos/2) .. ": " .. story_tab[s_pos] .. "\n")
+      table.insert(PARAM.language_lump, chunk_name .. math.ceil(s_pos/2) .. " =\n")
+      table.insert(PARAM.language_lump, format_story_string(story_tab[s_pos], 38) .. ';\n')
+      table.insert(PARAM.language_lump, "\n")
+    end
+
+  end
+
+
   if PARAM.bool_llm_namer == 1 then
 
 
+    -- level name generator
     for _,epi in pairs(GAME.episodes) do
       for _,L in pairs(epi.levels) do
 
@@ -2093,15 +2498,24 @@ level_data
           -- do muffins
         else
           local level_data = collect_level_data(L)
-          local name = generate_level_name(level_data, L.theme_name)
+          local name = generate_level_name(level_data, L)
 
           if name then
-            gui.printf("LLM Namer: Level name '" .. L.description .. "' substituted with '" .. name .. "'!\n")
+            gui.printf("LLM Namer: " .. L.name .. " name '" ..
+            L.description .. "' substituted with '" .. name .. "'!\n")
+
             L.description = name
+
+            table.insert(LLM_NAME.history , name)
           end
 
         end
       end
+    end
+
+    -- intermission story generator
+    if PARAM.bool_generate_stories == 1 then
+      generate_story()
     end
   end
 end
@@ -2150,6 +2564,25 @@ OB_MODULES["llm_namer"] =
       default = 1,
       tooltip = _("Skips renaming Procedural Gotchas or Boss Maps when enabled."),
       priority = 99
+    },
+
+    {
+      name = "prompt_flavor",
+      label = _("Prompt Flavor"),
+      choices = LLM_NAME.PROMPT_FLAVOR_CHOICES,
+      default = "default",
+      tooltip = _("Adds additional flavoring to the LLM-generated names by biasing prompt towards specific descriptions."),
+      priority = 98,
+      gap = 1
+    },
+
+    {
+      name = "bool_generate_stories",
+      label = _("Generate Intermission Stories"),
+      valuator = "button",
+      default = 1,
+      tooltip = _("Generate intermission stories as well. ZDoom Specials must be turned on or intermission will be ignored without MAPINFO structs."),
+      priority = 97
     }
   }
 }

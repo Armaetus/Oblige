@@ -1688,6 +1688,10 @@ function PROCEDURAL_GOTCHA_FINE_TUNE_ZDOOM.all_done()
       end
     end
 
+    -- intentionally allowing this to be overwritten by the loop
+    -- to only get the final boss
+    PARAM.final_boss_name = demon_name
+
     local line = "BOSS_NAME" .. i .. ' = "' .. demon_name .. '";\n'
     table.insert(PARAM.BOSSLANG, line)
 

@@ -270,6 +270,7 @@ ZDOOM_SPECIALS.MAP_NAMING =
 function ZDOOM_SPECIALS.setup(self)
   PARAM.zdoom_specials_active = true
   module_param_up(self)
+  PARAM.language_lump = {}
 end
 
 function ZDOOM_SPECIALS.shuffle_music()
@@ -392,6 +393,7 @@ function ZDOOM_SPECIALS.do_special_stuff()
     end
 
     -- resolve map MAPINFO linkages
+    local map_id, map_id_next, sky_tex
     if OB_CONFIG.game == "doom2" or OB_CONFIG.game == "tnt" or OB_CONFIG.game == "plutonia" then
       map_id = ZDOOM_SPECIALS.MAP_NAMING.DOOM2[map_num]
       map_id_next = ZDOOM_SPECIALS.MAP_NAMING.DOOM2[map_num + 1]
