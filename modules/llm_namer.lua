@@ -1400,6 +1400,20 @@ LLM_NAME.semantics =
     "exposed blood plasma",
     "red blood",
     "organic fluids"
+  },
+
+  otex_lavaD1 =
+  {
+    "molten golden",
+    "burning gold magma",
+    "melting flowing gold"
+  },
+
+  otex_tar =
+  {
+    "sticky black pitch",
+    "unprocessed oil tar",
+    "oil mire"
   }
 }
 
@@ -1415,7 +1429,7 @@ LLM_NAME.prompt_styles =
 -- TECH
   tech =
   {
-    "Generate a Doom map name that sounds like a cold industrial system still running after the end of its purpose.",
+    "Generate a Doom map name that sounds like an industrial system still running after the end of its purpose.",
 
     "Generate a Doom map name that evokes vast machine infrastructure and forgotten engineering scale.",
 
@@ -1650,6 +1664,7 @@ function LLM_NAME.setup(self)
 
   module_param_up(self)
 end
+
 
 function LLM_NAME.get_some_info(self, lev)
 
@@ -2432,7 +2447,7 @@ Rules:
 - Doom fan fiction style
 - no explanation
 - no real-world locations
-- purely fan fiction location that is not mentioned to be anywhere
+- purely fan fiction location that is not mentioned to be anywhere specific
 - avoid using canonical Doom proper nouns
 - each section up to but no more than 150 words
 - each section should escalate dramatically
@@ -2581,7 +2596,9 @@ OB_MODULES["llm_namer"] =
       label = _("Generate Intermission Stories"),
       valuator = "button",
       default = 1,
-      tooltip = _("Generate intermission stories as well. ZDoom Specials must be turned on or intermission will be ignored without MAPINFO structs."),
+      tooltip = _("Generate intermission stories as well. " .. 
+      "ZDoom Specials must be turned on or intermission will be ignored without MAPINFO structs.\n\n"..
+      "Not guaranteed to make authentic stories and will totally hallu"),
       priority = 97
     }
   }
