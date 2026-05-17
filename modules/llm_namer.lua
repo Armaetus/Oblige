@@ -1641,6 +1641,102 @@ LLM_NAME.story_components =
       "Firebrand's Folly",
       "Tomb of the Damned"
     }
+  },
+
+  actors =
+  {
+    -- protagonists
+    "Dr. Emily Chen, a brilliant UAC physicist horrified by the experiments she helped create",
+
+    "Captain Jackson Reed, a battle-worn security commander who survived multiple facility collapses",
+
+    "Sergeant Rachel Patel, a relentless resistance fighter known for impossible last stands",
+
+    "Samuel Thompson, a gifted engineer responsible for maintaining unstable dimensional gateways",
+
+    "Kara Vash, a scavenger from the outer colonies who learned to survive inside ruined megacities",
+
+    "Lieutenant Mira Solano, a reconnaissance officer obsessed with mapping Hell-corrupted territories",
+
+    "Elias Ward, a former UAC technician carrying stolen research capable of sealing dimensional breaches",
+
+    "Commander Isaac Vale, a hardened marine officer who refuses to abandon civilian survivors",
+
+    "Dr. Naomi Mercer, a cybernetics specialist searching for a cure to demonic corruption",
+
+    "Jonah Kreel, a fugitive smuggler transporting refugees through infested wastelands",
+
+    "Aria Locke, a communications officer intercepting impossible signals from beyond Hell itself",
+
+    -- neutral
+    "Dr. Sophia Argus, a secretive UAC scientist whose assistance always advances hidden objectives",
+
+    "Colonel Viktor Petrov, a decorated military strategist trapped between duty and conscience",
+
+    "Father Marcus Vale, a priest who believes Hell's invasion is divine punishment for humanity's arrogance",
+
+    "Lena Lee, a brilliant network infiltrator trading intelligence to whichever side keeps her alive",
+
+    "The Broker, an anonymous information dealer who somehow profits from every catastrophe",
+
+    "Administrator Havel, a UAC executive determined to preserve order regardless of the human cost",
+
+    "Nyx, a masked wanderer claiming to remember previous demonic invasions erased from history",
+
+    "Professor Gideon Thorne, an archaeologist obsessed with proving Hell existed long before humanity",
+
+    "The Ferryman, a mysterious figure guiding survivors through condemned transit tunnels beneath ruined cities",
+
+    "Sister Celestine, a wandering preacher whose visions blur the line between prophecy and madness",
+
+    -- antagonists    
+    "The Matron, a colossal cybernetic arachnid enslaved by UAC experimentation and driven insane by agony",
+
+    "Carnifex, a towering executioner demon who commands entire infernal war hosts",
+
+    "Maledicta, a manipulative hell priestess seeking to awaken forgotten gods beneath dead worlds",
+
+    "Korath, the corrupted overseer of the UAC's deepest blacksite laboratories",
+
+    "The Bloodhand, an ancient infernal noble who engineers wars between humanity and Hell",
+
+    "Archon Veyruul, a machine fused with demonic intelligence governing an abandoned fortress world",
+
+    "The Hollow King, a skeletal monarch entombed beneath catacombs older than civilization itself",
+
+    "Executor Cain, a former human commander transformed into Hell's most feared hunter",
+
+    "The Choir Below, a collective consciousness formed from thousands of tortured souls",
+
+    "Mother Cyst, a grotesque flesh entity endlessly spreading organic corruption across entire facilities",
+
+    "The Warden of Rust, a towering sentinel controlling industrial sectors consumed by demonic machinery",
+
+    -- factions
+    "The Blood Host, one among the countless infernal legions invading mortal worlds",
+
+    "UAC Blacksite Division, clandestine researchers experimenting with forbidden dimensional technology",
+
+    "The Iron Guard, elite and possessed security forces loyal only to surviving UAC leadership",
+
+    "The ARC Resistance, fragmented human rebels fighting against both Hell and corrupted corporations",
+
+    "The Cult of the Shattered Veil, fanatics attempting to merge Earth permanently with Hell",
+
+    "The Pilgrims of Ash, survivors wandering irradiated wastelands in search of sanctuary",
+
+    "The Circle, occult scholars secretly communicating with entities beyond Hell",
+
+    "The Red Meridian Fleet, an off-world militarized colony force left marooned",
+
+    "The Choir Mechanica, machine worshippers who believe demonic corruption is humanity's next evolution",
+
+    "The Keepers of Titans, isolationist defenders guarding ancient sealed vaults",
+
+    "The Mourning Legion, ghostlike soldiers endlessly fighting a war they already lost",
+
+    -- us?!
+    "The Obsidian Developers, a nigh-invincible and engimatic group from another dimension always only observing and never interfering"
   }
 }
 
@@ -2415,14 +2511,16 @@ level_data
 The story takes place over the course of the whole game.
 Each section of the story is read far apart from each other.
 
-Flavor: _FLAVOR_
+Story Flavor: _FLAVOR_
 
-I need the story to be properly formatted.
+Location: _LOCATION_, somewhere in the twisted infinite hellscapes of future Earth
+
+I need the story to be properly formatted. Do not provide any explanation.
 
 There are three chapters and the story is an intro and end for each,
 making six intermissions overall.
 
-Use exactly the following format:
+Use the following format:
 
 [STORY_1]
 <chapter 1 intro>
@@ -2445,22 +2543,52 @@ Use exactly the following format:
 Rules:
 - narrate in second person
 - Doom fan fiction style
-- no explanation
 - no real-world locations
 - purely fan fiction location that is not mentioned to be anywhere specific
 - avoid using canonical Doom proper nouns
-- each section up to but no more than 150 words
+- each section must be up to at most 150 words, at least 2-4 paragraphs each
 - each section should escalate dramatically
 - each section should introduce new revelations or consequences
 - use single quotes instead of double quotes
 
-The marine protagonist is the Doomslayer.
+The marine protagonist is the Doomslayer and needs no introduction, forever fighting hell from place to place.
+The story reaches climax in Chapter 3. The Doomslayer emerges victorious realizes there will always a completely new story, another battle elsewhere.
+
+_CHARACTER_
 ]]
     -- flavor injection
     local story_flavor = rand.pick(LLM_NAME.story_components.flavors)
     prompt = string.gsub(prompt,
     "_FLAVOR_",
     story_flavor)
+
+    -- place injection
+    local story_place = rand.pick(
+      LLM_NAME.story_components.places[rand.pick({"urban","tech"})]
+      )
+    prompt = string.gsub(prompt,
+    "_LOCATION_",
+    story_place)
+
+    local story_characters
+    story_characters = rand.key_by_probs({
+      ["Introduce an original allied character in the story."]=3,
+      ["Introduce an original neutral character in the story."]=4,
+      ["Introduce an original hostile character in the story."]=5,
+      ["Introduce two original characters in the story."]=7,
+      ["Introduce three original characters in the story."]=1,
+      ["_BE_SPECIFIC_"]=12, -- use our pregenerated characters above
+      [""]=4 -- no character prompt
+      })
+    if story_characters == "_BE_SPECIFIC_" then
+      story_characters = story_characters .. "The following appear in the story:\n"
+      for i = 1, rand.pick({1,2,3}) do
+        story_characters = story_characters .. rand.pick(LLM_NAME.story_components.actors).. "\n"
+      end
+    end
+    prompt = string.gsub(prompt,
+    "_CHARACTER_",
+    story_characters)
 
     -- temperature
     local temp = rand.pick
@@ -2596,7 +2724,7 @@ OB_MODULES["llm_namer"] =
       label = _("Generate Intermission Stories"),
       valuator = "button",
       default = 1,
-      tooltip = _("Generate intermission stories as well. " .. 
+      tooltip = _("Generate intermission stories as well. " ..
       "ZDoom Specials must be turned on or intermission will be ignored without MAPINFO structs.\n\n"..
       "Not guaranteed to make authentic stories and will totally hallu"),
       priority = 97

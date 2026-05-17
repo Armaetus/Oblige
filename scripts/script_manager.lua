@@ -350,6 +350,7 @@ function ScriptMan_assemble_mapinfo_lump()
   -- rest of map info lump
   table.insert(mapinfo_lines, SCRIPTS.doomednums)
   table.insert(mapinfo_lines, SCRIPTS.mapinfolump)
+  local mapline
   if OB_CONFIG.game == "heretic" and OB_CONFIG.length == "game" then
     if not SCRIPTS.mapinfolump then
       for _,lev in pairs(GAME.levels) do

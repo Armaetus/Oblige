@@ -4007,7 +4007,7 @@ GROW_COLONNADE_VAULT_ALTERNATING =
     "xxxxxx11","xxxxxx11",
   },
 
-  auxiliary = 
+  auxiliary =
   {
     pass = "GROW_COLONNADE_VAULT_ALTERNATING_aux"
   }
@@ -4515,7 +4515,7 @@ GROW_357_ROUND_HOLLOW_1 =
 
   structure =
   {
-    "xx11xxxxxx","xx11xxxxxx",  
+    "xx11xxxxxx","xx11xxxxxx",
     "x........x","x/111111%x",
     "..........","/11111111%",
     "..........","11/#vv#%11",
@@ -4674,7 +4674,7 @@ GROW_357_ROUND_ARCH =
   skip_prob = 75,
 
   structure =
-  { 
+  {
     "11xxxxx","11xxxxx",
     ".......","1111111",
     ".......","1/AAA%1",
@@ -4697,7 +4697,7 @@ GROW_357_ROUND_ARCH_STAIRS =
   skip_prob = 75,
 
   structure =
-  { 
+  {
     "11xxxxx","11xxxxx",
     ".......","1111111",
     ".......","11vvv11",
@@ -4721,7 +4721,7 @@ GROW_357_ROUND_ARCH_ALT =
   skip_prob = 80,
 
   structure =
-  { 
+  {
     "11xxxxxxx","11xxxxxxx",
     ".........","111111111",
     ".........","1/AAAAA%1",
@@ -4744,7 +4744,7 @@ GROW_357_ROUND_ARCH_DOUBLE =
   skip_prob = 80,
 
   structure =
-  { 
+  {
     "x11xxxxxxx","x11xxxxxxx",
     "..........","/11111111%",
     "..........","1/AAAAAA%1",
@@ -4772,7 +4772,7 @@ GROW_357_ROUND_ARCH_ALT_STAIRS =
   skip_prob = 80,
 
   structure =
-  { 
+  {
     "x11xxxxxx","x11xxxxxx",
     ".........","/1111111%",
     ".........","111111111",
@@ -4800,7 +4800,7 @@ GROW_357_ROUND_ARCH_DOUBLE_STAIRS =
   skip_prob = 80,
 
   structure =
-  { 
+  {
     "11xxxxxxxxxx","11xxxxxxxxxx",
     "............","111111111111",
     "............","111111111111",
@@ -4830,7 +4830,7 @@ GROW_357_ROUND_ARCH_ALT_2 =
   skip_prob = 80,
 
   structure =
-  { 
+  {
     "xxx11xxxx","xxx11xxxx",
     "x.......x","x11AAA11x",
     ".........","/11AAA11%",
@@ -7636,7 +7636,7 @@ GROW_CAUSEWAY_KNIFE =
   prob = 10,
   skip_prob = 75,
 
-  structure = 
+  structure =
   {
     "..xx","/%xx",
     "...x","AA%x",
@@ -7673,7 +7673,7 @@ GROW_CAUSEWAY_KNIFE_SERRATED =
   prob = 10,
   skip_prob = 80,
 
-  structure = 
+  structure =
   {
     "..xxx","/%xxx",
     "...xx","AA%xx",
@@ -7710,7 +7710,7 @@ GROW_CAUSEWAY_KNIFE_SERRATED_LIQUID =
   prob = 7,
   skip_prob = 80,
 
-  structure = 
+  structure =
   {
     "..xxxxx","/%xxxxx",
     "...xxxx","AA%xxxx",
@@ -9858,7 +9858,7 @@ GROW_MAZE_SQUARE =
   skip_prob = 50,
 
   never_absurdify = true,
-  
+
   structure =
   {
     "xx..xx","xx##xx",
@@ -9895,7 +9895,7 @@ GROW_MAZE_STRAIGHT_CAGE_ALT =
   skip_prob = 35,
 
   never_absurdify = true,
-  
+
   structure =
   {
     "x..","x11",
@@ -10193,7 +10193,7 @@ GROW_LIQUID_SLAB_BRIDGE =
     ".......","1111111",
     "11xxxxx","11xxxxx",
   },
-  
+
   auxiliary =
   {
     pass = "GROW_LIQUID_SLAB_aux",
@@ -10282,11 +10282,11 @@ GROW_LAKE_EXTENDABLE =
     "1~","~1",
   },
 
-  auxiliary = 
+  auxiliary =
   {
     pass = "GROW_LAKE_EXTENDABLE_extend_aux",
   },
-  auxiliary2 = 
+  auxiliary2 =
   {
     pass = "GROW_LAKE_EXTENDABLE_extend_bridge_aux",
   },
@@ -10897,7 +10897,7 @@ aux_FLOURISH_5x7 =
   }
 },
 
-FLOURISH_SMALL_1 = 
+FLOURISH_SMALL_1 =
 {
   pass = "flourish",
 
@@ -10917,7 +10917,7 @@ FLOURISH_SMALL_1 =
   },
 },
 
-FLOURISH_SMALL_1_DIAGONAL = 
+FLOURISH_SMALL_1_DIAGONAL =
 {
   pass = "flourish",
 
@@ -10956,7 +10956,7 @@ aux_FLOURISH_SMALL_1 =
   },
 },
 
-FLOURISH_SMALL_2 = 
+FLOURISH_SMALL_2 =
 {
   pass = "flourish",
 
@@ -10976,7 +10976,7 @@ FLOURISH_SMALL_2 =
   },
 },
 
-FLOURISH_SMALL_2_DIAGONAL = 
+FLOURISH_SMALL_2_DIAGONAL =
 {
   pass = "flourish",
 
@@ -11038,7 +11038,7 @@ FLOURISH_MEDIUM =
     "1A","A1",
   },
 
-  auxiliary = 
+  auxiliary =
   {
     pass = "FLOURISH_MEDIUM_TEETH",
   },
@@ -11116,7 +11116,7 @@ FLOURISH_MEDIUM_2 =
     "1A","A1",
   },
 
-  auxiliary = 
+  auxiliary =
   {
     pass = "FLOURISH_MEDIUM_TEETH_2",
   },
@@ -11227,7 +11227,7 @@ aux_FLOURISH_ROUND =
     "21","12","21","12",
   },
 
-  auxiliary = 
+  auxiliary =
   {
     pass = "aux_FLOURISH_ROUND_extend",
     count = {2,5}
@@ -13346,7 +13346,7 @@ GROW_36_HEXAGON_PILLAR_DOUBLE =
 GROW_36_HEXAGON_PILLAR_DOUBLE_aux =
 {
   prob = 1,
-  
+
   structure =
   {
     "22111x11122","AA111x111AA",
@@ -13532,7 +13532,7 @@ GROW_TESTEROONIROO_AI =
 {
   prob = 5,
   skip_prob = 97,
-  
+
   structure =
   {
     "xx.xx","xx!xx",
@@ -13557,7 +13557,7 @@ GROW_ZIGZAG_AI =
     "x.....x","x/AAA/x",
     "x.....x","x%AAA%x",
     "x.....x","x/AAA/x",
-    ".......","1%AAA%1",  
+    ".......","1%AAA%1",
     ".......","11^^^11",
     ".......","1111111",
     "xx11xxx","xx11xxx",
@@ -13604,7 +13604,7 @@ GROW_E1M1 =
 aux_GROW_E1M1 =
 {
   prob = 1,
-  
+
   structure =
   {
     "........222111","A%222%!/222111",
@@ -16669,7 +16669,7 @@ GROW_X_SHIFTED =
 {
   prob = 7,
   skip_prob = 80,
-  
+
   structure =
   {
     "xxxx11xxxx","xxxx11xxxx",
@@ -16696,7 +16696,7 @@ GROW_X_SHIFTED_NEW_AREA =
 {
   prob = 10,
   skip_prob = 75,
-  
+
   structure =
   {
     "xxxx11xx..","xxxx11xx..",
@@ -18880,7 +18880,7 @@ GROW_SEWER_ENTRY =
     "1......","1111111",
   },
 
-  auxiliary = 
+  auxiliary =
   {
     pass = "GROW_SEWER_ENTRY_aux",
 
@@ -19162,7 +19162,7 @@ GROW_SPIRAL_STAIR_SMALL =
 GROW_SPIRAL_STAIR_SMALL_STEP_2 =
 {
   prob = 10,
-  
+
   structure =
   {
     "1x","1x",
@@ -20358,12 +20358,12 @@ SPROUT_DIRECT_1 =
     ".......", ".RRRRR.",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=1, w=3, dir=8 },
   },
-  
+
 },
 
 SPROUT_DIRECT_2 =
@@ -20380,12 +20380,12 @@ SPROUT_DIRECT_2 =
     ".......", ".RRRRR.",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=1, w=3, dir=8 },
   },
-  
+
 },
 
 SPROUT_DIRECT_3 =
@@ -20402,12 +20402,12 @@ SPROUT_DIRECT_3 =
     ".......", ".RRRRR.",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=1, w=3, dir=8 },
   },
-  
+
 },
 
 SPROUT_DIRECT_4 =
@@ -20424,12 +20424,12 @@ SPROUT_DIRECT_4 =
     ".......", ".RR#RR.",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=5, y=1, w=2, dir=8 },
   },
-  
+
 },
 
 SPROUT_DIRECT_5 =
@@ -20446,12 +20446,12 @@ SPROUT_DIRECT_5 =
     ".......", ".RRRRR.",
     ".#1111.", ".#1111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=1, w=3, dir=8 },
   },
-  
+
 },
 
 SPROUT_DIRECT_6 =
@@ -20468,12 +20468,12 @@ SPROUT_DIRECT_6 =
     ".......", ".RRRRR.",
     ".11#11.", ".11#11.",
   },
-  
+
   new_room =
   {
     conn = { x=2, y=1, w=2, dir=8 },
   },
-  
+
 },
 
 SPROUT_JOINER_1 =
@@ -20491,7 +20491,7 @@ SPROUT_JOINER_1 =
     ".......", "..JJJ..",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=2, w=3, dir=8 },
@@ -20501,7 +20501,7 @@ SPROUT_JOINER_1 =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_2 =
@@ -20518,7 +20518,7 @@ SPROUT_JOINER_2 =
     ".......", "...JJ..",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=4, y=2, w=2, dir=8 },
@@ -20528,7 +20528,7 @@ SPROUT_JOINER_2 =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_3 =
@@ -20546,7 +20546,7 @@ SPROUT_JOINER_3 =
     ".......", "..JJ...",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=2, w=2, dir=8 },
@@ -20556,7 +20556,7 @@ SPROUT_JOINER_3 =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_4 =
@@ -20574,7 +20574,7 @@ SPROUT_JOINER_4 =
     ".......", "..JJJ..",
     ".#1111.", ".#1111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=2, w=3, dir=8 },
@@ -20584,7 +20584,7 @@ SPROUT_JOINER_4 =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_5 =
@@ -20602,7 +20602,7 @@ SPROUT_JOINER_5 =
     ".......", "...JJ..",
     ".#1111.", ".#1111.",
   },
-  
+
   new_room =
   {
     conn = { x=4, y=2, w=2, dir=8 },
@@ -20612,7 +20612,7 @@ SPROUT_JOINER_5 =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_6 =
@@ -20630,7 +20630,7 @@ SPROUT_JOINER_6 =
     ".......", "..JJ...",
     ".#1111.", ".#1111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=2, w=2, dir=8 },
@@ -20640,7 +20640,7 @@ SPROUT_JOINER_6 =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_7 =
@@ -20658,7 +20658,7 @@ SPROUT_JOINER_7 =
     ".......", ".JJ....",
     ".11#11.", ".11#11.",
   },
-  
+
   new_room =
   {
     conn = { x=2, y=2, w=2, dir=8 },
@@ -20668,7 +20668,7 @@ SPROUT_JOINER_7 =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_TELEPORTER_2x2 =
@@ -20859,14 +20859,14 @@ SPROUT_DIRECT_1_cave =
     ".......", ".RRRRR.",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=1, w=3, dir=8 },
 
     env  = "cave",
   },
-  
+
 },
 
 SPROUT_DIRECT_2_cave =
@@ -20883,14 +20883,14 @@ SPROUT_DIRECT_2_cave =
     ".......", ".RRRRR.",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=1, w=3, dir=8 },
 
     env  = "cave",
   },
-  
+
 },
 
 SPROUT_DIRECT_3_cave =
@@ -20907,14 +20907,14 @@ SPROUT_DIRECT_3_cave =
     ".......", ".RRRRR.",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=1, w=3, dir=8 },
 
     env  = "cave",
   },
-  
+
 },
 
 SPROUT_DIRECT_4_cave =
@@ -20931,14 +20931,14 @@ SPROUT_DIRECT_4_cave =
     ".......", ".RR#RR.",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=2, y=1, w=2, dir=8 },
 
     env  = "cave",
   },
-  
+
 },
 
 SPROUT_DIRECT_5_cave =
@@ -20955,14 +20955,14 @@ SPROUT_DIRECT_5_cave =
     ".......", ".RRRRR.",
     ".#1111.", ".#1111.",
   },
-  
+
   new_room =
   {
     conn = { x=5, y=1, w=2, dir=8 },
 
     env  = "cave",
   },
-  
+
 },
 
 SPROUT_DIRECT_6_cave =
@@ -20979,14 +20979,14 @@ SPROUT_DIRECT_6_cave =
     ".......", ".RRRRR.",
     ".11#11.", ".11#11.",
   },
-  
+
   new_room =
   {
     conn = { x=2, y=1, w=2, dir=8 },
 
     env  = "cave",
   },
-  
+
 },
 
 SPROUT_JOINER_1_cave =
@@ -21004,7 +21004,7 @@ SPROUT_JOINER_1_cave =
     ".......", "..JJJ..",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=2, w=3, dir=8 },
@@ -21016,7 +21016,7 @@ SPROUT_JOINER_1_cave =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_2_cave =
@@ -21034,7 +21034,7 @@ SPROUT_JOINER_2_cave =
     ".......", "...JJ..",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=4, y=2, w=2, dir=8 },
@@ -21046,7 +21046,7 @@ SPROUT_JOINER_2_cave =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_3_cave =
@@ -21064,7 +21064,7 @@ SPROUT_JOINER_3_cave =
     ".......", "..JJ...",
     ".11111.", ".11111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=2, w=2, dir=8 },
@@ -21076,7 +21076,7 @@ SPROUT_JOINER_3_cave =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_4_cave =
@@ -21094,7 +21094,7 @@ SPROUT_JOINER_4_cave =
     ".......", "..JJJ..",
     ".#1111.", ".#1111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=2, w=3, dir=8 },
@@ -21106,7 +21106,7 @@ SPROUT_JOINER_4_cave =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_5_cave =
@@ -21124,7 +21124,7 @@ SPROUT_JOINER_5_cave =
     ".......", "...JJ..",
     ".#1111.", ".#1111.",
   },
-  
+
   new_room =
   {
     conn = { x=4, y=2, w=2, dir=8 },
@@ -21136,7 +21136,7 @@ SPROUT_JOINER_5_cave =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_6_cave =
@@ -21154,7 +21154,7 @@ SPROUT_JOINER_6_cave =
     ".......", "..JJ...",
     ".#1111.", ".#1111.",
   },
-  
+
   new_room =
   {
     conn = { x=3, y=2, w=2, dir=8 },
@@ -21166,7 +21166,7 @@ SPROUT_JOINER_6_cave =
   {
     from_dir = 2
   }
-  
+
 },
 
 SPROUT_JOINER_7_cave =
@@ -21184,7 +21184,7 @@ SPROUT_JOINER_7_cave =
     ".......", ".JJ....",
     ".11#11.", ".11#11.",
   },
-  
+
   new_room =
   {
     conn = { x=2, y=2, w=2, dir=8 },
@@ -21196,7 +21196,7 @@ SPROUT_JOINER_7_cave =
   {
     from_dir = 2
   }
-  
+
 },
 
 CAVE_GROW_1 =
