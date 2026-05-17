@@ -1598,48 +1598,53 @@ LLM_NAME.story_components =
 
   places = {
     tech = {
-      "Cygnus Labs",
-      "Nova Terra Research Facility",
-      "Nexus Outpost",
-      "Illuminari Tower",
-      "Apex Lab",
-      "Elysium Cathedral",
-      "Spire of the Ancients",
-      "Crystal Spire",
-      "Aurora Institute",
-      "Helix-5 Facility",
-      "Spectral Research Lab",
-      "Olympus Citadel",
-      "Nova Haven",
-      "New Erebus City",
-      "Neo Tartarus Colony"
+      "Cygnus Labs, a hub of intergalactic innovation and experimentation",
+      "Nova Terra Research Facility, where scientists push the boundaries of human knowledge",
+      "Nexus Outpost, a strategic stronghold in the heart of the galaxy",
+      "Illuminari Tower, a beacon of enlightenment and spiritual discovery",
+      "Apex Lab, a cutting-edge research facility driven by ambition and progress",
+      "Elysium Cathedral, a sacred sanctuary dedicated to the pursuit of peace and harmony",
+      "Spire of the Ancients, a mystical tower housing secrets of the past",
+      "Crystal Spire, an otherworldly monument to the power of Argent energy",
+      "Aurora Institute, a premier academy for interstellar education and advancement",
+      "Helix-5 Facility, a high-stakes research center exploring the mysteries of space-time",
+      "Spectral Research Lab, where experts delve into the unknown territories of quantum physics",
+      "Olympus Citadel, an imposing fortress guarding the secrets of the gods",
+      "Nova Haven, a well-guarded high-security metropolis sitting above the ashes of the previous",
+      "New Erebus City, a sprawling metropolis fueled by innovation and industry",
+      "Neo Tartarus Colony, a pioneering settlement on the edge of the unknown",
+      "Pandora's Gate, a UAC laboratory supercomplex with a mystical portal to uncharted realms",
+      "Aegis Station, a heavily fortified command base safeguarding the UAC's interests",
+      "Kairos Labs, where scientists unravel the secrets of other dimensions and Hell itself",
+      "Nebula's Edge Facility, a cutting-edge research facility probing the mysteries of black holes",
+      "Erebus Abyss, a foreboding underground complex hiding ancient secrets and untold dangers",
+      "Aurora Tower, a gleaming spire piercing the clouds, hub of intergalactic diplomacy"
     },
 
     urban = {
-      "New Erebo",
-      "Korvus City",
-      "Aurora Heights",
-      "Stellar Overlook",
-      "Cathedral Heights",
-      "Elysium Plains",
-      "Paradise Junction",
-      "The Threshold",
-      "Ghoul's Garrison",
-      "Sentinel's Watch",
-      "Fortress of the Ancients",
-      "The Citadel"
+      "Novus Corpus, a vibrant corporate metropolis the UAC have built over a terrible secret",
+      "Korvus City, a foreboding stronghold built into the sides of towering mountains",
+      "Aurora Heights, a previously picturesque suburb now partially fallen to the forces of Hell",
+      "Cathedral Heights, a sacred site where ancient structures pierce the sky",
+      "Elysium Plains, a serene and idyllic region of rolling hills and wealthy residential complexes",
+      "Paradise Junction, a bustling hub connecting traders and travelers from far and wide",
+      "The Threshold, a massive mining complex abandoned after uncovering a Slipgate from which Hell has slipped through",
+      "Ghoul's Garrison, a foreboding fortress guarded by twisted creatures and dark magic",
+      "Sentinel's Watch, a sturdy insular stronghold held together by survivors of the apocalypse",
+      "Fortress of the Ancients, a mysterious stronghold housing secrets of the past",
+      "The Citadel, an imposing seat of power and authority now crumbling in destitute"
     },
 
     hell = {
-      "Infernox Abyss",
-      "Magma Furnace",
-      "Furnacehold Citadel",
-      "Brimstone City",
-      "Emberfall Canyon",
-      "Infernox Ironworks",
-      "Blazing Heights",
-      "Firebrand's Folly",
-      "Tomb of the Damned"
+      "Infernox Abyss, a bottomless pit of eternal torment and suffering",
+      "Magma Furnace, a scorching hellscape where molten lava flows like liquid fire",
+      "Furnacehold Citadel, a foreboding fortress built from twisted, blackened stone",
+      "Brimstone City, a charred and smoldering metropolis consumed by unending flames",
+      "Emberfall Canyon, a desolate chasm of burning ash and sulfurous fumes",
+      "Infernox Ironworks, a nightmarish factory where demonic forces toil in eternal bondage",
+      "Blazing Heights, a twisted skyscraper of flames that pierces the sky like a screaming blade",
+      "Firebrand's Folly, a cursed stronghold built upon a lake of burning oil and tar",
+      "Tomb of the Damned, an abyssal pit where the shades of the damned writhe in eternal torment"
     }
   },
 
@@ -1647,96 +1652,97 @@ LLM_NAME.story_components =
   {
     -- protagonists
     "Dr. Emily Chen, a brilliant UAC physicist horrified by the experiments she helped create",
-
     "Captain Jackson Reed, a battle-worn security commander who survived multiple facility collapses",
-
     "Sergeant Rachel Patel, a relentless resistance fighter known for impossible last stands",
-
     "Samuel Thompson, a gifted engineer responsible for maintaining unstable dimensional gateways",
-
     "Kara Vash, a scavenger from the outer colonies who learned to survive inside ruined megacities",
-
     "Lieutenant Mira Solano, a reconnaissance officer obsessed with mapping Hell-corrupted territories",
-
     "Elias Ward, a former UAC technician carrying stolen research capable of sealing dimensional breaches",
-
     "Commander Isaac Vale, a hardened marine officer who refuses to abandon civilian survivors",
-
     "Dr. Naomi Mercer, a cybernetics specialist searching for a cure to demonic corruption",
-
     "Jonah Kreel, a fugitive smuggler transporting refugees through infested wastelands",
-
     "Aria Locke, a communications officer intercepting impossible signals from beyond Hell itself",
 
     -- neutral
     "Dr. Sophia Argus, a secretive UAC scientist whose assistance always advances hidden objectives",
-
     "Colonel Viktor Petrov, a decorated military strategist trapped between duty and conscience",
-
     "Father Marcus Vale, a priest who believes Hell's invasion is divine punishment for humanity's arrogance",
-
     "Lena Lee, a brilliant network infiltrator trading intelligence to whichever side keeps her alive",
-
     "The Broker, an anonymous information dealer who somehow profits from every catastrophe",
-
     "Administrator Havel, a UAC executive determined to preserve order regardless of the human cost",
-
     "Nyx, a masked wanderer claiming to remember previous demonic invasions erased from history",
-
     "Professor Gideon Thorne, an archaeologist obsessed with proving Hell existed long before humanity",
-
     "The Ferryman, a mysterious figure guiding survivors through condemned transit tunnels beneath ruined cities",
-
     "Sister Celestine, a wandering preacher whose visions blur the line between prophecy and madness",
 
     -- antagonists    
     "The Matron, a colossal cybernetic arachnid enslaved by UAC experimentation and driven insane by agony",
-
     "Carnifex, a towering executioner demon who commands entire infernal war hosts",
-
     "Maledicta, a manipulative hell priestess seeking to awaken forgotten gods beneath dead worlds",
-
     "Korath, the corrupted overseer of the UAC's deepest blacksite laboratories",
-
     "The Bloodhand, an ancient infernal noble who engineers wars between humanity and Hell",
-
     "Archon Veyruul, a machine fused with demonic intelligence governing an abandoned fortress world",
-
     "The Hollow King, a skeletal monarch entombed beneath catacombs older than civilization itself",
-
     "Executor Cain, a former human commander transformed into Hell's most feared hunter",
-
     "The Choir Below, a collective consciousness formed from thousands of tortured souls",
-
     "Mother Cyst, a grotesque flesh entity endlessly spreading organic corruption across entire facilities",
-
     "The Warden of Rust, a towering sentinel controlling industrial sectors consumed by demonic machinery",
 
     -- factions
     "The Blood Host, one among the countless infernal legions invading mortal worlds",
-
     "UAC Blacksite Division, clandestine researchers experimenting with forbidden dimensional technology",
-
     "The Iron Guard, elite and possessed security forces loyal only to surviving UAC leadership",
-
     "The ARC Resistance, fragmented human rebels fighting against both Hell and corrupted corporations",
-
     "The Cult of the Shattered Veil, fanatics attempting to merge Earth permanently with Hell",
-
     "The Pilgrims of Ash, survivors wandering irradiated wastelands in search of sanctuary",
-
     "The Circle, occult scholars secretly communicating with entities beyond Hell",
-
     "The Red Meridian Fleet, an off-world militarized colony force left marooned",
-
     "The Choir Mechanica, machine worshippers who believe demonic corruption is humanity's next evolution",
-
     "The Keepers of Titans, isolationist defenders guarding ancient sealed vaults",
-
     "The Mourning Legion, ghostlike soldiers endlessly fighting a war they already lost",
 
     -- us?!
     "The Obsidian Developers, a nigh-invincible and engimatic group from another dimension always only observing and never interfering"
+  },
+
+  length =
+  {
+    epi =
+[[Make it as engaging as possible as there are only two intermissions.
+The first takes place midway, the last is after at the end.
+
+SYSTEM: Use the following format and do not use any Markdown formatting:
+
+[STORY_1]
+<story start here>
+
+[STORY_2]
+<story ending here>
+]],
+
+    game =
+[[There are three chapters and the story is an intro and end for each,
+making six intermissions overall.
+
+SYSTEM: Use the following format and do not use any Markdown formatting:
+
+[STORY_1]
+<chapter 1 intro here>
+
+[STORY_2]
+<chapter 1 ending here>
+
+[STORY_3]
+<chapter 2 intro here>
+
+[STORY_4]
+<chapter 2 ending here>
+
+[STORY_5]
+<chapter 3 intro here>
+
+[STORY_6]
+<chapter 3 ending here>]]
   }
 }
 
@@ -2404,6 +2410,26 @@ function LLM_NAME.do_it()
   end
 
 
+  -- string escaper
+  local function escape_string(s)
+
+    if not s then return nil end
+
+    -- normalize newlines first
+    s = s:gsub("\r\n", "\n")
+
+    -- escape backslashes FIRST (important order)
+    s = s:gsub("\\", "\\\\")
+
+    -- escape quotes
+    s = s:gsub('"', '\\"')
+    s = s:gsub("'", "\\'")
+
+    -- optionally normalize control chars
+    s = s:gsub("\t", "\\t")
+
+    return s
+  end
 
   -- main name generator capsule
   local function generate_level_name(level_data, episodic_level_data)
@@ -2517,29 +2543,6 @@ Location: _LOCATION_, somewhere in the twisted infinite hellscapes of future Ear
 
 I need the story to be properly formatted. Do not provide any explanation.
 
-There are three chapters and the story is an intro and end for each,
-making six intermissions overall.
-
-Use the following format:
-
-[STORY_1]
-<chapter 1 intro>
-
-[STORY_2]
-<chapter 1 ending>
-
-[STORY_3]
-<chapter 2 intro>
-
-[STORY_4]
-<chapter 2 ending>
-
-[STORY_5]
-<chapter 3 intro>
-
-[STORY_6]
-<chapter 3 ending>
-
 Rules:
 - narrate in second person
 - Doom fan fiction style
@@ -2549,12 +2552,16 @@ Rules:
 - each section must be up to at most 150 words, at least 2-4 paragraphs each
 - each section should escalate dramatically
 - each section should introduce new revelations or consequences
-- use single quotes instead of double quotes
+- avoid all use of double quotes as text will go through a script parser
+- absolutely avoid any use of italics, bold, or any Markdown formatting
+- do not add explanations or commentary to the content
 
-The marine protagonist is the Doomslayer and needs no introduction, forever fighting hell from place to place.
-The story reaches climax in Chapter 3. The Doomslayer emerges victorious realizes there will always a completely new story, another battle elsewhere.
+The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting hell from place to place.
+The story reaches climax in the final chapter. The Doomslayer emerges victorious but there will always be a completely new story, another battle elsewhere.
 
 _CHARACTER_
+
+_FORMAT_
 ]]
     -- flavor injection
     local story_flavor = rand.pick(LLM_NAME.story_components.flavors)
@@ -2564,7 +2571,7 @@ _CHARACTER_
 
     -- place injection
     local story_place = rand.pick(
-      LLM_NAME.story_components.places[rand.pick({"urban","tech"})]
+      LLM_NAME.story_components.places[rand.pick({"urban","tech","hell"})]
       )
     prompt = string.gsub(prompt,
     "_LOCATION_",
@@ -2577,11 +2584,11 @@ _CHARACTER_
       ["Introduce an original hostile character in the story."]=5,
       ["Introduce two original characters in the story."]=7,
       ["Introduce three original characters in the story."]=1,
-      ["_BE_SPECIFIC_"]=12, -- use our pregenerated characters above
+      ["_BE_SPECIFIC_"]=15, -- use our pregenerated characters above
       [""]=4 -- no character prompt
       })
     if story_characters == "_BE_SPECIFIC_" then
-      story_characters = story_characters .. "The following appear in the story:\n"
+      story_characters = "The following appear in the story:\n"
       for i = 1, rand.pick({1,2,3}) do
         story_characters = story_characters .. rand.pick(LLM_NAME.story_components.actors).. "\n"
       end
@@ -2589,6 +2596,18 @@ _CHARACTER_
     prompt = string.gsub(prompt,
     "_CHARACTER_",
     story_characters)
+
+    local story_format
+    if #GAME.levels < 30 then
+      story_format = LLM_NAME.story_components.length.epi
+    else
+      story_format = LLM_NAME.story_components.length.game
+    end
+    prompt = string.gsub(prompt,
+    "_FORMAT_",
+    story_format)
+
+    gui.printf("LLM Namer: Story teller prompt\n" .. prompt .. "\n")
 
     -- temperature
     local temp = rand.pick
@@ -2609,9 +2628,7 @@ _CHARACTER_
     local story_tab = {}
     story_tab = parse_story_chunks(story_chunks)
 
-    gui.printf("LLM Namer: Story flavor -> " .. story_flavor .. "\n\n")
-
-    for s_pos = 1, 6 do
+    for s_pos = 1, #story_tab do
 
       -- insert story sequences
       local chunk_name
@@ -2623,7 +2640,12 @@ _CHARACTER_
 
       gui.printf("LLM Namer: " .. chunk_name .. math.ceil(s_pos/2) .. ": " .. story_tab[s_pos] .. "\n")
       table.insert(PARAM.language_lump, chunk_name .. math.ceil(s_pos/2) .. " =\n")
-      table.insert(PARAM.language_lump, format_story_string(story_tab[s_pos], 38) .. ';\n')
+      table.insert(PARAM.language_lump,
+        escape_string(
+          format_story_string(
+          story_tab[s_pos], 38
+        )
+      ) .. ';\n')
       table.insert(PARAM.language_lump, "\n")
     end
 
