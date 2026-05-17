@@ -579,24 +579,32 @@ function ZDOOM_SPECIALS.do_special_stuff()
       end
     elseif PARAM.story_generator == "proc" then
       if OB_CONFIG.game == "doom2" or OB_CONFIG.game == "tnt" or OB_CONFIG.game == "plutonia"  then
-        if map_num <= 5 then
-          cluster_line = "  Cluster = 1\n"
-        elseif map_num <= 11 then
-          cluster_line = "  Cluster = 2\n"
-        elseif map_num == 12 then
-          cluster_line = "  Cluster = 3\n"
-        elseif map_num <= 14 then
-          cluster_line = "  Cluster = 4\n"
-        elseif map_num <= 20 then
-          cluster_line = "  Cluster = 5\n"
-        elseif map_num == 21 then
-          cluster_line = "  Cluster = 6\n"
-        elseif map_num <= 30 then
-          cluster_line = "  Cluster = 7\n"
-        elseif map_num == 31 then
-          cluster_line = "  Cluster = 8\n"
-        elseif map_num == 32 then
-          cluster_line = "  Cluster = 9\n"
+        if OB_CONFIG.length == "game" or OB_CONFIG.length == "episode" then
+          if map_num <= 5 then
+            cluster_line = "  Cluster = 1\n"
+          elseif map_num <= 11 then
+            cluster_line = "  Cluster = 2\n"
+          elseif map_num == 12 then
+            cluster_line = "  Cluster = 3\n"
+          elseif map_num <= 14 then
+            cluster_line = "  Cluster = 4\n"
+          elseif map_num <= 20 then
+            cluster_line = "  Cluster = 5\n"
+          elseif map_num == 21 then
+            cluster_line = "  Cluster = 6\n"
+          elseif map_num <= 30 then
+            cluster_line = "  Cluster = 7\n"
+          elseif map_num == 31 then
+            cluster_line = "  Cluster = 8\n"
+          elseif map_num == 32 then
+            cluster_line = "  Cluster = 9\n"
+          end
+        else
+          if map_num <= 1 then
+            cluster_line = "  Cluster = 1\n"
+          elseif map_num <= 4 then
+            cluster_line = "  Cluster = 2\n"
+          end
         end
       end
     end
