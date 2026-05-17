@@ -1560,12 +1560,12 @@ LLM_NAME.story_components =
     "Invasion of the Unseen",
     "Rebellion's Rise and Fall",
     "Surviving a Hidden Uprising",
-    "Cursed by an Ancient Evil",
+    "An Ancient Evil Arrives",
     "A New Threat Emerges",
     "Hunt for the Hidden Enemy",
     "Lost Souls in Desperate Circumstances",
     "Battle for the Soul of Humanity",
-    "Darkness that Spans the Ages",
+    "Survivors in an Unending War",
     "Unleashing a Terrible Terror",
     "Beyond the Gates of Madness",
     "Infernal Alliance Forms",
@@ -1584,7 +1584,7 @@ LLM_NAME.story_components =
     "Last Stand on Uncertain Ground",
     "Through the Eye of a Storm",
     "Hunters Become the Hunted",
-    "A Desperate Bid for Salvation",
+    "The Last Bullet, The Last Prayer",
     "Beyond the Veil of Deception",
     "Infernal Machines Unleashed",
     "Battle Scars Tell a Thousand Tales",
@@ -1594,6 +1594,45 @@ LLM_NAME.story_components =
     "Lost in an Endless Expanse",
     "The Price of Power Unleashed",
     "Fractured Souls Reunite"
+  },
+
+  naming_styles =
+  {
+    -- General rules
+    "Names should sound militaristic and utilitarian.",
+    "Names should sound cold, mechanical, and believable.",
+    "Names should feel grounded rather than fantasy-like.",
+    "Names should be concise and to-the-point.",
+    "Names should avoid emotional or sentimental value.",
+    "Names should convey a sense of duty or purpose.",
+
+    -- Industrial/Abandoned themes
+    "Names should resemble abandoned industrial facilities.",
+    "Names should resemble forgotten sectors or dead stations.",
+    "Names should evoke a sense of decay and neglect.",
+    "Names should sound like the remnants of a bygone era.",
+    "Names should be inspired by the works of dystopian architects.",
+
+    -- Scientific/Corrupted themes
+    "Names should sound like corrupted scientific projects.",
+    "Names should be inspired by the works of mad scientists.",
+    "Names should have an 'experiment gone wrong' feel to them.",
+    "Names should evoke a sense of forbidden knowledge or power.",
+    "Names should incorporate elements of chaos theory or quantum mechanics.",
+
+    -- UAC/Colonial themes
+    "Names should resemble failed UAC operations.",
+    "Names should feel like lost colony designations.",
+    "Names should evoke a sense of isolation and abandonment.",
+    "Names should be inspired by the works of colonial-era explorers.",
+    "Names should incorporate elements of bureaucratic jargon or red tape.",
+
+    -- Other themes
+    "Names should sound like ancient, forgotten rituals.",
+    "Names should be inspired by the works of cyberpunk authors.",
+    "Names should evoke a sense of nostalgia for a lost future.",
+    "Names should be inspired by the aesthetics of retro-futurism.",
+    "Names should incorporate elements of existential philosophy or nihilism."
   },
 
   places = {
@@ -2550,6 +2589,7 @@ Rules:
 - purely fan fiction location that is not mentioned to be anywhere specific
 - avoid using canonical Doom proper nouns
 - each section must be up to at most 150 words, at least 2-4 paragraphs each
+- limit to 38 characters per line, and 25 lines counting linebreaks
 - each section should escalate dramatically
 - each section should introduce new revelations or consequences
 - avoid all use of double quotes as text will go through a script parser
@@ -2579,18 +2619,32 @@ _FORMAT_
 
     local story_characters
     story_characters = rand.key_by_probs({
-      ["Introduce an original allied character in the story."]=3,
-      ["Introduce an original neutral character in the story."]=4,
-      ["Introduce an original hostile character in the story."]=5,
-      ["Introduce two original characters in the story."]=7,
-      ["Introduce three original characters in the story."]=1,
+      ["Introduce an original allied character in the story.\n"]=3,
+      ["Introduce an original neutral character in the story.\n"]=4,
+      ["Introduce an original hostile character in the story.\n"]=5,
+      ["Introduce two original characters in the story.\n"]=7,
+      ["Introduce three original characters in the story.\n"]=1,
       ["_BE_SPECIFIC_"]=15, -- use our pregenerated characters above
       [""]=4 -- no character prompt
       })
+
+      -- try different names: Kaelis, Kraelion, the Devourer are kind of appearing a LOT
+      if story_characters ~= "_BE_SPECIFIC_" and rand.odds(75) then
+        story_characters = story_characters .. rand.pick(LLM_NAME.story_components.naming_styles) .. "\n"
+        if rand.odds(50) then
+          story_characters = story_characters .. "Please change any provided names in the prompt to any you deem fit.\n"
+        end
+      end
     if story_characters == "_BE_SPECIFIC_" then
       story_characters = "The following appear in the story:\n"
       for i = 1, rand.pick({1,2,3}) do
         story_characters = story_characters .. rand.pick(LLM_NAME.story_components.actors).. "\n"
+      end
+
+      -- maybe change up our pregen names too!
+      if rand.odds(33) then
+        story_characters = story_characters .. "Please change any provided names in the prompt to any you deem fit.\n"
+        story_characters = story_characters .. rand.pick(LLM_NAME.story_components.naming_styles) .. "\n"
       end
     end
     prompt = string.gsub(prompt,
@@ -2641,11 +2695,13 @@ _FORMAT_
       gui.printf("LLM Namer: " .. chunk_name .. math.ceil(s_pos/2) .. ": " .. story_tab[s_pos] .. "\n")
       table.insert(PARAM.language_lump, chunk_name .. math.ceil(s_pos/2) .. " =\n")
       table.insert(PARAM.language_lump,
-        escape_string(
-          format_story_string(
-          story_tab[s_pos], 38
-        )
-      ) .. ';\n')
+        format_story_string(
+          escape_string(
+            story_tab[s_pos]
+          ), 
+          38
+        ) .. ';\n'
+      )
       table.insert(PARAM.language_lump, "\n")
     end
 
