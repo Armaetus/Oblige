@@ -13505,11 +13505,11 @@ GROW_ADDIE_AI =
 
   structure =
   {
-    "xxx...x","xx/AAA%",
+    "xx.....","xx/AAA%",
     "xx.....","xxAAAAA",
     "xx.....","xxAA~AA",
-    "xxx...x","xx%AAA/",
-    ".......","AAA/111",
+    "xx.....","xx%AAA/",
+    ".......","AA/1111",
     "xx...11","xx11/11"
   },
 

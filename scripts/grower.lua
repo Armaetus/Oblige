@@ -1734,13 +1734,8 @@ function Grower_grammatical_pass(SEEDS, LEVEL, R, pass, apply_num, stop_prob,
     if S.area == A then return end
 
     if S.area then
-      if S.area.room ~= R then
-        gui.printf("seed does not belong to the same room:\n")
-        gui.printf(table.tostr(S.area, 1) .. "\n")
-        gui.printf(table.tostr(S.area.room, 1) .. "\n")
-        gui.printf(table.tostr(R, 1) .. "\n")
-      end
-      assert(S.area.room == R)
+      assert(S.area.room == R, "Shape Grower: If Debugging Messages is on, " .. 
+      "please check last shape rule printed.")
       unset_seed(S)
     end
 
