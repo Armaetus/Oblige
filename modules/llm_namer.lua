@@ -153,7 +153,8 @@ LLM_NAME.semantics_grouping =
   otex_poop = "slime",
 
   -- room themes
-  tech_Doom3_grey_hulls = "tech_Shiny"
+  tech_Doom3_grey_hulls = "tech_Shiny",
+  tech_Doom3_brown_hulls = "tech_VeryBrown"
 }
 
 LLM_NAME.semantics =
@@ -1832,7 +1833,7 @@ function LLM_NAME.get_some_info(self, lev)
     local term = LLM_NAME.semantics_grouping[v] or v
     local pool = LLM_NAME.semantics[term]
 
-    if pool then
+    if pool and type(pool) == "table" then
       return rand.pick(pool)
     end
 
@@ -1864,8 +1865,10 @@ function LLM_NAME.get_some_info(self, lev)
     elseif ratio > 0.6 then return "mostly"
     elseif ratio > 0.5 then return "half"
     elseif ratio > 0.4 then return "roughly half"
+    elseif ratio > 0.3 then return "some"
+    elseif ratio > 0.2 then return "few"
     end
-    return nil
+    return "rarely"
   end
 
   local function openness_description(v)
@@ -1914,7 +1917,12 @@ function LLM_NAME.get_some_info(self, lev)
     local tab = R.theme
     if not tab then return end
 
-    table.add_unique(room_themes, tab.name)
+    if room_themes[tab.name] then
+      room_themes[tab.name] =
+        room_themes[tab.name] + R.svolume
+    else
+      room_themes[tab.name] = R.svolume
+    end
   end
 
   -- collect area wall groups
@@ -1996,6 +2004,11 @@ function LLM_NAME.get_some_info(self, lev)
     end
   end
 
+  -- wall group distribution
+  for k, v in pairs(room_themes) do
+    room_themes[k] = v / total_vol
+  end
+
   ----------------------------------------------------------------------
   -- BUILD PROMPT
   ----------------------------------------------------------------------
@@ -2035,7 +2048,7 @@ function LLM_NAME.get_some_info(self, lev)
 
   if #shape_rules > 0 then
     table.insert(lines,
-      "The map's layout is made of the following shape grammar rules: "
+      "The map's layout is made of the following shape grammar rules: \n"
     )
 
     for _, rule in ipairs(shape_rules) do
@@ -2049,7 +2062,7 @@ function LLM_NAME.get_some_info(self, lev)
   -- INDOOR DETAILS
   ----------------------------------------------------------------------
 
-  if room_scores.building_vol > 0.33 and #room_themes > 0 then
+  if room_scores.building_vol > 0.25 then
     table.insert(lines, 
       rand.pick({
       "The rooms in the map are made of ",
@@ -2061,26 +2074,35 @@ function LLM_NAME.get_some_info(self, lev)
 
     local room_texts = {}
 
+    -- room themes
+    for theme_name, score in pairs(room_themes) do
+      table.add_unique(room_texts,
+        classify_ratio(score) .. " " .. get_semantic(theme_name)
+      )
+    end
+
     table.insert(lines, to_phrase(room_texts))
-  end
 
-  if #wall_groups > 0
-  and room_scores.building_vol > 0.33 then
-
-    local presence_v = rand.pick(
-      {" populated with ", " made up of ", " with ", " have", " installed with",
-      " constructed with ", "contains ", " build with "})
-    table.insert(lines, presence_v)
-
+    -- room prefabs
+    local bool_wall_groups_worth_talking_about
     local prefab_texts = {}
     for fab, score in pairs(wall_groups) do
-      if score > 0.33 then
+      if score > 0.2 then
+        bool_wall_groups_worth_talking_about = true
         table.add_unique(prefab_texts,
         classify_ratio(score) .. " " .. get_semantic(fab)
         )
       end
     end
-    table.insert(lines, to_phrase(prefab_texts))
+
+    local presence_v
+    if bool_wall_groups_worth_talking_about then
+      presence_v = rand.pick(
+        {" populated with ", " made up of ", " with ", " have", " installed with",
+        " constructed with ", "contains ", " build with "})
+      table.insert(lines, presence_v)
+      table.insert(lines, to_phrase(prefab_texts))
+    end
 
     table.insert(lines, ".\n")
   end
@@ -2389,6 +2411,8 @@ function LLM_NAME.do_it()
 
   -- perform a query
   local function ask(prompt, options, mode)
+
+    gui.printf("LLM Namer: Prompt \n" .. prompt)
 
     local raw = query(prompt, options)
 

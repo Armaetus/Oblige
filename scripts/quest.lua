@@ -2626,7 +2626,7 @@ function Quest_nice_items(LEVEL)
 
       final_min_prog = math.clamp(min_along_room, final_min_prog, max_along_room)
       final_max_prog = math.clamp(min_along_room, final_max_prog, max_along_room)
-      final_distance = math.abs(final_max_prog - final_min_prog)
+      local final_distance = math.abs(final_max_prog - final_min_prog)
 
       for _,R in pairs(LEVEL.rooms) do
         if R.closets

@@ -6948,7 +6948,7 @@ GROW_CAUSEWAY =
   }
 },
 
-GROW_CAUSEWAY_WATERLOCKED_PILLARED =
+GROW_CAUSEWAY_BRIDGE_LIQUID_PILLARED =
 {
   prob = 25,
   skip_prob = 75,
@@ -6969,7 +6969,7 @@ GROW_CAUSEWAY_WATERLOCKED_PILLARED =
   }
 },
 
-GROW_CAUSEWAY_WATERLOCKED_PILLARED_BRIDGE =
+GROW_CAUSEWAY_BRIDGE_LIQUID_PILLARED_BRIDGE =
 {
   prob = 20,
   skip_prob = 80,
@@ -6990,7 +6990,7 @@ GROW_CAUSEWAY_WATERLOCKED_PILLARED_BRIDGE =
   }
 },
 
-GROW_CAUSEWAY_WATERLOCKED_PILLARED_BRIDGE_CAGED =
+GROW_CAUSEWAY_BRIDGE_LIQUID_PILLARED_BRIDGE_CAGED =
 {
   prob = 20,
   skip_prob = 85,
@@ -7011,7 +7011,7 @@ GROW_CAUSEWAY_WATERLOCKED_PILLARED_BRIDGE_CAGED =
   }
 },
 
-GROW_CAUSEWAY_WATERLOCKED_PILLARED_BRIDGE_THIN =
+GROW_CAUSEWAY_BRIDGE_LIQUID_PILLARED_BRIDGE_THIN =
 {
   prob = 15,
   skip_prob = 80,
@@ -7030,7 +7030,7 @@ GROW_CAUSEWAY_WATERLOCKED_PILLARED_BRIDGE_THIN =
   }
 },
 
-GROW_CAUSEWAY_WATERLOCKED_PILLARED_BRIDGE_THIN_HORSESHOE =
+GROW_CAUSEWAY_BRIDGE_LIQUID_PILLARED_BRIDGE_THIN_HORSESHOE =
 {
   prob = 10,
   skip_prob = 80,
@@ -7056,7 +7056,7 @@ GROW_CAUSEWAY_WATERLOCKED_PILLARED_BRIDGE_THIN_HORSESHOE =
   },
 },
 
-GROW_CAUSEWAY_WATERLOCKED =
+GROW_CAUSEWAY_AQUEDUCT =
 {
   prob = 35,
   skip_prob = 80,
@@ -7074,7 +7074,7 @@ GROW_CAUSEWAY_WATERLOCKED =
   }
 },
 
-GROW_CAUSEWAY_WATERLOCKED_CROSSED_OUT =
+GROW_CAUSEWAY_AQUEDUCT_CROSSED_OUT =
 {
   prob = 35,
   skip_prob = 80,
@@ -7099,7 +7099,7 @@ GROW_CAUSEWAY_WATERLOCKED_CROSSED_OUT =
   }
 },
 
-GROW_CAUSEWAY_WATERLOCKED_CENTER_PILLAR =
+GROW_CAUSEWAY_AQUEDUCT_CENTER_PILLAR =
 {
   prob = 45,
   skip_prob = 80,
@@ -7124,7 +7124,7 @@ GROW_CAUSEWAY_WATERLOCKED_CENTER_PILLAR =
   }
 },
 
-GROW_CAUSEWAY_WATERBOUND =
+GROW_CAUSEWAY_DOUBLE_MOAT =
 {
   prob = 30,
   skip_prob = 80,
@@ -7143,7 +7143,7 @@ GROW_CAUSEWAY_WATERBOUND =
   },
 },
 
-GROW_CAUSEWAY_WATERBOUND_PILLAR_INTERRUPT =
+GROW_CAUSEWAY_DOUBLE_MOAT_PILLAR_INTERRUPT =
 {
   prob = 40,
   skip_prob = 80,
@@ -7168,7 +7168,7 @@ GROW_CAUSEWAY_WATERBOUND_PILLAR_INTERRUPT =
   }
 },
 
-GROW_CAUSEWAY_WATERBOUND_PILLAR_INNER_LOOP =
+GROW_CAUSEWAY_DOUBLE_MOAT_PILLAR_INNER_LOOP =
 {
   prob = 25,
   skip_prob = 80,
@@ -7193,7 +7193,7 @@ GROW_CAUSEWAY_WATERBOUND_PILLAR_INNER_LOOP =
   }
 },
 
-GROW_CAUSEWAY_WATERBOUND_PILLAR_INNER_LOOP_TEE =
+GROW_CAUSEWAY_DOUBLE_MOAT_PILLAR_INNER_LOOP_TEE =
 {
   prob = 25,
   skip_prob = 75,
@@ -7237,7 +7237,7 @@ GROW_CAUSEWAY_SINGLE =
   },
 },
 
-GROW_CAUSEWAY_SINGLE_WATERBOUND =
+GROW_CAUSEWAY_DAM_LIQUID_ACCESS =
 {
   prob = 20,
   skip_prob = 75,
@@ -7254,7 +7254,7 @@ GROW_CAUSEWAY_SINGLE_WATERBOUND =
   },
 },
 
-GROW_CAUSEWAY_SINGLE_CORNER_PILLAR =
+GROW_CAUSEWAY_DAM_LIQUID_ACCESS_CORNER =
 {
   prob = 15,
   skip_prob = 75,
@@ -7279,7 +7279,7 @@ GROW_CAUSEWAY_SINGLE_CORNER_PILLAR =
   }
 },
 
-GROW_CAUSEWAY_SINGLE_THICC_CORNER_PILLAR =
+GROW_CAUSEWAY_DAM_LIQUID_ACCESS_WITH_THICK_CORNER_PILLAR =
 {
   prob = 15,
   skip_prob = 80,
@@ -7305,7 +7305,7 @@ GROW_CAUSEWAY_SINGLE_THICC_CORNER_PILLAR =
   }
 },
 
-GROW_CAUSEWAY_SINGLE_WATERBOUND_OFF_RAMP =
+GROW_CAUSEWAY_DAM_DOUBLE_ACCESS =
 {
   prob = 30,
   skip_prob = 75,
@@ -7322,7 +7322,7 @@ GROW_CAUSEWAY_SINGLE_WATERBOUND_OFF_RAMP =
   },
 },
 
-GROW_CAUSEWAY_SINGLE_WATERBOUND_ON_RAMP =
+GROW_CAUSEWAY_DAM_DOUBLE_ACCESS_ONE_SIDE_DRY =
 {
   prob = 30,
   skip_prob = 75,
@@ -7339,7 +7339,7 @@ GROW_CAUSEWAY_SINGLE_WATERBOUND_ON_RAMP =
   },
 },
 
-GROW_CAUSEWAY_SINGLE_WATERBOUND_BEND =
+GROW_CAUSEWAY_DAM_DOUBLE_ACCESS_ONE_SIDE_DRY_BEND =
 {
   prob = 20,
   skip_prob = 75,
@@ -15932,6 +15932,71 @@ GROW_DEUCE_DIAMONDS =
     ".1","1.",".1","1.",
         ".1","1.",
         ".1","1."
+  }
+},
+
+GROW_ATOMIC_SYMBOL =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "..xxxxxx..","/%xxxxxx/%",
+    "...xxxx...","11%xxxx/11",
+    "....xx....","111%xx/111",
+    "..........","111/AA%111",
+    "xxx....xxx","xxxAAAAxxx",
+    "xxx....xxx","xxxAAAAxxx",
+    "xxx....xxx","xxx%AA/xxx",
+    "xxx....xxx","xxx/11%xxx",
+    "xx......xx","xx/1111%xx",
+    "xx......xx","xx%1111/xx",
+    "xxxx11xxxx","xxxx11xxxx",
+  },
+
+  diagonals =
+  {
+    ".1","1.",".1","1.",
+        ".1","1.",
+        ".1","1.",
+        "1A","A1",
+        ".A","A.",
+        ".1","1.",
+        ".1","1.",
+        ".1","1.",
+  }
+},
+
+GROW_ATOMIC_SYMBOL_STEEPNESS =
+{
+  prob = 15,
+  skip_prob = 75,
+
+  structure =
+  {
+    "..xxxxxx..","/%xxxxxx/%",
+    "...xxxx...","11%xxxx/11",
+    "....xx....","111%xx/111",
+    "..........","111>AA<111",
+    "xxx....xxx","xxxAAAAxxx",
+    "xxx....xxx","xxxAAAAxxx",
+    "xxx....xxx","xxx%AA/xxx",
+    "xxx....xxx","xxx/^^%xxx",
+    "xx......xx","xx/1111%xx",
+    "xx......xx","xx%1111/xx",
+    "xxxx11xxxx","xxxx11xxxx",
+  },
+
+  diagonals =
+  {
+    ".1","1.",".1","1.",
+        ".1","1.",
+        ".1","1.",
+        ".A","A.",
+        ".1","1.",
+        ".1","1.",
+        ".1","1.",
   }
 },
 

@@ -695,7 +695,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.synthesize_procedural_themes()
   local function create_theme(lev_theme, name)
     local theme = lev_theme
     local t = {}
-    t.floors = {} 
+    t.floors = {}
     t.walls = {}
     t.ceilings = {}
 
@@ -720,7 +720,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.synthesize_procedural_themes()
     GAME.ROOM_THEMES[t.name] = t
   end
 
-  local function synthesize_themes(y)    
+  local function synthesize_themes(y)
     for x = 1, y do
       create_theme("tech", "synth_room_theme_" .. x)
       create_theme("urban", "synth_room_theme_" .. x)
@@ -753,6 +753,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.get_levels_after_themes()
   end
 end
 
+
 function OBS_RESOURCE_PACK_EPIC_TEXTURES.decide_night_replacement_textures(LEVEL)
   if LEVEL.episode and LEVEL.episode.dark_prob == 100
   or LEVEL.is_dark then
@@ -775,6 +776,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.decide_night_replacement_textures(LEVEL
     GAME.MATERIALS["CITY14"].t = "CITY14"
   end
 end
+
 
 function OBS_RESOURCE_PACK_EPIC_TEXTURES.decide_environment_themes()
   --------------------
@@ -810,15 +812,22 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.decide_environment_themes()
 
     for _, L in pairs(GAME.levels) do
       if L.id == 1 then
-        L.outdoor_theme = rand.pick({"temperate", "snow", "desert"})
+        L.outdoor_theme = rand.key_by_probs({
+          temperate = 1,
+          snow = 4,
+          desert = 4
+        })
+
         previous_theme = L.outdoor_theme
         outdoor_theme_along = rand.irange(2, 4)
       elseif L.id > 1 then
+
         -- continue the same theme until the countdown ends
         if outdoor_theme_along > 0 then
           L.outdoor_theme = previous_theme
           outdoor_theme_along = outdoor_theme_along - 1
         else
+
           -- decide a new theme when the countdown ends
           -- logic: deserts cannot go to snow immediately and vice versa
           if previous_theme == "temperate" then
@@ -894,6 +903,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.decide_environment_themes()
     end
   end
 end
+
 
 function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL)
   --------------------------------------
@@ -971,11 +981,13 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   OBS_RESOURCE_PACK_EPIC_TEXTURES.decide_night_replacement_textures(LEVEL)
 end
 
+
 function OBS_RESOURCE_PACK_EPIC_TEXTURES.table_insert(table1, table2)
   for x,y in pairs(table1) do
     table2[x] = y
   end
 end
+
 
 function OBS_RESOURCE_PACK_EPIC_TEXTURES.put_new_materials()
   -- MSSP-TODO - redo all this code to just use a single deep merge table operation
@@ -1056,6 +1068,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.put_new_materials()
     GAME.THEMES = table.deep_merge(GAME.THEMES, OBS_RESOURCE_PACK_GENAI_THEMES, 2)
   end
 end
+
 
 function OBS_RESOURCE_PACK_EPIC_TEXTURES.put_the_texture_wad_in()
   local wad_file = "games/doom/data/ObAddon_Textures.wad"
@@ -1162,6 +1175,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.put_the_texture_wad_in()
     SCRIPTS.gldefs = ScriptMan_combine_script(SCRIPTS.gldefs, ORP_ENTITIES.GLDEFS)
   end
 end
+
 ----------------------------------------------------------------
 
 OB_MODULES["armaetus_epic_textures"] =
@@ -1261,7 +1275,7 @@ OB_MODULES["armaetus_epic_textures"] =
       tooltip = _("Merges some custom sprites and replacers for various decorations."),
       priority = -2
     },
-  
+
 
     {
       name = "bool_no_env_theme_for_hell",
