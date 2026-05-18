@@ -403,6 +403,27 @@ function table.keys_sorted(t)
   return keys
 end
 
+function table.top_n_by_key(t, n)
+  local keys = {}
+  for k in pairs(t) do
+    keys[#keys + 1] = {key = k, value = t[k]}
+  end
+
+  table.sort(keys, function (A,B) return A.value > B.value end)
+
+  if n <= 0 then
+    error("n must be a positive integer")
+  elseif n >= #keys then
+    return t
+  else
+    local top_n = {}
+    for i = 1, n do
+      top_n[keys[i].key] = keys[i].value
+    end
+    return top_n
+  end
+end
+
 function table.tostr(t, depth, prefix)
   if not t then return "NIL" end
   if table.empty(t) then return "{}" end

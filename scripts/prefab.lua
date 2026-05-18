@@ -302,11 +302,11 @@ function Fab_load_all_definitions()
 
           if fab_pick.kind == "decor" then
             if fab_pick.size then fab_pick.prob = fab_pick.size * 24 else fab_pick.prob = 2500 end
-            fab_pick.env = "building"
           else
             fab_pick.prob = fab_pick.seed_h * fab_pick.seed_w * 25
           end
 
+          fab_pick.env = "building"
           fab_pick.use_prob = calc_prob(fab_pick)
           fab_pick.theme = theme_name
 

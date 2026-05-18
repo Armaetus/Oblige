@@ -1432,48 +1432,26 @@ LLM_NAME.semantics =
   }
 }
 
-LLM_NAME.temperature_range =
-{
-  tech  = {0.8, 0.9, 1.0},
-  urban = {0.9, 1.0, 1.1},
-  hell  = {1.0, 1.1, 1.2}
-}
-
 LLM_NAME.prompt_styles =
 {
 -- TECH
   tech =
   {
     "Generate a Doom map name that sounds like an industrial system still running after the end of its purpose.",
-
     "Generate a Doom map name that evokes vast machine infrastructure and forgotten engineering scale.",
-
     "Generate a Doom map name that feels synthetic, procedural, and constructed from layered systems.",
-
     "Generate a Doom map name that sounds like a malfunctioning megastructure still enforcing its logic.",
-
     "Generate a Doom map name that suggests automated architecture and impersonal industrial order.",
-
     "Generate a Doom map name that feels like a deep-space facility built for unknown functions.",
-
     "Generate a Doom map name that sounds like exposed circuitry embedded in massive architecture.",
-
     "Generate a Doom map name that evokes industrial silence, pressure systems, and mechanical inevitability.",
-
     "Generate a Doom map name that feels like an abandoned computational world frozen mid-process.",
-
     "Generate a Doom map name that suggests immense engineered spaces with no human reference point.",
-
     "Generate a Doom map name that sounds like data centers expanding into physical form.",
-
     "Generate a Doom map name that evokes brutalist machinery fused with high technology.",
-
     "Generate a Doom map name that feels like an endless industrial environment with no exit condition.",
-
     "Generate a Doom map name that suggests containment structures built at planetary scale.",
-
     "Generate a Doom map name that sounds like a system still executing without operators.",
-
     "Generate a Doom map name that evokes heavy mechanical geometry and sealed infrastructure."
   },
 
@@ -1481,35 +1459,20 @@ LLM_NAME.prompt_styles =
   urban =
   {
     "Generate a Doom map name that sounds like a city fragment left running after collapse.",
-
     "Generate a Doom map name that evokes abandoned civic infrastructure and silent streets.",
-
     "Generate a Doom map name that feels like a decayed metropolitan zone seen through memory.",
-
     "Generate a Doom map name that suggests layered human architecture stripped of its inhabitants.",
-
     "Generate a Doom map name that sounds like forgotten urban districts sealed behind concrete.",
-
     "Generate a Doom map name that evokes dense city structures turned into labyrinths.",
-
     "Generate a Doom map name that feels like a commercial district frozen in decay.",
-
     "Generate a Doom map name that suggests endless housing blocks with no social presence.",
-
     "Generate a Doom map name that sounds like infrastructural sprawl with no center.",
-
     "Generate a Doom map name that evokes civic systems persisting after societal collapse.",
-
     "Generate a Doom map name that feels like backroom urban geometry and hidden corridors.",
-
     "Generate a Doom map name that suggests intersections of infrastructure and abandonment.",
-
     "Generate a Doom map name that sounds like industrial neighborhoods overtaken by silence.",
-
     "Generate a Doom map name that evokes collapsed city planning turned into maze logic.",
-
     "Generate a Doom map name that feels like a metropolitan shell without human narrative.",
-
     "Generate a Doom map name that suggests urban density turning into architectural noise."
   },
 
@@ -1517,35 +1480,20 @@ LLM_NAME.prompt_styles =
   hell =
   {
     "Generate a Doom map name that sounds like an infernal structure older than material reality.",
-
     "Generate a Doom map name that evokes ritual spaces carved into impossible geometry.",
-
     "Generate a Doom map name that feels like a cursed domain where architecture is alive.",
-
     "Generate a Doom map name that suggests eternal punishment encoded into physical space.",
-
     "Generate a Doom map name that sounds like a sacrificial landscape shaped by forgotten rites.",
-
     "Generate a Doom map name that evokes corrupted realms where matter behaves incorrectly.",
-
     "Generate a Doom map name that feels like ancient catacombs fused with living systems.",
-
     "Generate a Doom map name that suggests demonic infrastructure built from bone and stone.",
-
     "Generate a Doom map name that sounds like a hellish geography of shifting sanctuaries.",
-
     "Generate a Doom map name that evokes oppressive mythic architecture beyond human scale.",
-
     "Generate a Doom map name that feels like a cursed underworld organized like a machine.",
-
     "Generate a Doom map name that suggests divine punishment expressed as spatial design.",
-
     "Generate a Doom map name that sounds like burning structures that remember their victims.",
-
     "Generate a Doom map name that evokes infernal cathedrals embedded in geological time.",
-
     "Generate a Doom map name that feels like reality degrading into ritual geometry.",
-
     "Generate a Doom map name that suggests a domain where suffering becomes architectural form."
   }
 }
@@ -1764,7 +1712,7 @@ LLM_NAME.story_components =
     epi =
 [[Make it as engaging as possible.
 
-SYSTEM: Use the following format and do not use any Markdown formatting:
+SYSTEM: Please use exactly the following example format and do not use any Markdown:
 
 [STORY_1]
 <story start here>
@@ -2063,7 +2011,7 @@ function LLM_NAME.get_some_info(self, lev)
   ----------------------------------------------------------------------
 
   if room_scores.building_vol > 0.25 then
-    table.insert(lines, 
+    table.insert(lines,
       rand.pick({
       "The rooms in the map are made of ",
       "The structures are constucted from ",
@@ -2075,6 +2023,8 @@ function LLM_NAME.get_some_info(self, lev)
     local room_texts = {}
 
     -- room themes
+    room_themes = table.top_n_by_key(room_themes, 3)
+
     for theme_name, score in pairs(room_themes) do
       table.add_unique(room_texts,
         classify_ratio(score) .. " " .. get_semantic(theme_name)
@@ -2086,6 +2036,9 @@ function LLM_NAME.get_some_info(self, lev)
     -- room prefabs
     local bool_wall_groups_worth_talking_about
     local prefab_texts = {}
+
+    wall_groups = table.top_n_by_key(wall_groups, 3)
+
     for fab, score in pairs(wall_groups) do
       if score > 0.2 then
         bool_wall_groups_worth_talking_about = true
@@ -2098,8 +2051,17 @@ function LLM_NAME.get_some_info(self, lev)
     local presence_v
     if bool_wall_groups_worth_talking_about then
       presence_v = rand.pick(
-        {" populated with ", " made up of ", " with ", " have", " installed with",
-        " constructed with ", "contains ", " build with "})
+        {
+          " populated with ",
+          " made up of ",
+          " with ",
+          " installed with",
+          " constructed with ",
+          "contains ",
+          " built with ",
+          " hosts "
+        }
+      )
       table.insert(lines, presence_v)
       table.insert(lines, to_phrase(prefab_texts))
     end
@@ -2112,11 +2074,28 @@ function LLM_NAME.get_some_info(self, lev)
   ----------------------------------------------------------------------
 
   if lev.is_dark and room_scores.outdoor_vol > 0.33 then
-    table.insert(lines, "The level takes place during a dark night.\n")
+    table.insert(lines,
+      rand.pick(
+        {
+          "The level takes place during a dark night.\n",
+          "A dark moonless sky unfolds overhead.\n",
+          "A pitch-black night sky hangs above.\n",
+          "A looming dark night casts an eerie mood over the level.\n"
+        }
+      )
+    )
   end
 
+  local openness_v = openness_description(level_openness)
   table.insert(lines,
-    "The map has a " .. openness_description(level_openness) .. " layout.\n"
+    rand.pick(
+      {
+        "The map has a " .. openness_v .. " layout.\n",
+        openness_v .. " spaces domiante the whole map.\n",
+        "Dominant structures in this map are " .. openness_v .. ".\n",
+        "The map has a " .. openness_v .. " design.\n"
+      }
+    )
   )
 
   ----------------------------------------------------------------------
@@ -2594,9 +2573,6 @@ level_data
     if #GAME.levels > 4 and epi_lev.along then
       pick_tmp = map_value(epi_lev.along, 0, 1, 0.25, 1.2)
     end
-    --[[if LLM_NAME.temperature_range[theme_name] then
-      pick_tmp = rand.pick(LLM_NAME.temperature_range[theme_name])
-    end]]
 
     -- refer to name history to avoid name re-use
     prompt = prompt .. "The following names are already used. Avoid re-using elements of them:\n"
@@ -2773,7 +2749,7 @@ _FORMAT_
         format_story_string(
           escape_string(
             story_tab[s_pos]
-          ), 
+          ),
           38
         ) .. ';\n'
       )
