@@ -446,7 +446,7 @@ SIZE_CONSISTENCY_MIXED_PROBS =
 SKY_LIGHT_NORMAL =
 { 176,192,208,224,240 }
 
--- outdor sky sector brightness if level has Dark Outdoors
+-- outdoor sky sector brightness if level has Dark Outdoors
 SKY_LIGHT_DARK =
 { 112,128,144,160 }
 

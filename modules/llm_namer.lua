@@ -201,6 +201,20 @@ LLM_NAME.semantics =
     "The environment feels mythic, hostile, and hellish."
   },
 
+  snow =
+  {
+    "The exterior is frozen and snow covered.\n",
+    "The map takes place in a frigid snowy environment.\n",
+    "The outdoors are icy and windswept.\n"
+  },
+
+  sand =
+  {
+    "The map takes place in a scorching desert environment.\n",
+    "The outdoors are dusty and sun blasted.\n",
+    "The exterior is dry and desertlike.\n"
+  },
+
 --[[ WALL GROUPS ]]
 
   -- TECH --
@@ -1747,8 +1761,7 @@ LLM_NAME.story_components =
   length =
   {
     epi =
-[[Make it as engaging as possible as there are only two intermissions.
-The first takes place midway, the last is after at the end.
+[[Make it as engaging as possible.
 
 SYSTEM: Use the following format and do not use any Markdown formatting:
 
@@ -1799,8 +1812,10 @@ function LLM_NAME.setup(self)
     return result ~= nil and result:match('"models"') ~= nil
   end
 
-  if not ollama_is_alive(LLM_NAME.test_endpoint) then
-    error("LLM Namer: Could not detect Ollama instance.")
+  if PARAM.bool_listener_check == 1 then
+    if not ollama_is_alive(LLM_NAME.test_endpoint) then
+      error("LLM Namer: Could not detect Ollama instance.")
+    end
   end
 
   module_param_up(self)
@@ -1845,7 +1860,9 @@ function LLM_NAME.get_some_info(self, lev)
   local function classify_ratio(ratio)
     if ratio > 0.99 then return "entirely"
     elseif ratio > 0.8 then return "almost entirely"
+    elseif ratio > 0.7 then return "almost"
     elseif ratio > 0.6 then return "mostly"
+    elseif ratio > 0.5 then return "half"
     elseif ratio > 0.4 then return "roughly half"
     end
     return nil
@@ -1875,6 +1892,8 @@ function LLM_NAME.get_some_info(self, lev)
 
   local room_themes = {}
   local shape_rules = {}
+  local wall_groups = {}
+  local floor_groups = {}
 
   local room_scores = {
     outdoor_vol = 0,
@@ -1883,9 +1902,12 @@ function LLM_NAME.get_some_info(self, lev)
     cave_vol = 0
   }
 
+  local raw_bulding_vol = 0
+  local raw_outdoor_vol = 0
   local total_vol = 0
   local level_openness = 0
 
+  -- collect room themes
   local function add_room_theme(R)
     if R.is_outdoor then return end
 
@@ -1893,6 +1915,19 @@ function LLM_NAME.get_some_info(self, lev)
     if not tab then return end
 
     table.add_unique(room_themes, tab.name)
+  end
+
+  -- collect area wall groups
+  local function add_wall_groups(A, mode)
+    local fg = A.floor_group
+
+    if fg and fg.wall_group and A.svolume then
+      if wall_groups[fg.wall_group] then
+        wall_groups[fg.wall_group] = wall_groups[fg.wall_group] + A.svolume
+      else
+        wall_groups[fg.wall_group] = A.svolume
+      end
+    end
   end
 
   local function add_shape_rules(R)
@@ -1931,12 +1966,19 @@ function LLM_NAME.get_some_info(self, lev)
     add_shape_rules(R)
     accumulate_volume(R)
 
+    for _, A in pairs(R.areas) do
+      add_wall_groups(A)
+    end
+
     level_openness = level_openness + (R.openness or 0)
   end
 
   ----------------------------------------------------------------------
   -- NORMALISE SCORES
   ----------------------------------------------------------------------
+
+  -- room kind distrubition
+  raw_bulding_vol = room_scores.building_vol
 
   if total_vol > 0 then
     for k, v in pairs(room_scores) do
@@ -1946,6 +1988,13 @@ function LLM_NAME.get_some_info(self, lev)
 
   local room_count = #lev.rooms
   level_openness = room_count > 0 and (level_openness / room_count) or 0
+
+  -- wall group distribution
+  if room_scores.building_vol > 0.33 then
+    for k, v in pairs(wall_groups) do
+      wall_groups[k] = v / raw_bulding_vol
+    end
+  end
 
   ----------------------------------------------------------------------
   -- BUILD PROMPT
@@ -2001,18 +2050,22 @@ function LLM_NAME.get_some_info(self, lev)
   ----------------------------------------------------------------------
 
   if room_scores.building_vol > 0.33 and #room_themes > 0 then
-    table.insert(lines, "The rooms in the map are made of ")
+    table.insert(lines, 
+      rand.pick({
+      "The rooms in the map are made of ",
+      "The structures are constucted from ",
+      "The interiors are built of ",
+      "The indoors have been fabricated with "
+      })
+    )
 
     local room_texts = {}
-    for _, t in pairs(room_themes) do
-      table.add_unique(room_texts, get_semantic(t))
-    end
+
     table.insert(lines, to_phrase(room_texts))
   end
 
-  if lev.preferred_wall_groups
-    and lev.preferred_wall_groups[lev.theme_name]
-    and room_scores.building_vol > 0.33 then
+  if #wall_groups > 0
+  and room_scores.building_vol > 0.33 then
 
     local presence_v = rand.pick(
       {" populated with ", " made up of ", " with ", " have", " installed with",
@@ -2020,8 +2073,12 @@ function LLM_NAME.get_some_info(self, lev)
     table.insert(lines, presence_v)
 
     local prefab_texts = {}
-    for set in pairs(lev.preferred_wall_groups[lev.theme_name]) do
-      table.add_unique(prefab_texts, get_semantic(set))
+    for fab, score in pairs(wall_groups) do
+      if score > 0.33 then
+        table.add_unique(prefab_texts,
+        classify_ratio(score) .. " " .. get_semantic(fab)
+        )
+      end
     end
     table.insert(lines, to_phrase(prefab_texts))
 
@@ -2055,19 +2112,10 @@ function LLM_NAME.get_some_info(self, lev)
   if room_scores.outdoor_vol > 0.5 and lev.outdoor_theme then
     local theme_lines = nil
 
-    if lev.outdoor_theme == "snow" then
-      theme_lines = {
-        "The exterior is frozen and snow covered.\n",
-        "The map takes place in a frigid snowy environment.\n",
-        "The outdoors are icy and windswept.\n"
-      }
-
-    elseif lev.outdoor_theme == "sand" then
-      theme_lines = {
-        "The map takes place in a scorching desert environment.\n",
-        "The outdoors are dusty and sun blasted.\n",
-        "The exterior is dry and desertlike.\n"
-      }
+    if lev.outdoor_theme == "sand" then
+      theme_lines = rand.pick(get_semantic("sand"))
+    elseif lev.outdoor_theme == "snow" then
+      theme_lines = rand.pick(get_semantic("sand"))
     end
 
     if theme_lines then
@@ -2079,18 +2127,22 @@ function LLM_NAME.get_some_info(self, lev)
   -- LIQUIDS
   ----------------------------------------------------------------------
 
-  if lev.liquid_usage ~= 0 then
+  if lev.liquid_usage >= 0.33 then
     local liq_word
+    --if lev.liquid_usage > 0.9 then
+      --liq_word = rand.pick({" is overwhelmed by ", " is drowned out by "})
     if lev.liquid_usage > 0.8 then
-      liq_word = " is overrun with "
+      liq_word = rand.pick({" is overrun with ", " is teeming with ", " is flooded with "})
+    elseif lev.liquid_usage > 0.7 then
+      liq_word = rand.pick({" has a significant amount of ", " is abundant with ", " has a substantial quantities of "})
     elseif lev.liquid_usage > 0.6 then
       liq_word = " abundant with "
+    elseif lev.liquid_usage > 0.5 then
+      liq_word = rand.pick({" is moderately wet with ", " has some ", " is partially filled with "})
     elseif lev.liquid_usage > 0.4 then
-      liq_word = " has moderate  "
-    elseif lev.liquid_usage > 0.2 then
-      liq_word = " has scant "
-    else
-      liq_word = " has very sparse "
+      liq_word = " has a small amount of "
+    elseif lev.liquid_usage > 0.3 then
+      liq_word = rand.pick({" has almost drained ", " has nearly depleted "})
     end
 
     table.insert(lines,
@@ -2588,8 +2640,7 @@ Rules:
 - no real-world locations
 - purely fan fiction location that is not mentioned to be anywhere specific
 - avoid using canonical Doom proper nouns
-- each section must be up to at most 150 words, at least 2-4 paragraphs each
-- limit to 38 characters per line, and 25 lines counting linebreaks
+- each section must be up to at most 140-150 words
 - each section should escalate dramatically
 - each section should introduce new revelations or consequences
 - avoid all use of double quotes as text will go through a script parser
@@ -2652,10 +2703,10 @@ _FORMAT_
     story_characters)
 
     local story_format
-    if #GAME.levels < 30 then
-      story_format = LLM_NAME.story_components.length.epi
-    else
+    if OB_CONFIG.game == "game" then
       story_format = LLM_NAME.story_components.length.game
+    else
+      story_format = LLM_NAME.story_components.length.epi
     end
     prompt = string.gsub(prompt,
     "_FORMAT_",
@@ -2805,7 +2856,18 @@ OB_MODULES["llm_namer"] =
       tooltip = _("Generate intermission stories as well. " ..
       "ZDoom Specials must be turned on or intermission will be ignored without MAPINFO structs.\n\n"..
       "Not guaranteed to make authentic stories and will totally hallu"),
-      priority = 97
+      priority = 97,
+      gap = 1
+    },
+
+    {
+      name = "bool_listener_check",
+      label = _("Startup Listener Check"),
+      valuator = "button",
+      default = 1,
+      tooltip = _("Enables or disables Ollama instance check before level generation begins for speed. " ..
+      "When turning this off, be absolutely sure Ollama is running or you may get end errors, wasting your generated level."),
+      priority = 96,
     }
   }
 }
