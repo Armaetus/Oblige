@@ -1620,7 +1620,8 @@ LLM_NAME.story_components =
       "Kairos Labs, where scientists unravel the secrets of other dimensions and Hell itself",
       "Nebula's Edge Facility, a cutting-edge research facility probing the mysteries of black holes",
       "Erebus Abyss, a foreboding underground complex hiding ancient secrets and untold dangers",
-      "Aurora Tower, a gleaming spire piercing the clouds, hub of intergalactic diplomacy"
+      "Aurora Tower, a gleaming spire piercing the clouds, hub of intergalactic diplomacy",
+      "Hope's Reach, an experimental city designed by the UAC to be in a cyclical phase of destruction and rebuilding",
     },
 
     urban = {
@@ -1664,6 +1665,11 @@ LLM_NAME.story_components =
     "Dr. Naomi Mercer, a cybernetics specialist searching for a cure to demonic corruption",
     "Jonah Kreel, a fugitive smuggler transporting refugees through infested wastelands",
     "Aria Locke, a communications officer intercepting impossible signals from beyond Hell itself",
+    "Ava Moreno, a young and gifted hacker who infiltrates UAC systems to prevent disasters",
+    "Caleb Taylor, a former special forces operative turned mercenary, seeking redemption in the wastelands",
+    "Dr. Mayra Singh, a brilliant xenobiologist studying Hell's twisted flora and fauna",
+    "Lena Ibarra, a skilled engineer who designs innovative solutions to survive the apocalypse",
+
 
     -- neutral
     "Dr. Sophia Argus, a secretive UAC scientist whose assistance always advances hidden objectives",
@@ -1676,7 +1682,13 @@ LLM_NAME.story_components =
     "Professor Gideon Thorne, an archaeologist obsessed with proving Hell existed long before humanity",
     "The Ferryman, a mysterious figure guiding survivors through condemned transit tunnels beneath ruined cities",
     "Sister Celestine, a wandering preacher whose visions blur the line between prophecy and madness",
-
+    "Ethan Kim, a charismatic cult leader who must navigate his own moral compass amidst demonic invasions",
+    "Dr. Zhang Wei, a UAC scientist secretly working on a cure for demon corruption while hiding her true intentions",
+    "Father Michael Patel, a priest struggling with his faith as Hell's influence grows stronger",
+    "The Architect, an enigmatic figure designing and manipulating the infrastructure of ruined cities",
+    "Gideon Reyes, a seasoned smuggler turned informant, trading information to both human and demonic factions",
+    "Sister Elara, a mystic soldier and healer who seeks to understand and counter the corrupting influence of Hell",
+  
     -- antagonists    
     "The Matron, a colossal cybernetic arachnid enslaved by UAC experimentation and driven insane by agony",
     "Carnifex, a towering executioner demon who commands entire infernal war hosts",
@@ -1689,6 +1701,11 @@ LLM_NAME.story_components =
     "The Choir Below, a collective consciousness formed from thousands of tortured souls",
     "Mother Cyst, a grotesque flesh entity endlessly spreading organic corruption across entire facilities",
     "The Warden of Rust, a towering sentinel controlling industrial sectors consumed by demonic machinery",
+    "The Scourgebringer, a brutal demon warlord feasting on humanity's suffering and despair",
+    "Khar Xanatek, a charismatic cult leader manipulating his followers into unleashing demonic powers",
+    "Vex Ardos, a ruthless bounty hunter tracking down human survivors who possess powerful artifacts",
+    "The Aspect of Ruin, an ancient entity awakened and barely contained by UAC experimentation",
+    "Domos the Glutton, a infinitely hungering demon lord that feasts both on human souls and its own demons alike",
 
     -- factions
     "The Blood Host, one among the countless infernal legions invading mortal worlds",
@@ -1702,6 +1719,10 @@ LLM_NAME.story_components =
     "The Choir Mechanica, machine worshippers who believe demonic corruption is humanity's next evolution",
     "The Keepers of Titans, isolationist defenders guarding ancient sealed vaults",
     "The Mourning Legion, ghostlike soldiers endlessly fighting a war they already lost",
+    "The Order of the Black Depths, a secret society studying and containing demonic powers within themselves",
+    "The Nova Initiative, a special coalition of rogue scientists and engineers pushing the boundaries of forbidden technology",
+    "The Red Vipers, an aggressive isolationist militant group fighting against human corruption and Hell's influence",
+    "The Collective, a loose network former UAC scientists turned mystics and occultists dedicated to unleashing Hell",
 
     -- us?!
     "The Obsidian Developers, a nigh-invincible and engimatic group from another dimension always only observing and never interfering"
@@ -1710,7 +1731,7 @@ LLM_NAME.story_components =
   length =
   {
     epi =
-[[Make it as engaging as possible.
+[[Make it as engaging as possible. Do not add and go past a [STORY_3] block.
 
 SYSTEM: Please use exactly the following example format and do not use any Markdown:
 
@@ -1723,7 +1744,7 @@ SYSTEM: Please use exactly the following example format and do not use any Markd
 
     game =
 [[There are three chapters and the story is an intro and end for each,
-making six intermissions overall.
+making six intermissions overall. Each chapter has new twists and revalations.
 
 SYSTEM: Use the following format and do not use any Markdown formatting:
 
@@ -2557,6 +2578,7 @@ Rules:
 - ]] .. word_count_rule .. [[
 - no explanation
 - no quotes
+- no punctuation or line breaks
 
 ]]..
 level_data
@@ -2647,8 +2669,9 @@ Rules:
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - do not add explanations or commentary to the content
 
-The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting hell from place to place.
-The story reaches climax in the final chapter. The Doomslayer emerges victorious but there will always be a completely new story, another battle elsewhere.
+The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting hell from place to place in an eternal war with hell.
+The Doomslayer always emerges victorious in this current story but there will always be a new story, another battle elsewhere.
+Please avoid cliffhangers or "to be continued" endings. Instead, the current arc ends a hint at there being always more to do.
 
 _CHARACTER_
 
