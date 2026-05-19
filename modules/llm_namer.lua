@@ -2458,19 +2458,61 @@ function LLM_NAME.do_it()
 
   -- story chunk splitter
   local function parse_story_chunks(response)
+
     local stories = {}
 
     response = response:gsub("\\u003c", "<")
     response = response:gsub("\\u003e", ">")
+    response = response:gsub("\\u0026", "&")
+
+    response = response:gsub("\\n", "\n")
+    response = response:gsub("\\r", "\r")
+    response = response:gsub("\\t", "\t")
+
+    response = response:gsub("^```[%w]*\n?", "")
+    response = response:gsub("\n?```$", "")
 
     for id, text in response:gmatch("<S(%d+)>(.-)</S%d+>") do
       stories[tonumber(id)] =
-        text:gsub("^%s+", ""):gsub("%s+$", "")
+        (text:gsub("^%s+", ""):gsub("%s+$", ""))
+    end
+
+    for i = 1, 6 do
+
+      if not stories[i] then
+
+        local chunk
+
+        -- try: S[i] -> S[i+1]
+        local next_tag = "<S" .. (i + 1) .. ">"
+        chunk = response:match("<S" .. i .. ">(.-)" .. next_tag)
+
+        -- fallback: final section goes to EOF
+        if not chunk then
+          chunk = response:match("<S" .. i .. ">(.*)$")
+        end
+
+        if chunk then
+          chunk = chunk
+            :gsub("^%s+", "")
+            :gsub("%s+$", "")
+
+          stories[i] = chunk
+        end
+      end
+    end
+
+    for i = 1, 6 do
+      if stories[i] then
+        stories[i] = stories[i]
+          :gsub("\n%s*\n%s*\n+", "\n\n") -- collapse excessive blank lines
+          :gsub("^%s+", "")
+          :gsub("%s+$", "")
+      end
     end
 
     return stories
   end
-
 
   local function format_story_string(text, max_chars)
 
@@ -2733,7 +2775,7 @@ _FORMAT_
     local story_chunks = ask(prompt,
     {
       temperature = temp,
-      num_predict = 1500
+      num_predict = 1800
     },
     "story")
 
