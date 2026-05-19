@@ -1731,40 +1731,53 @@ LLM_NAME.story_components =
   length =
   {
     epi =
-[[Make it as engaging as possible. Do not add and go past a [STORY_3] block.
+[[Make it as engaging as possible.
 
-SYSTEM: Please use exactly the following example format and do not use any Markdown:
+SYSTEM: Please use exactly the following tagged structure and do not use any Markdown.
+Please do not add other blocks than is found in the example:
 
-[STORY_1]
-<story start here>
+<S1> 
+story intro here 
+</S1>
 
-[STORY_2]
-<story ending here>
-]],
+<S2> 
+story ending here 
+</S2>
+
+The text in each tag section must at least be 140-150 words.]],
 
     game =
 [[There are three chapters and the story is an intro and end for each,
 making six intermissions overall. Each chapter has new twists and revalations.
 
-SYSTEM: Use the following format and do not use any Markdown formatting:
+SYSTEM: Use the following tagged structure and do not use any Markdown formatting.
+Please do not add other blocks than is found in the example:
 
-[STORY_1]
-<chapter 1 intro here>
+<S1> 
+chapter 1 intro here
+</S1>
 
-[STORY_2]
-<chapter 1 ending here>
+<S2> 
+chapter 1 ending here
+</S2>
 
-[STORY_3]
-<chapter 2 intro here>
+<S3> 
+chapter 2 intro here
+</S3>
 
-[STORY_4]
-<chapter 2 ending here>
+<S4> 
+chapter 2 ending here
+</S4>
 
-[STORY_5]
-<chapter 3 intro here>
+<S5> 
+chapter 3 intro here
+</S5>
 
-[STORY_6]
-<chapter 3 ending here>]]
+<S6> 
+chapter 3 ending here
+</S6>
+
+The text in each tag section must at least be 140-150 words.]]
   }
 }
 
@@ -2444,46 +2457,18 @@ function LLM_NAME.do_it()
 
 
   -- story chunk splitter
-  local function parse_story_chunks(text)
+  local function parse_story_chunks(response)
+    local stories = {}
 
-    if not text then
-      return nil
+    response = response:gsub("\\u003c", "<")
+    response = response:gsub("\\u003e", ">")
+
+    for id, text in response:gmatch("<S(%d+)>(.-)</S%d+>") do
+      stories[tonumber(id)] =
+        text:gsub("^%s+", ""):gsub("%s+$", "")
     end
 
-    local story = {}
-    local current_id = nil
-    local buffer = {}
-
-    for line in text:gmatch("([^\n]*)\n?") do
-
-      -- detect header like [STORY_1]
-      local id = line:match("^%s*%[STORY_(%d+)%]%s*$")
-
-      if id then
-
-        -- flush previous chunk
-        if current_id then
-          story[tonumber(current_id)] = table.concat(buffer, "\n")
-        end
-
-        current_id = id
-        buffer = {}
-
-      else
-
-        if current_id then
-          table.insert(buffer, line)
-        end
-
-      end
-    end
-
-    -- flush last chunk
-    if current_id then
-      story[tonumber(current_id)] = table.concat(buffer, "\n")
-    end
-
-    return story
+    return stories
   end
 
 
@@ -2662,7 +2647,6 @@ Rules:
 - no real-world locations
 - purely fan fiction location that is not mentioned to be anywhere specific
 - avoid using canonical Doom proper nouns
-- each section must be up to at most 140-150 words
 - each section should escalate dramatically
 - each section should introduce new revelations or consequences
 - avoid all use of double quotes as text will go through a script parser
@@ -2703,7 +2687,7 @@ _FORMAT_
       })
 
       -- try different names: Kaelis, Kraelion, the Devourer are kind of appearing a LOT
-      if story_characters ~= "_BE_SPECIFIC_" and rand.odds(75) then
+      if story_characters ~= "_BE_SPECIFIC_" then
         story_characters = story_characters .. rand.pick(LLM_NAME.story_components.naming_styles) .. "\n"
         if rand.odds(50) then
           story_characters = story_characters .. "Please change any provided names in the prompt to any you deem fit.\n"
@@ -2726,7 +2710,7 @@ _FORMAT_
     story_characters)
 
     local story_format
-    if OB_CONFIG.game == "game" then
+    if OB_CONFIG.length == "game" then
       story_format = LLM_NAME.story_components.length.game
     else
       story_format = LLM_NAME.story_components.length.epi
@@ -2754,6 +2738,7 @@ _FORMAT_
     "story")
 
     local story_tab = {}
+    gui.printf(story_chunks .. " <- RAW\n")
     story_tab = parse_story_chunks(story_chunks)
 
     for s_pos = 1, #story_tab do
