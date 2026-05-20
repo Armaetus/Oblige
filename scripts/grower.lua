@@ -822,7 +822,6 @@ SHAPE RULE ELEMENTS:
   end
 
   process_some_cool_grammars(gramgram)
-
 end
 
 
@@ -894,6 +893,33 @@ function Grower_calc_rule_probs(LEVEL)
     -- normal logic --
 
     local prob = rule.prob or 0
+
+    -- prob auto-assign test
+    -- generates prob counts based the overall density
+    -- of a shape rule (how many characters)
+    -- and application difficulty (1's in the match pattern)
+
+    if rule.name:find("GROW_")
+    and PARAM.bool_auto_shape_rule_prob
+    and PARAM.bool_auto_shape_rule_prob == 1 then
+      local total = 0
+      for i, str in ipairs(rule.structure) do
+        if i % 2 ~= 0 then -- odd index
+          for c in str:gmatch '.' do
+            if c ~= 'x' and c ~= '.' then
+              total = total + 1 * 1.15
+            end
+          end
+        else
+          for c in str:gmatch '.' do
+            if c ~= '1' and c ~= 'x' and c ~= '.' then
+              total = total + 1
+            end
+          end
+        end
+      end
+      prob = total
+    end
 
     prob = prob *  style_factor(rule)
     prob = prob * random_factor(rule)

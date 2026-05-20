@@ -298,6 +298,18 @@ OB_MODULES["arch_exp"] =
       tooltip = _("Changes the amount of shape grower tests per growth step. "..
         "Default is 20. Higher values mean shapes can fit more snuggly, for longer generation time."),
       priority = 104
+    },
+
+    {
+      name = "bool_auto_shape_rule_prob",
+      label = _("Automatic Shape Rule Probs"),
+      valuator = "button",
+      default = 0,
+      tooltip = _("Shape rules be automatically applied probabilities, overriding manual assignment. " ..
+        "May cause some rarer shape rules to have a better statistical chance " ..
+        "to show up compared to manually assigned probs. " ..
+        "Or not. Who knows."),
+      priority = 103
     }
   },
 }
