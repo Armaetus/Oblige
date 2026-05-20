@@ -2800,7 +2800,7 @@ _FORMAT_
           escape_string(
             story_tab[s_pos]
           ),
-          38
+          56
         ) .. ';\n'
       )
       table.insert(PARAM.language_lump, "\n")
