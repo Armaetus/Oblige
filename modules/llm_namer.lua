@@ -1562,8 +1562,8 @@ LLM_NAME.story_components =
   naming_styles =
   {
     -- General rules
-    "Names should sound militaristic and utilitarian.",
-    "Names should sound cold, mechanical, and believable.",
+    "Names should sound realistic, militaristic and utilitarian.",
+    "Names should sound realistic but cold, mechanical, and believable.",
     "Names should feel grounded rather than fantasy-like.",
     "Names should be concise and to-the-point.",
     "Names should avoid emotional or sentimental value.",
@@ -1642,11 +1642,10 @@ LLM_NAME.story_components =
       "Infernox Abyss, a bottomless pit of eternal torment and suffering",
       "Magma Furnace, a scorching hellscape where molten lava flows like liquid fire",
       "Furnacehold Citadel, a foreboding fortress built from twisted, blackened stone",
-      "Brimstone City, a charred and smoldering metropolis consumed by unending flames",
-      "Emberfall Canyon, a desolate chasm of burning ash and sulfurous fumes",
+      "Embergulch City, a charred and smoldering metropolis consumed by unending flames",
+      "Soot Falls Canyon, an abandoned UAC quarry now a desolate chasm of burning ash and sulfurous fumes",
       "Infernox Ironworks, a nightmarish factory where demonic forces toil in eternal bondage",
       "Blazing Heights, a twisted skyscraper of flames that pierces the sky like a screaming blade",
-      "Firebrand's Folly, a cursed stronghold built upon a lake of burning oil and tar",
       "Tomb of the Damned, an abyssal pit where the shades of the damned writhe in eternal torment"
     }
   },
@@ -2588,12 +2587,12 @@ function LLM_NAME.do_it()
 
     local word_count_rule = rand.key_by_probs(
       {
-        ["1 word only"] = 8,
+        [""] = 8,
         ["2 words only"] = 10,
         ["3 words only"] = 9,
-        ["4 words only"] = 8,
-        ["5 words only"] = 3,
-        ["6 words only"] = 2
+        ["4 words only, no more than 38 characters"] = 8,
+        ["5 words only, no more than 38 characters"] = 3,
+        ["6 words only, no more than 38 characters"] = 2
       }
     )
 
@@ -2605,7 +2604,7 @@ Rules:
 - ]] .. word_count_rule .. [[
 - no explanation
 - no quotes
-- no punctuation or line breaks
+- no punctuation of any kind
 
 ]]..
 level_data
@@ -2624,7 +2623,7 @@ level_data
     end
 
     -- refer to name history to avoid name re-use
-    prompt = prompt .. "The following names are already used. Avoid re-using elements of them:\n"
+    prompt = prompt .. "The following names are already used. Avoid re-using them, but feel free to use them as basis for something more distinct:\n"
     if #LLM_NAME.history > 0 then
       for _, name in ipairs(LLM_NAME.history) do
         prompt = prompt .. "* " .. name .. "\n"
@@ -2679,7 +2678,7 @@ Each section of the story is read far apart from each other.
 
 Story Flavor: _FLAVOR_
 
-Location: _LOCATION_, somewhere in the twisted infinite hellscapes of future Earth
+Current Location: _LOCATION_, somewhere in the twisted infinite hellscapes of future Earth
 
 I need the story to be properly formatted. Do not provide any explanation.
 
@@ -2695,9 +2694,10 @@ Rules:
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - do not add explanations or commentary to the content
 
-The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting hell from place to place in an eternal war with hell.
+The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell.
+Their exploits brings them to the current location.
 The Doomslayer always emerges victorious in this current story but there will always be a new story, another battle elsewhere.
-Please avoid cliffhangers or "to be continued" endings. Instead, the current arc ends a hint at there being always more to do.
+Please avoid cliffhangers or "to be continued" endings. The current arc ends but there is always more to do.
 
 _CHARACTER_
 
@@ -2710,9 +2710,13 @@ _FORMAT_
     story_flavor)
 
     -- place injection
-    local story_place = rand.pick(
-      LLM_NAME.story_components.places[rand.pick({"urban","tech","hell"})]
-      )
+    local collate = {}
+    for _,T in pairs(LLM_NAME.story_components) do
+      for places in ipairs(T) do
+        table.insert(collate, places)
+      end
+    end
+    local story_place = rand.pick(collate)
     prompt = string.gsub(prompt,
     "_LOCATION_",
     story_place)
@@ -2793,14 +2797,13 @@ _FORMAT_
         chunk_name = "STORYEND"
       end
 
-      gui.printf("LLM Namer: " .. chunk_name .. math.ceil(s_pos/2) .. ": " .. story_tab[s_pos] .. "\n")
       table.insert(PARAM.language_lump, chunk_name .. math.ceil(s_pos/2) .. " =\n")
       table.insert(PARAM.language_lump,
         format_story_string(
           escape_string(
             story_tab[s_pos]
           ),
-          56
+          64
         ) .. ';\n'
       )
       table.insert(PARAM.language_lump, "\n")

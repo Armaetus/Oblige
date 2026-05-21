@@ -907,7 +907,7 @@ function Grower_calc_rule_probs(LEVEL)
         if i % 2 ~= 0 then -- odd index
           for c in str:gmatch '.' do
             if c ~= 'x' and c ~= '.' then
-              total = total + 1 * 1.15
+              total = total + 1 * 1.25
             end
           end
         else
