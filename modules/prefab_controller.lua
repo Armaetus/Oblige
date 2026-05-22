@@ -168,7 +168,7 @@ function PREFAB_CONTROL.fine_tune_filters()
   }
 
   for _,T in pairs(GAME.THEMES) do
-    if T.skyboxes then
+    if T.skyboxes and T.skyboxes["Skybox_gtd_monoliths_EPIC"] then
       T.skyboxes["Skybox_gtd_monoliths_EPIC"] =
       T.skyboxes["Skybox_gtd_monoliths_EPIC"] * 4
     end
