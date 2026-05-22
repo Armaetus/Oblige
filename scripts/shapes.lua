@@ -6880,7 +6880,7 @@ GROW_SIDE_ON_RAMP_TALL_TO_JUNCTION_LIQUID =
 
   diagonals =
   {
-    "A.",".~","~.","A.",
+    "A.",".~","~.",".A",
     "1~","~1",
     "1."
   }
