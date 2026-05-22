@@ -75,7 +75,7 @@ After opening the project folder in VSCode, select the 'Visual Studio Build Tool
 
 Select the Release CMake build variant
 
-Click Build
+To build, click on Build (gear icon on lower-left of bottom pane) or type 'CMake: Build' in the command palette. (shortcut: F7)
 
 Then, Obsidian can be launched with:
 
