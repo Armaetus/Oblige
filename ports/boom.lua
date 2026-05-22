@@ -146,7 +146,7 @@ OB_PORTS["boom"] =
 {
   label = _("BOOM Compat"),
 
-  priority = 102,  -- this makes it top-most, and the default engine
+  priority = 103,
 
   tables =
   {

@@ -190,7 +190,7 @@ void UI_Game::callback_PortHelp(Fl_Widget *w, void *data)
     win->set_modal();
     win->show();
     // clang-format off
-    buff->text(_("Available Ports:\n\nGZDoom: GZDoom and variants (LZDoom, QZDoom, etc)\n\nBoom-Compatible: Ports that are able to use the entire suite of Boom types and features. Most modern source ports fall into this category at a minimum.\n\nEDGE-Classic: Boom-compatible, plus UDMF support, additional specials and other advanced features."));
+    buff->text(_("Available Ports:\n\nUZDoom: UZDoom and variants (GZDoom, LZDoom, QZDoom, etc) Most Obsidian content is intially built for UZDoom prior to other engines and compat levels.\n\nBoom-Compatible: Ports that are able to use the entire suite of Boom types and features. Most modern source ports fall into this category at a minimum.\n\nEDGE-Classic: Boom-compatible, plus UDMF support, additional specials and other advanced features."));
     // clang-format on
 }
 

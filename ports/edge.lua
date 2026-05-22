@@ -159,7 +159,7 @@ OB_PORTS["edge"] =
 
   extends = "advanced",
 
-  priority = 99,
+  priority = 104,
 
   tables =
   {
