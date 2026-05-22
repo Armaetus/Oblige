@@ -1687,7 +1687,7 @@ LLM_NAME.story_components =
     "The Architect, an enigmatic figure designing and manipulating the infrastructure of ruined cities",
     "Gideon Reyes, a seasoned smuggler turned informant, trading information to both human and demonic factions",
     "Sister Elara, a mystic soldier and healer who seeks to understand and counter the corrupting influence of Hell",
-  
+
     -- antagonists    
     "The Matron, a colossal cybernetic arachnid enslaved by UAC experimentation and driven insane by agony",
     "Carnifex, a towering executioner demon who commands entire infernal war hosts",
@@ -1780,6 +1780,315 @@ The text in each tag section must at least be 140-150 words.]]
   }
 }
 
+
+LLM_NAME.naming_novelty =
+{
+  -- these are NOT literal language generators
+  -- they are tonal inspiration pools for anglicized naming
+
+  languages =
+  {
+    -- EAST ASIAN
+    japanese =
+    {
+      "sharp phonetics",
+      "clean syllables",
+      "cybernetic corporate tones",
+      "anime industrial naming",
+      "compressed vowel-heavy words"
+    },
+
+    korean =
+    {
+      "hard modern consonants",
+      "megacity terminology",
+      "military-industrial tones",
+      "sleek futuristic naming"
+    },
+
+    chinese =
+    {
+      "dynastic grandeur",
+      "ancient imperial atmosphere",
+      "layered poetic naming",
+      "dense urban imagery"
+    },
+
+    -- EUROPEAN
+    russian =
+    {
+      "cold industrial naming",
+      "heavy Slavic consonants",
+      "Soviet megastructure vibes",
+      "bleak militarized terminology"
+    },
+
+    ukrainian =
+    {
+      "melancholic Slavic sounds",
+      "ornate Eastern-European rhythm",
+      "weathered fortress imagery"
+    },
+
+    polish =
+    {
+      "clustered consonants",
+      "medieval-industrial tones",
+      "grim fortress naming"
+    },
+
+    german =
+    {
+      "mechanical compounds",
+      "industrial precision",
+      "harsh technological words",
+      "machine-like naming"
+    },
+
+    french =
+    {
+      "elegant flowing phonetics",
+      "decadent aristocratic tones",
+      "romanticized ruin imagery",
+      "ornate atmospheric wording"
+    },
+
+    italian =
+    {
+      "dramatic vowel endings",
+      "cathedral grandeur",
+      "renaissance-inspired terminology",
+      "operatic naming style"
+    },
+
+    spanish =
+    {
+      "conquistador-era grandeur",
+      "burning desert atmosphere",
+      "religious imperial tones"
+    },
+
+    portuguese =
+    {
+      "oceanic exploration themes",
+      "weathered colonial aesthetics",
+      "melancholic lyrical sounds"
+    },
+
+    romanian =
+    {
+      "gothic Eastern-European tones",
+      "vampiric mythological atmosphere",
+      "haunted medieval naming"
+    },
+
+    finnish =
+    {
+      "cold alien phonetics",
+      "isolated northern atmosphere",
+      "minimalist mysterious wording"
+    },
+
+    icelandic =
+    {
+      "saga-like naming",
+      "ancient volcanic atmosphere",
+      "mythic frozen imagery"
+    },
+
+    -- MIDDLE EAST / ANCIENT
+    arabic =
+    {
+      "ornate mystical wording",
+      "desert empire imagery",
+      "ancient astronomical terminology",
+      "flowing ceremonial names"
+    },
+
+    persian =
+    {
+      "imperial poetic grandeur",
+      "mythological elegance",
+      "golden-age civilization tones"
+    },
+
+    hebrew =
+    {
+      "biblical resonance",
+      "ancient sacred naming",
+      "ritualistic terminology"
+    },
+
+    aramaic =
+    {
+      "forgotten sacred language tones",
+      "cryptic religious atmosphere",
+      "ancient apocalyptic imagery"
+    },
+
+    akkadian =
+    {
+      "Mesopotamian empire naming",
+      "ziggurat civilization tones",
+      "bronze-age cosmic horror"
+    },
+
+    sumerian =
+    {
+      "alien proto-civilization vibes",
+      "ancient stone monument naming",
+      "ritualistic city-state atmosphere"
+    },
+
+    babylonian =
+    {
+      "astronomical empire grandeur",
+      "decadent ancient civilization tones",
+      "towering mythic architecture"
+    },
+
+    egyptian =
+    {
+      "funerary monument naming",
+      "golden necropolis imagery",
+      "eternal tomb atmosphere"
+    },
+
+    -- CLASSICAL / DEAD
+    latin =
+    {
+      "ecclesiastical grandeur",
+      "Roman imperial terminology",
+      "ritual-machine naming",
+      "cathedral-like phrasing"
+    },
+
+    ancient_greek =
+    {
+      "philosophical cosmic terminology",
+      "mythological scientific naming",
+      "heroic ancient atmosphere"
+    },
+
+    gaelic =
+    {
+      "misty mythological tones",
+      "weathered island fortress imagery",
+      "folkloric naming"
+    },
+
+    old_english =
+    {
+      "ancient fortress naming",
+      "weathered warrior atmosphere",
+      "grim medieval tones"
+    },
+
+    sanskrit =
+    {
+      "cosmic spiritual grandeur",
+      "multi-syllabic sacred terminology",
+      "ancient metaphysical atmosphere"
+    },
+
+    -- SYNTHETIC / SCI-FI
+    cyberpunk =
+    {
+      "megacorporate branding",
+      "cold synthetic terminology",
+      "AI-managed urbanism",
+      "neon dystopian naming"
+    },
+
+    military =
+    {
+      "classified operation terminology",
+      "containment protocols",
+      "industrial warzone naming"
+    },
+
+    brutalist =
+    {
+      "concrete megastructure atmosphere",
+      "monolithic architecture naming",
+      "bleak civic terminology"
+    },
+
+    occult =
+    {
+      "ritualistic mystery",
+      "forbidden terminology",
+      "esoteric symbolic naming"
+    }
+  },
+
+  -- these shape HOW the names should behave.
+  modifiers =
+  {
+    phonetics =
+    {
+      "with hard industrial consonants",
+      "with smooth flowing vowels",
+      "with clipped cybernetic syllables",
+      "with elongated mystical sounds",
+      "with cold mechanical rhythm",
+      "with ceremonial cadence",
+      "with militarized brevity",
+      "with harsh angular pronunciation"
+    },
+
+    mythology =
+    {
+      "inspired by forgotten gods",
+      "inspired by apocalyptic myths",
+      "inspired by machine religion",
+      "inspired by cosmic horror",
+      "inspired by ancient empires",
+      "inspired by ruined civilizations",
+      "inspired by infernal theology",
+      "inspired by doomed megacities"
+    },
+
+    aesthetics =
+    {
+      "with brutalist architectural vibes",
+      "with cathedral-like grandeur",
+      "with industrial decay imagery",
+      "with cybernetic megastructure atmosphere",
+      "with frozen wasteland tones",
+      "with surreal dreamlike qualities",
+      "with retro-futuristic aesthetics",
+      "with oppressive urban atmosphere"
+    },
+
+    structure =
+    {
+      "using compound industrial names",
+      "using mysterious facility names",
+      "using monolithic place names",
+      "using cryptic military designations",
+      "using ancient ceremonial titles",
+      "using megacorporate naming styles",
+      "using poetic but oppressive wording",
+      "using arcane technological terminology"
+    },
+
+    emotional =
+    {
+      "evoking awe",
+      "evoking dread",
+      "evoking isolation",
+      "evoking mystery",
+      "evoking industrial oppression",
+      "evoking forgotten history",
+      "evoking cosmic insignificance",
+      "evoking doomed grandeur"
+    }
+  }
+}
+
+
+
 LLM_NAME.history = {}
 
 function LLM_NAME.setup(self)
@@ -1821,22 +2130,6 @@ function LLM_NAME.get_some_info(self, lev)
     gui.printf("LLM Namer: No semantic found for " .. term .. "\n")
 
     return term
-  end
-
-  -- combine phrases and words
-  local function to_phrase(words)
-    local count = #words
-    if count == 0 then
-      return ""
-    elseif count == 1 then
-      return words[1]
-    elseif count == 2 then
-      return words[1] .. " and " .. words[2]
-    else
-      -- join all but the last with commas
-      local body = table.concat(words, ", ", 1, count - 1)
-      return body .. ", and " .. words[count]
-    end
   end
 
   local function classify_ratio(ratio)
@@ -2064,7 +2357,7 @@ function LLM_NAME.get_some_info(self, lev)
       )
     end
 
-    table.insert(lines, to_phrase(room_texts))
+    table.insert(lines, LLM_NAME.to_phrase(room_texts))
 
     -- room prefabs
     local bool_wall_groups_worth_talking_about
@@ -2096,7 +2389,7 @@ function LLM_NAME.get_some_info(self, lev)
         }
       )
       table.insert(lines, presence_v)
-      table.insert(lines, to_phrase(prefab_texts))
+      table.insert(lines, LLM_NAME.to_phrase(prefab_texts))
     end
 
     table.insert(lines, ".\n")
@@ -2233,6 +2526,61 @@ function LLM_NAME.get_some_info(self, lev)
 
   local info_str = table.concat(lines)
   LLM_NAME.level_infos[lev.id] = info_str
+end
+
+
+-- combine phrases and words
+function LLM_NAME.to_phrase(words)
+  local count = #words
+  if count == 0 then
+    return ""
+  elseif count == 1 then
+    return words[1]
+  elseif count == 2 then
+    return words[1] .. " and " .. words[2]
+  else
+    -- join all but the last with commas
+    local body = table.concat(words, ", ", 1, count - 1)
+    return body .. ", and " .. words[count]
+  end
+end
+
+
+-- name stylizer
+function LLM_NAME.stylize_name_prompt()
+  local str = ""
+
+  str = str .. "Please change any provided names in the prompt to any you deem fit but ensure any original names for unnamed entities you name use the following style instruction:\n"
+  str = str .. rand.pick(LLM_NAME.story_components.naming_styles) .. "\n"
+
+  local lang_choices, mod_choices = {}, {}
+  for name, T in pairs(LLM_NAME.naming_novelty.languages) do
+    table.insert(lang_choices, name)
+  end
+  for name, T in pairs(LLM_NAME.naming_novelty.modifiers) do
+    table.insert(mod_choices, name)
+  end
+
+  local lang_lines = {}
+  for i = 1, rand.pick({1,2,3}) do
+    local lang_t = rand.pick(lang_choices)
+    table.insert(lang_lines, rand.pick(LLM_NAME.naming_novelty.languages[lang_t]))
+  end
+
+  local mod_lines = {}
+  for i = 1, rand.pick({1,2,3}) do
+    local mod_t = rand.pick(mod_choices)
+    table.insert(mod_lines, rand.pick(LLM_NAME.naming_novelty.modifiers[mod_t]))
+  end
+
+  str = str ..
+    "Use lightly anglicized " ..
+    LLM_NAME.to_phrase(lang_lines) ..
+    " naming influences, " ..
+    LLM_NAME.to_phrase(mod_lines) ..
+    ".\n\n"
+
+  return str
 end
 
 
@@ -2513,6 +2861,8 @@ function LLM_NAME.do_it()
     return stories
   end
 
+
+
   local function format_story_string(text, max_chars)
 
     local formatted_lines = {}
@@ -2584,24 +2934,12 @@ function LLM_NAME.do_it()
       style_line = "Generate a name for a Doom map.\n"
     end
 
-
-    local word_count_rule = rand.key_by_probs(
-      {
-        [""] = 8,
-        ["2 words only"] = 10,
-        ["3 words only"] = 9,
-        ["4 words only, no more than 38 characters"] = 8,
-        ["5 words only, no more than 38 characters"] = 3,
-        ["6 words only, no more than 38 characters"] = 2
-      }
-    )
-
     local prompt = style_line ..
 [[Feel free to use metaphor, mood, or unusual imagery.
 
 Rules:
 - 1 line only
-- ]] .. word_count_rule .. [[
+- 10-28 characters
 - no explanation
 - no quotes
 - no punctuation of any kind
@@ -2620,6 +2958,11 @@ level_data
     local pick_tmp
     if #GAME.levels > 4 and epi_lev.along then
       pick_tmp = map_value(epi_lev.along, 0, 1, 0.25, 1.2)
+    end
+
+    -- name stylization
+    if rand.odds(50) then
+      prompt = prompt .. LLM_NAME.stylize_name_prompt()
     end
 
     -- refer to name history to avoid name re-use
@@ -2667,6 +3010,7 @@ level_data
     return info
 
   end
+
 
   local function generate_story()
 
@@ -2736,7 +3080,7 @@ _FORMAT_
       if story_characters ~= "_BE_SPECIFIC_" then
         story_characters = story_characters .. rand.pick(LLM_NAME.story_components.naming_styles) .. "\n"
         if rand.odds(50) then
-          story_characters = story_characters .. "Please change any provided names in the prompt to any you deem fit.\n"
+          story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
         end
       end
     if story_characters == "_BE_SPECIFIC_" then
@@ -2747,8 +3091,7 @@ _FORMAT_
 
       -- maybe change up our pregen names too!
       if rand.odds(33) then
-        story_characters = story_characters .. "Please change any provided names in the prompt to any you deem fit.\n"
-        story_characters = story_characters .. rand.pick(LLM_NAME.story_components.naming_styles) .. "\n"
+        story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
       end
     end
     prompt = string.gsub(prompt,
