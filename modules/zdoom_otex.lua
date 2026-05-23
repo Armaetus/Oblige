@@ -1470,7 +1470,7 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
       dz = info.dz,
       light = 16,
 
-      trim_mat = info.name,
+      trim_mat = name,
       trim_dz = 0,
       trim_light = 16
     }
