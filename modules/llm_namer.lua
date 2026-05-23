@@ -1629,11 +1629,11 @@ LLM_NAME.story_components =
       "Korvus City, a foreboding stronghold built into the sides of towering mountains",
       "Aurora Heights, a previously picturesque suburb now partially fallen to the forces of Hell",
       "Cathedral Heights, a sacred site where ancient structures pierce the sky",
-      "Elysium Plains, a serene and idyllic region of rolling hills and wealthy residential complexes",
-      "Paradise Junction, a bustling hub connecting traders and travelers from far and wide",
+      "Elysium Plains, a serene and idyllic region of rolling hills and wealthy residential complexes torn apart by Hell's forces",
+      "Paradise Junction, a formerly bustling hub connecting traders and travelers from far and wide",
       "The Threshold, a massive mining complex abandoned after uncovering a Slipgate from which Hell has slipped through",
       "Ghoul's Garrison, a foreboding fortress guarded by twisted creatures and dark magic",
-      "Sentinel's Watch, a sturdy insular stronghold held together by survivors of the apocalypse",
+      "Stalker's Watch, a sturdy insular stronghold held together by survivors of the apocalypse",
       "Fortress of the Ancients, a mysterious stronghold housing secrets of the past",
       "The Citadel, an imposing seat of power and authority now crumbling in destitute"
     },
@@ -3062,7 +3062,7 @@ Rules:
 - do not add explanations or commentary to the content
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell.
-Their exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
+Hell continues to be humanity's problem and the Doomslayer's exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
 The Doomslayer always emerges victorious in this current story but there will always be a new story, another battle with Hell elsewhere.
 Please avoid cliffhangers or "to be continued" endings. The current arc ends but there is always more to do.
 
