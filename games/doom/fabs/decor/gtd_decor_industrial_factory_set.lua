@@ -42,7 +42,7 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_stuff =
 
   z_fit = "top",
 
-  tex_CRATE3 = 
+  tex_CRATE3 =
   {
     CRATE3 = 2,
     CRATE2 = 2,
@@ -67,14 +67,14 @@ PREFABS.Decor_gtd_fireblu_wim_3_box_with_fire_stuff =
   flat_CEIL4_2 = "FLAT5_3",
   tex_COMPBLUE = "ROCKRED1",
 
-  tex_CRATE3 = 
+  tex_CRATE3 =
   {
     CRATE3 = 2,
     CRATE2 = 2,
     CRATINY = 1
   },
 
-  bound_z2 = nil
+  bound_z2 = 129
 }
 
 PREFABS.Decor_gtd_fireblu_wim_4 =
@@ -146,7 +146,7 @@ PREFABS.Decor_gtd_fireblu_wim_boxes_4 =
 {
   template = "Decor_gtd_fireblu_wim_boxes",
   map = "MAP04",
-  
+
   size = 96,
   height = 129
 }

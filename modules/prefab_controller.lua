@@ -142,10 +142,11 @@ function PREFAB_CONTROL.fine_tune_filters()
   }
   local new_fab_groups_multipliers =
   {
-    gtd_fireblu_where_its_made = 2,
-    gtd_tech_barrier_tek = 4,
-    gtd_data_center = 4,
-    gtd_dh_comp = 4
+    gtd_fireblu_where_its_made = 1,
+    gtd_tech_barrier_tek = 2,
+    gtd_data_center = 3,
+    gtd_dh_comp = 4,
+    gtd_shopping_mall = 4
   }
   local new_themes_multipliers =
   {
