@@ -1501,7 +1501,7 @@ LLM_NAME.prompt_styles =
 LLM_NAME.prompt_flavors =
 {
   -- these are substituted to the "Generate a Doom map name that " part of the instructional line
-  dn3d = "Generate a Doom map name that leans towards a euphemistic 80's comedic porn parody. The name ",
+  dn3d = "Generate a Doom map name that leans towards an extremely euphemistic and badly suggestive 80's comedic porn parody title that's rather blue and practically lewd if not laughable. The name ",
   black_metal = "Generate a Doom map name that sounds like a hardcore black metal band song title. The name ",
   ecchi = "Generate a Doom map name that sounds like a English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
 }
@@ -1777,6 +1777,29 @@ chapter 3 ending here
 </S6>
 
 The text in each tag section must at least be 140-150 words.]]
+  },
+
+  -- not used yet
+  mcguffins =
+  {
+    "The Lost Necronomicon of Zha'thik, a forbidden tome containing ancient knowledge of the Old Ones.",
+    "The BFG-9000 Fragment: 'Erebus', a shard of the legendary heavy artillery, said to hold the power to destroy entire cities.",
+    "The Cybernetic Core of Erebus Prime, an advanced piece of technology that can upgrade the protagonist's cybernetic implants.",
+    "The Ancient Sarcophagus of Xeridia, a mysterious coffin said to contain the spirit of a ancient warrior, rumored to grant immense power to its wielder.",
+    "Arkeia's Enzyme Containment, a rare hell-infused enzyme that can meld plasma with flesh, creating a temporarily indestructible material.",
+    "The Portal Key of the Underworld, an ancient relic said to hold the key to unlocking the secrets of the underworld, allowing its wielder to traverse the realms of hell.",
+    "The Vial of the Eternal Life Force, a vial containing a fragment of the life force of an eternal being, said to grant immortality to those who drink from it.",
+    "The Fragment of the Kravot's Sword, a shard of the legendary sword of an long forgotten Night Sentinel, said to hold the power to bring about the downfall of entire civilizations.",
+    "The Sacred Chalice of the Ancient Ones, an ancient relic said to hold the power to grant wishes and manipulate reality itself.",
+    "The Eye of Argus, a mystical orb said to grant the user insight into the workings of the underworld.",
+    "The Tome of the Archon's Secrets, a forbidden book containing knowledge of the most powerful spells in the universe.",
+    "The 'Ares' BFG-9000 Blueprint, a set of plans for constructing a new BFG-9000, said to be the most powerful artifact in existence.",
+    "The Cyberdemon's Amulet, a mysterious relic said to grant its wearer incredible strength and agility in combat.",
+    "The Portal Gun of the Ancients, an ancient device said to hold the power to transport its wielder between different dimensions.",
+    "The Shattered Crystal of Eredyeon, a fragment of a powerful crystal said to be able to absorb and redirect magical energy.",
+    "The Lost Relic of the Arch-Vile's Covenant, a mysterious artifact said to grant its wielder immense power in both combat and magic.",
+    "Gorthok's Eye of the Beholder, a mystical orb said to grant the user incredible insight into the workings of reality itself.",
+    "Xaavor's Tome of Demonic Summoning, a forbidden book containing knowledge of how to summon powerful demons from other dimensions.",
   }
 }
 
@@ -3031,7 +3054,7 @@ Rules:
 - Doom fan fiction style
 - no real-world locations
 - purely fan fiction location that is not mentioned to be anywhere specific
-- avoid using canonical Doom proper nouns
+- prefer original entities over well-known Doom proper nouns
 - each section should escalate dramatically
 - each section should introduce new revelations or consequences
 - avoid all use of double quotes as text will go through a script parser
@@ -3039,8 +3062,8 @@ Rules:
 - do not add explanations or commentary to the content
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell.
-Their exploits brings them to the current location.
-The Doomslayer always emerges victorious in this current story but there will always be a new story, another battle elsewhere.
+Their exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
+The Doomslayer always emerges victorious in this current story but there will always be a new story, another battle with Hell elsewhere.
 Please avoid cliffhangers or "to be continued" endings. The current arc ends but there is always more to do.
 
 _CHARACTER_
@@ -3067,7 +3090,7 @@ _FORMAT_
 
     local story_characters
     story_characters = rand.key_by_probs({
-      ["Introduce an original allied character in the story.\n"]=3,
+      ["Introduce an original friendly character in the story.\n"]=3,
       ["Introduce an original neutral character in the story.\n"]=4,
       ["Introduce an original hostile character in the story.\n"]=5,
       ["Introduce two original characters in the story.\n"]=7,
