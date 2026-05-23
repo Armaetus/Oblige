@@ -1504,6 +1504,7 @@ LLM_NAME.prompt_flavors =
   dn3d = "Generate a Doom map name that leans towards an extremely euphemistic and badly suggestive 80's comedic porn parody title that's rather blue and practically lewd if not laughable. The name ",
   black_metal = "Generate a Doom map name that sounds like a hardcore black metal band song title. The name ",
   ecchi = "Generate a Doom map name that sounds like a English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
+  action = "Generate a Doom map name that sounds like a classic and thrilling action movie chuck full of one-liners and fiery explosive scenes. The name "
 }
 
 LLM_NAME.PROMPT_FLAVOR_CHOICES =
@@ -1511,7 +1512,8 @@ LLM_NAME.PROMPT_FLAVOR_CHOICES =
   "default", _("DEFAULT"),
   "dn3d", _("Duke Nukem"),
   "black_metal", _("Black Metal"),
-  "ecchi", _("HDoom")
+  "ecchi", _("HDoom"),
+  "action", _("Action Movie")
 }
 
 LLM_NAME.story_components =
@@ -1802,7 +1804,6 @@ The text in each tag section must at least be 140-150 words.]]
     "Xaavor's Tome of Demonic Summoning, a forbidden book containing knowledge of how to summon powerful demons from other dimensions.",
   }
 }
-
 
 LLM_NAME.naming_novelty =
 {
@@ -2110,9 +2111,9 @@ LLM_NAME.naming_novelty =
   }
 }
 
-
-
 LLM_NAME.history = {}
+
+
 
 function LLM_NAME.setup(self)
   local function ollama_is_alive(endpoint)
