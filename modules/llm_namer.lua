@@ -2964,7 +2964,7 @@ function LLM_NAME.do_it()
 Rules:
 - 1 line only
 - 10-28 characters
-- no explanation
+- do not add any comment or explanation, give only the name
 - no quotes
 - no punctuation of any kind
 
