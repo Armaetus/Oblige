@@ -210,7 +210,7 @@ function Quest_create_initial_quest(LEVEL)
 
   local function eval_exit_room(R, secret_mode)
     local function recurse_to_start(R, mult)
-      mult = mult * math.clamp(1, R.svolume / 128, 9001) 
+      mult = mult * math.clamp(1, R.svolume / 128, 9001)
       if R.grow_parent then
         recurse_to_start(R.grow_parent, mult)
       end
@@ -223,8 +223,8 @@ function Quest_create_initial_quest(LEVEL)
     if R.is_exit then return -1 end
 
     -- must be a leaf room, but only if secret
-    if R:total_conns() > 1 and secret_mode then 
-      return -1 
+    if R:total_conns() > 1 and secret_mode then
+      return -1
     end
 
     local conn = R.conns[1]
@@ -273,7 +273,7 @@ function Quest_create_initial_quest(LEVEL)
     if R.is_cave then score = score / 4 end]]
 
     -- sub rooms that are too small
-    if R.is_sub_room and R.svolume < 16 and not secret_mode then 
+    if R.is_sub_room and R.svolume < 16 and not secret_mode then
       score = score / 48
     end
 
@@ -281,14 +281,50 @@ function Quest_create_initial_quest(LEVEL)
     if R.closets and not table.empty(R.closets) then
       score = score + (#R.closets * 5)
     end
-  
+
     if R:total_conns() > 1 then
       score = score / 10
     end
 
     R.exit_score = score
 
-    return score 
+    return score
+  end
+
+
+  local function find_linear_start_room()
+    local room = LEVEL.start_room
+    local best_score = 0
+
+    -- score all rooms
+    for _,R in pairs(LEVEL.rooms) do
+      local cur_score = 1
+
+      cur_score = R.svolume
+
+      -- absolutely no rooms without more than 1 connection
+      if #R.conns > 1 then
+        cur_score = 0
+      end
+
+      -- closer a valume of 24, the better
+      local ideal_value = 24
+      if R.svolume < ideal_value then
+        cur_score = cur_score + (ideal_value - R.svolume) / 2
+      else
+        cur_score = cur_score + (R.svolume - ideal_value) / 2
+      end
+
+      -- more closets in the room, the better
+      cur_score = cur_score + (#R.closets * 10)
+
+      if cur_score > best_score then
+        best_score = cur_score
+        room = R
+      end
+    end
+
+    return room
   end
 
 
@@ -419,6 +455,10 @@ function Quest_create_initial_quest(LEVEL)
   end
 
   -- the start room may not be chosen yet (so NIL is ok)
+  if LEVEL.has_linear_start then
+    LEVEL.start_room = find_linear_start_room()
+  end
+
   Q.entry = LEVEL.start_room
 
   add_normal_exit(Q)
@@ -898,7 +938,7 @@ function Quest_add_major_quests(LEVEL)
     local unused = 0
 
     for id, R in pairs(quest.rooms) do
-      if R:is_unused_leaf() 
+      if R:is_unused_leaf()
       and not R.is_sub_room then -- don't count sub_rooms for the division of quests
         unused = unused + 1
       end
@@ -2580,7 +2620,7 @@ function Quest_nice_items(LEVEL)
 
 
   local function assign_secondary_importants()
-    if not LEVEL.secondary_importants 
+    if not LEVEL.secondary_importants
     or table.empty(LEVEL.secondary_importants) then return end
 
     local simp_tab = LEVEL.secondary_importants
@@ -2640,7 +2680,7 @@ function Quest_nice_items(LEVEL)
 
           if R.lev_along > final_max_prog then
             do_it = false
-          end            
+          end
 
           if (info.not_start and R.is_start) or
           (info.not_exit and R.is_exit) or
@@ -2809,7 +2849,7 @@ function Quest_big_secrets(LEVEL)
     local score = max_size - R.svolume + 1
 
     if conn.kind == "edge" then score = score + 10 end
-  
+
     if R.is_sub_room then score = score * 1.25 end
 
     -- tie breaker
@@ -3495,7 +3535,7 @@ function Quest_room_themes(LEVEL)
   choose_other_themes()
 
   misc_fabs()
-  
+
   if PARAM.bool_foreshadowing_exit and PARAM.bool_foreshadowing_exit == 1 then
     choose_exit_theme()
   end
