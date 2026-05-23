@@ -296,23 +296,21 @@ function Quest_create_initial_quest(LEVEL)
     local room = LEVEL.start_room
     local best_score = 0
 
+    if #room.conns == 1 then
+      return room
+    end
+    
     -- score all rooms
     for _,R in pairs(LEVEL.rooms) do
       local cur_score = 1
 
-      cur_score = R.svolume
+      -- closer to a room volume of 24, the better
+      local ideal_value = 24
+      cur_score = cur_score + (1 - math.abs(ideal_value - R.svolume)) / 2
 
       -- absolutely no rooms without more than 1 connection
       if #R.conns > 1 then
-        cur_score = 0
-      end
-
-      -- closer a valume of 24, the better
-      local ideal_value = 24
-      if R.svolume < ideal_value then
-        cur_score = cur_score + (ideal_value - R.svolume) / 2
-      else
-        cur_score = cur_score + (R.svolume - ideal_value) / 2
+        cur_score = cur_score - (#R.conns * 100)
       end
 
       -- more closets in the room, the better
