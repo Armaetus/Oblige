@@ -6256,6 +6256,32 @@ GROW_OVAL_SPLIT_NEW_AREA_BIG =
 
 -- MSSP's ramps and all sorts of stuff. [RAMPS]
 
+GROW_RAMP_ROUND_SIDES_ONLY =
+{
+  prob = 10,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx11xx","xx11xx",
+    "x....x","x/11%x",
+    "......","/1111%",
+    "......","111111",
+    "......","vv11vv",
+    "......","%A%/A/",
+    "x....x","x%AA/x",
+    "xx..xx","xxAAxx"
+  },
+
+  diagonals =
+  {
+         ".1","1.",
+         ".1","1.",
+    ".A","A1","1A","A.",
+         ".A","A."
+  }
+},
+
 GROW_RAMP_ROUND =
 {
   prob = 10,
