@@ -299,7 +299,7 @@ function Quest_create_initial_quest(LEVEL)
     if #room.conns == 1 then
       return room
     end
-    
+
     -- score all rooms
     for _,R in pairs(LEVEL.rooms) do
       if R.is_start then
@@ -308,9 +308,13 @@ function Quest_create_initial_quest(LEVEL)
 
       local cur_score = 1
 
-      -- closer to a room volume of 24, the better
       local ideal_value = 24
-      cur_score = cur_score + (1 - math.abs(ideal_value - R.svolume)) / 2
+      local penalty_threshold = 48
+      -- reward closer volumes to 24 with a higher score
+      local bonus = (1 - math.abs(ideal_value - R.svolume)) / 2
+      -- exponential penalty if volume exceeds threshold
+      local penalty = math.max(math.exp((R.svolume - penalty_threshold) / 10), 0)
+      cur_score = cur_score + bonus * (1 - penalty)
 
       -- absolutely no rooms without more than 1 connection
       if #R.conns > 1 then
