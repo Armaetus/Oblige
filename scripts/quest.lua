@@ -302,6 +302,10 @@ function Quest_create_initial_quest(LEVEL)
     
     -- score all rooms
     for _,R in pairs(LEVEL.rooms) do
+      if R.is_start then
+        R.is_start = false
+      end
+
       local cur_score = 1
 
       -- closer to a room volume of 24, the better
