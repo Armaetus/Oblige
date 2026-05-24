@@ -1504,7 +1504,7 @@ LLM_NAME.prompt_flavors =
   dn3d = "Generate a Doom map name that leans towards an extremely euphemistic and badly suggestive 80's comedic porn parody title that's rather blue and practically lewd if not laughable. The name ",
   black_metal = "Generate a Doom map name that sounds like a hardcore black metal band song title. The name ",
   ecchi = "Generate a Doom map name that sounds like a English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
-  action = "Generate a Doom map name that sounds like a classic and thrilling action movie chuck full of one-liners and fiery explosive scenes. The name "
+  action = "Generate a Doom map name that sounds like a classic and explosively thrilling action movie title, quote, or one-liner. The name "
 }
 
 LLM_NAME.PROMPT_FLAVOR_CHOICES =
@@ -1802,6 +1802,16 @@ The text in each tag section must at least be 140-150 words.]]
     "The Lost Relic of the Arch-Vile's Covenant, a mysterious artifact said to grant its wielder immense power in both combat and magic.",
     "Gorthok's Eye of the Beholder, a mystical orb said to grant the user incredible insight into the workings of reality itself.",
     "Xaavor's Tome of Demonic Summoning, a forbidden book containing knowledge of how to summon powerful demons from other dimensions.",
+  },
+
+  -- common proper nouns from the LLM that constantly get re-used (annoyingly)
+  -- manually noted for replacement by our own name generator
+  replacers =
+  {
+    "Erebus",
+    "Erebo",
+    "The Devourer",
+    "Kaelin Vex"
   }
 }
 
@@ -2441,7 +2451,7 @@ function LLM_NAME.get_some_info(self, lev)
     rand.pick(
       {
         "The map has a " .. openness_v .. " layout.\n",
-        openness_v .. " spaces domiante the whole map.\n",
+        "The whole map is dominated by " .. openness_v .. ".\n",
         "Dominant structures in this map are " .. openness_v .. ".\n",
         "The map has a " .. openness_v .. " design.\n"
       }
@@ -2965,8 +2975,7 @@ Rules:
 - 1 line only
 - 10-28 characters
 - do not add any comment or explanation, give only the name
-- no quotes
-- no punctuation of any kind
+- no quotation marks, no punctuation, no camelcase, no snakecase
 
 ]]..
 level_data
@@ -3149,6 +3158,13 @@ _FORMAT_
       num_predict = 1800
     },
     "story")
+
+    -- parse out common names from the LLM to something more unique
+    local noun_replacers = {}
+    for _,N in ipairs(LLM_NAME.story_components.replacers) do
+      noun_replacers[N] = namelib.generate_unique_noun("exotic")
+      story_chunks = string.gsub(story_chunks, N, noun_replacers[N])
+    end
 
     local story_tab = {}
     gui.printf(story_chunks .. " <- RAW\n")
