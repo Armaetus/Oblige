@@ -90,7 +90,7 @@ PREFABS.Pic_tech_data_center_pic_1 =
 
   group = "gtd_data_center",
 
-  x_fit = "frame",
+  x_fit = {16,20 , 236,240},
   y_fit = "top",
 
   bound_z2 = 96,

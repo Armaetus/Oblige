@@ -6,7 +6,7 @@ PREFABS.Pic_gtd_mall_store_1 =
   prob = 50,
   theme = "urban",
 
-  group = "gtd_mall",
+  group = "gtd_shopping_mall",
 
   where = "seeds",
   height = 128,

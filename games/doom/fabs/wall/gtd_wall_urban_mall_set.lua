@@ -8,7 +8,7 @@ PREFABS.Wall_gtd_mall_1 =
   where = "edge",
   height = 96,
 
-  group = "gtd_mall",
+  group = "gtd_shopping_mall",
 
   deep = 16,
 

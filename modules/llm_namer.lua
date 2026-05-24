@@ -1811,7 +1811,10 @@ The text in each tag section must at least be 140-150 words.]]
     "Erebus",
     "Erebo",
     "The Devourer",
-    "Kaelin Vex"
+    "Kaelin Vex",
+    "Kaelis",
+    "Kraelion",
+    "Kyrexi"
   }
 }
 
