@@ -5787,6 +5787,56 @@ GROW_LIQUID_POOL_VENT_QUAD_CENTER_BRIDGE_STAIR =
   }
 },
 
+GROW_BRIDGE_CHEVRON_SHAPED =
+{
+  prob = 15,
+  skip_prob = 75,
+
+  structure =
+  {
+    "11xxxxxx","11xxxxxx",
+    "........","11%~~/11",
+    "........","11A%/A11",
+    "........","11AAAA11",
+    "........","11%AA/11",
+    "........","11~%/~11",
+    "........","11~~~~11"
+  },
+
+  diagonals =
+  {
+    "A~","~A",
+    "A~","~A",
+    "~A","A~",
+    "~A","A~"
+  }
+},
+
+GROW_BRIDGE_CHEVRON_SHAPED_UPSIDE_DOWN =
+{
+  prob = 15,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxx11xxx","xxx11xxx",
+    "........","~~/11%~~",
+    "........","~/A11A%~",
+    "........","/AA11AA%",
+    "........","AA/11%AA",
+    "........","AA~11~AA",
+    "........","AA~11~AA"
+  },
+
+  diagonals =
+  {
+    "~1","1~",
+    "~A","A~",
+    "~A","A~",
+    "A~","~A"
+  }
+},
+
 GROW_LIQUID_FIGURE_CORRIDOR =
 {
   prob = 25,
