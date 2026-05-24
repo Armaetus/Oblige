@@ -209,6 +209,7 @@ function Quest_create_initial_quest(LEVEL)
   --
 
   local function eval_exit_room(R, secret_mode)
+
     local function recurse_to_start(R, mult)
       mult = mult * math.clamp(1, R.svolume / 128, 9001)
       if R.grow_parent then
@@ -219,8 +220,6 @@ function Quest_create_initial_quest(LEVEL)
 
     if R.is_exit    then return -1 end
     if R.is_hallway then return -1 end
-    if R.is_start and #LEVEL.rooms > 1 then return -1 end
-    if R.is_exit then return -1 end
 
     -- must be a leaf room, but only if secret
     if R:total_conns() > 1 and secret_mode then
@@ -246,12 +245,6 @@ function Quest_create_initial_quest(LEVEL)
       return score + gui.random()
     end
 
-    -- occasionally the grower will only produce a single room,
-    -- hence we cannot reject a starting room completely
-    if R.is_start then
-      return gui.random() / 100
-    end
-
     -- prefer a non-teleporter entrance (so we can lock it)
     if conn.kind == "teleporter" then
       local score = sel(R.is_cave, 1, 2)
@@ -260,6 +253,12 @@ function Quest_create_initial_quest(LEVEL)
     end
 
     local score = R.svolume
+
+    -- occasionally the grower will only produce a single room,
+    -- hence we cannot reject a starting room completely
+    if R.is_start then
+      return score / 100
+    end
 
     -- give a bigger score to rooms further into the map
     local score_mult
@@ -381,7 +380,7 @@ function Quest_create_initial_quest(LEVEL)
   local function add_normal_exit(quest)
     local R = LEVEL.exit_room
 
-    if not R then
+    if not R or (R and R.is_start) then
       R = pick_exit_room()
     end
 
