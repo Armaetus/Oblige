@@ -2611,7 +2611,7 @@ function LLM_NAME.stylize_name_prompt()
   end
 
   str = str ..
-    "Use lightly anglicized " ..
+    "Use anglicized " ..
     LLM_NAME.to_phrase(lang_lines) ..
     " naming influences, " ..
     LLM_NAME.to_phrase(mod_lines) ..
@@ -2975,10 +2975,9 @@ function LLM_NAME.do_it()
 [[Feel free to use metaphor, mood, or unusual imagery.
 
 Rules:
-- 1 line only
-- 10-28 characters
+- 10-24 characters including spaces
 - do not add any comment or explanation, give only the name
-- no quotation marks, no punctuation, no camelcase, no snakecase
+- no quotation marks, no camelcase, no snakecase
 
 ]]..
 level_data
@@ -3064,15 +3063,13 @@ I need the story to be properly formatted. Do not provide any explanation.
 
 Rules:
 - narrate in second person
-- Doom fan fiction style
+- Doom fan fiction style, with original Doom entities
+- slightly more grounded and sci-fi military plot
 - no real-world locations
 - purely fan fiction location that is not mentioned to be anywhere specific
-- prefer original entities over well-known Doom proper nouns
-- each section should escalate dramatically
-- each section should introduce new revelations or consequences
 - avoid all use of double quotes as text will go through a script parser
 - absolutely avoid any use of italics, bold, or any Markdown formatting
-- do not add explanations or commentary to the content
+- no explanations, no commentary, no follow-up questions
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell.
 Hell continues to be humanity's problem and the Doomslayer's exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
