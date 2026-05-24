@@ -3653,17 +3653,17 @@ function Grower_grammatical_room(SEEDS, LEVEL, R, pass, is_emergency)
     end
 
   elseif pass == "sprout" then
-    if R.is_exit
+    --[[if R.is_exit
     or (R.is_start and LEVEL.has_linear_start) then
       apply_num = 1
-    else
-      apply_num = rand.pick({ 1,2,2,3 })
-    end
+    else]]
+    apply_num = rand.pick({ 1,2,2,3 })
+    --end
 
-    if R.grow_parent and R.grow_parent.is_start
+    --[[if R.grow_parent and R.grow_parent.is_start
     and LEVEL.has_linear_start then
       apply_num = rand.pick({ 2,3 })
-    end
+    end]]
 
     if R.is_hallway then
       pass = R.grow_pass .. "_sprout"
@@ -4393,7 +4393,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
     if not reached_coverage() then
 
       if R.is_hallway then return end
-      if LEVEL.has_linear_start and R.is_start then return end
+      --if LEVEL.has_linear_start and R.is_start then return end
 
       gui.printf("Oh noes! Attempting emergency sprout in ROOM_" .. R.id .. "!!!\n")
       Grower_grammatical_room(SEEDS, LEVEL, R, "sprout", "is_emergency")
@@ -4477,9 +4477,9 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
     repeat
       kw = handle_next_room()
 
-      if LEVEL.has_linear_start then
+      --[[if LEVEL.has_linear_start then
         linear_start_trim()
-      end
+      end]]
     until kw ~= "ok"
 
     if kw == "reached" then
