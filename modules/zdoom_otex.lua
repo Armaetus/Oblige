@@ -1466,9 +1466,9 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
 
     GAME.SINKS[sink_name] =
     {
-      mat = "_WALL",
+      mat = rand.pick({"_WALL","_FLOOR"}),
       dz = info.dz,
-      light = 16,
+      light = 32,
 
       trim_mat = name,
       trim_dz = 0,
