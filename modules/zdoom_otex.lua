@@ -1468,11 +1468,11 @@ function OTEX_PROC_MODULE.synthesize_procedural_themes()
     {
       mat = rand.pick({"_WALL","_FLOOR"}),
       dz = info.dz,
-      light = 32,
+      light = 48,
 
       trim_mat = name,
       trim_dz = 0,
-      trim_light = 16
+      trim_light = 24
     }
 
     OTEX_MATERIALS[name] =
