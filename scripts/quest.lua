@@ -245,10 +245,16 @@ function Quest_create_initial_quest(LEVEL)
 
     local score = R.svolume
 
+    -- add distance from start
+    score = score + (R.start_dist or 0)
+
     -- occasionally the grower will only produce a single room,
     -- hence we cannot reject a starting room completely
     if R.is_start then
-      return score / 100
+      return 1
+    end
+    if R.start_neighbor then
+      score = score / 50
     end
 
     --[[caves are not ideal
@@ -256,7 +262,7 @@ function Quest_create_initial_quest(LEVEL)
 
     -- sub rooms that are too small
     if R.is_sub_room and R.svolume < 16 and not secret_mode then
-      score = score / 48
+      score = score / 25
     end
 
     -- more likely to pick a room with a closet
@@ -268,8 +274,6 @@ function Quest_create_initial_quest(LEVEL)
       score = score / 10
     end
 
-    R.exit_score = score
-
     return score
   end
 
@@ -278,7 +282,7 @@ function Quest_create_initial_quest(LEVEL)
     local room = LEVEL.start_room
     local best_score = 0
 
-    if #room.conns == 1 then
+    if #LEVEL.rooms == 1 then
       return room
     end
 
@@ -300,7 +304,9 @@ function Quest_create_initial_quest(LEVEL)
       end
 
       -- more closets in the room, the better
-      cur_score = cur_score + (#R.closets * 4)
+      if R.closets and #R.closets >= 1 then
+        cur_score = cur_score + 10
+      end
 
       -- if it is the original exit, reduce chance
       if R.is_exit then
@@ -317,6 +323,37 @@ function Quest_create_initial_quest(LEVEL)
   end
 
 
+  local function assign_distances_from_start()
+
+    local function visit_room(room, cur_dist)
+      if room.start_dist and room.start_dist >= 0 then
+        return
+      else
+        room.start_dist = room.svolume + cur_dist
+      end
+
+      if #room.conns <= 1 then
+        return
+      end
+
+      for _,C in pairs(room.conns) do
+        visit_room(C:other_room(room), room.start_dist)
+      end
+    end
+
+    local start_R = LEVEL.start_room
+
+    start_R.start_dist = 0
+
+    if start_R.conns then
+      for _,C in pairs(start_R.conns) do
+        visit_room(C:other_room(start_R), 0)
+        C.R1.start_neighbor = true
+      end
+    end
+  end
+
+
   local function pick_exit_room(secret_mode)
     --
     -- We want a large room for the exit, so can have a big battle with
@@ -327,6 +364,8 @@ function Quest_create_initial_quest(LEVEL)
 
     for _,R in pairs(LEVEL.rooms) do
       local score = eval_exit_room(R, secret_mode)
+
+      R.exit_score = score
 
       if score > best_score then
         best = R
@@ -402,14 +441,15 @@ function Quest_create_initial_quest(LEVEL)
 
   local function add_secret_exit()
 
-    if LEVEL.is_procedural_gotcha and PARAM.bool_boss_gen and PARAM.bool_boss_gen == 1 then
+    if #LEVEL.rooms == 1 then
       LEVEL.need_secret_exit = true
       return
     end
 
     local R = pick_exit_room("secret_mode")
 
-    if not R then
+    if not R
+    or (R and R.is_start) then
       -- invoke plan B : use a secret closet somewhere
       LEVEL.need_secret_exit = true
       return
@@ -451,6 +491,9 @@ function Quest_create_initial_quest(LEVEL)
   end
 
   Q.entry = LEVEL.start_room
+  gui.printf("Start room: %s\n", LEVEL.start_room.name)
+  
+  assign_distances_from_start()
 
   add_normal_exit(Q)
 

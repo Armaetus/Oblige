@@ -26,6 +26,15 @@ LLM_NAME.test_endpoint = "http://127.0.0.1:11434/api/tags"
 
 LLM_NAME.level_infos = {}
 
+LLM_NAME.PROMPT_FLAVOR_CHOICES =
+{
+  "default", _("DEFAULT"),
+  "dn3d", _("Duke Nukem"),
+  "black_metal", _("Black Metal"),
+  "ecchi", _("HDoom"),
+  "action", _("Action Movie")
+}
+
 -- semantics translation table
 LLM_NAME.semantics_grouping =
 {
@@ -1436,12 +1445,12 @@ LLM_NAME.name_theme =
 {
   char_limits =
   {
-    "- 1 word only",
-    "- 2 words only",
-    "- 3 words only",
-    "- 4 words only",
-    "- 5 words only, maximum 22 characters long including spaces",
-    "- 6 words only, maximum 22 characters long including spaces",
+    "- 1 word",
+    "- 2 words",
+    "- 3 words",
+    "- 4 words",
+    "- 5 words, maximum 22 characters long including spaces",
+    "- 6 words, maximum 22 characters long including spaces",
   }
 }
 
@@ -1518,15 +1527,6 @@ LLM_NAME.prompt_flavors =
   black_metal = "Generate a Doom map name that sounds like a hardcore black metal band song title. The name ",
   ecchi = "Generate a Doom map name that sounds like a English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
   action = "Generate a Doom map name that sounds like a classic and explosively thrilling action movie title, quote, or one-liner. The name "
-}
-
-LLM_NAME.PROMPT_FLAVOR_CHOICES =
-{
-  "default", _("DEFAULT"),
-  "dn3d", _("Duke Nukem"),
-  "black_metal", _("Black Metal"),
-  "ecchi", _("HDoom"),
-  "action", _("Action Movie")
 }
 
 LLM_NAME.story_components =
@@ -2600,7 +2600,7 @@ end
 function LLM_NAME.stylize_name_prompt()
   local str = ""
 
-  str = str .. "Please change any provided names in the prompt to any you deem fit but ensure any original names for unnamed entities you name use the following style instruction:\n"
+  str = str .. "Use the following style instruction to name unnamed entities, and sometimes example names if it feels correct:\n"
   str = str .. rand.pick(LLM_NAME.story_components.naming_styles) .. "\n"
 
   local lang_choices, mod_choices = {}, {}
@@ -2624,7 +2624,7 @@ function LLM_NAME.stylize_name_prompt()
   end
 
   str = str ..
-    "Use anglicized " ..
+    "Use partially anglicized " ..
     LLM_NAME.to_phrase(lang_lines) ..
     " naming influences, " ..
     LLM_NAME.to_phrase(mod_lines) ..
@@ -2989,6 +2989,7 @@ function LLM_NAME.do_it()
 
 Rules:
 _NAME_LENGTH_
+- 1 name only
 - do not add any comment or explanation, give only the name
 - no quotation marks, no camelcase, no snakecase
 
@@ -3088,6 +3089,7 @@ Rules:
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
 - no Warhammer 40k, no Lovecraft, no Blizzard Entertainment
+- no threats bigger than Hell - instead, make Hell threatening on its own
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one.
 Hell continues to be humanity's problem and the Doomslayer's exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
@@ -3119,24 +3121,25 @@ _FORMAT_
     story_place)
 
     local story_characters
-    story_characters = rand.key_by_probs({
-      ["Introduce an original friendly character in the story.\n"]=3,
-      ["Introduce an original neutral character in the story.\n"]=4,
-      ["Introduce an original hostile character in the story.\n"]=5,
-      ["Introduce two original characters in the story.\n"]=7,
-      ["Introduce three original characters in the story.\n"]=1,
-      ["_BE_SPECIFIC_"]=15, -- use our pregenerated characters above
-      [""]=4 -- no character prompt
+    local character_mode = rand.key_by_probs(
+      {
+        none=3,
+        generic=2,
+        pregen=4
+      })
+    if character_mode == "generic" then
+      story_characters = rand.key_by_probs({
+        ["Introduce an original friendly character in the story.\n"]=3,
+        ["Introduce an original neutral character in the story.\n"]=4,
+        ["Introduce an original hostile character in the story.\n"]=5,
+        ["Introduce two original characters in the story.\n"]=7,
+        ["Introduce three original characters in the story.\n"]=1,
       })
 
-      -- try different names: Kaelis, Kraelion, the Devourer are kind of appearing a LOT
-      if story_characters ~= "_BE_SPECIFIC_" then
-        story_characters = story_characters .. rand.pick(LLM_NAME.story_components.naming_styles) .. "\n"
-        if rand.odds(50) then
-          story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
-        end
+      if rand.odds(80) then
+        story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
       end
-    if story_characters == "_BE_SPECIFIC_" then
+    elseif character_mode == "pregen" then
       story_characters = "The following appear in the story:\n"
       for i = 1, rand.pick({1,2,3}) do
         story_characters = story_characters .. rand.pick(LLM_NAME.story_components.actors).. "\n"
@@ -3146,6 +3149,9 @@ _FORMAT_
       if rand.odds(33) then
         story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
       end
+    else
+      story_characters = "There are no other characters in the story - the Doomslayer explores this quest on their own.\n"
+      story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
     end
     prompt = string.gsub(prompt,
     "_CHARACTER_",
