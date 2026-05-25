@@ -947,7 +947,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   end
 
   -- reset room themes to default ("temperate")
-  GAME.ROOM_THEMES = PARAM.default_room_themes
+  GAME.ROOM_THEMES = table.copy(PARAM.default_room_themes)
 
   local snow_tab = table.copy(ORP_SNOW_ROOM_THEMES)
   local sand_tab = table.copy(ORP_DESERT_ROOM_THEMES)
