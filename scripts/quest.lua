@@ -210,15 +210,6 @@ function Quest_create_initial_quest(LEVEL)
 
   local function eval_exit_room(R, secret_mode)
 
-    local function recurse_to_start(R, mult)
-      mult = mult * math.clamp(1, R.svolume / 128, 9001)
-      if R.grow_parent then
-        recurse_to_start(R.grow_parent, mult)
-      end
-      return mult
-    end
-
-    if R.is_exit    then return -1 end
     if R.is_hallway then return -1 end
 
     -- must be a leaf room, but only if secret
@@ -260,14 +251,6 @@ function Quest_create_initial_quest(LEVEL)
       return score / 100
     end
 
-    -- give a bigger score to rooms further into the map
-    local score_mult
-    if R.grow_parent then
-      local init_mult = 1
-      score_mult = recurse_to_start(R.grow_parent, init_mult)
-    end
-    score = score * (score_mult or 1)
-
     --[[caves are not ideal
     if R.is_cave then score = score / 4 end]]
 
@@ -305,15 +288,9 @@ function Quest_create_initial_quest(LEVEL)
         R.is_start = false
       end
 
-      local cur_score = 10
-
-      local ideal_value = 16
-      local penalty_threshold = 24
-      -- reward closer volumes to idea_value with a higher score
-      local bonus = (1 - math.abs(ideal_value - R.svolume)) / 2
-      -- exponential penalty if volume exceeds threshold
-      local penalty = math.max(math.exp((R.svolume - penalty_threshold) / 10), 0)
-      cur_score = cur_score + bonus * (1 - penalty)
+      -- closer to a volume of 12 means a better score
+      local ideal_value = 12
+      local cur_score = (1 - math.abs(ideal_value - R.svolume)) / 2
 
       -- absolutely no rooms without more than 1 connection
       if #R.conns > 1 then
@@ -323,7 +300,7 @@ function Quest_create_initial_quest(LEVEL)
       end
 
       -- more closets in the room, the better
-      cur_score = cur_score + (#R.closets * 5)
+      cur_score = cur_score + (#R.closets * 1)
 
       -- if it is the original exit, reduce chance
       if R.is_exit then
@@ -347,8 +324,6 @@ function Quest_create_initial_quest(LEVEL)
     --
     local best
     local best_score = 0
-
-    if #LEVEL.rooms == 1 then return LEVEL.rooms[1] end
 
     for _,R in pairs(LEVEL.rooms) do
       local score = eval_exit_room(R, secret_mode)
@@ -387,8 +362,15 @@ function Quest_create_initial_quest(LEVEL)
   local function add_normal_exit(quest)
     local R = LEVEL.exit_room
 
-    if not R or (R and R.is_start) then
+    -- for single room maps, just use the same room
+    if not R and #LEVEL.rooms == 1 then
+      R = LEVEL.rooms[1]
+      LEVEL.exit_room = R
+    end
+
+    if not R or (R and R.is_start) and #LEVEL.rooms > 1 then
       R = pick_exit_room()
+      LEVEL.exit_room = R
     end
 
     if not R then
@@ -402,10 +384,7 @@ function Quest_create_initial_quest(LEVEL)
     gui.printf("Exit room: %s\n", R.name)
 
     R.is_exit = true
-
-    if not LEVEL.exit_room then
-      LEVEL.exit_room = R
-    end
+    LEVEL.exit_room = R
 
     -- create the goal for the entire map
     local GOAL = Goal_new(LEVEL, "EXIT")
