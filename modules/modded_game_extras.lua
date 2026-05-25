@@ -1698,7 +1698,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
   local function generate_name(zone)
     local name = Naming_grab_one(LEVEL.name_class)
 
-    if #zone.rooms == 1 and zone.rooms[1].is_exit
+    --[[if #zone.rooms == 1 and zone.rooms[1].is_exit
     and not zone.rooms[1].is_start then
       if zone.rooms[1].conns then
         name = zone.rooms[1].conns[1].R1.zone.hn_name
@@ -1711,7 +1711,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     else
       gui.printf("ZONE_" .. zone.id .. " name: " .. name .. " (single exit," ..
       " borrows prior connecting zone's name)\n")
-    end
+    end]]
 
     zone.hn_name = name
   end
@@ -1852,8 +1852,16 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "[no symm] "
     end]]
 
-    shapes_string = shapes_string ..
-      "(SZE " .. R.svolume .. "/" .. math.round(R.size_limit) .. ") "
+    if R.exit_score then
+      shapes_string = shapes_string .. "(Exit Score: " .. R.exit_score .. ")"
+    end
+
+    if R.start_dist then
+      shapes_string = shapes_string .. "(Start Dist: " .. R.start_dist .. ")"
+    end
+
+    --[[shapes_string = shapes_string ..
+      "(SZE " .. R.svolume .. "/" .. math.round(R.size_limit) .. ") "]]
 
     shapes_string = shapes_string .. "[GROW "
     if R.shapes_applied then
@@ -1879,12 +1887,12 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "BASE " .. R.base_set_increase .. ") "
     else
       shapes_string = shapes_string .. "BASE 0) "
-    end]]
+    end
   
     shapes_string = shapes_string .. "(STAT " ..
       LEVEL.size_multiplier .. "x, " ..
       LEVEL.area_multiplier .. "x, " ..
-      LEVEL.size_consistency .. ") "
+      LEVEL.size_consistency .. ") "]]
 
     if LEVEL.is_absurd then
       shapes_string = shapes_string .. "(ARUL: "
@@ -1908,13 +1916,13 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "(NRML SHPS) "
     end
 
-    if R.has_auxiliary then
+    --[[if R.has_auxiliary then
       shapes_string = shapes_string .. "(AUX) "
     end
 
     if R.is_flourished then
       shapes_string = shapes_string .. "(FLR) "
-    end
+    end]]
 
     if R.sprout_rule then
       shapes_string = shapes_string .. "(SPR: " .. R.sprout_rule
@@ -1925,15 +1933,11 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     end
     shapes_string = shapes_string .. ") "
 
-    if R.is_grown then
+    --[[extrasif R.is_grown then
       shapes_string = shapes_string .. "(GROWN) "
     else
       shapes_string = shapes_string .. "(UNGROWN) "
-    end
-
-    if R.exit_score then
-      shapes_string = shapes_string .. "(Exit Score: " .. R.exit_score .. ")"
-    end
+    end]]
 
     return shapes_string
   end
