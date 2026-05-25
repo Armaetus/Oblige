@@ -169,7 +169,7 @@ PREFABS.Wall_tech_outdoor_letter_C_compat =
 
   z_fit = {12,14 , 58,60},
 
-  tex_SHAWN10E = "SHAWN2"
+  tex_SHAWN01E = "SHAWN2"
 }
 
 PREFABS.Wall_tech_outdoor_letter_D = --#
