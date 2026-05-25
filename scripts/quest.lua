@@ -294,13 +294,13 @@ function Quest_create_initial_quest(LEVEL)
 
       -- absolutely no rooms without more than 1 connection
       if #R.conns > 1 then
-        cur_score = cur_score - (#R.conns * 100)
+        cur_score = cur_score - (#R.conns * 1000)
       elseif #R.conns == 1 then
         cur_score = cur_score * 2
       end
 
       -- more closets in the room, the better
-      cur_score = cur_score + (#R.closets * 1)
+      cur_score = cur_score + (#R.closets * 4)
 
       -- if it is the original exit, reduce chance
       if R.is_exit then

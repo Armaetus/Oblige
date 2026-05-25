@@ -1477,7 +1477,7 @@ function Area_locate_chunks(LEVEL, SEEDS)
 
     local kind = "floor"
     if A.mode == "liquid" then
-      kind = "liquid" 
+      kind = "liquid"
 
       -- run the liquid pick code again, *sigh*
       if not LEVEL.liquid then
@@ -1496,22 +1496,22 @@ function Area_locate_chunks(LEVEL, SEEDS)
             end
           end
         end
-      
+
         local name = rand.key_by_probs(liq_tab)
         local liquid = GAME.LIQUIDS[name]
-      
+
         if not liquid then
           error("No such liquid: " .. name)
         end
-      
+
         LEVEL.liquid = liquid
-        LEVEL.liquid_name = name
+        LEVEL.liquid.name = name
         LEVEL.liquid_usage = 1
         LEVEL.late_liquid = true
 
         LEVEL.description = LEVEL.description .. "New: " .. LEVEL.liquid_name .. " [LATE]"
         gui.printf("New liquid is " .. name .. ".\n")
-      end  
+      end
     end
 
     local CK = make_chunk(kind, A, sx1,sy1, sx2,sy2)
