@@ -305,11 +305,11 @@ function Quest_create_initial_quest(LEVEL)
         R.is_start = false
       end
 
-      local cur_score = 1
+      local cur_score = 10
 
-      local ideal_value = 24
-      local penalty_threshold = 48
-      -- reward closer volumes to 24 with a higher score
+      local ideal_value = 16
+      local penalty_threshold = 24
+      -- reward closer volumes to idea_value with a higher score
       local bonus = (1 - math.abs(ideal_value - R.svolume)) / 2
       -- exponential penalty if volume exceeds threshold
       local penalty = math.max(math.exp((R.svolume - penalty_threshold) / 10), 0)
@@ -318,10 +318,17 @@ function Quest_create_initial_quest(LEVEL)
       -- absolutely no rooms without more than 1 connection
       if #R.conns > 1 then
         cur_score = cur_score - (#R.conns * 100)
+      elseif #R.conns == 1 then
+        cur_score = cur_score * 2
       end
 
       -- more closets in the room, the better
-      cur_score = cur_score + (#R.closets * 10)
+      cur_score = cur_score + (#R.closets * 5)
+
+      -- if it is the original exit, reduce chance
+      if R.is_exit then
+        cur_score = cur_score - 1000
+      end
 
       if cur_score > best_score then
         best_score = cur_score
