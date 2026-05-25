@@ -3071,7 +3071,7 @@ Rules:
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
 
-The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell.
+The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one.
 Hell continues to be humanity's problem and the Doomslayer's exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
 The Doomslayer always emerges victorious in this current story but there will always be a new story, another battle with Hell elsewhere.
 Please avoid cliffhangers or "to be continued" endings. The current arc ends but there is always more to do.
@@ -3087,13 +3087,15 @@ _FORMAT_
     story_flavor)
 
     -- place injection
-    local collate = {}
-    for _,T in pairs(LLM_NAME.story_components) do
-      for places in ipairs(T) do
-        table.insert(collate, places)
-      end
+    -- create theme probs
+    local place_themes_list = {}
+    for theme_name,locs in pairs(LLM_NAME.story_components.places) do
+      place_themes_list[theme_name] = #locs
     end
-    local story_place = rand.pick(collate)
+
+    -- pick locations
+    local place_theme_pick = rand.key_by_probs(place_themes_list)
+    local story_place = rand.pick(LLM_NAME.story_components.places[place_theme_pick])
     prompt = string.gsub(prompt,
     "_LOCATION_",
     story_place)
@@ -3207,6 +3209,13 @@ _FORMAT_
         else
           local level_data = collect_level_data(L)
           local name = generate_level_name(level_data, L)
+
+          -- parse out common names from the LLM to something more unique
+          local noun_replacers = {}
+          for _,N in ipairs(LLM_NAME.story_components.replacers) do
+            noun_replacers[N] = namelib.generate_unique_noun("exotic")
+            name = string.gsub(name, N, noun_replacers[N])
+          end
 
           if name then
             gui.printf("LLM Namer: " .. L.name .. " name '" ..
