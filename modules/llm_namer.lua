@@ -1432,6 +1432,19 @@ LLM_NAME.semantics =
   }
 }
 
+LLM_NAME.name_theme =
+{
+  char_limits =
+  {
+    "- 1 word only",
+    "- 2 words only",
+    "- 3 words only",
+    "- 4 words only",
+    "- 5 words only, maximum 22 characters long including spaces",
+    "- 6 words only, maximum 22 characters long including spaces",
+  }
+}
+
 LLM_NAME.prompt_styles =
 {
 -- TECH
@@ -2975,7 +2988,7 @@ function LLM_NAME.do_it()
 [[Feel free to use metaphor, mood, or unusual imagery.
 
 Rules:
-- 10-24 characters including spaces
+_NAME_LENGTH_
 - do not add any comment or explanation, give only the name
 - no quotation marks, no camelcase, no snakecase
 
@@ -2994,6 +3007,10 @@ level_data
     if #GAME.levels > 4 and epi_lev.along then
       pick_tmp = map_value(epi_lev.along, 0, 1, 0.25, 1.2)
     end
+
+    -- name length
+    prompt = string.gsub(prompt, "_NAME_LENGTH_",
+    rand.pick(LLM_NAME.name_theme.char_limits))
 
     -- name stylization
     if rand.odds(50) then
@@ -3063,13 +3080,14 @@ I need the story to be properly formatted. Do not provide any explanation.
 
 Rules:
 - narrate in second person
-- Doom fan fiction style, with original Doom entities
-- slightly more grounded and sci-fi military plot
+- Doom fan fiction style
+- slightly more towards a sci-fi military plot
 - no real-world locations
 - purely fan fiction location that is not mentioned to be anywhere specific
 - avoid all use of double quotes as text will go through a script parser
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
+- no Warhammer 40k, no Lovecraft, no Blizzard Entertainment
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one.
 Hell continues to be humanity's problem and the Doomslayer's exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
