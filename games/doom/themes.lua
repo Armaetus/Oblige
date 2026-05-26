@@ -1094,12 +1094,12 @@ DOOM.THEMES =
     ceiling_sinks =
     {
       PLAIN = 0.01,
-      ceil_mix_with_f = 70,
-      ceil_mix_with_w = 30,
-      ceil_mix_with_f_tall = 70,
-      ceil_mix_with_w_tall = 30,
-      ceil_mix_with_f_ultratall = 7,
-      ceil_mix_with_w_ultratall = 7
+      ceil_mix_with_f = 250,
+      ceil_mix_with_w = 150,
+      ceil_mix_with_f_tall = 150,
+      ceil_mix_with_w_tall = 75,
+      ceil_mix_with_f_ultratall = 75,
+      ceil_mix_with_w_ultratall = 30
     },
 
     wall_groups =
