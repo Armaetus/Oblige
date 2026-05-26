@@ -317,6 +317,22 @@ function Fab_load_all_definitions()
     end
   end
 
+  local function expand_doors()
+    for _,def in pairs(PREFABS) do
+      if def.kind == "arch" and def.style == "doors" then
+        local new_def = table.copy(def)
+        new_def.name = new_def.name .. "_door"
+        new_def.kind = "door"
+        new_def.style = nil
+        new_def.use_prob = new_def.prob
+        new_def.env = "any"
+        new_def.neighbor = "any"
+
+        PREFABS[new_def.name] = new_def
+      end
+    end
+  end
+
   local function preprocess_all()
     table.name_up(PREFABS)
     table.expand_templates(PREFABS)
@@ -342,6 +358,7 @@ function Fab_load_all_definitions()
     end
 
     ungroup_fabs()
+    expand_doors()
 
     gui.printf(count .. " prefabs loaded and usable!\n\n")
   end

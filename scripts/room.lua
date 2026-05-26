@@ -956,6 +956,7 @@ function Room_pick_edge_prefab(LEVEL, C)
   -- door up start room if quiet start is on
   if (R1.is_start or R2.is_start)
   and PARAM.bool_quiet_start == 1 then
+    reqs.kind = "door"
 
     C.is_door = true
   end
@@ -963,6 +964,7 @@ function Room_pick_edge_prefab(LEVEL, C)
   -- Ok, select it --
 
   E.prefab_def = Fab_pick(LEVEL, reqs)
+
 
   if goal then
     goal.action = E.prefab_def.door_action
