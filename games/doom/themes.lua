@@ -1113,7 +1113,6 @@ DOOM.THEMES =
     },
 
     -- FIXME: temp crud
-    has_triple_key_door = true,
     has_double_switch_door = true,
 
     steps_mat = "GRAY7",
