@@ -16171,8 +16171,8 @@ GROW_CAT =
   structure =
   {
     "....xxx....","AAA%xxx/AAA",
-    "x.........x","%AA/111%AA/",
-    "xx.......xx","x%/11111%/x",
+    "...........","%AA/111%AA/",
+    "x.........x","x%/11111%/x",
     "xx.......xx","xx11#1#11xx",
     "xx.......xx","xx11~~~11xx",
     "xx.......xx","xx%11111/xx",
@@ -16198,8 +16198,8 @@ GROW_CAT_D =
   structure =
   {
     "....xxx....","~~~%xxx/~~~",
-    "x.........x","%~~/AAA%~~/",
-    "xx.......xx","x%/AAAAA%/x",
+    "...........","%~~/AAA%~~/",
+    "x.........x","x%/AAAAA%/x",
     "xx.......xx","xxAAAAAAAxx",
     "xx.......xx","xxAAAAAAAxx",
     "xx.......xx","xx%/%/%/%xx",
@@ -18374,10 +18374,10 @@ GROW_LIQUID_POOL_PLACE_3x3 =
     "1~","~1",
   },
 
-  auxiliary =
+  --[[auxiliary =
   {
     pass = "GROW_LIQUID_POOL_PLACE_ceiling_aux"
-  }
+  }]]
 },
 
 GROW_LIQUID_POOL_PLACE_3x3_NEW_AREA =
@@ -18406,13 +18406,13 @@ GROW_LIQUID_POOL_PLACE_3x3_NEW_AREA =
       "1A",
   },
 
-  auxiliary =
+  --[[auxiliary =
   {
     pass = "GROW_LIQUID_POOL_PLACE_ceiling_aux"
-  }
+  }]]
 },
 
-GROW_LIQUID_POOL_PLACE_ceiling_aux =
+--[[GROW_LIQUID_POOL_PLACE_ceiling_aux =
 {
   prob = 1,
 
@@ -18432,7 +18432,7 @@ GROW_LIQUID_POOL_PLACE_ceiling_aux =
     "1A","A~","~A","A1",
          "1A","A1"
   }
-},
+},]]
 
 GROW_LIQUID_POOL_PLACE_3x3_STAIRS =
 {
@@ -18475,10 +18475,10 @@ GROW_LIQUID_POOL_PLACE_3x6 =
     "1~","~1",
   },
 
-  auxiliary =
+  --[[auxiliary =
   {
     pass = "GROW_LIQUID_POOL_PLACE_3x6_ceiling_aux"
-  }
+  }]]
 },
 
 GROW_LIQUID_POOL_PLACE_3x6_NEW_AREA =
@@ -18507,13 +18507,13 @@ GROW_LIQUID_POOL_PLACE_3x6_NEW_AREA =
     "A1","1A"
   },
 
-  auxiliary =
+  --[[auxiliary =
   {
     pass = "GROW_LIQUID_POOL_PLACE_3x6_ceiling_aux"
-  }
+  }]]
 },
 
-GROW_LIQUID_POOL_PLACE_3x6_ceiling_aux =
+--[[GROW_LIQUID_POOL_PLACE_3x6_ceiling_aux =
 {
   prob = 1,
 
@@ -18533,7 +18533,7 @@ GROW_LIQUID_POOL_PLACE_3x6_ceiling_aux =
     "A~","~A",
     "1A","A1",
   }
-},
+},]]
 
 GROW_LIQUID_POOL_PLACE_3x6_STAIRS =
 {

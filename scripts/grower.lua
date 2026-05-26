@@ -220,13 +220,20 @@ SHAPE RULE ELEMENTS:
       def.area_growths[E2.area] = (def.area_growths[E2.area] or 0) + 1
     end
 
-    -- MSSP: magics can now be overwritten, on the condition that it is not a connection-reliant piece
+    -- original magic check code
     if E1.kind == "stair" or E1.kind == "joiner" or E1.kind == "closet" or
+       E1.kind == "disable" or E1.kind == "magic"
+    then
+      error("bad element in " .. def.name .. ": cannot overwrite a " .. E1.kind)
+    end
+
+    -- MSSP: magics can now be overwritten, on the condition that it is not a connection-reliant piece
+    --[[if E1.kind == "stair" or E1.kind == "joiner" or E1.kind == "closet" or
        E1.kind == "disable"
        or (E1.kind == "magic" and (E1.what == "stair" or E1.what == "joiner" or E1.what == "closet"))
     then
       error("bad element in " .. def.name .. ": cannot overwrite a " .. E1.kind .. ": " .. E1.what)
-    end
+    end]]
 
     if E2.kind == "magic" then
       error("bad element in " .. def.name .. ": cannot assign to a " .. E2.kind)
