@@ -212,15 +212,14 @@ function Quest_create_initial_quest(LEVEL)
 
     if R.is_hallway then return -1 end
 
-    -- must be a leaf room, but only if secret
-    if R:total_conns() > 1 and secret_mode then
-      return -1
-    end
-
     local conn = R.conns[1]
 
     if secret_mode then
+      -- no start ever at all
       if R.is_start then return -1 end
+
+      -- leaf rooms only
+      if R:total_conns() > 1 then return -1 end
 
       -- cannot teleport into a secret exit
       if conn.kind == "teleporter" then return -1 end
@@ -1050,9 +1049,6 @@ function Quest_add_major_quests(LEVEL)
 
   local function add_triple_key_door(key_list)
     if #key_list < 3 then return false end
-
-    -- TODO: check that a usable prefab exists
-    if not THEME.has_triple_key_door then return false end
 
     local prob = style_sel("trikeys", 0, 35, 70, 100)
 
