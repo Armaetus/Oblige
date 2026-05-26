@@ -1905,6 +1905,16 @@ function Room_border_up(LEVEL, SEEDS)
     -- fences --
 
     if A1.is_outdoor and A2.is_outdoor then
+
+      -- just solid walls on start rooms and quiet starts
+      if A1.room and A2.room then
+        if (A1.room.is_start or A2.room.is_start)
+        and PARAM.quiet_start == 1 then
+          Junction_make_wall(junc)
+          return
+        end
+      end
+
       -- occasionally omit it when big height difference
       -- MSSP: New behavior, make a railing instead
       if can_omit_fence(A1, A2) and rand.odds(omit_fence_prob) then
