@@ -955,7 +955,7 @@ function Room_pick_edge_prefab(LEVEL, C)
 
   -- door up start room if quiet start is on
   if (R1.is_start or R2.is_start)
-  and PARAM.quiet_start then
+  and PARAM.bool_quiet_start == 1 then
     reqs.kind = "door"
     C.is_door = true
   end
@@ -1909,7 +1909,7 @@ function Room_border_up(LEVEL, SEEDS)
       -- just solid walls on start rooms and quiet starts
       if A1.room and A2.room then
         if (A1.room.is_start or A2.room.is_start)
-        and PARAM.quiet_start == 1 then
+        and PARAM.bool_quiet_start == 1 then
           Junction_make_wall(junc)
           return
         end
