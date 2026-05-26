@@ -795,6 +795,14 @@ function Room_pick_joiner_prefab(LEVEL, C, chunk)
 
   C:get_lock_reqs(reqs)
 
+  if C.kind == "joiner" and PARAM.bool_quiet_start == 1 then
+    if chunk.from_area.is_start or chunk.dest_area.is_start then
+      if not reqs.key and not C.kind == "terminator" then
+        reqs.key = "quiet_start"
+      end
+    end
+  end
+
   if C.kind == "terminator" then
     -- if it ends up here, something's wrong with growth
     if reqs.shape == "N" then reqs.shape = "I" end
@@ -849,11 +857,6 @@ function Room_pick_edge_prefab(LEVEL, C)
     -- fence_top_z computed later...
     table.insert(E.area.room.locked_fences, E)
   end
-
-
-  -- hack for unfinished games
-  if THEME.no_doors then return end
-
 
   local  indoor_prob = style_sel("doors", 0, 15, 35,  65)
   local outdoor_prob = style_sel("doors", 0, 70, 90, 100)
