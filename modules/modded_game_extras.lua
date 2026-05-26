@@ -1857,7 +1857,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     end
 
     if R.start_dist then
-      shapes_string = shapes_string .. "(Start Dist: " .. R.start_dist .. ") "
+      shapes_string = shapes_string .. "(Start Score: " .. R.start_score .. ") "
     end
 
     if R.conns then

@@ -208,75 +208,6 @@ function Quest_create_initial_quest(LEVEL)
   -- This quest can be divided later on into major and minor quests.
   --
 
-  local function eval_exit_room(R, secret_mode)
-
-    if R.is_hallway then return -1 end
-
-    local conn = R.conns[1]
-
-    if secret_mode then
-      -- no start ever at all
-      if R.is_start then return -1 end
-
-      -- leaf rooms only
-      if R:total_conns() > 1 then return -1 end
-
-      -- cannot teleport into a secret exit
-      if conn.kind == "teleporter" then return -1 end
-
-      if conn.kind == "joiner" then
-        -- no L-shape joiners!
-        if conn.joiner_chunk.shape ~= "I" then return -1 end
-      end
-
-      -- don't waste big rooms on a secret exit
-      local score = 200 - math.min(R.svolume, 190)
-
-      return score + gui.random()
-    end
-
-    -- prefer a non-teleporter entrance (so we can lock it)
-    if conn.kind == "teleporter" then
-      local score = sel(R.is_cave, 1, 2)
-
-      return score + gui.random()
-    end
-
-    local score = R.svolume
-
-    -- add distance from start
-    score = score + (R.start_dist or 0)
-
-    -- occasionally the grower will only produce a single room,
-    -- hence we cannot reject a starting room completely
-    if R.is_start then
-      return 1
-    end
-    if R.start_neighbor then
-      score = score / 50
-    end
-
-    --[[caves are not ideal
-    if R.is_cave then score = score / 4 end]]
-
-    -- sub rooms that are too small
-    if R.is_sub_room and R.svolume < 16 and not secret_mode then
-      score = score / 25
-    end
-
-    -- more likely to pick a room with a closet
-    if R.closets and not table.empty(R.closets) then
-      score = score + (#R.closets * 5)
-    end
-
-    if R:total_conns() > 1 then
-      score = score / 10
-    end
-
-    return score
-  end
-
-
   local function find_linear_start_room()
     local room = LEVEL.start_room
     local best_score = 0
@@ -295,22 +226,24 @@ function Quest_create_initial_quest(LEVEL)
       local ideal_value = 12
       local cur_score = (1 - math.abs(ideal_value - R.svolume)) / 2
 
-      -- absolutely no rooms without more than 1 connection
-      if #R.conns > 1 then
-        cur_score = cur_score - (#R.conns * 1000)
-      elseif #R.conns == 1 then
-        cur_score = cur_score * 2
-      end
-
-      -- more closets in the room, the better
+      -- should have at least one closet
       if R.closets and #R.closets >= 1 then
         cur_score = cur_score + 10
       end
 
+      -- absolutely no rooms without more than 1 connection
+      if #R.conns > 1 or (R.symmetry and #R.conns == 1) then
+        cur_score = cur_score / (#R.conns * 25)
+      elseif #R.conns == 1 then
+        cur_score = cur_score * 2
+      end
+
       -- if it is the original exit, reduce chance
       if R.is_exit then
-        cur_score = cur_score - 1000
+        cur_score = cur_score / 100
       end
+
+      R.start_score = cur_score
 
       if cur_score > best_score then
         best_score = cur_score
@@ -350,6 +283,80 @@ function Quest_create_initial_quest(LEVEL)
         C.R1.start_neighbor = true
       end
     end
+  end
+
+
+  local function eval_exit_room(R, secret_mode)
+
+    if R.is_hallway then return -1 end
+
+    local conn = R.conns[1]
+
+    if secret_mode then
+      -- no start ever at all
+      if R.is_start then return -1 end
+
+      -- leaf rooms only
+      if R:total_conns() > 1 then return -1 end
+
+      -- cannot teleport into a secret exit
+      if conn.kind == "teleporter" then return -1 end
+
+      if conn.kind == "joiner" then
+        -- no L-shape joiners!
+        if conn.joiner_chunk.shape ~= "I" then return -1 end
+      end
+
+      -- don't waste big rooms on a secret exit
+      local score = 200 - math.min(R.svolume, 190)
+
+      return score + gui.random()
+    end
+
+    -- prefer a non-teleporter entrance (so we can lock it)
+    if conn.kind == "teleporter" then
+      local score = sel(R.is_cave, 1, 2)
+
+      return score + gui.random()
+    end
+
+    local score = R.svolume
+
+    -- add distance from start, but only if it's a normal sized room
+    -- this is to not prioritize tiny rooms as being the exit next to big far-away rooms
+    if R.svolume >= 8 then
+      score = score + (R.start_dist or 0)
+    else
+      score = score - 1
+    end
+
+    -- more likely to pick a room with a closet
+    if R.closets and #R.closets >= 1 then
+      score = score * 2
+    end
+
+    -- occasionally the grower will only produce a single room,
+    -- hence we cannot reject a starting room completely
+    if R.is_start then
+      return 1
+    end
+    if R.start_neighbor then
+      score = score / 50
+    end
+
+    --[[caves are not ideal
+    if R.is_cave then score = score / 4 end]]
+
+    -- sub rooms that are too small
+    if R.is_sub_room and R.svolume < 16 and not secret_mode then
+      score = score / 25
+    end
+
+    if R:total_conns() > 1 then
+      score = score / 10
+    end
+
+    return score
   end
 
 
@@ -490,8 +497,10 @@ function Quest_create_initial_quest(LEVEL)
   end
 
   Q.entry = LEVEL.start_room
+  LEVEL.start_room.is_start = true
+
   gui.printf("Start room: %s\n", LEVEL.start_room.name)
-  
+
   assign_distances_from_start()
 
   add_normal_exit(Q)
