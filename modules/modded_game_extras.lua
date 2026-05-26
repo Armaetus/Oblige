@@ -1853,15 +1853,19 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     end]]
 
     if R.exit_score then
-      shapes_string = shapes_string .. "(Exit Score: " .. R.exit_score .. ")"
+      shapes_string = shapes_string .. "(Exit Score: " .. R.exit_score .. ") "
     end
 
     if R.start_dist then
-      shapes_string = shapes_string .. "(Start Dist: " .. R.start_dist .. ")"
+      shapes_string = shapes_string .. "(Start Dist: " .. R.start_dist .. ") "
+    end
+
+    if R.conns then
+      shapes_string = shapes_string .. "(Conns: " .. #R.conns .. ") "
     end
 
     --[[shapes_string = shapes_string ..
-      "(SZE " .. R.svolume .. "/" .. math.round(R.size_limit) .. ") "]]
+      "(SZE " .. R.svolume .. "/" .. math.round(R.size_limit) .. ") "
 
     shapes_string = shapes_string .. "[GROW "
     if R.shapes_applied then
@@ -1878,7 +1882,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     end
     shapes_string = shapes_string .. "] "
 
-    --[[if R.transform_changes then
+    if R.transform_changes then
       shapes_string = shapes_string .. "(TSRL " .. R.transform_changes .. ", "
     else
       shapes_string = shapes_string .. "(TSRL 0, "
