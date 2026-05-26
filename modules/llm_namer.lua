@@ -1717,7 +1717,7 @@ LLM_NAME.story_components =
     "The Warden of Rust, a towering sentinel controlling industrial sectors consumed by demonic machinery",
     "The Scourgebringer, a brutal demon warlord feasting on humanity's suffering and despair",
     "Khar Xanatek, a charismatic cult leader manipulating his followers into unleashing demonic powers",
-    "Vex Ardos, a ruthless bounty hunter tracking down human survivors who possess powerful artifacts",
+    "Enterro Ardos, a ruthless bounty hunter tracking down human survivors who possess powerful artifacts",
     "The Aspect of Ruin, an ancient entity awakened and barely contained by UAC experimentation",
     "Domos the Glutton, a infinitely hungering demon lord that feasts both on human souls and its own demons alike",
 
@@ -1898,9 +1898,10 @@ The text in each tag section must at least be 140-150 words.]]
     "Erebo",
     "The Devourer",
     "Kaelin Vex",
-    "Kaelis",
-    "Kraelion",
-    "Kyrexi"
+    "Khaos",
+    "Kael",
+    "Kraeli",
+    "Kyrex",
   }
 }
 
@@ -3163,6 +3164,7 @@ Rules:
 - no explanations, no commentary, no follow-up questions
 - no Warhammer 40k, no Lovecraft, no Blizzard Entertainment
 - no threats bigger than Hell - instead, make Hell threatening on its own
+- avoid names with a hard consonant starts such as "Kh", "Kae", "Kr", etc.
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one.
 Hell continues to be humanity's problem and the Doomslayer's exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
