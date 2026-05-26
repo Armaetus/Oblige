@@ -53,5 +53,6 @@ PREFABS.Decor_outdoor_billboard_UAC_sheet =
     ADVDE7 = 50,
 
     ADVMS1 = 50,
+    ADVMS3 = 50
   }
 }

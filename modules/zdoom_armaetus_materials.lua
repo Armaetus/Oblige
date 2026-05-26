@@ -2941,6 +2941,10 @@ brightmap texture ADVMS1
 {
   map ADVERTBR
 }
+brightmap texture ADVMS3
+{
+  map ADVERTBR
+}
 ]]
 
 -- aliases - when you're too lazy to write down wall and flat names in every

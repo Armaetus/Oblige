@@ -219,6 +219,7 @@ PREFABS.Decor_advert_board1 =
     ADVDE7 = 50,
 
     ADVMS1 = 50,
+    ADVMS3 = 50
   }
 }
 
@@ -251,6 +252,7 @@ PREFABS.Decor_advert_board2 =
     ADVDE7 = 50,
 
     ADVMS1 = 50,
+    ADVMS3 = 50
   }
 }
 
