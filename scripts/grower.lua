@@ -909,23 +909,24 @@ function Grower_calc_rule_probs(LEVEL)
     if rule.name:find("GROW_")
     and PARAM.bool_auto_shape_rule_prob
     and PARAM.bool_auto_shape_rule_prob == 1 then
-      local total = 0
+      local match_bonus = 0
+      local apply_bonus = 0
       for i, str in ipairs(rule.structure) do
-        if i % 2 ~= 0 then -- odd index
+        if i % 2 ~= 0 then -- odd index AKA match pattern
           for c in str:gmatch '.' do
             if c ~= 'x' and c ~= '.' then
-              total = total + 1 * 1.25
+              match_bonus = match_bonus + 1
             end
           end
         else
-          for c in str:gmatch '.' do
-            if c ~= '1' and c ~= 'x' and c ~= '.' then
-              total = total + 1
+          for c in str:gmatch '.' do -- even index AKA apply pattern
+            if c ~= 'x' and c ~= '.' then
+              apply_bonus = apply_bonus + 2
             end
           end
         end
       end
-      prob = total
+      prob = apply_bonus * math.min(match_bonus/2, 1)
     end
 
     prob = prob *  style_factor(rule)

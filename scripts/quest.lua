@@ -222,8 +222,8 @@ function Quest_create_initial_quest(LEVEL)
         R.is_start = false
       end
 
-      -- closer to a volume of 12 means a better score
-      local ideal_value = 12
+      -- closer to a volume of indicated ideal_value means a better score
+      local ideal_value = rand.pick({24,32})
       local cur_score = (1 - math.abs(ideal_value - R.svolume)) / 2
 
       -- should have at least one closet

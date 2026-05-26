@@ -17355,6 +17355,27 @@ GROW_SHARP =
   }
 },
 
+GROW_SHARP_STEEPNESS =
+{
+  prob = 15,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx..xx..xx","xx11xx11xx",
+    "xx..xx..xx","xxvvxxvvxx",
+    "..........","1>AAAAAA<1",
+    "..........","1>AAAAAA<1",
+    "xx..xx..xx","xxAAxxAAxx",
+    "xx..xx..xx","xxAAxxAAxx",
+    "..........","1>AAAAAA<1",
+    "..........","1>AAAAAA<1",
+    "xx..xx..xx","xx^^xx^^xx",
+    "xx..xx..xx","xx11xx11xx",
+    "xx11xxxxxx","xx11xxxxxx"
+  }
+},
+
 GROW_SHARP_NEW_AREA =
 {
   prob = 15,

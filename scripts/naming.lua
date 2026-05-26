@@ -1839,9 +1839,7 @@ namelib.MARKOV_DB =
 -- Now uses Markov chains!
 function namelib.generate_unique_noun(mode)
 
-  -- ============================================================
-  -- Build Markov Chain
-  -- ============================================================
+  -- build Markov chain
   local function build_chain(names, order)
     local chain = {}
     local start_token = string.rep("^", order)
@@ -1865,9 +1863,7 @@ function namelib.generate_unique_noun(mode)
     return chain
   end
 
-  -- ============================================================
-  -- Weak word detection
-  -- ============================================================
+  -- weak word detection
   local function is_weak_word(word)
     if #word > 3 then return false end
 
@@ -1879,9 +1875,7 @@ function namelib.generate_unique_noun(mode)
     return vowels >= #word - 1
   end
 
-  -- ============================================================
-  -- Auto-fix short junk words
-  -- ============================================================
+  -- auto-fix short junk words
   local function auto_fix_words(name)
     
     local function is_unpronounceable(word)
@@ -1958,9 +1952,7 @@ function namelib.generate_unique_noun(mode)
     return name
   end
 
-  -- ============================================================
-  -- Aggressive suffix completion
-  -- ============================================================
+  -- aggressive suffix completion
   local function complete_suffix(name, suffix_fixes)
     local suffixes = suffix_fixes
     if not suffixes or table.empty(suffixes) then return name end
@@ -1988,9 +1980,7 @@ function namelib.generate_unique_noun(mode)
     return name
   end
 
-  -- ============================================================
-  -- Core Markov Generator
-  -- ============================================================
+  -- core markov generator
   local function generate_markov(chain, order, min_len, max_len)
     local start = string.rep("^", order)
     local current = start
@@ -2018,9 +2008,7 @@ function namelib.generate_unique_noun(mode)
   end
 
 
-  -- ============================================================
-  -- Formatting
-  -- ============================================================
+  -- formatting
   local function format_name(name, suffix_fixes)
     name = name:gsub("_", " ")
 
@@ -2040,9 +2028,7 @@ function namelib.generate_unique_noun(mode)
   end
 
 
-  -- ============================================================
-  -- Markov Mode
-  -- ============================================================
+  -- Markov mode
   local function generate_markov_mode()
     local tab
 
@@ -2071,9 +2057,7 @@ function namelib.generate_unique_noun(mode)
   end
 
 
-  -- ============================================================
-  -- Number Mode
-  -- ============================================================
+  -- number mode
   local function generate_number()
     local len = rand.pick({1,2,3,3,4,4,5,6})
     local result = tostring(rand.irange(1,9))
@@ -2086,9 +2070,7 @@ function namelib.generate_unique_noun(mode)
   end
 
 
-  -- ============================================================
-  -- Serial Mode
-  -- ============================================================
+  -- serial mode
   local function generate_serial()
     local len = rand.pick({3,4,4,5,5,5,6,7,8})
     local result = ""
@@ -2109,9 +2091,7 @@ function namelib.generate_unique_noun(mode)
   end
 
 
-  -- ============================================================
-  -- Community Mode
-  -- ============================================================
+  -- community mode
   local function generate_community()
     local choice = rand.key_by_probs({c=6, r=2, o=2})
 
@@ -2124,10 +2104,7 @@ function namelib.generate_unique_noun(mode)
     end
   end
 
-
-  -- ============================================================
-  -- Dispatcher
-  -- ============================================================
+  --| generate_unique_noun |--
   if mode == "number" then
     return generate_number()
 
