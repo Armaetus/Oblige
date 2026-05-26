@@ -2136,16 +2136,16 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       -- * liquid sinks are disabled
       -- * liquid sink settings disable damaging sinks
       if LEVEL.liquid then
-        if PARAM.liquid_sinks == "no" then tab[sink_name] = 0 end
+        if PARAM.liquid_sinks == "no" then tab[sink_name] = nil end
 
         if (LEVEL.liquid.damage and PARAM.liquid_sinks == "not_damaging") then
-          tab[sink_name] = 0
+          tab[sink_name] = nil
         end
       end
 
       if (sink.trim_mat and sink.trim_mat == R.main_tex)
       then
-        tab[sink_name] = 0
+        tab[sink_name] = nil
       end
 
       -- remove sinks that are taller than the zone sky height
@@ -2154,7 +2154,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
           local h_diff = R.max_ceil_h - group.h
           if h_diff > 0 then
             if sink.dz and sink.dz > h_diff then
-              tab[sink_name] = 0
+              tab[sink_name] = nil
             end
           end
         end
