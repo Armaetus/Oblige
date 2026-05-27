@@ -1701,7 +1701,7 @@ LLM_NAME.story_components =
     "Father Michael Patel, a priest struggling with his faith as Hell's influence grows stronger",
     "The Architect, an enigmatic figure designing and manipulating the infrastructure of ruined cities",
     "Gideon Reyes, a seasoned smuggler turned informant, trading information to both human and demonic factions",
-    "Sister Elara, a mystic soldier and healer who seeks to understand and counter the corrupting influence of Hell",
+    "Sister Alerine, a mystic soldier and healer who seeks to understand and counter the corrupting influence of Hell",
 
     -- antagonists    
     "The Matron, a colossal cybernetic arachnid enslaved by UAC experimentation and driven insane by agony",
@@ -1710,13 +1710,12 @@ LLM_NAME.story_components =
     "Korath, the corrupted overseer of the UAC's deepest blacksite laboratories",
     "The Bloodhand, an ancient infernal noble who engineers wars between humanity and Hell",
     "Archon Veyruul, a machine fused with demonic intelligence governing an abandoned fortress world",
-    "The Hollow King, a skeletal monarch entombed beneath catacombs older than civilization itself",
-    "Executor Cain, a former human commander transformed into Hell's most feared hunter",
+    "Executor Cain, a former human commander transformed into Hell's most feared hunter and torturer",
     "The Choir Below, a collective consciousness formed from thousands of tortured souls",
     "Mother Cyst, a grotesque flesh entity endlessly spreading organic corruption across entire facilities",
     "The Warden of Rust, a towering sentinel controlling industrial sectors consumed by demonic machinery",
     "The Scourgebringer, a brutal demon warlord feasting on humanity's suffering and despair",
-    "Khar Xanatek, a charismatic cult leader manipulating his followers into unleashing demonic powers",
+    "Inquisitor Xan, a charismatic cult leader manipulating his followers into unleashing demonic powers",
     "Enterro Ardos, a ruthless bounty hunter tracking down human survivors who possess powerful artifacts",
     "The Aspect of Ruin, an ancient entity awakened and barely contained by UAC experimentation",
     "Domos the Glutton, a infinitely hungering demon lord that feasts both on human souls and its own demons alike",
@@ -1730,16 +1729,16 @@ LLM_NAME.story_components =
     "The Pilgrims of Ash, survivors wandering irradiated wastelands in search of sanctuary",
     "The Circle, occult scholars secretly communicating with entities beyond Hell",
     "The Red Meridian Fleet, an off-world militarized colony force left marooned",
-    "The Choir Mechanica, machine worshippers who believe demonic corruption is humanity's next evolution",
+    "The Choir Demonica, machine worshippers who believe demonic corruption is humanity's next evolution",
     "The Keepers of Titans, isolationist defenders guarding ancient sealed vaults",
     "The Mourning Legion, ghostlike soldiers endlessly fighting a war they already lost",
     "The Order of the Black Depths, a secret society studying and containing demonic powers within themselves",
     "The Nova Initiative, a special coalition of rogue scientists and engineers pushing the boundaries of forbidden technology",
-    "The Red Vipers, an aggressive isolationist militant group fighting against human corruption and Hell's influence",
+    "The Red Vipers, an aggressive isolationist militant group fighting againsg hell, distrustful of outsiders",
     "The Collective, a loose network former UAC scientists turned mystics and occultists dedicated to unleashing Hell",
 
     -- us?!
-    "The Obsidian Developers, a nigh-invincible and engimatic group from another dimension always only observing and never interfering"
+    "The Obsidian Developers, a nigh-invincible and enigmatic group from another dimension always only observing and never interfering"
   },
 
   length =
@@ -3157,19 +3156,20 @@ Rules:
 - narrate in second person
 - Doom fan fiction style
 - slightly more towards a sci-fi military plot
-- no real-world locations
-- purely fan fiction location that is not mentioned to be anywhere specific
+- pure fictional non real-world location
 - avoid all use of double quotes as text will go through a script parser
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
 - no Warhammer 40k, no Lovecraft, no Blizzard Entertainment
 - no threats bigger than Hell - instead, make Hell threatening on its own
-- avoid names with a hard consonant starts such as "Kh", "Kae", "Kr", etc.
+- avoid names with a hard consonant starts such as "Kh", "Kae", "Kr", "Vex", etc.
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one.
 Hell continues to be humanity's problem and the Doomslayer's exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
 The Doomslayer always emerges victorious in this current story but there will always be a new story, another battle with Hell elsewhere.
 Please avoid cliffhangers or "to be continued" endings. The current arc ends but there is always more to do.
+
+- do not remind the protagonist of who they are or are why they're here - we already know
 
 _CHARACTER_
 
