@@ -1734,7 +1734,7 @@ LLM_NAME.story_components =
     "The Mourning Legion, ghostlike soldiers endlessly fighting a war they already lost",
     "The Order of the Black Depths, a secret society studying and containing demonic powers within themselves",
     "The Nova Initiative, a special coalition of rogue scientists and engineers pushing the boundaries of forbidden technology",
-    "The Red Vipers, an aggressive isolationist militant group fighting againsg hell, distrustful of outsiders",
+    "The Red Vipers, an aggressive isolationist militant group fighting against hell, distrustful of outsiders",
     "The Collective, a loose network former UAC scientists turned mystics and occultists dedicated to unleashing Hell",
 
     -- us?!
