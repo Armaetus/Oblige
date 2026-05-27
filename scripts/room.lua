@@ -795,10 +795,12 @@ function Room_pick_joiner_prefab(LEVEL, C, chunk)
 
   C:get_lock_reqs(reqs)
 
-  if C.kind == "joiner" and PARAM.bool_quiet_start == 1 then
-    if chunk.from_area.is_start or chunk.dest_area.is_start then
-      if not reqs.key and not C.kind == "terminator" then
-        reqs.key = "quiet_start"
+  if PARAM.bool_quiet_start == 1 then
+    if C.kind == "joiner" then
+      if chunk.from_area.room.is_start or chunk.dest_area.room.is_start then
+        if not reqs.key then
+          reqs.key = "quiet_start"
+        end
       end
     end
   end

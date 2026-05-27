@@ -322,25 +322,29 @@ function Fab_load_all_definitions()
     if PARAM.bool_quiet_start ~= 1 then return end
 
     for _,def in pairs(PREFABS) do
-      if def.kind == "arch" and def.style == "doors" then
-        local new_def = table.copy(def)
-        new_def.name = new_def.name .. "_qstart"
-        new_def.kind = "door"
-        new_def.style = nil
-        new_def.use_prob = new_def.prob
+      if def.style == "doors" then
+        if def.kind == "arch" then
+          local new_def = table.copy(def)
+          new_def.name = new_def.name .. "_qstart"
+          new_def.kind = "door"
+          new_def.style = nil
+          new_def.use_prob = new_def.prob
 
-        PREFABS[new_def.name] = new_def
-      end
+          PREFABS[new_def.name] = new_def
+        end
 
-      if def.kind == "joiner"
-      and def.style == "doors" and not def.key then
-        local new_def = table.copy(def)
-        new_def.name = new_def.name .. "_qstart"
-        new_def.use_prob = new_def.prob
+        if def.kind == "joiner" and not def.key then
+          local new_def = table.copy(def)
+          new_def.name = new_def.name .. "_qstart"
+          -- these special quiet start doors should
+          -- never be picked for any other reason
+          -- as it will dilute tables
+          new_def.use_prob = 1
 
-        new_def.key = "quiet_start"
+          new_def.key = "quiet_start"
 
-        PREFABS[new_def.name] = new_def
+          PREFABS[new_def.name] = new_def
+        end
       end
     end
   end
