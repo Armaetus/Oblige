@@ -1532,46 +1532,44 @@ LLM_NAME.prompt_flavors =
 LLM_NAME.story_components =
 {
   flavors = {
-    "A War on Two Fronts",
-    "The Unlikely Ally",
-    "Betrayal from Within",
-    "Invasion of the Unseen",
-    "Rebellion's Rise and Fall",
-    "Surviving a Hidden Uprising",
-    "An Ancient Evil Arrives",
-    "A New Threat Emerges",
-    "Hunt for the Hidden Enemy",
-    "Lost Souls in Desperate Circumstances",
-    "Battle for the Soul of Humanity",
-    "Survivors in an Unending War",
-    "Unleashing a Terrible Terror",
-    "Beyond the Gates of Madness",
-    "Infernal Alliance Forms",
-    "Doomsday Prophecy Unfolds",
-    "Beneath the Shattered Surface",
-    "Purgatory's Gate Opens Wide",
-    "Fragile Balance of Power",
-    "Convergence of Fates",
-    "Sacrifice for the Greater Good",
-    "Abandoned World, Abandoned Souls",
-    "The Silent Observer Strikes",
-    "Battle for a Dying Earth",
-    "Shadows that Bind and Twist",
-    "Fighting Against All Odds",
-    "Eternal Night and Endless War",
-    "Last Stand on Uncertain Ground",
-    "Through the Eye of a Storm",
-    "Hunters Become the Hunted",
-    "The Last Bullet, The Last Prayer",
-    "Beyond the Veil of Deception",
-    "Infernal Machines Unleashed",
-    "Battle Scars Tell a Thousand Tales",
-    "Surviving on Borrowed Time",
-    "When the World is Lost, What Remains?",
-    "Unseen Hands Shape Fate",
-    "Lost in an Endless Expanse",
-    "The Price of Power Unleashed",
-    "Fractured Souls Reunite"
+    "War on Multiple Fronts",
+    "Alliance Under Fire",
+    "Internal Security Breach",
+    "Hostiles Inside the Perimeter",
+    "Insurrection and Collapse",
+    "Containment Failure in Progress",
+    "Hell Forces Enter the Theater",
+    "Secondary Incursion Detected",
+    "Search and Destroy Operation",
+    "Stranded Behind Enemy Lines",
+    "Holding the Line",
+    "Attrition Without End",
+    "Unauthorized Experiment Released",
+    "Sector Descends into Chaos",
+    "Enemy Forces Coordinate Attacks",
+    "Catastrophic Event Imminent",
+    "Collapse Beneath the Surface",
+    "Hellgate Breach Confirmed",
+    "Balance of Power Shifts",
+    "Multiple Operations Converge",
+    "Sacrifice to Secure Evacuation",
+    "Dead Colony Transmission Detected",
+    "Enemy Reconnaissance Active",
+    "Defense of a Failing Earth",
+    "Corruption Spreads Through Command",
+    "Outnumbered and Cut Off",
+    "Final Defensive Position",
+    "Combat Operations During Extreme Conditions",
+    "Hunter-Killer Units Deployed",
+    "False Signals and Misdirection",
+    "Demonic War Machines Activated",
+    "Operational Time Running Out",
+    "Unknown Actors Influence Events",
+    "Lost Beyond Charted Space",
+    "Weapon System Out of Control",
+    "The Nuclear Option",
+    "Scorched Earth",
+    "Destroy the Source of Power"
   },
 
   naming_styles =
@@ -1668,74 +1666,113 @@ LLM_NAME.story_components =
   actors =
   {
     -- protagonists
-    "Dr. Emily Chen, a brilliant UAC physicist horrified by the experiments she helped create",
-    "Captain Jackson Reed, a battle-worn security commander who survived multiple facility collapses",
-    "Sergeant Rachel Patel, a relentless resistance fighter known for impossible last stands",
-    "Samuel Thompson, a gifted engineer responsible for maintaining unstable dimensional gateways",
-    "Kara Vash, a scavenger from the outer colonies who learned to survive inside ruined megacities",
-    "Lieutenant Mira Solano, a reconnaissance officer obsessed with mapping Hell-corrupted territories",
-    "Elias Ward, a former UAC technician carrying stolen research capable of sealing dimensional breaches",
-    "Commander Isaac Vale, a hardened marine officer who refuses to abandon civilian survivors",
-    "Dr. Naomi Mercer, a cybernetics specialist searching for a cure to demonic corruption",
-    "Jonah Kreel, a fugitive smuggler transporting refugees through infested wastelands",
-    "Aria Locke, a communications officer intercepting impossible signals from beyond Hell itself",
-    "Ava Moreno, a young and gifted hacker who infiltrates UAC systems to prevent disasters",
-    "Caleb Taylor, a former special forces operative turned mercenary, seeking redemption in the wastelands",
-    "Dr. Mayra Singh, a brilliant xenobiologist studying Hell's twisted flora and fauna",
-    "Lena Ibarra, a skilled engineer who designs innovative solutions to survive the apocalypse",
-
+    "Dr. Emilia Ottisen, a UAC physicist trying to destroy the portal research she helped create",
+    "Captain Jackson Reed, a security commander who survived multiple facility breaches",
+    "Sergeant Rachel Anders, a resistance veteran who held evacuation routes after command collapsed",
+    "Samuel Thompson, a UAC engineer maintaining unstable teleporter infrastructure",
+    "Kara Ashton, a scavenger surviving among abandoned colony sectors and ruined megacities",
+    "Lieutenant Farra Solano, a reconnaissance officer charting Hell-contaminated exclusion zones",
+    "Enias Ancirro, a former UAC technician carrying stolen blacksite research",
+    "Commander Isaac Vale, a marine officer refusing to abandon civilian survivors during planetary evacuations",
+    "Dr. Naomi Mercer, a cybernetics specialist researching demonic corruption in neural implants",
+    "Jonah Kreel, a smuggler transporting refugees through infested wasteland corridors",
+    "Aria Locke, a communications officer intercepting distress calls from abandoned sectors",
+    "Ava Moreno, a systems infiltrator sabotaging unstable UAC experiments before they spread",
+    "Caleb Taylor, a former special forces operative working mercenary contracts in overrun territories",
+    "Dr. Mayra Singh, a xenobiologist cataloging organisms spreading through Hell-infested facilities",
+    "Lena Ibarra, an engineer constructing improvised defenses inside occupied city sectors",
+    "Major Elias Trent, a marine commander coordinating counteroffensives against Hell breaches",
+    "Corporal Nina Graves, a combat medic recovering survivors from quarantine zones",
+    "Victor Soren, a cargo pilot flying supply runs through demon-controlled airspace",
+    "Dr. Adrian Wolfe, a reactor specialist attempting to prevent possessed energy cores from detonating",
+    "Mara Vance, a former prison transport officer escorting survivors through collapsed transit systems",
+    "Lieutenant Owen Pierce, a reconnaissance sniper tracking cult activity across ruined industrial zones",
+    "Helena Cross, a UAC archivist preserving records from facilities erased during Hell incursions",
+    "Darius Cole, a heavy weapons operator defending isolated settlements from repeated attacks",
+    "Chief Engineer Malcolm Reid, a station supervisor restoring power to abandoned defense grids",
 
     -- neutral
-    "Dr. Sophia Argus, a secretive UAC scientist whose assistance always advances hidden objectives",
-    "Colonel Viktor Petrov, a decorated military strategist trapped between duty and conscience",
-    "Father Marcus Vale, a priest who believes Hell's invasion is divine punishment for humanity's arrogance",
-    "Lena Lee, a brilliant network infiltrator trading intelligence to whichever side keeps her alive",
-    "The Broker, an anonymous information dealer who somehow profits from every catastrophe",
-    "Administrator Havel, a UAC executive determined to preserve order regardless of the human cost",
-    "Nyx, a masked wanderer claiming to remember previous demonic invasions erased from history",
-    "Professor Gideon Thorne, an archaeologist obsessed with proving Hell existed long before humanity",
-    "The Ferryman, a mysterious figure guiding survivors through condemned transit tunnels beneath ruined cities",
-    "Sister Celestine, a wandering preacher whose visions blur the line between prophecy and madness",
-    "Ethan Kim, a charismatic cult leader who must navigate his own moral compass amidst demonic invasions",
-    "Dr. Zhang Wei, a UAC scientist secretly working on a cure for demon corruption while hiding her true intentions",
-    "Father Michael Patel, a priest struggling with his faith as Hell's influence grows stronger",
-    "The Architect, an enigmatic figure designing and manipulating the infrastructure of ruined cities",
-    "Gideon Reyes, a seasoned smuggler turned informant, trading information to both human and demonic factions",
-    "Sister Alerine, a mystic soldier and healer who seeks to understand and counter the corrupting influence of Hell",
+    "Dr. Sophia Argus, a UAC scientist whose aid always advances classified objectives",
+    "Colonel Viktor Petrov, a military strategist trapped between duty and survival",
+    "Father Marcus Vale, a preacher convinced Hell's invasion is punishment for humanity's arrogance",
+    "Lena Lethis, a network infiltrator trading intelligence to whichever faction keeps her alive",
+    "The Informant, an anonymous broker selling military intelligence and blacksite coordinates",
+    "Administrator Havel, a UAC executive preserving order regardless of civilian losses",
+    "Umbra, a masked drifter claiming to remember earlier Hell incursions erased from official records",
+    "Professor Arroj Alleus, an archaeologist investigating evidence of ancient Hell contact",
+    "The Railmaster, a transit operator guiding survivors through condemned underground rail systems",
+    "Sister Leeds, a wandering preacher spreading warnings through refugee settlements",
+    "Ethan Victors, a cult leader struggling to maintain control over increasingly violent followers",
+    "Dr. Zhang Wei, a UAC researcher secretly testing experimental anti-possession treatments",
+    "Father Michael Patton, a priest sheltering refugees while questioning his faith",
+    "The Carpenter, an engineer rebuilding infrastructure across ruined city sectors",
+    "Gideon Reyes, a smuggler trading supplies and information between isolated settlements",
+    "Sister Alrene, a field medic using experimental methods to slow demonic corruption",
+    "Marshal Conrad Rhyne, a law officer enforcing martial rule in collapsing settlements",
+    "Selene Ward, a former UAC dispatcher maintaining fragmented emergency communication networks",
+    "Dr. Hector Wynn, a biochemist studying controlled exposure to Hell contaminants",
+    "Vera Holt, a convoy leader negotiating fragile ceasefires between survivor groups",
+    "The Quartermaster, a black-market supplier distributing salvaged military hardware",
+    "Major Lucien Draik, a former ARC officer coordinating unofficial operations beyond military oversight",
+    "Iris Vale, an evacuation coordinator accused of abandoning entire population sectors",
+    "Brother Gideon Shaw, a battlefield chaplain documenting possession outbreaks among refugees",
 
-    -- antagonists    
-    "The Matron, a colossal cybernetic arachnid enslaved by UAC experimentation and driven insane by agony",
-    "Carnifex, a towering executioner demon who commands entire infernal war hosts",
-    "Maledicta, a manipulative hell priestess seeking to awaken forgotten gods beneath dead worlds",
-    "Korath, the corrupted overseer of the UAC's deepest blacksite laboratories",
-    "The Bloodhand, an ancient infernal noble who engineers wars between humanity and Hell",
-    "Archon Veyruul, a machine fused with demonic intelligence governing an abandoned fortress world",
-    "Executor Cain, a former human commander transformed into Hell's most feared hunter and torturer",
-    "The Choir Below, a collective consciousness formed from thousands of tortured souls",
-    "Mother Cyst, a grotesque flesh entity endlessly spreading organic corruption across entire facilities",
-    "The Warden of Rust, a towering sentinel controlling industrial sectors consumed by demonic machinery",
-    "The Scourgebringer, a brutal demon warlord feasting on humanity's suffering and despair",
-    "Inquisitor Xan, a charismatic cult leader manipulating his followers into unleashing demonic powers",
-    "Enterro Ardos, a ruthless bounty hunter tracking down human survivors who possess powerful artifacts",
-    "The Aspect of Ruin, an ancient entity awakened and barely contained by UAC experimentation",
-    "Domos the Glutton, a infinitely hungering demon lord that feasts both on human souls and its own demons alike",
+    -- antagonists
+    "The Matron, a cybernetic arachnid created during failed UAC weapons experiments",
+    "Carnifex, an infernal executioner commanding large-scale assaults against human strongholds",
+    "High Priest Malvek, a Hell priest directing cult uprisings across occupied colonies",
+    "Korath, the corrupted overseer of a sealed UAC blacksite complex",
+    "The Bloodhand, an infernal warlord manipulating conflicts between Hell and humanity",
+    "Overseer Veyr, a machine intelligence fused with demonic consciousness",
+    "Executor Cain, a former marine commander transformed into Hell's chief hunter",
+    "The Choir Below, a mass consciousness formed from absorbed human victims",
+    "Mother Cyst, a flesh entity spreading organic growth through industrial facilities",
+    "The Warden of Rust, a demonic sentinel controlling corrupted manufacturing sectors",
+    "Grinder, a brutal siege demon deployed against fortified human settlements",
+    "Inquisitor Voss, a cult enforcer overseeing forced possession experiments",
+    "Ardos Krell, a bounty hunter employed by cult networks and rogue UAC officials",
+    "The Ruin Engine, an unstable entity created through catastrophic dimensional experiments",
+    "Domos, a massive demon lord consuming both human populations and lesser demons",
+    "The Harrower, a towering beast unleashed during failed containment operations",
+    "Director Malach, a possessed UAC executive continuing experiments after total facility collapse",
+    "Black Bishop, a cult commander coordinating sabotage within surviving military sectors",
+    "The Furnace King, a demon fused with industrial reactor systems beneath a ruined megacity",
+    "Severance, a corrupted AI defense network turned against all surviving human life",
+    "The Pale Host, a possession entity spreading through communication networks and surveillance systems",
+    "Commander Draegor, a Hell-forged war leader commanding captured human armor divisions",
+    "The Skinwright, a grotesque surgeon creating stitched abominations from captured survivors",
+    "The Hollow Saint, a possessed preacher leading mass conversion events inside refugee zones",
 
     -- factions
-    "The Blood Host, one among the countless infernal legions invading mortal worlds",
+    "The Blood Host, one among the countless infernal legions invading human realms",
     "UAC Blacksite Division, clandestine researchers experimenting with forbidden dimensional technology",
     "The Iron Guard, elite and possessed security forces loyal only to surviving UAC leadership",
     "The ARC Resistance, fragmented human rebels fighting against both Hell and corrupted corporations",
-    "The Cult of the Shattered Veil, fanatics attempting to merge Earth permanently with Hell",
+    "The Breach Cult, fanatics attempting to permanently open portals between Earth and Hell",
+    "The Gate Worshippers, extremists sabotaging planetary defenses to aid Hell incursions",
+    "The Hellbound, cultists working to spread demonic possession through surviving population centers",
     "The Pilgrims of Ash, survivors wandering irradiated wastelands in search of sanctuary",
-    "The Circle, occult scholars secretly communicating with entities beyond Hell",
+    "The Lazarus Group, rogue occult researchers communicating with entities inside Hell",
+    "The Deep Signal Division, former UAC analysts intercepting transmissions from Hell-controlled sectors",
+    "The Threshold Program, a classified research cell studying demonic intelligence",
     "The Red Meridian Fleet, an off-world militarized colony force left marooned",
-    "The Choir Demonica, machine worshippers who believe demonic corruption is humanity's next evolution",
-    "The Keepers of Titans, isolationist defenders guarding ancient sealed vaults",
+    "The Conversionists, machine cultists embracing demonic augmentation",
+    "The Flesh Foundry, cybernetic extremists integrating Hell growth into machinery",
+    "The Crucible Network, engineers and cultists constructing demonic war machines",
+    "The Titan Containment Authority, corporate UAC defenders guarding sealed vaults containing Hell artifacts",
     "The Mourning Legion, ghostlike soldiers endlessly fighting a war they already lost",
-    "The Order of the Black Depths, a secret society studying and containing demonic powers within themselves",
+    "The Containment Order, operatives studying and suppressing demonic corruption",
+    "The Blacksite Clergy, zealots using controlled possession to fight Hell",
+    "The Deep Containment Bureau, a covert organization weaponizing demonic energy",
     "The Nova Initiative, a special coalition of rogue scientists and engineers pushing the boundaries of forbidden technology",
+    "The Prometheus Program, rogue scientists developing unstable anti-demonic weapons",
+    "The Lazarus Initiative, engineers attempting to weaponize Hell energy against itself",
+    "The Exodus Labs, breakaway UAC researchers operating outside military oversight",
     "The Red Vipers, an aggressive isolationist militant group fighting against hell, distrustful of outsiders",
     "The Collective, a loose network former UAC scientists turned mystics and occultists dedicated to unleashing Hell",
+    "The Defectors, former UAC scientists and occultists aiding Hell incursions",
+    "The Apostates, ex-research personnel devoted to spreading demonic influence",
+    "The Outer Circle, rogue researchers attempting to unleash Hell across human colonies",
 
     -- us?!
     "The Obsidian Developers, a nigh-invincible and enigmatic group from another dimension always only observing and never interfering"
@@ -1793,10 +1830,9 @@ chapter 3 ending here
 The text in each tag section must at least be 140-150 words.]]
   },
 
-  -- not used yet
   mcguffins = {
     "The Argent Shard, a fractured crystal that stores raw Hell energy",
-    "UAC Black Box, records the last moments before a Mars facility collapse",
+    "UAC Black Box, records the last moments of a Mars facility collapse",
     "The Crucible Echo, a blade that whispers the names of demons it has killed",
     "Hell Gate Key, a bone-and-metal artifact that stabilizes portals",
     "Praetor Core Fragment, a damaged AI core still issuing directives",
@@ -1870,19 +1906,19 @@ The text in each tag section must at least be 140-150 words.]]
     "The Void-Cracked Relic, distorts nearby reality fields",
     "The Hellspire Fragment, piece of a massive infernal tower",
     "The Sentinel Forge Hammer, used to create Argent weapons",
-    "The Doom Slayer Mark Rune, enhances aggression and resilience",
+    "The Mark Rune, an ancient rune that enhances aggression and resilience",
     "The Lazarus Reactor Core, unstable resurrection energy source",
-    "The Hellbound Navigation Stone, guides through shifting labyrinths",
+    "The Hellsun Stone, an artifact for guiding through shifting Hell labyrinths",
     "The Argent Neural Link, connects human minds to UAC systems",
-    "The Titan Rift Anchor, prevents massive demons from escaping",
+    "The Titan Rift Anchor, device that prevents massive demons from escaping",
     "The Infernal Gravity Core, warps battlefield terrain",
     "The UAC Redacted Project File, contains erased experiment logs",
-    "The Hellborn Virus Sample, mutates infected hosts rapidly",
+    "The Hellborn Virus Sample, a virus container host to one that infects hosts rapidly",
     "The Argent Echo Chamber, amplifies psychic signals",
-    "The Sentinel Star Map, reveals hidden dimensional routes",
-    "The Doom Relay Fragment, restores broken communications",
+    "The Sentinel's Star Map, reveals hidden dimensional routes",
+    "The Relay Fragment, restores broken communications",
     "The Abyssal Command Sigil, overrides demon hierarchy control",
-    "The Phobos Blacksite Key, unlocks secret UAC facilities",
+    "The Phobos Blacksite Key, a digital dossier containing various UAC experimental blacksite locations",
     "The Hellfire Codex, manual for forbidden weapon creation",
     "The VEGA Fragmented Consciousness, unstable AI personality shard",
     "The Argent Singularity Cell, miniature controlled black hole tech",
@@ -1896,6 +1932,7 @@ The text in each tag section must at least be 140-150 words.]]
     "Erebus",
     "Erebo",
     "The Devourer",
+    "Zha'thik",
     "Kaelin Vex",
     "Khaos",
     "Kael",
@@ -2506,7 +2543,7 @@ function LLM_NAME.get_some_info(self, lev)
           " with ",
           " installed with",
           " constructed with ",
-          "contains ",
+          " contains ",
           " built with ",
           " hosts "
         }
@@ -3162,6 +3199,7 @@ Rules:
 - no explanations, no commentary, no follow-up questions
 - no Warhammer 40k, no Lovecraft, no Blizzard Entertainment
 - no threats bigger than Hell - instead, make Hell threatening on its own
+- if the acronym UAC is used, it means "Union Aerospace Corporation"
 - avoid names with a hard consonant starts such as "Kh", "Kae", "Kr", "Vex", etc.
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one.
@@ -3169,9 +3207,11 @@ Hell continues to be humanity's problem and the Doomslayer's exploits brings the
 The Doomslayer always emerges victorious in this current story but there will always be a new story, another battle with Hell elsewhere.
 Please avoid cliffhangers or "to be continued" endings. The current arc ends but there is always more to do.
 
-- do not remind the protagonist of who they are or are why they're here - we already know
+Protagonist Notes:
+- the protagonist will never choose to work with Hell
+- no need to explain anything about the protagonist's identity or motivations in the story
 
-_CHARACTER_
+_ENTITIES_
 
 _FORMAT_
 ]]
@@ -3199,10 +3239,10 @@ _FORMAT_
     local character_mode = rand.key_by_probs(
       {
         none=3,
-        generic=2,
+        --[[generic=2,]]
         pregen=4
       })
-    if character_mode == "generic" then
+    --[[if character_mode == "generic" then
       story_characters = rand.key_by_probs({
         ["Introduce an original friendly character in the story.\n"]=3,
         ["Introduce an original neutral character in the story.\n"]=4,
@@ -3214,10 +3254,19 @@ _FORMAT_
       if rand.odds(80) then
         story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
       end
-    elseif character_mode == "pregen" then
+    else]]
+    if character_mode == "pregen" then
       story_characters = "The following appear in the story:\n"
-      for i = 1, rand.pick({1,2,3}) do
+      local count = rand.pick({1,2,3})
+      for i = 1, count do
         story_characters = story_characters .. rand.pick(LLM_NAME.story_components.actors).. "\n"
+      end
+
+      -- sometimes add a McGuffin
+      if (count == 2 and rand.odds(30))
+      or (count == 1 and rand.odds(60)) then
+        story_characters = story_characters ..  "Involved in this story:\n"
+        story_characters = story_characters .. "* " .. rand.pick(LLM_NAME.story_components.mcguffins) .."\n"
       end
 
       -- maybe change up our pregen names too!
@@ -3225,11 +3274,17 @@ _FORMAT_
         story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
       end
     else
-      story_characters = "There are no other characters in the story - the Doomslayer explores this quest on their own.\n"
+      story_characters = "There are no other characters in the story - the Doomslayer explores this quest on their own. Please do not name any new entities unless specified.\n"
       story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
+
+      -- sometimes add a McGuffin
+      if rand.odds(50) then
+        story_characters = story_characters ..  "Involved in this story:\n"
+        story_characters = story_characters .. "* " .. rand.pick(LLM_NAME.story_components.mcguffins) .."\n"
+      end
     end
     prompt = string.gsub(prompt,
-    "_CHARACTER_",
+    "_ENTITIES_",
     story_characters)
 
     local story_format
