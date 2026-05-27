@@ -238,11 +238,6 @@ function Quest_create_initial_quest(LEVEL)
         cur_score = cur_score * 2
       end
 
-      -- if it is the original exit, reduce chance
-      if R.is_exit then
-        cur_score = cur_score / 100
-      end
-
       R.start_score = cur_score
 
       if cur_score > best_score then
