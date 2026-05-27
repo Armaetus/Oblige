@@ -42,7 +42,9 @@ PREFABS.Joiner_curve_door_urban =
     BIGDOOR5 = 1,
     BIGDOOR6 = 1,
     BIGDOOR7 = 1
-  }
+  },
+
+  tex_SUPPORT2 = "SUPPORT3"
 }
 
 PREFABS.Joiner_curve_door_hell =
@@ -58,5 +60,7 @@ PREFABS.Joiner_curve_door_hell =
     BIGDOOR5 = 1,
     BIGDOOR6 = 1,
     BIGDOOR7 = 1
-  }
+  },
+
+    tex_SUPPORT2 = "SUPPORT3"
 }
