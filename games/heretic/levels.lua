@@ -140,6 +140,21 @@ HERETIC.PREBUILT_LEVELS =
   {
     { prob=50, file="games/heretic/data/boss_portal1.wad", map="E2M8" },
   },
+
+  E3M8 =
+  {
+    { prob=50, file="games/heretic/data/boss_dsparil1.wad", map="E3M8" },
+  },
+
+  E4M8 =
+  {
+    { prob=50, file="games/heretic/data/boss_ossuary1.wad", map="E4M8" },
+  },
+
+  E5M8 =
+  {
+    { prob=50, file="games/heretic/data/boss_demesne1.wad", map="E5M8" },
+  },
 }
 
 
