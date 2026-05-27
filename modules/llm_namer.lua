@@ -3297,8 +3297,6 @@ _FORMAT_
 
 
   if PARAM.bool_llm_namer == 1 then
-
-
     -- level name generator
     for _,epi in pairs(GAME.episodes) do
       for _,L in pairs(epi.levels) do

@@ -7,6 +7,8 @@ PREFABS.Joiner_curve_door_tech =
   style = "doors",
   theme = "tech",
 
+  prob = 100,
+
   shape = "L",
   seed_h = 2,
   seed_w = 2,
@@ -23,16 +25,9 @@ PREFABS.Joiner_curve_door_tech =
 
 PREFABS.Joiner_curve_door_urban =
 {
-  file = "joiner/curve_door.wad",
-  map = "MAP01",
-  where = "seeds",
+  template = "Joiner_curve_door_tech",
 
-  style = "doors",
   theme = "urban",
-
-  shape = "L",
-  seed_h = 2,
-  seed_w = 2,
 
   tex_BIGDOOR1 =
   {
@@ -52,16 +47,9 @@ PREFABS.Joiner_curve_door_urban =
 
 PREFABS.Joiner_curve_door_hell =
 {
-  file = "joiner/curve_door.wad",
-  map = "MAP01",
-  where = "seeds",
+  template = "Joiner_curve_door_tech",
 
-  style = "doors",
   theme = "hell",
-
-  shape = "L",
-  seed_h = 2,
-  seed_w = 2,
 
   tex_BIGDOOR1 =
   {

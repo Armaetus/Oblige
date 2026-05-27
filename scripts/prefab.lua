@@ -339,7 +339,8 @@ function Fab_load_all_definitions()
           -- these special quiet start doors should
           -- never be picked for any other reason
           -- as it will dilute tables
-          new_def.use_prob = 1
+          new_def.use_prob = calc_prob(new_def)
+          new_def.style = nil -- remove any styles
 
           new_def.key = "quiet_start"
 
