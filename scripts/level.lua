@@ -247,7 +247,7 @@ function Level_determine_map_size(LEV)
     W = math.max(W, 16)
   end
 
-  gui.printf("Initial size for " .. LEV.name .. ": " .. W .. "\n")
+  gui.debugf("Initial size for " .. LEV.name .. ": " .. W .. "\n")
 
   local H = 1 + math.floor(W * 0.8)
 
@@ -310,7 +310,7 @@ function Episode_determine_map_sizes()
       end
     end
 
-    gui.printf(
+    gui.debugf(
       "size_multiplier: " .. LEV.size_multiplier .. "\n" ..
       "area_multiplier: " .. LEV.area_multiplier .. "\n" ..
       "size_consistency: " .. LEV.size_consistency .. "\n\n"
