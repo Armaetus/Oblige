@@ -224,16 +224,17 @@ function Quest_create_initial_quest(LEVEL)
 
       -- closer to a volume of indicated ideal_value means a better score
       local ideal_value = rand.pick({24,32})
-      local cur_score = (1 - math.abs(ideal_value - R.svolume)) / 2
+      -- approach 0 for bad scores, otherwise approach 100 near ideal value
+      local cur_score = math.max(0, (math.abs(R.svolume - ideal_value) / (ideal_value + 1)) * 2) * 100
 
       -- should have at least one closet
       if R.closets and #R.closets >= 1 then
-        cur_score = cur_score + 10
+        cur_score = cur_score * 1.25
       end
 
       -- absolutely no rooms without more than 1 connection
       if #R.conns > 1 or (R.symmetry and #R.conns == 1) then
-        cur_score = cur_score / (#R.conns * 25)
+        cur_score = cur_score / (#R.conns * 10)
       elseif #R.conns == 1 then
         cur_score = cur_score * 2
       end
