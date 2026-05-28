@@ -1342,7 +1342,7 @@ function Fab_load_wad(def)
     if side and side.sidedef_index then
       C2.sidedef_index = side.sidedef_index
     end
-  
+
     --[[if side then
       table.alt_print_table(side)
       gui.printf("--\n")
@@ -1352,7 +1352,7 @@ function Fab_load_wad(def)
 
     return C2
   end
-  
+
  local function decode_polygon_side_hexen(sec, C, pass)
     -- pass is 1 for floor, 2 for ceiling
     -- sec will be NIL for a polygon in void space
@@ -1459,7 +1459,7 @@ function Fab_load_wad(def)
         -- this makes sure the flags get applied
         if not C2.special then C2.special = 0 end
       end
-      
+
       C.act = bit.rshift(bit.band(flags, 0x1C00), 10)
 
       upper_unpeg = (bit.band(flags, MLF_UpperUnpegged) ~= 0)
@@ -1523,7 +1523,7 @@ function Fab_load_wad(def)
 
   local function decode_lighting(S, C)
 
-    if S.light == 0 then 
+    if S.light == 0 then
       C.shadow = 10000
     elseif S.light < 80 then
       C.shadow = 64
@@ -1560,8 +1560,8 @@ function Fab_load_wad(def)
       if GAME.sub_format == "hexen" then
         table.insert(B, decode_polygon_side_hexen(S, C, 1))
       else
-        table.insert(B, decode_polygon_side(S, C, 1))  
-      end  
+        table.insert(B, decode_polygon_side(S, C, 1))
+      end
     end
 
     table.insert(fab.brushes, B)
@@ -1663,7 +1663,7 @@ function Fab_load_wad(def)
         table.insert(B, decode_polygon_side_hexen(S, C, pass))
       else
         table.insert(B, decode_polygon_side(S, C, pass))
-      end  
+      end
     end
 
     -- add this new brush to the prefab
@@ -1720,7 +1720,7 @@ function Fab_load_wad(def)
 
 
   local function handle_entity(fab, E)
-  
+
     local spot_info
 
     if GAME.sub_format == "hexen" then
@@ -1728,7 +1728,7 @@ function Fab_load_wad(def)
     else
       spot_info = WADFAB_ENTITIES[E.id]
     end
-    
+
     if not spot_info then
       table.insert(fab.entities, E)
       return
@@ -1829,11 +1829,11 @@ function Fab_load_wad(def)
       local z1 = S1.floor_h
       local z2 = S2.floor_h
 
-      if S1.special == WADFAB_DELTA_12 then 
+      if S1.special == WADFAB_DELTA_12 then
         z1 = z1 - (def.delta or 12)
       end
-      
-      if S2.special == WADFAB_DELTA_12 then 
+
+      if S2.special == WADFAB_DELTA_12 then
         z2 = z2 - (def.delta or 12)
       end
 
@@ -1944,7 +1944,7 @@ function Fab_load_wad(def)
       end
       ::skip::
     end
-    
+
     local L
 
     for line_idx = 0,9999 do
@@ -2036,7 +2036,7 @@ function Fab_merge_skins(fab, room, list)
     table.merge(result, room.skin)
   end
 
-  for _,skin in pairs(list) do 
+  for _,skin in pairs(list) do
     table.merge(result, skin)
     if GAME.sub_format == "hexen" then
       table.merge_missing(result, skin)
@@ -2188,7 +2188,7 @@ function Fab_substitutions(fab, SKIN)
   subst_pass(keys)
 
   random_pass(keys)
-  
+
 end
 
 
@@ -2294,7 +2294,7 @@ function Fab_replacements(LEVEL, fab)
 
     return fab.fields[k]
   end
-  
+
 
   local function get_entity_id(name)
     -- allow specifying a raw ID number
@@ -2436,15 +2436,15 @@ function Fab_replacements(LEVEL, fab)
       end
 
       if C.tag then
-        C.tag = check_tag(C.tag) 
+        C.tag = check_tag(C.tag)
         current_tag = C.tag
       end
 
       -- This should provide enough compatibility to work with the generic prefab set - Dasho
       if GAME.sub_format == "hexen" then
-        if C.x and C.special then 
-          if (C.special >= 10 and C.special <= 12) then 
-            C.arg1 = current_tag 
+        if C.x and C.special then
+          if (C.special >= 10 and C.special <= 12) then
+            C.arg1 = current_tag
           elseif C.special == 13 then
             C.arg5 = current_tag
           elseif C.special == 22 then
@@ -2843,8 +2843,8 @@ function Fab_find_matches(LEVEL, reqs, match_state)
 
     if def.jump_crouch and def.jump_crouch == true then
       if not PARAM.bool_jump_crouch then
-        def.use_prob = 0 
-        return 0 
+        def.use_prob = 0
+        return 0
       end
       if PARAM.bool_jump_crouch == 0 then
         def.use_prob = 0
@@ -2893,8 +2893,8 @@ function Fab_find_matches(LEVEL, reqs, match_state)
     -- liquid check
     if def.liquid then
       if not LEVEL.liquid then
-        def.use_prob = 0 
-        return 0 
+        def.use_prob = 0
+        return 0
       end
       if def.liquid == "harmless" and     LEVEL.liquid.damage then return 0 end
       if def.liquid == "harmful"  and not LEVEL.liquid.damage then return 0 end
@@ -2911,8 +2911,8 @@ function Fab_find_matches(LEVEL, reqs, match_state)
 
     -- darkness check
     if def.dark_map and not LEVEL.is_dark then
-      def.use_prob = 0 
-      return 0 
+      def.use_prob = 0
+      return 0
     end
 
     -- for fabs to spawn on roads (and not sidewalks)
@@ -2938,7 +2938,7 @@ function Fab_find_matches(LEVEL, reqs, match_state)
     -- for fabs that need the illusion of depth
     if def.need_solid_depth and not reqs.solid_depth then return 0 end
     if reqs.solid_depth and def.need_solid_depth then
-      if def.need_solid_depth > reqs.solid_depth then return 0 end 
+      if def.need_solid_depth > reqs.solid_depth then return 0 end
     end
 
     -- REMOVE-ME - temporary fix for the issue of non-natural walls looking
@@ -3074,7 +3074,7 @@ function Fab_pick(LEVEL, reqs, allow_none)
   while cur_req do
       -- keep the earliest matches (they override later matches)
     table.merge_missing(tab, Fab_find_matches(LEVEL, cur_req, match_state))
-   
+
     cur_req = cur_req.alt_req
   end
 

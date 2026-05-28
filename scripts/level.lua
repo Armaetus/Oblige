@@ -146,7 +146,7 @@ function Level_determine_map_size(LEV)
 
   -- Since we have other sizes and Auto-Detail, we can have these bigger sizes
   -- now. -Reisal, July 9th, 2019,
-  
+
   local ob_size = PARAM.float_size
 
   local W, H
@@ -279,7 +279,7 @@ function Episode_determine_map_sizes()
     LEV.area_multiplier = 1
     LEV.size_consistency = "normal"
     local mix_type = "normal"
-    
+
     if PARAM.room_size_multiplier then
       if PARAM.room_size_multiplier ~= "vanilla"
       and PARAM.room_size_multiplier ~= "mixed" then
@@ -426,9 +426,9 @@ function Episode_plan_monsters()
 
 
   local function calc_monster_level(LEV)
-  
+
     local mon_strength = PARAM.float_strength
-    
+
     if mon_strength == 12 then
       LEV.monster_level = mon_strength
       return
@@ -528,7 +528,7 @@ function Episode_plan_monsters()
   local function is_monster_usable(LEV, mon, info)
     if not info.prob or info.prob <= 0 then return false end
 
-    if info.level > LEV.monster_level 
+    if info.level > LEV.monster_level
     + (MONSTER_KIND_JUMPSTART_LEVELS[OB_CONFIG.mon_variety_jumpstart] or 0)
     then return false end
 
@@ -1219,7 +1219,7 @@ function Episode_plan_weapons()
 
     if PARAM.bool_scale_items_with_map_size and PARAM.bool_scale_items_with_map_size == 1 then
       quota = math.min(1, math.round(quota * (1 + (LEV.map_W / 75))))
-    end    
+    end
 
     LEV.weapon_quota = quota
   end
@@ -2358,7 +2358,7 @@ function Level_choose_darkness(LEVEL)
   end
 
   LEVEL.sky_light = math.clamp(PARAM.wad_minimum_brightness or 0,
-    LEVEL.sky_light, 
+    LEVEL.sky_light,
     PARAM.wad_maximum_brightness or 255)
 
   if (LEVEL.sky_light - LEVEL.sky_shadow) <= (PARAM.wad_minimum_brightness or 0) then
@@ -2381,7 +2381,7 @@ function Level_choose_misc(LEVEL)
     end
   end
 
-  LEVEL.room_height_style_tab = 
+  LEVEL.room_height_style_tab =
   {
     tall = rand.pick({0.8, 0.9, 1, 1.1, 1.2}),
     normal = rand.pick({1, 1.5, 2, 3, 4, 6}),
@@ -2731,16 +2731,16 @@ function Level_make_level(LEV)
 
   if res == "runt"  then
     print("STUNTED LEVEL!\nCOVERAGE: " .. (LEVEL.cur_coverage or "NIL")
-    .. "\nMIN COVERAGE: " .. coverage_target .. "\nROOMS: " 
+    .. "\nMIN COVERAGE: " .. coverage_target .. "\nROOMS: "
     .. #LEVEL.rooms .. "\nMIN ROOMS: " .. LEVEL.min_rooms .. "\n")
   end
 
   if res ~= "ok" then
     clear_level(LEVEL, SEEDS)
     if res == "abort" then return res end
-    
+
     retry_counter = retry_counter + 1
-    
+
     if retry_counter > retry_target then -- just move on I guess
       res = "ok"
     else
@@ -2810,7 +2810,7 @@ function Level_make_all()
         end
       end
       return alt_string
-    end 
+    end
   end
 
   -- generate random word title
@@ -2833,7 +2833,7 @@ function Level_make_all()
     return nil
   end
 
-  
+
   GAME.levels   = {}
   GAME.episodes = {}
 
@@ -2859,7 +2859,7 @@ function Level_make_all()
   end
 
   Episode_plan_game()
- 
+
   local title = generate_title()
   if title then
     GAME.title = title
