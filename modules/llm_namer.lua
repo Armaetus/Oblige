@@ -2019,6 +2019,92 @@ The text in each tag section must at least be 140-150 words.]]
     "The Doomgate Stabilizer, prevents catastrophic portal cascade failures"
   },
 
+  story_twists = {
+    "Containment Failure Confirmed",
+    "Command Already Knew",
+    "Evacuation Never Came",
+    "The Signal Was False",
+    "The Survivors Are Infected",
+    "The Portal Cannot Close",
+    "The AI Turned Hostile",
+    "The Blacksite Lied",
+    "The Reactor Was Sabotaged",
+    "The Rescue Was a Coverup",
+    "The Enemy Is Inside",
+    "The Artifact Is Active",
+    "The Colony Was Abandoned",
+    "The Quarantine Failed",
+    "The Dead Are Returning",
+    "The Grid Is Corrupted",
+    "The Cult Controls Command",
+    "The Invasion Started Underground",
+    "The Defense Network Failed",
+    "The Portal Is Expanding",
+
+    "The Signals Are Traps",
+    "The Facility Was Compromised",
+    "The Weapon Made It Worse",
+    "The Outbreak Was Intentional",
+    "The Marines Were Sacrificed",
+    "The Breach Is Spreading",
+    "The AI Is Hiding Something",
+    "The Survivors Turned on Each Other",
+    "The Experiment Never Ended",
+    "The Infection Is Airborne",
+    "The Enemy Controls the Network",
+    "The Reactor Is Alive",
+    "The Lower Levels Opened",
+    "The Fleet Has Fallen",
+    "The Archives Were Erased",
+    "The Invasion Already Happened",
+    "The Hellgrowth Is Spreading",
+    "The Emergency Broadcast Loops",
+    "The Defenses Target Civilians",
+    "The Gate Was Opened From Within",
+
+    "The Artifact Wants Release",
+    "The Convoy Carries Infection",
+    "The Facility Is Sinking",
+    "The City Is Cut Off",
+    "The Command Chain Collapsed",
+    "The Atmosphere Is Failing",
+    "The Water Is Corrupted",
+    "The Colony Is Still Active",
+    "The Rift Is Stabilizing",
+    "The Infection Thinks",
+    "The Portals Are Linked",
+    "The Dead Retain Memory",
+    "The Reactor Cannot Shut Down",
+    "The Enemy Mimics Humans",
+    "The Signal Comes From Hell",
+    "The Cult Controls Evacuation",
+    "The Blacksite Never Closed",
+    "The Survivors Protect the Breach",
+    "The Orbital Grid Is Lost",
+    "The Last Transport Left",
+
+    "The AI Rebuilt the Dead",
+    "The Facility Was Built Over Hell",
+    "The Containment Field Requires Sacrifice",
+    "The Demons Want the Reactor",
+    "The Hell Structures Are Growing",
+    "The Transit Network Is Compromised",
+    "The Infection Crossed Offworld",
+    "The Quarantine Zone Expanded",
+    "The Marines Lost Contact",
+    "The Reactor Core Mutated",
+    "The Portal Reacts to Violence",
+    "The Blacksite Has Multiple Breaches",
+    "The Distress Call Is Ancient",
+    "The Evacuation Route Is Gone",
+    "The Survivors Serve Hell",
+    "The Command Staff Escaped First",
+    "The Teleporters Remain Active",
+    "The Facility Is Still Operational",
+    "The Breach Reached Orbit",
+    "The End Already Started"
+  },
+
   -- common proper nouns from the LLM that constantly get re-used (annoyingly)
   -- manually noted for replacement by our own name generator
   replacers =
@@ -3312,6 +3398,11 @@ _FORMAT_
 ]]
     -- flavor injection
     local story_flavor = rand.pick(LLM_NAME.story_components.flavors)
+    -- sometimes add a twist
+    if rand.odds(66) then
+      story_flavor = story_flavor .. "\n"
+      story_flavor = story_flavor .. "The Twist: " .. rand.pick(LLM_NAME.story_components.story_twists) .. "\n"
+    end
     prompt = string.gsub(prompt,
     "_FLAVOR_",
     story_flavor)
