@@ -2837,17 +2837,6 @@ function Fab_find_matches(LEVEL, reqs, match_state)
     -- type check
     local kind = assert(def.kind)
 
-    if def.jump_crouch and def.jump_crouch == true then
-      if not PARAM.bool_jump_crouch then
-        def.use_prob = 0
-        return 0
-      end
-      if PARAM.bool_jump_crouch == 0 then
-        def.use_prob = 0
-        return 0
-      end
-    end
-
     if reqs.kind ~= kind then return 0 end
 
     -- placement check
