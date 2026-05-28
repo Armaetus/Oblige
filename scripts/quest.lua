@@ -3585,6 +3585,31 @@ end
 
 
 function Quest_trim_prefabs(LEVEL)
+  -- this is a copy of the style factor from prefabs
+  -- we'll use it to pretrim e.g. no need for stairs
+  -- if the map has no steepness, etc.
+  local function style_factor(def)
+    if not def.style then return 1 end
+
+    local style_tab = def.style
+
+    if type(style_tab) ~= "table" then
+      style_tab = { def.style }
+      def.style = style_tab
+    end
+
+    local factor = 1.0
+
+    for _,name in pairs(style_tab) do
+      if STYLE[name] == nil then
+        error("Unknown style name in prefab def: " .. tostring(name))
+      end
+
+      factor = factor * style_sel(name, 0, 0.28, 1.0, 3.5)
+    end
+
+    return factor
+  end
 
   -- collect used wall groups, and we will trim the list further
   local used_groups = {}
@@ -3610,7 +3635,7 @@ function Quest_trim_prefabs(LEVEL)
     pre_count = pre_count + 1
 
       -- if fab has no groupings of any kind OK
-      if not def.group then
+      if not def.group and style_factor(def) > 0 then
         if rev_tab[def.where .. "_" .. def.kind] then
           rev_tab[def.where .. "_" .. def.kind][def.name] = def
         else
