@@ -3584,6 +3584,107 @@ end
 
 
 
+function Quest_trim_prefabs(LEVEL)
+  local pre_count = 0
+  for _,group in pairs(LEVEL.PREFABS_BUCKET) do
+    for name,def in pairs(group) do
+      pre_count = pre_count + 1
+    end
+  end
+
+  -- collect used wall groups, and we will trim the list further
+  local used_groups = {}
+  for _,T in pairs(LEVEL.preferred_wall_groups) do
+    for group,prob in pairs(T) do
+      used_groups[group] = 1
+    end
+  end
+
+  if LEVEL.outdoor_wall_group then
+    used_groups[LEVEL.outdoor_wall_group] = 1
+  end
+
+  -- not necessarily unused, but if the level has parks, this'll be
+  -- required
+  used_groups["natural_walls"] = 1
+  used_groups["marine_closet"] = 1
+
+  -- create unused groups (difference from used groups and themes)
+  local unused_groups = {}
+  for _,T in pairs(GAME.THEMES) do
+    if T.wall_groups then
+      for wg,prob in pairs(T.wall_groups) do
+        if not used_groups[wg] then
+          unused_groups[wg] = 1
+        end
+      end
+    end
+  end
+
+  local rev_tab = {}
+  for _,category in pairs(LEVEL.PREFABS_BUCKET) do
+    for name,def in pairs(category) do
+
+      -- if fab has no groupings of any kind OK
+      if not def.group then
+        if rev_tab[def.where .. "_" .. def.kind] then
+          rev_tab[def.where .. "_" .. def.kind][def.name] = def
+        else
+          rev_tab[def.where .. "_" .. def.kind] = {}
+          rev_tab[def.where .. "_" .. def.kind][def.name] = def
+        end
+
+      end
+
+      -- standard fabs reliant on wall_groups that are used in the level OK
+      if def.kind == "wall"
+      or def.kind == "decor"
+      or def.kind == "picture"
+      or def.kind == "item"
+      or def.kind == "joiner" then
+        if def.group and used_groups[def.group] then
+          if rev_tab[def.where .. "_" .. def.kind] then
+            rev_tab[def.where .. "_" .. def.kind][def.name] = def
+          else
+            rev_tab[def.where .. "_" .. def.kind] = {}
+            rev_tab[def.where .. "_" .. def.kind][def.name] = def
+          end
+
+        end
+      else
+      if rev_tab[def.where .. "_" .. def.kind] then
+          rev_tab[def.where .. "_" .. def.kind][def.name] = def
+        else
+          rev_tab[def.where .. "_" .. def.kind] = {}
+          rev_tab[def.where .. "_" .. def.kind][def.name] = def
+        end
+      end
+
+    end
+  end
+
+  if LEVEL.PREFABS_BUCKET["seeds_sec_quest"] then
+    rev_tab["seeds_sec_quest"] = {}
+
+    for _,def in pairs(LEVEL.PREFABS_BUCKET["seeds_sec_quest"]) do
+      rev_tab["seeds_sec_quest"][def.name] = def
+    end
+  end
+
+  LEVEL.PREFABS_BUCKET = table.copy(rev_tab)
+
+  local post_count = 0
+  for _,group in pairs(LEVEL.PREFABS_BUCKET) do
+    for name,def in pairs(group) do
+      post_count = post_count + 1
+    end
+  end
+
+  gui.printf("Prefabs bucket trimmed: " .. pre_count .. " -> " .. post_count .. "\n")
+end
+
+
+
 function Quest_make_quests(LEVEL)
 
   gui.printf("\n--==| Make Quests |==--\n\n")
@@ -3609,6 +3710,8 @@ function Quest_make_quests(LEVEL)
   Quest_big_secrets(LEVEL)
 
   Quest_room_themes(LEVEL)
+
+  Quest_trim_prefabs(LEVEL)
 
   Quest_add_weapons(LEVEL)
 

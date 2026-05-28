@@ -2106,7 +2106,6 @@ function ob_clean_up()
   SCRIPTS = nil
   EPISODE = nil
   PREFABS = nil
-  PREFABS_FULL = nil
   SEEN_ROOM_THEMES = nil
   SEEN_WALL_GROUPS = nil
   AMBIENT_SOUND_DEFS = nil

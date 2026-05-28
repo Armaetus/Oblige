@@ -384,16 +384,12 @@ function Fab_load_all_definitions()
   ---| Fab_load_all_definitions |---
 
   PREFABS = {}
-  PREFABS_FULL = {}
 
   assert(GAME.game_dir)
 
   visit_dir("games/" .. GAME.game_dir .. "/fabs", "*.lua")
   ob_invoke_hook("addon_fabs")
   preprocess_all()
-
-  -- make a copy for trimming
-  PREFABS_FULL = table.copy(PREFABS)
 end
 
 
@@ -3041,7 +3037,11 @@ function Fab_find_matches(LEVEL, reqs, match_state)
 
   local tab = {}
 
-  for name,def in pairs(LEVEL.PREFABS) do
+  assert(LEVEL.PREFABS_BUCKET[reqs.where .. "_" .. reqs.kind],
+  "missing prefabs bucket: " .. reqs.where .. "_" .. reqs.kind .. "\n" ..
+  table.tostr(reqs,2))
+
+  for name,def in pairs(LEVEL.PREFABS_BUCKET[reqs.where .. "_" .. reqs.kind]) do
     local prob = prob_for_match(def, match_state, reqs.theme_override)
 
     if prob > 0 then
@@ -3111,19 +3111,4 @@ function Fab_pick(LEVEL, reqs, allow_none)
   if name == "NONE" then return nil end
 
   return assert(PREFABS[name])
-end
-
-
-
-function Fab_trim_list(LEVEL)
-  -- to optimize prefab picking and significantly reduce
-  -- the presence of too many choices that are individually
-  -- unlikely to be picked, this is a function that simply
-  -- trims the active prefabs list to a more manageable level
-  -- based on certain initial guesses
-
-  -- TO-DO: Make the module
-  PREFABS = nil
-  PREFABS = {}
-  PREFABS = PREFABS_FULL
 end

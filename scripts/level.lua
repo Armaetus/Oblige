@@ -2555,9 +2555,6 @@ function Level_build_it(LEVEL, SEEDS)
   if LEVEL.is_dead then return "runt" end
 
   Quest_make_quests(LEVEL)
-  -- do some prefab pre-filtering
-  -- remove prefabs that have no expectation to ever be used
-  Fab_trim_list(LEVEL)
     if gui.abort() then return "abort" end
 
   Room_build_all(LEVEL, SEEDS)
@@ -2701,7 +2698,23 @@ function Level_make_level(LEV)
     end
   end
 
-  LEVEL.PREFABS = table.copy(PREFABS)
+  -- PREFABS bucketting system, to limit the amount of fabs to search through
+  -- each time Fab_pick will inevitably be called
+  local bucket_fabs = table.copy(PREFABS)
+  local bucket_tab = {}
+
+  for _,def in pairs(bucket_fabs) do
+    if def.where and def.kind and def.use_prob ~= 0 then
+      if bucket_tab[def.where .. "_" .. def.kind] then
+        bucket_tab[def.where .. "_" .. def.kind][def.name] = table.copy(def)
+      else
+        bucket_tab[def.where .. "_" .. def.kind] = {}
+        bucket_tab[def.where .. "_" .. def.kind][def.name] = table.copy(def)
+      end
+    end
+  end
+
+  LEVEL.PREFABS_BUCKET = table.copy(bucket_tab)
 
   res = Level_build_it(LEVEL, SEEDS)
 
