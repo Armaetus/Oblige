@@ -3585,12 +3585,6 @@ end
 
 
 function Quest_trim_prefabs(LEVEL)
-  local pre_count = 0
-  for _,group in pairs(LEVEL.PREFABS_BUCKET) do
-    for name,def in pairs(group) do
-      pre_count = pre_count + 1
-    end
-  end
 
   -- collect used wall groups, and we will trim the list further
   local used_groups = {}
@@ -3609,21 +3603,11 @@ function Quest_trim_prefabs(LEVEL)
   used_groups["natural_walls"] = 1
   used_groups["marine_closet"] = 1
 
-  -- create unused groups (difference from used groups and themes)
-  local unused_groups = {}
-  for _,T in pairs(GAME.THEMES) do
-    if T.wall_groups then
-      for wg,prob in pairs(T.wall_groups) do
-        if not used_groups[wg] then
-          unused_groups[wg] = 1
-        end
-      end
-    end
-  end
-
   local rev_tab = {}
+  local pre_count = 0
   for _,category in pairs(LEVEL.PREFABS_BUCKET) do
     for name,def in pairs(category) do
+    pre_count = pre_count + 1
 
       -- if fab has no groupings of any kind OK
       if not def.group then
