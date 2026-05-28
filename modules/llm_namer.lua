@@ -3447,9 +3447,11 @@ _FORMAT_
 
 
   if PARAM.bool_llm_namer == 1 then
+
     -- level name generator
     for _,epi in pairs(GAME.episodes) do
       for _,L in pairs(epi.levels) do
+        gui.at_level("GenAI Level Names", L.id, #GAME.levels)
 
         if PARAM.bool_skip_boss_maps == 1 and L.is_procedural_gotcha then
           -- do muffins
@@ -3479,6 +3481,7 @@ _FORMAT_
 
     -- intermission story generator
     if PARAM.bool_generate_stories == 1 then
+      gui.at_level("GenAI Intermission", #GAME.levels, #GAME.levels)
       generate_story()
     end
   end

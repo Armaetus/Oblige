@@ -3641,6 +3641,10 @@ function Quest_trim_prefabs(LEVEL)
       or def.neighbor == "outdoor" or def.neighbor == "park" then
         def.dontcopy = true
       end
+
+      if style_factor(def) == 0 then
+        def.dontcopy = true
+      end
     end
   end
 
