@@ -725,6 +725,32 @@ function table.set_class(child, parent)
   setmetatable(child, table.INHERIT_META)
 end
 
+function table.keys_to_hash(reqs)
+  local keys = {}
+
+  -- gather keys
+  for k in pairs(reqs) do
+    keys[#keys + 1] = k
+  end
+
+  -- stable ordering
+  table.sort(keys)
+
+  local parts = {}
+
+  for i = 1, #keys do
+    local k = keys[i]
+    local v = reqs[k]
+
+    parts[#parts + 1] = k
+    parts[#parts + 1] = "="
+    parts[#parts + 1] = tostring(v)
+    parts[#parts + 1] = ";"
+  end
+
+  return table.concat(parts)
+end
+
 
 
 --------========|  RANDOM NUMBERS  |========--------

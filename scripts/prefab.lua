@@ -3060,31 +3060,49 @@ function Fab_pick(LEVEL, reqs, allow_none)
 
   cur_req.game = OB_CONFIG.game
 
-  while cur_req do
-      -- keep the earliest matches (they override later matches)
-    table.merge_missing(tab, Fab_find_matches(LEVEL, cur_req, match_state))
+  local hash = table.keys_to_hash(reqs)
+  local hash_tab = {}
+  if LEVEL.PREFAB_CACHE[hash] then
+    hash_tab = LEVEL.PREFAB_CACHE[hash]
+  else
 
-    cur_req = cur_req.alt_req
-  end
+    while cur_req do
+        -- keep the earliest matches (they override later matches)
+      table.merge_missing(tab, Fab_find_matches(LEVEL, cur_req, match_state))
 
-  if DEBUG_FAB_PICK then
-     gui.printf("\n\nFAB_PICK = \n%s\n\n", table.tostr(tab))
-  end
+      cur_req = cur_req.alt_req
+    end
 
-  if table.empty(tab) then
-    if allow_none then return nil end
+    if DEBUG_FAB_PICK then
+      gui.printf("\n\nFAB_PICK = \n%s\n\n", table.tostr(tab))
+    end
 
-    gui.printf("Fab_pick:\n")
-    gui.printf("reqs  = \n%s\n", table.tostr(reqs))
+    if table.empty(tab) then
+      if allow_none then return nil end
 
-    error("No matching prefabs for: " .. reqs.kind)
-  end
+      gui.printf("Fab_pick:\n")
+      gui.printf("reqs  = \n%s\n", table.tostr(reqs))
 
-  if reqs.NONE_prob then
-    tab["NONE"] = reqs.NONE_prob
+      error("No matching prefabs for: " .. reqs.kind)
+    end
+
+    if reqs.NONE_prob then
+      tab["NONE"] = reqs.NONE_prob
+    end
+
   end
 
   local name
+
+  if table.size(tab) > 10 and not LEVEL.PREFAB_CACHE[hash] then
+    hash = table.keys_to_hash(reqs)
+    if LEVEL then
+      LEVEL.PREFAB_CACHE[hash] = tab
+    end
+  end
+  if not table.empty(hash_tab) then
+    tab = hash_tab    
+  end
 
   -- see if a desired prefab *can* be used -- if so, use it
   if reqs.want_fab and (tab[reqs.want_fab] or 0) > 0 then

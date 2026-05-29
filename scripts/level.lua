@@ -2528,6 +2528,8 @@ function Level_init(LEVEL)
 
   LEVEL.unplaced_weapons = {}
 
+  LEVEL.PREFAB_CACHE = {}
+
   Level_choose_liquid(LEVEL)
   Level_choose_darkness(LEVEL)
   Level_choose_misc(LEVEL)
