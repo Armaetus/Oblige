@@ -3094,14 +3094,14 @@ function Fab_pick(LEVEL, reqs, allow_none)
 
   local name
 
-  if table.size(tab) > 10 and not LEVEL.PREFAB_CACHE[hash] then
+  if not LEVEL.PREFAB_CACHE[hash] then
     hash = table.keys_to_hash(reqs)
     if LEVEL then
       LEVEL.PREFAB_CACHE[hash] = tab
     end
   end
   if not table.empty(hash_tab) then
-    tab = hash_tab    
+    tab = hash_tab
   end
 
   -- see if a desired prefab *can* be used -- if so, use it
