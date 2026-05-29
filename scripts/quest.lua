@@ -216,16 +216,25 @@ function Quest_create_initial_quest(LEVEL)
       return room
     end
 
+    local max_room_size = table.best_t_by_key(LEVEL.rooms, "svolume").svolume
+
     -- score all rooms
     for _,R in pairs(LEVEL.rooms) do
       if R.is_start then
         R.is_start = false
       end
 
+      local cur_score = 0
       -- closer to a volume of indicated ideal_value means a better score
-      local ideal_value = rand.pick({24,32})
+      local ideal_value = rand.pick({32,48})
       -- approach 0 for bad scores, otherwise approach 100 near ideal value
-      local cur_score = math.max(0, (math.abs(R.svolume - ideal_value) / (ideal_value + 1)) * 2) * 100
+
+      local v = R.svolume
+      -- controls how wide the curve is
+      -- sigma = (min - max) * curve_smoothness
+      local sigma = (0 - max_room_size) * 0.25
+      local diff = v - ideal_value
+      cur_score = math.exp(-(diff * diff) / (2 * sigma * sigma))
 
       -- should have at least one closet
       if R.closets and #R.closets >= 1 then
@@ -234,12 +243,10 @@ function Quest_create_initial_quest(LEVEL)
 
       -- absolutely no rooms without more than 1 connection
       if #R.conns > 1 or (R.symmetry and #R.conns == 1) then
-        cur_score = cur_score / (#R.conns * 10)
-      elseif #R.conns == 1 then
-        cur_score = cur_score * 2
+        cur_score = cur_score * (1 / #R.conns)
       end
 
-      R.start_score = cur_score
+      R.start_score = math.round_to(cur_score,2)
 
       if cur_score > best_score then
         best_score = cur_score
@@ -291,6 +298,7 @@ function Quest_create_initial_quest(LEVEL)
     if secret_mode then
       -- no start ever at all
       if R.is_start then return -1 end
+      if R.is_exit then return -1 end
 
       -- leaf rooms only
       if R:total_conns() > 1 then return -1 end
