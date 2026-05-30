@@ -17513,6 +17513,75 @@ GROW_ARROW_CHEVRON_NEW_AREA =
   }
 },
 
+GROW_TILE_HERRINGBONE =
+{
+  prob = 10,
+  skip_prob = 85,
+
+  structure =
+  {
+    "1......","111A1A1",
+    "1......","111A1A1",
+    "x......","xAAA1A1",
+    "x......","x1111A1",
+    "x......","xAAAAA1",
+    "x......","x111111"
+  }
+},
+
+GROW_TILE_HOPSCOTCH =
+{
+  prob = 10,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx11xxxx","xx11xxxx",
+    "xx..xxxx","xx11xxxx",
+    "xx..xxxx","xx11xxxx",
+    "xx......","xxAAAA11",
+    "xx......","xxAAAA11",
+    "......xx","11AAAAxx",
+    "......xx","11AAAAxx",
+    "xxxx..xx","xxxx11xx",
+    "xxxx..xx","xxxx11xx"
+  }
+},
+
+GROW_TILE_WINDMILL =
+{
+  prob = 10,
+  skip_prob = 85,
+
+  structure =
+  {
+    "11xxxx","11xxxx",
+    "......","1111AA",
+    "......","1111AA",
+    "..xx..","AAxxAA",
+    "..xx..","AAxxAA",
+    "......","AA1111",
+    "......","AA1111"
+  }
+},
+
+GROW_TILE_WINDMILL_POOL =
+{
+  prob = 7,
+  skip_prob = 85,
+
+  structure =
+  {
+    "11xxxx","11xxxx",
+    "......","1111AA",
+    "......","1111AA",
+    "......","AA~~AA",
+    "......","AA~~AA",
+    "......","AA1111",
+    "......","AA1111"
+  }
+},
+
 GROW_ARROW_DOUBLE_NEW_AREA =
 {
   prob = 1,
