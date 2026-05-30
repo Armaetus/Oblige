@@ -1888,7 +1888,7 @@ story intro here
 story ending here 
 </S2>
 
-The text in each tag section must at least be 140-150 words.]],
+The text in each tag section must at least be 130-140 words, maximum of 4 paragraphs.]],
 
     game =
 [[There are three chapters and the story is an intro and end for each,
@@ -1921,7 +1921,7 @@ chapter 3 intro here
 chapter 3 ending here
 </S6>
 
-The text in each tag section must at least be 140-150 words.]]
+The text in each tag section must at least be 130-140 words, maximum of 4 paragraphs.]]
   },
 
   mcguffins = {
