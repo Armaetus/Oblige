@@ -18,7 +18,9 @@
 
 LLM_NAME = { }
 
-LLM_NAME.model = "llama3.1:8b"
+LLM_NAME.naming_model = "llama3.1:8b" -- which Ollama alias to use for the level renamer
+LLM_NAME.story_model = "llama3.1:8b" -- which Ollama lias to use for story generator
+--LLM_NAME.story_model = "gemma4:latest" -- which Ollama lias to use for story generator
 
 LLM_NAME.endpoint = "http://127.0.0.1:11434/api/generate"
 
@@ -1888,7 +1890,7 @@ story intro here
 story ending here 
 </S2>
 
-The text in each tag section must at least be 130-140 words, maximum of 4 paragraphs.]],
+The text in each tag section must at least be 130-140 words, maximum of 4 paragraphs with proper spacing.]],
 
     game =
 [[There are three chapters and the story is an intro and end for each,
@@ -1921,7 +1923,7 @@ chapter 3 intro here
 chapter 3 ending here
 </S6>
 
-The text in each tag section must at least be 130-140 words, maximum of 4 paragraphs.]]
+The text in each tag section must at least be 130-140 words, maximum of 4 paragraphs with proper spacing.]]
   },
 
   mcguffins = {
@@ -2957,16 +2959,20 @@ function LLM_NAME.do_it()
 
 
   -- query structure
-  local function query(prompt, options)
+  local function query(prompt, options, model_m)
 
     options = options or {}
 
     local temperature = options.temperature or 0.3
     local num_predict = options.num_predict or 8
+    local model = LLM_NAME.naming_model
+    if model_m == "story" then
+      model = LLM_NAME.story_model
+    end
 
     local json =
       '{' ..
-      '"model":"' .. LLM_NAME.model .. '",' ..
+      '"model":"' .. model .. '",' ..
       '"prompt":"' .. escape_json(prompt) .. '",' ..
       '"stream":false,' ..
       --'"raw":true,' ..
@@ -2989,7 +2995,7 @@ function LLM_NAME.do_it()
     file:close()
 
     local cmd =
-      'start "" /b curl --max-time 30 -sS ' ..
+      'start "" /b curl --max-time 60 -sS ' ..
       '-H "Content-Type: application/json" '..
       '"' .. LLM_NAME.endpoint .. '"' ..
       ' -d @ollama_payload.json'
@@ -3115,7 +3121,7 @@ function LLM_NAME.do_it()
 
     gui.printf("LLM Namer: Prompt \n" .. prompt)
 
-    local raw = query(prompt, options)
+    local raw = query(prompt, options, mode)
 
     if not raw then
       gui.printf("LLM query failed: no response\n")
@@ -3451,7 +3457,7 @@ _FORMAT_
       -- sometimes add a McGuffin
       if (count == 2 and rand.odds(30))
       or (count == 1 and rand.odds(60)) then
-        story_characters = story_characters ..  "Involved in this story:\n"
+        story_characters = story_characters ..  "Found a bit later in this story:\n"
         story_characters = story_characters .. "* " .. rand.pick(LLM_NAME.story_components.mcguffins) .."\n"
       end
 
