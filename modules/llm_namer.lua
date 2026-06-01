@@ -19,8 +19,8 @@
 LLM_NAME = { }
 
 LLM_NAME.naming_model = "llama3.1:8b" -- which Ollama alias to use for the level renamer
-LLM_NAME.story_model = "llama3.1:8b" -- which Ollama lias to use for story generator
---LLM_NAME.story_model = "gemma4:latest" -- which Ollama lias to use for story generator
+--LLM_NAME.story_model = "llama3.1:8b" -- which Ollama lias to use for story generator
+LLM_NAME.story_model = "gemma4:latest" -- which Ollama lias to use for story generator
 
 LLM_NAME.endpoint = "http://127.0.0.1:11434/api/generate"
 
@@ -2995,7 +2995,7 @@ function LLM_NAME.do_it()
     file:close()
 
     local cmd =
-      'start "" /b curl --max-time 60 -sS ' ..
+      'start "" /b curl --max-time 120 -sS ' ..
       '-H "Content-Type: application/json" '..
       '"' .. LLM_NAME.endpoint .. '"' ..
       ' -d @ollama_payload.json'
