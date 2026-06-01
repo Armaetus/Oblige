@@ -3108,9 +3108,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     else
       process_room(R, entry_area)
 
-      select_floor_mats(R, via_conn)
-
       Room_detect_porches(LEVEL, R)
+
+      select_floor_mats(R, via_conn)
     end
 
     -- recurse to neighbors
