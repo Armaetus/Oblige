@@ -16076,6 +16076,29 @@ GROW_ATOMIC_SYMBOL_STEEPNESS =
   }
 },
 
+GROW_MAGEBLOOD =
+{
+  prob = 8,
+  skip_prob = 85,
+
+  structure =
+  {
+    "xxxx.....xxx","xxxx/AAA%xxx",
+    "1...........","1111>AAA<111",
+    "1...........","111111111111",
+    "x...........","xAAA%v1v/AAA",
+    "x...........","xAAAAAAAAAAA",
+    "xxxx.....xxx","xxxx%AAA/xxx"
+  },
+
+  diagonals =
+  {
+    ".A","A.",
+    "A1","1A",
+    ".A","A."
+  }
+},
+
 GROW_SHOTGUN =
 {
   prob = 10,
