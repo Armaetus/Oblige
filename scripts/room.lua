@@ -1208,6 +1208,17 @@ function Room_detect_clearings(LEVEL, R)
     for _,A in pairs(R.areas) do
       local score = 1
 
+      -- no single-area rooms
+      local floor_count = 0
+      for _,A in pairs(R.areas) do
+        if A.mode == "floor" then
+          floor_count = floor_count + 1
+        end
+      end
+      if floor_count == 1 then
+        goto no_clearing;
+      end
+
       -- floors only and
       if A.svolume >= 64
       -- not too large of an area
@@ -1553,6 +1564,12 @@ function Room_make_windows(LEVEL, A1, A2, SEEDS)
 
     if A2.room and A2.room.is_start then
       if A1.room then return end
+    end
+  end
+
+  if A1.room == A2.room then
+    if A1.is_clearing or A2.is_clearing then
+      return
     end
   end
 
