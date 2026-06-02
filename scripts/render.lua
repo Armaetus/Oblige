@@ -286,7 +286,8 @@ function Render_edge(LEVEL, E, SEEDS)
       end
     end
 
-    if A.is_natural_park or (A.room and A.room.is_natural_park) then
+    if A.is_natural_park or (A.room and A.room.is_natural_park)
+    or A.is_clearing then
       reqs.group = "natural_walls"
     end
 
@@ -2739,7 +2740,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
       z2 = A.zone.sky_h
     end
 
-    if A.room.is_natural_park then
+    if A.room.is_natural_park or A.is_clearing then
       reqs.group = "natural_walls"
     end
 
@@ -2883,7 +2884,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     end
   end
 
-  if A.is_natural_park then
+  if A.is_natural_park or A.is_clearing then
     if def.group == "natural_walls" or reqs.key == "secret" then
       if chunk.kind == "joiner" then
         if chunk.from_area.is_natural_park then

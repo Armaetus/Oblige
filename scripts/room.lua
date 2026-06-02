@@ -1169,6 +1169,114 @@ function Room_detect_porches(LEVEL, R)
 end
 
 
+function Room_detect_clearings(LEVEL, R)
+  -- MSSP:
+  -- A "clearing" is a specific, consistent portions of an outdoor room
+  -- that uses naturals textures and walls. The idea is that instead
+  -- of having strictly artificial or natural outdoors being completely 
+  -- separate from each other, sometimes small amounts of natural
+  -- "lots" can show up in what is already largely artificial outdoors
+  --
+  -- Think like a random dirt backlot in a house, which is something frequent
+
+
+  local function eval_clearings()
+
+    local function has_stair_neighbor(area)
+      local A = area
+
+      for _,N in pairs(A.neighbors) do
+        if N.chunk and N.chunk.kind == "stair" then
+          return true
+        end
+      end
+
+      return false
+    end
+
+    local lowest = EXTREME_H
+    -- grab the lowest floor
+    for _,A in pairs(R.areas) do
+      local lowest = EXTREME_H
+      if A.mode == "floor" and A.floor_h < lowest then
+        lowest = A.floor_h
+      end
+    end
+
+    local best = -1
+    local best_A
+    for _,A in pairs(R.areas) do
+      local score = 1
+
+      -- floors only and
+      if A.svolume >= 64
+      -- not too large of an area
+      or A.mode ~= "floor"
+      -- never porches
+      or A.is_porch == false then
+        goto no_clearing;
+      end
+
+      -- must not have liquids nearby
+      for _,N in pairs(A.neighbors) do
+        if N.mode == "liquid" then
+          goto no_clearing;
+        end
+      end
+
+      for _,A2 in pairs(R.areas) do
+        -- area preferrably has matching
+        -- svolumes
+        if A ~= A2 and A.svolume == A2.svolume then
+          score = score + 1
+        end
+      end
+
+      if A.floor_h == lowest then
+        score = score + 1
+      end
+
+      if score >= best then
+        score = best
+        best_A = A
+      end
+      ::no_clearing::
+    end
+
+    -- mark
+    if best_A and rand.odds(style_sel("park", 0, 50, 75, 100)) then
+      best_A.is_clearing = true
+
+      if has_stair_neighbor(best_A) then
+      else
+        best_A.floor_h = best_A.floor_h - 16
+        best_A.is_flat_clearing = true
+      end
+
+      for _,A in pairs(R.areas) do
+        if best_A ~= A and best_A.svolume == A.svolume
+        and A.mode == "floor" and not A.is_porch then
+          A.is_clearing = true
+
+          if has_stair_neighbor(A) then
+          else
+            A.floor_h = A.floor_h - 16
+            A.is_flat_clearing = true
+          end
+
+        end
+      end
+    end
+
+  end
+
+---| Room_detect_clearings |---
+  if R.is_outdoor then
+    eval_clearings()
+  end
+end
+
+
 
 function Room_make_windows(LEVEL, A1, A2, SEEDS)
 
@@ -1196,7 +1304,7 @@ function Room_make_windows(LEVEL, A1, A2, SEEDS)
 
     if A.mode == "scenic" then return false end
 
-    if A.chunk and (A.chunk.kind ~= "floor" 
+    if A.chunk and (A.chunk.kind ~= "floor"
     or A.chunk.kind ~= "stair") then return false end
 
     if A.room.is_hallway then return false end
@@ -1825,7 +1933,7 @@ function Room_border_up(LEVEL, SEEDS)
           if A1.is_porch or A2.is_porch then
             Junction_make_empty(junc)
             return
-          elseif not A1.is_porch or not A2.is_porch 
+          elseif not A1.is_porch or not A2.is_porch
           and (A1.room and A1.room.beamable) then
             Junction_make_beams(junc)
             return
@@ -1892,7 +2000,7 @@ function Room_border_up(LEVEL, SEEDS)
     if A1.is_porch_neighbor or A2.is_porch_neighbor then
       if ((A1.mode == "liquid" and A2.mode == "floor")
       or (A1.mode == "floor" and A2.mode == "liquid"))
-      and A1.room == A2.room 
+      and A1.room == A2.room
       and A1.beamable or A2.beamable then
         Junction_make_beams(junc)
       end
@@ -1911,7 +2019,9 @@ function Room_border_up(LEVEL, SEEDS)
 
     -- fences --
 
-    if A1.is_outdoor and A2.is_outdoor then
+    if A1.is_outdoor and A2.is_outdoor
+    and A1.is_flat_clearing == false
+    and A1.is_flat_clearing == false then
 
       -- just solid walls on start rooms and quiet starts
       if A1.room and A2.room then
@@ -1999,14 +2109,14 @@ function Room_border_up(LEVEL, SEEDS)
         -- transmit beamable flag to areas
         for _,A1 in pairs(R.areas) do
           for _,A2 in pairs(R.areas) do
-            if A1 ~= A2 
-            and A1.svolume == A2.svolume 
+            if A1 ~= A2
+            and A1.svolume == A2.svolume
             and A1.mode == "floor" and A2.mode == "floor" then
               A1.beamable = true
               A2.beamable = true
             end
           end
-  
+
           if A1.floor_group and A1.floor_group.beamable then
             A1.beamable = true
           end
@@ -2021,8 +2131,8 @@ function Room_border_up(LEVEL, SEEDS)
         if rand.odds(style_sel("beams",0,15,30,45)) then
           for _,A1 in pairs(R.areas) do
             for _,A2 in pairs(R.areas) do
-              if A1 ~= A2 
-              and A1.svolume == A2.svolume 
+              if A1 ~= A2
+              and A1.svolume == A2.svolume
               and A1.mode == "floor" and A2.mode == "floor" then
                 A1.beamable = true
                 A2.beamable = true
@@ -2275,7 +2385,7 @@ function Room_choose_size(LEVEL, R, not_big)
     end
 
     if LEVEL.size_consistency == "bounded" then
-      if not R.grow_parent 
+      if not R.grow_parent
       or (R.grow_parent and R.grow_parent.is_start) then
         R.size_bounded_sum = sum
       else
@@ -2741,7 +2851,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     for _,IC in pairs(R.internal_conns) do
       if (IC.A1 == A1 and IC.A2 == A2) or
          (IC.A1 == A2 and IC.A2 == A1)
-      then        
+      then
         return (IC.kind == "direct")
       end
     end
@@ -3001,6 +3111,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
             R.floor_mat_list_natural[tex] = R.floor_mat_list_natural[tex] / 4
             R.floor_mats[A.floor_h] = tex
           end
+
+          if A.is_clearing then
+            tex = rand.key_by_probs(R.floor_mat_list_natural)
+            R.floor_mat_list_natural[tex] = R.floor_mat_list_natural[tex] / 4
+            R.floor_mats[A.floor_h] = tex
+          end
         else
           R.floor_mats[A.floor_h] = rand.key_by_probs(R.theme.floors)
         end
@@ -3110,6 +3226,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
       Room_detect_porches(LEVEL, R)
 
+      Room_detect_clearings(LEVEL, R)
+
       select_floor_mats(R, via_conn)
     end
 
@@ -3171,7 +3289,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     for _,A in pairs(R.areas) do
       if A.mode == "liquid" then
         if have_h then
-           add_h = 0 
+           add_h = 0
         else
           if R.height_profile == "normal" then
             if A.svolume     <  8 then add_h = 16
@@ -4271,7 +4389,7 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
     }
   )
   R.dead_end_add_h = R.dead_end_add_h * rand.sel(25, -1, 1)
-  
+
   for _,A in pairs(R.areas) do
     if area_leads_to_nowhere(A) then
       SA, SAS = get_area_entry_stair(A)

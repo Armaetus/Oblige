@@ -1965,9 +1965,12 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       -- re-decided in render_chunk instead if required
       reqs.height = EXTREME_H
 
-      if R.is_natural_park then
-        reqs.group = "natural_walls"
+      if R.is_natural_park or chunk.from_area.is_clearing then
       end
+    end
+
+    if chunk.from_area.is_clearing then
+      reqs.group = "natural_walls"
     end
 
     chunk.prefab_def = Fab_pick(LEVEL, reqs, "none_ok")
