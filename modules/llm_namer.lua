@@ -2759,10 +2759,10 @@ function LLM_NAME.get_some_info(self, lev)
   table.insert(lines,
     rand.pick(
       {
-        "The map has a " .. openness_v .. " layout.\n",
-        "The whole map is dominated by " .. openness_v .. ".\n",
-        "Dominant structures in this map are " .. openness_v .. ".\n",
-        "The map has a " .. openness_v .. " design.\n"
+        "The map layout features a " .. openness_v .. " feel.\n",
+        "The overall atmosphere of the map is characterized by a " .. openness_v .. " layout.\n",
+        "Key structural elements giving the map its character are " .. openness_v .. ".\n",
+        "This map exhibits a generally " .. openness_v .. " design.\n"
       }
     )
   )
@@ -3119,12 +3119,12 @@ function LLM_NAME.do_it()
   -- perform a query
   local function ask(prompt, options, mode)
 
-    gui.printf("LLM Namer: Prompt \n" .. prompt)
+    gui.debugf("LLM Namer: Prompt \n" .. prompt)
 
     local raw = query(prompt, options, mode)
 
     if not raw then
-      gui.printf("LLM query failed: no response\n")
+      gui.debugf("LLM query failed: no response\n")
       return nil
     end
 
@@ -3489,7 +3489,7 @@ _FORMAT_
     "_FORMAT_",
     story_format)
 
-    gui.printf("LLM Namer: Story teller prompt\n" .. prompt .. "\n")
+    gui.debugf("LLM Namer: Story teller prompt\n" .. prompt .. "\n")
 
     -- temperature
     local temp = rand.pick
@@ -3515,7 +3515,7 @@ _FORMAT_
     end
 
     local story_tab = {}
-    gui.printf(story_chunks .. " <- RAW\n")
+    gui.debugf("\n" .. story_chunks .. " <- RAW\n\n")
     story_tab = parse_story_chunks(story_chunks)
 
     for s_pos = 1, #story_tab do
@@ -3564,7 +3564,7 @@ _FORMAT_
           end
 
           if name then
-            gui.printf("LLM Namer: " .. L.name .. " name '" ..
+            gui.debugf("LLM Namer: " .. L.name .. " name '" ..
             L.description .. "' substituted with '" .. name .. "'!\n")
 
             L.description = name
