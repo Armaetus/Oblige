@@ -3576,12 +3576,14 @@ _FORMAT_
       end
     end
 
-    -- intermission story generator
-    if PARAM.bool_generate_stories == 1 then
-      gui.at_level("GenAI Intermission", #GAME.levels, #GAME.levels)
-      generate_story()
-    end
   end
+
+  -- intermission story generator
+  if PARAM.bool_generate_stories == 1 then
+    gui.at_level("GenAI Intermission", #GAME.levels, #GAME.levels)
+    generate_story()
+  end
+
 end
 
 ----------------------------------------------------------------
@@ -3608,7 +3610,7 @@ OB_MODULES["llm_namer"] =
   {
     {
       name = "bool_llm_namer",
-      label=_("LLM Name Generator"),
+      label=_("LLM Level Name Generator"),
       valuator = "button",
       default = 1,
       tooltip = _("Genarates a context-aware level name via LLM."),
@@ -3642,7 +3644,7 @@ OB_MODULES["llm_namer"] =
 
     {
       name = "bool_generate_stories",
-      label = _("Generate Intermission Stories"),
+      label = _("LLM Intermission Stories"),
       valuator = "button",
       default = 1,
       tooltip = _("Generate intermission stories as well. " ..
