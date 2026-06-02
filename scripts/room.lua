@@ -1224,7 +1224,7 @@ function Room_detect_clearings(LEVEL, R)
       -- not too large of an area
       or A.mode ~= "floor"
       -- never porches
-      or A.is_porch == false then
+      or A.is_porch == true then
         goto no_clearing;
       end
 
