@@ -3370,7 +3370,7 @@ level_data
 The story takes place over the course of the whole game.
 Each section of the story is read far apart from each other.
 
-Story Flavor: _FLAVOR_
+Story Plot: _FLAVOR_
 
 Current Location: _LOCATION_, somewhere in the twisted infinite hellscapes of future Earth
 
