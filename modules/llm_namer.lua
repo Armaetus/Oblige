@@ -3379,9 +3379,8 @@ I need the story to be properly formatted. Do not provide any explanation.
 Rules:
 - narrate in second person
 - Doom/Doom 2016/Doom Eternal style
-- slightly more towards a sci-fi military plot
+- slightly grounded more towards a sci-fi military plot
 - pure fictional non real-world location
-- avoid all use of double quotes as text will go through a script parser
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
 - no Warhammer 40k, no Lovecraft, no Blizzard Entertainment
@@ -3396,6 +3395,7 @@ Please avoid cliffhangers or "to be continued" endings. The current arc ends but
 
 Protagonist Notes:
 - the protagonist will never choose to work with Hell
+- the protagonist will only work with anyone if it coincides with the Doomslayer's goal of Hell's destruction
 - do not explain anything about the protagonist's identity or motivations in the story
 
 _ENTITIES_
