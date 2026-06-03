@@ -1266,7 +1266,8 @@ function Room_detect_clearings(LEVEL, R)
 
       for _,A in pairs(R.areas) do
         if best_A ~= A and best_A.svolume == A.svolume
-        and A.mode == "floor" and not A.is_porch then
+        and A.mode == "floor" and
+        best_A.floor_h == A.floor_h and not A.is_porch then
           A.is_clearing = true
 
           if has_stair_neighbor(A) then
@@ -1567,12 +1568,6 @@ function Room_make_windows(LEVEL, A1, A2, SEEDS)
     end
   end
 
-  if A1.room == A2.room then
-    if A1.is_clearing or A2.is_clearing then
-      return
-    end
-  end
-
   if A1.border_type == "simple_fence" or A2.border_type == "simple_fence" then return end
   if A1.border_type == "no_vista" or A2.border_type == "no_vista" then return end
 
@@ -1698,6 +1693,10 @@ function Room_border_up(LEVEL, SEEDS)
 
     if A1.mode == "liquid" or A2.mode == "liquid"
     or A1.mode == "cage" or A2.mode == "cage" then
+      return false
+    end
+
+    if A1.is_flat_clearing == true or A2.is_flat_clearing == true then
       return false
     end
 
@@ -1989,7 +1988,7 @@ function Room_border_up(LEVEL, SEEDS)
           end
           return
         else
-          if A1.is_outdoor then
+          if A1.is_outdoor and not A1.is_flat_clearing then
             Room_make_windows(LEVEL, A1, A2, SEEDS)
             if can_porch_wall(A1, A2) then
               Junction_make_wall(junc)
@@ -3129,11 +3128,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
             R.floor_mats[A.floor_h] = tex
           end
 
-          if A.is_clearing then
-            tex = rand.key_by_probs(R.floor_mat_list_natural)
-            R.floor_mat_list_natural[tex] = R.floor_mat_list_natural[tex] / 4
-            R.floor_mats[A.floor_h] = tex
-          end
         else
           R.floor_mats[A.floor_h] = rand.key_by_probs(R.theme.floors)
         end
@@ -3145,6 +3139,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         else
           gui.printf(LEVEL.theme_name .. " NEEDS A PORCH_FLOORS table BADLY!!!111\n")
         end
+      end
+
+      if A.is_clearing then
+        local tex = rand.key_by_probs(R.floor_mat_list_natural)
+        R.floor_mat_list_natural[tex] = R.floor_mat_list_natural[tex] / 4
+        R.floor_mats[A.floor_h] = tex
       end
 
       A.floor_mat = assert(R.floor_mats[A.floor_h])
