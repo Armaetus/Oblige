@@ -1197,7 +1197,6 @@ function Room_detect_clearings(LEVEL, R)
     local lowest = EXTREME_H
     -- grab the lowest floor
     for _,A in pairs(R.areas) do
-      local lowest = EXTREME_H
       if A.mode == "floor" and A.floor_h < lowest then
         lowest = A.floor_h
       end
@@ -1255,13 +1254,14 @@ function Room_detect_clearings(LEVEL, R)
     end
 
     -- mark
-    --[[if best_A and rand.odds(style_sel("park", 0, 50, 75, 100)) then
+    if best_A and rand.odds(style_sel("park", 0, 50, 75, 100)) then
       best_A.is_clearing = true
 
       if has_stair_neighbor(best_A) then
       else
-        best_A.floor_h = best_A.floor_h - 16
+        best_A.floor_h = best_A.floor_h - 8
         best_A.is_flat_clearing = true
+        gui.printf("Check it out yo! ROOM_" .. R.id .. ", MAP_" .. LEVEL.id .. "\n")
       end
 
       for _,A in pairs(R.areas) do
@@ -1272,17 +1272,23 @@ function Room_detect_clearings(LEVEL, R)
 
           if has_stair_neighbor(A) then
           else
-            A.floor_h = A.floor_h - 16
+            A.floor_h = A.floor_h - 8
             A.is_flat_clearing = true
           end
 
         end
       end
-    end]]
+    end
 
   end
 
 ---| Room_detect_clearings |---
+  if not PARAM.bool_enable_clearings or
+  (PARAM.bool_enable_clearings and
+  PARAM.bool_enable_clearings == false) then
+    return
+  end
+
   if R.is_outdoor then
     eval_clearings()
   end
@@ -1696,10 +1702,6 @@ function Room_border_up(LEVEL, SEEDS)
       return false
     end
 
-    if A1.is_flat_clearing == true or A2.is_flat_clearing == true then
-      return false
-    end
-
     return true
   end
 
@@ -1734,6 +1736,10 @@ function Room_border_up(LEVEL, SEEDS)
   local function can_porch_wall(A1, A2)
     if (A1.mode == "floor" and A2.mode ~= "floor")
     or (A1.mode ~= "floor" and A2.mode == "floor") then
+      return false
+    end
+
+    if A1.is_flat_clearing or A2.is_flat_clearing then
       return false
     end
 
@@ -1874,6 +1880,15 @@ function Room_border_up(LEVEL, SEEDS)
         Junction_make_wall(junc)
 
       elseif A1.is_outdoor then
+
+        if A1.is_clearing then
+          if A2.fence_type == "fence" then
+            Junction_make_fence(junc)
+          elseif A2.fence_type == "railing" then
+            Junction_make_railing(LEVEL, junc, "FENCE_MAT_FROM_THEME", "block")
+          end
+        end
+
         if A2.border_type ~= "no_vista" then
           if A2.fence_type == "fence" then
             Junction_make_fence(junc)
@@ -1929,7 +1944,9 @@ function Room_border_up(LEVEL, SEEDS)
       if A1.is_outdoor and A2.is_outdoor then
         if (A1.floor_h ~= A2.floor_h)
         and (A1.fence_up or A2.fence_up) then
-          if can_fence(A1, A2) then
+          if can_fence(A1, A2) 
+          and not (A1.is_flat_clearing
+          or A2.is_flat_clearing) then
             local fence_up_type = rail_or_fence(A1, A2)
             if fence_up_type == "fence" then
               Junction_make_fence(junc)
@@ -1988,7 +2005,7 @@ function Room_border_up(LEVEL, SEEDS)
           end
           return
         else
-          if A1.is_outdoor and not A1.is_flat_clearing then
+          if A1.is_outdoor then
             Room_make_windows(LEVEL, A1, A2, SEEDS)
             if can_porch_wall(A1, A2) then
               Junction_make_wall(junc)
@@ -2035,9 +2052,7 @@ function Room_border_up(LEVEL, SEEDS)
 
     -- fences --
 
-    if A1.is_outdoor and A2.is_outdoor
-    and A1.is_flat_clearing == false
-    and A1.is_flat_clearing == false then
+    if A1.is_outdoor and A2.is_outdoor then
 
       -- just solid walls on start rooms and quiet starts
       if A1.room and A2.room then

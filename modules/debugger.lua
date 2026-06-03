@@ -308,6 +308,16 @@ OB_MODULES["arch_exp"] =
         "to show up compared to manually assigned probs. " ..
         "Or not. Who knows."),
       priority = 103
+    },
+
+    {
+      name = "bool_enable_clearings",
+      label = _("Enable Clearings"),
+      valuator = "button",
+      default = 0,
+      tooltip = _("Clearings are occasional completely natural environment areas that may appear within outdoor rooms. " ..
+        "They are completely separate from Parks but are activated by Parks style."),
+      priority = 102
     }
   },
 }
