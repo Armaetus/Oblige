@@ -123,6 +123,11 @@ OB_MODULES["debugger"] =
       name = "name_generator_mode",
       label=_("Name Generator Setting"),
       choices = DEBUG_CONTROL.NAME_GEN_CHOICES,
+      valuator = "slider",
+      units = _("% of Levels to is Whole Names"),
+      min = 0,
+      max = 100,
+      increment = 1,
       default = "default",
       tooltip = _("Choose between whole names or pattern-based names only for levels."),
       longtip = _("Choose between whole names or pattern-based names only for levels.\n\n" ..
@@ -131,7 +136,8 @@ OB_MODULES["debugger"] =
       "Default functionality obeys the probabilities set in names.lua\n\n" ..
       "WAD sub titles and Boss maps will continue to use whole level names as they do not have pattern definitions."),
       priority=101,
-    },
+      },
+
 
     {
       name = "bool_shape_rule_stats",
