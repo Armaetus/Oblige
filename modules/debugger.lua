@@ -32,13 +32,6 @@ DEBUG_CONTROL.TITLE_SCREEN_CHOICES =
   "randomwords", _("Random Word List"),
 }
 
-DEBUG_CONTROL.NAME_GEN_CHOICES =
-{
-  "whole_only",  _("Only Whole Names"),
-  "pattern_only",  _("Only Pattern Names"),
-  "default", _("DEFAULT"),
-}
-
 DEBUG_CONTROL.GROWTH_STEP_CHOICES =
 {
   "showmore", _("Show All Steps"),
@@ -122,13 +115,12 @@ OB_MODULES["debugger"] =
     {
       name = "name_generator_mode",
       label=_("Name Generator Setting"),
-      choices = DEBUG_CONTROL.NAME_GEN_CHOICES,
       valuator = "slider",
-      units = _("% of Levels to is Whole Names"),
+      units = _("% of Levels Use Whole Names"),
       min = 0,
       max = 100,
       increment = 1,
-      default = "default",
+      default = 33,
       tooltip = _("Choose between whole names or pattern-based names only for levels."),
       longtip = _("Choose between whole names or pattern-based names only for levels.\n\n" ..
       "Whole names are full single strings e.g. boss maps.\n\n" ..
