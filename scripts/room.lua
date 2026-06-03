@@ -1219,9 +1219,9 @@ function Room_detect_clearings(LEVEL, R)
         goto no_clearing;
       end
 
-      -- floors only and
-      if A.svolume >= 64
       -- not too large of an area
+      if A.svolume >= 64
+      -- floors only
       or A.mode ~= "floor"
       -- never porches
       or A.is_porch == true then
@@ -1255,7 +1255,7 @@ function Room_detect_clearings(LEVEL, R)
     end
 
     -- mark
-    if best_A and rand.odds(style_sel("park", 0, 50, 75, 100)) then
+    --[[if best_A and rand.odds(style_sel("park", 0, 50, 75, 100)) then
       best_A.is_clearing = true
 
       if has_stair_neighbor(best_A) then
@@ -1277,7 +1277,7 @@ function Room_detect_clearings(LEVEL, R)
 
         end
       end
-    end
+    end]]
 
   end
 
