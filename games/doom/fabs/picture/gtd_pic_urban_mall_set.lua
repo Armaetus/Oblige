@@ -19,7 +19,7 @@ PREFABS.Pic_gtd_mall_store_1 =
   bound_z1 = 0,
   bound_z2 = 128,
 
-  x_fit = { 40,48 , 168,216 },
+  x_fit = { 60,68 , 124,132 , 188,196 },
   y_fit = "top",
 
   tex_METAL1 =
