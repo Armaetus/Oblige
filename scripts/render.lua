@@ -3687,8 +3687,8 @@ function Render_scenic_fabs(LEVEL, SEEDS)
       }
 
       local pick = rand.pick(area.seeds)
-      x = pick.sx
-      y = pick.sy
+      local x = pick.sx
+      local y = pick.sy
 
       local cell_size = 2
       if x + cell_size > SEED_W then return end
