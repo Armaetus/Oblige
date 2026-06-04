@@ -956,14 +956,18 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   for _,T in pairs(snow_tab) do
     for _,TG in pairs(T) do
       for key,prob in pairs(TG) do
-        TG[key] = prob * 5000
+        if prob < 32 then
+          TG[key] = prob * 32
+        end
       end
     end
   end
   for _,T in pairs(sand_tab) do
     for _,TG in pairs(T) do
       for key,prob in pairs(TG) do
-        TG[key] = prob * 5000
+        if prob < 32 then
+          TG[key] = prob * 32
+        end
       end
     end
   end
