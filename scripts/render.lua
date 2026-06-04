@@ -311,6 +311,8 @@ function Render_edge(LEVEL, E, SEEDS)
         reqs.deep = 16
       end
 
+      local tx, ty
+
       -- use only flat walls if in a corner
       tx, ty = geom.nudge(S1.mid_x, S1.mid_y, 10-dir, SEED_SIZE)
       S2 = Seed_from_coord(tx, ty, SEEDS)

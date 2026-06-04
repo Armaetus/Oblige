@@ -113,7 +113,7 @@ OB_MODULES["debugger"] =
     },
 
     {
-      name = "name_generator_mode",
+      name = "float_name_generator_mode",
       label=_("Name Generator Setting"),
       valuator = "slider",
       units = _("% of Levels Use Whole Names"),

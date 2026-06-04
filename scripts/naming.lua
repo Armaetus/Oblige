@@ -2236,7 +2236,7 @@ end
 
 
 function namelib.choose_one(DEF, max_len)
-  if PARAM.name_generator_mode and rand.odds(PARAM.name_generator_mode) then
+  if PARAM.float_name_generator_mode and rand.odds(PARAM.float_name_generator_mode) then
     if DEF.lexicon.s then
       return rand.key_by_probs(DEF.lexicon.s)
     end
