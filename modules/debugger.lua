@@ -317,7 +317,20 @@ OB_MODULES["arch_exp"] =
       default = 0,
       tooltip = _("Clearings are occasional completely natural environment areas that may appear within outdoor rooms. " ..
         "They are completely separate from Parks but are activated by Parks style."),
-      priority = 102
+      priority = 102,
+      gap = 1
+    },
+
+    {
+      name = "bool_fail_on_track",
+      label = _("Fail on Tracked Bugs"),
+      valuator = "button",
+      default = 0,
+      tooltip = _(
+        "If checked, parts of the generator with expected bugs will return an error instead of proceeding without issue." ..
+        "Unless you are actively planning to participate in active bug tracking, it is preferred to just keep this off."
+      ),
+      priority = 101
     }
   },
 }
