@@ -3266,6 +3266,9 @@ function LLM_NAME.do_it()
     -- optionally normalize control chars
     s = s:gsub("\t", "\\t")
 
+    -- cuz it happens
+    s = s:gsub("’", "\\'")
+
     return s
   end
 
@@ -3378,7 +3381,7 @@ I need the story to be properly formatted. Do not provide any explanation.
 
 Rules:
 - narrate in second person
-- Doom/Doom 2016/Doom Eternal style
+- Doom universe sub-story style
 - slightly grounded more towards a sci-fi military plot
 - pure fictional non real-world location
 - absolutely avoid any use of italics, bold, or any Markdown formatting
@@ -3387,6 +3390,7 @@ Rules:
 - no threats bigger than Hell - instead, make Hell threatening on its own
 - if the acronym UAC is used, it means "Union Aerospace Corporation"
 - avoid names with a hard consonant starts such as "Kh", "Kae", "Kr", "Vex", etc.
+- satisfying ending for the current arc is preferred
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one.
 Hell continues to be humanity's problem and the Doomslayer's exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
@@ -3515,7 +3519,7 @@ _FORMAT_
     end
 
     local story_tab = {}
-    gui.debugf("\n" .. story_chunks .. " <- RAW\n\n")
+    gui.printf("\n" .. story_chunks .. " <- RAW\n\n")
     story_tab = parse_story_chunks(story_chunks)
 
     for s_pos = 1, #story_tab do
