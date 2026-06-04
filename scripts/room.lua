@@ -1540,8 +1540,8 @@ function Room_make_windows(LEVEL, A1, A2, SEEDS)
         E1.window_group  = group
         E1.window_height = height
 
-        E1.wall_mat = Junction_calc_wall_tex(A1, A2)
-        E2.wall_mat = Junction_calc_wall_tex(A2, A1)
+        E1.wall_mat = Junction_calc_wall_tex(A1, A2, "window")
+        E2.wall_mat = Junction_calc_wall_tex(A2, A1, "window")
       end
     end
   end
