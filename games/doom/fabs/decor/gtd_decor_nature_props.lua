@@ -49,3 +49,21 @@ PREFABS.Decor_gtd_nature_props_5 =
   height = 49,
   bound_z2 = 49
 }
+
+PREFABS.Decor_gtd_nature_props_6 =
+{
+  template = "Decor_gtd_nature_props_1",
+  map = "MAP06",
+
+  height = 33,
+  bound_z2 = 33
+}
+
+PREFABS.Decor_gtd_nature_props_7 =
+{
+  template = "Decor_gtd_nature_props_1",
+  map = "MAP07",
+
+  height = 33,
+  bound_z2 = 33
+}
