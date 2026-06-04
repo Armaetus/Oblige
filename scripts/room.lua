@@ -1261,7 +1261,6 @@ function Room_detect_clearings(LEVEL, R)
       else
         best_A.floor_h = best_A.floor_h - 8
         best_A.is_flat_clearing = true
-        gui.printf("Check it out yo! ROOM_" .. R.id .. ", MAP_" .. LEVEL.id .. "\n")
       end
 
       for _,A in pairs(R.areas) do
