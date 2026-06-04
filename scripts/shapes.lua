@@ -16186,6 +16186,30 @@ GROW_CHICKEN_LEG =
   }
 },
 
+GROW_RIBBON =
+{
+  prob = 20,
+  skip_prob = 90,
+
+  structure =
+  {
+    "x...xxx...","x11%xxx/AA",
+    "x....x....","x111%x/AAA",
+    "x.........","x1111>AAAA",
+    "x.........","x1111>AAAA",
+    "1....x....","1111/x%AAA",
+    "1...xxx...","111/xxx%AA"
+  },
+
+  diagonals =
+  {
+    "1.",".A",
+    "1.",".A",
+    "1.",".A",
+    "1.",".A"
+  }
+},
+
 GROW_CAT =
 {
   prob = 40,
