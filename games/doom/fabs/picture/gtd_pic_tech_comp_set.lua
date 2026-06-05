@@ -142,3 +142,23 @@ PREFABS.Pic_tech_data_center_pic_3_compscreen =
 
   bound_z2 = 96
 }
+
+--
+
+PREFABS.Pic_tech_dh_comp =
+{
+  template = "Pic_tech_comp_console_1",
+  map = "MAP07",
+
+  prob = 5000,
+
+  height = 112,
+
+  group = "gtd_dh_comp",
+
+  x_fit = "frame",
+  y_fit = "top",
+
+  bound_z1 = 0,
+  bound_z2 = 112
+}
