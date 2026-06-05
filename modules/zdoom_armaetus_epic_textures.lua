@@ -709,23 +709,28 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.synthesize_procedural_themes()
     t.env = "building"
     t.prob = rand.pick({20,30,40,50,60}) * PARAM.float_orp_room_theme_synth_mult
 
-    t.floors[pick_element(theme, "floors")] = 5
-    t.floors[pick_element(theme, "floors")] = 5
-    t.walls[pick_element(theme, "walls")] = 5
-    t.ceilings[pick_element(theme, "ceilings")] = 5
-    t.ceilings[pick_element(theme, "ceilings")] = 5
+    local wall_t = pick_element(theme, "walls")
+    t.walls[wall_t] = 5
 
-    t.name = name
+    local floor_t = pick_element(theme, "floors")
+    t.floors[floor_t] = 5
+    t.floors[pick_element(theme, "floors")] = 2
+
+    local ceil_t = pick_element(theme, "ceilings")
+    t.ceilings[ceil_t] = 5
+    t.ceilings[pick_element(theme, "ceilings")] = 2
+
+    t.name = name.."_"..wall_t.."_"..floor_t.."_"..ceil_t
 
     GAME.ROOM_THEMES[t.name] = t
   end
 
   local function synthesize_themes(y)
     for x = 1, y do
-      create_theme("tech", "synth_room_theme_" .. x)
-      create_theme("urban", "synth_room_theme_" .. x)
-      create_theme("hell", "synth_room_theme_" .. x)
-      create_theme("any", "synth_room_theme_" .. x)
+      create_theme("tech", "synth_" .. x)
+      create_theme("urban", "synth_" .. x)
+      create_theme("hell", "synth_" .. x)
+      create_theme("any", "synth_" .. x)
     end
   end
 
