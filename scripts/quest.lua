@@ -3241,12 +3241,9 @@ function Quest_room_themes(LEVEL)
       end
     end
 
-    if THEME.outdoor_wall_groups then -- MSSP-TODO: No need for this check
-                                      -- once all themes have outdoor_wall_groups?
+    if THEME.outdoor_wall_groups then
       LEVEL.outdoor_wall_group = rand.key_by_probs(THEME.outdoor_wall_groups)
-      gui.debugf("outdoor_wall_group : " .. LEVEL.outdoor_wall_group .. "\n")
     end
-
   end
 
 
@@ -3453,10 +3450,10 @@ function Quest_room_themes(LEVEL)
       R.floor_mat_list_natural = {}
 
       R.floor_mat_list[rand.key_by_probs(R.theme.floors)] = 100
-      R.floor_mat_list[rand.key_by_probs(R.theme.floors)] = 100
-      R.floor_mat_list[rand.key_by_probs(R.theme.floors)] = 100
+      R.floor_mat_list[rand.key_by_probs(R.theme.floors)] = 75
+      R.floor_mat_list[rand.key_by_probs(R.theme.floors)] = 50
       R.floor_mat_list_natural[rand.key_by_probs(R.theme.naturals)] = 100
-      R.floor_mat_list_natural[rand.key_by_probs(R.theme.naturals)] = 100
+      R.floor_mat_list_natural[rand.key_by_probs(R.theme.naturals)] = 50
 
     else
       R.main_tex = rand.key_by_probs(R.theme.walls)

@@ -613,6 +613,10 @@ function Item_distribute_stats(LEVEL)
     -- handle hallways that are entered from a different zone
     -- (i.e. via a keyed door).
     if R.is_hallway and table.empty(list) then
+      if PARAM.bool_fail_on_track == true then
+        assert(R.entry_conn, "Item: Hallway with missing entry conn: " .. table.tostr(R,2))
+      end
+
       N = R.entry_conn:other_room(N)
 
       table.insert(list, { room=N, ratio=1.0 })
