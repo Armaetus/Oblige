@@ -16076,6 +16076,40 @@ GROW_ATOMIC_SYMBOL_STEEPNESS =
   }
 },
 
+GROW_COUNTER =
+{
+  prob = 12,
+  skip_prob = 80,
+
+  structure =
+  {
+    "1.......","111AAAAA",
+    "1.......","111AAAAA",
+    "x.......","x11A11AA",
+    "x.......","x11A11AA",
+    "x.......","x11A11^^",
+    "x.......","x1111111",
+    "x.......","x1111111"
+  }
+},
+
+GROW_COUNTER_WATER_POOLS =
+{
+  prob = 8,
+  skip_prob = 82,
+
+  structure =
+  {
+    "1........","111~AAAAA",
+    "1........","111~AAAAA",
+    "x........","x111A11AA",
+    "x........","x11~A11AA",
+    "x........","x11~A11^^",
+    "x........","x11111111",
+    "x........","x11111111"
+  }
+},
+
 GROW_MAGEBLOOD =
 {
   prob = 8,
