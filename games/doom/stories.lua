@@ -2691,7 +2691,7 @@ DOOM.STORIES.QUIT_MESSAGES =
   [[Hey dipshit, we're not done hunting hellspawn! Turn your attention back to the game!]],
   [[Is this really what it has come to?]],
   [[That's right, abandon your fellow marines in a time of need...]],
-  [[RAND_CONTRIBUTOR has decided you are unworthy of your skills here.]],
+  [[_RAND_CONTRIBUTOR has decided you are unworthy of your skills here.]],
   [[Is that the way it's gonna be? Fine, now piss off.]],
   [[We don't have time for this quitting nonsense.]],
   [[Didn't think you were the type to pussy out of Doom..]],
