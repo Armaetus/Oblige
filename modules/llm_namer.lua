@@ -1643,7 +1643,7 @@ LLM_NAME.story_components =
       "Delos Relay Station, long-range signal interception and anomaly tracking facility",
       "Redline Industrial Belt, heavily automated extraction and weapons manufacturing corridor",
       "Sector 12 Quarantine Zone, permanently sealed containment region following systemic breach event",
-      "Red Rock Adjacent Facility, abandoned comparative research site repurposed for dimensional testing",
+      "Red Rock Adjunct Facility, abandoned comparative research site repurposed for dimensional testing",
       "Arcadia Wastes Processing Zone, industrial disposal region contaminated by unknown biological agents",
       "Outpost K-Theta, forward observation station with intermittent contact reports",
       "Vanguard Transit Hub, subterranean logistics network connecting multiple UAC installations",
@@ -1651,7 +1651,7 @@ LLM_NAME.story_components =
 
       "Umbra Surveillance Grid, orbital monitoring network tracking Hell incursion signatures",
       "Dead Orbit Relay Chain, failed communications infrastructure still intermittently transmitting unknown data",
-      "Carcass Point Station, derelict salvage depot repurposed as civilian refugee intake zone",
+      "Charon Point Station, derelict salvage depot repurposed as civilian refugee intake zone",
       "Echo-9 Black Facility, deep containment site classified above clearance level Omega",
       "Crimson Drydock Yards, armored vehicle fabrication and orbital ship repair installation",
       "Null Sector Excavation Site, abandoned dig operation uncovering non-terrestrial materials",
@@ -2425,6 +2425,55 @@ LLM_NAME.naming_novelty =
       "evoking forgotten history",
       "evoking cosmic insignificance",
       "evoking doomed grandeur"
+    }
+  },
+
+  -- replace names for common LLM favorites
+  replacers =
+  {
+    Cathedral = {
+      "Basilica",
+      "Minster",
+      "Abbey",
+      "Temple",
+      "Sanctuary",
+      "Shrine",
+      "Chapel",
+      "Church",
+      "Oratory",
+      "Parish",
+      "Duomo",
+      "Kirche",
+      "Cathedra",
+      "Dom",
+      "Citadel",
+      "Fortress",
+      "Stronghold",
+      "Necropolis",
+      "Monastery",
+      "Pantheon"
+    },
+
+    Abattoir = {
+      "Slaughterhouse",
+      "Butchery",
+      "Knackery",
+      "Stockyard",
+      "Shambles",
+      "Packinghouse",
+      "Rendering",
+      "Meatworks",
+      "Carnarium",
+      "Slaughter",
+      "Knacker",
+      "Abator",
+      "Abatorium",
+      "Bloodshed",
+      "Carnage",
+      "Extermination",
+      "Hellpit",
+      "Bonehouse",
+      "Gorefane"
     }
   }
 }
@@ -3573,6 +3622,15 @@ _FORMAT_
             L.description = name
 
             table.insert(LLM_NAME.history , name)
+          end
+
+          -- direct replacers
+          if rand.odds(90) then
+            for replacee,choices in pairs(LLM_NAME.naming_novelty.replacers) do
+              if string.gmatch(name, replacee) then
+                string.gsub(name, replacee, rand.pick(choices))
+              end
+            end
           end
 
         end
