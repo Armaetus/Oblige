@@ -2005,9 +2005,11 @@ function Room_border_up(LEVEL, SEEDS)
           return
         else
           if A1.is_outdoor then
-            Room_make_windows(LEVEL, A1, A2, SEEDS)
             if can_porch_wall(A1, A2) then
-              Junction_make_wall(junc)
+              Room_make_windows(LEVEL, A1, A2, SEEDS)
+              if A1.floor_h >= A2.ceil_h or A2.floor_h >= A1.ceil_h then
+                Junction_make_wall(junc)
+              end
             end
           elseif not A1.is_outdoor then
             if can_porch_wall(A1, A2) then
@@ -2017,7 +2019,9 @@ function Room_border_up(LEVEL, SEEDS)
                 Junction_make_railing(LEVEL, junc, "FENCE_MAT_FROM_THEME", "block")
               elseif A1.room.porch_fence_type == "wall" then
                 Room_make_windows(LEVEL, A1, A2, SEEDS)
-                Junction_make_wall(junc)
+                if A1.floor_h >= A2.ceil_h or A2.floor_h >= A1.ceil_h then
+                  Junction_make_wall(junc)
+                end
               end
             end
           end
