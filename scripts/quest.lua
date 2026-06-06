@@ -249,8 +249,7 @@ function Quest_create_initial_quest(LEVEL)
 
       -- prefer the other room to be a not too open
       local N = R.conns[1]:other_room(R)
-      assert(N.openness, "no recorded openess!!!\n")
-      local openness_mult = N.openness or 1
+      local openness_mult = (1 + N.openness) or 1
 
       cur_score = cur_score * closet_mult * openness_mult
 
