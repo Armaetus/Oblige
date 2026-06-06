@@ -698,9 +698,9 @@ LLM_NAME.semantics =
 
   tech_deimosRoom =
   {
-    "Deimos-inspired research chambers",
-    "retro sci-fi interiors",
-    "classic techbase rooms"
+    "hell-corrupted research chambers",
+    "inferno-touched sci-fi interiors",
+    "hellified techbase rooms"
   },
 
   tech_Doom3_green_hulls =
@@ -1640,14 +1640,14 @@ LLM_NAME.story_components =
 
       "Blacksite Helix Array, restricted UAC research cluster operating under total communications lockdown",
       "Phenom Forward Complex, primary staging ground for interplanetary security deployments",
-      "Deimos Relay Station, long-range signal interception and anomaly tracking facility",
+      "Delos Relay Station, long-range signal interception and anomaly tracking facility",
       "Redline Industrial Belt, heavily automated extraction and weapons manufacturing corridor",
       "Sector 12 Quarantine Zone, permanently sealed containment region following systemic breach event",
       "Red Rock Adjacent Facility, abandoned comparative research site repurposed for dimensional testing",
       "Arcadia Wastes Processing Zone, industrial disposal region contaminated by unknown biological agents",
       "Outpost K-Theta, forward observation station with intermittent contact reports",
       "Vanguard Transit Hub, subterranean logistics network connecting multiple UAC installations",
-      "Iron Meridian Reactor Yard, high-output energy generation complex under emergency suppression protocols",
+      "Ironhide Reactor Complex, high-output energy generation complex under emergency suppression protocols",
 
       "Umbra Surveillance Grid, orbital monitoring network tracking Hell incursion signatures",
       "Dead Orbit Relay Chain, failed communications infrastructure still intermittently transmitting unknown data",
@@ -1674,14 +1674,13 @@ LLM_NAME.story_components =
       "Red Gate Entry Complex, primary controlled access point for interdimensional transit experiments",
       "Salted Moon Cryo Facility, suspended animation storage site for displaced personnel",
       "Broken Atlas Logistics Spine, collapsed intercontinental supply network for UAC assets",
-      "Rook Sector Command District, administrative control zone operating under martial law",
-      "White Noise Broadcast Tower, emergency transmission hub still emitting unidentified audio patterns",
+      "Rook's Hang Command District, administrative control zone operating under martial law",
+      "Whitetail Broadcast Facility, emergency transmission hub still emitting unidentified audio patterns",
       "Nullpoint Gravity Well Station, experimental physics site studying localized spacetime distortion",
       "Ferroline Refinery Stack, industrial fuel processing center feeding regional reactor grids",
       "Outlands Containment Ring, planetary perimeter quarantine system for external threat isolation",
       "Deep Meridian Sublevels, multi-layer underground facility network with restricted access tunnels",
       "Last Light Civil Shelter Grid, distributed survival infrastructure network for displaced populations"
-
     },
 
     urban = {
