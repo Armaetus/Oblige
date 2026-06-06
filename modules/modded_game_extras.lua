@@ -392,7 +392,7 @@ MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS_X =
     density = 28 / 56
   },
 
-  demontechzombie = 
+  demontechzombie =
   {
     id = 28983,
     r = 20,
@@ -1597,7 +1597,7 @@ MODDED_GAME_EXTRAS.TRAILBLAZER_DOOMEDNUMS =
 ]]
 
 function MODDED_GAME_EXTRAS.setup(self)
-  
+
   module_param_up(self)
 
   SCRIPTS.hn_id_table = {}
@@ -1648,7 +1648,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
   -- skip Hellscape Navigator stuff on prebuilt levels (no info to draw from)
   -- and procedural gotchas (what the heck are you gonna navigate in two rooms?)
   if not LEVEL then return end
-  if LEVEL.is_procedural_gotcha and 
+  if LEVEL.is_procedural_gotcha and
     PARAM.hn_info_type == "hn_info_quest" then return end
   if LEVEL.prebuilt then return end
 
@@ -1829,7 +1829,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     if R.lev_along and not R.is_start and #LEVEL.rooms > 2 then
       goal_string = goal_string .. " (" .. math.floor(R.lev_along * 100) .. "%%)"
-    end      
+    end
 
     return goal_string
   end
@@ -1967,20 +1967,20 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         info.editor_num = PARAM.hn_thing_start_offset
 
         if chunk.area.floor_group and chunk.area.floor_group.wall_group then
-          info.name = info.name .. " (Wall Group: " .. 
+          info.name = info.name .. " (Wall Group: " ..
           chunk.area.floor_group.wall_group .. ")"
         end
 
         if chunk.area then
-          if chunk.area.room and chunk.area.room.is_outdoor 
+          if chunk.area.room and chunk.area.room.is_outdoor
           and chunk.area.room.outdoor_wall_group then
-            info.name = info.name .. 
-              " (Outdoor Wall Group: " .. 
+            info.name = info.name ..
+              " (Outdoor Wall Group: " ..
               chunk.area.room.outdoor_wall_group .. ")"
-          elseif chunk.area.room.theme then
-            info.name = info.name .. " (Room Theme: " .. 
-              chunk.area.room.theme.name .. ")" 
           end
+
+          info.name = info.name .. " (Room Theme: " ..
+          chunk.area.room.theme.name .. ")"
         end
 
         if SCRIPTS.hn_id_table[info.name] then
@@ -2022,11 +2022,11 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           if chunk.area.room and chunk.area.room.is_outdoor
           and chunk.area.room.outdoor_wall_group then
             info.name = info.name ..
-              " (Outdoor Wall Group: " .. 
+              " (Outdoor Wall Group: " ..
               chunk.area.room.outdoor_wall_group .. ")"
           elseif chunk.area.room.theme then
-            info.name = info.name .. " (Room Theme: " .. 
-              chunk.area.room.theme.name .. ")" 
+            info.name = info.name .. " (Room Theme: " ..
+              chunk.area.room.theme.name .. ")"
           end
         end
 
@@ -2078,7 +2078,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         local y = (chunk.y1 + chunk.y2) / 2
         local z1 = chunk.floor_h
         local z2 = z1
-  
+
         if chunk.from_dir == 2 then
           z1 = chunk.from_area.floor_h
           z2 = chunk.dest_area.floor_h
@@ -2086,7 +2086,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           z1 = chunk.dest_area.floor_h
           z2 = chunk.from_area.floor_h
         end
-  
+
         hn_add_entity(info, x, y + (chunk.sh * SEED_SIZE) - 64, z1 + 1)
         hn_add_entity(info, x, y - (chunk.sh * SEED_SIZE) + 64, z2 + 1)
       end
@@ -2118,7 +2118,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     local info, hn_marker = {},{}
 
     -- pick different info classes
-    if PARAM.hn_info_type == "hn_info_debug" 
+    if PARAM.hn_info_type == "hn_info_debug"
     or PARAM.hn_info_type == "hn_info_debug_prefabs" then
       info.name = fetch_room_shapes(R)
     else
@@ -2534,7 +2534,7 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
   local r_num = 0
 
   actor_name_script = actor_name_script .. MODDED_GAME_EXTRAS.ACTOR_NAME_SCRIPT
-  
+
   local function ordinal(n)
     local suffix = "th"
     local last_digit = n % 10
@@ -2580,7 +2580,7 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
   end
 
   for i = 0, 32 do
-    local squad_num = "" .. 
+    local squad_num = "" ..
       ordinal(
         rand.sel(50,
         rand.irange(1,99),
@@ -2680,7 +2680,7 @@ function MODDED_GAME_EXTRAS.add_complex_doom_things()
 
   for name,_ in pairs(MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS) do
     local M = GAME.MONSTERS[name]
-    
+
     if M and factor then
       M.prob = M.prob * factor
       M.crazy_prob = (M.crazy_prob or M.prob) * factor
