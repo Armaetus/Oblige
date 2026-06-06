@@ -237,14 +237,22 @@ function Quest_create_initial_quest(LEVEL)
       cur_score = math.exp(-(diff * diff) / (2 * sigma * sigma))
 
       -- should have at least one closet
+      local closet_mult = 1
       if R.closets and #R.closets >= 1 then
-        cur_score = cur_score * 1.25
+        closet_mult = 1.25
       end
 
       -- absolutely no rooms without more than 1 connection
       if #R.conns > 1 or (R.symmetry and #R.conns == 1) then
         cur_score = cur_score * (1 / #R.conns)
       end
+
+      -- prefer the other room to be a not too open
+      local N = R.conns[1]:other_room(R)
+      assert(N.openness, "no recorded openess!!!\n")
+      local openness_mult = N.openness or 1
+
+      cur_score = cur_score * closet_mult * openness_mult
 
       R.start_score = math.round_to(cur_score,2)
 
