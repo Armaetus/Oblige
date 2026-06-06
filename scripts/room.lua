@@ -3748,14 +3748,14 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     elseif R.height_profile == "normal-openness" then
       if group.openness < 0.07     then add_h = 96
       elseif group.openness < 0.12 then add_h = 128
-      elseif group.openness < 0.25 then add_h = 160
+      elseif group.openness < 0.24 then add_h = 160
       elseif group.openness < 0.35 then add_h = 192
       else                              add_h = 256
       end
     elseif R.height_profile == "inverse-openness" then
       if group.openness < 0.07     then add_h = 256
       elseif group.openness < 0.12 then add_h = 192
-      elseif group.openness < 0.25 then add_h = 160
+      elseif group.openness < 0.24 then add_h = 160
       elseif group.openness < 0.35 then add_h = 128
       else                              add_h = 96
       end
