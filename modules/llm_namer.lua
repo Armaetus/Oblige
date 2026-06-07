@@ -2474,6 +2474,36 @@ LLM_NAME.naming_novelty =
       "Hellpit",
       "Bonehouse",
       "Gorefane"
+    },
+
+    Citadel = {
+      "Hellkeep",
+      "Bloodspire",
+      "Skullforge",
+      "Gorehold",
+      "Warspire",
+      "Doomwall",
+      "Bonefort",
+      "Inferno",
+      "Oblivion",
+      "Carnage",
+      "Crucible",
+      "Soulforge",
+      "Blasphemy",
+      "Rampage",
+      "Chaos",
+      "Fleshspire",
+      "Shadowkeep",
+      "Deathspire",
+      "Hellforge",
+      "Slayerhold",
+      "Nightmare",
+      "Bloodkeep",
+      "Skullspire",
+      "Warfort",
+      "Descent",
+      "Cataclysm",
+      "Ashspire",
     }
   }
 }
@@ -3615,6 +3645,15 @@ _FORMAT_
             name = string.gsub(name, N, noun_replacers[N])
           end
 
+          -- direct replacers
+          if rand.odds(90) then
+            for replacee,choices in pairs(LLM_NAME.naming_novelty.replacers) do
+              if string.gmatch(name, replacee) then
+                name = string.gsub(name, replacee, rand.pick(choices))
+              end
+            end
+          end
+
           if name then
             gui.debugf("LLM Namer: " .. L.name .. " name '" ..
             L.description .. "' substituted with '" .. name .. "'!\n")
@@ -3622,15 +3661,6 @@ _FORMAT_
             L.description = name
 
             table.insert(LLM_NAME.history , name)
-          end
-
-          -- direct replacers
-          if rand.odds(90) then
-            for replacee,choices in pairs(LLM_NAME.naming_novelty.replacers) do
-              if string.gmatch(name, replacee) then
-                string.gsub(name, replacee, rand.pick(choices))
-              end
-            end
           end
 
         end
