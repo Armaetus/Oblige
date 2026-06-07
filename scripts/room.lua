@@ -1254,7 +1254,7 @@ function Room_detect_clearings(LEVEL, R)
     end
 
     -- mark
-    if best_A and rand.odds(style_sel("park", 0, 50, 75, 100)) then
+    if best_A and rand.odds(style_sel("park", 0, 25, 50, 100)) then
       best_A.is_clearing = true
 
       if has_stair_neighbor(best_A) then
@@ -3163,6 +3163,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         local tex = rand.key_by_probs(R.floor_mat_list_natural)
         R.floor_mat_list_natural[tex] = R.floor_mat_list_natural[tex] / 4
         R.floor_mats[A.floor_h] = tex
+
+        for _,A2 in pairs(R.areas) do
+          if A ~= A2 then
+            A2.floor_mat = tex
+          end
+        end
       end
 
       A.floor_mat = assert(R.floor_mats[A.floor_h])
