@@ -1520,7 +1520,7 @@ function MARINE_CLOSET_TUNE.grab_type()
     tech_level[10] = { 31002, 31003, 31004, 31005, 31006 }
   end
 
-  return rand.pick(tech_level)
+  return rand.pick(tech_level[PARAM.marine_tech])
 end
 
 function MARINE_CLOSET_TUNE.randomize_count()
