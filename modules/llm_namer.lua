@@ -3297,7 +3297,7 @@ function LLM_NAME.do_it()
   end
 
 
-
+  -- formats story strings into Doom1 intermission screen-constricted lines
   local function format_story_string(text, max_chars)
 
     local formatted_lines = {}
@@ -3359,6 +3359,7 @@ function LLM_NAME.do_it()
 
     return s
   end
+
 
   -- main name generator capsule
   local function generate_level_name(level_data, episodic_level_data)
@@ -3453,6 +3454,7 @@ level_data
   end
 
 
+  -- main story generator prompt assembler
   local function generate_story()
 
     local prompt =
@@ -3471,6 +3473,7 @@ Rules:
 - narrate in second person
 - Doom universe sub-story style
 - slightly grounded more towards a sci-fi military plot
+- more on engaging, intruiging story and less on overly prosaic description
 - pure fictional non real-world location
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
@@ -3539,16 +3542,16 @@ _FORMAT_
         story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
       end
     else]]
+    local char_count = rand.pick({1,2,3})
     if character_mode == "pregen" then
       story_characters = "The following appear in the story:\n"
-      local count = rand.pick({1,2,3})
-      for i = 1, count do
+      for i = 1, char_count do
         story_characters = story_characters .. rand.pick(LLM_NAME.story_components.actors).. "\n"
       end
 
       -- sometimes add a McGuffin
-      if (count == 2 and rand.odds(30))
-      or (count == 1 and rand.odds(60)) then
+      if (char_count == 2 and rand.odds(30))
+      or (char_count == 1 and rand.odds(60)) then
         story_characters = story_characters ..  "Found a bit later in this story:\n"
         story_characters = story_characters .. "* " .. rand.pick(LLM_NAME.story_components.mcguffins) .."\n"
       end
@@ -3563,8 +3566,20 @@ _FORMAT_
 
       -- sometimes add a McGuffin
       if rand.odds(50) then
-        story_characters = story_characters ..  "Involved in this story:\n"
+        story_characters = story_characters ..  "Found later in the story:\n"
         story_characters = story_characters .. "* " .. rand.pick(LLM_NAME.story_components.mcguffins) .."\n"
+      end
+    end
+
+    -- higher chance to involve a McGuffin if there are no characters in the story
+    if character_mode == "none" then
+      if rand.odds(66) then
+        story_characters = story_characters ..  "Found later in the story:\n"
+        story_characters = story_characters .. "* " .. rand.pick(LLM_NAME.story_components.mcguffins) .."\n"
+        -- a small chance to add a second McGuffin
+        if rand.odds(33) then
+          story_characters = story_characters .. "* " .. rand.pick(LLM_NAME.story_components.mcguffins) .."\n"
+        end
       end
     end
     prompt = string.gsub(prompt,
@@ -3634,7 +3649,7 @@ _FORMAT_
 
   end
 
-
+  -- level name generator loop
   if PARAM.bool_llm_namer == 1 then
 
     -- level name generator
