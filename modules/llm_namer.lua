@@ -1767,6 +1767,9 @@ LLM_NAME.story_components =
 
   actors =
   {
+    -- secret
+    "Isabelle, the cheerful anthromorophic Shi-Tzu and mayor's secretary and assistant who carries a sweet tooth and a double shotgun",
+
     -- protagonists
     "Dr. Emilia Ottisen, a UAC physicist trying to destroy the portal research she helped create",
     "Captain Jackson Reed, a security commander who survived multiple facility breaches",
