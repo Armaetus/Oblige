@@ -276,6 +276,13 @@ LLM_NAME.semantics =
     "overpacked warehouses"
   },
 
+  gtd_storage_shawn =
+  {
+    "high-tech storage center",
+    "compact tech supplies warehouse",
+    "polished materials yard"
+  },
+
   gtd_wall_server_room =
   {
     "server facilities",
