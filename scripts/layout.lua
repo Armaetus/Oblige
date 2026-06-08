@@ -2480,8 +2480,10 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     -- allow fabrication of ceiling lights in outdoor porches
     if R.is_outdoor then
       for _,A in pairs(R.areas) do
-        if A.is_porch then
+        if A.is_porch or A.is_porch_neighbor then
           if not rand.odds(prob) then goto skip end
+
+          if A.ceil_group and A.ceil_group.ceil_sink then goto skip end
 
           A.lamp_def = select_lamp(A)
           if not A.lamp_def then goto skip end
