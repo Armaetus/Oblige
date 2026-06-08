@@ -1254,7 +1254,9 @@ function Room_detect_clearings(LEVEL, R)
     end
 
     -- mark
-    if best_A and rand.odds(style_sel("park", 0, 25, 50, 100)) then
+    local clearing_prob = (style_sel("clearings",0,33,66,100) * .67) +
+      (style_sel("park",0,33,66,100) * .33)
+    if best_A and rand.odds(clearing_prob) then
       best_A.is_clearing = true
 
       if has_stair_neighbor(best_A) then
@@ -1282,12 +1284,6 @@ function Room_detect_clearings(LEVEL, R)
   end
 
 ---| Room_detect_clearings |---
-  if not PARAM.bool_enable_clearings or
-  (PARAM.bool_enable_clearings and
-  PARAM.bool_enable_clearings == false) then
-    return
-  end
-
   if R.is_outdoor then
     eval_clearings()
   end
