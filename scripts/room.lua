@@ -2983,7 +2983,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     for _,A in pairs(R.areas) do
       if A.mode == "floor"
       or (R.is_outdoor and A.mode == "floor"
-      and A.is_porch) then
+      and (A.is_porch or A.is_porch_neighbor)) then
         A.ceil_group = { id=alloc_id(LEVEL, "ceil_group") }
       end
     end
