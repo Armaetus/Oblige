@@ -3557,12 +3557,12 @@ _FORMAT_
       end
 
       -- maybe change up our pregen names too!
-      if rand.odds(33) then
+      --[[if rand.odds(33) then
         story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
-      end
+      end]]
     else
       story_characters = "There are no other characters in the story - the Doomslayer explores this quest on their own. Please do not name any new entities unless specified.\n"
-      story_characters = story_characters .. LLM_NAME.stylize_name_prompt()
+      --[[story_characters = story_characters .. LLM_NAME.stylize_name_prompt()]]
 
       -- sometimes add a McGuffin
       if rand.odds(50) then
