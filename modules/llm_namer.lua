@@ -16,6 +16,39 @@
 --
 -------------------------------------------------------------------
 
+-- This module is for prompt construction and connecting to a local LLM
+-- in order to supply Obsidian with context-aware strings in place
+-- of map names and story intermissions.
+
+-- The Level Namer system draws metadata from the level and passes them
+-- through a semantic translation layer to allow for a more natural language
+-- prompt e.g. "This level has bank_prefab" becomes 
+-- "This abandoned dense urban zone contains high-security cash vaults."
+--
+-- Not all assets Obsidian have a semantic translation but they will still
+-- be passed as-is to the LLM as, for example, "bank_prefab" is still
+-- understandable but not necessarily context-rich.
+
+-- The Story Intermission is a prompt constructor where rules and objects within the story
+-- are based on pre-generated elements such as pre-named actors, McGuffins, places,
+-- and tropes in the story to prevent a problem with popular latent attractors appearing
+-- e.g. too much "Kaelin Vex" or "Elara Voss", which have become widely popular
+-- names in AI data sets pretty much do to training on regurgitated web data.
+
+-- If you are interested in using your own model,
+-- just replace the model aliases under LLM_NAME.naming_model and LLM_NAME.story_model below.
+-- It's fine to use any model or even the same model for both features.
+
+-- cURL is used for connecting to the chat instance. If something else is preferred
+-- from Ollama, you will need to change the API call as well.
+
+-- In other words, we believe Obsidian is fine not turning into a pretrained diffusion model.
+-- We would rather that diffusion models become Obsidian's bitch, as in this case,
+-- as we believe in the integrity of the rules we set for our own procedural generation,
+-- we being a group of designers, programmers, and artists ourselves whose work
+-- has been trained on.
+
+
 LLM_NAME = { }
 
 LLM_NAME.naming_model = "llama3.1:8b" -- which Ollama alias to use for the level renamer
