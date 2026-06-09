@@ -3166,7 +3166,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
         for _,A2 in pairs(R.areas) do
           if A ~= A2 then
-            A2.floor_mat = tex
+            if A.floor_h == A2.floor_h then
+              A2.floor_mat = tex
+            end
           end
         end
       end
