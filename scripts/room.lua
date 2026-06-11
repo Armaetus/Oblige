@@ -4494,11 +4494,9 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         -- affix textures
         if A.room:get_env() == "building" then
           local ceil_tex = SAS.ceil_mat
-          if A.ceil_mats then
-            if  A.ceil_mats[A.ceil_h] then
-              ceil_tex = A.ceil_mats[A.ceil_h]
-            else
-              ceil_tex = rand.pick(A.ceil_mats)
+          if A.room.ceil_mats then
+            if A.room.ceil_mats[A.ceil_h] then
+              ceil_tex = A.room.ceil_mats[A.ceil_h]
             end
           end
           assert(ceil_tex, "no ceiling texture for room %s", A.room.name)
