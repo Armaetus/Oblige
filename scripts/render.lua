@@ -2887,7 +2887,9 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
   end
 
   if A.is_natural_park or A.is_clearing then
+    skin.wall = A.zone.facade_mat
     if def.group == "natural_walls" or reqs.key == "secret" then
+      skin.wall = A.zone.nature_facade
       if chunk.kind == "joiner" then
         if chunk.from_area.is_natural_park then
           skin.wall = chunk.from_area.zone.nature_facade
@@ -2895,11 +2897,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
         if chunk.dest_area.is_natural_park then
           skin.outer = chunk.dest_area.zone.nature_facade
         end
-      else
-        skin.wall = A.zone.nature_facade
       end
-    else
-      skin.wall = A.zone.facade_mat
     end
   end
 
