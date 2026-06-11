@@ -2803,32 +2803,40 @@ function Layout_handle_corners(LEVEL)
 
         local mostly_env = Corner_get_env(corner)
 
-        -- indoor posts should meet the ceiling
-        local tallest_h = -EXTREME_H
+        local tallest_floor = -EXTREME_H
+        local tallest_ceil = -EXTREME_H
 
-        if mostly_env == "building" then
-          post_top_z = EXTREME_H
+        for _,A in pairs(corner.areas) do
 
-        else
-
-          -- outdoor posts should meet up to the rail height
-          for _,A in pairs(corner.areas) do
+          tallest_floor = math.max(tallest_floor, A.floor_h)
+          tallest_ceil = math.max(tallest_ceil, A.ceil_h)
 
             -- extend posts all the way to the roof if
-            -- neighboring porches
-            if A.is_porch or A.is_porch_neighbor then
-              tallest_h = EXTREME_H
-              goto skip
-            end
-
-            tallest_h = math.max(tallest_h, A.floor_h + junc.E1.rail_offset)
-            if A.vista_type == "simple_fence" and A.fence_type ~= "railing" then
-              tallest_h = math.max(tallest_h, A.floor)
-            end
-            ::skip::
+          -- neighboring porches
+          if A.is_porch or A.is_porch_neighbor then
+            tallest_floor = EXTREME_H
+            goto skip
           end
 
-          post_top_z = tallest_h
+          tallest_floor = math.max(tallest_floor, A.floor_h + junc.E1.rail_offset)
+
+          -- if inside a builing, connect post to the ceiling
+          -- if the difference between ceiling and fence height
+          -- is less than half the height of the fence
+          if mostly_env == "building" then
+            local diff = tallest_ceil - tallest_floor
+            if diff <= (junc.E1.rail_offset / 2) then
+              post_top_z = EXTREME_H
+              goto skip
+            end
+          end
+
+          if A.vista_type == "simple_fence" and A.fence_type ~= "railing" then
+            tallest_floor = math.max(tallest_floor, A.floor)
+          end
+          ::skip::
+
+          post_top_z = tallest_floor
         end
 
         corner.kind = "post"
