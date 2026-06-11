@@ -1640,18 +1640,15 @@ function Room_border_up(LEVEL, SEEDS)
 
 
   local function can_beam(A1, A2, junction)
-    local est_beam_height
-
     if not A1.room or not A2.room then
       return false
     end
 
-    -- stop beams from going up in an area the same sky sinks because it looks silly
+    -- stop beams from going up between areas of the same
+    -- ceil groups as it looks strange
     if A1.ceil_group and A2.ceil_group then
       if A1.ceil_group == A2.ceil_group then
-        if A1.ceil_group.sink and A1.ceil_group.sink.mat == "_SKY" then
-          return false
-        end
+        return false
       end
     end
 
