@@ -347,6 +347,15 @@ function AREA_CLASS.touches(A, N)
 end
 
 
+function AREA_CLASS.shares_edge(A, N)
+  for _,E1 in pairs(A.edges) do
+    for _,E2 in pairs(N.edges) do
+      if E1 == E2 then return E1 end
+    end
+  end
+end
+
+
 function AREA_CLASS.has_conn(A, LEVEL)
   for _,C in pairs(LEVEL.conns) do
     if C.kind ~= "teleporter" and (C.A1 == A or C.A2 == A) then
