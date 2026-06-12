@@ -531,6 +531,7 @@ function Render_edge(LEVEL, E, SEEDS)
     end
 
     local def = pick_wall_prefab()
+    assert(def)
 
     if not E.S.depth then E.S.depth = {} end
     E.S.depth[dir] = def.deep
@@ -708,216 +709,6 @@ function Render_edge(LEVEL, E, SEEDS)
   end
 
 
-  local function seed_touches_junc(S, junc)
-    -- FIXME
-
-    return false
-  end
-
-
-  local function calc_step_A_mode(S, dir)
---FIXME
-do return "narrow" end
-
-    local junc = S.foo  -- FIXME
-    if not junc or junc.kind ~= "steps" then return "narrow" end
-
-    local N, bord
-
-    if geom.is_straight(dir) then
-      N = S:neighbor(geom.LEFT[dir])
-      if not (N and N.area == S.area) then return "" end
-
-      N = N:neighbor(dir)
-      if not (N and N.area == S.area) then return "" end
-
-      bord = N.foo  -- FIXME
-      if bord.junction == junc then return "wide" end
-
-      return "xx"
-
-    else  -- corner
-
-      local dir2 = geom.ROTATE[5][dir]
-      local dir3 = geom.RIGHT[dir2]
-
-      N = S:neighbor(dir2)
-      if not (N and N.area == S.area) then return "" end
-
-      N = N:neighbor(dir3)
-      if not (N and N.area == S.area) then return "" end
-
-      if seed_touches_junc(N, junc) then return "wide" end
-
-      N = N:neighbor(10 - dir2)
-      if not (N and N.area == S.area) then return "" end
-
-      if seed_touches_junc(N, junc) then return "wide" end
-
-      return "xx"
-    end
-  end
-
-
-  local function calc_step_B_mode(S, dir)
---FIXME
-do return "narrow" end
-
-    local junc = S.foo -- FIXME
-    if not junc or junc.kind ~= "steps" then return "narrow" end
-
-    local N, bord
-
-    if geom.is_straight(dir) then
-      N = S:neighbor(geom.RIGHT[dir])
-      if not (N and N.area == S.area) then return "" end
-
-      N = N:neighbor(dir)
-      if not (N and N.area == S.area) then return "" end
-
-      bord = N.foo -- FIXME
-      if bord.junction == junc then return "wide" end
-
-      return "xx"
-
-    else  -- corner
-
-      local dir2 = geom.ROTATE[3][dir]
-      local dir3 = geom.LEFT[dir2]
-
-      N = S:neighbor(dir2)
-      if not (N and N.area == S.area) then return "" end
-
-      N = N:neighbor(dir3)
-      if not (N and N.area == S.area) then return "" end
-
-      if seed_touches_junc(N, junc) then return "wide" end
-
-      N = N:neighbor(10 - dir2)
-      if not (N and N.area == S.area) then return "" end
-
-      if seed_touches_junc(N, junc) then return "wide" end
-
-      return "wide"
-    end
-  end
-
-
-  local function make_step_brush(S, dir, a_mode, b_mode, TK)
-    -- define points A and B
-
-    local ax, ay = S.x1, S.y1
-    local bx, by = S.x2, S.y2
-
-    if dir == 2 then by = ay ; ax,bx = bx,ax end
-    if dir == 8 then ay = by end
-    if dir == 4 then bx = ax end
-    if dir == 6 then ax = bx ; ay,by = by,ay end
-
-    if dir == 1 or dir == 9 then
-      ax,bx = bx,ax
-    end
-
-    if dir == 3 or dir == 9 then
-      ax,bx = bx,ax
-      ay,by = by,ay
-    end
-
-    -- compute vectors of points A and B
-
-    local adx, ady = 0, 0
-    local bdx, bdy = 0, 0
-
-    if dir == 8 then
-      ady, bdy = -1, -1
-      if a_mode == "narrow" then adx =  0.5 elseif a_mode == "wide" then adx = -1 end
-      if b_mode == "narrow" then bdx = -0.5 elseif b_mode == "wide" then bdx =  1 end
-    elseif dir == 2 then
-      ady, bdy = 1, 1
-      if a_mode == "narrow" then adx = -0.5 elseif a_mode == "wide" then adx =  1 end
-      if b_mode == "narrow" then bdx =  0.5 elseif b_mode == "wide" then bdx = -1 end
-    elseif dir == 4 then
-      adx, bdx = 1, 1
-      if a_mode == "narrow" then ady =  0.5 elseif a_mode == "wide" then ady = -1 end
-      if b_mode == "narrow" then bdy = -0.5 elseif b_mode == "wide" then bdy =  1 end
-    elseif dir == 6 then
-      adx, bdx = -1, -1
-      if a_mode == "narrow" then ady = -0.5 elseif a_mode == "wide" then ady =  1 end
-      if b_mode == "narrow" then bdy =  0.5 elseif b_mode == "wide" then bdy = -1 end
-
-    elseif dir == 1 then
-      if a_mode ~= "wide" then ady = 1 else adx = 1 end
-      if b_mode ~= "wide" then bdx = 1 else bdy = 1 end
-    elseif dir == 9 then
-      if a_mode ~= "wide" then ady = -1 else adx = -1 end
-      if b_mode ~= "wide" then bdx = -1 else bdy = -1 end
-    elseif dir == 3 then
-      if a_mode ~= "wide" then adx = -1 else ady =  1 end
-      if b_mode ~= "wide" then bdy =  1 else bdx = -1 end
-    elseif dir == 7 then
-      if a_mode ~= "wide" then adx =  1 else ady = -1 end
-      if b_mode ~= "wide" then bdy = -1 else bdx =  1 end
-    else
-      error("bad dir in make_step_brush")
-    end
-
---[[ HANDY DEBUG
-stderrf("dir = %d\n", dir)
-stderrf("A = (%d %d)  B = (%d %d)\n", ax - S.x1, ay - S.y1, bx - S.x1, by - S.y1)
-stderrf("dA = (%1.1f %1.1f)  dB = (%1.1f %1.1f)\n", adx, ady, bdx, bdy)
---]]
-
-    local brush =
-    {
-      { x = bx, y = by },
-      { x = ax, y = ay },
-      { x = ax + adx * TK, y = ay + ady * TK },
-      { x = bx + bdx * TK, y = by + bdy * TK }
-    }
-
-    return brush
-  end
-
-
-  local function edge_steps()
-    local mat = assert(E.steps_mat)
-    local steps_z1 = E.steps_z1
-    local steps_z2 = E.steps_z2
-
-    -- wrong side?
-    assert(steps_z2 > steps_z1)
-
-    local diff_h = steps_z2 - steps_z1,
-    assert(diff_h > 8)
-
-    local num_steps = 1
-
-    while (diff_h / num_steps) > 24 do
-      num_steps = num_steps + 1
-    end
-
-    local thick = 16 * num_steps
-    if thick > 64 then thick = 64 end
-
-    -- determine A and B modes (FIXME? quite broken atm)
-    local a_mode = calc_step_A_mode(S, dir)
-    local b_mode = calc_step_B_mode(S, dir)
-
-    for i = 1, num_steps do
-      local z = steps_z1 + i * diff_h / (num_steps + 1)
-      local TK = thick * (num_steps + 1 - i) / num_steps
-
-      local brush = make_step_brush(E.S, E.dir, a_mode, b_mode, TK)
-
-      table.insert(brush, { t=z })
-
-      brushlib.set_mat(LEVEL, brush, mat, mat)
-
-      Trans.brush(brush)
-    end
-  end
-
-
   local function straddle_door()
     assert(E.peer)
 
@@ -1042,9 +833,6 @@ stderrf("dA = (%1.1f %1.1f)  dB = (%1.1f %1.1f)\n", adx, ady, bdx, bdy)
 
   elseif E.kind == "sky_edge" and A.floor_h then
     edge_outer_sky()
-
-  --[[elseif E.kind == "steps" then
-    edge_steps()]]
 
   elseif E.kind == "railing" then
     straddle_railing()
@@ -1175,7 +963,7 @@ function Render_corner(LEVEL, cx, cy)
 
     local def = corner.areas[1].room.pillar_def
 
-    local T = Trans.spot_transform(mx, my, 1024, dir)
+    local T = Trans.spot_transform(mx, my, 1024--[[, dir]])
 
     local skin = {wall=mat}
 
