@@ -1932,7 +1932,7 @@ story intro here
 story ending here 
 </S2>
 
-The text in each tag section must at least be 130-140 words, maximum of 4 paragraphs with proper spacing.]],
+The text in each tag section must at least be _WORD_COUNT_ words, maximum of 4 paragraphs with proper spacing.]],
 
     game =
 [[There are three chapters and the story is an intro and end for each,
@@ -1965,7 +1965,7 @@ chapter 3 intro here
 chapter 3 ending here
 </S6>
 
-The text in each tag section must at least be 130-140 words, maximum of 4 paragraphs with proper spacing.]]
+The text in each tag section must at least be _WORD_COUNT_ words, maximum of 4 paragraphs with proper spacing.]]
   },
 
   mcguffins = {
@@ -3510,9 +3510,10 @@ Rules:
 - pure fictional non real-world location
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
-- no Warhammer 40k, no Lovecraft, no Blizzard Entertainment
+- no Warhammer 40k, no Lovecraft
 - no threats bigger than Hell - instead, make Hell threatening on its own
 - if the acronym UAC is used, it means "Union Aerospace Corporation"
+- please do not mention the smell of ozone
 - avoid names with a hard consonant starts such as "Kh", "Kae", "Kr", "Vex", etc.
 - satisfying ending for the current arc is preferred
 
@@ -3625,6 +3626,13 @@ _FORMAT_
     else
       story_format = LLM_NAME.story_components.length.epi
     end
+
+    -- word count substitution
+    story_format = string.gsub(story_format,
+    "_WORD_COUNT_",
+    math.round(PARAM.float_story_word_count) or 130)
+
+    -- final format rule lines merge
     prompt = string.gsub(prompt,
     "_FORMAT_",
     story_format)
@@ -3634,9 +3642,9 @@ _FORMAT_
     -- temperature
     local temp = rand.pick
     {
-      0.85,
       0.90,
-      0.95
+      1.0,
+      1.1
     }
 
     -- prompt structure
@@ -3800,6 +3808,20 @@ OB_MODULES["llm_namer"] =
       "ZDoom Specials must be turned on or intermission will be ignored without MAPINFO structs.\n\n"..
       "Not guaranteed to make authentic stories and will totally hallu"),
       priority = 97,
+    },
+
+    {
+      name = "float_story_word_count",
+      label = _("Story Word Count"),
+      valuator = "slider",
+      units = " Words",
+      default = 130,
+      min = 50,
+      max = 130,
+      increment = 5,
+      tooltip = _("Change the rough number of words per intermission screen."),
+      priority = 96,
+
       gap = 1
     },
 
@@ -3810,7 +3832,7 @@ OB_MODULES["llm_namer"] =
       default = 1,
       tooltip = _("Enables or disables Ollama instance check before level generation begins for speed. " ..
       "When turning this off, be absolutely sure Ollama is running or you may get end errors, wasting your generated level."),
-      priority = 96,
+      priority = 95,
     }
   }
 }
