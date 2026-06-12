@@ -162,9 +162,14 @@ function Monster_pacing(LEVEL)
       local high_prob = 90
 
       if R.is_teleport_dest then
-        high_prob = 40
+        if R.svolume > 48 then
+          high_prob = 15
+        else
+          set_room(R, "medium")
+          return
+        end
       elseif R.zone == LEVEL.exit_room.zone then
-        high_prob = 60
+        high_prob = 80
       end
 
       set_room(R, rand.sel(high_prob, "high", "medium"))
@@ -241,7 +246,13 @@ function Monster_pacing(LEVEL)
     if amounts.high >= high_quota then tab["high"] = nil end
 
     -- enforce other logic
-    if R.is_after_start and #LEVEL.rooms > 2 then tab["high"] = nil end
+    if R.is_after_start and #LEVEL.rooms > 2 then
+      tab["high"] = nil 
+      if LEVEL.has_linear_start then
+        tab["medium"] = nil
+      end
+    end
+
     if R.is_teleport_dest then tab["high"] = nil end
 
     local what = rand.key_by_probs(tab)
