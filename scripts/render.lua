@@ -394,7 +394,7 @@ function Render_edge(LEVEL, E, SEEDS)
     end
 
     -- when a wall group is not selected, use the ungrouped walls
-    if not def or (def and def.stop_group) then
+    if not def then
       reqs.group = nil
       def = Fab_pick(LEVEL, reqs)
     end
@@ -566,13 +566,13 @@ function Render_edge(LEVEL, E, SEEDS)
       local dir2 = DIAG_DIR_MAP[dir]
       local S = E.S
 
-      if not def then def = PREFABS[Wall_plain_diag] end
+      if not def then def = PREFABS["Wall_plain_diag"] end
 
       T = Trans.box_transform(S.x1, S.y1, S.x2, S.y2, z1, dir2)
 
     else  -- axis-aligned edge
 
-      if not def then def = PREFABS[Wall_plain] end
+      if not def then def = PREFABS["Wall_plain"] end
 
       T = Trans.edge_transform(E, z1, 0, 0, def.deep, 0, false)
     end
