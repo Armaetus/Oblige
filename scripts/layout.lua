@@ -276,7 +276,7 @@ function Layout_spot_for_wotsit(LEVEL, R, kind, required, SEEDS)
     score = score + gui.random() ^ 2
 
     -- the exit room generally has a closet pre-booked
-    if kind == "EXIT" then 
+    if kind == "EXIT" then
       if chunk.prefer_usage == "exit" then score = score + 200 end
       -- ...and if not, mark up any closet anyway
       if chunk.kind == "closet" then score = score * 2 end
@@ -1131,7 +1131,7 @@ gui.debugf("MonRelease in %s : kind --> %s\n",
 
     local chunk1 = table.remove(locs, 1)
     local chunk2 = table.remove(locs, 1)
-    local chunk3 = table.remove(locs, 1)    
+    local chunk3 = table.remove(locs, 1)
     local chunk4 = table.remove(locs, 1)
 
     -- in a symmetrical room, try to use a peered chunk
@@ -2009,7 +2009,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     local locs = {}
 
     if not R.closet_mode then
-      if not rand.odds(style_sel("pictures", 0, 45, 75,100)) 
+      if not rand.odds(style_sel("pictures", 0, 45, 75,100))
       and not R.no_decor_closets then
         R.closet_mode = "no_closets"
       else
@@ -2043,7 +2043,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     if not R.secondary_important then return end
 
     gui.printf(R.secondary_important.kind .. " placed in ROOM_" .. R.id .. "\n")
-    
+
     local usable_chunks = {}
     local preferred_chunk, def, reqs
 
@@ -2098,7 +2098,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       if THEME.plain_wall_multiplier then
         mult = THEME.plain_wall_multiplier
       end
-      prob = prob * (PREFAB_CONTROL.WALL_GROUP_ODDS[PARAM.group_wall_prob] 
+      prob = prob * (PREFAB_CONTROL.WALL_GROUP_ODDS[PARAM.group_wall_prob]
       or 1) * mult
     end
 
@@ -2109,7 +2109,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
         -- increase odds of grouped walls for floor groups with larger volumes
         if fg.volume and fg.volume > 64 then
-          prob = math.clamp(0, prob + (fg.volume/16),100) 
+          prob = math.clamp(0, prob + (fg.volume/16),100)
         end
 
         fg.wall_group = rand.key_by_probs(tab)
@@ -2375,7 +2375,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     if LEVEL.light_group and not table.empty(LEVEL.light_group) then
       reqs.light_color = rand.key_by_probs(LEVEL.light_group)
     end
-  
+
     if A.room.theme.theme_override then
       reqs.theme_override = A.room.theme.theme_override
     end
@@ -2446,7 +2446,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
     local prob = R.theme.ceil_light_prob or THEME.ceil_light_prob or 50
 
-    if rand.odds(prob) and not R.has_liquid_ceil_lights then 
+    if rand.odds(prob) and not R.has_liquid_ceil_lights then
       R.has_liquid_ceil_lights = true
     end
 
@@ -2542,7 +2542,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         ::skip::
       end
     end
-  
+
   end
 
 
@@ -2718,7 +2718,7 @@ function Layout_handle_corners(LEVEL)
         near_porch = true
       end
 
-      if near_porch and A.ceil_h ~= diff then 
+      if near_porch and A.ceil_h ~= diff then
         return true
       end
     end
@@ -2726,7 +2726,7 @@ function Layout_handle_corners(LEVEL)
     return false
   end
 
-  
+
   local function near_indoor_fence(junc)
 
     if junc.A1.room and junc.A1.room:get_env() == "building" or
@@ -2876,7 +2876,7 @@ function Layout_handle_corners(LEVEL)
 
       -- create support pillars on the corners
       -- where sky and ceilings of any other texture meet 
-      if near_porch(corner) 
+      if near_porch(corner)
       or near_indoor_fence(junc) then
         pillar_it = true
       end
@@ -2986,7 +2986,7 @@ function Layout_indoor_lighting(LEVEL)
 
     for _,A in pairs(R.areas) do
       -- brightness clamp
-      A.base_light = math.clamp(PARAM.wad_minimum_brightness or 0, 
+      A.base_light = math.clamp(PARAM.wad_minimum_brightness or 0,
         base_light, PARAM.wad_maximum_brightness or 255)
     end
 
