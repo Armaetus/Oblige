@@ -294,7 +294,7 @@ function Render_edge(LEVEL, E, SEEDS)
     -- don't get prefabs with a z_fit other than "top" for parks.
     local S1 = E.S
     if A.room and A.room.is_park then
-      if not S1.floor_h and 
+      if not S1.floor_h and
       (A.room.park_type == "hills"
       or A.room.park_type == "river") then
         reqs.no_top_fit = true
@@ -413,7 +413,7 @@ function Render_edge(LEVEL, E, SEEDS)
       seed_w = assert(E.long)
     }
 
-    if E.area and E.area.room 
+    if E.area and E.area.room
     and E.area.room.is_exit and LEVEL.exit_fence then
       reqs.group = LEVEL.exit_fence
     end
@@ -620,6 +620,7 @@ function Render_edge(LEVEL, E, SEEDS)
 
     if not def then
       def = pick_fence_prefab()
+      assert(def)
     end
 
     -- this is set in Room_pick_edge_prefab()
@@ -666,6 +667,7 @@ function Render_edge(LEVEL, E, SEEDS)
 
   local function straddle_beams()
     local def = pick_beam_prefab()
+    assert(def)
 
     local z = assert(E.beam_z)
 
@@ -975,8 +977,10 @@ stderrf("dA = (%1.1f %1.1f)  dB = (%1.1f %1.1f)\n", adx, ady, bdx, bdy)
     if E.kind == "window" then
       def = pick_window_fab()
     else
-      def = assert(E.prefab_def)
+      def = E.prefab_def
     end
+
+    assert(def)
 
     local T
 
@@ -1039,8 +1043,8 @@ stderrf("dA = (%1.1f %1.1f)  dB = (%1.1f %1.1f)\n", adx, ady, bdx, bdy)
   elseif E.kind == "sky_edge" and A.floor_h then
     edge_outer_sky()
 
-  elseif E.kind == "steps" then
-    edge_steps()
+  --[[elseif E.kind == "steps" then
+    edge_steps()]]
 
   elseif E.kind == "railing" then
     straddle_railing()
@@ -1645,6 +1649,18 @@ stderrf("away = %s\n\n", string.bool(away))
       local A1 = S.area
       local A2, S1
 
+      -- north
+      S1 = SEEDS[S.sx][S.sy + 1]
+      A2 = S1.area
+      if A2 ~= A1 then
+        p7, p9 = false, false
+      end
+      if S1.diagonal == 9 then
+        p9 = true
+      elseif S1.diagonal == 7 then
+        p7 = true
+      end
+
       -- south
       S1 = SEEDS[S.sx][S.sy - 1]
       A2 = S1.area
@@ -1666,6 +1682,9 @@ stderrf("away = %s\n\n", string.bool(away))
       if S1.diagonal == 1 then
         p1 = true
       end
+      if S1.diagonal == 7 then
+        p7 = true
+      end
 
       -- east
       S1 = SEEDS[S.sx + 1][S.sy]
@@ -1676,17 +1695,8 @@ stderrf("away = %s\n\n", string.bool(away))
       if S1.diagonal == 3 then
         p3 = true
       end
-
-      -- north
-      S1 = SEEDS[S.sx][S.sy + 1]
-      A2 = S1.area
-      if A2 ~= A1 then
-        p7, p9 = false, false
-      end
       if S1.diagonal == 9 then
         p9 = true
-      elseif S1.diagonal == 7 then
-        p7 = true
       end
 
       -- SW
@@ -1719,7 +1729,7 @@ stderrf("away = %s\n\n", string.bool(away))
 
     end
   end
-  
+
   if S.diagonal == 1 then
     local p_val = sel(p1,1,0) + sel(p3,2,0) + sel(p7,4,0)
 
@@ -2755,7 +2765,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
   if A.floor_group and A.floor_group.wall_group then
     reqs.group = A.floor_group.wall_group
   end
-  if chunk.from_area 
+  if chunk.from_area
   and chunk.from_area.floor_group
   and chunk.from_area.floor_group.wall_group then
     reqs.group = chunk.from_area.floor_group.wall_group
@@ -2872,6 +2882,8 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     skin.floor2 = chunk.dest_area.floor_mat
     skin.ceil2  = chunk.dest_area.ceil_mat
   end
+
+  assert(def)
 
   if def.open_to_sky then
     -- ensure a sky ceiling is made for this
@@ -3155,7 +3167,7 @@ function Render_all_areas(LEVEL, SEEDS)
 
   if LEVEL.has_streets and PARAM.bool_road_markings == 1 then
     Render_find_street_markings(LEVEL, SEEDS)
-    Render_all_street_markings(LEVEL, SEEDS)
+    Render_all_street_markings(LEVEL)
     Render_establish_street_lanes(LEVEL, SEEDS)
     Render_all_street_traffic(LEVEL, SEEDS)
   end
@@ -3687,6 +3699,7 @@ function Render_scenic_fabs(LEVEL, SEEDS)
       }
 
       local pick = rand.pick(area.seeds)
+      assert(pick)
       local x = pick.sx
       local y = pick.sy
 
