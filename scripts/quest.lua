@@ -3635,6 +3635,10 @@ function Quest_trim_prefabs(LEVEL)
     used_groups[LEVEL.outdoor_wall_group] = 1
   end
 
+  if LEVEL.alt_outdoor_wall_group then
+    used_groups[LEVEL.alt_outdoor_wall_group] = 1
+  end
+
   -- not necessarily unused, but if the level has parks, this'll be
   -- required
   used_groups["natural_walls"] = 1
