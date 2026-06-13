@@ -108,7 +108,7 @@ PREFABS.Pic_tech_data_center_pic_1_EPIC =
 
   group = "gtd_data_center",
 
-  x_fit = "frame",
+  x_fit = {16,24 , 232,240},
   y_fit = "top",
 
   bound_z2 = 96
@@ -121,7 +121,7 @@ PREFABS.Pic_tech_data_center_pic_2 =
 
   group = "gtd_data_center",
 
-  x_fit = "frame",
+  x_fit = {16,24 , 232,240},
   y_fit = "top",
 
   bound_z2 = 96
@@ -137,7 +137,7 @@ PREFABS.Pic_tech_data_center_pic_3_compscreen =
   group = "gtd_data_center",
   texture_pack = "armaetus",
 
-  x_fit = "frame",
+  x_fit = {16,24 , 232,240},
   y_fit = "top",
 
   bound_z2 = 96
@@ -156,7 +156,7 @@ PREFABS.Pic_tech_dh_comp =
 
   group = "gtd_dh_comp",
 
-  x_fit = "frame",
+  x_fit = {16,24 , 232,240},
   y_fit = "top",
 
   bound_z1 = 0,
