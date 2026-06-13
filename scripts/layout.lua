@@ -2819,8 +2819,6 @@ function Layout_handle_corners(LEVEL)
             goto skip
           end
 
-          tallest_floor = math.max(tallest_floor, A.floor_h + junc.E1.rail_offset)
-
           -- if inside a builing, connect post to the ceiling
           -- if the difference between ceiling and fence height
           -- is less than half the height of the fence
@@ -2828,8 +2826,10 @@ function Layout_handle_corners(LEVEL)
             local diff = tallest_ceil - tallest_floor
             if diff <= (junc.E1.rail_offset / 2) then
               post_top_z = EXTREME_H
-              goto skip
+            else
+              post_top_z = tallest_floor + junc.E1.rail_offset
             end
+            goto skip
           end
 
           if A.vista_type == "simple_fence" and A.fence_type ~= "railing" then
