@@ -683,11 +683,20 @@ function Junction_make_map_edge(junc)
 end
 
 
-function Junction_calc_wall_tex(A1, A2, type)
+function Junction_calc_wall_tex(A1, A2, kind, group)
 
   -- clearings - appears first above others
-  if type ~= "window" then
-    if A1.is_clearing then return A1.zone.nature_facade end
+  if kind ~= "window" then
+
+    if A1.is_clearing then
+      if kind == "joiner" or
+      kind == "closet" and
+      group ~= "natural_walls" then
+        return A1.zone.facade_mat
+      end
+
+      return A1.zone.nature_facade
+    end
   end
 
   -- foreshadowing exit override

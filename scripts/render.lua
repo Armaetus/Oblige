@@ -2625,6 +2625,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     def = Fab_pick(LEVEL, reqs)
   end
 
+  assert(def)
 
   -- lighting --
   -- FIX-ME: transfer dynamic lighting code from ceiling lights to here
@@ -2652,7 +2653,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     end
 
   elseif chunk.from_area then
-    skin.wall  = Junction_calc_wall_tex(chunk.from_area, A)
+    skin.wall  = Junction_calc_wall_tex(chunk.from_area, A, chunk.kind, def.group)
     skin.floor = chunk.floor_mat or chunk.from_area.floor_mat
     skin.ceil  = chunk.from_area.ceil_mat
   end
@@ -2661,17 +2662,15 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     local C = assert(chunk.conn)
     local A2 = sel(C.R1 == A.room, C.A2, C.A1)
 
-    skin.outer  = Junction_calc_wall_tex(A2, A)
+    skin.outer  = Junction_calc_wall_tex(A2, A, chunk.kind, def.group)
     skin.floor2 = A2.floor_mat
     skin.ceil2  = A2.ceil_mat
 
   elseif chunk.dest_area then
-    skin.outer  = Junction_calc_wall_tex(chunk.dest_area, A)
+    skin.outer  = Junction_calc_wall_tex(chunk.dest_area, A, chunk.kind, def.group)
     skin.floor2 = chunk.dest_area.floor_mat
     skin.ceil2  = chunk.dest_area.ceil_mat
   end
-
-  assert(def)
 
   if def.open_to_sky then
     -- ensure a sky ceiling is made for this
@@ -2687,8 +2686,10 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
   end
 
   if A.is_natural_park or A.is_clearing then
+
     skin.wall = A.zone.facade_mat
     if def.group == "natural_walls" or reqs.key == "secret" then
+
       skin.wall = A.zone.nature_facade
       if chunk.kind == "joiner" then
         if chunk.from_area.is_natural_park then
@@ -2698,7 +2699,9 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
           skin.outer = chunk.dest_area.zone.nature_facade
         end
       end
+
     end
+
   end
 
 

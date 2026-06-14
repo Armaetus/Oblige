@@ -2974,12 +2974,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
   local function group_ceilings(R)
     for _,A in pairs(R.areas) do
-      if A.mode == "floor"
-      or (
-        (R.is_outdoor
-        and (A.mode == "floor" or (A.chunk and A.chunk.kind == "stair")))
-        and (A.is_porch or A.is_porch_neighbor)
-      )
+      if (A.mode == "floor" or (A.chunk and A.chunk.kind == "stair"))
+      or (A.is_porch or A.is_porch_neighbor)
       then
         A.ceil_group = { id=alloc_id(LEVEL, "ceil_group") }
       end
