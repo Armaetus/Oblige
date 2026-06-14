@@ -2826,18 +2826,16 @@ function Layout_handle_corners(LEVEL)
             local diff = tallest_ceil - tallest_floor
             if diff <= (junc.E1.rail_offset / 2) then
               post_top_z = EXTREME_H
-            else
-              post_top_z = tallest_floor + junc.E1.rail_offset
+              goto skip
             end
-            goto skip
           end
 
           if A.vista_type == "simple_fence" and A.fence_type ~= "railing" then
             tallest_floor = math.max(tallest_floor, A.floor)
           end
-          ::skip::
+          post_top_z = tallest_floor + junc.E1.rail_offset
 
-          post_top_z = tallest_floor
+          ::skip::
         end
 
         corner.kind = "post"
