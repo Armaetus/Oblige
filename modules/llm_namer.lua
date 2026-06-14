@@ -1700,7 +1700,7 @@ LLM_NAME.story_components =
       "Gatewatch Command Node, centralized control center for dimensional breach response protocols",
       "Broken Crown Arcology, partially collapsed megastructure used for emergency habitation",
 
-      "Phantom Line Communications Array, corrupted signal relay network broadcasting looping distress calls",
+      "Argenta Space Elevator Array, a massive complex of multiple space elevators constantly battled between by Hell and humans",
       "Cold Harbor Evacuation Corridor, high-risk civilian extraction route repeatedly compromised by hostiles",
       "Sector R-17 Containment Wall, reinforced barrier structure separating infected zones from active cities",
       "Greyfield Industrial Expanse, overgrown manufacturing district abandoned after containment breach",
@@ -1749,7 +1749,7 @@ LLM_NAME.story_components =
 
       "Blackwater Industrial City, coastal manufacturing hub contaminated by chemical and biological spillover",
       "Rust Meridian Housing Grid, worker-class residential sector experiencing long-term systemic decay",
-      "Phantom Transit City, transportation-linked megacity where communication systems remain intermittently corrupted",
+      "Acheron Transit City, transportation-linked megacity where communication systems remain intermittently corrupted",
       "Nullhaven Urban Remnant, abandoned city fragment isolated after dimensional instability event",
       "Broken Crown Metropolis, former capital district fractured into sealed emergency sectors",
       "Red Quarantine Belt City, continuous urban containment zone encircling infected interior regions",
