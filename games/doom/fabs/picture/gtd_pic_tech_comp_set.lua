@@ -162,3 +162,24 @@ PREFABS.Pic_tech_dh_comp =
   bound_z1 = 0,
   bound_z2 = 112
 }
+
+--
+
+PREFABS.Pic_black_mirror_1 =
+{
+  template = "Pic_tech_comp_console_1",
+  map = "MAP09",
+
+  prob = 5000,
+
+  height = 96,
+
+  group = "gtd_black_mirror",
+
+  x_fit = "frame",
+  y_fit = "top",
+  z_fit = {84, 86},
+
+  bound_z1 = 0,
+  bound_z2 = 96
+}

@@ -1095,6 +1095,7 @@ ULTDOOM.THEMES =
       gtd_computers_blue_shawn = 32,
       gtd_dh_comp = 50,
       --
+      gtd_black_mirror = 50,
       gtd_data_center = 50,
       --
       gtd_writhing_mass = 10,
@@ -1583,6 +1584,7 @@ ULTDOOM.THEMES =
 
       gtd_computers = 45,
       gtd_dh_comp = 30,
+      gtd_black_mirror = 25,
 
       gtd_wall_octagon_insets = 25,
       gtd_wall_grated_machines = 20,

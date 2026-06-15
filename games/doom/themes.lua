@@ -1343,6 +1343,7 @@ DOOM.THEMES =
       gtd_computers_blue_shawn = 25,
       gtd_dh_comp = 50,
       --
+      gtd_black_mirror = 50,
       gtd_data_center = 50,
       --
       gtd_writhing_mass = 10,
@@ -1851,6 +1852,7 @@ DOOM.THEMES =
       gtd_computers_blue_shawn = 18,
       gtd_dh_comp = 25,
       --
+      gtd_black_mirror = 40,
       gtd_data_center = 35,
       --
       gtd_drywall = 50,
