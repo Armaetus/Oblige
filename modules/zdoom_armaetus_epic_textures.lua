@@ -967,6 +967,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
       end
     end
   end
+
   for _,T in pairs(sand_tab) do
     for _,TG in pairs(T) do
       for key,prob in pairs(TG) do
@@ -980,8 +981,25 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   -- modify themes if there's a non-"temperate" outdoor_theme
   if OB_CONFIG.game == "doom2" then
     if LEVEL.outdoor_theme == "snow" then
+      for _,T in pairs(sand_tab) do
+        for _,TG in pairs(T) do
+          for key,prob in pairs(TG) do
+            TG[key] = 0
+          end
+        end
+      end
+
       table.deep_merge(GAME.ROOM_THEMES, snow_tab, 2)
+
     elseif LEVEL.outdoor_theme == "desert" then
+      for _,T in pairs(snow_tab) do
+        for _,TG in pairs(T) do
+          for key,prob in pairs(TG) do
+            TG[key] = 0
+          end
+        end
+      end
+
       table.deep_merge(GAME.ROOM_THEMES, sand_tab, 2)
     end
   end
