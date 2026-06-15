@@ -4007,6 +4007,11 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     -- now pick textures
     select_ceiling_mats(R)
+
+    -- quick loop to fix remaining textures
+    for _,A in pairs(R.areas) do
+      A.ceil_mat = (R.ceil_mats[A.ceil_h])
+    end
   end
 
 
