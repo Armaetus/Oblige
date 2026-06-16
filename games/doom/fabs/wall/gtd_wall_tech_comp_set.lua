@@ -377,20 +377,9 @@ PREFABS.Wall_gtd_black_mirror_ad_panel =
   tex_ADVCR3 =
   {
     ADVCR3 = 2,
-    ADVCR4 = 2,
+    ADVCR5 = 2,
     ADVDE4 = 2,
     ADVDE6 = 2,
-
-    ARCD10 = 1,
-    ARCD11 = 1,
-    ARCD2 = 1,
-    ARCD3 = 1,
-    ARCD4 = 1,
-    ARCD5 = 1,
-    ARCD6 = 1,
-    ARCD7 = 1,
-    ARCD8 = 1,
-    ARCD9 = 1,
 
     COMPSA1 = 2,
     COMPSC1 = 2,
@@ -398,6 +387,14 @@ PREFABS.Wall_gtd_black_mirror_ad_panel =
     LAVWHIT1 = 2,
     NOISE2A = 2,
     NOISE3A = 2
+  },
+
+  sector_12 =
+  {
+    [0] = 10,
+    [12] = 2,
+    [13] = 2,
+    [21] = 2,
   }
 }
 

@@ -181,5 +181,53 @@ PREFABS.Pic_black_mirror_1 =
   z_fit = {84, 86},
 
   bound_z1 = 0,
-  bound_z2 = 96
+  bound_z2 = 96,
+
+  tex_ADVCR3 =
+  {
+    ADVCR3 = 2,
+    ADVCR5 = 2,
+    ADVDE4 = 2,
+    ADVDE6 = 2,
+
+    COMPSA1 = 2,
+    COMPSC1 = 2,
+    COMPSD1 = 2,
+    LAVWHIT1 = 2,
+    NOISE2A = 2,
+    NOISE3A = 2
+  },
+
+  tex_ADVCR5 =
+  {
+    ADVCR3 = 2,
+    ADVCR5 = 2,
+    ADVDE4 = 2,
+    ADVDE6 = 2,
+
+    COMPSA1 = 2,
+    COMPSC1 = 2,
+    COMPSD1 = 2,
+    LAVWHIT1 = 2,
+    NOISE2A = 2,
+    NOISE3A = 2
+  },
+
+  sector_12 =
+  {
+    [0] = 10,
+    [12] = 2,
+    [13] = 2,
+    [21] = 2,
+  }
+}
+
+PREFABS.Pic_black_mirror_2 =
+{
+  template = "Pic_black_mirror_1",
+  map = "MAP10",
+
+  tex_ADVCR3 = nil,
+
+  tex_ADVCR5 = nil
 }
