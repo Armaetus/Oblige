@@ -2808,11 +2808,12 @@ function Layout_handle_corners(LEVEL)
         local lowest_ceil = EXTREME_H
 
         for _,A in pairs(corner.areas) do
-
           tallest_floor = math.max(tallest_floor, A.floor_h)
           lowest_ceil = math.min(lowest_ceil, A.ceil_h)
+        end
 
-            -- extend posts all the way to the roof if
+        for _,A in pairs(corner.areas) do
+          -- extend posts all the way to the roof if
           -- neighboring porches
           if A.is_porch or A.is_porch_neighbor then
             tallest_floor = EXTREME_H
@@ -2824,7 +2825,7 @@ function Layout_handle_corners(LEVEL)
           -- is less than half the height of the fence
           if mostly_env == "building" then
             local diff = lowest_ceil - tallest_floor
-            if diff <= (junc.E1.rail_offset / 2) then
+            if (junc.E1.rail_offset / 2) >= diff then
               post_top_z = EXTREME_H
               goto skip
             end
