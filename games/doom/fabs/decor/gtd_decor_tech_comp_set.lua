@@ -7,7 +7,7 @@ PREFABS.Decor_tech_comp_lite5_1 =
 
   prob = 5000,
   group = "gtd_computers_lite5",
-  
+
   size = 80,
   height = 88,
 
@@ -141,4 +141,21 @@ PREFABS.Decor_gtd_dh_comp_3 =
   bound_z2 = 96,
 
   z_fit = {82,84}
+}
+
+--
+
+PREFABS.Decor_black_mirror_pillar =
+{
+  template = "Decor_tech_comp_lite5_1",
+  map = "MAP10",
+
+  group = "gtd_black_mirror",
+
+  height = 96,
+  size = 60,
+
+  bound_z2 = 96,
+
+  z_fit = {10,12}
 }
