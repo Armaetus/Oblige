@@ -882,8 +882,8 @@ DOOM.NAMES =
         Support=5, Holding=5, Loading=5,
         Quarantine=5, Shipment=5, Staging=5,
         --+ manufacturing
-        Testing=5, Authorization=5, Administration=5,
-        Synthesis=5, Unification=3,
+        Authorization=5, Administration=5, Fabrications=5,
+        Synthesis=5,
         --+ waste
         Drainage=5, Disposal=5, Dumping=3, Disperser=5,
         --+ resources
@@ -1132,7 +1132,7 @@ DOOM.NAMES =
         -- MSSP adds
         -- shapes
         Dome=7, Quadrangle=3, Rotunda=2,
-        Circle=10, Triangle=3, Ring=5,
+        Circle=10, Ring=5,
         Oval=2,
 
         Basin=5, Arm=5,
