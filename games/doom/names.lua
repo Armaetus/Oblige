@@ -1107,7 +1107,7 @@ DOOM.NAMES =
 
         -- science-y places
         Station=15, Tower=5, Relay=5,
-        Satellite=10, Colony=15, Project=5,
+        Array=10, Colony=15, Project=5,
         Experiment=3, Network=5, System=15,
         Node=5, Router=5,
 

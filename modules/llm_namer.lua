@@ -1574,44 +1574,155 @@ LLM_NAME.prompt_flavors =
 LLM_NAME.story_components =
 {
   flavors = {
-    "War on Multiple Fronts",
-    "Alliance Under Fire",
-    "Internal Security Breach",
-    "Hostiles Inside the Perimeter",
-    "Insurrection and Collapse",
-    "Containment Failure in Progress",
-    "Hell Forces Enter the Theater",
-    "Secondary Incursion Detected",
-    "Search and Destroy Operation",
-    "Stranded Behind Enemy Lines",
-    "Holding the Line",
-    "Attrition Without End",
-    "Unauthorized Experiment Released",
-    "Sector Descends into Chaos",
-    "Enemy Forces Coordinate Attacks",
-    "Catastrophic Event Imminent",
-    "Collapse Beneath the Surface",
-    "Hellgate Breach Confirmed",
-    "Balance of Power Shifts",
-    "Multiple Operations Converge",
-    "Sacrifice to Secure Evacuation",
-    "Dead Colony Transmission Detected",
-    "Enemy Reconnaissance Active",
-    "Defense of a Failing Earth",
-    "Corruption Spreads Through Command",
-    "Outnumbered and Cut Off",
-    "Final Defensive Position",
-    "Combat Operations During Extreme Conditions",
-    "Hunter-Killer Units Deployed",
-    "False Signals and Misdirection",
-    "Demonic War Machines Activated",
-    "Operational Time Running Out",
-    "Unknown Actors Influence Events",
-    "Lost Beyond Charted Space",
-    "Weapon System Out of Control",
-    "The Nuclear Option",
-    "Scorched Earth",
-    "Destroy the Source of Power"
+    -- The Nature of Threat (What causes the crisis?)
+    "Incursion from adjacent dimensions.",
+    "Threat from internal military corruption.",
+    "Overwhelming alien intelligence presence.",
+    "Escalation due to failed bio-weaponry.",
+    "Contamination spreading through resources.",
+    "Enemy focused on tracking specific assets.",
+    "Parasitic entity consuming life force.",
+    "Weaponized demonic power outbreaks only.",
+    "Rival supernatural forces competing here.",
+    "The sudden mutation of native lifeforms.",
+    "External celestial body entering sector.",
+
+    -- Systemic Breakdown (How is the world falling apart?)
+    "Loss of central command oversight.",
+    "Resource scarcity fueling internal strife.",
+    "Structural integrity failing everywhere.",
+    "Containment protocols breaking down sequentially.",
+    "Core life support systems failure imminent.",
+    "Time stream fluctuating erratically here.",
+    "The facility is self-destructing rapidly.",
+    "Artificial gravity fields destabilizing wildly.",
+
+    -- Authority / Control Failure (Who controls the situation?)
+    "Authority vacuum; no single leader remains.",
+    "Military chains of command dissolved entirely.",
+    "Security forces turning on own allies.",
+    "Overlord AI system gone rogue.",
+    "Government failing due to external pressure.",
+    "Jurisdictional conflicts between armed groups.",
+    "Loss of governing scientific council.",
+
+    -- Character and Trust Stakes (The human drama)
+    "Conflict driven by political rivalries.",
+    "Faction loyalties strained constantly now.",
+    "Opposition using widespread misinformation.",
+    "Forced alliance with dubious minor faction.",
+    "Protagonists hunted by allied forces.",
+    "Trust placed in a single questionable source.",
+    "Moral compromise unavoidable survival task.",
+
+    -- Environment and Physical Hazards (The physical setting)
+    "Unstable gravity fields fluctuating wildly.",
+    "Toxicity levels reaching fatal maximums.",
+    "Extreme weather patterns causing panic.",
+    "Structural instability from dimensional stress.",
+    "Permanent radiation zones are active.",
+    "Mutagenic spores changing everything living.",
+
+    -- Conflict Scale and Scope (The size of the conflict)
+    "Conflict on a massive planetary scale.",
+    "Localized threat requiring immediate isolation.",
+    "Small skirmish over single object access.",
+    "Large-scale war approaching sector boundary.",
+    "Combat spanning multiple disconnected levels.",
+    "Ongoing struggle against relentless enemy flow.",
+
+    -- Psycho-Social Stakes (The emotional core)
+    "Paranoia due to constant surveillance always.",
+    "Psychological warfare targeting personnel minds.",
+    "The weight of forbidden historical knowledge.",
+    "Secret agendas hidden in clear plain sight.",
+    "Truth is revealed at immense personal cost.",
+
+    -- Primary Governing Force (The Narrative Hook)
+    "Search for missing vital power prototype.",
+    "Rescue critical scientist from trapped area.",
+    "Investigation into ancient alien secrets.",
+    "Military necessity over civilian life mandate.",
+    "Uncovering the true nature of existence."
+  },
+
+  objectives = {
+    -- Destruction/Force Objectives
+    "Detonate main facility core.",
+    "Collapse key bridge access sector.",
+    "Obliterate enemy transport staging area.",
+    "Overload automated sentry networks.",
+    "Destroy central comms array.",
+    "Purge sector of demonic contamination.",
+    "Collapse unstable structural passage.",
+    "Demolish remaining hostile weapon caches.",
+    "Disable primary rift generators.",
+    "Burn contaminated bio-zones entirely.",
+    "Seize and disable enemy vehicles.",
+    "Eliminate rogue internal security forces.",
+    "Breach main containment vault doors.",
+
+    -- Power/Infrastructure Objectives
+    "Activate emergency filtration vents.",
+    "Recharge prototype heavy weaponry.",
+    "Initiate localized gravity dampening.",
+    "Power ancient conduit lines.",
+    "Activate vertical escape lift.",
+    "Restart subterranean control network.",
+    "Restore atmospheric seals totally.",
+    "Energize high-yield defense grid.",
+    "Overcharge sector power relay point.",
+
+    -- Acquisition/MacGuffin Objectives
+    "Acquire key biometric access code.",
+    "Retrieve classified pre-breach schematics.",
+    "Capture advanced demonic specimens.",
+    "Seize prototype heavy artillery unit.",
+    "Acquire vital fuel cell stacks.",
+    "Secure enemy comms relay point.",
+    "Harvest rare exotic power crystals.",
+    "Locate specific rogue cult leader.",
+    "Find lost ancient technology blueprints.",
+
+    -- Stabilization/Countermeasure Objectives
+    "Stabilize dimensional membrane rift site.",
+    "Neutralize volatile energy seepage source.",
+    "Decontaminate spore cluster zone:",
+    "Bypass military countermeasures field.",
+    "Harmonize conflicting power conduits.",
+    "Reinforce compromised tunnel sections.",
+    "Dampen lingering chaotic residues.",
+    "Resequence reality warp emitters.",
+
+    -- Location/Intelligence Objectives
+    "Locate dimensional breach source point.",
+    "Discover clear proof of betrayal:",
+    "Map primary emergency escape routes.",
+    "Identify enemy garrison weakness flaw.",
+    "Find vital survivor testimonies records.",
+    "Pinpoint hidden network junction node.",
+    "Track missing research subject location.",
+
+    -- Control/Manipulation Objectives
+    "Redirect massive energy surge flow.",
+    "Trigger controlled collapse zones.",
+    "Manipulate local gravity vectors.",
+    "Initiate targeted reality distortion field.",
+    "Overwhelm enemy systems sensory overload.",
+    "Control localized temporal distortions.",
+
+    -- Escape/Exfiltration Objectives
+    "Reach designated exfil rendezvous point.",
+    "Traverse unstable contaminated wasteland.",
+    "Escape via armored extraction convoy.",
+    "Pass through locked security blast doors.",
+
+    -- Large Scale Objectives
+    "Destroy regional command tower.",
+    "Access vault holding forbidden artifact.",
+    "Overcome indigenous alien intelligence network:",
+    "Neutralize supreme demonic general presence.",
+    "Restore global energy balance now."
   },
 
   naming_styles =
@@ -3532,10 +3643,11 @@ _ENTITIES_
 _FORMAT_
 ]]
     -- flavor injection
-    local story_flavor = rand.pick(LLM_NAME.story_components.flavors)
+    local story_flavor = rand.pick(LLM_NAME.story_components.flavors) .. "\n"
+    story_flavor = story_flavor .. "The Objective: " .. rand.pick(LLM_NAME.story_components.objectives) .. "\n"
+
     -- sometimes add a twist
-    if rand.odds(66) then
-      story_flavor = story_flavor .. "\n"
+    if rand.odds(75) then
       story_flavor = story_flavor .. "The Twist: " .. rand.pick(LLM_NAME.story_components.story_twists) .. "\n"
     end
     prompt = string.gsub(prompt,
