@@ -957,51 +957,35 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   local snow_tab = table.copy(ORP_SNOW_ROOM_THEMES)
   local sand_tab = table.copy(ORP_DESERT_ROOM_THEMES)
 
-  -- greatly increase the probabilities for outdoor_theme specials
-  for _,T in pairs(snow_tab) do
-    for _,TG in pairs(T) do
-      for key,prob in pairs(TG) do
-        if prob < 32 then
-          TG[key] = prob * 32
-        end
-      end
-    end
-  end
-
-  for _,T in pairs(sand_tab) do
-    for _,TG in pairs(T) do
-      for key,prob in pairs(TG) do
-        if prob < 32 then
-          TG[key] = prob * 32
-        end
-      end
-    end
-  end
-
   -- modify themes if there's a non-"temperate" outdoor_theme
   if OB_CONFIG.game == "doom2" then
-    if LEVEL.outdoor_theme == "snow" then
-      for _,T in pairs(sand_tab) do
-        for _,TG in pairs(T) do
-          for key,prob in pairs(TG) do
-            TG[key] = 0
+
+    for _,T in pairs(sand_tab) do
+      for _,TG in pairs(T) do
+        for key,prob in pairs(TG) do
+          if LEVEL.outdoor_theme == "snow" then
+            TG[key] = 0 -- disable the wrong flats 
+          else
+            TG[key] = prob * 32 -- feature the correct flats
           end
         end
       end
-
-      table.deep_merge(GAME.ROOM_THEMES, snow_tab, 2)
-
-    elseif LEVEL.outdoor_theme == "desert" then
-      for _,T in pairs(snow_tab) do
-        for _,TG in pairs(T) do
-          for key,prob in pairs(TG) do
-            TG[key] = 0
-          end
-        end
-      end
-
-      table.deep_merge(GAME.ROOM_THEMES, sand_tab, 2)
     end
+
+    for _,T in pairs(snow_tab) do
+      for _,TG in pairs(T) do
+        for key,prob in pairs(TG) do
+          if LEVEL.outdoor_theme == "desert" then
+            TG[key] = 0 -- disable the wrong flats
+          else
+            TG[key] = prob * 32 -- feature the correct flats
+          end
+        end
+      end
+    end
+
+    table.deep_merge(GAME.ROOM_THEMES, snow_tab, 2)
+    table.deep_merge(GAME.ROOM_THEMES, sand_tab, 2)
   end
   -- MSSP-TODO: do all proper substitutions for Doom1
 
