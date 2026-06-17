@@ -1525,8 +1525,6 @@ function Fab_load_wad(def)
       C.shadow = 64
     elseif S.light < 144 then
       C.shadow = 144 - S.light
-    elseif S.light == 144 then
-      -- nothing happens
     elseif S.light > 240 then
       C.light_add = 96
     elseif S.light > 144 then
