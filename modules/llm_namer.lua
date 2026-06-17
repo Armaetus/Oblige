@@ -3616,7 +3616,7 @@ I need the story to be properly formatted. Do not provide any explanation.
 Rules:
 - narrate in second person
 - Doom universe sub-story style
-- slightly grounded more towards a sci-fi military plot
+- very slightly grounded, military-style sci-fi action plot
 - more on engaging, intruiging story and less on overly prosaic description
 - pure fictional non real-world location
 - absolutely avoid any use of italics, bold, or any Markdown formatting
