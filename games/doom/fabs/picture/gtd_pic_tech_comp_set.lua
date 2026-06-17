@@ -170,13 +170,15 @@ PREFABS.Pic_black_mirror_1 =
   template = "Pic_tech_comp_console_1",
   map = "MAP09",
 
+  texture_pack = "armaetus",
+
   height = 96,
 
   group = "gtd_black_mirror",
 
   x_fit = "frame",
   y_fit = "top",
-  z_fit = {84, 86},
+  z_fit = "top",
 
   bound_z1 = 0,
   bound_z2 = 96,
@@ -209,14 +211,6 @@ PREFABS.Pic_black_mirror_1 =
     LAVWHIT1 = 2,
     NOISE2A = 2,
     NOISE3A = 2
-  },
-
-  sector_12 =
-  {
-    [0] = 10,
-    [12] = 2,
-    [13] = 2,
-    [21] = 2,
   }
 }
 
@@ -231,7 +225,7 @@ PREFABS.Pic_black_mirror_2 =
 
   x_fit = "frame",
   y_fit = "top",
-  z_fit = {84, 86},
+  z_fit = "top",
 
   bound_z1 = 0,
   bound_z2 = 96,

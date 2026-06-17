@@ -362,7 +362,7 @@ PREFABS.Wall_gtd_black_mirror_1 =
   bound_z1 = 0,
   bound_z2 = 96,
 
-  z_fit  = {84, 86}
+  z_fit = "top"
 }
 
 PREFABS.Wall_gtd_black_mirror_ad_panel =
