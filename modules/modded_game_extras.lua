@@ -1949,7 +1949,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
   local function make_prefab_info(R)
 
     local function hn_add_entity(info, x, y, z)
-      hn_marker = {}
+      local hn_marker = {}
       hn_marker.x = x
       hn_marker.y = y
       hn_marker.z = z
@@ -1966,17 +1966,18 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         info.name = "Point: " .. chunk.prefab_def.name
         info.editor_num = PARAM.hn_thing_start_offset
 
-        if chunk.area.floor_group and chunk.area.floor_group.wall_group then
-          info.name = info.name .. " (Wall Group: " ..
-          chunk.area.floor_group.wall_group .. ")"
-        end
-
         if chunk.area then
+          if chunk.area.floor_group and chunk.area.floor_group.wall_group then
+            info.name = info.name .. " (Wall Group: " ..
+            chunk.area.floor_group.wall_group .. ")"
+          end
+
           if chunk.area.room and chunk.area.room.is_outdoor
           and chunk.area.room.outdoor_wall_group then
             info.name = info.name ..
               " (Outdoor Wall Group: " ..
-              chunk.area.room.outdoor_wall_group .. ")"
+              chunk.area.room.outdoor_wall_group .. ")" ..
+              " (Biome: " .. LEVEL.outdoor_theme .. ")"
           end
 
           info.name = info.name .. " (Room Theme: " ..
