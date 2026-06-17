@@ -152,7 +152,8 @@ function PREFAB_CONTROL.fine_tune_filters()
     gtd_data_center = 1.5,
     gtd_dh_comp = 2.25,
     gtd_shopping_mall = 4,
-    gtd_black_mirror = 4,
+    gtd_black_mirror = 5,
+    gtd_storage_wood = 5
   }
   local new_themes_multipliers =
   {

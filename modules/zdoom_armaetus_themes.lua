@@ -4934,6 +4934,7 @@ OBS_RESOURCE_PACK_THEMES =
       gtd_wall_server_room2 = 50,
       --
       gtd_storage_shawn = 50,
+      gtd_storage_wood = 10,
       --
       gtd_wall_cafeteria_set = 50,
       --
@@ -5412,6 +5413,7 @@ OBS_RESOURCE_PACK_THEMES =
       gtd_wall_cafeteria_set = 50,
       --
       gtd_storage_shawn = 50,
+      gtd_storage_wood = 50,
       --
       gtd_tall_glass_epic_yellow = 8,
       gtd_tall_glass_epic_orange = 8,
