@@ -2832,7 +2832,7 @@ function Layout_handle_corners(LEVEL)
           end
 
           if A.vista_type == "simple_fence" and A.fence_type ~= "railing" then
-            tallest_floor = math.max(tallest_floor, A.floor)
+            tallest_floor = math.max(tallest_floor, A.floor_h)
           end
           post_top_z = tallest_floor + junc.E1.rail_offset
 
