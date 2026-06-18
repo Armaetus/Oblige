@@ -349,7 +349,7 @@ function Quest_create_initial_quest(LEVEL)
     -- occasionally the grower will only produce a single room,
     -- hence we cannot reject a starting room completely
     if R.is_start then
-      return 1
+      return -1
     end
     if R.start_neighbor then
       score = score / 50
@@ -518,6 +518,12 @@ function Quest_create_initial_quest(LEVEL)
 
   if LEVEL.secret_exit then
     add_secret_exit()
+  end
+
+  assert(LEVEL.start_room)
+  assert(LEVEL.exit_room)
+  if #LEVEL.rooms > 1 then
+    assert(LEVEL.start_room ~= LEVEL.exit_room)
   end
 end
 
