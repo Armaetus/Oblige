@@ -101,3 +101,34 @@ PREFABS.Decor_urban_storage_collection =
 
   prob = 6500,
 }
+
+--
+
+PREFABS.Decor_urban_storage_wood_huge_boxes_1 =
+{
+  file   = "decor/gtd_decor_urban_storage_set.wad",
+  map    = "MAP04",
+
+  prob   = 5000,
+
+  group = "gtd_storage_wood",
+
+  where  = "point",
+  size   = 96,
+  height = 128,
+
+  bound_z1 = 0,
+  bound_z2 = 128,
+}
+
+PREFABS.Decor_urban_storage_wood_huge_boxes_2 =
+{
+  file   = "decor/gtd_decor_urban_storage_set.wad",
+  map    = "MAP05"
+}
+
+PREFABS.Decor_urban_storage_wood_huge_boxes_3 =
+{
+  file   = "decor/gtd_decor_urban_storage_set.wad",
+  map    = "MAP06"
+}
