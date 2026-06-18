@@ -2746,6 +2746,11 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     T.mirror_x = chunk.sw * SEED_SIZE / 2
   end
 
+  -- fix outdoor lighting
+  if reqs.kind == "picture" and reqs.env == "outdoor" or reqs.env == "park" then
+    A.lighting = chunk.from_area.lighting
+  end
+
   Ambient_push(A.lighting)
 
   if PARAM.bool_peered_exits and PARAM.bool_peered_exits == 1 then
