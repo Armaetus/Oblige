@@ -958,7 +958,7 @@ function OBS_RESOURCE_PACK_EPIC_TEXTURES.generate_environment_themes(self, LEVEL
   local sand_tab = table.copy(ORP_DESERT_ROOM_THEMES)
 
   -- modify themes if there's a non-"temperate" outdoor_theme
-  if OB_CONFIG.game == "doom2" then
+  if OB_CONFIG.game == "doom2" and PARAM.environment_themes ~= "no" then
 
     for _,T in pairs(sand_tab) do
       for _,TG in pairs(T) do
