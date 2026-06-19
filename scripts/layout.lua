@@ -2484,7 +2484,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         if A.is_porch or A.is_porch_neighbor then
           if not rand.odds(prob) then goto skip end
 
-          if A.ceil_group and A.ceil_group.ceil_sink then goto skip end
+          if A.ceil_group and A.ceil_group.sink then goto skip end
 
           A.lamp_def = select_lamp(A)
           if not A.lamp_def then goto skip end
