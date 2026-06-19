@@ -132,3 +132,17 @@ PREFABS.Decor_urban_storage_wood_huge_boxes_3 =
   file   = "decor/gtd_decor_urban_storage_set.wad",
   map    = "MAP06"
 }
+
+PREFABS.Decor_road_clutter_boxes_alt_wood_grouped =
+{
+  template = "Decor_road_clutter_boxes",
+
+  theme = "any",
+  group = "gtd_storage_wood",
+
+  flat_CRATOP1 = "FLAT5_2",
+  flat_CRATOP2 = "FLAT5_2",
+
+  tex_CRATE2 = "WOODMET1",
+  tex_CRATINY = "WOOD10",
+}
