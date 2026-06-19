@@ -364,7 +364,7 @@ function Quest_create_initial_quest(LEVEL)
     end
 
     if R:total_conns() > 1 then
-      score = score / 10
+      score = score * (1 / (R:total_conns() * 0.75))
     end
 
     return score
