@@ -1936,7 +1936,7 @@ function Room_border_up(LEVEL, SEEDS)
       if A1.is_outdoor and A2.is_outdoor then
         if (A1.floor_h ~= A2.floor_h)
         and (A1.fence_up or A2.fence_up) then
-          if can_fence(A1, A2) 
+          if can_fence(A1, A2)
           and not (A1.is_flat_clearing
           or A2.is_flat_clearing) then
             local fence_up_type = rail_or_fence(A1, A2)
@@ -2881,6 +2881,11 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       then
         return (IC.kind == "direct")
       end
+    end
+
+    if A1.ceil_mat == "_SKY" and A2.ceil_mat ~= "_SKY"
+    or A1.ceil_mat ~= "_SKY" and A2.ceil_mat == "_SKY" then
+      return true
     end
 
 --[[
