@@ -3552,7 +3552,7 @@ level_data
     end
 
     -- refer to name history to avoid name re-use
-    prompt = prompt .. "The following names are already used. Avoid re-using them, but feel free to use them as basis for something more distinct:\n"
+    prompt = prompt .. "The following names are already used. Avoid re-using them and already-used words, but feel free to use them as basis for something more distinct:\n"
     if #LLM_NAME.history > 0 then
       for _, name in ipairs(LLM_NAME.history) do
         prompt = prompt .. "* " .. name .. "\n"
