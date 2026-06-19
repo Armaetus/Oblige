@@ -709,13 +709,19 @@ DOOM.NAMES =
         ["Spinehammer"]=10,
         ["Swarm of Terror"]=10,
         ["The Crawling Chaos"]=10,
+        ["The Grueling Grind"]=10,
         ["The Root of Evil"]=10,
         ["Theatre of Pain"]=10,
         ["Theory of Conspiracy"]=10,
+        ["This is Not for You"]=10,
         ["Through Hellfire"]=10,
         ["Towards Greater Gods"]=10,
         ["Under the Gun"]=10,
-        ["Weapon against Oneself"]=10
+        ["Weapon against Oneself"]=10,
+
+        -- Special marker for Bobby "Robert" Prince, who passed away on June 16th, 2026
+        -- Source: https://www.legacy.com/legacy/robert-bobby-prince-lll
+        ["In Memory of Bobby Prince"]=13
         
         -- end marker
 
