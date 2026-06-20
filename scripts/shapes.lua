@@ -12842,6 +12842,60 @@ GROW_36_CROSS_NEW_AREA =
   },
 },
 
+GROW_BLOCKFORTS_QUAD =
+{
+  prob = 20,
+  skip_prob = 80,
+
+  structure =
+  {
+    "11xxxxxxx","11xxxxxxx",
+    ".........","111111111",
+    ".........","1/Av1vA%1",
+    ".........","1AAA1AAA1",
+    "....x....","1AAAxAAA1",
+    "...xxx...","111xxx111",
+    "....x....","1AAAxAAA1",
+    ".........","1AAA1AAA1",
+    ".........","1%A^1^A/1",
+    ".........","111111111"
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "1A","A1"
+  }
+},
+
+GROW_BLOCKFORTS_DOUBLE =
+{
+  prob = 15,
+  skip_prob = 75,
+
+  structure =
+  {
+    "11xxxxxxx","11xxxxxxx",
+    "......xxx","111111xxx",
+    ".......xx","1/Av11%xx",
+    "........x","1AAA111%x",
+    "....x....","1AAAx1111",
+    "...xxx...","111xxx111",
+    "....x....","1111xAAA1",
+    "x........","x%111AAA1",
+    "xx.......","xx%11^A/1",
+    "xxx......","xxx111111"
+  },
+
+  diagonals =
+  {
+    "1A","1.",
+    "1.",
+    ".1",
+    ".1","A1"
+  }
+},
+
 GROW_SLIGE_BOXES =
 {
   prob = 5,
