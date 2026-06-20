@@ -230,3 +230,65 @@ PREFABS.Pic_black_mirror_2 =
   bound_z1 = 0,
   bound_z2 = 96,
 }
+
+PREFABS.Pic_black_mirror_3 =
+{
+  template = "Pic_tech_comp_console_1",
+  map = "MAP11",
+
+  height = 96,
+
+  group = "gtd_black_mirror",
+
+  x_fit = "frame",
+  y_fit = "top",
+  z_fit = "top",
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  tex_ADVCR3 =
+  {
+    ADVCR3 = 2,
+    ADVCR5 = 2,
+    ADVDE4 = 2,
+    ADVDE6 = 2,
+
+    COMPSA1 = 2,
+    COMPSC1 = 2,
+    COMPSD1 = 2,
+    LAVWHIT1 = 2,
+    NOISE2A = 2,
+    NOISE3A = 2
+  },
+
+  tex_ADVCR5 =
+  {
+    ADVCR3 = 2,
+    ADVCR5 = 2,
+    ADVDE4 = 2,
+    ADVDE6 = 2,
+
+    COMPSA1 = 2,
+    COMPSC1 = 2,
+    COMPSD1 = 2,
+    LAVWHIT1 = 2,
+    NOISE2A = 2,
+    NOISE3A = 2
+  },
+
+  tex_ADVDE4 =
+  {
+    ADVCR3 = 2,
+    ADVCR5 = 2,
+    ADVDE4 = 2,
+    ADVDE6 = 2,
+
+    COMPSA1 = 2,
+    COMPSC1 = 2,
+    COMPSD1 = 2,
+    LAVWHIT1 = 2,
+    NOISE2A = 2,
+    NOISE3A = 2
+  }
+}
