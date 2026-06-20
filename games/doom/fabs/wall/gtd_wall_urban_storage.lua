@@ -118,10 +118,10 @@ PREFABS.Wall_urban_storage_wood =
   }
 }
 
-PREFABS.Wall_urban_storage_wood =
+PREFABS.Wall_urban_storage_wood_short =
 {
   template = "Wall_urban_storage1",
-  map = "MAP06",
+  map = "MAP07",
 
   prob = 50,
   rank = 1,
