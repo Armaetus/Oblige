@@ -14,10 +14,11 @@ PREFABS.Pic_urban_wood_storage_1 =
   seed_h = 1,
 
   bound_z1 = 0,
-  bound_z2 = 96,
+  bound_z2 = 192,
 
   deep   =  16,
 
+  y_fit = "top",
   x_fit = {264, 272},
   z_fit = "top"
 }
