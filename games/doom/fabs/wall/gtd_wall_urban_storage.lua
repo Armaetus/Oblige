@@ -66,10 +66,10 @@ PREFABS.Wall_urban_storage_wood =
 
   where  = "edge",
   deep   = 16,
-  height = 96,
+  height = 128,
 
   bound_z1 = 0,
-  bound_z2 = 129,
+  bound_z2 = 128,
 
   z_fit  = "top",
 
@@ -118,21 +118,62 @@ PREFABS.Wall_urban_storage_wood =
   }
 }
 
+PREFABS.Wall_urban_storage_wood =
+{
+  template = "Wall_urban_storage1",
+  map = "MAP06",
+
+  prob = 50,
+  rank = 1,
+
+  group = "gtd_storage_wood",
+
+  where = "edge",
+  deep = 16,
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 128,
+
+  z_fit  = "top",
+
+  tex_WODCRAT2 =
+  {
+    WODCRAT2 = 1,
+    WODCRAT3 = 1,
+    WODCRAT4 = 1
+  },
+
+  tex_WODCRAT3 =
+  {
+    WODCRAT2 = 1,
+    WODCRAT3 = 1,
+    WODCRAT4 = 1
+  },
+
+  tex_WODCRAT4 =
+  {
+    WODCRAT2 = 1,
+    WODCRAT3 = 1,
+    WODCRAT4 = 1
+  }
+}
+
 PREFABS.Wall_urban_storage_wood_diagonal =
 {
   template = "Wall_urban_storage1",
   map = "MAP09",
 
-  prob   = 50,
+  prob = 50,
 
   group = "gtd_storage_wood",
 
-  where  = "diagonal",
-  deep   = 16,
+  where = "diagonal",
+  deep = 16,
   height = 96,
 
   bound_z1 = 0,
-  bound_z2 = 129,
+  bound_z2 = 128,
 
   z_fit  = "top",
 
