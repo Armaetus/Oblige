@@ -3353,11 +3353,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         local N = A:lowest_neighbor()
         local N2 = A:highest_neighbor()
 
-        if not N then
---!!!! FIXME : temp stuff for park-border experiment....
-          error("failed to find liquid neighbor")
-          A.floor_h = 977
-          A.ceil_h  = 999
+        -- escape case for when a liquid area
+        -- has no neighbor... which should never happen
+        if not N and not N2 then
+          A.floor_h = nil
+          A.ceil_h  = nil
+          A.kind = "void"
           goto skip
         end
 
