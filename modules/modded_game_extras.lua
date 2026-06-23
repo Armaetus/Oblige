@@ -1966,6 +1966,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         info.name = "Point: " .. chunk.prefab_def.name
         info.editor_num = PARAM.hn_thing_start_offset
 
+        if chunk.space then
+          info.name = info.name .. " (Size: " .. (chunk.prefab_def.size or "nil") .. "/" .. chunk.space .. ")"
+        end
+
         if chunk.area then
           if chunk.area.floor_group and chunk.area.floor_group.wall_group then
             info.name = info.name .. " (Wall Group: " ..
