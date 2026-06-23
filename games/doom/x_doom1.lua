@@ -1354,21 +1354,20 @@ ULTDOOM.THEMES =
       demon   = 1.25,
       caco    = 0.5,
       baron   = 0.35,
-      skull   = 0.2,
+      skull   = 0.2
     },
 
     sink_style =
     {
-      sharp = 1,
-      curved = 0.1,
+      sharp = 1
     },
 
     skyboxes =
     {
-      Skybox_generic = 50,
+      Skybox_generic = 50
     },
 
-    ceil_light_prob = 70,
+    ceil_light_prob = 70
   },
 
 
@@ -1644,8 +1643,7 @@ ULTDOOM.THEMES =
 
     sink_style =
     {
-      curved = 1,
-      sharp = 1,
+      sharp = 1
     },
 
     skyboxes =
@@ -2182,21 +2180,20 @@ ULTDOOM.THEMES =
     scenic_fences =
     {
       MIDBRN1 = 3,
-      MIDGRATE = 12,
+      MIDGRATE = 12
     },
 
     sink_style =
     {
-      sharp = 0.1,
-      curved = 1,
+      sharp = 1
     },
 
     skyboxes =
     {
-      Skybox_garrett_hell = 50,
+      Skybox_garrett_hell = 50
     },
 
-    ceil_light_prob = 35,
+    ceil_light_prob = 35
   },
 
 
@@ -2603,22 +2600,21 @@ ULTDOOM.THEMES =
 
     scenic_fences =
     {
-      MIDGRATE = 50,
+      MIDGRATE = 50
     },
 
     sink_style =
     {
-      sharp = 1,
-      curved = 1,
+      sharp = 1
     },
 
     skyboxes =
     {
       Skybox_garrett_city = 50,
-      Skybox_hellish_city = 50,
+      Skybox_hellish_city = 50
     },
 
-    ceil_light_prob = 45,
+    ceil_light_prob = 45
   },
 }
 

@@ -2146,8 +2146,7 @@ DOOM.THEMES =
 
     sink_style =
     {
-      sharp = 1,
-      curved = 1
+      sharp = 1
     },
 
     skyboxes =
@@ -2713,8 +2712,7 @@ DOOM.THEMES =
 
     sink_style =
     {
-      sharp = 0.25,
-      curved = 1
+      sharp = 1
     },
 
     skyboxes =
