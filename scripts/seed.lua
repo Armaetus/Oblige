@@ -822,6 +822,8 @@ function Seed_dump_rooms(SEEDS)
           if S.area.chunk.from_dir == 8 then return "↓" end
         end
       end
+
+      if S.area.mode == "liquid" then return "~" end
     end
 
     if R.is_outdoor then
