@@ -3809,6 +3809,7 @@ DOOM.NAMES =
         ["Wrong End of the Stick"]=10,
         ["Wild Hunt"]=10,
         ["You Are Already Dead"]=10,
+        ["You Are The Noise, We Are The Data"]=10,
         ["You'll Float Too"]=10,
         ["You'll See"]=10,
         ["You Need Food... Badly!"]=10,
