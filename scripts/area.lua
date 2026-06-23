@@ -831,7 +831,7 @@ function Junction_calc_fence_z(A1, A2)
   -- one of the areas' ceiling heights (usually the one with the porch)
   -- MSSP
   if A1.is_porch or A2.is_porch then
-    if not A1.room.is_outdoor or not A2.room.is_outdoor then
+    if not A1.is_outdoor or not A2.is_outdoor then
       top_z = per_area_z
     end
 
