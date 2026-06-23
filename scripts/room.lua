@@ -3947,15 +3947,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         local A1
         local A2
 
-        if A.chunk then
-          if A.chunk.kind == "stair" then
-            if A.chunk.from_area.is_porch
-            or A.chunk.dest_area.is_porch then
-              A1, A2 = check_neighboring_porches(A)
-            end
-          end
-        end
-
         if A.mode == "liquid" or A.mode == "cage" then
           A1, A2 = check_neighboring_porches(A)
         end
@@ -3964,6 +3955,35 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
           infect_area(A1, A2)
         end
 
+        -- stair stuff
+        if A.chunk and A.chunk.kind == "stair" then
+          A1 = A
+          if A.chunk.dest_area.is_porch then
+            A2 = A.chunk.dest_area
+          end
+          if A.chunk.from_area.is_porch then
+            A2 = A.chunk.from_area
+          end
+
+          if A2 then
+
+            if A2.ceil_h then
+              A.ceil_h = A2.ceil_h
+            end
+
+            A.is_outdoor = false
+            A.is_porch_neighbor = true
+            if A.peer then
+              A.peer.is_outdoor = false
+              A.peer.is_porch_neighbor = true
+              A.peer.ceil_mat = A.ceil_mat
+              if A2.ceil_h then
+                A.peer.ceil_h = A2.ceil_h
+              end
+            end
+          end
+
+        end
       end
     end
 
