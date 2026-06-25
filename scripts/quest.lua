@@ -3210,11 +3210,7 @@ function Quest_room_themes(LEVEL)
 
     for _,R in pairs(LEVEL.rooms) do
       if R:get_env() == "building" then
-        if not R.is_exit then
-          R.forced_wall_groups = the_wall_group_tab[LEVEL.theme_name]
-        else
-          R.forced_wall_groups = the_wall_group_tab[LEVEL.next_theme]
-        end
+        R.forced_wall_groups = the_wall_group_tab[LEVEL.theme_name]
       end
     end
 
@@ -3538,10 +3534,16 @@ function Quest_room_themes(LEVEL)
     local f_tab = GAME.THEMES[next_theme].facades
     local wg_tab = GAME.THEMES[next_theme].outdoor_wall_groups
 
+    -- wall group for if outdoors
     if wg_tab then
       LEVEL.alt_outdoor_wall_group = rand.key_by_probs(wg_tab)
     else
       LEVEL.alt_outdoor_wall_group = "none"
+    end
+
+    -- wall group for when indoors
+    if exit_room:get_env() == "building" then
+      exit_room.forced_wall_groups = LEVEL.preferred_wall_groups[next_theme]
     end
 
     LEVEL.exit_windows = rand.key_by_probs(GAME.THEMES[next_theme].window_groups)
