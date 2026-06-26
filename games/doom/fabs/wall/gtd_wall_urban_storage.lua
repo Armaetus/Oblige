@@ -60,18 +60,19 @@ PREFABS.Wall_urban_storage_wood =
   template = "Wall_urban_storage1",
   map = "MAP08",
 
-  prob   = 50,
+  prob = 50,
+  rank = 2,
 
   group = "gtd_storage_wood",
 
-  where  = "edge",
-  deep   = 16,
+  where = "edge",
+  deep = 16,
   height = 128,
 
   bound_z1 = 0,
   bound_z2 = 128,
 
-  z_fit  = "top",
+  z_fit = "top",
 
   tex_WODCRAT1 =
   {

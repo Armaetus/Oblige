@@ -19,7 +19,7 @@ PREFABS.Pic_urban_wood_storage_1 =
   deep   =  16,
 
   y_fit = "top",
-  x_fit = {264, 272},
+  x_fit = {136, 144},
   z_fit = "top"
 }
 
