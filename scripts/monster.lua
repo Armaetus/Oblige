@@ -147,7 +147,7 @@ function Monster_pacing(LEVEL)
 
 
   local function handle_known_room(R)
-    if R == LEVEL.exit_room 
+    if R == LEVEL.exit_room
     or (LEVEL.is_procedural_gotcha and PARAM.bool_boss_gen == 1) then
       set_room(R, "high")
       return
@@ -247,7 +247,7 @@ function Monster_pacing(LEVEL)
 
     -- enforce other logic
     if R.is_after_start and #LEVEL.rooms > 2 then
-      tab["high"] = nil 
+      tab["high"] = nil
       if LEVEL.has_linear_start then
         tab["medium"] = nil
       end
@@ -514,7 +514,7 @@ function Monster_zone_palettes(LEVEL)
 
 	  if qty > 0 then
         if GAME.MONSTERS[mon].skip_prob then
-      	  if rand.odds(GAME.MONSTERS[mon].skip_prob) then 
+      	  if rand.odds(GAME.MONSTERS[mon].skip_prob) then
       	    pal[mon] = 0
       	  end
       	else
@@ -533,7 +533,7 @@ function Monster_zone_palettes(LEVEL)
     for mon,qty in pairs(pal) do
       gui.debugf("   %-12s* %1.2f\n", mon, qty)
     end
-    
+
     gui.debugf("   TOUGHNESS: %d\n", math.floor(palette_toughness(pal)))
   end
 
@@ -854,7 +854,7 @@ function Monster_fill_room(LEVEL, R, SEEDS)
     local factor = PARAM.float_mons
     local l_factor = MONSTER_KIND_TAB.few
     local u_factor = MONSTER_KIND_TAB.heaps
-   
+
     assert(factor)
 
     --if factor == gui.gettext("Mix It Up") then
@@ -864,7 +864,7 @@ function Monster_fill_room(LEVEL, R, SEEDS)
     elseif PARAM.mons_mode == "prog" then
       factor = l_factor + (u_factor * LEVEL.game_along)
     end
-    
+
     -- apply 'mon_variety' style
     -- [ this style is only set via the Level Control module ]
     factor = factor * style_sel("mon_variety", 0, 0.5, 1.0, 2.1)
@@ -902,21 +902,21 @@ function Monster_fill_room(LEVEL, R, SEEDS)
     -- result is a percentage (how many spots to use)
     --
     local max_range
-    local min_range   
-    
-    for _,v in pairs(OB_MODULES.ui_mons.options) do 
-        for k,v in pairs(v) do
-          if k == "max" then max_range = tonumber(v) end
-          if k == "min" then min_range = tonumber(v) end
+    local min_range
+
+    for _,v in pairs(OB_MODULES.ui_mons.options) do
+        for k,r in pairs(v) do
+          if k == "max" then max_range = tonumber(r) end
+          if k == "min" then min_range = tonumber(r) end
         end
     end
 
     local qty = PARAM.float_mons
     local u_range = PARAM.float_mix_it_up_upper_range
     local l_range = PARAM.float_mix_it_up_lower_range
-    
+
     if tonumber(qty) then qty = tonumber(qty) end
-    
+
     --Mix It Up
     --if qty == gui.gettext("Mix It Up") then
     if PARAM.mons_mode == "mixed" then
@@ -929,7 +929,7 @@ function Monster_fill_room(LEVEL, R, SEEDS)
     elseif PARAM.mons_mode == "prog" then
       if l_range > u_range then
         qty = u_range + (l_range * LEVEL.game_along)
-      else    
+      else
         qty = l_range + (u_range * LEVEL.game_along)
       end
     end
@@ -1000,7 +1000,7 @@ function Monster_fill_room(LEVEL, R, SEEDS)
     -- prioritize denser monster placement in rooms with more
     -- varying and radical elevations
     local stair_score = 1 + (#R.stairs * 0.05)
-    stair_score = math.clamp(1, stair_score, 1.5) 
+    stair_score = math.clamp(1, stair_score, 1.5)
 
     local height_score = 0
     for _,stair in pairs(R.stairs) do
@@ -1012,22 +1012,22 @@ function Monster_fill_room(LEVEL, R, SEEDS)
     height_score = math.clamp(1, height_score, 1.5)
 
     -- local distance_score
-    gui.debugf("Extra density per elevation complexity in ROOM_" .. 
+    gui.debugf("Extra density per elevation complexity in ROOM_" ..
       R.id .. ": " .. stair_score .. ", " .. height_score .. "\n")
 
     -- give a bonus increase to monsters in less open rooms.
     local tightness_score = math.clamp(0, 1 - R.openness - 0.4, 0.5)
     tightness_score = 1 + (tightness_score * 1.5)
-    gui.debugf("Extra density per openness in ROOM_" .. 
+    gui.debugf("Extra density per openness in ROOM_" ..
       R.id .. ": " .. tightness_score .. "\n")
 
     local complexity_score = (stair_score + height_score + tightness_score) / 3
     gui.debugf("Final complexity score for ROOM_" .. R.id .. ": " .. complexity_score .. "\n" )
 
-    qty = qty * math.clamp(1, complexity_score, 2) 
+    qty = qty * math.clamp(1, complexity_score, 2)
 
     -- reduction for teleporter and hallway exit rooms
-    if (not R.grow_parent and not R.is_start) 
+    if (not R.grow_parent and not R.is_start)
     or (R.grow_parent and R.grow_parent.is_hallway) then
       if R.svolume <= 48 then
         qty = qty * rand.range(0.3, 0.5)
@@ -1256,7 +1256,7 @@ function Monster_fill_room(LEVEL, R, SEEDS)
 
     local mon_strength = PARAM.float_strength
 
-    if mon_strength < 1.0 then 
+    if mon_strength < 1.0 then
       return 1 / ((1 + mon_strength) ^ factor)
     elseif mon_strength > 1.0 then
       return mon_strength ^ factor
@@ -1343,7 +1343,7 @@ function Monster_fill_room(LEVEL, R, SEEDS)
 
     local d = info.density or 1
     local float_strength = PARAM.float_strength
-    
+
     -- level check
     if float_strength < 12 or LEVEL.is_procedural_gotcha == false then
       local max_level = LEVEL.monster_level * R.lev_along
