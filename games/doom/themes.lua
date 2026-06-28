@@ -1094,12 +1094,12 @@ DOOM.THEMES =
     ceiling_sinks =
     {
       PLAIN = 0.01,
-      ceil_mix_with_f = 250,
-      ceil_mix_with_w = 150,
-      ceil_mix_with_f_tall = 150,
-      ceil_mix_with_w_tall = 75,
-      ceil_mix_with_f_ultratall = 75,
-      ceil_mix_with_w_ultratall = 30
+      ceil_mix_with_f = 150,
+      ceil_mix_with_w = 85,
+      ceil_mix_with_f_tall = 75,
+      ceil_mix_with_w_tall = 35,
+      ceil_mix_with_f_ultratall = 50,
+      ceil_mix_with_w_ultratall = 25
     },
 
     wall_groups =
@@ -1276,7 +1276,14 @@ DOOM.THEMES =
       light_side4 = 100,
       light_side5 = 100,
       light_side6 = 100,
-      ceil_vdark2 = 30
+      ceil_vdark2 = 30,
+
+      ceil_mix_with_f = 250,
+      ceil_mix_with_w = 125,
+      ceil_mix_with_f_tall = 150,
+      ceil_mix_with_w_tall = 100,
+      ceil_mix_with_f_ultratall = 75,
+      ceil_mix_with_w_ultratall = 25
     },
 
     passable_decor =
@@ -1803,7 +1810,14 @@ DOOM.THEMES =
       light_side3 = 70,
       light_side4 = 70,
       light_side5 = 70,
-      light_side6 = 70
+      light_side6 = 70,
+
+      ceil_mix_with_f = 125,
+      ceil_mix_with_w = 75,
+      ceil_mix_with_f_tall = 75,
+      ceil_mix_with_w_tall = 35,
+      ceil_mix_with_f_ultratall = 35,
+      ceil_mix_with_w_ultratall = 25
     },
 
     beam_groups =
@@ -2205,7 +2219,7 @@ DOOM.THEMES =
       BROWNGRN = 5,
       BROVINE2 = 5,
 
-      
+
     },
 
     fences =
@@ -2353,7 +2367,14 @@ DOOM.THEMES =
       light_hell_red = 80,
       light_hell_lava = 40,
       ceil_redash = 25,
-      ceil_vdark = 10
+      ceil_vdark = 10,
+
+      ceil_mix_with_f = 175,
+      ceil_mix_with_w = 125,
+      ceil_mix_with_f_tall = 125,
+      ceil_mix_with_w_tall = 65,
+      ceil_mix_with_f_ultratall = 65,
+      ceil_mix_with_w_ultratall = 35
     },
 
     beam_groups =
@@ -4022,7 +4043,7 @@ DOOM.ROOM_THEMES =
     {
       FLAT1_1 = 7,
       FLAT1_2 = 7,
- 
+
       DEM1_5 = 10,
       DEM1_6 = 10,
 
@@ -4467,7 +4488,7 @@ DOOM.ROOM_THEMES =
     floors =
     {
       MFLR8_2 = 40,
-    
+
       FLAT1_1 = 40,
       FLAT8 = 30,
       FLOOR0_1 = 10,
@@ -5304,7 +5325,7 @@ DOOM.TITLE_MAIN_STYLES =
 
     background = "techbg1",
 
-    props = 
+    props =
     {
       barrel_1 =
       {
@@ -5597,8 +5618,8 @@ DOOM.TITLE_COLOR_RAMPS =
 }
 
 function DOOM.setup()
-  GAME.TITLE_MAIN_STYLES = DOOM.TITLE_MAIN_STYLES 
-  GAME.TITLE_SUB_STYLES = DOOM.TITLE_SUB_STYLES 
+  GAME.TITLE_MAIN_STYLES = DOOM.TITLE_MAIN_STYLES
+  GAME.TITLE_SUB_STYLES = DOOM.TITLE_SUB_STYLES
   GAME.TITLE_SPACE_STYLES = DOOM.TITLE_SPACE_STYLES
   GAME.TITLE_INTERMISSION_STYLES = DOOM.TITLE_INTERMISSION_STYLES
   GAME.TITLE_COLOR_RAMPS = DOOM.TITLE_COLOR_RAMPS
