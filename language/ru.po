@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Obsidian Level Maker\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-09 23:41+1000\n"
-"PO-Revision-Date: 2025-08-31 19:40+0300\n"
+"PO-Revision-Date: 2026-06-28 18:32+0300\n"
 "Last-Translator: Morthimer McMare\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -31,11 +31,11 @@ msgstr ""
 # ################################################################################################################################################################################################## #
 #: games/noah/factory.lua:5153
 msgid "Episodic"
-msgstr "[По эпизодам]"
+msgstr "По эпизодам"
 
 #: games/noah/factory.lua:5154
 msgid "Progressive"
-msgstr "[Постепенно]"
+msgstr "Постепенно"
 
 #: games/noah/factory.lua:5160
 msgid "Mix It Up"
@@ -53,7 +53,7 @@ msgid ""
 "Use the tooltip for the \"Allow Partially Supported Games\" module to find the exact status for the game in question."
 msgstr ""
 "\n"
-"Внимание: выбранная Вами игра не поддерживается полностью, находясь в экспериментальном состоянии. Выходной файл может оказаться испорченным; значительной части особенностей геймплея может не быть! Для того, чтобы продолжить, переключите галку \"Разрешить все поддерживаемые игры\" в разделе \"Экспериментальное\".\n"
+"Внимание: выбранная Вами игра не поддерживается полностью, находясь в экспериментальном состоянии. Выходной файл может оказаться испорченным; значительной части особенностей геймплея может не быть! Для того, чтобы продолжить, переключите галку \"Разрешить все поддерживаемые игры\" в разделе \"В разработке\".\n"
 "\n"
 "Список состояний всех подобных игр можно найти в справке для опции Разрешения."
 
@@ -201,7 +201,7 @@ msgstr ""
 "* Тема должна быть \"Технической\".\n"
 "* Установите Пространство под небом, Парки и Пещеры на \"НЕТ\" — ну или оставьте генерацию пещер, если хочется побродить по поверхности астероидов!\n"
 "* Количество Окон можно задать побольше — чтобы видеть звёзды!\n"
-"* 3D-скайбоксы стоит отключить, зато включить Виды ниже линии горизонта. И главное: сделать вечную ночь в Создании Неба — да придёт ярчайшая, пронзительная пустота!"
+"* 3D-скайбоксы стоит отключить, зато включить опцию Виды ниже линии горизонта. И главное: сделать вечную ночь в Создании Неба — да придёт ярчайшая, пронзительная пустота!"
 
 #: data/text/dialogues.lua:8
 msgid ""
@@ -1477,7 +1477,7 @@ msgstr "Экспериментальные опции, относящиеся к
 
 #: modules/debugger.lua:323
 msgid "Alternate Item Quantities"
-msgstr "Адаптивное число предметов"
+msgstr "Адаптивное количество"
 
 #: modules/debugger.lua:326
 msgid "Scales item distribution with map size"
@@ -1522,6 +1522,10 @@ msgstr "Средний"
 #: modules/gzdoom_marine_closet.lua:22
 msgid "High Tech"
 msgstr "Высокий"
+
+#: modules/gzdoom_marine_closet.lua:25
+msgid "Progressive, no BFG"
+msgstr "Прогрессивно, без BFG"
 
 #: modules/gzdoom_marine_closet.lua:25
 msgid "BFG Fiesta"
@@ -1680,7 +1684,7 @@ msgid "Minimum closets"
 msgstr "Мин. комнат с морпехами"
 
 #: modules/gzdoom_marine_closet.lua:1582
-msgid "Sets least amount of closets that can spawn per map."
+msgid "Sets lowest number of closets that can spawn per map."
 msgstr "Устанавливает минимальный предел количества комнат с морпехами на карту."
 
 #: modules/gzdoom_marine_closet.lua:1589
@@ -1688,7 +1692,7 @@ msgid "Maximum closets"
 msgstr "Макс. комнат с морпехами"
 
 #: modules/gzdoom_marine_closet.lua:1596
-msgid "Sets most amount of closets that can spawn per map."
+msgid "Sets greatest number of closets that can spawn per map."
 msgstr "Устанавливает максимальный предел количества комнат с морпехами на карту."
 
 #: modules/gzdoom_marine_closet.lua:1603
@@ -1718,16 +1722,16 @@ msgstr ""
 msgid "Minimum marines"
 msgstr "Минимум морпехов"
 
-#: modules/gzdoom_marine_closet.lua:1622
-msgid "Sets least amount of marines that can spawn per closet."
+#: modules/gzdoom_marine_closet.lua:1736
+msgid "Sets lowest number of marines that can spawn per closet."
 msgstr "Нижний предел количества морпехов на каждую комнату."
 
 #: modules/gzdoom_marine_closet.lua:1629
 msgid "Maximum marines"
 msgstr "Максимум морпехов"
 
-#: modules/gzdoom_marine_closet.lua:1636
-msgid "Sets most amount of marines that can spawn per closet."
+#: modules/gzdoom_marine_closet.lua:1750
+msgid "Sets greatest number of marines that can spawn per closet."
 msgstr "Верхний предел количества морпехов на каждую комнату."
 
 #: modules/gzdoom_marine_closet.lua:1643
@@ -1928,7 +1932,7 @@ msgstr "Также на специальных картах"
 
 #: modules/gzdoom_marine_closet.lua:1825
 msgid "Allows or disallows marine closets to spawn on gotchas and boss generator levels."
-msgstr "Разрешает появляться комнатам с морпехами в предсделанных уровнях и картах с босс-аренами."
+msgstr "Разрешает появляться комнатам с морпехами в предсозданных уровнях и картах с босс-аренами."
 
 #: modules/gzdoom_marine_closet.lua:1831
 msgid "Death Messages"
@@ -1945,6 +1949,14 @@ msgstr "Также создавать в секретках"
 #: modules/gzdoom_marine_closet.lua:1845
 msgid "If enabled, allowed marine closets to be built in secret rooms."
 msgstr "При включённой опции комнаты с морпехами будут генерироваться также и в секретных комнатах."
+
+#: modules/gzdoom_marine_closet.lua:98
+msgid "Yes, and Guilt-inducing"
+msgstr ""
+
+#: modules/gzdoom_marine_closet.lua:1957
+msgid "If enabled, will print a message in message log whenever a marine dies. Guilt-induced adds longer obituary text."
+msgstr ""
 
 #: modules/hacx/ctl_hacx.lua:61
 msgid "HacX 1.2 Monster Control"
@@ -2533,6 +2545,10 @@ msgstr "Универсальный"
 #: modules/heretic/zdoom_specials.lua:55
 msgid "Generated"
 msgstr "Случайно сгенерированный"
+
+#: modules/zdoom_specials.lua:1133
+msgid "Night Fog Intensity"
+msgstr "Затемнение ночью"
 
 #: modules/heretic/zdoom_specials.lua:178
 msgid "Universal Intermission"
@@ -4631,7 +4647,7 @@ msgstr "Коричневатый"
 
 #: modules/sky_generator.lua:62
 msgid "Jade"
-msgstr "Нефритовый, желтовато-зелёный"
+msgstr "Нефритовый (желтовато-зелёный)"
 
 #: modules/sky_generator.lua:64
 msgid "Peach"
@@ -4665,6 +4681,10 @@ msgstr "Зеленоватый"
 msgid "Ice"
 msgstr "Ледяной"
 
+#: modules/sky_generator.lua:68
+msgid "* Blue Light Filter"
+msgstr "* Фильтр синего"
+
 #: modules/sky_generator.lua:335
 msgid "Sky Generator"
 msgstr "Создание неба"
@@ -4679,7 +4699,7 @@ msgstr "Меняет фон неба (за рельефом и облаками)
 
 #: modules/sky_generator.lua:364
 msgid "Terrain Foreground"
-msgstr "Ближний план"
+msgstr "Генерировать ландшафт"
 
 #: modules/sky_generator.lua:367
 msgid "Influences whether the sky generator should generate terrain in the skybox."
@@ -4687,7 +4707,7 @@ msgstr "Влияет на то, должен ли генератор неба д
 
 #: modules/sky_generator.lua:375
 msgid "Terrain Parameters"
-msgstr "Параметры ближнего плана"
+msgstr "Тип ландшафта"
 
 #: modules/sky_generator.lua:378
 msgid "Changes the parameters of generated hills, if there are any. 'Cavernous' causes the terrain to nearly fill up most of the sky, making an impression of being inside a cave or crater."
@@ -4746,52 +4766,52 @@ msgstr "Управление общим количеством стелс-мон
 msgid "Stealth Monsters Fine Tuning"
 msgstr "Стелс-монстры, тонкая настройка"
 
-#: modules/stealth_mons.lua:382
-msgid "Control the amount of Stealth Zombiemen."
+#: modules/stealth_mons.lua:391
+msgid "Control the number of Stealth Zombiemen."
 msgstr "Zombieman. Управление количеством стелс-зомби-рядовых."
 
-#: modules/stealth_mons.lua:396
-msgid "Control the amount of Stealth Shotgunners."
+#: modules/stealth_mons.lua:404
+msgid "Control the number of Stealth Shotgunners."
 msgstr "Shotgun Guy. Управление количеством стелс-зомби-сержантов."
 
-#: modules/stealth_mons.lua:410
-msgid "Control the amount of Stealth Imps."
+#: modules/stealth_mons.lua:417
+msgid "Control the number of Stealth Imps."
 msgstr "Imp. Управление количеством стелс-импов."
 
-#: modules/stealth_mons.lua:424
-msgid "Control the amount of Stealth Pinkies."
+#: modules/stealth_mons.lua:430
+msgid "Control the number of Stealth Pinkies."
 msgstr "Demon. Управление количеством стелс-пинки/стелс-демонов."
 
-#: modules/stealth_mons.lua:438
-msgid "Control the amount of Stealth Cacodemons."
+#: modules/stealth_mons.lua:443
+msgid "Control the number of Stealth Cacodemons."
 msgstr "Cacodemon. Управление количеством стелс-какодемонов."
 
-#: modules/stealth_mons.lua:452
-msgid "Control the amount of Stealth Barons of Hell."
+#: modules/stealth_mons.lua:456
+msgid "Control the number of Stealth Barons of Hell."
 msgstr "Baron of Hell. Управление количеством стелс-баронов Ада."
 
-#: modules/stealth_mons.lua:466
-msgid "Control the amount of Stealth Chaingunners."
+#: modules/stealth_mons.lua:469
+msgid "Control the number of Stealth Chaingunners."
 msgstr "Chaingunner. Управление количеством стелс-пулемётчиков."
 
-#: modules/stealth_mons.lua:480
-msgid "Control the amount of Stealth Hell Knights."
+#: modules/stealth_mons.lua:482
+msgid "Control the number of Stealth Hell Knights."
 msgstr "Hell Knight. Управление количеством стелс-рыцарей Ада."
 
-#: modules/stealth_mons.lua:494
-msgid "Control the amount of Stealth Revenants."
+#: modules/stealth_mons.lua:495
+msgid "Control the number of Stealth Revenants."
 msgstr "Revenant. Управление количеством стелс-ревенантов/стелс-мстителей."
 
 #: modules/stealth_mons.lua:508
-msgid "Control the amount of Stealth Mancubi."
+msgid "Control the number of Stealth Mancubi."
 msgstr "Mancubus (Fatso). Управление количеством стелс-манкубусов."
 
-#: modules/stealth_mons.lua:522
-msgid "Control the amount of Stealth Arachnotrons."
+#: modules/stealth_mons.lua:521
+msgid "Control the number of Stealth Arachnotrons."
 msgstr "Arachnotron. Управление количеством стелс-арахнотронов."
 
-#: modules/stealth_mons.lua:536
-msgid "Control the amount of Stealth Arch-Viles."
+#: modules/stealth_mons.lua:534
+msgid "Control the number of Stealth Arch-Viles."
 msgstr "Arch-Vile. Управление количеством стелс-арч-вайлов."
 
 #: modules/theme_control.lua:30
@@ -4944,7 +4964,7 @@ msgid ""
 msgstr ""
 "Очень быстро: размеры уровней достигают половины от своего верхнего предела за ¼ от игры;\n"
 "\n"
-"Быстро: размеры уровней достигают половины от своего верхнего предела за ⅓ от игры;\n"
+"Быстро (вариант по умолчанию): размеры уровней достигают половины от своего верхнего предела за ⅓ от игры;\n"
 "\n"
 "Линейно: размеры уровней плавно увеличиваются, максимум достигается ровно в конце сгенерированного сборника;\n"
 "\n"
@@ -5072,7 +5092,7 @@ msgstr "Виды ниже линии горизонта"
 
 #: modules/ui_arch.lua:271
 msgid "This feature allows for vistas that show more of the skybox below the horizon. This does not prevent skybox tiling."
-msgstr "Позволяет использовать виды на пространства, захватывающие часть скайбокса ниже горизонта — так называемые \"бездонные\" виды. Функция не предотвращает тайлинг текстуры неба."
+msgstr "Позволяет использовать виды на пространства, захватывающие часть скайбокса ниже линии горизонта — так называемые \"бездонные\" виды. Функция не предотвращает тайлинг текстуры неба."
 
 #: modules/ui_arch.lua:272
 msgid ""
@@ -5202,7 +5222,7 @@ msgstr "Случайно,Постепенно"
 
 #: modules/ui_mons.lua:112
 msgid "0:None,0.15:0.15 (Trivial),0.35:0.35 (Sporadic),0.7:0.7 (Meager),1.0:1.0 (Normal),1.3:1.3 (Modest),1.5:1.5 (Bearable),2.0:2.0 (Rough),2.5:2.5 (Strenuous),3.0:3.0 (Formidable),3.5:3.5 (Harsh),4.0:4.0 (Painful),4.5:4.5 (Ferocious),5.0:5.0 (Unforgiving),5.5:5.5 (Punishing),6.0:6.0 (Murderous),6.5:6.5 (Grueling),7.0:7.0 (Unrelenting),7.5:7.5 (Arduous),8.0:8.0 (Barbaric),8.5:8.5 (Savage),9.0:9.0 (Brutal),9.5:9.5 (Draconian),10.0:10.00 (Merciless)"
-msgstr "0:Без монстров,0.15:0.15 (Исчезающе мало),0.35:0.35 (Считанные единицы),0.7:0.7 (Редко),1.0:1.0 (Нечасто),1.3:1.3 (Скромно),1.5:1.5 (Терпимо),2.0:2.0 (Жестоковато),2.5:2.5 (Напряжённо),3.0:3.0 (Грозная сила),3.5:3.5 (Сурово),4.0:4.0 (Довольно больно),4.5:4.5 (Свирепо),5.0:5.0 (Изнуряюще),5.5:5.5 (Преступление и наказание),6.0:6.0 (Непрощающе),6.5:6.5 (Противоестественно),7.0:7.0 (Варварски),7.5:7.5 (Безжалостно),8.0:8.0 (Дико),8.5:8.5 (Беспощадно),9.0:9.0 (Истязающе),9.5:9.5 (Убийственно),10.0:10.00 (Удачи!)"
+msgstr "0:Без монстров,0.15:0.15 (Исчезающе мало),0.35:0.35 (Считанные единицы),0.7:0.7 (Редко),1.0:1.0 (Нечасто),1.3:1.3 (Скромно),1.5:1.5 (Терпимо),2.0:2.0 (Жестоковато),2.5:2.5 (Напряжённо),3.0:3.0 (Грозная сила),3.5:3.5 (Сурово),4.0:4.0 (Довольно больно),4.5:4.5 (Свирепо),5.0:5.0 (Изнуряюще),5.5:5.5 (Преступление и наказание),6.0:6.0 (Непрощающе),6.5:6.5 (Злобно),7.0:7.0 (Варварски),7.5:7.5 (Безжалостно),8.0:8.0 (Дико),8.5:8.5 (Беспощадно),9.0:9.0 (Истязающе),9.5:9.5 (Убийственно),10.0:10.00 (Удачи!)"
 
 #: modules/ui_mons.lua:113
 msgid "Changes the amount of monsters placed in a map. Scales with level size."
@@ -5252,7 +5272,7 @@ msgstr "Если в опции \"Количество монстров\" вы в
 
 #: modules/ui_mons.lua:145
 msgid "Monster Strength"
-msgstr "Сила монстров"
+msgstr "Сложность монстров"
 
 #: modules/ui_mons.lua:151
 msgid "Affects level of selected monsters for a level's monster palette."
@@ -5268,7 +5288,7 @@ msgstr "Усиление монстров"
 
 #: modules/ui_mons.lua:164
 msgid "0.5:0.5 (Very Slow),0.75:0.75 (Slow),1:1 (Average),1.5:1.5 (Fast),2:2 (Very Fast),3:3 (Extra Fast)"
-msgstr "0.5:0.5 (Малозаметное),0.75:0.75 (Медленное),1:1 (Среднее),1.5:1.5 (Быстрое),2:2 (Крайне быстрое),3:3 (Экспоненциальное)"
+msgstr "0.5:0.5 (Малозаметное),0.75:0.75 (Медленное),1:1 (Обычное),1.5:1.5 (Ощутимое),2:2 (Быстрое),3:3 (Крайне быстрое)"
 
 #: modules/ui_mons.lua:165
 msgid "Rate at which monster strength increases as you progress through levels."
@@ -5393,13 +5413,9 @@ msgid ""
 msgstr ""
 "Влияют ли вещи, выпадающие с монстров (например, магазины из зомби-рядовых) на появление обычных предметов на карте.\n"
 "\n"
-"Да: игнорировать выпадающие из монстров боеприпасы и оружие при расчёте количества предметов.\n"
+"Да: не учитывать выпадающие из монстров боеприпасы и оружие при расчёте количества предметов.\n"
 "\n"
-"Нет (по умолчанию): уменьшать количество предметов на карте, которые также могут выпасть из монстров. К примеру, если на уровне есть зомби-сержанты, картечи будет генерироваться меньше."
-
-#: modules/ui_mons.lua:306
-msgid "0:None,0.15:0.15 (Trivial),0.35:0.35 (Sporadic),0.7:0.7 (Meager),1.0:1.0 (Easy),1.3:1.3 (Modest),1.5:1.5 (Bearable),2.0:2.0 (Rough),2.5:2.5 (Strenuous),3.0:3.0 (Formidable),3.5:3.5 (Harsh),4.0:4.0 (Painful),4.5:4.5 (Ferocious),5.0:5.0 (Unforgiving),5.5:5.5 (Punishing),6.0:6.0 (Murderous),6.5:6.5 (Grueling),7.0:7.0 (Unrelenting),7.5:7.5 (Arduous),8.0:8.0 (Barbaric),8.5:8.5 (Savage),9.0:9.0 (Brutal),9.5:9.5 (Draconian),10.0:10.00 (Merciless)"
-msgstr "0:Без монстров,0.15:0.15 (Исчезающе мало),0.35:0.35 (Считанные единицы),0.7:0.7 (Редко),1.0:1.0 (Нечасто),1.3:1.3 (Скромно),1.5:1.5 (Терпимо),2.0:2.0 (Жестоковато),2.5:2.5 (Напряжённо),3.0:3.0 (Грозная сила),3.5:3.5 (Сурово),4.0:4.0 (Довольно больно),4.5:4.5 (Свирепо),5.0:5.0 (Изнуряюще),5.5:5.5 (Преступление и наказание),6.0:6.0 (Непрощающе),6.5:6.5 (Противоестественно),7.0:7.0 (Варварски),7.5:7.5 (Безжалостно),8.0:8.0 (Истязающе),8.5:8.5 (Беспощадно),9.0:9.0 (Дико),9.5:9.5 (Убийственно),10.0:10.00 (Удачи!)"
+"Нет (по умолчанию): уменьшать количество предметов на карте, которые также могут выпасть из монстров. К примеру, если на уровне есть зомби-сержанты, дробь будет генерироваться реже."
 
 #: modules/ui_pickups.lua:27
 msgid "Bit Less"
@@ -5766,88 +5782,88 @@ msgstr "Недружественные морпехи, тонкая настро
 msgid "Fist Marine"
 msgstr "Кулачники"
 
-#: modules/zdoom_marines.lua:323
-msgid "Control the amount of Fist-wielding ZDoom Marines."
-msgstr "Управление количеством морпехов, атакующих врукопашную."
-
 #: modules/zdoom_marines.lua:330
 msgid "Berserk Marine"
 msgstr "Под Берсерком"
-
-#: modules/zdoom_marines.lua:337
-msgid "Control the amount of Berserked ZDoom Marines."
-msgstr "Управление количеством морпехов под действием бонуса Берсерка."
 
 #: modules/zdoom_marines.lua:344
 msgid "Chainsaw Marine"
 msgstr "С бензопилой"
 
-#: modules/zdoom_marines.lua:351
-msgid "Control the amount of Chainsaw-wielding ZDoom Marines."
-msgstr "Управление количеством морпехов, вооружённых бензопилой."
-
 #: modules/zdoom_marines.lua:358
 msgid "Pistol Marine"
 msgstr "С пистолетом"
-
-#: modules/zdoom_marines.lua:365
-msgid "Control the amount of Pistol-wielding ZDoom Marines."
-msgstr "Управление количеством морпехов, вооружённых пистолетом."
 
 #: modules/zdoom_marines.lua:372
 msgid "Shotgun Marine"
 msgstr "С дробовиком"
 
-#: modules/zdoom_marines.lua:379
-msgid "Control the amount of Shotgun-wielding ZDoom Marines."
-msgstr "Управление количеством морпехов, вооружённых дробовиком."
-
 #: modules/zdoom_marines.lua:386
 msgid "SSG Marine"
 msgstr "С двустволкой"
-
-#: modules/zdoom_marines.lua:393
-msgid "Control the amount of Super Shotgun-wielding ZDoom Marines."
-msgstr "Управление количеством морпехов, вооружённых двуствольным дробовиком."
 
 #: modules/zdoom_marines.lua:400
 msgid "Chaingun Marine"
 msgstr "Пулемётчики"
 
-#: modules/zdoom_marines.lua:407
-msgid "Control the amount of Chaingun-wielding ZDoom Marines."
-msgstr "Управление количеством морпехов, вооружённых пулеметом."
-
 #: modules/zdoom_marines.lua:414
 msgid "Rocket Marine"
 msgstr "Ракетомётчики"
-
-#: modules/zdoom_marines.lua:421
-msgid "Control the amount of Rocket Launcher-wielding ZDoom Marines."
-msgstr "Управление количеством морпехов, вооружённых ракетницей."
 
 #: modules/zdoom_marines.lua:428
 msgid "Plasma Marine"
 msgstr "Плазмомётчики"
 
-#: modules/zdoom_marines.lua:435
-msgid "Control the amount of Plasma Rifle-wielding ZDoom Marines."
-msgstr "Управление количеством морпехов, вооружённых плазмаганом."
-
 #: modules/zdoom_marines.lua:442
 msgid "Railgun Marine"
 msgstr "С рельсотроном"
-
-#: modules/zdoom_marines.lua:449
-msgid "Control the amount of Railgun-wielding ZDoom Marines."
-msgstr "Управление количеством морпехов, вооружённых рельсотроном (рельсовой пушкой/рейлганом)."
 
 #: modules/zdoom_marines.lua:456
 msgid "BFG Marine"
 msgstr "С BFG9000"
 
-#: modules/zdoom_marines.lua:463
-msgid "Control the amount of BFG 9000-wielding ZDoom Marines."
+#: modules/zdoom_marines.lua:331
+msgid "Control the number of Fist-wielding ZDoom Marines."
+msgstr "Управление количеством морпехов, атакующих врукопашную."
+
+#: modules/zdoom_marines.lua:344
+msgid "Control the number of Berserked ZDoom Marines."
+msgstr "Управление количеством морпехов под действием бонуса Берсерка."
+
+#: modules/zdoom_marines.lua:357
+msgid "Control the number of Chainsaw-wielding ZDoom Marines."
+msgstr "Управление количеством морпехов, вооружённых бензопилой."
+
+#: modules/zdoom_marines.lua:370
+msgid "Control the number of Pistol-wielding ZDoom Marines."
+msgstr "Управление количеством морпехов, вооружённых пистолетом."
+
+#: modules/zdoom_marines.lua:383
+msgid "Control the number of Shotgun-wielding ZDoom Marines."
+msgstr "Управление количеством морпехов, вооружённых дробовиком."
+
+#: modules/zdoom_marines.lua:396
+msgid "Control the number of Super Shotgun-wielding ZDoom Marines."
+msgstr "Управление количеством морпехов, вооружённых двустволкой."
+
+#: modules/zdoom_marines.lua:409
+msgid "Control the number of Chaingun-wielding ZDoom Marines."
+msgstr "Управление количеством морпехов, вооружённых пулеметом."
+
+#: modules/zdoom_marines.lua:422
+msgid "Control the number of Rocket Launcher-wielding ZDoom Marines."
+msgstr "Управление количеством морпехов, вооружённых ракетницей."
+
+#: modules/zdoom_marines.lua:435
+msgid "Control the number of Plasma Rifle-wielding ZDoom Marines."
+msgstr "Управление количеством морпехов, вооружённых плазмаганом."
+
+#: modules/zdoom_marines.lua:448
+msgid "Control the number of Railgun-wielding ZDoom Marines."
+msgstr "Управление количеством морпехов, вооружённых рельсотроном (рельсовой пушкой/рейлганом)."
+
+#: modules/zdoom_marines.lua:461
+msgid "Control the number of BFG 9000-wielding ZDoom Marines."
 msgstr "Управление количеством морпехов, вооружённых BFG9000."
 
 #: modules/zdoom_specials.lua:26
@@ -5906,7 +5922,7 @@ msgstr "Позволяет выбрать эпизод в стиле класс�
 
 #: ports/boom.lua:144
 msgid "BOOM Compat"
-msgstr "BOOM-совместимый"
+msgstr "Boom-совместимый"
 
 #: ports/boom.lua:182
 msgid "Advanced"
@@ -5926,7 +5942,7 @@ msgstr "Меняет музыку местами с помощью lump DDFPLAY.
 
 #: ports/edge.lua:158
 msgid "EDGE-Classic"
-msgstr "EDGE (экспериментальный)"
+msgstr "EDGE"
 
 #: ports/eternity.lua:25
 msgid "Eternity"
@@ -6972,47 +6988,23 @@ msgstr ""
 msgid "Port"
 msgstr "Порт"
 
-#: source_files/obsidian_main/ui_game.cc:242
+#: source/ui_game.cc:193
 msgid ""
 "Available Ports:\n"
 "\n"
-"id Tech 0:\n"
-"\n"
-"Vanilla: Works with the original executables\n"
-"\n"
-"id Tech 1:\n"
-"\n"
-"GZDoom: GZDoom and variants (LZDoom, QZDoom, etc)\n"
-"\n"
-"Vanilla: Works with the original program or ports that enforce the original limits. Examples: Doom within DOSBox, Chocolate Doom. NOTE: This option will use SLUMP as the map builder.\n"
+"UZDoom: UZDoom and variants (GZDoom, LZDoom, QZDoom, etc) Most Obsidian content is intially built for UZDoom prior to other engines and compat levels.\n"
 "\n"
 "Boom-Compatible: Ports that are able to use the entire suite of Boom types and features. Most modern source ports fall into this category at a minimum.\n"
 "\n"
-"DSDA-Doom: Targets version 0.26.0 and newer; PrBoom-Plus fork with additional features such as ZIP and UDMF support.\n"
-"\n"
-"EDGE-Classic: Boom-compatible, plus UDMF support, additional specials and other advanced features.\n"
-"\n"
-"Eternity: Boom-compatible, software renderer only, but with advanced features such as UDMF."
+"EDGE-Classic: Boom-compatible, plus UDMF support, additional specials and other advanced features."
 msgstr ""
 "Доступные игровые движки.\n"
 "\n"
-"id Tech 0:\n"
+"- UZDoom: общее название всех производных от GZDoom: UZDoom, GZDoom, LZDoom, Zandronum, QZDoom, VkDoom и другие.\n"
 "\n"
-"- Оригинал: карты создаются под оригинальные игры.\n"
+"- Совместивый с Boom: движки, совместимые с Boom, и позволяющие использовать все его возможности и расширения. Практически все современные порты поддерживают эту категорию.\n"
 "\n"
-"id Tech 1:\n"
-"\n"
-"- GZDoom: (G-/L-/Q-)ZDoom, Zandronum, ZDaemon и другие, основанные на ZDoom.\n"
-"\n"
-"- Оригинал: движок Doom как таковой, с учётом его ограничений. При выборе этой опции будет использоваться генератор карт SLUMP.\n"
-"\n"
-"- Совместивый с BOOM: движки, совместимые с Boom, и позволяющие использовать все его возможности и расширения.\n"
-"\n"
-"- DSDA-Doom: ориентация на версию 0.26.0 и новее; форк PrBoom-Plus с дополнительными возможностями, такими, как поддержка ZIP и UDMF.\n"
-"\n"
-"- EDGE (экспериментальный): совместимый с BOOM, но с добавлениением некоторых специфичных для EDGE возможностей.\n"
-"\n"
-"- Eternity: для Software-рендерера, но с некоторыми улучшениями вроде UDMF."
+"- EDGE: совместимый с Boom, но с добавлением возможностей UDMF и дополнений движка EDGE.\n"
 
 #: source_files/obsidian_main/ui_game.cc:248
 msgid "Length"
@@ -7092,7 +7084,7 @@ msgstr "Отладка"
 
 #: source_files/obsidian_main/ui_module.cc:1656
 msgid "Experimental"
-msgstr "Экспериментальное"
+msgstr "В разработке"
 
 #: source_files/obsidian_main/ui_module.cc:1658
 msgid "Links"
@@ -7271,7 +7263,7 @@ msgstr ""
 "id Tech 1:\n"
 "- GZDoom: GZDoom и его разновидности (LZDoom, QZDoom, VkDoom и т. д.);\n"
 "- Оригинал: работает с оригинальными программами или портами, в которых учитываются старые лимиты. Примеры: Doom через DOSBox, Chocolate Doom. Поддерживается только SLUMP;\n"
-"- BOOM-совместимый: порты, которые могут использовать весь набор типов и функций расширений Boom. Большинство современных портов попадают как минимум в эту категорию.\n"
+"- Boom-совместимый: порты, которые могут использовать весь набор типов и функций расширений Boom. Большинство современных портов попадают как минимум в эту категорию.\n"
 "- EDGE: Совместимый с Boom, но также с поддержкой UDMF, дополнительных типов (action special) линий и иных улучшений, присущих этому порту."
 
 #: games/harmony/themes.lua:354
@@ -7403,7 +7395,7 @@ msgstr "Пробы пера из v7.45"
 
 #: modules/alt_shape_grammars.lua:89
 msgid "Sets chance of levels using the OG shape grammar."
-msgstr "Устанавливает шанс того, что каждый конкретный уровень будет сгенерирован с использованием набора правил \"Проб пера\""
+msgstr "Устанавливает шанс того, что каждый конкретный уровень будет сгенерирован с использованием набора правил \"Проб пера\" из предыдущих версий генератора"
 
 #: modules/alt_shape_grammars.lua:90
 msgid "These are the shapes from Oblige 7.45, one of the earliest examples of the shape grammar system."
@@ -7740,7 +7732,7 @@ msgstr ""
 "\n"
 "GZDoom: GZDoom и его разновидности (LZDoom, QZDoom, VkDoom и т. д.).\n"
 "\n"
-"Boom-совместимый: BOOM-совместимый: порты, которые могут использовать весь набор типов и функций расширений Boom. Большинство современных портов попадают как минимум в эту категорию.\n"
+"Boom-совместимый: порты, которые могут использовать весь набор типов и функций расширений Boom. Большинство современных портов попадают как минимум в эту категорию.\n"
 "\n"
 "EDGE-Classic: Совместимый с Boom, но также с поддержкой UDMF, дополнительных типов (action special) линий и иных улучшений, присущих этому порту."
 
@@ -7808,9 +7800,9 @@ msgstr ""
 msgid "Radiation Suit"
 msgstr "Антирадиационный костюм"
 
-#: modules/zdoom_otex.lua:975
-msgid "OTEX Resource Pack [PRE-ALPHA]"
-msgstr "Ресурс-пак OTEX [PRE-ALPHA]"
+#: modules/zdoom_otex.lua:1523
+msgid "OTEX Resource Pack"
+msgstr "Ресурс-пак OTEX"
 
 #: modules/zdoom_otex.lua:1000
 msgid "Room Themes Count"
@@ -8114,21 +8106,21 @@ msgstr ""
 msgid "Influences number of monsters in rooms with a marine closet."
 msgstr ""
 
-#: modules/zdoom_armaetus_epic_textures.lua:1345
-msgid "Room Theme Synthesizer [Experimental]"
-msgstr ""
+#: modules/zdoom_armaetus_epic_textures.lua:1306
+msgid "Room Theme Synthesizer"
+msgstr "Синтез новых тем комнат"
 
 #: modules/zdoom_armaetus_epic_textures.lua:1349
 msgid "Creates synthetic room themes by combining walls and flats from existing entries."
-msgstr ""
+msgstr "Создаёт новые синтетические темы комнат посредством комбинирования уже существующих тем."
 
 #: modules/zdoom_armaetus_epic_textures.lua:1353
 msgid "Synth Room Theme Multiplier"
-msgstr ""
+msgstr "Частота синтеза тем"
 
 #: modules/zdoom_armaetus_epic_textures.lua:1356
 msgid "Multiplier for all synthesized Resource Pack room themes."
-msgstr ""
+msgstr "Изменение шанса того, что часть комнат будут иметь синтетическую тему вместо одной из предсозданных."
 
 #: scripts/defs.lua:564
 msgid "1"
@@ -8305,3 +8297,195 @@ msgstr "Убийственно"
 #: modules/ui_mons.lua:41
 msgid "Merciless"
 msgstr "Удачи!"
+
+#: modules/ui_mons.lua:124
+msgid "Monster Quantity Mode"
+msgstr "Количество на уровнях"
+
+#: modules/ui_mons.lua:181
+msgid "Episodic Ramp Mode"
+msgstr "Сброс в каждом эпизоде"
+
+#: modules/ui_mons.lua:184
+msgid "Overrides Ramp Up setting. Monster Strength ramps up to max at the end of Episode, resets to weak at start of next."
+msgstr "Сила монстров доходит до максимума в конце каждого эпизода, но в начале следующего эпизода снова сбрасывается до минимума."
+
+#: libraries/steve/src/ext/json.hpp:1991
+msgid "hidden"
+msgstr ""
+
+#: modules/ui_arch.lua:66
+msgid "Static"
+msgstr "Всегда один и тот же"
+
+#: modules/ui_arch.lua:144
+msgid "Level Size Mode"
+msgstr "Размер каждого уровня"
+
+#: modules/ui_arch.lua:149
+msgid ""
+"Changes Level Size behavior.\n"
+"\n"
+"- Static - Level Size parameter determines size.\n"
+"- Mix It Up - Level Size will be generated with random numbers between Lower Bound and Upper Bound\n"
+"- Progressive - Levels will be generated in sequential size based on the Lower Bound (as starting bound) to Upper Bound (as end).\n"
+"- Episodic - Similar to Progressive, but level scaling is between Episodes."
+msgstr ""
+"Изменяет тип расчёта размеров уровней по связанным параметрам \"Размер уровней\", \"Верхний предел\" и \"Нижний предел\".\n"
+"\n"
+"- Всегда один и тот же - Размер всегда определяется параметром \"Размер уровней\".\n"
+"- Случайно - Размер выбирается случайным образом от нижнего предела до верхнего.\n"
+"- Постепенно - Размеры уровней изменяются по ходу прохождения игры, начиная от нижнего предела и заканчивая верхним.\n"
+"- По эпизодам - Размеры уровней изменяются в каждом эпизоде, начиная от нижнего предела в первом эпизоде и заканчивая верхним в последнем."
+
+#: modules/midi_generation.lua:6
+msgid "Classical"
+msgstr "Под классику"
+
+#: modules/midi_generation.lua:7
+msgid "Doomish"
+msgstr "Doom"
+
+#: modules/midi_generation.lua:8
+msgid "Jazz"
+msgstr "Джаз"
+
+#: modules/midi_generation.lua:27
+msgid "MIDI Generation [Unstable]"
+msgstr "Генерация MIDI [в разработке]"
+
+#: modules/ui_links.lua:44
+msgid "Chex Quest 3: Vanilla"
+msgstr "Chex Quest 3: Vanilla"
+
+#: modules/ui_links.lua:122
+msgid "ZDoom Family (UZDoom, GZDoom, LZDoom, ZDoom)"
+msgstr "Семейство портов *ZDoom (ZDoom, UZDoom, GZDoom, LZDoom, …)"
+
+#: modules/miscellaneous.lua:382
+msgid "Clearings"
+msgstr "Поляны"
+
+#: modules/miscellaneous.lua:383
+msgid "Reduces or increases the probability of clearings, small naturalistic lots inside artificial outdoors."
+msgstr "Изменяет шанс появления полянок, небольших вкраплений природы посреди искуственных наружных пространств."
+
+#: modules/debugger.lua:117
+msgid "Name Generator Setting"
+msgstr "Шанс имени из словаря"
+
+#: modules/debugger.lua:119
+msgid "% of Levels Use Whole Names"
+msgstr "% предсозданных имён"
+
+#: modules/debugger.lua:124
+msgid "Choose between whole names or pattern-based names only for levels."
+msgstr "Изменить уклон названий в генерацию по предсозданным именам уровней (по словарю, созданному разработчиками) или в генерацию по случайным паттернам."
+
+#: modules/debugger.lua:262
+msgid "Architecture Experimentals"
+msgstr "Экспериментальная архитектура"
+
+#: modules/debugger.lua:267
+msgid "Features related to likely radical level architecture and content curation changes."
+msgstr "Возможности, которые могут значительно изменить архитектуру уровней и их наполнение."
+
+#: modules/debugger.lua:278
+msgid "Ungroup Some Fabs"
+msgstr "Открепить декор от тем"
+
+#: modules/debugger.lua:284
+msgid "Takes decor and picture fabs and allows them to spawn randomly around levels."
+msgstr "Позволяет генерироваться декорациям, картинам и другим префабам по всему уровню, без учёта темы в конкретном месте карты."
+
+#: modules/debugger.lua:290
+msgid "Shape Grower Tries"
+msgstr "Попыток на расширение"
+
+#: modules/debugger.lua:296
+msgid "Changes the amount of shape grower tests per growth step. Default is 20. Higher values mean shapes can fit more snuggly, for longer generation time."
+msgstr "Сколько раз генератор будет пытаться расширить геометрию в какую-либо сторону на каждом шаге, по умолчанию — 20 раз. Высокие значения за счёт увеличения времени генерации будут создавать более плотное расположение комнат на уровне."
+
+#: modules/debugger.lua:303
+msgid "Automatic Shape Rule Probs"
+msgstr "Автобаланс шансов префабов"
+
+#: modules/debugger.lua:305
+msgid "Shape rules be automatically applied probabilities, overriding manual assignment. May cause some rarer shape rules to have a better statistical chance to show up compared to manually assigned probs. Or not. Who knows."
+msgstr "Автоматическая балансировка шансов появления тех или иных префабов, при этом вручную установленные значения игнорируются. Может позволить появляться чаще некоторым редким формам геометрии."
+
+#: modules/debugger.lua:315
+msgid "Fail on Tracked Bugs"
+msgstr "Прерывание при ошибке"
+
+#: modules/debugger.lua:314
+msgid "If checked, parts of the generator with expected bugs will return an error instead of proceeding without issue. Unless you are actively planning to participate in active bug tracking, it is preferred to just keep this off."
+msgstr "Если включено, модули генератора, обнаружившие проблему, будут сразу падать вместо того, чтобы попробовать тихо её разрешить. Если Вы не собираетесь активно участвовать в программе отлавливания багов, имеет смысл отключить эту настройку"
+
+#: modules/procedural_gotcha_zdoom.lua:1719
+msgid "Room"
+msgstr ""
+
+#: modules/llm_namer.lua:67
+msgid "Duke Nukem"
+msgstr "Duke Nukem"
+
+#: modules/llm_namer.lua:68
+msgid "Black Metal"
+msgstr "Black Metal"
+
+#: modules/llm_namer.lua:69
+msgid "HDoom"
+msgstr "HDoom"
+
+#: modules/llm_namer.lua:70
+msgid "Action Movie"
+msgstr "Экшен-фильм"
+
+#: modules/llm_namer.lua:3864
+msgid "LLM Name Generator"
+msgstr "Подключить LLM (нейросеть) для названий уровней и сюжета"
+
+#: modules/llm_namer.lua:3869
+msgid "Generates level names using an LLM."
+msgstr "Генерировать названия уровней, используя большую языковую модель."
+
+#: modules/llm_namer.lua:3882
+msgid "LLM Level Name Generator"
+msgstr "Названия уровней"
+
+#: modules/llm_namer.lua:3885
+msgid "Generates a context-aware level name via LLM."
+msgstr "Генерировать подходящие названия уровней с помощью большой языковой модели."
+
+#: modules/llm_namer.lua:3897
+msgid "Skip Gotchas and Boss Maps"
+msgstr "Пропускать босс-арены"
+
+#: modules/llm_namer.lua:3900
+msgid "Skips renaming Procedural Gotchas or Boss Maps when enabled."
+msgstr "Не использовать на процедурных босс-аренах и предсозданных картах."
+
+#: modules/llm_namer.lua:3906
+msgid "Prompt Flavor"
+msgstr "Оттенок запроса"
+
+#: modules/llm_namer.lua:3909
+msgid "Adds additional flavoring to the LLM-generated names by biasing prompt towards specific descriptions."
+msgstr "Придерживаться указанной темы при генерации названий и сюжета."
+
+#: modules/llm_namer.lua:3916
+msgid "LLM Intermission Stories"
+msgstr "Межмиссионный сюжет"
+
+#: modules/llm_namer.lua:3927
+msgid "Story Word Count"
+msgstr "Число слов в тексте сюжета"
+
+#: modules/llm_namer.lua:3934
+msgid "Change the rough number of words per intermission screen."
+msgstr "Примерное число слов на сюжетных межмиссионных экранах."
+
+#: modules/llm_namer.lua:3942
+msgid "Startup Listener Check"
+msgstr "Предпроверка отклика API"

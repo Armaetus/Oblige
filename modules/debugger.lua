@@ -293,8 +293,7 @@ OB_MODULES["arch_exp"] =
       max = 100,
       increment = 5,
       default = 20,
-      tooltip = _("Changes the amount of shape grower tests per growth step. "..
-        "Default is 20. Higher values mean shapes can fit more snuggly, for longer generation time."),
+      tooltip = _("Changes the amount of shape grower tests per growth step. Default is 20. Higher values mean shapes can fit more snuggly, for longer generation time."),
       priority = 104
     },
 
@@ -303,10 +302,7 @@ OB_MODULES["arch_exp"] =
       label = _("Automatic Shape Rule Probs"),
       valuator = "button",
       default = 0,
-      tooltip = _("Shape rules be automatically applied probabilities, overriding manual assignment. " ..
-        "May cause some rarer shape rules to have a better statistical chance " ..
-        "to show up compared to manually assigned probs. " ..
-        "Or not. Who knows."),
+      tooltip = _("Shape rules be automatically applied probabilities, overriding manual assignment. May cause some rarer shape rules to have a better statistical chance to show up compared to manually assigned probs. Or not. Who knows."),
       priority = 103
     },
 
@@ -315,10 +311,7 @@ OB_MODULES["arch_exp"] =
       label = _("Fail on Tracked Bugs"),
       valuator = "button",
       default = 0,
-      tooltip = _(
-        "If checked, parts of the generator with expected bugs will return an error instead of proceeding without issue." ..
-        "Unless you are actively planning to participate in active bug tracking, it is preferred to just keep this off."
-      ),
+      tooltip = _("If checked, parts of the generator with expected bugs will return an error instead of proceeding without issue. Unless you are actively planning to participate in active bug tracking, it is preferred to just keep this off."),
       priority = 1
     }
   },

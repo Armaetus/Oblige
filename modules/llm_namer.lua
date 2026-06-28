@@ -3866,7 +3866,7 @@ OB_MODULES["llm_namer"] =
   where = "experimental",
   priority = 5,
 
-  tooltip = _("Genarates level names using an LLM."),
+  tooltip = _("Generates level names using an LLM."),
 
   hooks =
   {
@@ -3882,7 +3882,7 @@ OB_MODULES["llm_namer"] =
       label=_("LLM Level Name Generator"),
       valuator = "button",
       default = 1,
-      tooltip = _("Genarates a context-aware level name via LLM."),
+      tooltip = _("Generates a context-aware level name via LLM."),
       longtip = _("Uses Ollama to generate a name for a level by sending level metadata to Ollama. " ..
         "Default model is llama3.1:8b. Using a different model or LLM platform requires modification of the script. " ..
         "To use this, just download Ollama and llama3.1:8b and keep it running all at default settings.\n\n" ..
