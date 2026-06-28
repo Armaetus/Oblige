@@ -158,6 +158,16 @@ function Monster_pacing(LEVEL)
       return
     end
 
+    if R.start_neighbor and LEVEL.has_linear_start and PARAM.bool_quiet_start == 1 then
+      set_room(R,
+        rand.sel(
+          math.remap_range(R.svolume, 48, 512, 0, 100),
+          "low",
+          "medium"
+        )
+      )
+    end
+
     if R.goals[1] then
       local high_prob = 90
 
