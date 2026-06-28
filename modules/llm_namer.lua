@@ -1487,12 +1487,12 @@ LLM_NAME.name_theme =
 {
   char_limits =
   {
-    "- 1 word",
+    "- 1 word, 4-10 letters. Do not combine more than 3 dictionary words into one.",
     "- 2 words",
     "- 3 words",
     "- 4 words",
-    "- 5 words, maximum 22 characters long including spaces",
-    "- 6 words, maximum 22 characters long including spaces",
+    "- 5 words, maximum 20 characters long including spaces",
+    "- 6 words, maximum 20 characters long including spaces",
   }
 }
 
@@ -3615,17 +3615,15 @@ I need the story to be properly formatted. Do not provide any explanation.
 
 Rules:
 - narrate in second person
-- Doom universe sub-story style
-- slightly grounded, military-style, engaging science fiction action-packed plot
-- more on engaging, intruiging story and less on overly prosaic description
+- Doom universe story arc
+- engaging story with a slightly grounded, military-style, viscerally action-packed plot
+- more on engaging, intruiging story and less on prosaic description
 - pure fictional non real-world location
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
-- no Warhammer 40k, no Lovecraft
-- no threats bigger than Hell - instead, make Hell threatening on its own
+- the threat is always Hell
 - if the acronym UAC is used, it means "Union Aerospace Corporation"
-- please do not mention the smell of ozone
-- avoid names with a hard consonant starts such as "Kh", "Kae", "Kr", "Vex", etc.
+- please do not mention the smell of ozone, or nexus points, sub-levels unless asked for by location
 - satisfying ending for the current arc is preferred
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one.
