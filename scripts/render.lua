@@ -628,7 +628,7 @@ function Render_edge(LEVEL, E, SEEDS)
     skin.door_tag = E.door_tag
 
 
-    local z = assert(E.fence_top_z) - def.fence_h
+    local z = assert(E.fence_top_z) - (def.fence_h or 32)
     if def.post_offset_h then E.post_offset_h = def.post_offset_h end
 
     local T
