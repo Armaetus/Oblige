@@ -2494,7 +2494,7 @@ gui.debugf("FILLING TRAP in %s\n", R.name)
       R.furthest_dist = R:furthest_dist_from_entry()
     end
 
-    R.baddie_far_prob = rand.pick({ 20, 40, 60, 80 })
+    R.baddie_far_prob = rand.pick({ 60, 80, 90 })
 
     if rand.odds(2) then
       R.force_mon_angle = rand.irange(0,7) * 45
