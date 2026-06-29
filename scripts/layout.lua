@@ -2270,7 +2270,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
       -- PLAIN keyword for sinks should now be ignored in
       -- favor of this direct prob
-      if rand.odds(65) then name = "PLAIN" end
+      local ceil_sink_prob_add = math.remap_range(cg.volume, 16, 128, 0, 35)
+      if not rand.odds(40 + ceil_sink_prob_add) then name = "PLAIN" end
 
       if name ~= "PLAIN" then
         cg.sink = GAME.SINKS[name]
@@ -2297,7 +2298,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     -- PLAIN keyword for sinks should now be ignored in
     -- favor of this direct prob
     if not R.liquid_sink_prob then
-      R.liquid_sink_prob = rand.odds(55)
+      R.liquid_sink_prob = rand.odds(65 + math.remap_range(R.svolume, 8, 64, 0, 30))
     end
     if R.liquid_sink_prob == false then name = "PLAIN" end
 
