@@ -867,6 +867,8 @@ DOOM.SINKS =
     trim_dz  = -8,
   },
 
+  --
+
   ceil_mix_with_f =
   {
     mat = "_FLOOR",
@@ -884,6 +886,26 @@ DOOM.SINKS =
     trim_mat = "_FLOOR",
     trim_dz = 64
   },
+
+  ceil_mix_with_f_flat =
+  {
+    mat = "_FLOOR",
+    dz = 64,
+
+    trim_mat = "_WALL",
+    trim_dz = 64
+  },
+
+  ceil_mix_with_w_flat =
+  {
+    mat = "_WALL",
+    dz = 64,
+
+    trim_mat = "_FLOOR",
+    trim_dz = 64
+  },
+
+  --
 
   ceil_mix_with_f_tall =
   {
@@ -903,6 +925,26 @@ DOOM.SINKS =
     trim_dz = 128
   },
 
+  ceil_mix_with_f_tall_flat =
+  {
+    mat = "_FLOOR",
+    dz = 128,
+
+    trim_mat = "_WALL",
+    trim_dz = 128
+  },
+
+  ceil_mix_with_w_tall_flat =
+  {
+    mat = "_WALL",
+    dz = 128,
+
+    trim_mat = "_FLOOR",
+    trim_dz = 128
+  },
+
+  --
+
   ceil_mix_with_f_ultratall =
   {
     mat = "_FLOOR",
@@ -916,6 +958,24 @@ DOOM.SINKS =
   {
     mat = "_WALL",
     dz = 512,
+
+    trim_mat = "_FLOOR",
+    trim_dz = 256
+  },
+
+  ceil_mix_with_f_ultratall_flat =
+  {
+    mat = "_FLOOR",
+    dz = 256,
+
+    trim_mat = "_WALL",
+    trim_dz = 256
+  },
+
+  ceil_mix_with_w_ultratall_flat =
+  {
+    mat = "_WALL",
+    dz = 256,
 
     trim_mat = "_FLOOR",
     trim_dz = 256
@@ -1283,7 +1343,14 @@ DOOM.THEMES =
       ceil_mix_with_f_tall = 150,
       ceil_mix_with_w_tall = 100,
       ceil_mix_with_f_ultratall = 75,
-      ceil_mix_with_w_ultratall = 25
+      ceil_mix_with_w_ultratall = 25,
+
+      ceil_mix_with_f_flat = 125,
+      ceil_mix_with_w_flat = 75,
+      ceil_mix_with_f_tall_flat = 75,
+      ceil_mix_with_w_tall_flat = 35,
+      ceil_mix_with_f_ultratall_flat = 35,
+      ceil_mix_with_w_ultratall_flat = 20
     },
 
     passable_decor =
@@ -1817,7 +1884,14 @@ DOOM.THEMES =
       ceil_mix_with_f_tall = 75,
       ceil_mix_with_w_tall = 35,
       ceil_mix_with_f_ultratall = 35,
-      ceil_mix_with_w_ultratall = 25
+      ceil_mix_with_w_ultratall = 25,
+
+      ceil_mix_with_f_flat = 60,
+      ceil_mix_with_w_flat = 30,
+      ceil_mix_with_f_tall_flat = 30,
+      ceil_mix_with_w_tall_flat = 15,
+      ceil_mix_with_f_ultratall_flat = 20,
+      ceil_mix_with_w_ultratall_flat = 10
     },
 
     beam_groups =
@@ -2374,7 +2448,14 @@ DOOM.THEMES =
       ceil_mix_with_f_tall = 125,
       ceil_mix_with_w_tall = 65,
       ceil_mix_with_f_ultratall = 65,
-      ceil_mix_with_w_ultratall = 35
+      ceil_mix_with_w_ultratall = 35,
+
+      ceil_mix_with_f_flat = 75,
+      ceil_mix_with_w_flat = 35,
+      ceil_mix_with_f_tall_flat = 50,
+      ceil_mix_with_w_tall_flat = 25,
+      ceil_mix_with_f_ultratall_flat = 30,
+      ceil_mix_with_w_ultratall_flat = 15
     },
 
     beam_groups =
