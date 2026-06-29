@@ -14,7 +14,7 @@ PREFABS.Pic_urban_wood_storage_1 =
   seed_h = 1,
 
   bound_z1 = 0,
-  bound_z2 = 192,
+  bound_z2 = 64,
 
   deep   =  16,
 
@@ -28,7 +28,9 @@ PREFABS.Pic_urban_wood_storage_2 =
   template = "Pic_urban_wood_storage_1",
   map = "MAP02",
 
-  x_fit = {72,80}
+  x_fit = {72,80},
+
+  bound_z2 = 129
 }
 
 PREFABS.Pic_urban_wood_storage_3 =
@@ -36,7 +38,9 @@ PREFABS.Pic_urban_wood_storage_3 =
   template = "Pic_urban_wood_storage_1",
   map = "MAP03",
 
-  x_fit = {200,208}
+  x_fit = {200,208},
+
+  bound_z2 = 129
 }
 
 PREFABS.Pic_urban_wood_storage_4 =
@@ -44,5 +48,7 @@ PREFABS.Pic_urban_wood_storage_4 =
   template = "Pic_urban_wood_storage_1",
   map = "MAP04",
 
-  x_fit = {112,120}
+  x_fit = {112,120},
+
+  bound_z2 = 72
 }

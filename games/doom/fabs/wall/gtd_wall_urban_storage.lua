@@ -70,7 +70,7 @@ PREFABS.Wall_urban_storage_wood =
   height = 128,
 
   bound_z1 = 0,
-  bound_z2 = 128,
+  bound_z2 = 129,
 
   z_fit = "top",
 
