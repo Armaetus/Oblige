@@ -2747,7 +2747,12 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
   end
 
   -- fix outdoor lighting
-  if reqs.kind == "picture" and reqs.env == "outdoor" or reqs.env == "park" then
+  if reqs.kind == "picture" or reqs.kind == "item"
+  and reqs.env == "outdoor" or reqs.env == "park" then
+    if not chunk.from_area.lighting then
+      gui.printf(table.tostr(chunk.from_area,2))
+    end
+    assert(chunk.from_area.lighting)
     A.lighting = chunk.from_area.lighting
   end
 
@@ -4232,10 +4237,10 @@ function Render_cells(LEVEL, area)
     if D > max_h then max_h = D end
 
     -- convert A/B/C/D to boolean values
-    A = (A == max_h)
-    B = (B == max_h)
-    C = (C == max_h)
-    D = (D == max_h)
+    A = string.bool(A == max_h)
+    B = string.bool(B == max_h)
+    C = string.bool(C == max_h)
+    D = string.bool(D == max_h)
 
     -- no need to move when all cells are the same
     if A == B and A == C and A == D then
