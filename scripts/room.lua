@@ -3099,7 +3099,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     for _, A in pairs(R.areas) do
       if A.is_outdoor then goto skip end
-      --if A.is_porch   then goto skip end
 
       if A.mode ~= "floor" then goto skip end
 
@@ -3875,6 +3874,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
     end
 
+    --| porch_fixup_neighbors |--
     if R.is_outdoor then
       for _, A in pairs(R.areas) do
         local A1
@@ -3900,7 +3900,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
           if A2 then
             if A2.ceil_h then
-              A.ceil_h = A2.ceil_h
+              A.ceil_group = A2.ceil_group
+              A.ceil_h = A.ceil_group.h
             end
 
             A.is_outdoor = false
@@ -3910,7 +3911,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
               A.peer.is_porch_neighbor = true
               A.peer.ceil_mat = A.ceil_mat
               if A2.ceil_h then
-                A.peer.ceil_h = A2.ceil_h
+                A.peer.ceil_group = A.peer.ceil_group
+                A.peer.ceil_h = A.peer.ceil_group.h
               end
             end
           end
