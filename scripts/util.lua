@@ -120,7 +120,7 @@ function math.quadratic(x, limit)
 end
 
 -- maps a value from one numerical range to another.
-function math.remap_range(value, start_min, start_max, end_min, end_max)
+function math.remap_range(value, start_min, start_max, end_min, end_max, clamp)
   if start_max == start_min then
     return end_min
   end
@@ -128,6 +128,11 @@ function math.remap_range(value, start_min, start_max, end_min, end_max)
   local normalized_value = (value - start_min) / (start_max - start_min)
 
   local remapped_value = end_min + normalized_value * (end_max - end_min)
+
+  if clamp then
+    if remapped_value >= end_max then return end_max end
+    if remapped_value <= end_min then return end_min end
+  end
 
   return remapped_value
 end
