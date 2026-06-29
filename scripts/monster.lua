@@ -1835,6 +1835,7 @@ function Monster_fill_room(LEVEL, R, SEEDS)
 
     -- pick the best and remove it from the list
     local spot = table.pick_best(R.mon_spots, spot_compare, "remove")
+    assert(spot)
 
     if not near_to then
       R.last_spot_section = spot.section
@@ -2057,7 +2058,7 @@ gui.debugf("wants =\n%s\n\n", table.tostr(wants))
     local tally = fodder_tally
     tally = 3 * (1 + tally ^ 0.7)
 
-    want_total = math.floor(tally * qty / 100 + gui.random())
+    local want_total = math.floor(tally * qty / 100 + gui.random())
 
 
     -- determine how many of each kind of monster we want
