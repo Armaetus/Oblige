@@ -810,10 +810,10 @@ function Seed_dump_rooms(SEEDS)
       if S.area.chunk then
         if S.area.chunk.kind == "closet" then return "#" end
         if S.area.chunk.kind == "joiner" then 
-          if S.area.chunk.from_dir == 2 then return "▲" end
-          if S.area.chunk.from_dir == 4 then return "►" end
-          if S.area.chunk.from_dir == 6 then return "◄" end
-          if S.area.chunk.from_dir == 8 then return "▼" end
+          if S.area.chunk.from_dir == 2 then return "|" end
+          if S.area.chunk.from_dir == 4 then return "-" end
+          if S.area.chunk.from_dir == 6 then return "-" end
+          if S.area.chunk.from_dir == 8 then return "|" end
         end
         if S.area.chunk.kind == "stair" then
           if S.area.chunk.from_dir == 2 then return "↑" end
