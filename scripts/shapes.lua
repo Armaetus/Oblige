@@ -17045,6 +17045,34 @@ GROW_WT_2_RAMP =
   }
 },
 
+GROW_DIR_BUTTON =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxx11xxxx","xxx11xxxx",
+    "xxx...xxx","xxx111xxx",
+    "xxx...xxx","xxx111xxx",
+    "xx.....xx","xx/%1/%xx",
+    ".........","11%AAA/11",
+    ".........","111AAA111",
+    ".........","11/AAA%11",
+    "xx.....xx","xx%/1%/xx",
+    "xxx...xxx","xxx111xxx",
+    "xxx...xxx","xxx111xxx"
+  },
+
+  diagonals =
+  {
+    "1A","A1","1A","A1",
+         "1A","A1",
+         "1A","A1",
+    "1A","A1","1A","A1"
+  }
+},
+
 GROW_PLAY_BUTTON =
 {
   prob = 15,
