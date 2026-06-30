@@ -2127,7 +2127,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
   local function grab_usable_sinks(R, group, where)
 
-    local function filter_ceiling_sinks(sink_name, tab, LEVEL)
+    local function filter_ceiling_sinks(sink_name, tab, LEVEL, filter)
       if sink_name == "PLAIN" then return end
 
       local sink = GAME.SINKS[sink_name]
@@ -2155,6 +2155,15 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       if (sink.trim_mat and sink.trim_mat == R.main_tex)
       then
         tab[sink_name] = nil
+      end
+
+      -- remove light sinks as per theme too
+      if where == "ceiling" then
+        if filter.no_light_ceilings then
+          if string.match(sink_name, 1, 5) == "light" then
+            tab[sink_name] = nil
+          end
+        end
       end
 
       -- remove sinks that are taller than the zone sky height
@@ -2186,6 +2195,12 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       tab = R.theme.ceiling_sinks or GAME.THEMES[theme].ceiling_sinks
     end
 
+    local ceil_light_prob = R.theme.ceil_light_prob or THEME.ceil_light_prob or 50
+    local filter = {}
+    if rand.odds(100 - ceil_light_prob) then
+      filter.no_light_ceilings = true
+    end
+
     -- PLAIN setting is now ignored for a universal prob, see individual code below
     -- assert(tab["PLAIN"])
 
@@ -2197,7 +2212,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     end
 
     for _,name in pairs(table.keys(tab)) do
-      filter_ceiling_sinks(name, tab, LEVEL)
+      filter_ceiling_sinks(name, tab, LEVEL, filter)
     end
 
     return tab
