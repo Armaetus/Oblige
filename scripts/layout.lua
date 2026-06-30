@@ -2270,9 +2270,9 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
       -- PLAIN keyword for sinks should now be ignored in
       -- favor of this direct prob
-      local volume_prob_add = math.remap_range(cg.volume, 16, 128, 0, 30, "clamp_it")
-      local openness_prob_add = math.remap_range(cg.openness, 0.2, 0.6, 0, 30, "clamp_it")
-      local has_ceil_sink = rand.odds(30 + volume_prob_add + openness_prob_add)
+      local volume_prob_add = math.remap_range(cg.volume, 4, 128, 0, 30, "clamp_it")
+      local openness_prob_add = math.remap_range(cg.openness, 0.2, 0.6, 0, 50, "clamp_it")
+      local has_ceil_sink = rand.odds(volume_prob_add + openness_prob_add)
       if has_ceil_sink == false then name = "PLAIN" end
 
       if name ~= "PLAIN" then
@@ -2448,6 +2448,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     local groups = {}
 
     local prob = R.theme.ceil_light_prob or THEME.ceil_light_prob or 50
+    prob = prob + math.remap_range(R.openness, 0.6, 0.2, 0, 30, "clamp_it")
+    prob = math.clamp(prob, 0, 100)
 
     if rand.odds(prob) and not R.has_liquid_ceil_lights then
       R.has_liquid_ceil_lights = true
