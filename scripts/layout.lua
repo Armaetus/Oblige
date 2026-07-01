@@ -2157,8 +2157,17 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         tab[sink_name] = nil
       end
 
-      -- remove light sinks as per theme too
       if where == "ceiling" then
+        -- remove light sinks based on light_color
+        if sink.light_color and LEVEL.light_group then
+          for light,prob in pairs(LEVEL.light_group) do
+            if sink.light_color == light then
+              tab[sink_name] = nil
+            end
+          end
+        end
+
+        -- remove light sinks as per theme too
         if filter.no_light_ceilings then
           if string.match(sink_name, 1, 5) == "light" then
             tab[sink_name] = nil
