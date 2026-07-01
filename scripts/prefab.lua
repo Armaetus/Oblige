@@ -1339,13 +1339,6 @@ function Fab_load_wad(def)
       C2.sidedef_index = side.sidedef_index
     end
 
-    --[[if side then
-      table.alt_print_table(side)
-      gui.printf("--\n")
-    end
-    table.alt_print_table(C2)
-    gui.printf("\n")]]
-
     return C2
   end
 
