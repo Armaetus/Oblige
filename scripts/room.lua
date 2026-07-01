@@ -3522,10 +3522,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
 
       if R.stair_ceil_mode == "use_dest" then
-        A.ceil_h   = destA.ceil_h
+        A.ceil_h   = destA.ceil_group.h
         A.ceil_mat = destA.ceil_mat
       else
-        A.ceil_h   = fromA.ceil_h
+        A.ceil_h   = fromA.ceil_group.h
         A.ceil_mat = fromA.ceil_mat
       end
       ::skip::
