@@ -2160,10 +2160,16 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       if where == "ceiling" then
         -- remove light sinks based on light_color
         if sink.light_color and LEVEL.light_group then
+          local sink_is_valid = false
+
           for light,prob in pairs(LEVEL.light_group) do
             if sink.light_color == light then
-              tab[sink_name] = nil
+              sink_is_valid = true
             end
+          end
+
+          if sink_is_valid == false then
+            tab[sink_name] = nil
           end
         end
 
@@ -2833,11 +2839,16 @@ function Layout_handle_corners(LEVEL)
         local mostly_env = Corner_get_env(corner)
 
         local tallest_floor = -EXTREME_H
+        local tallest_ceil = -EXTREME_H
         local lowest_ceil = EXTREME_H
+        local corner_at_differing_height = false
 
         for _,A in pairs(corner.areas) do
           tallest_floor = math.max(tallest_floor, A.floor_h)
+          tallest_ceil = math.max(tallest_ceil, A.ceil_h)
           lowest_ceil = math.min(lowest_ceil, A.ceil_h)
+
+          corner.h_diff = tallest_ceil - lowest_ceil
         end
 
         for _,A in pairs(corner.areas) do
@@ -2848,15 +2859,9 @@ function Layout_handle_corners(LEVEL)
             goto skip
           end
 
-          -- if inside a builing, connect post to the ceiling
-          -- if the difference between ceiling and fence height
-          -- is less than half the height of the fence
-          if mostly_env == "building" then
-            local diff = lowest_ceil - tallest_floor
-            if (junc.E1.rail_offset / 2) >= diff then
-              post_top_z = EXTREME_H
-              goto skip
-            end
+          if corner.h_diff > 0 then
+            post_top_z = EXTREME_H
+            goto skip
           end
 
           if A.vista_type == "simple_fence" and A.fence_type ~= "railing" then
