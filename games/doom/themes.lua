@@ -553,6 +553,8 @@ DOOM.SINKS =
 
     trim_mat = "FLAT23",
     trim_dz  = -5,
+
+    light_color = "red"
   },
 
   light_orange_shiny =
@@ -563,6 +565,8 @@ DOOM.SINKS =
 
     trim_mat = "FLAT23",
     trim_dz  = -5,
+
+    light_color = "beige"
   },
 
   light_brightred_metal =
@@ -574,6 +578,8 @@ DOOM.SINKS =
     trim_mat = "METAL",
     trim_dz  = -5,
     trim_light = 16,
+
+    light_color = "red"
   },
 
   light_brightred_metal2 =
@@ -585,6 +591,8 @@ DOOM.SINKS =
     trim_mat = "SHAWN2",
     trim_dz  = -5,
     trim_light = 16,
+
+    light_color = "red"
   },
 
   light_diamond =
@@ -602,6 +610,8 @@ DOOM.SINKS =
 
     trim_mat = "METAL",
     trim_dz  = -5,
+
+    light_color = "beige"
   },
 
   light_hell_red =
@@ -609,6 +619,8 @@ DOOM.SINKS =
     mat = "FLAT5_3",
     dz  = 16,
     light = 16,
+
+    light_color = "red"
   },
 
   light_hell_lava =
@@ -626,6 +638,8 @@ DOOM.SINKS =
 
     trim_mat = "LITE5",
     trim_dz  = 0,
+
+    light_color = "blue"
   },
 
   light_side2 =
@@ -636,6 +650,8 @@ DOOM.SINKS =
 
     trim_mat = "LITE5",
     trim_dz  = 0,
+
+    light_color = "white"
   },
 
   light_side3 =
@@ -646,6 +662,8 @@ DOOM.SINKS =
 
     trim_mat = "METAL7",
     trim_dz  = 0,
+
+    light_color = "white"
   },
 
   light_side4 =
@@ -656,6 +674,8 @@ DOOM.SINKS =
 
     trim_mat = "LITE5",
     trim_dz  = 0,
+
+    light_color = "blue"
   },
 
   light_side5 =
@@ -666,6 +686,8 @@ DOOM.SINKS =
 
     trim_mat = "LITE5",
     trim_dz  = 0,
+
+    light_color = "white"
   },
 
   light_side6 =
@@ -676,6 +698,8 @@ DOOM.SINKS =
 
     trim_mat = "BRONZE4",
     trim_dz  = 0,
+
+    light_color = "beige"
   },
 
   -- misc floor --
