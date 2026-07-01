@@ -3997,6 +3997,8 @@ _FORMAT_
           local noun_replacers = {}
           for _,N in ipairs(LLM_NAME.story_components.replacers) do
             noun_replacers[N] = namelib.generate_unique_noun("exotic")
+            assert(name, "Received no answer from Ollama instance! " .. 
+            "Is it on? Why does life have to be this way?!")
             name = string.gsub(name, N, noun_replacers[N])
           end
 
