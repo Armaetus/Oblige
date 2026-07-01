@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Obsidian Level Maker\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-09 23:41+1000\n"
-"PO-Revision-Date: 2026-06-28 23:55+0300\n"
+"PO-Revision-Date: 2026-07-01 08:01+0300\n"
 "Last-Translator: Morthimer McMare\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -398,15 +398,15 @@ msgstr "Chex Quest 1"
 
 #: games/chex1/themes.lua:1264
 msgid "Bazoik"
-msgstr ""
+msgstr "Базоик"
 
 #: games/chex1/themes.lua:1272
 msgid "Chextropolis"
-msgstr ""
+msgstr "Чекстрополис"
 
 #: games/chex1/themes.lua:1280
 msgid "Villa Chex"
-msgstr ""
+msgstr "Деревня Chex"
 
 #: games/chex3/base.lua:47
 msgid "Chex Quest 3"
@@ -1289,7 +1289,15 @@ msgid ""
 "\n"
 "WAD sub titles and Boss maps will continue to use whole level names as they do not have pattern definitions."
 msgstr ""
-
+"Склонение вероятности выбора названия уровня между предсозданным словарём и названием по паттерну.\n"
+"\n"
+"Словарные (предсозданные) названия сразу подставляются цельной строкой и никак не меняются. К таким, к примеру, относятся названия босс-карт.\n"
+"\n"
+"Имена по паттерну генерируются случайным образом, подставляя на место каждого символа-заменителя одно-два слова. Так, название «Sludge Generator E-710» получится из паттерна «[прилагательное] + [существительное] + [хэш]»\n"
+"\n"
+"По умолчанию берутся вероятности из файла \"/games/игра/names.lua\".\n"
+"\n"
+"Подзаголовки WAD и названия босс-уровней будут в любом случае создаваться по словарю, так как для них на данный момент не объявлены паттерны."
 
 #: modules/debugger.lua:117
 msgid "Disable Sub-Titles"
@@ -1560,10 +1568,6 @@ msgstr "Игрок совсем близко"
 #: modules/gzdoom_marine_closet.lua:33
 msgid "Map Start"
 msgstr "Со старта карты"
-
-#: modules/gzdoom_marine_closet.lua:39
-msgid "More"
-msgstr "Больше"
 
 #: modules/gzdoom_marine_closet.lua:40
 msgid "Lots"
@@ -1967,11 +1971,11 @@ msgstr "При включённой опции комнаты с морпеха�
 
 #: modules/gzdoom_marine_closet.lua:98
 msgid "Yes, and Guilt-inducing"
-msgstr ""
+msgstr "Да, вместе с причиной смерти"
 
 #: modules/gzdoom_marine_closet.lua:1957
 msgid "If enabled, will print a message in message log whenever a marine dies. Guilt-induced adds longer obituary text."
-msgstr ""
+msgstr "Если включено, игра при смерти дружественного морпеха будет отправлять сообщение в консоль. Вариант \"Вместе с причиной смерти\" ведёт к более длинным надписям."
 
 #: modules/hacx/ctl_hacx.lua:61
 msgid "HacX 1.2 Monster Control"
@@ -2299,7 +2303,7 @@ msgstr "Воин"
 
 #: modules/heretic/ctl_heretic.lua:111
 msgid "Control the amount of Warriors."
-msgstr "Warrior. Управление количеством воинов."
+msgstr "Warrior. Управление количеством скелетов-воинов."
 
 #: modules/heretic/ctl_heretic.lua:118
 msgid "Warrior Ghost"
@@ -3153,10 +3157,6 @@ msgstr "[По умолчанию]"
 msgid "Tech and Urban"
 msgstr "Техническая и городская"
 
-#: modules/miscellaneous.lua:101
-msgid "Always"
-msgstr "Всегда"
-
 #: modules/miscellaneous.lua:107
 msgid "x0.25"
 msgstr "x0.25"
@@ -3442,13 +3442,13 @@ msgid ""
 msgstr ""
 "Изменяет поведение варианта \"Случайно\" настройки \"Множитель дробности комнат\".\n"
 "\n"
-"Нормально: обычное распределение Гаусса-Лапласа. Наиболее часто выбирается среднее значение количества зон, вероятность очень большого или очень малого количества резко снижается.\n"
+"Нормально: обычное распределение Гаусса-Лапласа. Наиболее часто выбирается среднее значение количества зон, вероятность очень большого или очень малого количества снижается.\n"
 "\n"
 "Чаше меньше: в основном комнаты с небольшой дробностью, но с уклоном в сторону обычного количества зон.\n"
 "\n"
-"Меньше: сильный уклон в сторону малого разбиения, практически изотропные комнаты.\n"
+"Меньше: сильный уклон в сторону малого разбиения, один и тот же шаблон почти всегда применяется ко всей комнате.\n"
 "\n"
-"Больше: комнаты разбиваются на зоны практически всегда.\n"
+"Больше: комнаты, кроме самых маленьких, разбиваются на зоны практически всегда.\n"
 "\n"
 "Чаще больше: в основном комнаты с сильным делением, но с уклоном в сторону нормального количества подлокаций.\n"
 "\n"
@@ -3456,7 +3456,7 @@ msgstr ""
 "\n"
 "Крайне консервативно: вероятность сильно смещена в сторону обычного количества зон, иные виды разбиения встречаются крайне редко.\n"
 "\n"
-"Случайно: никакое распределение не учитывается, количество подлокаций для комнат выбирается абсолютно случайным образом."
+"Случайно: никакое распределение не учитывается, количество подлокаций для комнат выбирается случайным образом."
 
 #: modules/miscellaneous.lua:353
 msgid "Big Rooms"
@@ -3770,11 +3770,11 @@ msgstr "По умолчанию"
 
 #: modules/modded_game_extras.lua:49
 msgid "Debug Info"
-msgstr "Отладка"
+msgstr "Отладка комнат"
 
 #: modules/modded_game_extras.lua:50
 msgid "Debug Info with Prefabs"
-msgstr "Отладка с названиями префабов"
+msgstr "Отладка комнат и префабов"
 
 #: modules/modded_game_extras.lua:2485
 msgid "Modded Game Extras"
@@ -3850,6 +3850,11 @@ msgid ""
 "Debug Info - Prints verbose information about shape grammar growth status per room.\n"
 "Debug Info with Prefabs - Room info and with prefab info. Reveals secret prefabs - which is obviously cheating."
 msgstr ""
+"Какие метки встраивать в уровень для маркеров Hellscape Navigator.\n"
+"\n"
+"- По умолчанию — информация о первостепенных задачах по прохождению уровня. В основном добавляет метки по ключам.\n"
+"- Отладка комнат — вставляет в каждую комнату подробную информацию насчёт генерации геометрии и статуса его создания.\n"
+"- Отладка комнат и префабов — вставляет подробную информацию как для каждой комнаты, так и для каждого префаба. Также раскрывает названия префабов секреток, поэтому вне разработки считается читерством."
 
 #: modules/music_swap.lua:115
 msgid "Music Swapper"
@@ -3859,29 +3864,37 @@ msgstr "Перемешать музыку"
 msgid "Performs swapping of built-in music tracks via Dehacked."
 msgstr "Использовать lump DeHackEd для перемешивания музыки."
 
+#: modules/miscellaneous.lua:101
+msgid "Always"
+msgstr "Всегда и везде"
+
+#: modules/prefab_controller.lua:47
+msgid "Heaps"
+msgstr "Много"
+
+#: modules/gzdoom_marine_closet.lua:39
+msgid "More"
+msgstr "Больше"
+
 #: modules/prefab_controller.lua:24
 msgid "Some"
 msgstr "Немного"
 
 #: modules/prefab_controller.lua:26
 msgid "Few"
-msgstr "Совсем мало"
+msgstr "Редко"
 
 #: modules/prefab_controller.lua:27
 msgid "Rare"
-msgstr "Изредка"
+msgstr "Крайне редко"
 
-#: modules/prefab_controller.lua:47
-msgid "Heaps"
-msgstr "Множество"
+#: modules/prefab_controller.lua:94
+msgid "I LOVE IT"
+msgstr "Повсюду"
 
 #: modules/prefab_controller.lua:82
 msgid "Non-damaging"
 msgstr "Урон наносить не будут"
-
-#: modules/prefab_controller.lua:94
-msgid "I LOVE IT"
-msgstr "МАКСИМУМ"
 
 #: modules/prefab_controller.lua:176
 msgid "Advanced Level Control"
@@ -3901,7 +3914,7 @@ msgstr "Сквозная тема выхода"
 
 #: modules/prefab_controller.lua:204
 msgid "Gets exit room theme to follow the theme of the next level, if different."
-msgstr "По возможности использовать тему выхода, совпадающую с темой старта следующего уровня (если они различаются)"
+msgstr "По возможности использовать тему выхода, совпадающую с темой старта следующего уровня (если они различаются)."
 
 #: modules/prefab_controller.lua:210
 msgid "Auto Detailing"
@@ -4074,7 +4087,7 @@ msgstr "Настройка гарантирует, что намеченные �
 
 #: modules/prefab_controller.lua:529
 msgid "Greatly increase probability for recent added content for testing purposes. Changes in content is expected and some assets will be gradually removed from this option's effects."
-msgstr ""
+msgstr "Функция для целей разработки. Даёт недавно добавленным префабам значительный прирост к шансу генерации на карте."
 
 #: modules/procedural_gotcha.lua:24
 msgid "Regular"
@@ -4920,6 +4933,30 @@ msgstr "Архитектура"
 #: modules/ui_arch.lua:123
 msgid "Level Size"
 msgstr "Размер уровней"
+
+#: modules/ui_arch.lua:144
+msgid "Level Size Mode"
+msgstr "Размер каждого уровня"
+
+#: modules/ui_arch.lua:149
+msgid ""
+"Changes Level Size behavior.\n"
+"\n"
+"- Static - Level Size parameter determines size.\n"
+"- Mix It Up - Level Size will be generated with random numbers between Lower Bound and Upper Bound\n"
+"- Progressive - Levels will be generated in sequential size based on the Lower Bound (as starting bound) to Upper Bound (as end).\n"
+"- Episodic - Similar to Progressive, but level scaling is between Episodes."
+msgstr ""
+"Изменяет тип расчёта размеров уровней по связанным параметрам \"Размер уровней\", \"Верхний предел\" и \"Нижний предел\".\n"
+"\n"
+"- Одинаково для всех уровней - Размер всегда определяется параметром \"Размер уровней\".\n"
+"- Случайно - Размер выбирается случайным образом от нижнего предела до верхнего.\n"
+"- Постепенно - Размеры уровней изменяются по ходу прохождения игры, начиная от нижнего предела и заканчивая верхним.\n"
+"- По эпизодам - Размеры уровней изменяются в каждом эпизоде, начиная от нижнего предела в первом эпизоде и заканчивая верхним в последнем."
+
+#: modules/ui_arch.lua:66
+msgid "Static"
+msgstr "Одинаково для всех уровней"
 
 #: modules/ui_arch.lua:58
 msgid "Microscopic"
@@ -6041,22 +6078,6 @@ msgstr ""
 msgid "Choose how many levels to create."
 msgstr "Выберите количество уровней для создания."
 
-#: scripts/obsidian.lua:2352
-msgid ""
-"The following values are game-specific:\n"
-"  Chex Quest 3: bazoik,spaceport,villa\n"
-"  Ultimate Doom/Doom 1: deimos,flesh\n"
-"  Ultimate Doom/Doom 1/Doom 2/TNT/Plutonia: tech,urban,hell\n"
-"  TNT: egypt\n"
-"  HacX: hacx_urban\n"
-"  Harmony: ndf_base\n"
-"  Heretic: city,maw,dome,ossuary,demense\n"
-"  Hexen: forest,ice_caves,fire_steel,swamp,dungeon,town\n"
-"  Strife: town\n"
-"\n"
-"  Note: This setting currently does nothing for id Tech 0 games!\n"
-msgstr ""
-
 #: source_files/obsidian_main/g_doom.cc:301
 msgid ""
 "Unable to create wad file:\n"
@@ -6229,11 +6250,12 @@ msgid ""
 msgstr ""
 "OBSIDIAN — это генератор случайных уровней\n"
 "для классических FPS-игр вроде Doom.\n"
-"Является дальнейшим развитием OBLIGE Level Maker\n"
-"Copyright (C) 2006-2017 Andrew Apted, et al.\n"
+"Является дальнейшим развитием\n"
+"генератора OBLIGE Level Maker.\n"
+"«Copyright (C) 2006-2017 Andrew Apted, et al.\n"
 "This program is free software, and may be\n"
 "distributed and modified under the terms of\n"
-"the GNU General Public License.\n"
+"the GNU General Public License.»\n"
 "НИКАКИХ ГАРАНТИЙ НЕТ И НЕ БУДЕТ!\n"
 "Используйте НА СВОЙ СТРАХ И РИСК!"
 
@@ -6331,7 +6353,7 @@ msgstr ">>>"
 
 #: source_files/obsidian_main/m_lua.cc:1123
 msgid "Using"
-msgstr ""
+msgstr "Использую"
 
 #: source_files/obsidian_main/m_lua.cc:1124
 msgid "Preview Not Available"
@@ -7553,135 +7575,135 @@ msgstr "Выберите порт для генерации карт.\n"
 
 #: scripts/defs.lua:583
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: scripts/defs.lua:584
 msgid "14"
-msgstr ""
+msgstr "14"
 
 #: scripts/defs.lua:586
 msgid "18"
-msgstr ""
+msgstr "18"
 
 #: scripts/defs.lua:587
 msgid "20"
-msgstr ""
+msgstr "20"
 
 #: scripts/defs.lua:588
 msgid "22"
-msgstr ""
+msgstr "22"
 
 #: scripts/defs.lua:589
 msgid "24"
-msgstr ""
+msgstr "24"
 
 #: scripts/defs.lua:590
 msgid "26"
-msgstr ""
+msgstr "26"
 
 #: scripts/defs.lua:591
 msgid "28"
-msgstr ""
+msgstr "28"
 
 #: scripts/defs.lua:592
 msgid "30"
-msgstr ""
+msgstr "30"
 
 #: scripts/defs.lua:594
 msgid "34"
-msgstr ""
+msgstr "34"
 
 #: scripts/defs.lua:595
 msgid "36"
-msgstr ""
+msgstr "36"
 
 #: scripts/defs.lua:596
 msgid "38"
-msgstr ""
+msgstr "38"
 
 #: scripts/defs.lua:597
 msgid "40"
-msgstr ""
+msgstr "40"
 
 #: scripts/defs.lua:602
 msgid "1x"
-msgstr ""
+msgstr "1x"
 
 #: scripts/defs.lua:603
 msgid "2x"
-msgstr ""
+msgstr "2x"
 
 #: scripts/defs.lua:604
 msgid "3x"
-msgstr ""
+msgstr "3x"
 
 #: scripts/defs.lua:605
 msgid "4x"
-msgstr ""
+msgstr "4x"
 
 #: scripts/defs.lua:606
 msgid "5x"
-msgstr ""
+msgstr "5x"
 
 #: scripts/defs.lua:607
 msgid "6x"
-msgstr ""
+msgstr "6x"
 
 #: scripts/defs.lua:608
 msgid "7x"
-msgstr ""
+msgstr "7x"
 
 #: scripts/defs.lua:609
 msgid "8x"
-msgstr ""
+msgstr "8x"
 
 #: scripts/defs.lua:610
 msgid "9x"
-msgstr ""
+msgstr "9x"
 
 #: scripts/defs.lua:611
 msgid "10x"
-msgstr ""
+msgstr "10x"
 
 #: scripts/defs.lua:612
 msgid "11x"
-msgstr ""
+msgstr "11x"
 
 #: scripts/defs.lua:613
 msgid "12x"
-msgstr ""
+msgstr "12x"
 
 #: scripts/defs.lua:614
 msgid "13x"
-msgstr ""
+msgstr "13x"
 
 #: scripts/defs.lua:615
 msgid "14x"
-msgstr ""
+msgstr "14x"
 
 #: scripts/defs.lua:616
 msgid "15x"
-msgstr ""
+msgstr "15x"
 
 #: scripts/defs.lua:617
 msgid "16x"
-msgstr ""
+msgstr "16x"
 
 #: scripts/defs.lua:618
 msgid "17x"
-msgstr ""
+msgstr "17x"
 
 #: scripts/defs.lua:619
 msgid "18x"
-msgstr ""
+msgstr "18x"
 
 #: scripts/defs.lua:620
 msgid "19x"
-msgstr ""
+msgstr "19x"
 
 #: scripts/defs.lua:621
 msgid "20x"
-msgstr ""
+msgstr "20x"
 
 #: scripts/defs.lua:626
 msgid "All Levels"
@@ -7694,10 +7716,6 @@ msgstr "10% ото всех уровней"
 #: scripts/defs.lua:631
 msgid "5% of All Levels"
 msgstr "5% ото всех уровней"
-
-#: source/m_theme.cc:1625
-msgid "Default|Gleam|Win95|Plastic"
-msgstr ""
 
 #: source/m_options.cc:552
 msgid "Error choosing directory:"
@@ -7717,7 +7735,7 @@ msgstr ""
 
 #: source/main.cc:1295
 msgid "Tabs of Terror"
-msgstr ""
+msgstr "Tabs of Terror"
 
 #: source/g_doom.cc:1241
 msgid "Error (create ZIP)"
@@ -7807,10 +7825,6 @@ msgstr "Ностальгия по Doom 3"
 msgid "GG Retinas"
 msgstr "Сверхновая"
 
-#: modules/ui_arch.lua:213
-msgid "This will apply a multiplier to the values in the default lighting tables when determining the brightness level of a room."
-msgstr ""
-
 #: modules/ui_arch.lua:218
 msgid "Control the number of outdoor areas."
 msgstr "Насколько часто будут создаваться пространства под открытым небом."
@@ -7829,7 +7843,7 @@ msgstr "Насколько часто могут появляться телеп
 
 #: modules/ctl_doom.lua:166
 msgid "BFG"
-msgstr ""
+msgstr "BFG"
 
 #: modules/ctl_doom.lua:244
 msgid "Radiation Suit"
@@ -7869,10 +7883,13 @@ msgid ""
 "\n"
 "Tries to use all textures and flats as much as possible organized into room themes."
 msgstr ""
+"Генерация тем текстур-пака OTEX на основе его собственной таблицы ресурсов. OTEX *.wad (не *.pk3) не встраивается в итоговый сборник уровней и должен быть подгружен вручную.\n"
+"\n"
+"Настройка заставляет вставлять текстуры OTEX заметно агрессивнее, настолько, насколько это возможно в темах комнат."
 
 #: modules/zdoom_otex.lua:1556
 msgid "Not all room themes may show up in levels as appearance is reliant on use probability. Use multipler below to increase or decrease further"
-msgstr ""
+msgstr "Не все новые темы могут отображаться на уровне сразу, поскольку это зависит от вероятностей. Множитель позволяет подправить число дополнительных тем."
 
 #: modules/ui_links.lua:21
 msgid "Useful Links"
@@ -7898,10 +7915,6 @@ msgstr "Doom Retro"
 msgid "Helion"
 msgstr "Helion"
 
-#: modules/ui_links.lua:118
-msgid "ZDoom Family (GZDoom, LZDoom, ZDoom)"
-msgstr "ZDoom Family (GZDoom, LZDoom, ZDoom)"
-
 #: modules/ui_links.lua:128
 msgid "Eternity Engine"
 msgstr "Eternity Engine"
@@ -7912,63 +7925,63 @@ msgstr "Woof"
 
 #: modules/miscellaneous.lua:81
 msgid "256"
-msgstr ""
+msgstr "256"
 
 #: modules/miscellaneous.lua:82
 msgid "240"
-msgstr ""
+msgstr "240"
 
 #: modules/miscellaneous.lua:83
 msgid "224"
-msgstr ""
+msgstr "224"
 
 #: modules/miscellaneous.lua:84
 msgid "208"
-msgstr ""
+msgstr "208"
 
 #: modules/miscellaneous.lua:85
 msgid "192"
-msgstr ""
+msgstr "192"
 
 #: modules/miscellaneous.lua:86
 msgid "176"
-msgstr ""
+msgstr "176"
 
 #: modules/miscellaneous.lua:87
 msgid "160"
-msgstr ""
+msgstr "160"
 
 #: modules/miscellaneous.lua:88
 msgid "144"
-msgstr ""
+msgstr "144"
 
 #: modules/miscellaneous.lua:89
 msgid "128"
-msgstr ""
+msgstr "128"
 
 #: modules/miscellaneous.lua:90
 msgid "112"
-msgstr ""
+msgstr "112"
 
 #: modules/miscellaneous.lua:91
 msgid "96"
-msgstr ""
+msgstr "96"
 
 #: modules/miscellaneous.lua:92
 msgid "80"
-msgstr ""
+msgstr "80"
 
 #: modules/miscellaneous.lua:93
 msgid "64"
-msgstr ""
+msgstr "64"
 
 #: modules/miscellaneous.lua:94
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: modules/miscellaneous.lua:97
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: modules/miscellaneous.lua:334
 msgid "Control the number of parks."
@@ -8082,75 +8095,75 @@ msgstr "Управление количеством клеток."
 
 #: modules/gzdoom_marine_closet.lua:19
 msgid "5%"
-msgstr ""
+msgstr "5%"
 
 #: modules/gzdoom_marine_closet.lua:20
 msgid "12%"
-msgstr ""
+msgstr "12%"
 
 #: modules/gzdoom_marine_closet.lua:21
 msgid "25%"
-msgstr ""
+msgstr "25%"
 
 #: modules/gzdoom_marine_closet.lua:22
 msgid "33%"
-msgstr ""
+msgstr "33%"
 
 #: modules/gzdoom_marine_closet.lua:23
 msgid "50%"
-msgstr ""
+msgstr "50%"
 
 #: modules/gzdoom_marine_closet.lua:24
 msgid "75%"
-msgstr ""
+msgstr "75%"
 
 #: modules/gzdoom_marine_closet.lua:25
 msgid "100%"
-msgstr ""
+msgstr "100%"
 
 #: modules/gzdoom_marine_closet.lua:44
 msgid "50"
-msgstr ""
+msgstr "50"
 
 #: modules/gzdoom_marine_closet.lua:45
 msgid "100"
-msgstr ""
+msgstr "100"
 
 #: modules/gzdoom_marine_closet.lua:46
 msgid "133"
-msgstr ""
+msgstr "133"
 
 #: modules/gzdoom_marine_closet.lua:47
 msgid "150"
-msgstr ""
+msgstr "150"
 
 #: modules/gzdoom_marine_closet.lua:48
 msgid "200"
-msgstr ""
+msgstr "200"
 
 #: modules/gzdoom_marine_closet.lua:49
 msgid "300"
-msgstr ""
+msgstr "300"
 
 #: modules/gzdoom_marine_closet.lua:50
 msgid "400"
-msgstr ""
+msgstr "400"
 
 #: modules/gzdoom_marine_closet.lua:51
 msgid "750"
-msgstr ""
+msgstr "750"
 
 #: modules/gzdoom_marine_closet.lua:52
 msgid "1000"
-msgstr ""
+msgstr "1000"
 
 #: modules/gzdoom_marine_closet.lua:53
 msgid "2000"
-msgstr ""
+msgstr "2000"
 
 #: modules/gzdoom_marine_closet.lua:1747
 msgid "Influences number of monsters in rooms with a marine closet."
-msgstr ""
+msgstr "Влияет на число монстров в комнатах рядом с морпехами."
 
 #: modules/zdoom_armaetus_epic_textures.lua:1306
 msgid "Room Theme Synthesizer"
@@ -8170,51 +8183,51 @@ msgstr "Изменение шанса того, что часть комнат �
 
 #: scripts/defs.lua:564
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: scripts/defs.lua:565
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: scripts/defs.lua:566
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: scripts/defs.lua:567
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: scripts/defs.lua:568
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: scripts/defs.lua:569
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: scripts/defs.lua:570
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: scripts/defs.lua:571
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: scripts/defs.lua:572
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: scripts/defs.lua:573
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: scripts/defs.lua:585
 msgid "16"
-msgstr ""
+msgstr "16"
 
 #: scripts/defs.lua:593
 msgid "32"
-msgstr ""
+msgstr "32"
 
 #: modules/stealth_mons.lua:407
 msgid "Arch-vile"
@@ -8360,30 +8373,6 @@ msgstr "Сила монстров доходит до максимума в ко
 msgid "hidden"
 msgstr ""
 
-#: modules/ui_arch.lua:66
-msgid "Static"
-msgstr "Всегда один и тот же"
-
-#: modules/ui_arch.lua:144
-msgid "Level Size Mode"
-msgstr "Размер каждого уровня"
-
-#: modules/ui_arch.lua:149
-msgid ""
-"Changes Level Size behavior.\n"
-"\n"
-"- Static - Level Size parameter determines size.\n"
-"- Mix It Up - Level Size will be generated with random numbers between Lower Bound and Upper Bound\n"
-"- Progressive - Levels will be generated in sequential size based on the Lower Bound (as starting bound) to Upper Bound (as end).\n"
-"- Episodic - Similar to Progressive, but level scaling is between Episodes."
-msgstr ""
-"Изменяет тип расчёта размеров уровней по связанным параметрам \"Размер уровней\", \"Верхний предел\" и \"Нижний предел\".\n"
-"\n"
-"- Всегда один и тот же - Размер всегда определяется параметром \"Размер уровней\".\n"
-"- Случайно - Размер выбирается случайным образом от нижнего предела до верхнего.\n"
-"- Постепенно - Размеры уровней изменяются по ходу прохождения игры, начиная от нижнего предела и заканчивая верхним.\n"
-"- По эпизодам - Размеры уровней изменяются в каждом эпизоде, начиная от нижнего предела в первом эпизоде и заканчивая верхним в последнем."
-
 #: modules/midi_generation.lua:6
 msgid "Classical"
 msgstr "Под классику"
@@ -8414,7 +8403,7 @@ msgstr "Поляны"
 
 #: modules/miscellaneous.lua:383
 msgid "Reduces or increases the probability of clearings, small naturalistic lots inside artificial outdoors."
-msgstr "Изменяет шанс появления полянок, небольших вкраплений природы посреди искуственных наружных пространств."
+msgstr "Изменяет шанс появления полянок, небольших природных локаций посреди искуственных наружных сооружений."
 
 #: modules/debugger.lua:117
 msgid "Name Generator Setting"
@@ -8470,7 +8459,7 @@ msgstr "Если включено, модули генератора, обнар
 
 #: modules/procedural_gotcha_zdoom.lua:1719
 msgid "Room"
-msgstr ""
+msgstr "Комнатка"
 
 #: modules/llm_namer.lua:67
 msgid "Duke Nukem"
@@ -8545,6 +8534,11 @@ msgid ""
 "The module DOES NOT SEND DATA outside of your PC. This module will not work if you do not have libcurl as it communicates in RESTful API style.\n"
 "\n"
 msgstr ""
+"Использует локальную Ollama для генерации названия уровня, пересылая ей необходимые метаданные. Модель по умолчанию — \"llama3.1:8b\". Для использования просто скачайте Ollama и llama3.1:8b и запустите со стандартными параметрами. Использование другой модели или LLM-платформы требует изменения скрипта.\n"
+"\n"
+"Этот модуль использует функцию Lua \"io.popen\" для доступа к cURL, поэтому на Windows может появиться командная строка. Это нормальное поведение.\n"
+"\n"
+"Модуль НЕ ОТПРАВЛЯЕТ ДАННЫЕ куда-либо вне Вашего компьютера. Он не будет работать, если на компьютере не установлен libcurl, так как передача информации происходит через RESTful API style.\n"
 
 #: modules/llm_namer.lua:3921
 msgid ""
@@ -8552,7 +8546,10 @@ msgid ""
 "\n"
 "Not guaranteed to make authentic stories and will totally hallu"
 msgstr ""
+"Генерировать истории на межмиссионных экранах. Для работы требуется соответственная включённая настройка \"Новый текст повествования\" внутри модуля \"Расширения ZDoom\".\n"
+"\n"
+"Без гарантий насчёт того, что нейросеть не будет галлюцинировать, и что истории окажутся хоть сколько-нибудь адекватны."
 
 #: modules/llm_namer.lua:3946
 msgid "Enables or disables Ollama instance check before level generation begins for speed. When turning this off, be absolutely sure Ollama is running or you may get end errors, wasting your generated level."
-msgstr ""
+msgstr "Переключает проверку готовности Ollama перед настоящим запуском. Можно отключить для скорости, но в этом случае убедитесь, что Ollama действительно запущена — в противном случае вся генерация уровней прервётся под самый конец, при попытке обращения к нейросети."
