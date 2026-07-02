@@ -1488,11 +1488,12 @@ LLM_NAME.name_theme =
   char_limits =
   {
     "- 1 word, 4-10 letters. Do not combine more than 3 dictionary words into one.",
+    "- 1 word, 4-10 letters, in the format 'The <name>'. Do not combine more than 3 dictionary words into one.",
     "- 2 words",
     "- 3 words",
     "- 4 words",
-    "- 5 words, maximum 20 characters long including spaces",
-    "- 6 words, maximum 20 characters long including spaces",
+    "- 5 words, not more than 18 characters long including spaces",
+    "- 6 words, not more than 18 characters long including spaces",
   }
 }
 
