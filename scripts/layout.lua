@@ -2183,10 +2183,10 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
       -- remove sinks that are taller than the zone sky height
       if R.is_outdoor then
-        if group and group.h >= 0 then
+        if group and group.h then
           local h_diff = R.max_ceil_h - group.h
           if h_diff > 0 then
-            if sink.dz and sink.dz > h_diff then
+            if sink.dz or sink.trim_dz > h_diff then
               tab[sink_name] = nil
             end
           end
@@ -2300,8 +2300,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
       -- PLAIN keyword for sinks should now be ignored in
       -- favor of this direct prob
-      local volume_prob_add = math.remap_range(cg.volume, 4, 64, 0, 30)
-      local openness_prob_add = math.remap_range(cg.openness, 0.2, 0.6, 0, 30, "clamp_it")
+      local volume_prob_add = math.remap_range(cg.volume, 4, 48, 0, 30)
+      local openness_prob_add = math.remap_range(cg.openness, 0.2, 0.6, 0, 40, "clamp_it")
       local has_ceil_sink = rand.odds(30 + volume_prob_add + openness_prob_add)
       if has_ceil_sink == false then name = "PLAIN" end
 
@@ -2329,7 +2329,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     -- PLAIN keyword for sinks should now be ignored in
     -- favor of this direct prob
     if not R.liquid_sink_prob then
-      R.liquid_sink_prob = rand.odds(65 + math.remap_range(R.svolume, 8, 64, 0, 30, "clamp_it"))
+      R.liquid_sink_prob = rand.odds(65 + math.remap_range(R.svolume, 8, 64, 0, 30))
     end
     if R.liquid_sink_prob == false then name = "PLAIN" end
 
