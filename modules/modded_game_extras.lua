@@ -1853,15 +1853,20 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     end]]
 
     if R.exit_score then
-      shapes_string = shapes_string .. "(Exit Score: " .. R.exit_score .. ") "
+      shapes_string = shapes_string .. "(Exit Score: " .. math.round_to(R.exit_score, 2) .. ") "
     end
 
     if R.start_score then
-      shapes_string = shapes_string .. "(Start Score: " .. R.start_score .. ") "
+      shapes_string = shapes_string .. "(Start Score: " .. math.round_to(R.start_score, 2) .. ") "
     end
 
     if R.conns then
       shapes_string = shapes_string .. "(Conns: " .. #R.conns .. ") "
+    end
+  
+    if R.height_profile then
+      shapes_string = shapes_string .. "(" ..
+        R.height_profile .. " " .. R.height_style .. ") "
     end
 
     --[[shapes_string = shapes_string ..
