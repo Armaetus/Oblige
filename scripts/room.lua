@@ -3410,7 +3410,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     A.ceil_mat = assert(R.cage_mat or A.zone.cage_mat)
 
     -- fancy cages
-    if A.cage_mode or (#A.seeds >= 4 and rand.odds(50)) then
+    if A.cage_mode then
       table.insert(R.cage_rail_areas, A)
 
       if not R.is_outdoor then
