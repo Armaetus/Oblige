@@ -1850,8 +1850,8 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "] "
     else
       shapes_string = shapes_string .. "[no symm] "
-    end]]
-
+    end
+    
     if R.exit_score then
       shapes_string = shapes_string .. "(Exit Score: " .. math.round_to(R.exit_score, 2) .. ") "
     end
@@ -1862,11 +1862,15 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     if R.conns then
       shapes_string = shapes_string .. "(Conns: " .. #R.conns .. ") "
-    end
-  
+    end]]
+
     if R.height_profile then
-      shapes_string = shapes_string .. "(" ..
+      shapes_string = shapes_string .. "(Height Info: " ..
         R.height_profile .. " " .. R.height_style .. ") "
+    end
+
+    if R.pressure then
+      shapes_string = shapes_string .. "(Combat Pressure: " .. R.pressure .. ") "
     end
 
     --[[shapes_string = shapes_string ..
