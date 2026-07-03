@@ -702,6 +702,26 @@ DOOM.SINKS =
     light_color = "beige"
   },
 
+  light_torches =
+  {
+    mat = "_WALL",
+    dz = 144,
+    light = 24,
+
+    trim_mat = "BRICKLIT",
+    trim_dz = 16,
+  },
+
+  light_torches2 =
+  {
+    mat = "_WALL",
+    dz = 144,
+    light = 24,
+
+    trim_mat = "BSTONE3",
+    trim_dz = 16,
+  },
+
   -- misc floor --
 
   floor_glowingrock =
@@ -1903,6 +1923,9 @@ DOOM.THEMES =
       light_side5 = 70,
       light_side6 = 70,
 
+      light_torches = 70,
+      light_torches2 = 70,
+
       ceil_mix_with_f = 125,
       ceil_mix_with_w = 75,
       ceil_mix_with_f_tall = 75,
@@ -2464,6 +2487,10 @@ DOOM.THEMES =
       light_diamond = 35,
       light_hell_red = 80,
       light_hell_lava = 40,
+
+      light_torches = 50,
+      light_torches2 = 50,
+
       ceil_redash = 25,
       ceil_vdark = 10,
 
