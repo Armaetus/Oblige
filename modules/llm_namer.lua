@@ -1489,6 +1489,8 @@ LLM_NAME.name_theme =
   {
     "- 1 word, 4-10 letters. Do not combine more than 3 dictionary words into one.",
     "- 1 word, 4-10 letters, in the format 'The <name>'. Do not combine more than 3 dictionary words into one.",
+    "- 2 words, in the format 'The <adjective> <name>'. Do not combine more than 3 dictionary words into one.",
+    "- 2 words, in the format 'The <name> of <adjective>'. Do not combine more than 3 dictionary words into one.",
     "- 2 words",
     "- 3 words",
     "- 4 words",
