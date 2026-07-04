@@ -3797,9 +3797,8 @@ I need the story to be properly formatted. Do not provide any explanation.
 
 Rules:
 - narrate in second person
-- Doom universe story arc
+- action-movie style Doom in-universe sub-story arc
 - engaging story with a slightly grounded, military-style, viscerally action-packed plot
-- more on engaging, intruiging story and less on prosaic description
 - pure fictional non real-world location
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
@@ -3808,7 +3807,7 @@ Rules:
 - please do not mention the smell of ozone, or nexus points, sub-levels unless asked for by location
 - satisfying ending for the current arc is preferred
 
-The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one.
+The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one. 
 Hell continues to be humanity's problem and the Doomslayer's exploits brings them to the current location where every step is toward the destruction of Hell and its forces.
 The Doomslayer always emerges victorious in this current story but there will always be a new story, another battle with Hell elsewhere.
 Please avoid cliffhangers or "to be continued" endings. The current arc ends but there is always more to do.
