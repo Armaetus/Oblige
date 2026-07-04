@@ -3632,51 +3632,83 @@ GROW_COLONNADE_2_LONG =
 
   structure =
   {
-    "1......","1111111",
-    "1......","11####1",
-    "x......","x111111",
-    "x......","x1####1",
-    "x......","x111111",
-    "x......","x1####1",
-    "x......","x111111",
+    "1........","111111111",
+    "1........","111####11",
+    "x........","x11111111",
+    "x........","x11111111",
+    "x........","x11####11",
+    "x........","x11111111",
   }
 },
 
 GROW_COLONNADE_2_LONG_NEW_AREA =
 {
-  prob = 5,
-  skip_prob = 85,
+  prob = 10,
+  skip_prob = 60,
 
   structure =
   {
-    "1........","111111111",
-    "1........","11A####A1",
-    "x........","x11111111",
-    "x........","x1A####A1",
-    "x........","x11111111",
-    "x........","x1A####A1",
-    "x........","x11111111",
-  }
-},
-
-GROW_COLONNADE_2_LONG_NEW_AREA_ALT =
-{
-  prob = 5,
-  skip_prob = 85,
-
-  structure =
-  {
-    "1........","111111111",
-    "1........","11A#AA#A1",
-    "x........","x11%AA/11",
-    "x........","x1A#AA#A1",
+    "x........","x1%AAAA/1",
+    "1........","111%AA/11",
+    "1........","111####11",
+    "x........","x111AA111",
+    "x........","x111AA111",
+    "x........","x11####11",
     "x........","x11/AA%11",
-    "x........","x1A#AA#A1",
-    "x........","x11111111",
+    "x........","x1/AAAA%1",
   },
 
   diagonals =
   {
+    "1A","A1",
+    "1A","A1",
+    "1A","A1",
+    "1A","A1"
+  }
+},
+
+GROW_COLONNADE_2_LONG_NEW_AREA_2 =
+{
+  prob = 10,
+  skip_prob = 70,
+
+  structure =
+  {
+    "1..........","11111111111",
+    "1..........","111A####A11",
+    "x..........","x11%AAAA/11",
+    "x..........","x11/AAAA%11",
+    "x..........","x11A####A11",
+    "x..........","x1111111111",
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "1A","A1"
+  }
+},
+
+GROW_COLONNADE_2_LONG_NEW_AREA_3 =
+{
+  prob = 10,
+  skip_prob = 65,
+
+  structure =
+  {
+    "1..........","1111/AA%111",
+    "1..........","111A#AA#A11",
+    "x..........","x111%AA/111",
+    "x..........","x11A#AA#A11",
+    "x..........","x111/AA%111",
+    "x..........","x11A#AA#A11",
+    "x..........","x111%AA/111",
+  },
+
+  diagonals =
+  {
+    "1A","A1",
+    "1A","A1",
     "1A","A1",
     "1A","A1"
   }
@@ -3695,6 +3727,27 @@ GROW_COLONNADE_TINY =
     "...","1.1",
     "...","111",
     "11x","11x"
+  }
+},
+
+GROW_COLONNADE_TINY_NEW_AREA =
+{
+  prob = 12,
+  skip_prob = 75,
+
+  structure =
+  {
+    ".....","AAAAA",
+    ".....","AA#AA",
+    ".....","AAAAA",
+    ".....","1%./1",
+    ".....","11111",
+    "11xxx","11xxx"
+  },
+
+  diagonals =
+  {
+    "1A","A1"
   }
 },
 
@@ -13089,6 +13142,56 @@ GROW_BLOCKFORTS_DOUBLE =
   }
 },
 
+GROW_PUZZLE_PIECE_CORNER =
+{
+  prob = 15,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx11xxx","xx11xxx",
+    "....xxx","/111xxx",
+    "....xxx","1111xxx",
+    "....xxx","1111xxx",
+    ".......","111/AAA",
+    "xxx....","xxxAAAA",
+    "xxx....","xxxAAAA",
+    "xxx....","xxxAAA/"
+  },
+
+  diagonals =
+  {
+    ".1",
+    "1A",
+    "A."
+  },
+
+  auxiliary =
+  {
+    pass = "aux_GROW_PUZZLE_PIECE_CORNER"
+  }
+},
+
+aux_GROW_PUZZLE_PIECE_CORNER =
+{
+  prob = 1,
+
+  structure =
+  {
+    "xxx..","xxxA%",
+    "x11..","x11AA",
+    "x1x2x","x1x2x",
+    "..22x","AA22x",
+    "..xxx","%Axxx",
+  },
+
+  diagonals =
+  {
+    "A.",
+    ".A"
+  }
+},
+
 GROW_SLIGE_BOXES =
 {
   prob = 5,
@@ -13105,7 +13208,7 @@ GROW_SLIGE_BOXES =
     "........","1AAAAAA1",
     "........","11111111",
     "11xxxxxx","11xxxxxx"
-  },
+  }
 },
 
 GROW_SLIGE_BANDS =
@@ -13124,7 +13227,7 @@ GROW_SLIGE_BANDS =
     "......","111111",
     "......","AAAAAA",
     "11xxxx","11xxxx"
-  },
+  }
 },
 
 GROW_36_CROSS_NEW_AREA_STAIRS =
@@ -13746,7 +13849,7 @@ GROW_36_HEXAGON_PILLAR_DOUBLE =
 
   auxiliary =
   {
-    pass = ""
+    pass = "GROW_36_HEXAGON_PILLAR_DOUBLE_aux"
   }
 },
 
