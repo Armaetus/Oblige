@@ -1963,11 +1963,11 @@ msgstr "Если опция включена, то в консоль будут 
 
 #: modules/gzdoom_marine_closet.lua:1841
 msgid "In Secret Rooms"
-msgstr "Также создавать в секретках"
+msgstr "Также создавать в секретах"
 
 #: modules/gzdoom_marine_closet.lua:1845
 msgid "If enabled, allowed marine closets to be built in secret rooms."
-msgstr "При включённой опции комнаты с морпехами будут генерироваться также и в секретных комнатах."
+msgstr "При включённой опции комнаты с морпехами будут генерироваться также и в секретных локациях."
 
 #: modules/gzdoom_marine_closet.lua:98
 msgid "Yes, and Guilt-inducing"
@@ -3275,7 +3275,7 @@ msgstr "Из-за особенностей линейных карт, Вы мо�
 
 #: modules/miscellaneous.lua:270
 msgid "Nature Mode"
-msgstr "Процент природных карт"
+msgstr "Вероятность природных карт"
 
 #: modules/miscellaneous.lua:277
 msgid "Forces most of the map to be composed of naturalistic areas (parks and caves). The ratio is decided by Outdoors style setting while competing styles are ignored."
@@ -3283,11 +3283,11 @@ msgstr "Заставляет большую часть карты состоят
 
 #: modules/miscellaneous.lua:284
 msgid "Streets Mode"
-msgstr "Процент карт с улицами"
+msgstr "Вероятность карт с улицами"
 
 #: modules/miscellaneous.lua:291
 msgid "Allows Obsidian to create large street-like outdoor rooms."
-msgstr "Позволяет создавать обширные комнаты, похожие на улицы."
+msgstr "Позволяет создавать открытые локации в виде улиц."
 
 #: modules/miscellaneous.lua:298
 msgid "Streets-Friendly Themes Only"
@@ -3302,7 +3302,7 @@ msgid ""
 "Heretic - City\n"
 "Strife - Town"
 msgstr ""
-"Разрешить генерировать улицы из настройки \"Процент карт с улицами\" только в следующих темах:\n"
+"Разрешить генерировать улицы из настройки \"Вероятность карт с улицами\" только в следующих темах:\n"
 "Doom 2 — Городская тема;\n"
 "Heretic — Город Проклятых (эп. 1);\n"
 "Chex Quest 3 — Chextropolis;\n"
@@ -4947,7 +4947,7 @@ msgid ""
 "- Progressive - Levels will be generated in sequential size based on the Lower Bound (as starting bound) to Upper Bound (as end).\n"
 "- Episodic - Similar to Progressive, but level scaling is between Episodes."
 msgstr ""
-"Изменяет тип расчёта размеров уровней по связанным параметрам \"Размер уровней\", \"Верхний предел\" и \"Нижний предел\".\n"
+"Изменяет поведение параметра \"Размер уровней\" и позволяет учитывать подстройку через опции \"Верхний предел\" и \"Нижний предел\".\n"
 "\n"
 "- Одинаково для всех уровней - Размер всегда определяется параметром \"Размер уровней\".\n"
 "- Случайно - Размер выбирается случайным образом от нижнего предела до верхнего.\n"
@@ -5080,7 +5080,7 @@ msgstr "Предсозданные карты"
 
 #: modules/ui_arch.lua:209
 msgid "Enable or disable prebuilt maps. When disabled, are replaced with generated maps instead."
-msgstr "Добавлять ли карты, сделанные заранее. Если опция отключена, на их месте будут использоваться сгенерированные уровни."
+msgstr "Добавлять ли сделанные заранее карты, обычно для боссов. Если опция отключена, на их месте будут использоваться сгенерированные уровни."
 
 #: modules/ui_arch.lua:210
 msgid "Prebuilt levels are useful when, for example, a boss encounter like the Icon of Sin is desired. This sort of level would be very difficult to generate procedurally, and thus a handmade map is used instead."
@@ -5470,7 +5470,7 @@ msgstr "Монстры в секретах"
 
 #: modules/ui_mons.lua:255
 msgid "I'm in your secret rooms, placing some monsters. Note: default is none."
-msgstr "Создавать ли монстров в секретных комнатах, и, если \"да\", то ослаблять ли их по сравнению с общей сложностью уровня."
+msgstr "Расставлять ли равных или более простых монстров в секретных локациях."
 
 #: modules/ui_mons.lua:261
 msgid "Enemy Drop Compensation"
@@ -5571,7 +5571,7 @@ msgstr "Особая награда в секретах"
 
 #: modules/ui_pickups.lua:119
 msgid "Adds extra content to secret rooms. Larger rooms offer more content. Default is NONE."
-msgstr "Добавление дополнительнго содержимого секретным комнатам, в крупных локациях — больше. По умолчанию отсутствует."
+msgstr "Добавление дополнительнго содержимого секретным локациям, в крупных локациях — больше. По умолчанию отсутствует."
 
 #: modules/ui_slump.lua:26
 msgid "Ranged Only"
