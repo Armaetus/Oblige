@@ -2633,11 +2633,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
   end
 
 
-  local function set_ceil(A, h)
-    A.ceil_h = h
-  end
-
-
   local function areaconn_other(IC, A)
     if IC.A1 == A then return IC.A2 end
     if IC.A2 == A then return IC.A1 end
