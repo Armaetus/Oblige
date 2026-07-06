@@ -4654,6 +4654,8 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "LITE5",
     trim_dz  = 0,
+
+    light_color = "red"
   },
 
   light_side1_yellow =
@@ -4664,6 +4666,8 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "LITE5",
     trim_dz  = 0,
+
+    light_color = "yellow"
   },
 
   light_side1_green =
@@ -4674,6 +4678,8 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "LITE5",
     trim_dz  = 0,
+
+    light_color = "green"
   },
 
   light_side1_purple =
@@ -4684,6 +4690,8 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "LITE5",
     trim_dz  = 0,
+
+    light_color = "purple"
   },
 
   light_lite5_red =
@@ -4694,6 +4702,8 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "T_VSLTER",
     trim_dz  = 0,
+
+    light_color = "red"
   },
 
   light_lite5_orange =
@@ -4704,6 +4714,8 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "T_VSLTEO",
     trim_dz  = 0,
+
+    light_color = "orange"
   },
 
   light_lite5_yellow =
@@ -4714,6 +4726,8 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "T_VSLTEY",
     trim_dz  = 0,
+
+    light_color = "yellow"
   },
 
   light_lite5_green =
@@ -4724,6 +4738,8 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "T_VSLTEG",
     trim_dz  = 0,
+
+    light_color = "green"
   },
 
   light_lite5_purple =
@@ -4734,6 +4750,8 @@ OBS_RESOURCE_PACK_SINK_DEFS =
 
     trim_mat = "T_VSLTEP",
     trim_dz  = 0,
+
+    light_color = "purple"
   },
 
   -- more weird ceiling liquids for hell
