@@ -3403,7 +3403,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     -- set ceiling for cage (basically if indoors)
     if N.ceil_h then
-      set_ceil(A, 
+      A:set_ceil(
         math.max(A.floor_h + A.room.scenic_fences.rail_h, A.floor_h + 96, N.ceil_h)
       )
     end
@@ -3417,7 +3417,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
       if not R.is_outdoor then
         if N.ceil_h and N.ceil_h > A.ceil_h + 96 then
-          set_ceil(A, N.ceil_h)
+          A:set_ceil(N.ceil_h)
         else
           A.ceil_mat = A.floor_mat
         end
@@ -3431,7 +3431,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         A.floor_h = N.floor_h
 
         if not R.is_outdoor then
-          set_ceil(A,
+          A:set_ceil(
             math.max(A.floor_h + A.room.scenic_fences.rail_h, A.floor_h + 96)
           )
         end
@@ -3521,7 +3521,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       assert(destA.ceil_h)
 
       if fromA.ceil_h < (destA.floor_h + 96) then
-        set_ceil(fromA, destA.ceil_h)
+        fromA:set_ceil(destA.ceil_h)
         fromA = destA
       end
 
@@ -3789,6 +3789,24 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
   end
 
 
+  -- if largest ceil-group is same as a neighbor, raise by 32 until different
+  local function ceil_vary_group_heights(R)
+    for _, A in pairs(R.areas) do
+      if A.ceil_group then
+
+        for _, N in pairs(A.neighbors) do
+
+          if N.ceil_group then
+            if A.ceil_group.h == N.ceil_group.h then
+              A.ceil_group.h = A.ceil_group.h + 32
+            end
+          end
+        end
+      end
+    end
+  end
+
+
   local function ceiling_group_heights(R)
     --
     -- Notes:
@@ -3819,7 +3837,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     ceil_ensure_traversibility(R)
 
-    -- TODO if largest ceil-group is same as a neighbor, raise by 32 until different
+    if not R.is_outdoor then
+      ceil_vary_group_heights(R)
+    end
   end
 
 
@@ -3832,12 +3852,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       A.is_porch_neighbor = true
 
       if A.mode == "cage" then
-        set_ceil(A, N.ceil_group.h or N.ceil_h)
+        A:set_ceil(N.ceil_group.h or N.ceil_h)
         A.floor_h = (N.floor_h or N.chunk.floor_h) + 24
 
         local h_diff = A.ceil_h - A.floor_h
         if h_diff < 72 then
-          set_ceil(A, A.floor_h + 72)
+          A:set_ceil(A.floor_h + 72)
         end
         A.cage_mode = "fancy"
       end
@@ -3846,7 +3866,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         A.peer.is_outdoor = false
         A.peer.is_porch_neighbor = true
         A.peer.ceil_mat = A.ceil_mat
-        set_ceil(A, A.peer.ceil_group.h or A.peer.ceil_h)
+        A:set_ceil(A.peer.ceil_group.h or A.peer.ceil_h)
       end
     end
 
@@ -3905,7 +3925,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
           if A2 then
             if A2.ceil_h then
               A.ceil_group = A2.ceil_group
-              set_ceil(A, A.ceil_group.h)
+              A:set_ceil(A.ceil_group.h)
             end
 
             A.is_outdoor = false
@@ -3916,7 +3936,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
               A.peer.ceil_mat = A.ceil_mat
               if A2.ceil_h then
                 A.peer.ceil_group = A.peer.ceil_group
-                set_ceil(A, A.peer.ceil_group.h)
+                A.peer:set_ceil(A.peer.ceil_group.h)
               end
             end
           end
@@ -3945,12 +3965,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
 
       if A.peer and A.peer.ceil_h then
-        set_ceil(A, A.peer.ceil_group.h or A.peer.ceil_h)
+        A:set_ceil(A.peer.ceil_group.h or A.peer.ceil_h)
         goto skip
       end
 
       if A.ceil_group then
-        set_ceil(A, assert(A.ceil_group.h))
+        A:set_ceil(assert(A.ceil_group.h))
         goto skip
       end
 
@@ -3963,7 +3983,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
       if A.traverse_ceil_h then new_h = math.max(new_h, A.traverse_ceil_h) end
 
-      set_ceil(A, new_h)
+      A:set_ceil(new_h)
       ::skip::
     end
 
@@ -4149,7 +4169,7 @@ function Room_set_sky_heights(LEVEL)
 
   for _, A in pairs(LEVEL.areas) do
     if A.floor_h and A.zone and A.is_outdoor and not A.is_porch then
-      A.ceil_h = A.zone.sky_h + 16
+      A:set_ceil(A.zone.sky_h + 16)
     end
   end
 
@@ -4277,7 +4297,7 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         end
 
         N.floor_h = best_LN.floor_h - 16
-        N.ceil_h = best_LN.ceil_h
+        N:set_ceil(best_LN.ceil_h)
       end
     end
   end
@@ -4373,7 +4393,6 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
       if SAS then
         -- convert nowhere areas to just normal areas (borrow info from main area)
         A.floor_h = SAS.floor_h
-        A.ceil_h = SAS.ceil_h
 
         A.floor_mat = R.floor_mats[SAS.floor_h] --or SAS.floor_mat
 
