@@ -443,6 +443,15 @@ function AREA_CLASS.get_fseed_coord(A)
 end
 
 
+function AREA_CLASS.set_floor(A, h)
+  A.floor_h = h
+end
+
+function AREA_CLASS.set_ceil(A, h)
+  A.ceil_h = h
+end
+
+
 ------------------------------------------------------------------------
 
 
