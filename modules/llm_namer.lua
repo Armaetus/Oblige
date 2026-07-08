@@ -3797,7 +3797,7 @@ I need the story to be properly formatted. Do not provide any explanation.
 
 Rules:
 - narrate in second person
-- Doom-style military-industrial horror action
+- visceral Doom-style military-industrial horror action
 - engaging story with a slightly grounded, military-style, viscerally action-packed plot
 - pure fictional non real-world location
 - absolutely avoid any use of italics, bold, or any Markdown formatting
@@ -3808,6 +3808,7 @@ Rules:
 - please do not mention the smell of ozone, or nexus points, sub-levels unless asked for by location
 - avoid inventing a larger hidden crisis to make the ending feel more important
 - do not invent a larger hidden portal, reactor, core, energy-source, breach, or anomaly plot.
+- do not mention Earth, it is only for locational context
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one. 
 Hell continues to be humanity's problem and the Doomslayer's exploits bring him to the current location. Every step denies Hell something concrete: bodies, weapons, territory, command, records, rituals, collaborators, supplies, or time.
@@ -3815,11 +3816,11 @@ The Doomslayer always emerges victorious in this current story but there will al
 Please avoid cliffhangers or "to be continued" endings.
 
 Plot Discipline:
-- treat Story Plot as mandatory, not inspirational.
-- the Objective in Story Plot must be the objective that gets resolved.
-- the Twist in Story Plot must complicate that objective, not replace it.
-- do not invent a larger hidden portal, reactor, core, energy-source, breach, or anomaly plot.
-- the ending must resolve the stated objective directly.
+- treat Story Plot as mandatory, not inspirational
+- the Objective in Story Plot must be the objective that gets resolved
+- the Twist in Story Plot must complicate that objective, not replace it
+- do not invent a plot not covered by the Story Plot, Objective, and Twist
+- the ending must resolve the stated objective directly
 
 Protagonist Notes:
 - the protagonist will never choose to work with Hell
