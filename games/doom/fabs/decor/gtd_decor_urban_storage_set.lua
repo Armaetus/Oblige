@@ -9,7 +9,7 @@ PREFABS.Decor_urban_storage_huge_boxes =
 
   where  = "point",
   size   = 96,
-  height = 128,
+  height = 129,
 
   bound_z1 = 0,
   bound_z2 = 128,
@@ -88,7 +88,7 @@ PREFABS.Decor_urban_storage_single_box_tall =
 
   prob = 2500,
 
-  height = 128,
+  height = 129,
 
   size = 64,
 }
@@ -115,7 +115,7 @@ PREFABS.Decor_urban_storage_wood_huge_boxes_1 =
 
   where  = "point",
   size   = 96,
-  height = 128,
+  height = 129,
 
   bound_z1 = 0,
   bound_z2 = 128,
