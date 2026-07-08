@@ -1504,9 +1504,19 @@ DOOM.NAMES =
         ["The Perfect Virus"]=10,
         ["To Thee We Confide"]=10,
         ["Window of Time"]=10,
-        ["Wounded Warsong"]=10 
+        ["Wounded Warsong"]=10,
         
         -- 2026 stub
+
+        -- Because FUCK YOU MICROSOFT for laying off a large chunk of staff at Id, ZOS
+        -- and other talented people in July of 2026. Get off the AI dick and actually
+        -- be productive instead of investing in AI Slop and raising consumer grade
+        -- hardware. -R
+        -- Sources: https://forums.elderscrollsonline.com/en/discussion/695703/huge-layoffs-at-zenimax-a-lot-of-eso-devs-impacted
+        -- and https://www.doomworld.com/forum/topic/159113-layoffs-at-id-software
+        ["Microsoft HQ"]=10,
+        ["Microsoft Investor Meeting Offices"]=10
+
         -- end marker
 
       }
