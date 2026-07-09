@@ -1488,14 +1488,14 @@ LLM_NAME.name_theme =
   char_limits =
   {
     "- 1 word, 4-10 letters. Do not combine more than 3 dictionary words into one.",
-    "- 1 word, 4-10 letters, in the format 'The <name>'. Do not combine more than 3 dictionary words into one.",
-    "- 2 words, in the format 'The <adjective> <name>'. Do not combine more than 3 dictionary words into one.",
-    "- 2 words, in the format 'The <name> of <adjective>'. Do not combine more than 3 dictionary words into one.",
-    "- 2 words",
-    "- 3 words",
-    "- 4 words",
-    "- 5 words, not more than 18 characters long including spaces",
-    "- 6 words, not more than 18 characters long including spaces",
+    "- 1 word, 4-10 letters, in the format 'The <Name>'. Do not combine more than 3 dictionary words into one.",
+    "- 2 words, in the format 'The <Adjective> <Name>'. Do not combine more than 3 dictionary words into one.",
+    "- 2 words, in the format 'The <Name> of <Adjective>'. Do not combine more than 3 dictionary words into one.",
+    "- 2 words, involve a non-real coined place name",
+    "- 3 words, involve a non-real coined place name",
+    "- 4 words, involve a non-real coined place name",
+    "- 5 words, not more than 18 characters long including spaces, involve a non-real coined place name",
+    "- 6 words, not more than 18 characters long including spaces, involve a non-real coined place name",
   }
 }
 
@@ -1570,7 +1570,7 @@ LLM_NAME.prompt_flavors =
   -- these are substituted to the "Generate a Doom map name that " part of the instructional line
   dn3d = "Generate a Doom map name that leans towards an extremely euphemistic and badly suggestive 80's comedic porn parody title that's rather blue and practically lewd if not laughable. The name ",
   black_metal = "Generate a Doom map name that sounds like a hardcore black metal band song title. The name ",
-  ecchi = "Generate a Doom map name that sounds like a English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
+  ecchi = "Generate a Doom map name that sounds like a fully English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
   action = "Generate a Doom map name that sounds like a classic and explosively thrilling action movie title, quote, or one-liner. The name "
 }
 
