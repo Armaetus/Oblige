@@ -1284,6 +1284,10 @@ function Monster_fill_room(LEVEL, R, SEEDS)
       return 0
     end
 
+    if not LEVEL.is_secret and info.secret == true then
+      return 0
+    end
+
     if R.avoid_mons[mon] then
       return 0
     end
