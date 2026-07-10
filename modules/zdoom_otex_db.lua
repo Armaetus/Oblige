@@ -357,13 +357,13 @@ OTEX_RESOURCE_DB = {
         flats = {'OCRATB_2', 'OCRATB_1', 'OCRATB_4', 'OCRATB_3'},
         textures = {'OCRATA23', 'OCRATA16', 'OCRATA13', 'OCRATA12', 'OCRATA21', 'OCRATB11', 'OCRATA02', 'OCRATB24', 'OCRATB12', 'OCRATB26', 'OCRATB04', 'OCRATA15', 'OCRATB22', 'OCRATB15', 'OCRATB25', 'OCRATB02', 'OCRATA03', 'OCRATB14', 'OCRATA06', 'OCRATA01', 'OCRATA04', 'OCRATB01', 'OCRATA05', 'OCRATB05', 'OCRATB28', 'OCRATA11', 'OCRATB18', 'OCRATB13', 'OCRATA22', 'OCRATB27', 'OCRATA14', 'OCRATB16', 'OCRATB17', 'OCRATB21', 'OCRATB23', 'OCRATB03'}
     },
-    ["SNOW"] = {
+    --[[["SNOW"] = {
         has_flats = true,
         has_textures = false,
         has_all = false,
         flats = {'OSNOWB01', 'OSNOWA01'},
         textures = {}
-    },
+    },]]
     ["ROOF"] = {
         has_flats = true,
         has_textures = false,
