@@ -1842,7 +1842,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = " ROOM_" .. R.id .. " "
     end
 
-    --[[if R.symmetry and R.symmetry.kind then
+    if R.symmetry and R.symmetry.kind then
       shapes_string = shapes_string .. "[" .. R.symmetry.kind
       if R.symmetry.dir then
         shapes_string = shapes_string .. ":" .. R.symmetry.dir
@@ -1851,8 +1851,8 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     else
       shapes_string = shapes_string .. "[no symm] "
     end
-    
-    if R.exit_score then
+
+    --[[if R.exit_score then
       shapes_string = shapes_string .. "(Exit Score: " .. math.round_to(R.exit_score, 2) .. ") "
     end
 
@@ -1865,7 +1865,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     end]]
 
     if R.height_profile then
-      shapes_string = shapes_string .. "(Height Info: " ..
+      shapes_string = shapes_string .. "(HGT: " ..
         R.height_profile .. " " .. R.height_style .. ") "
     end
 
@@ -1873,10 +1873,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "(Combat Pressure: " .. R.pressure .. ") "
     end
 
-    --[[shapes_string = shapes_string ..
+    shapes_string = shapes_string ..
       "(SZE " .. R.svolume .. "/" .. math.round(R.size_limit) .. ") "
 
-    shapes_string = shapes_string .. "[GROW "
+    --[[shapes_string = shapes_string .. "[GROW "
     if R.shapes_applied then
       shapes_string = shapes_string .. R.shapes_applied
     else
@@ -1900,12 +1900,12 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "BASE " .. R.base_set_increase .. ") "
     else
       shapes_string = shapes_string .. "BASE 0) "
-    end
-  
+    end]]
+
     shapes_string = shapes_string .. "(STAT " ..
       LEVEL.size_multiplier .. "x, " ..
       LEVEL.area_multiplier .. "x, " ..
-      LEVEL.size_consistency .. ") "]]
+      LEVEL.size_consistency .. ") "
 
     if LEVEL.is_absurd then
       shapes_string = shapes_string .. "(ARUL: "
@@ -1937,20 +1937,20 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "(FLR) "
     end]]
 
+    shapes_string = shapes_string .. "(SPR: "
     if R.sprout_rule then
-      shapes_string = shapes_string .. "(SPR: " .. R.sprout_rule
+      shapes_string = shapes_string .. R.sprout_rule
     end
-
     if R.emergency_sprouted then
       shapes_string = shapes_string .. "[!]"
     end
     shapes_string = shapes_string .. ") "
 
-    --[[extrasif R.is_grown then
-      shapes_string = shapes_string .. "(GROWN) "
+    if R.is_grown then
+      shapes_string = shapes_string .. "(GRWN) "
     else
-      shapes_string = shapes_string .. "(UNGROWN) "
-    end]]
+      shapes_string = shapes_string .. "(!GRWN) "
+    end
 
     return shapes_string
   end
@@ -2755,7 +2755,6 @@ OB_MODULES["modded_game_extras"] =
       priority = 4.9,
       gap = 1,
     },
-
 
     {
       name = "bool_custom_actor_names",
