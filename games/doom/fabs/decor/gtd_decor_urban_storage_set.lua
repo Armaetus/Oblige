@@ -106,15 +106,15 @@ PREFABS.Decor_urban_storage_collection =
 
 PREFABS.Decor_urban_storage_wood_huge_boxes_1 =
 {
-  file   = "decor/gtd_decor_urban_storage_set.wad",
-  map    = "MAP04",
+  file = "decor/gtd_decor_urban_storage_set.wad",
+  map = "MAP04",
 
-  prob   = 5000,
+  prob = 5000,
 
   group = "gtd_storage_wood",
 
-  where  = "point",
-  size   = 96,
+  where = "point",
+  size = 96,
   height = 129,
 
   bound_z1 = 0,
@@ -123,14 +123,14 @@ PREFABS.Decor_urban_storage_wood_huge_boxes_1 =
 
 PREFABS.Decor_urban_storage_wood_huge_boxes_2 =
 {
-  file   = "decor/gtd_decor_urban_storage_set.wad",
-  map    = "MAP05"
+  template = "Decor_urban_storage_wood_huge_boxes_1",
+  map = "MAP05"
 }
 
 PREFABS.Decor_urban_storage_wood_huge_boxes_3 =
 {
-  file   = "decor/gtd_decor_urban_storage_set.wad",
-  map    = "MAP06"
+  template = "Decor_urban_storage_wood_huge_boxes_1",
+  map = "MAP06"
 }
 
 PREFABS.Decor_road_clutter_boxes_alt_storage_wood_grouped =
