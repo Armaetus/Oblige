@@ -875,7 +875,7 @@ end
 
 
 
-function Fab_bound_brushes_Z(fab, z1, z2)
+--[[function Fab_bound_brushes_Z(fab, z1, z2)
   if not (z1 or z2) then return end
 
   for _,B in pairs(fab.brushes) do
@@ -885,7 +885,7 @@ function Fab_bound_brushes_Z(fab, z1, z2)
     if z1 and not b then table.insert(B, { b = z1 }) end
     if z2 and not t then table.insert(B, { t = z2 }) end
   end
-end
+end]]
 
 
 
