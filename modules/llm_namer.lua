@@ -67,7 +67,9 @@ LLM_NAME.PROMPT_FLAVOR_CHOICES =
   "dn3d", _("Duke Nukem"),
   "black_metal", _("Black Metal"),
   "ecchi", _("HDoom"),
-  "action", _("Action Movie")
+  "action", _("Action Movie"),
+  "meguca", _("Meguca"),
+  "meguca_suffering", _("Meguca is Suffering")
 }
 
 -- semantics translation table
@@ -1573,7 +1575,9 @@ LLM_NAME.prompt_flavors =
   dn3d = "Generate a Doom map name that leans towards an extremely euphemistic and badly suggestive 80's comedic porn parody title that's rather blue and practically lewd if not laughable. The name ",
   black_metal = "Generate a Doom map name that sounds like a hardcore black metal band song title. The name ",
   ecchi = "Generate a Doom map name that sounds like a fully English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
-  action = "Generate a Doom map name that sounds like a classic and explosively thrilling action movie title, quote, or one-liner. The name "
+  action = "Generate a Doom map name that sounds like a classic and explosively thrilling action movie title, quote, or one-liner. The name ",
+  meguca = "Generate a Doom map name that sounds like an classic cute and fluffy lighthearted occasional slice-of-life magical girl anime. Dark-themed instructions are only for flavoring, do not make the name dark. The name ",
+  meguca_suffering = "Generate a Doom map name that sounds like a heavy-handed and dark, serious-themed magical girl anime, quote, or one-liner. The name "
 }
 
 LLM_NAME.story_components =
@@ -1728,13 +1732,13 @@ LLM_NAME.story_components =
     "Locate the rogue cult leader.",
     "Find the lost UAC blueprints.",
     "Recover the Hell-binding artifact.",
-    "Steal the commander’s access chip.",
+    "Steal the commander's access chip.",
     "Claim the sealed armory code.",
     "Retrieve the black archive drive.",
     "Find the missing marine tags.",
     "Recover the corrupted data core.",
     "Seize the portal calibration lens.",
-    "Take the priest’s rune tablet.",
+    "Take the priest's rune tablet.",
     "Grab the reactor override key.",
     "Extract the demonic tissue sample.",
     "Secure the emergency beacon.",
@@ -3409,7 +3413,7 @@ function LLM_NAME.do_it()
     file:close()
 
     local cmd =
-      'start "" /b curl --max-time 120 -sS ' ..
+      'start "" /b curl --max-time 180 -sS ' ..
       '-H "Content-Type: application/json" '..
       '"' .. LLM_NAME.endpoint .. '"' ..
       ' -d @ollama_payload.json'
@@ -3681,7 +3685,7 @@ function LLM_NAME.do_it()
     s = s:gsub("\t", "\\t")
 
     -- cuz it happens
-    s = s:gsub("’", "\\'")
+    s = s:gsub("'", "\\'")
 
     return s
   end
@@ -3707,6 +3711,7 @@ _NAME_LENGTH_
 - 1 name only
 - do not add any comment or explanation, give only the name
 - no quotation marks, no camelcase, no snakecase
+- avoid words with hard starting consonants like "Kh", "Kr", "Ky"
 
 ]]..
 level_data
