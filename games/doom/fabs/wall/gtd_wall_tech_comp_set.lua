@@ -405,3 +405,51 @@ PREFABS.Wall_gtd_black_mirror_diag =
 
   where = "diagonal"
 }
+
+--
+
+
+PREFABS.Wall_gtd_spbc_1 =
+{
+  file = "wall/gtd_wall_tech_comp_set.wad",
+  map = "MAP30",
+
+  prob = 50,
+  group = "gtd_silver_pillars_blue_computers",
+
+  where = "edge",
+
+  deep = 16,
+
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit = {92,94}
+}
+
+PREFABS.Wall_gtd_spbc_2 =
+{
+  template = "Wall_gtd_spbc_1",
+  map = "MAP31",
+
+  prob = 10,
+  group = "gtd_silver_pillars_blue_computers"
+}
+
+PREFABS.Wall_gtd_spbc_3 =
+{
+  template = "Wall_gtd_spbc_1",
+  map = "MAP32",
+
+  prob = 5,
+  group = "gtd_silver_pillars_blue_computers",
+
+  tex_COMPSTA1 =
+  {
+    COMPSTA1 = 5,
+    COMPSTA2 = 5
+  }
+}
+
