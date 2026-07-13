@@ -159,3 +159,31 @@ PREFABS.Decor_black_mirror_pillar =
 
   z_fit = {10,12}
 }
+
+--
+
+PREFABS.Decor_tech_spbc_1 =
+{
+  file = "picture/gtd_pic_tech_comp_set.wad",
+  map = "MAP15",
+
+  prob = 5000,
+
+  group = "gtd_silver_pillars_blue_computers",
+
+  where = "point",
+
+  size = 64,
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit = { 61,62 , 84,86}
+}
+
+PREFABS.Decor_tech_sbpc_2 =
+{
+  template = "Decor_tech_spbc_1",
+  map = "MAP16"
+}
