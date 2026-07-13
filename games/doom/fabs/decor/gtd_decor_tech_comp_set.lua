@@ -164,7 +164,7 @@ PREFABS.Decor_black_mirror_pillar =
 
 PREFABS.Decor_tech_spbc_1 =
 {
-  file = "decor/gtd_pic_tech_comp_set.wad",
+  file = "decor/gtd_decor_tech_comp_set.wad",
   map = "MAP15",
 
   prob = 5000,
