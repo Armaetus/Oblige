@@ -1576,8 +1576,8 @@ LLM_NAME.prompt_flavors =
   black_metal = "Generate a Doom map name that sounds like a hardcore black metal band song title. The name ",
   ecchi = "Generate a Doom map name that sounds like a fully English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
   action = "Generate a Doom map name that sounds like a classic and explosively thrilling action movie title, quote, or one-liner. The name ",
-  meguca = "Generate a Doom map name that sounds like an classic cute and fluffy lighthearted occasional slice-of-life magical girl anime. Dark-themed instructions are only for flavoring, do not make the name dark. The name ",
-  meguca_suffering = "Generate a Doom map name that sounds like a heavy-handed and dark, serious-themed magical girl anime, quote, or one-liner. The name "
+  meguca = "Generate a Doom map name that sounds like an classic cute and fluffy lighthearted soft slice-of-life magical girl and flowery and romantic shoujo anime or episode. Dark-themed instructions are only for flavoring, do not make the name dark. The name ",
+  meguca_suffering = "Generate a Doom map name that sounds like a heavy-handed and dark, serious-themed shonen-oriented magical girl anime or episode with themes of despair, loss, and existential realizations. The name "
 }
 
 LLM_NAME.story_components =
