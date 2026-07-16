@@ -1624,7 +1624,7 @@ LLM_NAME.prompt_sub_flavors =
     {
       "",
       "Use and create your own cute Japanese manga onomatopoeia similar to 'fuwa fuwa' as non-dictionary name.",
-      "Use lovely romantic verbiage in the name.",
+      "Use sweet romantic shoujo manga verbiage in the name.",
       "Use flowery and lighthearted-feeling name."
     }
   }

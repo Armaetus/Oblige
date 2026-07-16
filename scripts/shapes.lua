@@ -9835,6 +9835,8 @@ GROW_MAZE_ZIGZAG =
   prob = 10,
   skip_prob = 80,
 
+  never_absurdify = true,
+
   structure =
   {
     "x..x","x11x",
@@ -9854,6 +9856,69 @@ GROW_MAZE_ZIGZAG =
     ".1",
     "1.",
     "1."
+  }
+},
+
+
+GROW_MAZE_ZIGZAG_WIDE =
+{
+  prob = 10,
+  skip_prob = 80,
+
+  structure =
+  {
+    "..xx","11xx",
+    "...x","11%x",
+    "....","%11%",
+    "x...","x%11",
+    "xx..","xx11",
+    "x...","x/11",
+    "....","/11/",
+    "...x","11/x",
+    "..xx","11xx",
+    "..xx","11xx",
+    "11xx","11xx"
+  },
+
+  diagonals =
+  {
+         "1.",
+    ".1","1.",
+    ".1",
+    ".1",
+    ".1","1.",
+         "1."
+  }
+},
+
+GROW_MAZE_ZIGZAG_WIDE_NEW_AREA =
+{
+  prob = 10,
+  skip_prob = 75,
+
+  structure =
+  {
+    "..xx","11xx",
+    "...x","11%x",
+    "....","%11%",
+    "x...","x%/A",
+    "xx..","xxAA",
+    "x...","x/%A",
+    "....","/11/",
+    "...x","11/x",
+    "..xx","11xx",
+    "..xx","11xx",
+    "11xx","11xx"
+  },
+
+  diagonals =
+  {
+         "1.",
+    ".1","1.",
+    ".1","1A",
+    ".1","1A",
+    ".1","1.",
+         "1."
   }
 },
 
