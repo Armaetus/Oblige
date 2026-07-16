@@ -1739,35 +1739,17 @@ LLM_NAME.story_components =
     "Cripple the invasion convoy.",
 
     -- Power/Infrastructure Objectives
-    "Activate vents; clear toxic mist.",
-    "Recharge the plasma foundry.",
-    "Restart the gravity clamps.",
-    "Power the ancient conduits.",
-    "Restart the buried control grid.",
-    "Restore the atmosphere seals.",
-    "Energize the defense grid.",
-    "Overcharge the red-key relay.",
-    "Restore power to the tram.",
-    "Ignite the incinerator stacks.",
-    "Restart the coolant pumps.",
-    "Prime the backup generators.",
-    "Unlock the command bunker.",
-    "Open the blast-shutter maze.",
-    "Reboot the UAC mainframe.",
-    "Raise the containment bridges.",
-    "Vent pressure from the reactor.",
-    "Reactivate the cargo crushers.",
-    "Cycle the airlock doors.",
-    "Power the crusher hallway.",
+    "Destroy corrupted toxic scrubbers.",
+    "Destroy the hellified plasma foundry.",
+    "Restart the abandoned defense grid.",
+    "Prime the facility backup generators.",
+    "Destroy the UAC mainframe and data.",
+    "Destroy reactor through vent closure.",
     "Start the lava-flow turbines.",
-    "Enable the bridge controls.",
-    "Spin up the teleport pads.",
-    "Route power to the armory.",
-    "Reset the security junction.",
+    "Gain access and loot UAC armory.",
+    "Raze the security junction.",
     "Restart the drainage machinery.",
-    "Open the quarantine sluices.",
-    "Charge the exit beacon.",
-    "Power the Hell portal suppressors.",
+    "Power-up the Hell portal suppressors.",
 
     -- Acquisition/MacGuffin Objectives
     "Acquire the blue access key.",
@@ -2004,7 +1986,7 @@ LLM_NAME.story_components =
     tech = {
       "Cygon Research Division, deep-space UAC materials testing and containment site",
       "New Attica Survey Complex, planetary mapping and pre-colonization analysis facility",
-      "Nexus Forward Station, strategic relay hub for interstellar operations and logistics routing",
+      "Nexera Forward Station, strategic relay hub for interstellar operations and logistics routing",
       "Illuminari Observation Tower, high-altitude surveillance and communications intercept structure",
       "Apex Systems Laboratory, advanced weapons and propulsion research subdivision",
       "Elysium Containment Chapel, converted UAC facility used for civilian quarantine and psychological stabilization",
@@ -3870,7 +3852,7 @@ Rules:
 - Hell is always the ultimate enemy, but the immediate mission threat may be a person, faction, archive, ritual, weapon shipment, infestation, command post, collaborator, or cover-up
 - the selected Story Plot controls the actual objective and resolution
 - if the acronym UAC is used, it means "Union Aerospace Corporation"
-- please do not mention the smell of ozone, or nexus points, sub-levels unless asked for by location
+- please do not mention the smell of ozone, or nexus points, junction points, sub-levels unless explicitly asked for by location
 - avoid inventing a larger hidden crisis to make the ending feel more important
 - do not invent a larger hidden portal, reactor, core, energy-source, breach, or anomaly plot.
 - do not mention Earth, it is only for locational context
