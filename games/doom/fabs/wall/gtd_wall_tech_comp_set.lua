@@ -435,7 +435,6 @@ PREFABS.Wall_gtd_spbc_2 =
   map = "MAP31",
 
   prob = 10,
-  group = "gtd_silver_pillars_blue_computers"
 }
 
 PREFABS.Wall_gtd_spbc_3 =
@@ -444,12 +443,20 @@ PREFABS.Wall_gtd_spbc_3 =
   map = "MAP32",
 
   prob = 5,
-  group = "gtd_silver_pillars_blue_computers",
 
   tex_COMPSTA1 =
   {
     COMPSTA1 = 5,
     COMPSTA2 = 5
   }
+}
+
+
+PREFABS.Wall_gtd_spbc_diag =
+{
+  template = "Wall_gtd_spbc_1",
+  map = "MAP33",
+
+  where = "diagonal",
 }
 
