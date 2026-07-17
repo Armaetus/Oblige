@@ -2261,14 +2261,16 @@ story intro here
 story ending here 
 </S2>
 
-The text in each tag section must at least be _WORD_COUNT_ words, maximum of 4 paragraphs with proper spacing.]],
+The text in each tag section must at least be _WORD_COUNT_ words, separated into paragraphs with proper spacing.]],
 
     game =
 [[There are three chapters and the story is an intro and end for each,
 making six intermissions overall. Each chapter has new twists and revalations.
+The text in each tag section must at least be _WORD_COUNT_ words, separated into paragraphs with proper spacing.
 
 SYSTEM: Use the following tagged structure and do not use any Markdown formatting.
-Please do not add other blocks than is found in the example:
+Please do not add other blocks than is found in the example.
+The following example must absolutely be followed:
 
 <S1> 
 chapter 1 intro here
@@ -2292,9 +2294,7 @@ chapter 3 intro here
 
 <S6> 
 chapter 3 ending here
-</S6>
-
-The text in each tag section must at least be _WORD_COUNT_ words, maximum of 4 paragraphs with proper spacing.]]
+</S6>]]
   },
 
   mcguffins = {
