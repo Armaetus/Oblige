@@ -1547,10 +1547,6 @@ function MARINE_CLOSET_TUNE.all_done()
 "        PainThreshold 25;")
 
     scripty = string.gsub(scripty,
-"        Radius 16;",
-"        Radius 1;")
-
-    scripty = string.gsub(scripty,
 "        Height 56;",
 "        Height 16;")
 else
