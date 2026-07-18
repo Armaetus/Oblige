@@ -3849,10 +3849,10 @@ Rules:
 - pure fictional non real-world location
 - absolutely avoid any use of italics, bold, or any Markdown formatting
 - no explanations, no commentary, no follow-up questions
-- Hell is always the ultimate enemy, but the immediate mission threat may be a person, faction, archive, ritual, weapon shipment, infestation, command post, collaborator, or cover-up
+- Hell is always the ultimate enemy and its demons are the immediate mission threat but be a person, faction, archive, ritual, weapon shipment, infestation, command post, collaborator, or cover-up may interfere
 - the selected Story Plot controls the actual objective and resolution
 - if the acronym UAC is used, it means "Union Aerospace Corporation"
-- please do not mention the smell of ozone, or nexus points, junction points, sub-levels unless explicitly asked for by location
+- please do not mention the smell of ozone, nexus points, junction points, or sub-levels
 - avoid inventing a larger hidden crisis to make the ending feel more important
 - do not invent a larger hidden portal, reactor, core, energy-source, breach, or anomaly plot.
 - do not mention Earth, it is only for locational context
