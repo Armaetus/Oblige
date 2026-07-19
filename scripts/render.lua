@@ -239,11 +239,6 @@ function Render_edge(LEVEL, E, SEEDS)
       reqs.height = 2
     end
 
-    if A.chunk and A.chunk.kind == "stair" then
-      reqs.height = A.ceil_h - math.max(A.chunk.dest_area.floor_h,
-        A.chunk.from_area.floor_h)
-    end
-
     if geom.is_corner(dir) then
       reqs.where = "diagonal"
       reqs.seed_h = reqs.seed_w
