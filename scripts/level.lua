@@ -685,6 +685,10 @@ function Episode_plan_monsters()
     local tab = {}
 
     for name,info in pairs(GAME.MONSTERS) do
+
+      -- secret monsters will not be used as bosses on non-secret levels
+      if not LEV.is_secret and info.secret and info.secret == "true" then goto skipboss end
+
       if LEV.theme.monster_prefs and LEV.theme.monster_prefs[name] and LEV.theme.monster_prefs[name] == 0 then goto skipboss end
       if LEV.is_procedural_gotcha and PARAM.bool_boss_gen == 1 then
         local bprob = 80
