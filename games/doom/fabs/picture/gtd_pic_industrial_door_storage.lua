@@ -28,3 +28,13 @@ PREFABS.Pic_gtd_door_storage_2 =
 
   x_fit = {84,92 , 164,172}
 }
+
+PREFABS.Pic_gtd_door_storage_2 =
+{
+  template = "Pic_gtd_door_storage_1",
+  map = "MAP03",
+
+  seed_w = 3,
+
+  x_fit = {168,216}
+}
