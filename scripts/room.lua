@@ -4204,8 +4204,8 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         if N.mode == "floor" then
           same_room_neighbors = same_room_neighbors + 1
 
-          -- must not be connected to other areas with the same floor height
-          if A.floor_h == N.floor_h then
+          -- must not be connected to other areas with the same rough floor height
+          if math.abs(A.floor_h - N.floor_h) <= 8 then
             return false
           end
         end
