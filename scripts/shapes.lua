@@ -3562,24 +3562,32 @@ GROW_COLONNADE_1_LIQUID =
   }
 },
 
-GROW_COLONNADE_2 =
+GROW_COLONNADE_2_NEW_AREA_A =
 {
   prob = 10,
   skip_prob = 60,
 
   structure =
   {
+    "xx....x","xx/11%x",
     "1......","1111111",
     "1......","11#11#1",
-    "x......","x111111",
+    "x......","xAAAAAA",
+    "x......","xA#AA#A",
+    "x......","xAAAAAA",
     "x......","x1#11#1",
     "x......","x111111",
-    "x......","x1#11#1",
-    "x......","x111111",
+    "xx....x","xx%11/x"
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1."
   }
 },
 
-GROW_COLONNADE_2_NEW_AREA =
+GROW_COLONNADE_2_NEW_AREA_B =
 {
   prob = 10,
   skip_prob = 60,
@@ -3631,23 +3639,31 @@ GROW_COLONNADE_2_LIQUID =
   }
 },
 
-GROW_COLONNADE_2_LONG =
+GROW_COLONNADE_2_LONG_NEW_AREA_A =
 {
   prob = 10,
   skip_prob = 60,
 
   structure =
   {
+    "xx......x","xx/1111%x",
     "1........","111111111",
     "1........","111####11",
-    "x........","x11111111",
-    "x........","x11111111",
+    "x........","xAAAAAAAA",
+    "x........","xAAAAAAAA",
     "x........","x11####11",
     "x........","x11111111",
+    "xx......x","xx%1111/x"
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1."
   }
 },
 
-GROW_COLONNADE_2_LONG_NEW_AREA =
+GROW_COLONNADE_2_LONG_NEW_AREA_B =
 {
   prob = 15,
   skip_prob = 60,
@@ -9957,6 +9973,8 @@ GROW_MAZE_ZIGZAG_DOUBLE =
   prob = 8,
   skip_prob = 80,
 
+  never_absurdify = true,
+
   structure =
   {
     "x..x","x11x",
@@ -14229,6 +14247,124 @@ aux_GROW_E1M1 =
   }
 },
 
+GROW_RIVETTED_STRAIGHT =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx111xx","xx111xx",
+    ".......","AAA1AAA",
+    ".......","%A/1%A/",
+    "xx...xx","xx111xx",
+    ".......","AAA1AAA",
+    ".......","%A/1%A/",
+    "xx...xx","xx111xx"
+  },
+
+  diagonals =
+  {
+    ".A","A1","1A","A.",
+    ".A","A1","1A","A."
+  }
+},
+
+GROW_RIVETTED_STRAIGHT_UNEVEN =
+{
+  prob = 20,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xx111xx","xx111xx",
+    "......x","AAA111x",
+    ".......","%A/1AAA",
+    "xx.....","xx11%A/",
+    ".....xx","AAA11xx",
+    ".......","%A/1AAA",
+    "xx.....","xx11%A/",
+    "xx...xx","xx111xx",
+  },
+
+  diagonals =
+  {
+    ".A","A1",
+    "1A","A.",
+    ".A","A1",
+    "1A","A."
+  }
+},
+
+GROW_LADDER_RUNG_SINGLE =
+{
+  prob = 10,
+  skip_prob = 65,
+
+  structure =
+  {
+    "xxx11","xxx11",
+    ".....","/A%1/",
+    ".....","AAAAA",
+    ".....","AAAAA",
+    ".....","%A/1%",
+    "xxx..","xxx11",
+  },
+
+  diagonals =
+  {
+    ".A","A.","1A",
+    ".A","A.","1A"
+  }
+},
+
+GROW_LADDER_RUNG_DOUBLE =
+{
+  prob = 17,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xxx11xxx","xxx11xxx",
+    "........","/A%11/A%",
+    "........","AAAAAAAA",
+    "........","AAAAAAAA",
+    "........","%A/11%A/",
+    "xxx..xxx","xxx11xxx",
+  },
+
+  diagonals =
+  {
+    ".A","A.",".A","A.",
+    ".A","A.",".A","A."
+  }
+},
+
+GROW_LADDER_RUNG_CORNER_BEND =
+{
+  prob = 15,
+  skip_prob = 75,
+
+  structure =
+  {
+
+    "......","/11111",
+    "......","111111",
+    "......","11/AA%",
+    "......","11AAAA",
+    "......","11AAAA",
+    "......","11%AA/",
+    "11xxxx","11xxxx"
+  },
+
+  diagonals =
+  {
+    "1.",
+    "1A","A.",
+    ".A","A."
+  }
+},
+
 -- [4x3_ALPHABET]
 
 GROW_3x_A_STAIRS =
@@ -14308,7 +14444,7 @@ GROW_3x_A_LIQUID =
 
 GROW_3x_B =
 {
-  prob = 40,
+  prob = 20,
   skip_prob = 75,
 
   structure =
@@ -14335,7 +14471,7 @@ GROW_3x_B =
 
 GROW_3x_B_STAIRS =
 {
-  prob = 20,
+  prob = 15,
   skip_prob = 75,
 
   structure =
@@ -19761,7 +19897,7 @@ GROW_SEWER_ENTRY =
     pass = "GROW_SEWER_ENTRY_aux",
 
     count = {2,3}
-  },
+  }
 },
 
 GROW_SEWER_ENTRY_aux =
@@ -19791,6 +19927,13 @@ GROW_SEWER_STAIRS =
     "1......","111>AAA",
     "1......","111>AAA",
   },
+
+  auxiliary =
+  {
+    pass = "GROW_SEWER_ENTRY_aux",
+
+    count = {2,3}
+  }
 },
 
 GROW_SEWER_CROSSING_CIRCLE_NEW_AREA =
