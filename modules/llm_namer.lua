@@ -1574,7 +1574,7 @@ LLM_NAME.prompt_flavors =
   -- these are substituted to the "Generate a Doom map name that " part of the instructional line
   dn3d = "Generate a Doom map name that leans towards an extremely euphemistic and badly suggestive 80's comedic porn parody title that's rather blue and practically lewd if not laughable. The name ",
   black_metal = "Generate a Doom map name that sounds like a hardcore black metal band song title. _REPLACER_ The name ",
-  ecchi = "Generate a Doom map name that sounds like a fully English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
+  ecchi = "Generate a Doom map name that sounds like a fully English-translated Japanese ecchi hentai anime, game, or light novel title. _REPLACER_ The name ",
   action = "Generate a Doom map name that sounds like a classic and explosively thrilling action movie title, quote, or one-liner. _REPLACER_ The name ",
   meguca = "Generate a Doom map name that sounds like an classic cute and fluffy lighthearted soft slice-of-life magical girl and romantic shoujo anime or episode. _REPLACER_" ..
     "Dark-themed instructions are only for flavoring, do not make the name dark. The name must be preferably English-translated and ",
@@ -1593,7 +1593,9 @@ LLM_NAME.prompt_sub_flavors =
     replacers =
     {
       "",
-      "Use an intimidating and provoactive action movie quote."
+      "Use an intimidating and provocative action movie quote.",
+      "Involve using a military operation code name.",
+      "Use an insulting phrase as part of the name."
     }
   },
 
@@ -1610,6 +1612,20 @@ LLM_NAME.prompt_sub_flavors =
       "Use a short philosphical phrase as a name.",
       "Focus on creating a song single title.",
       "Focus on creating an album title."
+    }
+  },
+
+  ecchi =
+  {
+    source =
+    {
+      "_REPLACER_",
+    },
+
+    replacers =
+    {
+      "",
+      "Involve tentacles or tentacle monster in the name."
     }
   },
 

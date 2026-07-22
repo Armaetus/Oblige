@@ -1842,7 +1842,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = " ROOM_" .. R.id .. " "
     end
 
-    if R.symmetry and R.symmetry.kind then
+    --[[if R.symmetry and R.symmetry.kind then
       shapes_string = shapes_string .. "[" .. R.symmetry.kind
       if R.symmetry.dir then
         shapes_string = shapes_string .. ":" .. R.symmetry.dir
@@ -1852,7 +1852,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "[no symm] "
     end
 
-    --[[if R.exit_score then
+    if R.exit_score then
       shapes_string = shapes_string .. "(Exit Score: " .. math.round_to(R.exit_score, 2) .. ") "
     end
 
@@ -1862,7 +1862,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     if R.conns then
       shapes_string = shapes_string .. "(Conns: " .. #R.conns .. ") "
-    end]]
+    end
 
     if R.height_profile then
       shapes_string = shapes_string .. "(HGT: " ..
@@ -1871,7 +1871,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     if R.pressure then
       shapes_string = shapes_string .. "(Combat Pressure: " .. R.pressure .. ") "
-    end
+    end]]
 
     shapes_string = shapes_string ..
       "(SZE " .. R.svolume .. "/" .. math.round(R.size_limit) .. ") "
@@ -1900,12 +1900,12 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = shapes_string .. "BASE " .. R.base_set_increase .. ") "
     else
       shapes_string = shapes_string .. "BASE 0) "
-    end]]
+    end
 
     shapes_string = shapes_string .. "(STAT " ..
       LEVEL.size_multiplier .. "x, " ..
       LEVEL.area_multiplier .. "x, " ..
-      LEVEL.size_consistency .. ") "
+      LEVEL.size_consistency .. ") "]]
 
     if LEVEL.is_absurd then
       shapes_string = shapes_string .. "(ARUL: "
