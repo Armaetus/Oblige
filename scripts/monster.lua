@@ -2316,6 +2316,10 @@ gui.debugf("   doing spot : Mon=%s\n", tostring(mon))
           if not info or (info.prob or 0) == 0 then
             mon = nil
           end
+
+          if LEVEL.is_secret and info.secret == true then
+            mon = nil
+          end
         end
 
         if mon then
