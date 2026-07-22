@@ -1577,7 +1577,7 @@ LLM_NAME.prompt_flavors =
   ecchi = "Generate a Doom map name that sounds like a fully English-translated Japanese ecchi hentai anime, game, or light novel title. The name ",
   action = "Generate a Doom map name that sounds like a classic and explosively thrilling action movie title, quote, or one-liner. _REPLACER_ The name ",
   meguca = "Generate a Doom map name that sounds like an classic cute and fluffy lighthearted soft slice-of-life magical girl and romantic shoujo anime or episode. _REPLACER_" ..
-    "Dark-themed instructions are only for flavoring, do not make the name dark. The name ",
+    "Dark-themed instructions are only for flavoring, do not make the name dark. The name must be preferably English-translated and ",
   meguca_suffering = "Generate a Doom map name that sounds like a heavy-handed and dark, serious-themed shonen-oriented magical girl anime or episode with themes of despair, loss, and existential realizations. The name "
 }
 
@@ -1623,9 +1623,12 @@ LLM_NAME.prompt_sub_flavors =
     replacers =
     {
       "",
-      "Use and create your own cute Japanese manga onomatopoeia similar to 'fuwa fuwa' as non-dictionary name.",
+      "Use and create your own cute Japanese manga onomatopoeia similar to 'fuwa fuwa' or 'doki doki' as non-dictionary name.",
       "Use sweet romantic shoujo manga verbiage in the name.",
-      "Use flowery and lighthearted-feeling name."
+      "Use flowery and lighthearted-feeling name.",
+      "Use lighthearted-feeling name alongside a beautiful floral species.",
+      "Use fluffy-feeling name based on a dessert.",
+      "Use a cute love declaration or confession phrase as name."
     }
   }
 }
@@ -2235,9 +2238,16 @@ LLM_NAME.story_components =
     "The Exodus Labs, breakaway UAC researchers operating outside military oversight",
     "The Red Vipers, an aggressive isolationist militant group fighting against hell, distrustful of outsiders",
     "The Collective, a loose network former UAC scientists turned mystics and occultists dedicated to unleashing Hell",
-    "The Defectors, former UAC scientists and occultists aiding Hell incursions",
+    "The Defectors, former UAC scientists and occultists aiding Hell incursions through secretive blood sacrifices",
     "The Apostates, ex-research personnel devoted to spreading demonic influence",
     "The Outer Circle, rogue researchers attempting to unleash Hell across human colonies",
+    "Hell's Hammers, former Sentinels from Argent D'Nur, their escapades have brought them to Earth in their continued conquest against Hell",
+    "The Holdouts, former UAC employees and soldiers who have escaped corporate control before they too were to be corrupted",
+    "The Emancipators, radical and anarchic militia preying on humans and demons alike for pleasure first and survival second",
+    "The Reforgers, a group of dedicated survivalists perusing abandoned UAC technology in the hopes of rebuilding humanity",
+    "The Warpath, cybernetic and magically-enhanced horned warriors from another dimension long ago conquered and possessed by Hell",
+    "The Aerators, an elite corporate-aligned assassin unit with an unclear allegiance and a mission to steal or reposses UAC technology",
+    "The Fishers, stranded survivors who have a keen eye for assistance, but absolutely only upon joining their cause",
 
     -- us?!
     "The Obsidian Developers, a nigh-invincible and enigmatic group from another dimension always only observing and never interfering"
