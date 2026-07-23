@@ -3793,7 +3793,7 @@ level_data
     -- LLM temperature variation, later maps have crazier names
     local pick_tmp
     if #GAME.levels > 4 and epi_lev.along then
-      pick_tmp = map_value(epi_lev.along, 0, 1, 0.25, 1.2)
+      pick_tmp = map_value(epi_lev.along, 0, 1, 0.75, 1.5)
     end
 
     -- name length
@@ -4015,8 +4015,8 @@ _FORMAT_
     -- temperature
     local temp = rand.pick
     {
-      0.90,
       1.0,
+      1.05,
       1.1
     }
 
