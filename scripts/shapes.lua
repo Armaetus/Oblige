@@ -6016,6 +6016,7 @@ GROW_LIQUID_POOL_VENT_QUAD_CENTER_BRIDGE =
 
   structure =
   {
+    "xxxxx.....xxxx","xxxxx/111%xxxx",
     "1.............","11111111111111",
     "1.............","111/~~~~~~~%11",
     "x.............","x11~~/111%~~11",
@@ -6023,14 +6024,17 @@ GROW_LIQUID_POOL_VENT_QUAD_CENTER_BRIDGE =
     "x.............","x11~~%111/~~11",
     "x.............","x11%~~~~~~~/11",
     "x.............","x1111111111111",
+    "xxxxx.....xxxx","xxxxx%111/xxxx",
   },
 
   diagonals =
   {
+    ".1","1.",
     "1~","~1",
     "~1","1~",
     "~1","1~",
     "1~","~1",
+    ".1","1."
   }
 },
 
@@ -6041,6 +6045,7 @@ GROW_LIQUID_POOL_VENT_QUAD_CENTER_BRIDGE_STAIR =
 
   structure =
   {
+    "xxxxx.....xxxx","xxxxx/AAA%xxxx",
     "1.............","1111>AAAAAAAAA",
     "1.............","111/~~~~~~~%AA",
     "x.............","x11~~/AAA%~~AA",
@@ -6048,14 +6053,17 @@ GROW_LIQUID_POOL_VENT_QUAD_CENTER_BRIDGE_STAIR =
     "x.............","x11~~%AAA/~~AA",
     "x.............","x11%~~~~~~~/AA",
     "x.............","x111>AAAAAAAAA",
+    "xxxxx.....xxxx","xxxxx%AAA/xxxx",
   },
 
   diagonals =
   {
+    ".A","A.",
     "1~","~A",
     "~A","A~",
     "~A","A~",
     "1~","~A",
+    ".A","A."
   }
 },
 
@@ -10181,17 +10189,19 @@ GROW_MAZE_L_DIAG =
 
   structure =
   {
-    "xx.x..","xx#x11",
+    "xx....","xx#/11",
     "x.....","x#/111",
     "....xx","#/1/xx",
     "....xx","/1/#xx",
+    "..xxxx","11xxxx",
     "11xxxx","11xxxx",
   },
 
   diagonals =
   {
-         ".1",
-    ".1","1.",
+                  ".1",
+             ".1",
+        ".1","1.",
     ".1","1.",
   }
 },
