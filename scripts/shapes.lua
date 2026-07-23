@@ -14369,7 +14369,7 @@ GROW_LADDER_RUNG_CORNER_BEND =
 
   diagonals =
   {
-    "1.",
+    ".1",
     "1A","A.",
     ".A","A."
   }
