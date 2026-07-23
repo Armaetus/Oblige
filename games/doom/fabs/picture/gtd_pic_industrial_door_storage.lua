@@ -42,7 +42,7 @@ PREFABS.Pic_gtd_door_storage_3 =
 PREFABS.Pic_gtd_door_storage_4 =
 {
   template = "Pic_gtd_door_storage_1",
-  map = "MAP03",
+  map = "MAP04",
 
   seed_w = 2,
 
