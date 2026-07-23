@@ -4552,6 +4552,14 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
       end
     end
 
+    for _,R in pairs(LEVEL.rooms) do
+      R.is_last_grown = true
+      if R.svolume <= 24 then
+        Grower_grammatical_room(SEEDS, LEVEL, R, "grow")
+        Grower_grammatical_room(SEEDS, LEVEL, R, "decorate")
+      end
+    end
+
   end
 end
 

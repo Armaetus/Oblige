@@ -2744,12 +2744,12 @@ function Level_make_level(LEV)
 
   end
 
-  if LEVEL.is_dead then
-    print("LEVEL GENERATION FAILURE!\n")
+  if LEVEL.is_dead or res == "runt" then
+    gui.printf("--==| LEVEL GENERATION FAILURE! |==--\n")
   end
 
   if res == "runt"  then
-    print("STUNTED LEVEL!\nCOVERAGE: " .. (LEVEL.cur_coverage or "NIL")
+    gui.printf("STUNTED LEVEL!\nCOVERAGE: " .. (LEVEL.cur_coverage or "NIL")
     .. "\nMIN COVERAGE: " .. coverage_target .. "\nROOMS: "
     .. #LEVEL.rooms .. "\nMIN ROOMS: " .. LEVEL.min_rooms .. "\n")
   end
@@ -2766,7 +2766,7 @@ function Level_make_level(LEV)
       coverage_target = coverage_target * 0.75
       LEVEL = table.copy(LEV)
       SEEDS = Seed_init(LEVEL)
-      print("RETRYING MAP " .. LEVEL.name)
+      gui.printf("RETRYING MAP " .. LEVEL.name)
       gui.reseed_rng(gui.random_int())
       goto retryafterfailure
     end
