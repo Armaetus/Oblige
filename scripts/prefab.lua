@@ -430,8 +430,7 @@ function Fab_expansion_groups(list, axis_name, fit_size, pf_size, fabinfo)
     if fabinfo.kind == "beam" then goto skip end
     local problem_string = "\n\nPREFAB DOES NOT FIT!!!\n"
     .. "(on " .. axis_name .. " axis)\n"
-    .. "Fab info:\n"
-    .. table.tostr(fabinfo) .. "\n"
+    .. "Fab: " .. fabinfo.name .. "\n"
     .. "Required: " .. fit_size .. " Prefab has: " .. pf_size .. "\n\n"
     gui.printf(problem_string)
     ::skip::

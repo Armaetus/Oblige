@@ -1642,9 +1642,9 @@ LLM_NAME.prompt_sub_flavors =
       "Use and create your own cute Japanese manga onomatopoeia similar to 'fuwa fuwa' or 'doki doki' as non-dictionary name.",
       "Use sweet romantic shoujo manga verbiage in the name.",
       "Use flowery and lighthearted-feeling name.",
-      "Use lighthearted-feeling name alongside a beautiful floral species.",
-      "Use fluffy-feeling name based on a dessert.",
-      "Use a cute love declaration or confession phrase as name."
+      "Use lighthearted-feeling name alongside a real, beautiful flower species.",
+      "Use fluffy-feeling cafe menu name based on a sweet dessert.",
+      "Use a romantic love declaration or confession dialogue as part of the name."
     }
   }
 }
