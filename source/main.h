@@ -44,7 +44,7 @@ constexpr const char *OBSIDIAN_VERSION = OBSIDIAN_TIMESTAMP;
 constexpr const char *OBSIDIAN_VERSION = __DATE__;
 #endif
 
-constexpr const char *OBSIDIAN_SHORT_VERSION = "21";
+constexpr const char *OBSIDIAN_SHORT_VERSION = "22";
 extern std::string    OBSIDIAN_CODE_NAME;
 
 constexpr const char *OBSIDIAN_WEBSITE = "https://obsidian-level-maker.github.io";
