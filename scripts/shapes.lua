@@ -10770,10 +10770,14 @@ GROW_LAKE_EXTENDABLE =
   auxiliary =
   {
     pass = "GROW_LAKE_EXTENDABLE_extend_aux",
+
+    count = {1,5}
   },
   auxiliary2 =
   {
     pass = "GROW_LAKE_EXTENDABLE_extend_bridge_aux",
+
+    count = {1,2}
   },
 },
 
@@ -10785,17 +10789,17 @@ GROW_LAKE_EXTENDABLE_extend_aux =
   {
     "1111..","111111",
     "1111..","111111",
-    "~%11..","~~~%11",
+    "~x11..","~x~%11",
     "~~11..","~~~~11",
-    "~/11..","~~~/11",
+    "~x11..","~x~/11",
     "1111..","111111",
     "1111..","111111",
   },
 
   diagonals =
   {
-    "~1","~1",
-    "~1","~1",
+    "~1",
+    "~1"
   },
 },
 
@@ -10807,17 +10811,17 @@ GROW_LAKE_EXTENDABLE_extend_bridge_aux =
   {
     "1111...","1111111",
     "1111...","1111111",
-    "~%11...","~v~~%11",
-    "~~11...","~A~~~11",
-    "~/11...","~^~~/11",
+    "~x11...","~xv~%11",
+    "~~11...","~~A~~11",
+    "~x11...","~x^~/11",
     "1111...","1111111",
     "1111...","1111111",
   },
 
   diagonals =
   {
-    "~1","~1",
-    "~1","~1",
+    "~1",
+    "~1"
   },
 },
 
@@ -14351,6 +14355,28 @@ GROW_LADDER_RUNG_DOUBLE =
     "........","AAAAAAAA",
     "........","%A/11%A/",
     "xxx..xxx","xxx11xxx",
+  },
+
+  diagonals =
+  {
+    ".A","A.",".A","A.",
+    ".A","A.",".A","A."
+  }
+},
+
+GROW_LADDER_RUNG_DOUBLE_STEEPNESS =
+{
+  prob = 15,
+  skip_prob = 80,
+
+  structure =
+  {
+    "x..x..x..x","x11xAAx11x",
+    "..........","/Av%AA/vA%",
+    "..........","AAAAAAAAAA",
+    "..........","AAAAAAAAAA",
+    "..........","%A^/AA%^A/",
+    "x11x..x..x","x11xAAx11x",
   },
 
   diagonals =
