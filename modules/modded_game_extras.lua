@@ -1842,11 +1842,13 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       shapes_string = " ROOM_" .. R.id .. " "
     end
 
-    if R.is_last_grown then
-      shapes_string = shapes_string .. "(GRWN!) "
-    elseif R.is_grown then
-      shapes_string = shapes_string .. "(GRWN) "
+    local is_grown = ""
+    if R.is_grown then
+      is_grown = "(GRWN) "
+    elseif R.is_last_grown then
+      is_grown = "(GRWN!) "
     end
+    shapes_string = shapes_string .. is_grown
 
     --[[if R.symmetry and R.symmetry.kind then
       shapes_string = shapes_string .. "[" .. R.symmetry.kind

@@ -4551,16 +4551,47 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
         end
       end
     end
+  end
 
-    for _,R in pairs(LEVEL.rooms) do
-      R.is_last_grown = true
-      if R.svolume <= 24 then
+  -- grow barely grown rooms
+  for _,R in pairs(LEVEL.rooms) do
+    R.is_last_grown = true
+
+    for _,A in pairs(R.areas) do
+      A:calc_volume()
+      R.svolume = R.svolume + A.svolume
+    end
+
+    local tries = 1
+    while R.svolume <= 16 and tries <= 3 do
+      local str = "#" .. tries .. ": Grow barely grown rooms -> " .. R.id .. ": " .. R.svolume
+      Grower_grammatical_room(SEEDS, LEVEL, R, "grow")
+      Grower_grammatical_room(SEEDS, LEVEL, R, "decorate")
+      R.svolume = 0
+      for _,A in pairs(R.areas) do
+        A:calc_volume()
+        R.svolume = R.svolume + A.svolume
+      end
+
+      for _,A in pairs(R.areas) do
+        A:calc_volume()
+        R.svolume = R.svolume + A.svolume
+      end
+      str = str .. "->" .. R.svolume .. " of " .. R.floor_limit
+      if R.symmetry then str = str .. " sym" end
+      gui.printf(str .. "\n")
+
+      if R.symmetry then
+        gui.printf("Symmetry disabled on this room.\n")
+        R.symmetry = {}
+        R.symmetry = nil
         Grower_grammatical_room(SEEDS, LEVEL, R, "grow")
         Grower_grammatical_room(SEEDS, LEVEL, R, "decorate")
       end
+      tries = tries + 1
     end
-
   end
+  
 end
 
 
