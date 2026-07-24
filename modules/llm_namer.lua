@@ -2274,6 +2274,9 @@ LLM_NAME.story_components =
     epi =
 [[Make it as engaging as possible.
 
+The text in each tag section must at least be _WORD_COUNT_ words, separated into paragraphs with proper spacing.
+Ensure that the tag section is properly surrounded by the proper HTML tags e.g. <S1 and <S2> Refer to the example provided below.
+
 SYSTEM: Please use exactly the following tagged structure and do not use any Markdown.
 Please do not add other blocks than is found in the example:
 
@@ -2283,9 +2286,7 @@ story intro here
 
 <S2> 
 story ending here 
-</S2>
-
-The text in each tag section must at least be _WORD_COUNT_ words, separated into paragraphs with proper spacing.]],
+</S2>]],
 
     game =
 [[There are three chapters and the story is an intro and end for each,
@@ -3877,9 +3878,9 @@ Rules:
 - Hell is always the ultimate enemy and its demons are the immediate mission threat but be a person, faction, archive, ritual, weapon shipment, infestation, command post, collaborator, or cover-up may interfere
 - the selected Story Plot controls the actual objective and resolution
 - if the acronym UAC is used, it means "Union Aerospace Corporation"
-- please do not mention the smell of ozone, nexus points, junction points, or sub-levels
+- please do not mention: the smell of ozone, nexus points, junctions, or sub-levels, structural integrity unless explicitly demanded by the plot
 - avoid inventing a larger hidden crisis to make the ending feel more important
-- do not invent a larger hidden portal, reactor, core, energy-source, breach, or anomaly plot.
+- do not invent a larger hidden portal, reactor, core, energy-source, breach, or anomaly plot
 - do not mention Earth, it is only for locational context
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one. 
