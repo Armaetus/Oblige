@@ -47,7 +47,7 @@ constexpr const char *OBSIDIAN_VERSION = __DATE__;
 constexpr const char *OBSIDIAN_SHORT_VERSION = "22";
 extern std::string    OBSIDIAN_CODE_NAME;
 
-constexpr const char *OBSIDIAN_WEBSITE = "https://obsidian-level-maker.github.io";
+constexpr const char *OBSIDIAN_WEBSITE = "https://github.com/GTD-Carthage/Obsidian-Content";
 
 constexpr const char *CONFIG_FILENAME  = "CONFIG.txt";
 constexpr const char *OPTIONS_FILENAME = "OPTIONS.txt";
