@@ -3768,9 +3768,10 @@ function LLM_NAME.do_it()
 Rules:
 _NAME_LENGTH_
 - 1 name only
-- do not add any comment or explanation, give only the name
+- absolutely no comments, explanation, or follow-up
+- give only the name, do not add any explanation
 - no quotation marks, no camelcase, no snakecase
-- avoid words with hard starting consonants like "Kh", "Kr", "Ky"
+- avoid words with hard starting consonants such as "Kh", "Kr", "Ky"
 
 ]]..
 level_data
