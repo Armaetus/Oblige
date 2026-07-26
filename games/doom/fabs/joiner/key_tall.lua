@@ -20,7 +20,7 @@ PREFABS.Locked_joiner_key1_tall =
   over   = 16,
 
   x_fit  = "frame",
-  y_fit  = "frame",
+  y_fit  = {48,56 , 104,112}
 }
 
 PREFABS.Locked_joiner_key2_tall =
