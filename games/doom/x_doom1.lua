@@ -25,7 +25,7 @@
 
 ULTDOOM = { }
 
-ULTDOOM.VANILLA_MATS = 
+ULTDOOM.VANILLA_MATS =
 {
   replace_all = true,
     -- There are always added by Obsidian regardless of Engine selected
@@ -794,7 +794,7 @@ ULTDOOM.MATERIALS =
   ["473618"] = { t="473618", f="473618" },
 }
 
-ULTDOOM.MUSIC_LUMPS = 
+ULTDOOM.MUSIC_LUMPS =
 {
   "D_E1M1",
   "D_E1M2",
@@ -4330,7 +4330,7 @@ function ULTDOOM.get_levels()
             if current_map == 35 then LEV.is_procedural_gotcha = true end
           end
         end
-  
+
         if PARAM.gotcha_frequency == "epi" then
           if current_map == ep_index * 9 - 1 then
             LEV.is_procedural_gotcha = true
@@ -4351,27 +4351,27 @@ function ULTDOOM.get_levels()
             LEV.is_procedural_gotcha = true
           end
         end
-  
+
         --5% of maps after map 4,
         if PARAM.gotcha_frequency == "5p" then
           if current_map > 4 and current_map % 9 ~= 0 then
             if rand.odds(5) then LEV.is_procedural_gotcha = true end
           end
         end
-  
+
         -- 10% of maps after map 4,
         if PARAM.gotcha_frequency == "10p" then
           if current_map > 4 and current_map % 9 ~= 0 then
             if rand.odds(10) then LEV.is_procedural_gotcha = true end
           end
         end
-  
+
         -- for masochists... or debug testing
         if PARAM.gotcha_frequency == "all" then
           LEV.is_procedural_gotcha = true
         end
       end
-  
+
       -- handling for street mode
       -- actual handling for urban percentages are done
       if PARAM.float_streets_mode then
@@ -4381,7 +4381,7 @@ function ULTDOOM.get_levels()
           end
         end
       end
-  
+
       if not LEV.prebuilt then
         -- nature mode
         if PARAM.float_nature_mode then
@@ -4396,7 +4396,7 @@ function ULTDOOM.get_levels()
             end
           end
         end
-  
+
       end
 
       if MAP_NUM == 1 or map == 3 then
