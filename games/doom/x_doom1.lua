@@ -4274,7 +4274,7 @@ function ULTDOOM.get_levels()
 
   -- create level info...
 
-  current_map = 1
+  local current_map = 1
 
   for ep_index = 1,EP_NUM do
     local EPI = GAME.episodes[ep_index]

@@ -1644,7 +1644,7 @@ LLM_NAME.prompt_sub_flavors =
       "Use flowery and lighthearted-feeling name.",
       "Use lighthearted-feeling name alongside a real, beautiful flower species.",
       "Use fluffy-feeling cafe menu name based on a sweet dessert.",
-      "Use a romantic love declaration or confession dialogue as part of the name."
+      "Use a character from  romantic love declaration or confession quote or dialogue as part of the name."
     }
   }
 }
@@ -2264,6 +2264,7 @@ LLM_NAME.story_components =
     "The Warpath, cybernetic and magically-enhanced horned warriors from another dimension long ago conquered and possessed by Hell",
     "The Aerators, an elite corporate-aligned assassin unit with an unclear allegiance and a mission to steal or reposses UAC technology",
     "The Fishers, stranded survivors who have a keen eye for assistance, but absolutely only upon joining their cause",
+    "The Firing Squad, disgruntled former UAC soldiers executing any known corporate collaborators and hellspawn alike",
 
     -- us?!
     "The Obsidian Developers, a nigh-invincible and enigmatic group from another dimension always only observing and never interfering"
@@ -3119,6 +3120,23 @@ function LLM_NAME.get_some_info(self, lev)
 
   table.insert(lines, get_semantic(lev.theme_name) .. "\n")
 
+  -- extra mentions of the level's nature as procedural
+  if lev.is_procedural_gotcha then
+    local gotcha_line = rand.pick(
+      {
+        "A significant hostile presence has been detected in this level. Resistance will be challenging.",
+        "A major host of the demonic horde lies waiting this level. Survival will be difficult.",
+        "The leader of the Hell's invasion resides and commands from this level.",
+        "This area hosts a significant brunt of the demonic invasion force. Be prepared.",
+        "A high-ranking demon general has made this level their home. They will not take kindly to intrusion",
+        "An significant entrapping ambush from the forces of Hell await in this level.",
+        "This is the site of a major encounter with the core of demonic forces. Their invasion must stop here.",
+        "This area is critically possessed and controlled by Hell as its staging ground. Its significant hostile forces await."
+      }
+    )
+    table.insert(lines, gotcha_line .. "\n")
+  end
+
   ----------------------------------------------------------------------
   -- ROOM DISTRIBUTION
   ----------------------------------------------------------------------
@@ -3771,7 +3789,7 @@ _NAME_LENGTH_
 - absolutely no comments, explanation, or follow-up
 - give only the name, do not add any explanation
 - no quotation marks, no camelcase, no snakecase
-- avoid words with hard starting consonants such as "Kh", "Kr", "Ky"
+- avoid using of any nouns that begin with "Kh", "Kr", "Ky", "Ely"
 
 ]]..
 level_data
@@ -3795,7 +3813,7 @@ level_data
     -- LLM temperature variation, later maps have crazier names
     local pick_tmp
     if #GAME.levels > 4 and epi_lev.along then
-      pick_tmp = map_value(epi_lev.along, 0, 1, 0.75, 1.5)
+      pick_tmp = map_value(epi_lev.along, 0, 1, 1.0, 2.0)
     end
 
     -- name length
