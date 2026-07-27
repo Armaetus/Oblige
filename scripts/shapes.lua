@@ -19800,6 +19800,87 @@ GROW_TRENCH_CURVE_OUTER_SOLID =
   },
 },
 
+GROW_TRENCH_CURVE_OUTER_SOLID_LIMITED =
+{
+  prob = 12,
+  skip_prob = 65,
+
+  structure =
+  {
+    "xxxxx..","xxxxx11",
+    "xxxx...","xxxx/11",
+    "xxx....","xxx/11/",
+    "xx.....","xx/11/A",
+    "x......","x/11/A/",
+    "1.....x","111/A/x",
+    "1....xx","11/A/xx",
+  },
+
+  diagonals =
+  {
+         ".1",
+    ".1","1A",
+    ".1","1A",
+    ".1","1A","A.",
+         "1A","A.",
+         "1A","A."
+  },
+},
+
+GROW_TRENCH_CURVE_OUTER_SOLID_LIMITED_INGAP =
+{
+  prob = 12,
+  skip_prob = 65,
+
+  structure =
+  {
+    "xxxxx..","xxxxx11",
+    "x......","x/AA/11",
+    "x......","xAA/11/",
+    "x......","xA/11/A",
+    "x......","x/11/A/",
+    "1.....x","111/A/x",
+    "1....xx","11/A/xx",
+  },
+
+  diagonals =
+  {
+    ".A","A1",
+         "A1","1A",
+         "A1","1A",
+         "A1","1A","A.",
+         "1A","A.",
+         "1A","A."
+  },
+},
+
+GROW_TRENCH_CURVE_OUTER_SOLID_LIMITED_INGAP_LIQUID =
+{
+  prob = 12,
+  skip_prob = 65,
+
+  structure =
+  {
+    "xxxxx..","xxxxx11",
+    "x......","x/AA/11",
+    "x......","xAA/%1/",
+    "x......","xA/~%/A",
+    "x......","x/%~/A/",
+    "1.....x","11%/A/x",
+    "1....xx","11/A/xx",
+  },
+
+  diagonals =
+  {
+    ".A","A1",
+         "A~","~1","1A",
+         "A~","~1","1A",
+    "A1","1~","~A","A.",
+         "1~","~A","A.",
+         "1A","A."
+  },
+},
+
 GROW_TRENCH_CURVE_OUTER_LIQUID =
 {
   prob = 25,
