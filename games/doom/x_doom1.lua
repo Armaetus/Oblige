@@ -541,7 +541,7 @@ ULTDOOM.MATERIALS =
   MIDVINE2 = { t="MIDVINE2", rail_h=128 },
 
   -- this is the MIDBARS3 texture from FreeDoom
-  MIDBARS3 = { t="MIDGRATE", rail_h=112 }, --{ t="SP_DUDE3", rail_h=72 }
+  MIDBARS3 = { t="SP_DUDE3", rail_h=72 },
 
 
   -- liquid stuff (using new patches)
