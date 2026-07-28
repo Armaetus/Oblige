@@ -84,7 +84,7 @@ PREFABS.Wall_quakish_insets_horizon =
   map = "MAP05",
 
   prob = 50,
-  engine = "zdoom",
+  port = "zdoom",
 
   group = "gtd_wall_quakish_insets_horizon",
 
@@ -121,7 +121,7 @@ PREFABS.Wall_quakish_insets_horizon_limit =
   template = "Wall_quakish_insets_horizon",
   map = "MAP05",
 
-  engine = "!zdoom",
+  port = "!zdoom",
 
   line_337 = 0
 }
@@ -131,7 +131,8 @@ PREFABS.Wall_quakish_insets_horizon_diag_limit =
   template = "Wall_quakish_insets_horizon",
   map = "MAP06",
 
-  engine = "!zdoom",
+  port = "!zdoom",
+  where = "diagonal",
 
   line_337 = 0
 }
@@ -141,7 +142,7 @@ PREFABS.Wall_quakish_insets_horizon_pillared_limit =
   template = "Wall_quakish_insets_horizon",
   map = "MAP07",
 
-  engine = "!zdoom",
+  port = "!zdoom",
 
   prob = 7,
 
