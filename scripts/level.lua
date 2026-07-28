@@ -811,6 +811,8 @@ function Episode_plan_monsters()
         elseif info.boss_type == "tough" and OB_CONFIG.bossesnormal ~= "all" then goto skip end
       end
 
+      if info.secret and LEV.is_secret then goto skip end
+
       if LEV.theme.monster_prefs and LEV.theme.monster_prefs[name] and LEV.theme.monster_prefs[name] == 0 then goto skip end
 
       local prob = prob_for_guard(LEV, info)
