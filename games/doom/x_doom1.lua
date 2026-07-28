@@ -1105,6 +1105,7 @@ ULTDOOM.THEMES =
       --
       gtd_wall_quakish_insets = 25,
       gtd_wall_quakish_insets_2 = 25,
+      gtd_wall_quakish_insets_horizon = 10,
       --
       gtd_ribbed_lights = 18,
       gtd_ribbed_lights_no3d = 18,
@@ -1481,6 +1482,8 @@ ULTDOOM.THEMES =
 
       gtd_wall_marbface = 50,
       gtd_wall_quakish_insets = 50,
+      gtd_wall_quakish_insets_horizon = 15,
+
       gtd_wall_hell_ossuary = 50,
 
       gtd_wall_high_gap_set = 12,
@@ -1915,6 +1918,8 @@ ULTDOOM.THEMES =
       --
       gtd_wall_marbface = 50,
       gtd_wall_quakish_insets = 50,
+      gtd_wall_quakish_insets_horizon = 15,
+
       gtd_wall_hell_ossuary = 50,
       --
       gtd_wall_high_gap_set = 12,
@@ -2362,6 +2367,8 @@ ULTDOOM.THEMES =
       --
       gtd_wall_marbface = 50,
       gtd_wall_quakish_insets = 50,
+      gtd_wall_quakish_insets_horizon = 15,
+      --
       gtd_wall_hell_ossuary = 50,
       --
       gtd_wall_high_gap_set = 12,

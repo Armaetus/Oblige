@@ -133,6 +133,7 @@ LLM_NAME.semantics_grouping =
   gtd_gothic_ceilwall_inner_framed_arch = "gtd_gothic_ceilwall",
 
   gtd_wall_quakish_insets = "gtd_modquake_set",
+  gtd_wall_quakish_insets_horizon = "gtd_modquake_set",
 
   gtd_wall_hell_mindscrew_skywall = "gtd_wall_hell_mindscrew",
 
@@ -2276,7 +2277,7 @@ LLM_NAME.story_components =
 [[Make it as engaging as possible.
 
 The text in each tag section must at least be _WORD_COUNT_ words, separated into paragraphs with proper spacing.
-Ensure that the tag section is properly surrounded by the proper HTML tags e.g. <S1 and <S2> Refer to the example provided below.
+Ensure that the tag section is properly surrounded by the proper HTML tags e.g. <S1> and enclosed with </S1>. Refer to the example provided below.
 
 SYSTEM: Please use exactly the following tagged structure and do not use any Markdown.
 Please do not add other blocks than is found in the example:
