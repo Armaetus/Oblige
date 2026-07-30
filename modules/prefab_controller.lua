@@ -153,7 +153,7 @@ function PREFAB_CONTROL.fine_tune_filters()
     gtd_storage_wood = 3,
     gtd_door_storage = 4,
     gtd_silver_pillars_blue_computers = 5,
-    gtd_wall_quakish_insets_horizon = 8
+    gtd_wall_quakish_insets_horizon = 16
   }
   local new_themes_multipliers =
   {

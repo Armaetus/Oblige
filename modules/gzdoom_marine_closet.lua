@@ -1442,16 +1442,18 @@ function MARINE_CLOSET_TUNE.calc_closets(self, LEVEL)
     rngmin = math.min(PARAM.float_m_c_min,PARAM.float_m_c_max)
     rngmax = math.max(PARAM.float_m_c_min,PARAM.float_m_c_max)
 
+    -- slight jitter so marine and closet counts don't ever always fall exactly
+    -- on predictable level counts e.g. the difference between 1 or 2 marines always
+    -- landing on exactly MAP15 and so on
+    local game_along_jitter = LEVEL.game_along + rand.range(0.2, -0.2)
+    local ep_along_jitter = LEVEL.ep_along + rand.range(0.2, -0.2)
+    
     if PARAM.m_c_type == "default" then
       PARAM.marine_closets = rand.irange(rngmin,rngmax)
-    elseif PARAM.m_c_type == "prog" then
-      PARAM.marine_closets = rngmin + math.round((rngmax - rngmin) * LEVEL.game_along)
-    elseif PARAM.m_c_type == "reg" then
-      PARAM.marine_closets = rngmax - math.round((rngmax - rngmin) * LEVEL.game_along)
-    elseif PARAM.m_c_type == "epi" then
-      PARAM.marine_closets = rngmin + math.round((rngmax - rngmin) * LEVEL.ep_along)
-    elseif PARAM.m_c_type == "epi2" then
-      PARAM.marine_closets = rngmax - math.round((rngmax - rngmin) * LEVEL.ep_along)
+    elseif PARAM.m_c_type == "prog" or PARAM.m_c_type == "reg" then
+      PARAM.marine_closets = rngmin + math.round((rngmax - rngmin) * game_along_jitter)
+    elseif PARAM.m_c_type == "epi" or PARAM.m_c_type == "epi2" then
+      PARAM.marine_closets = rngmax - math.round((rngmax - rngmin) * ep_along_jitter)
     end
 
     rngmin = math.min(PARAM.float_m_c_m_min,PARAM.float_m_c_m_max)
@@ -1459,14 +1461,10 @@ function MARINE_CLOSET_TUNE.calc_closets(self, LEVEL)
 
     if PARAM.m_c_m_type == "default" then
       PARAM.marine_marines = rand.irange(rngmin,rngmax)
-    elseif PARAM.m_c_m_type == "prog" then
-      PARAM.marine_marines = rngmin + math.round((rngmax - rngmin) * LEVEL.game_along)
-    elseif PARAM.m_c_m_type == "reg" then
-      PARAM.marine_marines = rngmax - math.round((rngmax - rngmin) * LEVEL.game_along)
-    elseif PARAM.m_c_m_type == "epi" then
-      PARAM.marine_marines = rngmin + math.round((rngmax - rngmin) * LEVEL.ep_along)
-    elseif PARAM.m_c_m_type == "epi2" then
-      PARAM.marine_marines = rngmax - math.round((rngmax - rngmin) * LEVEL.ep_along)
+    elseif PARAM.m_c_m_type == "prog" or PARAM.m_c_m_type == "reg" then
+      PARAM.marine_marines = rngmin + math.round((rngmax - rngmin) * game_along_jitter)
+    elseif PARAM.m_c_m_type == "epi" or PARAM.m_c_m_type == "epi2" then
+      PARAM.marine_marines = rngmin + math.round((rngmax - rngmin) * ep_along_jitter)
     end
 
     if PARAM.m_c_tech == "vlow" then

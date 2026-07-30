@@ -2212,6 +2212,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
     local ceil_light_prob = R.theme.ceil_light_prob or THEME.ceil_light_prob or 50
     local filter = {}
+
+    ceil_light_prob = math.clamp(0, ceil_light_prob + 25, 100)
     if rand.odds(100 - ceil_light_prob) then
       filter.no_light_ceilings = true
     end
@@ -2478,6 +2480,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     local groups = {}
 
     local prob = R.theme.ceil_light_prob or THEME.ceil_light_prob or 50
+    prob = prob + 25
     prob = prob + math.remap_range(R.openness, 0.6, 0.2, 0, 30, "clamp_it")
     prob = math.clamp(prob, 0, 100)
 
