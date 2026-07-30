@@ -14,7 +14,6 @@ PREFABS.Item_natural_closet_1 =
   height = 96,
 
   deep = 16,
-  z_fit = "top",
 
   bound_z1 = 0,
   bound_z2 = 96
