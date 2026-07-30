@@ -18701,12 +18701,12 @@ GROW_WIDE_SPACE_2X12 =
 {
   prob = 2,
   prob_skew = 2,
-  skip_prob = 40,
+  skip_prob = 20,
 
   structure =
   {
-    "1............","1111111111111",
-    "1............","1111111111111",
+    "1............","1111111AAAAAA",
+    "1............","1111111AAAAAA",
   },
 },
 
@@ -18714,42 +18714,53 @@ GROW_WIDE_SPACE_2X12_SIDEWAYS =
 {
   prob = 2,
   prob_skew = 2,
-  skip_prob = 40,
-
+  skip_prob = 20,
 
   structure =
   {
-    ".............","1111111111111",
+    ".............","AAAAAAAAAAAAA",
+    ".............","A/111111111%A",
     ".............","1111111111111",
     "11xxxxxxxxxxx","11xxxxxxxxxxx",
   },
+
+  diagonals =
+  {
+    "A1","1A"
+  }
 },
 
 GROW_WIDE_SPACE_2X8 =
 {
   prob = 2,
   prob_skew = 2,
-  skip_prob = 25,
+  skip_prob = 15,
 
   structure =
   {
-    "1........","111111111",
-    "1........","111111111",
-  },
+    "1........","11111AAAA",
+    "1........","11111AAAA"
+  }
 },
 
 GROW_WIDE_SPACE_2X8_SIDEWAYS =
 {
   prob = 2,
   prob_skew = 2,
-  skip_prob = 25,
+  skip_prob = 15,
 
   structure =
   {
+    ".........","AAAAAAAAA",
+    ".........","A/11111%A",
     ".........","111111111",
-    ".........","111111111",
-    "11xxxxxxx","11xxxxxxx",
+    "11xxxxxxx","11xxxxxxx"
   },
+
+  diagonals =
+  {
+    "A1","1A"
+  }
 },
 
 GROW_ROUNDED_CAP =
@@ -18763,14 +18774,35 @@ GROW_ROUNDED_CAP =
     "1...","111%",
     "1...","1111",
     "1...","1111",
-    "1...","111/",
+    "1...","111/"
   },
 
   diagonals =
   {
     "1.",
-    "1.",
+    "1."
+  }
+},
+
+GROW_ROUNDED_CAP_NEW_AREA =
+{
+  prob = 15,
+  prob_skew = 10,
+  skip_prob = 40,
+
+  structure =
+  {
+    "1...","1%A%",
+    "1...","11AA",
+    "1...","11AA",
+    "1...","1/A/"
   },
+
+  diagonals =
+  {
+    "1A","A.",
+    "1A","A."
+  }
 },
 
 GROW_BLADED_CAP =
@@ -18784,14 +18816,36 @@ GROW_BLADED_CAP =
     "1..","111",
     "1..","111",
     "1..","11/",
-    "1..","1/.",
+    "1..","1/."
   },
 
   diagonals =
   {
     "1.",
-    "1.",
+    "1."
+  }
+},
+
+GROW_BLADED_CAP_NEW_AREA =
+{
+  prob = 15,
+  prob_skew = 10,
+  skip_prob = 40,
+
+  structure =
+  {
+    "1..","11A",
+    "1..","1/A",
+    "1..","1A/",
+    "1..","1/."
   },
+
+  diagonals =
+  {
+    "1A",
+        "A.",
+    "A."
+  }
 },
 
 --MSSP's cliff extensions [CLIFF] [LEDGES]
