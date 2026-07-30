@@ -514,6 +514,12 @@ LLM_NAME.semantics =
     "administrative workspaces"
   },
 
+  gtd_black_mirror =
+  {
+    "power cycling halls",
+    "manual power generation facility",
+    "mandatory advertisement viewing centers"
+  },
 
 
   -- URBAN
