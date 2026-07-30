@@ -2479,7 +2479,7 @@ class bossNameHandler : EventHandler
             || obit.IndexOf("female", 0) > -1
             || obit.IndexOf("security", 0) > -1
             || obit.IndexOf("zsec", 0) > -1
-            || obit.IndexOf("specop", 0) > -1
+            || obit.IndexOf("zspec", 0) > -1
             || obit.IndexOf("razer", 0) > -1)
             {
               mon_name = getHumanTag();
