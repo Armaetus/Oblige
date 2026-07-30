@@ -1645,7 +1645,7 @@ LLM_NAME.prompt_sub_flavors =
       "Use flowery and lighthearted-feeling name.",
       "Use lighthearted-feeling name alongside a real, beautiful flower species.",
       "Use fluffy-feeling cafe menu name based on a sweet dessert.",
-      "Use a character from  romantic love declaration or confession quote or dialogue as part of the name."
+      "Use a character's youthful love declaration or confession speech or dialogue as part of the name."
     }
   }
 }
@@ -1749,7 +1749,7 @@ LLM_NAME.story_components =
     "Capture communications hub",
     "Protect research archives",
     "Lock down containment",
-    "Restore security network",
+    "Restore automated defense network",
     "Activate orbital uplink",
     "Restart cooling systems",
     "Stabilize fusion reactor",
@@ -2192,15 +2192,15 @@ LLM_NAME.story_components =
     "Father Michael Patton, a priest sheltering refugees while questioning his faith",
     "The Carpenter, an engineer rebuilding infrastructure across ruined city sectors",
     "Gideon Reyes, a smuggler trading supplies and information between isolated settlements",
-    "Sister Alrene, a field medic using experimental methods to slow demonic corruption",
+    "Sister Arelynne, a field medic using experimental methods to slow demonic corruption",
     "Marshal Conrad Rhyne, a law officer enforcing martial rule in collapsing settlements",
     "Selene Ward, a former UAC dispatcher maintaining fragmented emergency communication networks",
     "Dr. Hector Wynn, a biochemist studying controlled exposure to Hell contaminants",
     "Vera Holt, a convoy leader negotiating fragile ceasefires between survivor groups",
     "The Quartermaster, a black-market supplier distributing salvaged military hardware",
-    "Major Lucien Draik, a former ARC officer coordinating unofficial operations beyond military oversight",
+    "Major Lucien Drake, a former ARC officer coordinating unofficial operations beyond military oversight",
     "Iris Vale, an evacuation coordinator accused of abandoning entire population sectors",
-    "Brother Gideon Shaw, a battlefield chaplain documenting possession outbreaks among refugees",
+    "Brother Gibson Shaw, a battlefield chaplain documenting possession outbreaks among refugees",
 
     -- antagonists
     "The Matron, a cybernetic arachnid created during failed UAC weapons experiments",
@@ -2266,6 +2266,7 @@ LLM_NAME.story_components =
     "The Aerators, an elite corporate-aligned assassin unit with an unclear allegiance and a mission to steal or reposses UAC technology",
     "The Fishers, stranded survivors who have a keen eye for assistance, but absolutely only upon joining their cause",
     "The Firing Squad, disgruntled former UAC soldiers executing any known corporate collaborators and hellspawn alike",
+    "The Aquila, a highly aggressive and distrustful paramilitary group believing that diverting from the old ways is the reason behind Hell's invasion",
 
     -- us?!
     "The Obsidian Developers, a nigh-invincible and enigmatic group from another dimension always only observing and never interfering"
@@ -3898,7 +3899,7 @@ Rules:
 - Hell is always the ultimate enemy and its demons are the immediate mission threat but be a person, faction, archive, ritual, weapon shipment, infestation, command post, collaborator, or cover-up may interfere
 - the selected Story Plot controls the actual objective and resolution
 - if the acronym UAC is used, it means "Union Aerospace Corporation"
-- please do not mention: the smell of ozone, nexus points, junctions, or sub-levels, structural integrity unless explicitly demanded by the plot
+- please do not mention: the smell of ozone, nexus points, junctions, or sub-levels, structural integrity
 - avoid inventing a larger hidden crisis to make the ending feel more important
 - do not invent a larger hidden portal, reactor, core, energy-source, breach, or anomaly plot
 - do not mention Earth, it is only for locational context
