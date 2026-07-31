@@ -149,11 +149,11 @@ function PREFAB_CONTROL.fine_tune_filters()
   }
   local new_fab_groups_multipliers =
   {
-    gtd_black_mirror = 2,
-    gtd_storage_wood = 3,
-    gtd_door_storage = 4,
-    gtd_silver_pillars_blue_computers = 5,
-    gtd_wall_quakish_insets_horizon = 16
+    gtd_storage_wood = 2,
+    gtd_door_storage = 2,
+    gtd_silver_pillars_blue_computers = 4,
+    gtd_wall_quakish_insets_horizon = 12,
+    gtd_wall_quakish_insets_horizon_mid = 12
   }
   local new_themes_multipliers =
   {

@@ -148,3 +148,76 @@ PREFABS.Wall_quakish_insets_horizon_pillared_limit =
 
   line_337 = 0
 }
+
+--
+
+PREFABS.Wall_quakish_insets_horizon_mid =
+{
+  file = "wall/gtd_wall_quakish_inset.wad",
+  map = "MAP08",
+
+  prob = 50,
+  port = "zdoom",
+
+  group = "gtd_wall_quakish_insets_horizon_mid",
+
+  where = "edge",
+  deep = 16,
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit = "top"
+}
+
+PREFABS.Wall_quakish_insets_horizon_pillared_mid =
+{
+  template = "Wall_quakish_insets_horizon",
+  map = "MAP09",
+
+  prob = 7
+}
+
+PREFABS.Wall_quakish_insets_horizon_diag_mid =
+{
+  template = "Wall_quakish_insets_horizon",
+  map = "MAP10",
+
+  where = "diagonal"
+}
+
+--
+
+PREFABS.Wall_quakish_insets_horizon_mid_limit =
+{
+  template = "Wall_quakish_insets_horizon_mid",
+
+  port = "!zdoom",
+
+  line_337 = 0
+}
+
+PREFABS.Wall_quakish_insets_horizon_pillared_mid_limit =
+{
+  template = "Wall_quakish_insets_horizon",
+  map = "MAP09",
+
+  prob = 7,
+
+  port = "!zdoom",
+
+  line_337 = 0
+}
+
+PREFABS.Wall_quakish_insets_horizon_diag_mid_limit =
+{
+  template = "Wall_quakish_insets_horizon",
+  map = "MAP10",
+
+  where = "diagonal",
+
+  port = "!zdoom",
+
+  line_337 = 0
+}
