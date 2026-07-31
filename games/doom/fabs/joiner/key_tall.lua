@@ -29,7 +29,9 @@ PREFABS.Locked_joiner_key2_tall =
 
   key    = "k_yellow",
 
-  line_33 = 34
+  line_33 = 34,
+
+  tex_DOORRED = "DOORYEL"
 }
 
 PREFABS.Locked_joiner_key3_tall =
@@ -38,5 +40,7 @@ PREFABS.Locked_joiner_key3_tall =
 
   key    = "k_blue",
 
-  line_33 = 32
+  line_33 = 32,
+
+  tex_DOORRED = "DOORBLU"
 }
