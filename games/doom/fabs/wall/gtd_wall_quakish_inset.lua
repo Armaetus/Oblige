@@ -173,7 +173,7 @@ PREFABS.Wall_quakish_insets_horizon_mid =
 
 PREFABS.Wall_quakish_insets_horizon_pillared_mid =
 {
-  template = "Wall_quakish_insets_horizon",
+  template = "Wall_quakish_insets_horizon_mid",
   map = "MAP09",
 
   prob = 7
@@ -181,7 +181,7 @@ PREFABS.Wall_quakish_insets_horizon_pillared_mid =
 
 PREFABS.Wall_quakish_insets_horizon_diag_mid =
 {
-  template = "Wall_quakish_insets_horizon",
+  template = "Wall_quakish_insets_horizon_mid",
   map = "MAP10",
 
   where = "diagonal"
@@ -200,7 +200,7 @@ PREFABS.Wall_quakish_insets_horizon_mid_limit =
 
 PREFABS.Wall_quakish_insets_horizon_pillared_mid_limit =
 {
-  template = "Wall_quakish_insets_horizon",
+  template = "Wall_quakish_insets_horizon_mid",
   map = "MAP09",
 
   prob = 7,
@@ -212,7 +212,7 @@ PREFABS.Wall_quakish_insets_horizon_pillared_mid_limit =
 
 PREFABS.Wall_quakish_insets_horizon_diag_mid_limit =
 {
-  template = "Wall_quakish_insets_horizon",
+  template = "Wall_quakish_insets_horizon_mid",
   map = "MAP10",
 
   where = "diagonal",
