@@ -253,6 +253,9 @@ function Quest_create_initial_quest(LEVEL)
 
       cur_score = cur_score * closet_mult * openness_mult
 
+      -- nay rooms
+      if R.is_hallway then cur_score = -1000 end
+
       R.start_score = math.round_to(cur_score,2)
 
       if cur_score > best_score then
