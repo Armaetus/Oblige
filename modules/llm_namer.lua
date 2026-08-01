@@ -1843,7 +1843,7 @@ LLM_NAME.story_components =
     "Destroy defensive emplacements",
     "Disable shield generator",
     "Destroy shield emitter",
-    "Neutralize sniper nests",
+    "Neutralize Hellsurge cannons",
     "Destroy artillery battery",
     "Silence anti-air batteries",
     "Disable orbital defenses",
