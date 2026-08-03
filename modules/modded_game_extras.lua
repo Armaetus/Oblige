@@ -1972,6 +1972,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     local info = {}
     info.editor_num = PARAM.hn_thing_start_offset
 
+    -- floor chunks
     for _,chunk in pairs(R.floor_chunks) do
       if chunk.prefab_def then
         info.name = "Point: " .. chunk.prefab_def.name
@@ -2021,8 +2022,47 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         hn_add_entity(info, x + offset - 24, y, z + 1)
       end
     end
-    --for _,chunk in pairs(R.ceil_chunks ) do visit_chunk(chunk) end
 
+    -- stairs
+    for _,chunk in pairs(R.stairs) do
+      if chunk.prefab_def then
+        local C = chunk
+        info.name = "Stairs: " .. C.prefab_def.name
+        info.editor_num = PARAM.hn_thing_start_offset
+
+        info.name = info.name .. "(A: " .. C.area.id
+        if C.area.ceil_group.sink then
+          info.name = info.name .. ", " .. C.area.ceil_group.sink.name
+        end
+
+        if C.from_area.ceil_group == C.area.ceil_group and C.dest_area.ceil_group == C.area.ceil_group then
+          info.name = info.name .. ", " .. "SAME CG"
+        elseif C.from_area.ceil_group == C.area.ceil_group then
+          info.name = info.name .. ", " .. "FROM_AREA CG"
+        elseif C.dest_area.ceil_group == C.area.ceil_group then
+          info.name = info.name .. ", " .. "DEST_AREA CG"
+        end
+        info.name = info.name .. ")"
+
+        if SCRIPTS.hn_id_table[info.name] then
+          info.editor_num = SCRIPTS.hn_id_table[info.name].id
+        elseif not SCRIPTS.hn_id_table[info.name] then
+          SCRIPTS.hn_id_table[info.name] = {}
+          SCRIPTS.hn_id_table[info.name].id = info.editor_num
+          SCRIPTS.hn_id_table[info.name].name = info.name
+          info.editor_num = PARAM.hn_thing_start_offset
+          PARAM.hn_thing_start_offset = PARAM.hn_thing_start_offset + 1
+        end
+
+        local x = chunk.mx
+        local y = chunk.my
+        local z = math.max(chunk.from_area.floor_h, chunk.dest_area.floor_h)
+
+        hn_add_entity(info, x, y, z + 1)
+      end
+    end
+
+    -- closets
     info.editor_num = PARAM.hn_thing_start_offset
     for _,chunk in pairs(R.closets) do
       if chunk.prefab_def then
@@ -2074,6 +2114,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       end
     end
 
+    -- joiners
     info.editor_num = PARAM.hn_thing_start_offset
     for _,chunk in pairs(R.joiners) do
       info.name = "Joiner: " .. chunk.prefab_def.name
