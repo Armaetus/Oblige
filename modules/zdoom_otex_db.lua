@@ -747,8 +747,8 @@ OTEX_RESOURCE_DB = {
         has_textures = true,
         has_all = false,
         flats = {},
-        textures = {'OSKY51', 'OSKY50'}]]
-    },
+        textures = {'OSKY51', 'OSKY50'}
+    },]]
     ["DIAG"] = {
         has_flats = true,
         has_textures = false,
