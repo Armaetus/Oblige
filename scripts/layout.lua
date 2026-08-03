@@ -2309,6 +2309,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
       if name ~= "PLAIN" then
         cg.sink = GAME.SINKS[name]
+        cg.sink.name = name
         assert(cg.sink)
 
         -- inhibit ceiling lights and pillars
