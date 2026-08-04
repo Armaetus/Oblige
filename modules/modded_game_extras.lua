@@ -2027,22 +2027,21 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     for _,chunk in pairs(R.stairs) do
       if chunk.prefab_def then
         local C = chunk
-        info.name = "Stairs: " .. C.prefab_def.name
+        info.name = "Stairs: " .. C.prefab_def.name .. " "
         info.editor_num = PARAM.hn_thing_start_offset
 
-        info.name = info.name .. "(A: " .. C.area.id
+        info.name = info.name .. "(AREA_" .. C.area.id
         if C.area.ceil_group.sink then
           info.name = info.name .. ", " .. C.area.ceil_group.sink.name
         end
 
-        if C.from_area.ceil_group == C.area.ceil_group and C.dest_area.ceil_group == C.area.ceil_group then
-          info.name = info.name .. ", " .. "SAME CG"
-        elseif C.from_area.ceil_group == C.area.ceil_group then
-          info.name = info.name .. ", " .. "FROM_AREA CG"
-        elseif C.dest_area.ceil_group == C.area.ceil_group then
-          info.name = info.name .. ", " .. "DEST_AREA CG"
+        if C.area.cg_history then
+          info.name = info.name .. "(ceil_group History: " .. C.area.cg_history .. ") "
         end
-        info.name = info.name .. ")"
+
+        if C.area.ch_history then
+          info.name = info.name .. "(ceil_height History: " .. C.area.ch_history .. ") "
+        end
 
         if SCRIPTS.hn_id_table[info.name] then
           info.editor_num = SCRIPTS.hn_id_table[info.name].id
@@ -2520,7 +2519,7 @@ class bossNameHandler : EventHandler
             || obit.IndexOf("female", 0) > -1
             || obit.IndexOf("security", 0) > -1
             || obit.IndexOf("zsec", 0) > -1
-            || obit.IndexOf("zspec", 0) > -1
+            || obit.IndexOf("pb_zs", 0) > -1
             || obit.IndexOf("razer", 0) > -1)
             {
               mon_name = getHumanTag();

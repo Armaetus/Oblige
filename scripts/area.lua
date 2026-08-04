@@ -449,6 +449,48 @@ end
 
 function AREA_CLASS.set_ceil(A, h)
   A.ceil_h = h
+
+  if A.zone and A.zone.sky_h 
+  and h == A.zone.sky_h then
+    h = h .. "(SKY)"
+  end
+
+  if A.ch_history then
+    A.ch_history = A.ch_history .. "->" .. h
+  elseif not A.ch_history then
+    A.ch_history = h
+  end
+end
+
+function AREA_CLASS.set_ceil_group(A, cg)
+  A.ceil_group = cg
+
+  local low_area, high_area, info
+  if A.chunk and A.chunk.dest_area and A.chunk.dest_area.ceil_h then
+    if A.chunk.from_area.ceil_h > A.chunk.dest_area.ceil_h then
+      high_area, low_area = A.chunk.from_area, A.chunk.dest_area
+    else
+      high_area, low_area = A.chunk.dest_area, A.chunk.from_area
+    end
+  end
+
+  if high_area and cg == high_area.cg then
+    info = "HIGH:" .. cg.id
+  elseif low_area and cg == low_area.cg then
+    info = "LOW:" .. cg.id
+  else
+    info = "SAME:" .. cg.id
+  end
+
+  if A.cg_history then
+    A.cg_history = A.cg_history .. "->" .. info
+  elseif not A.cg_history then
+    A.cg_history = info
+  end
+end
+
+function AREA_CLASS.set_floor_group(A, fg)
+  A.floor_group = fg
 end
 
 

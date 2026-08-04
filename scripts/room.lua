@@ -2814,7 +2814,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     for _, A in pairs(R.areas) do
       if A.ceil_group == group2 then
-        A.ceil_group = group1
+        A:set_ceil_group(group1)
 
         A.ceil_group.volume = group1.volume + group2.volume
       end
@@ -2890,7 +2890,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       if (A.mode == "floor" or (A.chunk and A.chunk.kind == "stair"))
           or (A.is_porch or A.is_porch_neighbor)
       then
-        A.ceil_group = { id = alloc_id(LEVEL, "ceil_group") }
+        A:set_ceil_group(
+        { id = alloc_id(LEVEL, "ceil_group") }
+        )
       end
     end
 
@@ -2918,9 +2920,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         local destA = A.chunk.dest_area
 
         if R.stair_ceil_mode == "use_dest" then
-          A.ceil_group = destA.ceil_group
+          A:set_ceil_group(destA.ceil_group)
         else
-          A.ceil_group = fromA.ceil_group
+          A:set_ceil_group(fromA.ceil_group)
         end
       end
     end
@@ -3923,7 +3925,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
           if A2 then
             if A2.ceil_h then
-              A.ceil_group = A2.ceil_group
+              A:set_ceil_group(A2.ceil_group)
               A:set_ceil(A.ceil_group.h)
             end
 
@@ -3934,7 +3936,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
               A.peer.is_porch_neighbor = true
               A.peer.ceil_mat = A.ceil_mat
               if A2.ceil_h then
-                A.peer.ceil_group = A.peer.ceil_group
+                A.peer:set_ceil_group(A.peer.ceil_group)
                 A.peer:set_ceil(A.peer.ceil_group.h)
               end
             end
@@ -4432,8 +4434,8 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         SA.dead_end = true
 
         -- use the ceil group of the "dead end" for the stair chunk, if it remains the same height
-        SA.ceil_group = SAS.ceil_group
-        A.ceil_group = SA.ceil_group
+        SA:set_ceil_group(SAS.ceil_group)
+        A:set_ceil_group(SA.ceil_group)
         SA.ceil_h = A.ceil_group.h
         A.ceil_h = A.ceil_group.h
 
