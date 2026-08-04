@@ -2628,11 +2628,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
   local TRAVERSE_H = 80
 
 
-  local function set_floor(A, h)
-    A.floor_h = h
-  end
-
-
   local function areaconn_other(IC, A)
     if IC.A1 == A then return IC.A2 end
     if IC.A2 == A then return IC.A1 end
@@ -2974,7 +2969,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     -- compute the actual floor heights, ensuring entry_area becomes 'entry_h'
     for _, A in pairs(R.areas) do
       if A.prelim_h then
-        set_floor(A, base_h + A.prelim_h)
+        A:set_floor(base_h + A.prelim_h)
       end
 
       --    stderrf("%s %s = %s : floor_h = %s\n", R.name, A.name, tostring(A.mode), tostring(A.floor_h))
@@ -3134,7 +3129,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     local joiner_h = math.min(entry_h, entry_h + delta_h)
 
-    set_floor(chunk.area, joiner_h)
+    chunk.area:set_floor(joiner_h)
 
     -- stderrf("  setting joiner in %s to %d\n", C.joiner_chunk.area.name, C.joiner_chunk.area.floor_h)
     -- stderrf("  loc: (%d %d)\n", C.joiner_chunk.sx1, C.joiner_chunk.sy1)
@@ -4420,15 +4415,15 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
           SA.is_porch_neighbor = nil
         end
 
-        A.floor_h = SAS.floor_h
-        SA.floor_h = SAS.floor_h
+        A:set_floor_h(SAS.floor_h)
+        SA:set_floor_h(SAS.floor_h)
 
         A.floor_mat = SAS.floor_mat
         SA.floor_mat = SAS.floor_mat
 
         -- use the floor group of the source area
-        A.floor_group = SAS.floor_group
-        SA.floor_group = SAS.floor_group
+        A:set_floor_group(SAS.floor_group)
+        SA:set_floor_group(SAS.floor_group)
 
         A.dead_end = true
         SA.dead_end = true
@@ -4436,8 +4431,8 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         -- use the ceil group of the "dead end" for the stair chunk, if it remains the same height
         SA:set_ceil_group(SAS.ceil_group)
         A:set_ceil_group(SA.ceil_group)
-        SA.ceil_h = A.ceil_group.h
-        A.ceil_h = A.ceil_group.h
+        SA:set_ceil(A.ceil_group.h)
+        A:set_ceil(A.ceil_group.h)
 
         -- affix textures
         if A.room:get_env() == "building" then
