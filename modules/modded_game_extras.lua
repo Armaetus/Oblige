@@ -2034,13 +2034,14 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         if C.area.ceil_group.sink then
           info.name = info.name .. ", " .. C.area.ceil_group.sink.name
         end
+        info.name = info.name .. ") "
 
         if C.area.cg_history then
-          info.name = info.name .. "(ceil_group History: " .. C.area.cg_history .. ") "
+          info.name = info.name .. "(cg: " .. C.area.cg_history .. ") "
         end
 
         if C.area.ch_history then
-          info.name = info.name .. "(ceil_height History: " .. C.area.ch_history .. ") "
+          info.name = info.name .. "(ceil_h: " .. C.area.ch_history .. ") "
         end
 
         if SCRIPTS.hn_id_table[info.name] then

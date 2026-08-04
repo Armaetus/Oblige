@@ -466,8 +466,8 @@ function AREA_CLASS.set_ceil_group(A, cg)
   A.ceil_group = cg
 
   local low_area, high_area, info
-  if A.chunk and A.chunk.dest_area and A.chunk.dest_area.ceil_h then
-    if A.chunk.from_area.ceil_h > A.chunk.dest_area.ceil_h then
+  if A.chunk and A.chunk.dest_area and A.chunk.dest_area.floor_h then
+    if A.chunk.from_area.floor_h > A.chunk.dest_area.floor_h then
       high_area, low_area = A.chunk.from_area, A.chunk.dest_area
     else
       high_area, low_area = A.chunk.dest_area, A.chunk.from_area
