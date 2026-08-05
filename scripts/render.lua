@@ -2672,7 +2672,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     -- ensure a sky ceiling is made for this
     chunk.occupy = "floor"
 
-    A.ceil_h = assert(A.zone.sky_h)
+    A:set_ceil( assert(A.zone.sky_h) )
     A.ceil_mat = "_SKY"
 
     -- disable walls around/inside this chunk

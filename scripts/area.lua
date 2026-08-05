@@ -474,9 +474,9 @@ function AREA_CLASS.set_ceil_group(A, cg)
     end
   end
 
-  if high_area and cg == high_area.cg then
+  if high_area and cg == high_area.ceil_group then
     info = "HIGH:" .. cg.id
-  elseif low_area and cg == low_area.cg then
+  elseif low_area and cg == low_area.ceil_group then
     info = "LOW:" .. cg.id
   else
     info = "SAME:" .. cg.id
@@ -2222,7 +2222,7 @@ function Area_pick_facing_rooms(LEVEL, SEEDS)
 
   for _,A in pairs(scenics) do
     if A.zone then
-      A.ceil_h = A.zone.sky_h + 16
+      A:set_ceil( A.zone.sky_h + 16 )
       A.ceil_mat = "_SKY"
     end
 
