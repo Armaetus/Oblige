@@ -241,7 +241,7 @@ PREFABS.Wall_quakish_insets_horizon_top =
   bound_z1 = 0,
   bound_z2 = 96,
 
-  z_fit = { 60,62 , 67,69 }
+  z_fit = { 30,31 , 60,62 , 67,69 }
 }
 
 PREFABS.Wall_quakish_insets_horizon_pillared_top =
