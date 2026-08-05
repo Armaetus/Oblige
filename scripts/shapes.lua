@@ -10260,6 +10260,8 @@ GROW_MAZE_CROSS =
   prob = 8,
   skip_prob = 45,
 
+  never_absurdify = true,
+
   structure =
   {
     "xxxx..xxx","xxxx11xxx",
