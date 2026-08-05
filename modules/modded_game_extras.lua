@@ -2030,9 +2030,9 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         info.name = "Stairs: " .. C.prefab_def.name .. " "
         info.editor_num = PARAM.hn_thing_start_offset
 
-        info.name = info.name .. "(AREA_" .. C.area.id
+        info.name = info.name .. "("
         if C.area.ceil_group.sink then
-          info.name = info.name .. ", " .. C.area.ceil_group.sink.name
+          info.name = info.name .. C.area.ceil_group.sink.name
         end
         info.name = info.name .. ") "
 
