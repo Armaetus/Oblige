@@ -1473,6 +1473,7 @@ DOOM.THEMES =
       gtd_wall_quakish_insets_2 = 25,
       gtd_wall_quakish_insets_horizon = 10,
       gtd_wall_quakish_insets_horizon_mid = 10,
+      gtd_wall_quakish_insets_horizon_top = 10,
       --
       gtd_ribbed_lights = 18,
       gtd_ribbed_lights_no3d = 18,
@@ -2003,6 +2004,7 @@ DOOM.THEMES =
       gtd_wall_quakish_insets_2 = 25,
       gtd_wall_quakish_insets_horizon = 20,
       gtd_wall_quakish_insets_horizon_mid = 20,
+      gtd_wall_quakish_insets_horizon_top = 20,
       --
       gtd_ribbed_lights = 17,
       gtd_ribbed_lights_no3d = 17,
@@ -2576,6 +2578,7 @@ DOOM.THEMES =
       gtd_wall_quakish_insets = 50,
       gtd_wall_quakish_insets_horizon = 25,
       gtd_wall_quakish_insets_horizon_mid = 25,
+      gtd_wall_quakish_insets_horizon_top = 25,
       --
       gtd_wall_hell_ossuary = 50,
       --
