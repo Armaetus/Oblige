@@ -2239,7 +2239,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
   local function pick_floor_sinks(R, LEVEL)
 
     local function pick_sink(floor_group, room, LEVEL)
-      if floor_group.openness < 0.4 then return end
+      if floor_group.openness < 0.2 then return end
 
       local tab = grab_usable_sinks(room, floor_group, "floor")
       if tab == nil then return end
@@ -2289,9 +2289,9 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     if R.is_cave then return end
 
     for _,cg in pairs(R.ceil_groups) do
-      --[[if cg.openness < 0.4 then goto skip end
+      if cg.openness < 0.2 then goto skip end
 
-      local height = cg.h - cg.max_floor_h
+      --[[local height = cg.h - cg.max_floor_h
       if height < 128 then goto skip end]]
 
       local tab = grab_usable_sinks(R, cg, "ceiling")
@@ -2319,6 +2319,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
           end
         end
       end
+
+      ::skip::
     end
 
 
@@ -2341,10 +2343,10 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
 
       for _,A in pairs(R.areas) do
         if not A.mode == "liquid" then goto skip end
-        if A.openness < 0.4 then goto skip end
+        if A.openness < 0.2 then goto skip end
 
-        local height = A.ceil_h - A.floor_h
-        if height < 128 then goto skip end
+        --local height = A.ceil_h - A.floor_h
+        --if height < 128 then goto skip end
 
         if name ~= "PLAIN" then
           A.ceil_sink = R.liquid_ceiling_sink
@@ -2496,7 +2498,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       if not def then goto skip end
 
       for _,chunk in pairs(R.ceil_chunks) do
-        if chunk.area.ceil_group ~= cg then goto skip end
+        --if chunk.area.ceil_group ~= cg then goto skip end
+        if chunk.area.ceil_group and chunk.area.ceil_group.sink then goto skip end
         if chunk.content then goto skip end
         if chunk.floor_below and chunk.floor_below.content then goto skip end
         if def.height > (chunk.area.ceil_h - chunk.area.floor_h) then

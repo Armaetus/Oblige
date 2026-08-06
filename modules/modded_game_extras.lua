@@ -1870,7 +1870,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     if R.conns then
       shapes_string = shapes_string .. "(Conns: " .. #R.conns .. ") "
-    end
+    end]]
 
     if R.height_profile then
       shapes_string = shapes_string .. "(HGT: " ..
@@ -1879,7 +1879,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     if R.pressure then
       shapes_string = shapes_string .. "(Combat Pressure: " .. R.pressure .. ") "
-    end]]
+    end
 
     shapes_string = shapes_string ..
       "(SZE " .. R.svolume .. "/" .. math.round(R.size_limit) .. ") "
@@ -1916,13 +1916,13 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       LEVEL.size_consistency .. ") "]]
 
     if LEVEL.is_absurd then
-      shapes_string = shapes_string .. "(ARUL: "
+      shapes_string = shapes_string .. "(ARUL:"
       if R.absurd_shapes and not table.empty(R.absurd_shapes) then
         for _,shape in pairs(R.absurd_shapes) do
           if shape.state == "tried" then
-            shapes_string = shapes_string .. "[N]" .. shape.name .. " "
+            shapes_string = " " .. shapes_string .. "[N]" .. shape.name
           elseif shape.state == "applied" then
-            shapes_string = shapes_string .. "[Y]" .. shape.name .. " "
+            shapes_string = " " .. shapes_string .. "[Y]" .. shape.name
           end
         end
       else
@@ -1943,7 +1943,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     if R.is_flourished then
       shapes_string = shapes_string .. "(FLR) "
-    end]]
+    end
 
     shapes_string = shapes_string .. "(SPR: "
     if R.sprout_rule then
@@ -1952,7 +1952,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     if R.emergency_sprouted then
       shapes_string = shapes_string .. "[!]"
     end
-    shapes_string = shapes_string .. ") "
+    shapes_string = shapes_string .. ") "]]
 
     return shapes_string
   end
@@ -2030,9 +2030,9 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         info.name = "Stairs: " .. C.prefab_def.name .. " "
         info.editor_num = PARAM.hn_thing_start_offset
 
-        info.name = info.name .. "(AREA_" .. C.area.id
+        info.name = info.name .. "("
         if C.area.ceil_group.sink then
-          info.name = info.name .. ", " .. C.area.ceil_group.sink.name
+          info.name = info.name .. C.area.ceil_group.sink.name
         end
         info.name = info.name .. ") "
 

@@ -3503,7 +3503,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
       -- outdoor heights are done later, get a dummy now
       if A.is_outdoor then
-        A.ceil_h = A.floor_h + R.zone.sky_add_h - 8
+        A:set_ceil(A.floor_h + R.zone.sky_add_h - 8)
         goto skip
       end
 
@@ -3518,10 +3518,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
 
       if R.stair_ceil_mode == "use_dest" then
-        A.ceil_h   = destA.ceil_group.h
+        A:set_ceil(destA.ceil_group.h)
         A.ceil_mat = destA.ceil_mat
       else
-        A.ceil_h   = fromA.ceil_group.h
+        A:set_ceil(fromA.ceil_group.h)
         A.ceil_mat = fromA.ceil_mat
       end
       ::skip::
@@ -3956,7 +3956,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
       -- outdoor heights are done later, get a dummy now
       if A.is_outdoor then
-        A.ceil_h = A.floor_h + R.zone.sky_add_h - 8
+        A:set_ceil(A.floor_h + R.zone.sky_add_h - 8)
         goto skip
       end
 
@@ -4415,8 +4415,8 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
           SA.is_porch_neighbor = nil
         end
 
-        A:set_floor_h(SAS.floor_h)
-        SA:set_floor_h(SAS.floor_h)
+        A:set_floor(SAS.floor_h)
+        SA:set_floor(SAS.floor_h)
 
         A.floor_mat = SAS.floor_mat
         SA.floor_mat = SAS.floor_mat
