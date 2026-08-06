@@ -4694,6 +4694,30 @@ GROW_DOOM2_ENTRY_CAGE_DOUBLE =
   }
 },
 
+GROW_DOOM2_ENTRY_CAGE_DOUBLE_LIQUID_CENTER =
+{
+  prob = 10,
+  skip_prob = 75,
+
+  structure =
+  {
+    "........","AAAAAAAA",
+    "........","%AA/%AA/",
+    "........","CAA~~AAC",
+    "........","C^^~~^^C",
+    "........","C11~~11C",
+    "........","/11%/11%",
+    "........","11111111",
+    "11xxxxxx","11xxxxxx"
+  },
+
+  diagonals =
+  {
+    "CA","A~","~A","AC",
+    "C1","1~","~1","1C"
+  }
+},
+
 GROW_DOOM2_ENTRY_CAGE_ALT =
 {
   prob = 10,
@@ -4709,6 +4733,31 @@ GROW_DOOM2_ENTRY_CAGE_ALT =
     ".....","#111#",
     ".....","11111",
     "11xxx","11xxx"
+  }
+},
+
+GROW_DOOM2_ENTRY_CAGE_ALT_LIQUID =
+{
+  prob = 12,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx...xx","xxAAAxx",
+    "x.....x","x#AAA#x",
+    "x.....x","xCAAACx",
+    ".......","/~^^^~%",
+    ".......","~/111%~",
+    "x.....x","xC111Cx",
+    "x.....x","x#111#x",
+    "x.....x","x11111x",
+    "x11xxxx","x11xxxx"
+  },
+
+  diagonals =
+  {
+    ".~","~.",
+    "~1","1~"
   }
 },
 
@@ -16919,7 +16968,7 @@ GROW_DEUCE_DIAMONDS =
 GROW_ATOMIC_SYMBOL =
 {
   prob = 20,
-  skip_prob = 75,
+  skip_prob = 80,
 
   structure =
   {
@@ -16952,7 +17001,7 @@ GROW_ATOMIC_SYMBOL =
 GROW_ATOMIC_SYMBOL_STEEPNESS =
 {
   prob = 15,
-  skip_prob = 75,
+  skip_prob = 80,
 
   structure =
   {
