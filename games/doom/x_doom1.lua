@@ -1116,6 +1116,7 @@ ULTDOOM.THEMES =
       gtd_ribbed_lights_tekmachine = 9,
       gtd_ribbed_lights_tekmachine_alt = 9,
       gtd_ribbed_lights_very_blue = 18,
+      gtd_ribbed_lights_ribbed_steps = 18,
       --
       gtd_wall_high_gap_set = 12,
       gtd_wall_high_gap_alt_set = 12,
@@ -1598,7 +1599,15 @@ ULTDOOM.THEMES =
       gtd_wall_octagon_insets = 25,
       gtd_wall_grated_machines = 20,
 
-      gtd_ribbed_lights = 15,
+      gtd_ribbed_lights = 18,
+      gtd_ribbed_lights_no3d = 18,
+      gtd_ribbed_lights_slump = 18,
+      gtd_ribbed_lights_slump_two_color = 18,
+      gtd_ribbed_lights_tekmachine = 9,
+      gtd_ribbed_lights_tekmachine_alt = 9,
+      gtd_ribbed_lights_very_blue = 18,
+      gtd_ribbed_lights_ribbed_steps = 18,
+
       gtd_wall_urban_cement_frame = 10,
     },
 

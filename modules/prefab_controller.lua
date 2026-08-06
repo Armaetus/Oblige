@@ -152,7 +152,8 @@ function PREFAB_CONTROL.fine_tune_filters()
     gtd_silver_pillars_blue_computers = 1.5,
     gtd_wall_quakish_insets_horizon = 12,
     gtd_wall_quakish_insets_horizon_mid = 12,
-    gtd_wall_quakish_insets_horizon_top = 12
+    gtd_wall_quakish_insets_horizon_top = 12,
+    gtd_ribbed_lights_ribbed_steps = 12
   }
   local new_themes_multipliers =
   {

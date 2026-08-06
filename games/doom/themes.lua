@@ -1482,6 +1482,7 @@ DOOM.THEMES =
       gtd_ribbed_lights_tekmachine = 9,
       gtd_ribbed_lights_tekmachine_alt = 9,
       gtd_ribbed_lights_very_blue = 18,
+      gtd_ribbed_lights_ribbed_steps = 18,
       --
       gtd_wall_high_gap_set = 12,
       gtd_wall_high_gap_alt_set = 12,
@@ -2013,6 +2014,7 @@ DOOM.THEMES =
       gtd_ribbed_lights_tekmachine = 9,
       gtd_ribbed_lights_tekmachine_alt = 9,
       gtd_ribbed_lights_very_blue = 17,
+      gtd_ribbed_lights_ribbed_steps = 17,
       --
       gtd_wall_high_gap_set = 12,
       gtd_wall_high_gap_alt_set = 12,
