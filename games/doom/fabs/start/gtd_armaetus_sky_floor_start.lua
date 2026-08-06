@@ -10,7 +10,6 @@ PREFABS.Start_gtd_armaetus_sky_floor =
   seed_w = 2,
   seed_h = 2,
 
-  over = -16,
   deep = 16,
 
   x_fit  = "frame",

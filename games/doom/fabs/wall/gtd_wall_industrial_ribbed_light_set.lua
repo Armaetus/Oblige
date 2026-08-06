@@ -209,7 +209,9 @@ PREFABS.Wall_gtd_ribbed_lights_ribbed_steps =
   group = "gtd_ribbed_lights_ribbed_steps",
 
   height = 96,
-  bound_z2 = 96
+  bound_z2 = 96,
+
+  z_fit = { 79,81 }
 }
 
 PREFABS.Wall_gtd_ribbed_lights_ribbed_steps_break =
@@ -221,7 +223,9 @@ PREFABS.Wall_gtd_ribbed_lights_ribbed_steps_break =
   group = "gtd_ribbed_lights_ribbed_steps",
 
   height = 96,
-  bound_z2 = 96
+  bound_z2 = 96,
+
+  z_fit = { 79,81 }
 }
 
 PREFABS.Wall_gtd_ribbed_lights_ribbed_steps_diag =
@@ -233,5 +237,7 @@ PREFABS.Wall_gtd_ribbed_lights_ribbed_steps_diag =
   group = "gtd_ribbed_lights_ribbed_steps",
 
   height = 96,
-  bound_z2 = 96
+  bound_z2 = 96,
+
+  z_fit = { 79,81 }
 }
