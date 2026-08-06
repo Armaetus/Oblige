@@ -2748,8 +2748,8 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     if not chunk.from_area.lighting then
       gui.printf(table.tostr(chunk.from_area,2))
     end
-    assert(chunk.from_area.lighting)
-    A.lighting = chunk.from_area.lighting
+
+    A.lighting = assert(chunk.from_area.lighting)
   end
 
   Ambient_push(A.lighting)
