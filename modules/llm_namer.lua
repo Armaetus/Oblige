@@ -3820,8 +3820,8 @@ level_data
 
     -- LLM temperature variation, later maps have crazier names
     local pick_tmp
-    if #GAME.levels > 4 and epi_lev.along then
-      pick_tmp = map_value(epi_lev.along, 0, 1, 1.0, 2.0)
+    if epi_lev.game_along then
+      pick_tmp = map_value(epi_lev.game_along, 0, 1, 1, 2.5)
     end
 
     -- name length
@@ -3841,12 +3841,14 @@ level_data
       end
     end
 
-    return ask(prompt,
+    local lname = ask(prompt,
     {
-      temperature = pick_tmp or 0.85,
+      temperature = pick_tmp or 1.0,
       num_predict = 20
     },
     "name")
+
+    gui.printf("Replaced name of " .. epi_lev.id .. ": " .. lname .. "\n")
   end
 
 
