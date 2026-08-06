@@ -3849,6 +3849,7 @@ level_data
     "name")
 
     gui.printf("Replaced name of " .. epi_lev.id .. ": " .. lname .. "\n")
+    return lname
   end
 
 
@@ -4046,9 +4047,8 @@ _FORMAT_
     -- temperature
     local temp = rand.pick
     {
-      1.0,
-      1.05,
-      1.1
+      3.0,
+      3.0
     }
 
     -- prompt structure
