@@ -3927,7 +3927,7 @@ Plot Discipline:
 
 Protagonist Notes:
 - the protagonist will never choose to work with Hell
-- the portagonist prefers to never harm humans, only demons or possessed humans
+- the protagonist prefers to never harm humans, only demons or possessed humans
 - the protagonist will only work with anyone if it coincides with the Doomslayer's goal of Hell's destruction
 - do not explain anything about the protagonist's identity or motivations in the story
 
