@@ -2566,16 +2566,18 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     end
 
     for _,chunk in pairs(R.ceil_chunks) do
-      if chunk.area.lamp_def then
+      if chunk.area.lamp_def or R.liquid_area_lamp_def then
         if chunk.content then goto skip end
         if chunk.floor_below and chunk.floor_below.content then goto skip end
 
         if chunk.area.lamp_def.height > (chunk.area.ceil_h - chunk.area.floor_h) then
           goto skip end
 
+        assert(chunk.area.lamp_def or chunk.area.room.liquid_area_lamp_def)
+
         chunk.content = "DECORATION"
         chunk.kind = "ceil"
-        chunk.prefab_def = chunk.area.room.liquid_area_lamp_def
+        chunk.prefab_def = chunk.area.lamp_def or chunk.area.room.liquid_area_lamp_def
         chunk.prefab_dir = 2
 
         chunk.area.bump_light = 16

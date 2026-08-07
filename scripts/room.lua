@@ -3727,9 +3727,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     elseif R.height_style == "tall" then
       local tall_offsets =
       {
-        [1.5] = 3,
-        [2] = 9,
-        [3] = 1,
+        [1.5] = 8,
+        [2] = 1,
+        [3] = 0.5,
       }
 
       if group.vol > 96 then

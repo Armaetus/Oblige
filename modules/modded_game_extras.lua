@@ -1920,9 +1920,9 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       if R.absurd_shapes and not table.empty(R.absurd_shapes) then
         for _,shape in pairs(R.absurd_shapes) do
           if shape.state == "tried" then
-            shapes_string = " " .. shapes_string .. "[N]" .. shape.name
+            shapes_string = shapes_string .. " [N]" .. shape.name
           elseif shape.state == "applied" then
-            shapes_string = " " .. shapes_string .. "[Y]" .. shape.name
+            shapes_string = shapes_string .. " [Y]" .. shape.name
           end
         end
       else
