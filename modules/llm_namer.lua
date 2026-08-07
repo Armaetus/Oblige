@@ -2285,17 +2285,17 @@ LLM_NAME.story_components =
 
 The text in each tag section must at be around _WORD_COUNT_ words, separated into paragraphs with proper spacing.
 Abide by our word count rule as much as possible, each section content must be around _WORD_COUNT_ words.
-Ensure that the tag section is properly surrounded by the proper HTML tags e.g. <S1> and enclosed with </S1>, <S2> and </S2> for the next, and etc. 
+Ensure that the tag section is properly surrounded by the proper HTML tags e.g. <S1> and enclosed with </S1>, <S2> and </S2> for the next, and etc.
 Refer to the example provided below.
 
 SYSTEM: Please use exactly the following tagged structure and do not use any Markdown.
 Please do not add other blocks than is found in the example:
 
-<S1> 
+<S1>
 story intro here 
 </S1>
 
-<S2> 
+<S2>
 story ending here 
 </S2>]],
 
@@ -2311,27 +2311,27 @@ SYSTEM: Use the following tagged structure in the example below.
 Please do not add other blocks than is found in the example.
 The following example must absolutely be followed as there is no input validation:
 
-<S1> 
+<S1>
 chapter 1 intro here
 </S1>
 
-<S2> 
+<S2>
 chapter 1 ending here
 </S2>
 
-<S3> 
+<S3>
 chapter 2 intro here
 </S3>
 
-<S4> 
+<S4>
 chapter 2 ending here
 </S4>
 
-<S5> 
+<S5>
 chapter 3 intro here
 </S5>
 
-<S6> 
+<S6>
 chapter 3 ending here
 </S6>]]
   },

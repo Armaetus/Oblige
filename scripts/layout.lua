@@ -2570,10 +2570,15 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         if chunk.content then goto skip end
         if chunk.floor_below and chunk.floor_below.content then goto skip end
 
-        if chunk.area.lamp_def.height > (chunk.area.ceil_h - chunk.area.floor_h) then
-          goto skip end
+        local h
+        if chunk.area.lamp_def and chunk.area.lamp_def.height then
+          h = chunk.area.lamp_def.height
+        elseif R.liquid_area_lamp_def.height and R.liquid_area_lamp_def.height then
+          h = R.liquid_area_lamp_def.height
+        end
 
-        assert(chunk.area.lamp_def or chunk.area.room.liquid_area_lamp_def)
+        if h > (chunk.area.ceil_h - chunk.area.floor_h) then
+        goto skip end
 
         chunk.content = "DECORATION"
         chunk.kind = "ceil"
