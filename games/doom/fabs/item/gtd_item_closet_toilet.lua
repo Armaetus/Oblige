@@ -46,6 +46,8 @@ PREFABS.Item_closet_cat_litter_box =
   seed_w = 2,
   seed_h = 1,
 
+  over = nil,
+
   x_fit = { 24,32 },
   y_fit = { 88,96 }
 }
