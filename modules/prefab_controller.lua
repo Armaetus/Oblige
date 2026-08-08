@@ -149,10 +149,9 @@ function PREFAB_CONTROL.fine_tune_filters()
   }
   local new_fab_groups_multipliers =
   {
-    gtd_silver_pillars_blue_computers = 1.5,
-    gtd_wall_quakish_insets_horizon = 12,
-    gtd_wall_quakish_insets_horizon_mid = 12,
-    gtd_wall_quakish_insets_horizon_top = 12,
+    gtd_wall_quakish_insets_horizon = 8,
+    gtd_wall_quakish_insets_horizon_mid = 8,
+    gtd_wall_quakish_insets_horizon_top = 8,
     gtd_ribbed_lights_ribbed_steps = 12
   }
   local new_themes_multipliers =
@@ -528,7 +527,6 @@ OB_MODULES["prefab_control"] =
       tooltip = _("Greatly increase probability for recent added content for testing purposes. " ..
       "Changes in content is expected and some assets will be gradually removed from this option's effects."),
       priority = 4,
-
     },
 
 

@@ -1105,9 +1105,10 @@ ULTDOOM.THEMES =
       --
       gtd_wall_quakish_insets = 25,
       gtd_wall_quakish_insets_2 = 25,
-      gtd_wall_quakish_insets_horizon = 10,
-      gtd_wall_quakish_insets_horizon_mid = 10,
-      gtd_wall_quakish_insets_horizon_top = 10,
+      --
+      gtd_wall_quakish_insets_horizon = 15,
+      gtd_wall_quakish_insets_horizon_mid = 15,
+      gtd_wall_quakish_insets_horizon_top = 15,
       --
       gtd_ribbed_lights = 18,
       gtd_ribbed_lights_no3d = 18,

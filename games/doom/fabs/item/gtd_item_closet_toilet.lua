@@ -39,6 +39,8 @@ PREFABS.Item_closet_cat_litter_box =
 {
   template   = "Item_closet_toilet_room",
   map = "MAP03",
+
+  port = "zdoom",
   prob = 120,
 
   seed_w = 2,
