@@ -8252,8 +8252,60 @@ GROW_CAUSEWAY_BRACKET_HALF =
 
   diagonals =
   {
-    ".A","A1","1A","A.",
-    ".A","A1","1A","A."
+    "1A","A.",
+    "1A","A."
+  }
+},
+
+GROW_CAUSEWAY_BRACKET_HALF_BREACH =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "....xxx","11AAxxx",
+    "....xxx","11AAxxx",
+    ".....xx","11%A%xx",
+    ".......","111AA11",
+    ".......","111AA11",
+    ".....xx","11/A/xx",
+    "....xxx","11AAxxx",
+    "....xxx","11AAxxx",
+    "11..xxx","11..xxx",
+  },
+
+  diagonals =
+  {
+    "1A","A.",
+    "1A","A."
+  }
+},
+
+GROW_CAUSEWAY_BRACKET_HALF_BREACH_LIQUID =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    ".......xx","11AA~~%xx",
+    ".......xx","11AA~~~xx",
+    ".......xx","11%A%~~xx",
+    ".........","111AA1111",
+    ".........","111AA1111",
+    ".......xx","11/A/~~xx",
+    ".......xx","11AA~~~xx",
+    ".......xx","11AA~~/xx",
+    "11..xxxxx","11..xxxxx",
+  },
+
+  diagonals =
+  {
+         "~.",
+    "1A","A~",
+    "1A","A~",
+         "~."
   }
 },
 
@@ -8277,8 +8329,8 @@ GROW_CAUSEWAY_BRACKET_HALF_LIQUID =
 
   diagonals =
   {
-    ".A","A1","1A","A.","~.",
-    ".A","A1","1A","A.","~."
+    "1A","A~","~.",
+    "1A","A~","~."
   }
 },
 
@@ -8333,10 +8385,10 @@ GROW_CAUSEWAY_BRACKET_HALF_LONG =
 
   diagonals =
   {
-    ".A","A1","1A","A.",
-    ".A","A1","1A","A.",
-    ".A","A1","1A","A.",
-    ".A","A1","1A","A."
+    "1A","A.",
+    "1A","A.",
+    "1A","A.",
+    "1A","A."
   }
 },
 
@@ -8362,10 +8414,10 @@ GROW_CAUSEWAY_BRACKET_HALF_LIQUID_LONG =
 
   diagonals =
   {
-    ".A","A1","1A","A.","~.",
-    ".A","A1","1A","A.","~.",
-    ".A","A1","1A","A.","~.",
-    ".A","A1","1A","A.","~."
+    "1A","A~","~.",
+    "1A","A~","~.",
+    "1A","A~","~.",
+    "1A","A~","~."
   }
 },
 
@@ -17430,29 +17482,6 @@ GROW_BOOK =
     "x........","x1111AAAA",
     "x........","x1111AAAA",
     "xxxx..xxx","xxxx%/xxx",
-  },
-
-  diagonals =
-  {
-    "1.",".A",
-    ".1","A.",
-  },
-},
-
-GROW_BOOK_STAIRS =
-{
-  prob = 10,
-
-  skip_prob = 75,
-
-  structure =
-  {
-    "1...xx...","111%xx/AA",
-    "1........","1111>AAAA",
-    "x........","x111>AAAA",
-    "x........","x111>AAAA",
-    "x........","x111>AAAA",
-    "x...xx...","x11/xx%AA",
   },
 
   diagonals =
