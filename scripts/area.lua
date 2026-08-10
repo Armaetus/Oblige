@@ -450,15 +450,13 @@ end
 function AREA_CLASS.set_ceil(A, h)
   A.ceil_h = h
 
-  if A.zone and A.zone.sky_h 
-  and h == A.zone.sky_h then
-    h = h .. "(SKY)"
-  end
+  local info = debug.getinfo(2, "Sln")
+  --print(info.source, info.currentline, info.name)
 
   if A.ch_history then
-    A.ch_history = A.ch_history .. "->" .. h
+    A.ch_history = A.ch_history .. "->" .. info.name .. "=" .. h
   elseif not A.ch_history then
-    A.ch_history = h
+    A.ch_history = info.name .. "=" .. h
   end
 end
 
@@ -475,11 +473,11 @@ function AREA_CLASS.set_ceil_group(A, cg)
   end
 
   if high_area and cg == high_area.ceil_group then
-    info = "HIGH:" .. cg.id
+    info = "HIGH"
   elseif low_area and cg == low_area.ceil_group then
-    info = "LOW:" .. cg.id
+    info = "LOW"
   else
-    info = "SAME:" .. cg.id
+    info = "SAME"
   end
 
   if A.cg_history then
