@@ -12958,6 +12958,51 @@ GROW_WATER_STRIPES_CURVE_DIAGONAL_NEW_AREA =
   }
 },
 
+GROW_RETICULE_SMALL =
+{
+  prob = 10,
+  skip_prob = 60,
+
+  structure =
+  {
+    "x11xxxx","x11xxxx",
+    ".......","/11A11%",
+    ".......","111A111",
+    ".......","111A111",
+    ".......","AAA#AAA",
+    ".......","111A111",
+    ".......","111A111",
+    ".......","%11A11/"
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1."
+  }
+},
+
+GROW_RETICULE_HALF_SMALL =
+{
+  prob = 10,
+  skip_prob = 60,
+
+  structure =
+  {
+    "x11xxxx","x11xxxx",
+    ".......","/11A11%",
+    ".......","111A111",
+    ".......","111A111",
+    ".......","%AA#AA/",
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".A","A."
+  }
+},
+
 GROW_WATER_STRIPES_RETICULE =
 {
   prob = 10,
