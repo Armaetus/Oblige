@@ -463,6 +463,9 @@ end
 function AREA_CLASS.set_ceil_group(A, cg)
   A.ceil_group = cg
 
+  local d_info = debug.getinfo(2, "Sln")
+  --print(info.source, info.currentline, info.name)
+
   local low_area, high_area, info
   if A.chunk and A.chunk.dest_area and A.chunk.dest_area.floor_h then
     if A.chunk.from_area.floor_h > A.chunk.dest_area.floor_h then
@@ -473,11 +476,11 @@ function AREA_CLASS.set_ceil_group(A, cg)
   end
 
   if high_area and cg == high_area.ceil_group then
-    info = "HIGH"
+    info = d_info.name .. ":HIGH"
   elseif low_area and cg == low_area.ceil_group then
-    info = "LOW"
+    info = d_info.name .. ":LOW"
   else
-    info = "SAME"
+    info = d_info.name .. ":SAME"
   end
 
   if A.cg_history then
