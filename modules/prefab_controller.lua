@@ -149,10 +149,11 @@ function PREFAB_CONTROL.fine_tune_filters()
   }
   local new_fab_groups_multipliers =
   {
-    gtd_wall_quakish_insets_horizon = 8,
-    gtd_wall_quakish_insets_horizon_mid = 8,
-    gtd_wall_quakish_insets_horizon_top = 8,
-    gtd_ribbed_lights_ribbed_steps = 12
+    gtd_wall_quakish_insets_horizon = 4,
+    gtd_wall_quakish_insets_horizon_mid = 4,
+    gtd_wall_quakish_insets_horizon_top = 4,
+    gtd_ribbed_lights_ribbed_steps = 8,
+    gtd_generic_artsy_corpo_art = 8
   }
   local new_themes_multipliers =
   {

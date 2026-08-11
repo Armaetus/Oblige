@@ -186,6 +186,7 @@ LLM_NAME.semantics_grouping =
   gtd_generic_small_lite = "liminal_space",
   gtd_generic_artsy_lite_box = "liminal_space",
   gtd_generic_artsy_chequered = "liminal_space",
+  gtd_generic_artsy_corpo_art = "liminal_space",
   gtd_generic_ceilwall = "liminal_space",
   gtd_generic_ceilwall_2 = "liminal_space",
   gtd_generic_ceilwall_3 = "liminal_space",

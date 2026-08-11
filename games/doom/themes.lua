@@ -1529,6 +1529,7 @@ DOOM.THEMES =
       gtd_generic_small_lite = 20,
       gtd_generic_artsy_lite_box = 20,
       gtd_generic_artsy_chequered = 20,
+      gtd_generic_artsy_corpo_art = 20,
       --
       gtd_ind_modwall_1 = 20,
       gtd_ind_modwall_2 = 20,
@@ -2067,6 +2068,7 @@ DOOM.THEMES =
       gtd_generic_small_lite = 20,
       gtd_generic_artsy_lite_box = 20,
       gtd_generic_artsy_chequered = 20,
+      gtd_generic_artsy_corpo_art = 20,
       --
       gtd_ind_modwall_1 = 20,
       gtd_ind_modwall_2 = 20,
@@ -2637,6 +2639,7 @@ DOOM.THEMES =
       gtd_generic_small_lite = 20,
       gtd_generic_artsy_lite_box = 20,
       gtd_generic_artsy_chequered = 20,
+      gtd_generic_artsy_corpo_art = 20,
       --
       gtd_ind_modwall_1 = 20,
       gtd_ind_modwall_2 = 20,
