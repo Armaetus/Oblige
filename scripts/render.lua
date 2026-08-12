@@ -3642,11 +3642,11 @@ function Render_properties_for_area(LEVEL, A)
 ---##  A.wall_mat = assert(R.main_tex)
 
   else
-    A.floor_mat = "_ERROR"
+    A:set_floor_mat("_ERROR")
   end
 
   if A.mode == "liquid" then
-    A.floor_mat = "_LIQUID"
+    A:set_floor_mat("_LIQUID")
   end
 
   if A.is_outdoor and not A.is_porch then
@@ -3654,7 +3654,7 @@ function Render_properties_for_area(LEVEL, A)
   end
 
 
-  A.floor_mat = A.floor_mat or R.main_tex
+  A:set_floor_mat(A.floor_mat or R.main_tex)
   A.ceil_mat  = A.ceil_mat  or R.main_tex
 end
 

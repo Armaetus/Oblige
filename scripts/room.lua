@@ -3031,7 +3031,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       assert(A.floor_h)
 
       if A.peer and A.peer.floor_mat then
-        A.floor_mat = A.peer.floor_mat
+        A:set_floor_mat(A.peer.floor_mat)
         goto skip
       end
 
@@ -3064,19 +3064,19 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         local tex = rand.key_by_probs(R.floor_mat_list_natural)
         R.floor_mat_list_natural[tex] = R.floor_mat_list_natural[tex] / 4
         R.floor_mats[A.floor_h] = tex
-    
+
         if not A.is_flat_clearing then
           for _, A2 in pairs(R.areas) do
             if A ~= A2 then
               if A.floor_h == A2.floor_h then
-                A2.floor_mat = tex
+                A2:set_floor_mat(tex)
               end
             end
           end
         end
       end
 
-      A.floor_mat = assert(R.floor_mats[A.floor_h])
+      A:set_floor_mat(assert(R.floor_mats[A.floor_h]))
       ::skip::
     end
   end
@@ -3324,7 +3324,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       A.mode      = N.mode
 
       A.floor_h   = N.floor_h
-      A.floor_mat = N.floor_mat
+      A:set_floor_mat(N.floor_mat or nil)
 
       A.ceil_h    = N.ceil_h
       A.ceil_mat  = N.ceil_mat
@@ -3400,7 +3400,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       )
     end
 
-    A.floor_mat = assert(R.cage_mat or A.zone.cage_mat)
+    A:set_floor_mat(assert(R.cage_mat or A.zone.cage_mat))
     A.ceil_mat = assert(R.cage_mat or A.zone.cage_mat)
 
     -- fancy cages
@@ -3436,7 +3436,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       A.ceil_mat = N.ceil_mat
     end
     if A.floor_h == N.floor_h then
-      A.floor_mat = N.floor_mat
+      A:set_floor_mat(N.floor_mat)
     end
   end
 
@@ -4293,7 +4293,8 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         end
 
         N.floor_h = best_LN.floor_h - 16
-        N:set_ceil(best_LN.ceil_h)
+
+        N:set_ceil(best_LN.ceil_h or best_LN.floor_h + 96)
       end
     end
   end
@@ -4355,7 +4356,7 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         if not same_level_to_outdoor_area(A) then
           A.uses_porch_floor = true
           if not A.dead_end then
-            A.floor_mat = A.porch_floor_mat
+            A:set_floor_mat(A.porch_floor_mat)
           end
         end
       end
@@ -4368,7 +4369,7 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
           if A1.floor_h == A2.floor_h
               and A2.is_porch then
             A1.porch_floor_infected = true
-            A2.floor_mat = A1.floor_mat
+            A2:set_floor_mat(A1.floor_mat)
           end
         end
       end
@@ -4390,7 +4391,7 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         -- convert nowhere areas to just normal areas (borrow info from main area)
         A.floor_h = SAS.floor_h
 
-        A.floor_mat = R.floor_mats[SAS.floor_h] --or SAS.floor_mat
+        A:set_floor_mat(R.floor_mats[SAS.floor_h]) --or SAS.floor_mat
 
         if A.room:get_env() == "building" then
           A.is_porch = nil
@@ -4427,8 +4428,8 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
         A:set_floor(SAS.floor_h)
         SA:set_floor(SAS.floor_h)
 
-        A.floor_mat = SAS.floor_mat
-        SA.floor_mat = SAS.floor_mat
+        A:set_floor_mat(SAS.floor_mat)
+        SA:set_floor_mat(SAS.floor_mat)
 
         -- use the floor group of the source area
         A:set_floor_group(SAS.floor_group)

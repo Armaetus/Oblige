@@ -442,6 +442,21 @@ function AREA_CLASS.get_fseed_coord(A)
   return ""
 end
 
+function AREA_CLASS.set_floor_mat(A, t)
+  A.floor_mat = t
+
+  local info = debug.getinfo(2, "Sln")
+
+  if A.fm_history then
+    A.fm_history = A.fm_history .. "->" .. info.name .. ":" .. (t or "NIL")
+  else
+    A.fm_history = info.name .. ":" .. (t or "NIL")
+  end
+end
+
+function AREA_CLASS.set_ceil_mat(A, t)
+  A.ceil_mat = t
+end
 
 function AREA_CLASS.set_floor(A, h)
   A.floor_h = h
