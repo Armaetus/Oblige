@@ -2157,6 +2157,11 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         tab[sink_name] = nil
       end
 
+      -- remove open sky ceilings
+      if filter.tallest_ceiling == true and sink.mat == "_SKY" then
+        tab[sink_name] = nil
+      end
+
       if where == "ceiling" then
         -- remove light sinks based on light_color
         if sink.light_color and LEVEL.light_group then
@@ -2181,7 +2186,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         end
       end
 
-      -- remove sinks that are taller than the zone sky height
+      --[[ remove sinks that are taller than the zone sky height
       if R.is_outdoor then
         if group and group.h then
           local h_diff = R.max_ceil_h - group.h
@@ -2191,7 +2196,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
             end
           end
         end
-      end
+      end]]
     end
 
     -- skip sinks whose texture(s) clash with the room or area
@@ -2218,6 +2223,10 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       filter.no_light_ceilings = true
     end
 
+    if group and group.tallest then
+      filter.tallest_ceiling = true
+    end
+
     -- PLAIN setting is now ignored for a universal prob, see individual code below
     -- assert(tab["PLAIN"])
 
@@ -2233,6 +2242,23 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     end
 
     return tab
+  end
+
+
+  local function prepare_sinks(R)
+    local highest_CG = -EXTREME_H
+    local best_CG
+    for _,cg in pairs(R.ceil_groups) do
+      if cg.h > highest_CG then
+        highest_CG = cg.h
+      end
+    end
+
+    for _,cg in pairs(R.ceil_groups) do
+      if cg.h == highest_CG then
+        cg.tallest = true
+      end
+    end
   end
 
 
@@ -2657,6 +2683,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
   local function tizzy_up_normal_room(R, LEVEL)
     pick_posts(R)
     pick_wall_detail(R)
+
+    prepare_sinks(R)
 
     pick_floor_sinks(R, LEVEL)
     pick_ceiling_sinks(R)
