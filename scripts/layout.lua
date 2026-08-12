@@ -2158,7 +2158,7 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
       end
 
       -- remove open sky ceilings
-      if filter.tallest_ceiling == true and sink.mat == "_SKY" then
+      if not filter.tallest_ceiling and sink.mat == "_SKY" then
         tab[sink_name] = nil
       end
 
