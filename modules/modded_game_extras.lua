@@ -1972,6 +1972,42 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     local info = {}
     info.editor_num = PARAM.hn_thing_start_offset
 
+    for _,A in pairs(R.areas) do
+      if A.is_porch then
+        info.name = "AREA_" .. A.id .. "(" .. A.fm_history .. ")"
+        info.editor_num = PARAM.hn_thing_start_offset
+
+        if SCRIPTS.hn_id_table[info.name] then
+          info.editor_num = SCRIPTS.hn_id_table[info.name].id
+        elseif not SCRIPTS.hn_id_table[info.name] then
+          SCRIPTS.hn_id_table[info.name] = {}
+          SCRIPTS.hn_id_table[info.name].id = info.editor_num
+          SCRIPTS.hn_id_table[info.name].name = info.name
+          info.editor_num = PARAM.hn_thing_start_offset
+          PARAM.hn_thing_start_offset = PARAM.hn_thing_start_offset + 1
+        end
+
+        local S = A.seeds[1]
+        for _,S2 in pairs(A.seeds) do
+          if A.mode and A.mode == "floor" then
+            S = S2
+            break;
+          end
+        end
+        hn_add_entity(info, S.mid_x, S.mid_y, A.floor_h + 1)
+
+        local e = {}
+        e.id = 9029
+        e.name = "black_particle_fountain"
+        e.x = S.mid_x
+        e.y = S.mid_y
+        e.z = A.floor_h + 1
+
+        gui.printf("AREA tracker placed in: " .. S.mid_x .. ", " .. S.mid_y .. "\n")
+        raw_add_entity(e)
+      end
+    end
+
     -- floor chunks
     for _,chunk in pairs(R.floor_chunks) do
       if chunk.prefab_def then
