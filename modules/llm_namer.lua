@@ -1505,9 +1505,12 @@ LLM_NAME.name_theme =
     "- 2 words, in the format 'The <Non-Diciontary Adjective> <Name>'. Do not combine more than 2 dictionary words into one",
     "- 2 words, involve a non-real coined place name or 2 non-dictionary words",
     "- 3 words, involve a non-real coined place name",
+    "- 3 words, in the format '<Entity>'s <Place Name> of <Adjective>', involve a non-real coined place name and non-dictionary words",
+    "- 3 words, in the format '<Adjective> <Place Name> of <Entity>', involve a non-real coined place name and non-dictionary words",
+    "- 3 words, involve a non-real coined place name",
     "- 4 words, involve a non-real coined place name",
     "- 5 words, not more than 18 characters long including spaces, involve a non-real coined place name",
-    "- 6 words, not more than 18 characters long including spaces, involve a non-real coined place name",
+    "- 6 words, not more than 18 characters long including spaces, involve a non-real coined place name"
   }
 }
 
@@ -1591,7 +1594,7 @@ LLM_NAME.prompt_flavors =
 
 LLM_NAME.prompt_sub_flavors =
 {
-  action = 
+  action =
   {
     source =
     {
@@ -1607,7 +1610,7 @@ LLM_NAME.prompt_sub_flavors =
     }
   },
 
-  black_metal = 
+  black_metal =
   {
     source =
     {
