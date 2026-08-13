@@ -38,9 +38,9 @@ PREFABS.Decor_artsy_corpo_art =
 
   sector_1 =
   {
-    [0] = 9,
-    [8] = 1,
-    [21] = 0.5
+    [0] = 7,
+    [8] = 2,
+    [21] = 2
   }
 }
 
@@ -61,9 +61,9 @@ PREFABS.Decor_artsy_corpo_art_2 =
 
   sector_1 =
   {
-    [0] = 9,
-    [8] = 1,
-    [21] = 0.5
+    [0] = 7,
+    [8] = 2,
+    [21] = 2
   }
 }
 
@@ -84,8 +84,8 @@ PREFABS.Decor_artsy_corpo_art_3 =
 
   sector_1 =
   {
-    [0] = 9,
-    [8] = 1,
-    [21] = 0.5
+    [0] = 7,
+    [8] = 2,
+    [21] = 2
   }
 }
