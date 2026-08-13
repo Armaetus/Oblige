@@ -3654,7 +3654,7 @@ function Render_properties_for_area(LEVEL, A)
   end
 
 
-  A:set_floor_mat(A.floor_mat or R.main_tex)
+  A:set_floor_mat(A.floor_mat or R.floor_mats[A.floor_h] or R.main_tex)
   A.ceil_mat  = A.ceil_mat  or R.main_tex
 end
 

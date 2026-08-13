@@ -3516,6 +3516,21 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         fromA:set_ceil(destA.ceil_h)
         fromA = destA
       end
+      assert(A.ceil_group)
+      assert(destA.ceil_group)
+      assert(fromA.ceil_group)
+
+      if destA.is_outdoor and not fromA.is_outdoor then
+        assert(fromA.ceil_group.h or fromA.ceil_h)
+        A:set_ceil(fromA.ceil_group.h or fromA.ceil_h)
+        A.ceil_mat = fromA.ceil_mat
+        goto skip
+      elseif fromA.is_outdoor and not destA.is_outdoor then
+        assert(destA.ceil_group.h or destA.ceil_h)
+        A:set_ceil(destA.ceil_group.h or destA.ceil_h)
+        A.ceil_mat = destA.ceil_mat
+        goto skip
+      end
 
       if R.stair_ceil_mode == "use_dest" then
         A:set_ceil(destA.ceil_group.h)
@@ -4369,7 +4384,7 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
           if A1.floor_h == A2.floor_h
               and A2.is_porch then
             A1.porch_floor_infected = true
-            A2:set_floor_mat(A1.floor_mat)
+            A2:set_floor_mat(R.floor_mats[A1.ceil_h])
           end
         end
       end

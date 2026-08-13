@@ -152,8 +152,8 @@ function PREFAB_CONTROL.fine_tune_filters()
     gtd_wall_quakish_insets_horizon = 4,
     gtd_wall_quakish_insets_horizon_mid = 4,
     gtd_wall_quakish_insets_horizon_top = 4,
-    gtd_ribbed_lights_ribbed_steps = 8,
-    gtd_generic_artsy_corpo_art = 16
+    gtd_ribbed_lights_ribbed_steps = 4,
+    gtd_generic_artsy_corpo_art = 8
   }
   local new_themes_multipliers =
   {
