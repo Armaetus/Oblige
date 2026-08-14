@@ -3653,9 +3653,14 @@ function Render_properties_for_area(LEVEL, A)
     A.ceil_mat = "_SKY"
   end
 
+  if A.room.is_building then
+    if A.chunk and A.chunk.kind == "stair" then
+      A:set_ceil(A.ceil_group.h)
+    end
+  end
 
   A:set_floor_mat(A.floor_mat or R.floor_mats[A.floor_h] or R.main_tex)
-  A.ceil_mat  = A.ceil_mat  or R.main_tex
+  A.ceil_mat = A.ceil_mat or R.main_tex
 end
 
 

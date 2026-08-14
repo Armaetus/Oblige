@@ -469,9 +469,9 @@ function AREA_CLASS.set_ceil(A, h)
   --print(info.source, info.currentline, info.name)
 
   if A.ch_history then
-    A.ch_history = A.ch_history .. "->" .. info.name .. "=" .. h
+    A.ch_history = A.ch_history .. "->" .. info.currentline .. "." .. info.name .. "=" .. h
   elseif not A.ch_history then
-    A.ch_history = info.name .. "=" .. h
+    A.ch_history = info.currentline .. "." .. info.name .. "=" .. h
   end
 end
 
@@ -491,11 +491,11 @@ function AREA_CLASS.set_ceil_group(A, cg)
   end
 
   if high_area and cg == high_area.ceil_group then
-    info = d_info.name .. ":HIGH"
+    info = d_info.currentline .. "." .. d_info.name .. ":HIGH"
   elseif low_area and cg == low_area.ceil_group then
-    info = d_info.name .. ":LOW"
+    info = d_info.currentline .. "." .. d_info.name .. ":LOW"
   else
-    info = d_info.name .. ":SAME"
+    info = d_info.currentline .. "." .. d_info.name .. ":SAME"
   end
 
   if A.cg_history then

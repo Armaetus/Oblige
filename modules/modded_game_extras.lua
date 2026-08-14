@@ -1973,8 +1973,8 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     info.editor_num = PARAM.hn_thing_start_offset
 
     for _,A in pairs(R.areas) do
-      if A.is_porch then
-        info.name = "AREA_" .. A.id .. "(" .. A.fm_history .. ")"
+      if A.mode == "floor" and A.dead_end or (A.mode == "floor" and A.is_porch and A.room.is_outdoor) then
+        info.name = "AREA_" .. A.id .. " (" .. A.fm_history .. ")"
         info.editor_num = PARAM.hn_thing_start_offset
 
         if SCRIPTS.hn_id_table[info.name] then
@@ -2063,14 +2063,17 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     for _,chunk in pairs(R.stairs) do
       if chunk.prefab_def then
         local C = chunk
-        info.name = "Stairs: " .. C.prefab_def.name .. " "
+        info.name = ""
+        --info.name = "Stairs: " .. C.prefab_def.name .. " "
         info.editor_num = PARAM.hn_thing_start_offset
 
-        info.name = info.name .. "("
-        if C.area.ceil_group.sink then
-          info.name = info.name .. C.area.ceil_group.sink.name
+        --[[if C.area.ceil_group.sink then
+          info.name = info.name .. "(" .. C.area.ceil_group.sink.name .. ") "
+        end]]
+
+        if C.area.ceil_group then
+          info.name = info.name .. "CG_" .. C.area.ceil_group.id .. " "
         end
-        info.name = info.name .. ") "
 
         if C.area.cg_history then
           info.name = info.name .. "(cg: " .. C.area.cg_history .. ") "
@@ -2078,6 +2081,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
         if C.area.ch_history then
           info.name = info.name .. "(ceil_h: " .. C.area.ch_history .. ") "
+        end
+
+        if R.stair_ceil_mode then
+          info.name = info.name .. "[" .. R.stair_ceil_mode .. "]"
         end
 
         if SCRIPTS.hn_id_table[info.name] then

@@ -2891,15 +2891,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
     end
 
-    --[[
-    -- pick some internal connections that should BLAH BLAH
-    for _,IC in pairs(R.internal_conns) do
-      if IC.kind == "stair" or rand.odds(30) then
-        IC.same_ceiling = true
-      end
-    end
---]]
-
     for loop = 1, 1 do
       group_ceiling_pass(R)
     end
@@ -2910,13 +2901,13 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     -- handle stairs
     for _, A in pairs(R.areas) do
-      if A.chunk and A.chunk.kind == "stair" and not A.chunk.prefab_def.plain_ceiling then
+      if A.chunk and A.chunk.kind == "stair" then
         local fromA = A.chunk.from_area
         local destA = A.chunk.dest_area
 
         if R.stair_ceil_mode == "use_dest" then
           A:set_ceil_group(destA.ceil_group)
-        else
+        elseif R.stair_ceil_mode == "from_dest" then
           A:set_ceil_group(fromA.ceil_group)
         end
       end
@@ -3533,9 +3524,15 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
 
       if R.stair_ceil_mode == "use_dest" then
+        if R.is_building then
+          A:set_ceil_group(destA.ceil_group)
+        end
         A:set_ceil(destA.ceil_group.h)
         A.ceil_mat = destA.ceil_mat
-      else
+      elseif R.stair_ceil_mode == "use_from" then
+        if R.is_building then
+          A:set_ceil_group(fromA.ceil_group)
+        end
         A:set_ceil(fromA.ceil_group.h)
         A.ceil_mat = fromA.ceil_mat
       end
