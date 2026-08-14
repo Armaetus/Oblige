@@ -4595,15 +4595,25 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
 
 
   -- cull rooms that ended up ungrown still
+  -- but we will allow some if secrets style is high enough
+  local cull_threshold = style_sel("secrets", 100, 70, 30, 0)
+
   if not LEVEL.is_procedural_gotcha then
+
     for _,R in pairs(LEVEL.rooms) do
-      gui.printf("ROOM_" .. R.id .. " has " .. R:prelim_conn_num(LEVEL) .. " initial conns.\n")
-      if R.svolume <= 12 and R:prelim_conn_num(LEVEL) == 1 then
-        Grower_kill_room(SEEDS, LEVEL, R)
-        gui.printf(R.id .. " still too small: removed. \n")
+      --gui.printf("ROOM_" .. R.id .. " has " .. R:prelim_conn_num(LEVEL) .. " initial conns.\n")
+      if rand.odds(cull_threshold) then
+        if R.svolume <= 12 and R:prelim_conn_num(LEVEL) == 1 then
+          Grower_kill_room(SEEDS, LEVEL, R)
+          gui.printf(R.id .. " still too small: removed. \n")
+        end
+      else
+        gui.printf(R.id .. " still too small: not culled due to secrets style. \n")
       end
     end
+
   end
+
 end
 
 
