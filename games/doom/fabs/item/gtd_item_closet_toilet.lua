@@ -51,5 +51,5 @@ PREFABS.Item_closet_cat_litter_box =
   over = nil,
 
   x_fit = { 24,32 },
-  y_fit = { 88,96 }
+  y_fit = { 20,24 }
 }
