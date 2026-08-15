@@ -1365,10 +1365,9 @@ function Corner_is_at_area_corner(corner)
   end
 
   -- corner is definitely at a corner if more than two areas meet
-  if #corner.areas > 2 then return true end
-
-  -- corner is between more than 1 junction
-  if #corner.junctions > 1 then return true end
+  if #corner.areas > 2 then
+    return true
+  end
 
   -- corner is definitely at a corner if one seed has an area
   -- that doesn't match all the others
@@ -1377,11 +1376,26 @@ function Corner_is_at_area_corner(corner)
     -- corner sits between diagonals that are not parallel
     local dir_score = 0
     local diag_count = 0
-    for _,S in pairs(corner.seeds) do
-      if S.diagonal then
-        diag_count = diag_count + 1
-        dir_score = dir_score + S.diagonal
-      end
+
+    -- NW
+    if corner.seeds[1].diagonal and corner.seeds[1].diagonal == 1 then
+      diag_count = diag_count + 1
+      dir_score = dir_score + 1
+    end
+    -- SW
+    if corner.seeds[2].diagonal and corner.seeds[2].diagonal == 7 then
+      diag_count = diag_count + 1
+      dir_score = dir_score + 7
+    end
+    -- NE
+    if corner.seeds[3].diagonal and corner.seeds[3].diagonal == 3 then
+      diag_count = diag_count + 1
+      dir_score = dir_score + 3
+    end
+    -- SE
+    if corner.seeds[4].diagonal and corner.seeds[4].diagonal == 9 then
+      diag_count = diag_count + 1
+      dir_score = dir_score + 9
     end
 
     if diag_count >= 2 and dir_score ~= 10 then
@@ -1395,14 +1409,14 @@ function Corner_is_at_area_corner(corner)
       return true
     end
 
-    -- compare NE
+    -- compare SW
     if corner.seeds[2].area ~= corner.seeds[1].area and
     corner.seeds[2].area ~= corner.seeds[3].area and
     corner.seeds[2].area ~= corner.seeds[4].area then
       return true
     end
 
-    -- compare SW
+    -- compare NE
     if corner.seeds[3].area ~= corner.seeds[1].area and
     corner.seeds[3].area ~= corner.seeds[3].area and
     corner.seeds[3].area ~= corner.seeds[4].area then
