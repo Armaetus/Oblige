@@ -8232,6 +8232,33 @@ GROW_CAUSEWAY_BRACKET =
   }
 },
 
+GROW_CAUSEWAY_BRACKET_CAGE =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "x......x","xAA11AAx",
+    "x......x","xC%11/Cx",
+    "........","/C/11%A%",
+    "........","AA1111AA",
+    "........","AA1111AA",
+    "........","%C%11/C/",
+    "x......x","xC/11%Cx",
+    "x......x","xAA11AAx",
+    "x..11..x","x..11..x",
+  },
+
+  diagonals =
+  {
+         "CA","AC",
+    ".C","C1","1C","C.",
+    ".C","C1","1C","C.",
+         "CA","AC"
+  }
+},
+
 GROW_CAUSEWAY_BRACKET_HALF =
 {
   prob = 20,
@@ -8254,6 +8281,33 @@ GROW_CAUSEWAY_BRACKET_HALF =
   {
     "1A","A.",
     "1A","A."
+  }
+},
+
+GROW_CAUSEWAY_BRACKET_HALF_CAGE =
+{
+  prob = 20,
+  skip_prob = 75,
+
+  structure =
+  {
+    "....x","11AAx",
+    "....x","11/Cx",
+    ".....","11%C%",
+    ".....","111AA",
+    ".....","111AA",
+    ".....","11/C/",
+    "....x","11%Cx",
+    "....x","11AAx",
+    "11..x","11..x",
+  },
+
+  diagonals =
+  {
+    "AC",
+    "1C","C.",
+    "1C","C.",
+    "AC"
   }
 },
 
