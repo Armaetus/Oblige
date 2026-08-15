@@ -2673,7 +2673,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     chunk.occupy = "floor"
 
     A:set_ceil( assert(A.zone.sky_h) )
-    A.ceil_mat = "_SKY"
+    A:set_ceil_mat("_SKY")
 
     -- disable walls around/inside this chunk
     for _,N in pairs(A.neighbors) do
@@ -3622,7 +3622,7 @@ function Render_properties_for_area(LEVEL, A)
         A.lighting = A.lighting - LEVEL.sky_shadow
       end
 
-    elseif A.room and A.room.is_outdoor then
+    elseif A.room and A.room.is_outdoor or A.room.is_park then
       -- this for outdoor closets
       A.lighting = LEVEL.sky_light - LEVEL.sky_shadow
 
@@ -3650,7 +3650,7 @@ function Render_properties_for_area(LEVEL, A)
   end
 
   if A.is_outdoor and not A.is_porch then
-    A.ceil_mat = "_SKY"
+    A:set_ceil_mat("_SKY")
   end
 
   if A.room.is_building then
@@ -3660,7 +3660,7 @@ function Render_properties_for_area(LEVEL, A)
   end
 
   A:set_floor_mat(A.floor_mat or R.floor_mats[A.floor_h] or R.main_tex)
-  A.ceil_mat = A.ceil_mat or R.main_tex
+  A:set_ceil_mat(A.ceil_mat or R.main_tex)
 end
 
 

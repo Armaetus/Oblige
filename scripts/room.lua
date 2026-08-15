@@ -3088,7 +3088,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       assert(A.ceil_h)
 
       if A.peer and A.peer.ceil_mat then
-        A.ceil_mat = A.peer.ceil_mat
+        A:set_ceil_mat(A.peer.ceil_mat)
         goto skip
       end
 
@@ -3096,7 +3096,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         R.ceil_mats[A.ceil_h] = rand.key_by_probs(tab)
       end
 
-      A.ceil_mat = assert(R.ceil_mats[A.ceil_h])
+      A:set_ceil_mat( assert(R.ceil_mats[A.ceil_h]) )
       ::skip::
     end
   end
@@ -3267,7 +3267,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         A.ceil_h   = math.clamp(N2.floor_h + 96,
           N2.ceil_h + add_h,
           EXTREME_H)
-        A.ceil_mat = N2.ceil_mat
+        A:set_ceil_mat(N2.ceil_mat)
         ::skip::
       end
     end
@@ -3392,7 +3392,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     end
 
     A:set_floor_mat(assert(R.cage_mat or A.zone.cage_mat))
-    A.ceil_mat = assert(R.cage_mat or A.zone.cage_mat)
+    A:set_ceil_mat(assert(R.cage_mat or A.zone.cage_mat))
 
     -- fancy cages
     if A.cage_mode then
@@ -3402,7 +3402,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         if N.ceil_h and N.ceil_h > A.ceil_h + 96 then
           A:set_ceil(N.ceil_h)
         else
-          A.ceil_mat = A.floor_mat
+          A:set_ceil_mat(A.floor_mat)
         end
 
         add_cage_lighting(R, A)
@@ -3424,7 +3424,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     -- adopt room textures on cases where flats have same
     -- heights to the neighbor
     if A.ceil_h == N.ceil_h then
-      A.ceil_mat = N.ceil_mat
+      A:set_ceil_mat(N.ceil_mat)
     end
     if A.floor_h == N.floor_h then
       A:set_floor_mat(N.floor_mat)
@@ -3514,12 +3514,12 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       if destA.is_outdoor and not fromA.is_outdoor then
         assert(fromA.ceil_group.h or fromA.ceil_h)
         A:set_ceil(fromA.ceil_group.h or fromA.ceil_h)
-        A.ceil_mat = fromA.ceil_mat
+        A:set_ceil_mat(fromA.ceil_mat)
         goto skip
       elseif fromA.is_outdoor and not destA.is_outdoor then
         assert(destA.ceil_group.h or destA.ceil_h)
         A:set_ceil(destA.ceil_group.h or destA.ceil_h)
-        A.ceil_mat = destA.ceil_mat
+        A:set_ceil_mat(destA.ceil_mat)
         goto skip
       end
 
@@ -3528,13 +3528,13 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
           A:set_ceil_group(destA.ceil_group)
         end
         A:set_ceil(destA.ceil_group.h)
-        A.ceil_mat = destA.ceil_mat
+        A:set_ceil_mat(destA.ceil_mat)
       elseif R.stair_ceil_mode == "use_from" then
         if R.is_building then
           A:set_ceil_group(fromA.ceil_group)
         end
         A:set_ceil(fromA.ceil_group.h)
-        A.ceil_mat = fromA.ceil_mat
+        A:set_ceil_mat(fromA.ceil_mat)
       end
       ::skip::
     end
@@ -3856,7 +3856,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       if not N.floor_h or not N.ceil_h then return end
 
       A.is_outdoor = false
-      A.ceil_mat = N.ceil_mat
+      A:set_ceil_mat(N.ceil_mat)
       A.is_porch_neighbor = true
 
       if A.mode == "cage" then
@@ -4000,7 +4000,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     -- quick loop to fix remaining textures
     for _, A in pairs(R.areas) do
-      A.ceil_mat = (R.ceil_mats[A.ceil_h])
+      A:set_ceil_mat(R.ceil_mats[A.ceil_h])
     end
   end
 
@@ -4460,8 +4460,8 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
             end
           end
           assert(ceil_tex, "no ceiling texture for room " .. A.room.name)
-          A.ceil_mat = ceil_tex
-          SA.ceil_mat = ceil_tex
+          A:set_ceil_mat(ceil_tex)
+          SA:set_ceil_mat(ceil_tex)
         end
 
         fixup_neighbors(A)
