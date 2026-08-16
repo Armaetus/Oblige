@@ -3873,7 +3873,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       if A.peer then
         A.peer.is_outdoor = false
         A.peer.is_porch_neighbor = true
-        A.peer.ceil_mat = A.ceil_mat
         A:set_ceil(A.peer.ceil_group.h or A.peer.ceil_h)
       end
     end

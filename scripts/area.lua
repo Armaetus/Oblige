@@ -455,7 +455,20 @@ function AREA_CLASS.set_floor_mat(A, t)
 end
 
 function AREA_CLASS.set_ceil_mat(A, t)
-  A.ceil_mat = t
+  if t then
+    A.ceil_mat = t
+  else
+    t = "FAIL"
+  end
+
+  local info = debug.getinfo(2, "Sln")
+  --print(info.source, info.currentline, info.name)
+
+  if A.cm_history then
+    A.cm_history = A.cm_history .. "->" .. info.currentline .. "." .. info.name .. "=" .. t
+  elseif not A.cm_history then
+    A.cm_history = info.currentline .. "." .. info.name .. "=" .. t
+  end
 end
 
 function AREA_CLASS.set_floor(A, h)
