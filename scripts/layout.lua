@@ -2186,17 +2186,17 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
         end
       end
 
-      --[[ remove sinks that are taller than the zone sky height
+      -- remove sinks that are taller than the zone sky height
       if R.is_outdoor then
         if group and group.h then
-          local h_diff = R.max_ceil_h - group.h
+          local h_diff = (R.max_ceil_h or R.zone.sky_h) - group.h
           if h_diff > 0 then
             if sink.dz or sink.trim_dz > h_diff then
               tab[sink_name] = nil
             end
           end
         end
-      end]]
+      end
     end
 
     -- skip sinks whose texture(s) clash with the room or area
