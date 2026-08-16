@@ -1090,8 +1090,8 @@ function Cave_create_areas(R, area, LEVEL)
 
     local touched_groups
 
-    area:set_floor_mat(area.room.floor_mat)
-    area:set_ceil_mat(area.room.ceil_mat)
+    area.floor_mat = area.room.floor_mat
+    area.ceil_mat = area.room.ceil_mat
 
     -- mark free areas with zero instead of negative
     for fx = 1, cw do
@@ -1231,8 +1231,8 @@ step:dump("Step:")
           neighbors = {},
         }
 
-        AREA:set_floor_mat(area.room.floor_mat)
-        AREA:set_ceil_mat(area.room.ceil_mat)
+        AREA.floor_mat = area.room.floor_mat
+        AREA.ceil_mat = area.room.ceil_mat
 
         table.insert(area.walk_floors, AREA)
 
@@ -4665,6 +4665,12 @@ stderrf("  picked chain from blob %d --> %d\n", B.id, C.id)
     for _,CL in pairs(area.room.closets) do
       CL.floor_mat = area.room.floor_mats[CL.floor_h]
     end
+
+    for _,AC in pairs(area.room.areas) do
+      if AC.chunk and AC.chunk.kind then
+        AC.floor_mat = area.room.floor_mats[AC.floor_h]
+      end
+    end
   end
 
 
@@ -4734,7 +4740,7 @@ gui.debugf("BUILD PARK IN %s\n", R.name)
   -- TEMP RUBBISH
   area.floor_h = entry_h
   area.ceil_h  = entry_h + 256
-  area:set_ceil_mat("_SKY")
+  area.ceil_mat = "_SKY"
 
   blobify()
 
