@@ -3873,6 +3873,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       if A.peer then
         A.peer.is_outdoor = false
         A.peer.is_porch_neighbor = true
+        A.peer:set_ceil(A.ceil_mat)
         A:set_ceil(A.peer.ceil_group.h or A.peer.ceil_h)
       end
     end
@@ -3940,7 +3941,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
             if A.peer then
               A.peer.is_outdoor = false
               A.peer.is_porch_neighbor = true
-              A.peer.ceil_mat = A.ceil_mat
+              A.peer:set_ceil_mat(A.ceil_mat)
               if A2.ceil_h then
                 A.peer:set_ceil_group(A.peer.ceil_group)
                 A.peer:set_ceil(A.peer.ceil_group.h)
@@ -3997,10 +3998,13 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     -- now pick textures
     select_ceiling_mats(R)
 
-    -- quick loop to fix remaining textures
+    --[[ quick loop to fix remaining textures
     for _, A in pairs(R.areas) do
-      A:set_ceil_mat(R.ceil_mats[A.ceil_h])
-    end
+      if A.ceil_h then
+        gui.printf(table.tostr(A,1))
+        A:set_ceil_mat(R.ceil_mats[A.ceil_h])
+      end
+    end]]
   end
 
 

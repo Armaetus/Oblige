@@ -1978,7 +1978,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         or (A.floor_h == A.floor_h and A.floor_mat ~= A.floor_mat)
         and A.room == N.room then
           if A.mode == "floor" and not A.mode.chunk then
-            info.name = "AREA_" .. A.id .. " (" .. A.fm_history .. ")"
+            info.name = "AREA_" .. A.id .. " (" .. A.cm_history .. ")"
             info.editor_num = PARAM.hn_thing_start_offset
 
             if SCRIPTS.hn_id_table[info.name] then
