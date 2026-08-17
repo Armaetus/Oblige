@@ -2626,7 +2626,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
   -- FIX-ME: transfer dynamic lighting code from ceiling lights to here
   -- this just disables dynamic light entities if they are used directly
   -- when Dynamic Lights is off
-  if not PARAM.bool_dynamic_lights 
+  if not PARAM.bool_dynamic_lights
   or PARAM.bool_dynamic_lights and PARAM.bool_dynamic_lights == false then
     def.thing_14998 = 0
     def.thing_14997 = 0
@@ -3653,14 +3653,24 @@ function Render_properties_for_area(LEVEL, A)
     A:set_ceil_mat("_SKY")
   end
 
-  if A.room.is_building then
-    if A.chunk and A.chunk.kind == "stair" then
+  if A.chunk and A.chunk.kind == "stair" then
+    if A.room:get_env() == "building" then
       A:set_ceil(A.ceil_group.h)
+    elseif A.room.is_outdoor then
+      if R.ceil_mats[A.ceil_h] then
+        A:set_ceil_mat(R.ceil_mats[A.ceil_h])
+      elseif A.chunk.dest_area.ceil_mat ~= "_SKY" then
+        A:set_ceil_mat(A.chunk.dest_area.ceil_mat)
+      elseif A.chunk.from_area.ceil_mat ~= "_SKY" then
+        A:set_ceil_mat(A.chunk.from_area.ceil_mat)
+      end
     end
   end
 
-  A:set_floor_mat(A.floor_mat or R.floor_mats[A.floor_h] or R.main_tex)
-  A:set_ceil_mat(A.ceil_mat or R.main_tex)
+  if not A.is_outdoor and A.mode == "floor" then
+    A:set_floor_mat(R.floor_mats[A.floor_h] or R.main_tex)
+    A:set_ceil_mat(R.ceil_mats[A.ceil_h] or R.main_tex)
+  end
 end
 
 

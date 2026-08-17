@@ -3524,13 +3524,13 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
 
       if R.stair_ceil_mode == "use_dest" then
-        if R.is_building then
+        if R:get_env() == "buiding" then
           A:set_ceil_group(destA.ceil_group)
         end
         A:set_ceil(destA.ceil_group.h)
         A:set_ceil_mat(destA.ceil_mat)
       elseif R.stair_ceil_mode == "use_from" then
-        if R.is_building then
+        if R:get_env() == "building" then
           A:set_ceil_group(fromA.ceil_group)
         end
         A:set_ceil(fromA.ceil_group.h)
@@ -3855,7 +3855,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     local function infect_area(A, N)
       if not N.floor_h or not N.ceil_h then return end
 
-      A.is_outdoor = false
+      A.is_outdoor = nil
       A:set_ceil_mat(N.ceil_mat)
       A.is_porch_neighbor = true
 
@@ -3936,10 +3936,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
               A:set_ceil(A.ceil_group.h)
             end
 
-            A.is_outdoor = false
+            A.is_outdoor = nil
             A.is_porch_neighbor = true
             if A.peer then
-              A.peer.is_outdoor = false
+              A.peer.is_outdoor = nil
               A.peer.is_porch_neighbor = true
               A.peer:set_ceil_mat(A.ceil_mat)
               if A2.ceil_h then

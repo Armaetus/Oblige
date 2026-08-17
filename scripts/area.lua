@@ -476,7 +476,11 @@ function AREA_CLASS.set_floor(A, h)
 end
 
 function AREA_CLASS.set_ceil(A, h)
-  A.ceil_h = h
+  if h then
+    A.ceil_h = h
+  else
+    h = "FAIL"
+  end
 
   local info = debug.getinfo(2, "Sln")
   --print(info.source, info.currentline, info.name)
