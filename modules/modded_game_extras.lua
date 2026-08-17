@@ -2122,6 +2122,11 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
             chunk.from_area.floor_group.wall_group .. ")"
         end
 
+        if chunk.area.lighting and chunk.from_area.lighting then
+          info.name = info.name ..
+            " (Lighting: " .. chunk.area.lighting .. " from " .. chunk.from_area.lighting .. ")"
+        end
+
         if chunk.area then
           if chunk.area.room and chunk.area.room.is_outdoor
           and chunk.area.room.outdoor_wall_group then
