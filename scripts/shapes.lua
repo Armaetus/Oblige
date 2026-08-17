@@ -14967,7 +14967,7 @@ GROW_LADDER_RUNG_THUNDER_BEND =
 
   diagonals =
   {
-         ".1",
+         "1.",
     ".A","A.",
     ".A","A1",
     ".1",
@@ -14999,7 +14999,7 @@ GROW_LADDER_RUNG_THUNDER_LIQUID_BEND =
 
   diagonals =
   {
-         ".1",
+         "1.",
     ".~","~.",
     ".~","~1",
     ".1",
@@ -18968,6 +18968,77 @@ GROW_ARROW_CHEVRON_NEW_AREA =
     ".A","A.",
     "A1","1A",
     ".1","1."
+  }
+},
+
+GROW_TILE_REPEAT =
+{
+  prob = 8,
+  skip_prob = 80,
+
+  structure =
+  {
+    "....","11AA",
+    "....","11AA",
+    "....","AA11",
+    "....","AA11",
+    "11xx","11xx"
+  }
+},
+
+GROW_TILE_CURVE =
+{
+  prob = 8,
+  skip_prob = 80,
+
+  structure =
+  {
+    "xx..","xxAA",
+    "xx..","xxAA",
+    "....","AA11",
+    "....","AA1/",
+    "11xx","11xx"
+  },
+
+  diagonals =
+  {
+    "1."
+  }
+},
+
+GROW_TILE_CURVE_W_TAIL =
+{
+  prob = 8,
+  skip_prob = 85,
+
+  structure =
+  {
+    "....","/1AA",
+    ".x..","1xAA",
+    "....","AA11",
+    "....","AA1/",
+    "11xx","11xx"
+  },
+
+  diagonals =
+  {
+    ".1",
+    "1."
+  }
+},
+
+GROW_TILE_REPEAT_LONG =
+{
+  prob = 10,
+  skip_prob = 85,
+
+  structure =
+  {
+    "........","11AA11AA",
+    "........","11AA11AA",
+    "........","AA11AA11",
+    "........","AA11AA11",
+    "11xxxxxx","11xxxxxx"
   }
 },
 
