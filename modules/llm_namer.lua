@@ -1505,8 +1505,8 @@ LLM_NAME.name_theme =
     "- 2 words, in the format 'The <Non-Diciontary Adjective> <Name>'. Do not combine more than 2 dictionary words into one",
     "- 2 words, involve a non-real coined place name or 2 non-dictionary words",
     "- 3 words, involve a non-real coined place name",
-    "- 3 words, in the format '<Entity>'s <Place Name> of <Adjective>', involve a non-real coined place name and non-dictionary words",
-    "- 3 words, in the format '<Adjective> <Place Name> of <Entity>', involve a non-real coined place name and non-dictionary words",
+    "- 3 words, in the format '<Entity/Character>'s <Place Name> of <Adjective>', involve a non-real coined place name and non-dictionary words",
+    "- 3 words, in the format '<Adjective> <Place Name> of <Entity/Character>', involve a non-real coined place name and non-dictionary words",
     "- 3 words, involve a non-real coined place name",
     "- 4 words, involve a non-real coined place name",
     "- 5 words, not more than 18 characters long including spaces, involve a non-real coined place name",
@@ -3945,11 +3945,14 @@ _FORMAT_
 ]]
     -- flavor injection
     local story_flavor = rand.pick(LLM_NAME.story_components.flavors) .. "\n"
-    story_flavor = story_flavor .. "The Objective: " .. rand.pick(LLM_NAME.story_components.objectives) .. "\n"
+    local story_obj = rand.pick(LLM_NAME.story_components.objectives)
+    story_flavor = story_flavor .. "The Objective: " .. story_obj .. "\n"
 
     -- sometimes add a twist
+    local story_twist
     if rand.odds(75) then
-      story_flavor = story_flavor .. "The Twist: " .. rand.pick(LLM_NAME.story_components.story_twists) .. "\n"
+      story_twist = rand.pick(LLM_NAME.story_components.story_twists)
+      story_flavor = story_flavor .. "The Twist: " .. story_twist .. "\n"
     end
     prompt = string.gsub(prompt,
     "_FLAVOR_",
@@ -4088,7 +4091,16 @@ _FORMAT_
         chunk_name = "STORYEND"
       end
 
+
       table.insert(PARAM.language_lump, chunk_name .. math.ceil(s_pos/2) .. " =\n")
+      -- debug
+      if PARAM.bool_llm_namer_debug == true then
+        if s_pos == 1 then
+          table.insert(PARAM.language_lump,
+            '"' .. story_obj .. " / " .. (story_twist or "No Twist") .. '\\n"\n\n'
+          )
+        end
+      end
       table.insert(PARAM.language_lump,
         format_story_string(
           escape_string(
@@ -4247,6 +4259,15 @@ OB_MODULES["llm_namer"] =
       tooltip = _("Enables or disables Ollama instance check before level generation begins for speed. " ..
       "When turning this off, be absolutely sure Ollama is running or you may get end errors, wasting your generated level."),
       priority = 95,
+    },
+
+    {
+      name = "bool_llm_namer_debug",
+      label = _("Debug Mode"),
+      valuator = "button",
+      default = 0,
+      tooltip = _("Adds some prompt information to generated text for debugging."),
+      priority = 94,
     }
   }
 }
