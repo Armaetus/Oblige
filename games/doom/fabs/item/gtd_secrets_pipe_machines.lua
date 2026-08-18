@@ -31,7 +31,7 @@ PREFABS.Item_secret_heatant_coolant_2 =
   template = "Item_secret_heatant_coolant_1",
   map = "MAP02",
 
-  x_fit = {36,84 , 172,220},
+  x_fit = {36,52 , 204,220},
   y_fit = "top"
 }
 
@@ -40,6 +40,6 @@ PREFABS.Item_secret_wire_spools =
   template = "Item_secret_heatant_coolant_1",
   map = "MAP03",
 
-  x_fit = {32,36},
+  x_fit = {52,76},
   y_fit = "top"
 }
