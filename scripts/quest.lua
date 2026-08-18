@@ -2470,7 +2470,7 @@ function Quest_nice_items(LEVEL)
     if R.is_secret then return end
 
     -- chance of using *any* closets in this room
-    local any_prob = style_sel("secrets", 0, 30, 60, 90)
+    local any_prob = style_sel("secrets", 0, 20, 40, 60)
     if not rand.odds(any_prob) then
       return
     end
