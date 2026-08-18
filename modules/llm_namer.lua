@@ -4094,7 +4094,7 @@ _FORMAT_
 
       table.insert(PARAM.language_lump, chunk_name .. math.ceil(s_pos/2) .. " =\n")
       -- debug
-      if PARAM.bool_llm_namer_debug == true then
+      if PARAM.bool_llm_namer_debug == 1 then
         if s_pos == 1 then
           table.insert(PARAM.language_lump,
             '"' .. story_obj .. " / " .. (story_twist or "No Twist") .. '\\n"\n\n'

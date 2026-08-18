@@ -508,11 +508,11 @@ function AREA_CLASS.set_ceil_group(A, cg)
   end
 
   if high_area and cg == high_area.ceil_group then
-    info = d_info.currentline .. "." .. d_info.name .. ":HIGH"
+    info = d_info.currentline .. "." .. d_info.name .. ":HIGH." .. cg.id
   elseif low_area and cg == low_area.ceil_group then
-    info = d_info.currentline .. "." .. d_info.name .. ":LOW"
+    info = d_info.currentline .. "." .. d_info.name .. ":LOW." .. cg.id
   else
-    info = d_info.currentline .. "." .. d_info.name .. ":SAME"
+    info = d_info.currentline .. "." .. d_info.name .. ":SAME." .. cg.id
   end
 
   if A.cg_history then
@@ -524,6 +524,23 @@ end
 
 function AREA_CLASS.set_floor_group(A, fg)
   A.floor_group = fg
+end
+
+function AREA_CLASS.set_lighting(A, l)
+  if l then
+    A.lighting = l
+  else
+    l = "FAIL"
+  end
+
+  local d_info = debug.getinfo(2, "Sln")
+  --print(info.source, info.currentline, info.name)
+
+  if A.l_history then
+    A.l_history = A.l_history .. "->" .. d_info.currentline .. "." .. d_info.name .. ":" .. l
+  else
+    A.l_history = d_info.currentline .. "." .. d_info.name .. ":" .. l
+  end
 end
 
 

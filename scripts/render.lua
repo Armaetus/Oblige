@@ -2749,7 +2749,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
       gui.printf(table.tostr(chunk.from_area,2))
     end
 
-    A.lighting = assert(chunk.from_area.lighting)
+    A:set_lighting(assert(chunk.from_area.lighting))
   end
 
   Ambient_push(A.lighting)
@@ -3597,9 +3597,9 @@ function Render_properties_for_area(LEVEL, A)
   if A.mode == "nature" or A.mode == "scenic" then
     if not A.lighting then
       if R and R.is_cave then
-        A.lighting = A.base_light
+        A:set_lighting(A.base_light)
       else
-        A.lighting = LEVEL.sky_light
+        A:set_lighting(LEVEL.sky_light)
       end
     end
 
@@ -3608,27 +3608,26 @@ function Render_properties_for_area(LEVEL, A)
 
   -- nothing needed for void areas
   if A.mode == "void" then
-    A.lighting = 144
+    A:set_lighting(144)
     return
   end
 
 
   if not A.lighting then
     if A.is_outdoor then
-      A.lighting = LEVEL.sky_light
+      A:set_lighting(LEVEL.sky_light)
 
       -- porchy worchy -- MSSP
       if A.is_porch then
-        A.lighting = A.lighting - LEVEL.sky_shadow
+        A:set_lighting(A.lighting - LEVEL.sky_shadow)
       end
 
     elseif A.room and A.room.is_outdoor or A.room.is_park then
       -- this for outdoor closets
-      A.lighting = LEVEL.sky_light - LEVEL.sky_shadow
+      A:set_lighting(LEVEL.sky_light - LEVEL.sky_shadow)
 
     else
-      A.lighting = A.base_light or 144
-      A.lighting = A.lighting + (A.bump_light or 0)
+      A:set_lighting((A.base_light or 144) + (A.bump_light or 0))
     end
   end
 

@@ -2124,10 +2124,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
         if chunk.area.lighting and chunk.from_area.lighting then
           info.name = info.name ..
-            " (Lighting: " .. chunk.area.lighting .. " from " .. chunk.from_area.lighting .. ")"
+            " (LH: " .. chunk.area.l_history .. " from " .. chunk.from_area.lighting .. ")"
         end
 
-        if chunk.area then
+        --[[if chunk.area then
           if chunk.area.room and chunk.area.room.is_outdoor
           and chunk.area.room.outdoor_wall_group then
             info.name = info.name ..
@@ -2137,7 +2137,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
             info.name = info.name .. " (Room Theme: " ..
               chunk.area.room.theme.name .. ")"
           end
-        end
+        end]]
 
         local x = chunk.mx
         local y = chunk.my
