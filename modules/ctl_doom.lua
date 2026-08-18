@@ -354,7 +354,7 @@ function CTL_DOOM.weapon_setup(self)
       W.pref     = W.add_prob * 0.28 + 1 -- Complete guesswork right now - Dasho
 
       -- loosen some of the normal restrictions
-      if PARAM.bool_disable_weapon_level == true then
+      if PARAM.bool_disable_weapon_level == 1 then
         W.level = 1
       end
     end
