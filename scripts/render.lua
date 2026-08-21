@@ -2742,16 +2742,6 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     T.mirror_x = chunk.sw * SEED_SIZE / 2
   end
 
-  -- fix outdoor lighting
-  if reqs.kind == "picture" or reqs.kind == "item"
-  and reqs.env == "outdoor" or reqs.env == "park" then
-    if not chunk.from_area.lighting then
-      gui.printf(table.tostr(chunk.from_area,2))
-    end
-
-    A:set_lighting(assert(chunk.from_area.lighting))
-  end
-
   Ambient_push(A.lighting)
 
   if PARAM.bool_peered_exits and PARAM.bool_peered_exits == 1 then
@@ -3624,7 +3614,7 @@ function Render_properties_for_area(LEVEL, A)
 
     elseif A.room and A.room.is_outdoor or A.room.is_park then
       -- this for outdoor closets
-      A:set_lighting(LEVEL.sky_light - LEVEL.sky_shadow)
+      A:set_lighting(LEVEL.sky_light--[[ - LEVEL.sky_shadow]])
 
     else
       A:set_lighting((A.base_light or 144) + (A.bump_light or 0))
