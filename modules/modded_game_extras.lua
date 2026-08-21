@@ -1973,43 +1973,50 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     info.editor_num = PARAM.hn_thing_start_offset
 
     for _,A in pairs(R.areas) do
-      for _,N in pairs(A.neighbors) do
-        if (A.ceil_h == N.ceil_h and A.ceil_mat ~= N.ceil_mat)
-        or (A.floor_h == A.floor_h and A.floor_mat ~= A.floor_mat)
-        and A.room == N.room then
-          if A.mode == "floor" and not A.mode.chunk then
-            info.name = "AREA_" .. A.id .. " (" .. A.cm_history .. ")"
-            info.editor_num = PARAM.hn_thing_start_offset
+      if A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor then
+        info.name = "AREA_" .. A.id
+        if A.ch_history then
+          info.name = " (" .. A.ch_history .. ")"
+        end
+        if A.cg_history then
+          info.name = info.name .. " (" .. A.cg_history .. ")"
+        end
+        if A.is_porch then
+          info.name = info.name .. " is_porch"
+        elseif A.is_porch_neighbor then
+          info.name = info.name .. " is_porch_neighbor"
+        else
+          info.name = info.name .. " unknown"
+        end
+        info.editor_num = PARAM.hn_thing_start_offset
 
-            if SCRIPTS.hn_id_table[info.name] then
-              info.editor_num = SCRIPTS.hn_id_table[info.name].id
-            elseif not SCRIPTS.hn_id_table[info.name] then
-              SCRIPTS.hn_id_table[info.name] = {}
-              SCRIPTS.hn_id_table[info.name].id = info.editor_num
-              SCRIPTS.hn_id_table[info.name].name = info.name
-              info.editor_num = PARAM.hn_thing_start_offset
-              PARAM.hn_thing_start_offset = PARAM.hn_thing_start_offset + 1
-            end
+        if SCRIPTS.hn_id_table[info.name] then
+          info.editor_num = SCRIPTS.hn_id_table[info.name].id
+        elseif not SCRIPTS.hn_id_table[info.name] then
+          SCRIPTS.hn_id_table[info.name] = {}
+          SCRIPTS.hn_id_table[info.name].id = info.editor_num
+          SCRIPTS.hn_id_table[info.name].name = info.name
+          info.editor_num = PARAM.hn_thing_start_offset
+          PARAM.hn_thing_start_offset = PARAM.hn_thing_start_offset + 1
+        end
 
-            local S = A.seeds[1]
-            for _,S2 in pairs(A.seeds) do
-              if A.mode and A.mode == "floor" then
-                S = S2
-                break;
-              end
-            end
-            hn_add_entity(info, S.mid_x, S.mid_y, A.floor_h + 1)
-
-            local e = {}
-            e.id = 9029
-            e.x = S.mid_x
-            e.y = S.mid_y
-            e.z = A.floor_h + 1
-
-            gui.printf("AREA tracker placed in: " .. S.mid_x .. ", " .. S.mid_y .. "\n")
-            raw_add_entity(e)
+        local S = A.seeds[1]
+        for _,S2 in pairs(A.seeds) do
+          if A.mode and A.mode == "floor" then
+            S = S2
+            break;
           end
         end
+        hn_add_entity(info, S.mid_x, S.mid_y, A.floor_h + 1)
+
+        local e = {}
+        e.id = 9029
+        e.x = S.mid_x
+        e.y = S.mid_y
+        e.z = A.floor_h + 1
+
+        gui.printf("AREA tracker placed in: " .. S.mid_x .. ", " .. S.mid_y .. "\n")
+        raw_add_entity(e)
       end
     end
 
