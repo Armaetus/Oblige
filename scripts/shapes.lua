@@ -21096,6 +21096,56 @@ GROW_PLUS_SINGLE_STAIR_OPPOSITE_DOUBLE =
   }
 },
 
+GROW_PLUS_HALF_CURVE_STAIR =
+{
+  prob = 20,
+  skip_prob = 80,
+
+  structure =
+  {
+    "x..........x","xAA<<11>>AAx",
+    "............","/AA<<11>>AA%",
+    "............","AA/##11##%AA",
+    "............","AA%##11##/AA",
+    "............","%AAAA11AAAA/",
+    "x..........x","xAAAA11AAAAx",
+    "xxxxx11xxxxx","xxxxx11xxxxx"
+  },
+
+  diagonals =
+  {
+    ".A","A.",
+    "A.",".A",
+    "A.",".A",
+    ".A","A."
+  }
+},
+
+GROW_PLUS_QUARTER_CURVE_STAIR =
+{
+  prob = 15,
+  skip_prob = 75,
+
+  structure =
+  {
+    "x......","xAA<<11",
+    ".......","/AA<<11",
+    ".......","AA/##11",
+    ".......","AA%##11",
+    ".......","%AAAA11",
+    "x......","xAAAA11",
+    "xxxxx11","xxxxx11"
+  },
+
+  diagonals =
+  {
+    ".A",
+    "A.",
+    "A.",
+    ".A"
+  }
+},
+
 GROW_FANBLADE =
 {
   prob = 20,
