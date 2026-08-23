@@ -160,8 +160,8 @@ function MISC_STUFF.setup(self)
   module_param_up(self)
 
   --Brightness sliders
-  PARAM["wad_minimum_brightness"] = math.min(PARAM.float_minimum_brightness, PARAM.float_maximum_brightness)
-  PARAM["wad_maximum_brightness"] = math.max(PARAM.float_minimum_brightness, PARAM.float_maximum_brightness)
+  PARAM.wad_minimum_brightness = math.min(PARAM.float_minimum_brightness, PARAM.float_maximum_brightness)
+  PARAM.wad_maximum_brightness = math.max(PARAM.float_minimum_brightness, PARAM.float_maximum_brightness)
 end
 
 function MISC_STUFF.begin_level(self, LEVEL)
