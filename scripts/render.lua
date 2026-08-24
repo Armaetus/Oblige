@@ -3656,6 +3656,10 @@ function Render_properties_for_area(LEVEL, A)
     end
   end
 
+  if A.is_dead_end then
+    A:set_ceil(A.ceil_group.h)
+  end
+
   if not A.is_outdoor and A.mode == "floor" then
     A:set_floor_mat(R.floor_mats[A.floor_h] or R.main_tex)
     A:set_ceil_mat(R.ceil_mats[A.ceil_h] or R.main_tex)

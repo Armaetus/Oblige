@@ -1973,10 +1973,11 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     info.editor_num = PARAM.hn_thing_start_offset
 
     for _,A in pairs(R.areas) do
-      if A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor then
+      if (A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor)
+      or (A.room:get_env() == "building" and A.is_dead_end) then
         info.name = "AREA_" .. A.id
         if A.ch_history then
-          info.name = " (" .. A.ch_history .. ")"
+          info.name = info.name .. " (" .. A.ch_history .. ")"
         end
         if A.cg_history then
           info.name = info.name .. " (" .. A.cg_history .. ")"
@@ -2084,7 +2085,11 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         end]]
 
         if C.area.ceil_group then
-          info.name = info.name .. "CG_" .. C.area.ceil_group.id .. " "
+          info.name = info.name .. "CG_" .. C.area.ceil_group.id
+          if C.area.ceil_group.h then
+            info.name = info.name .. "^" .. C.area.ceil_group.h
+          end
+          info.name = info.name .. " "
         end
 
         if C.area.cg_history then
@@ -2129,12 +2134,12 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
             chunk.from_area.floor_group.wall_group .. ")"
         end
 
-        if chunk.area.lighting and chunk.from_area.lighting then
+        --[[if chunk.area.lighting and chunk.from_area.lighting then
           info.name = info.name ..
             " (LH: " .. chunk.area.l_history .. " from " .. chunk.from_area.lighting .. ")"
-        end
+        end]]
 
-        --[[if chunk.area then
+        if chunk.area then
           if chunk.area.room and chunk.area.room.is_outdoor
           and chunk.area.room.outdoor_wall_group then
             info.name = info.name ..
@@ -2144,7 +2149,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
             info.name = info.name .. " (Room Theme: " ..
               chunk.area.room.theme.name .. ")"
           end
-        end]]
+        end
 
         local x = chunk.mx
         local y = chunk.my

@@ -508,11 +508,15 @@ function AREA_CLASS.set_ceil_group(A, cg)
   end
 
   if high_area and cg == high_area.ceil_group then
-    info = d_info.currentline .. "." .. d_info.name .. ":HIGH." .. cg.id
+    info = d_info.currentline .. "." .. d_info.name .. ":HIGH^"
   elseif low_area and cg == low_area.ceil_group then
-    info = d_info.currentline .. "." .. d_info.name .. ":LOW." .. cg.id
+    info = d_info.currentline .. "." .. d_info.name .. ":LOW^"
   else
-    info = d_info.currentline .. "." .. d_info.name .. ":SAME." .. cg.id
+    info = d_info.currentline .. "." .. d_info.name .. ":SAME^"
+  end
+
+  if cg.h then
+    info = info .. cg.h
   end
 
   if A.cg_history then

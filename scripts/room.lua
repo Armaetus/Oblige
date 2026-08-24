@@ -2919,10 +2919,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         table.add_unique(R.ceil_groups, A.ceil_group)
       end
     end
-
-    for _, group in pairs(R.ceil_groups) do
-      Area_inner_points_for_group(LEVEL, R, group, "ceil", SEEDS)
-    end
   end
 
 
@@ -3835,6 +3831,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     rand.shuffle(groups)
 
+    for _,group in pairs(R.ceil_groups) do
+      Area_inner_points_for_group(LEVEL, R, group, "ceil", SEEDS)
+    end
+
     for _, group in pairs(groups) do
       calc_a_ceiling_height(R, group)
     end
@@ -3843,10 +3843,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     if not R.is_outdoor then
       ceil_vary_group_heights(R)
-    end
-
-    for _, group in pairs(R.ceil_groups) do
-      Area_inner_points_for_group(LEVEL, R, group, "ceil", SEEDS)
     end
   end
 
@@ -4056,6 +4052,10 @@ end
 
     Room_cleanup_stairs_to_nowhere(LEVEL, R)
     calc_min_max_h(R, "ceilz_with_feelz")
+
+    for _,group in pairs(R.ceil_groups) do
+      Area_inner_points_for_group(LEVEL, R, group, "ceil", SEEDS)
+    end
   end
 end
 
