@@ -488,7 +488,7 @@ OB_MODULES["misc"] =
       min = 0,
       max = 256,
       increment = 16,
-      default = 256,
+      default = 192,
       tooltip = _("Sets the maximum brightness for the map."),
       priority = 71,
 
