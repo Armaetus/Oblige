@@ -149,7 +149,8 @@ function PREFAB_CONTROL.fine_tune_filters()
   }
   local new_fab_groups_multipliers =
   {
-    gtd_ribbed_lights_rdwall_EPIC = 16
+    gtd_ribbed_lights_rdwall_EPIC = 12,
+    gtd_wall_grated_machines_damaged_wall = 16
   }
   local new_themes_multipliers =
   {

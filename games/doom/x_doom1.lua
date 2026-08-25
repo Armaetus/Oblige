@@ -1102,6 +1102,7 @@ ULTDOOM.THEMES =
       gtd_writhing_mass = 10,
       gtd_wall_octagon_insets = 50,
       gtd_wall_grated_machines = 50,
+      gtd_wall_grated_machines_damaged_wall = 40,
       --
       gtd_wall_quakish_insets = 25,
       gtd_wall_quakish_insets_2 = 25,
@@ -1601,6 +1602,7 @@ ULTDOOM.THEMES =
 
       gtd_wall_octagon_insets = 25,
       gtd_wall_grated_machines = 20,
+      gtd_wall_grated_machines_damaged_wall = 15,
 
       gtd_ribbed_lights = 18,
       gtd_ribbed_lights_no3d = 18,
@@ -2026,6 +2028,8 @@ ULTDOOM.THEMES =
       --
       gtd_sunderfall = 25,
       gtd_sunderfall_barred = 25,
+      --
+      gtd_wall_grated_machines_damaged_wall = 50
     },
 
     outdoor_wall_groups =
@@ -2478,6 +2482,8 @@ ULTDOOM.THEMES =
       --
       gtd_sunderfall = 25,
       gtd_sunderfall_barred = 25,
+      --
+      gtd_wall_grated_machines_damaged_wall = 50
     },
 
     outdoor_wall_groups =

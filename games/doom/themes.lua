@@ -1468,6 +1468,7 @@ DOOM.THEMES =
       gtd_writhing_mass = 10,
       gtd_wall_octagon_insets = 50,
       gtd_wall_grated_machines = 50,
+      gtd_wall_grated_machines_damaged_wall = 40,
       --
       gtd_wall_quakish_insets = 25,
       gtd_wall_quakish_insets_2 = 25,
@@ -2001,6 +2002,7 @@ DOOM.THEMES =
       gtd_writhing_mass = 20,
       gtd_library = 50,
       gtd_wall_grated_machines = 20,
+      gtd_wall_grated_machines_damaged_wall = 15,
       --
       gtd_wall_quakish_insets = 25,
       gtd_wall_quakish_insets_2 = 25,
@@ -2671,7 +2673,9 @@ DOOM.THEMES =
       gtd_sunderfall_barred = 25,
       gtd_lavafall = 25,
       --
-      cran_bloodtubes_set = 50
+      cran_bloodtubes_set = 50,
+      --
+      gtd_wall_grated_machines_damaged_wall = 50
     },
 
     outdoor_wall_groups =
