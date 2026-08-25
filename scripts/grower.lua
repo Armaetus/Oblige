@@ -2862,6 +2862,10 @@ stderrf("prelim_conn %s --> %s : S=%s dir=%d\n", c_out.R1.name, c_out.R2.name, S
       PREFABS[def.name].rank = 1
     end
 
+    if def.plain_ceiling then
+      chunk.plain_ceiling = true
+    end
+
     return def
   end
 
