@@ -2245,9 +2245,8 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
   end
 
 
-  local function prepare_sinks(R)
+  local function prepare_ceil_sinks(R)
     local highest_CG = -EXTREME_H
-    local best_CG
     for _,cg in pairs(R.ceil_groups) do
       if cg.h > highest_CG then
         highest_CG = cg.h
@@ -2684,9 +2683,9 @@ stderrf("Cages in %s [%s pressure] --> any_prob=%d  per_prob=%d\n",
     pick_posts(R)
     pick_wall_detail(R)
 
-    prepare_sinks(R)
-
     pick_floor_sinks(R, LEVEL)
+
+    prepare_ceil_sinks(R)
     pick_ceiling_sinks(R)
 
     unsink_importants(R)

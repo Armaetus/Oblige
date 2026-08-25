@@ -505,18 +505,22 @@ function AREA_CLASS.set_ceil_group(A, cg)
     else
       high_area, low_area = A.chunk.dest_area, A.chunk.from_area
     end
+
+    if not A.cg_history then
+      A.cg_history = low_area.id .. ">" .. cg.id .. ">" .. high_area.id .. " "
+    end
   end
 
   if high_area and cg == high_area.ceil_group then
-    info = d_info.currentline .. "." .. d_info.name .. ":HIGH^"
+    info = d_info.currentline .. "." .. d_info.name .. ":HIGH_" .. cg.id
   elseif low_area and cg == low_area.ceil_group then
-    info = d_info.currentline .. "." .. d_info.name .. ":LOW^"
+    info = d_info.currentline .. "." .. d_info.name .. ":LOW_" .. cg.id
   else
-    info = d_info.currentline .. "." .. d_info.name .. ":SAME^"
+    info = d_info.currentline .. "." .. d_info.name .. ":SAME_" .. cg.id
   end
 
   if cg.h then
-    info = info .. cg.h
+    info = info .. "^" .. cg.h
   end
 
   if A.cg_history then

@@ -2895,24 +2895,38 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       group_ceiling_pass(R)
     end
 
+    -- handle stairs
     if not R.stair_ceil_mode then
       R.stair_ceil_mode = rand.pick({ "use_dest", "use_from" })
     end
 
-    -- handle stairs
     for _, A in pairs(R.areas) do
-      if A.chunk and A.chunk.kind == "stair" then
+
+      if A.neighbors then
+        for _,N in pairs(A.neighbors) do
+
+          if N.chunk and N.chunk.kind == "stair" then
+            if N.chunk.from_area == A and R.stair_ceil_mode == "use_dest" then
+              A:set_ceil_group(N.chunk.dest_area.ceil_group)
+            elseif N.chunk.dest_area == A and R.stair_ceil_mode == "use_from" then
+              A:set_ceil_group(N.chunk.from_area.ceil_group)
+            end
+          end
+
+        end
+      end
+      --[[if A.chunk and A.chunk.kind == "stair" then
         local fromA = A.chunk.from_area
         local destA = A.chunk.dest_area
 
+        assert(table.tostr(A.chunk,1))
         if R.stair_ceil_mode == "use_dest" then
           A:set_ceil_group(destA.ceil_group)
         elseif R.stair_ceil_mode == "from_dest" then
           A:set_ceil_group(fromA.ceil_group)
         end
-      end
+      end]]
     end
-
 
     for _, A in pairs(R.areas) do
       if A.ceil_group then
