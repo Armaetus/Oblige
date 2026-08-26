@@ -2882,7 +2882,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
   local function group_ceilings(R)
     for _, A in pairs(R.areas) do
-      if (A.mode == "floor" or (A.chunk and A.chunk.kind == "stair"))
+      if (A.mode == "floor")
+          or (A.chunk and A.chunk.kind == "stair" and not A.chunk.plain_ceiling)
           or (A.is_porch or A.is_porch_neighbor)
       then
         A:set_ceil_group(
@@ -3517,7 +3518,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         fromA:set_ceil(destA.ceil_h)
         fromA = destA
       end
-      assert(A.ceil_group)
       assert(destA.ceil_group)
       assert(fromA.ceil_group)
 

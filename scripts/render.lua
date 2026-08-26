@@ -3643,9 +3643,7 @@ function Render_properties_for_area(LEVEL, A)
   end
 
   if A.chunk and A.chunk.kind == "stair" then
-    if A.room:get_env() == "building" then
-      A:set_ceil(A.ceil_group.h)
-    elseif A.room.is_outdoor then
+    if A.room.is_outdoor then
       if R.ceil_mats[A.ceil_h] then
         A:set_ceil_mat(R.ceil_mats[A.ceil_h])
       elseif A.chunk.dest_area.ceil_mat ~= "_SKY" then
