@@ -3444,32 +3444,27 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
 
   local function do_sink_mats(R)
+    gui.debugf("do_sink_mats\n")
     local picked_ceil_mat
     local picked_floor_mat
+    local best = -EXTREME_H
 
-    -- MSSP-TODO: pick the material from the largest area in the room instead (via svolume)
-    while not picked_floor_mat do
-      for _, A in pairs(R.areas) do
+    for _, A in pairs(R.areas) do
+      if A.svolume > best then
+        best = A.svolume
         if A.floor_mat then
           picked_floor_mat = A.floor_mat
         end
-      end
-      if not picked_floor_mat then picked_floor_mat = R.main_tex end
-    end
-
-    R.floor_sink_mat = picked_floor_mat
-
-    if R.is_outdoor then return end
-
-    while not picked_ceil_mat do
-      for _, A in pairs(R.areas) do
         if A.ceil_mat then
           picked_ceil_mat = A.ceil_mat
         end
       end
-      if not picked_ceil_mat then picked_ceil_mat = R.main_tex end
     end
-    R.ceil_sink_mat = picked_ceil_mat
+
+    R.floor_sink_mat = picked_floor_mat or R.main_tex
+    R.ceil_sink_mat = picked_ceil_mat or R.main_tex
+
+    if R.is_outdoor then return end
   end
 
 
