@@ -1974,7 +1974,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     for _,A in pairs(R.areas) do
       if (A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor)
-      or (A.room:get_env() == "building" and A.is_dead_end) then
+      or (A.mode == "floor" and A.room:get_env() == "building" and A.dead_end) then
         info.name = "AREA_" .. A.id
         if A.ch_history then
           info.name = info.name .. " (" .. A.ch_history .. ")"
@@ -2096,8 +2096,8 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           info.name = info.name .. "(cg: " .. C.area.cg_history .. ") "
         end
 
-        if C.area.ch_history then
-          info.name = info.name .. "(ceil_h: " .. C.area.ch_history .. ") "
+        if C.area.l_history then
+          info.name = info.name .. "(l: " .. C.area.l_history .. ") "
         end
 
         if R.stair_ceil_mode then
