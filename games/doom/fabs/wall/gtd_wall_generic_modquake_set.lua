@@ -8,8 +8,6 @@ PREFABS.Wall_modquake_set_industrial =
 
   port = "zdoom",
 
-  theme  = "!hell",
-
   group = "gtd_modquake_set",
 
   prob   = 50,
