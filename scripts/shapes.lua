@@ -18092,6 +18092,32 @@ GROW_SHOT =
   }
 },
 
+GROW_FOLDING_FAN =
+{
+  prob = 20,
+  skip_prob = 80,
+
+  structure =
+  {
+    "11xxxx","11xxxx",
+    "......","1111/A",
+    "......","111/A/", 
+    "......","%/AA/1", 
+    "x.....","xAAA11", 
+    "x.....","x%A/11", 
+    "xxx...","xxx%11", 
+  },
+
+  diagonals =
+  {
+              "1A",
+         "1A","A1",
+    ".1","1A","A1",
+    ".A","A1",
+         ".1"
+  }
+},
+
 GROW_COIN_STRIPES =
 {
   prob = 20,
