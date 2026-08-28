@@ -54,3 +54,23 @@ PREFABS.Wall_tech_grated_machines_damaged_wall_3 =
 
   group = "gtd_wall_grated_machines_damaged_wall"
 }
+
+PREFABS.Wall_tech_grated_machines_damaged_diag_1 =
+{
+  template = "Wall_tech_grated_machines_plain",
+  map = "MAP06",
+
+  where = "diagonal",
+
+  group = "gtd_wall_grated_machines_damaged_wall"
+}
+
+PREFABS.Wall_tech_grated_machines_damaged_diag_2 =
+{
+  template = "Wall_tech_grated_machines_plain",
+  map = "MAP07",
+
+  where = "diagonal",
+
+  group = "gtd_wall_grated_machines_damaged_wall"
+}
