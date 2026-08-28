@@ -155,6 +155,14 @@ MISC_STUFF.ROOM_AREA_MIX_FINE_TUNE_CHOICES =
   "random", _("Random")
 }
 
+MISC_STUFF.UNGROWN_ROOM_CHOICES =
+{
+  "grow_and_cull", _("Grow, Cull, Leave Secrets"),
+  "dont_cull_secrets", _("Cull and Leave Secrets"),
+  "cull_all", _("Cull Only"),
+  "none", _("Nothing")
+}
+
 function MISC_STUFF.setup(self)
 
   module_param_up(self)
@@ -588,6 +596,18 @@ OB_MODULES["misc"] =
       randomize_group="architecture",
 
     },
+    {
+      name = "ungrown_room_action",
+      label = _("Ungrown Room Action"),
+      choices = MISC_STUFF.UNGROWN_ROOM_CHOICES,
+      tooltip = _("Decides the action taken on encountering any remaining ungrown rooms as an end step. (Rooms that are smaller than 16 grid squares.)\n\n" ..
+        "Grow, Cull, Leave Secrets - Grow all ungrown rooms. If failed, cull or reserve for use as Secret rooms. Default.\n" ..
+        "Cull and Leave Secrets - Cull rooms and reserve some as Secret rooms.\n" ..
+        "Cull All - Cull all ungrown rooms.\n" ..
+        "Nothing - Do nothing, oldskool Oblige behavior."),
+      default = "grow_all",
+      priority = 58
+    }
 
 ---- PLANNED (UNFINISHED) STUFF ----
 
@@ -595,7 +615,6 @@ OB_MODULES["misc"] =
 --  { name="light_level",  label=_("Lighting"),   choices=MISC_STUFF.LIGHTINGS },
 --  { name="detail_level", label=_("Detail"),     choices=MISC_STUFF.LIGHTINGS, gap=1 },
 
---  pictures    = { label=_("Pictures"),       choices=STYLE_CHOICES },
 --  cycles      = { label=_("Multiple Paths"), choices=STYLE_CHOICES },
 --  ex_floors   = { label=_("3D Floors"),      choices=STYLE_CHOICES },
 
