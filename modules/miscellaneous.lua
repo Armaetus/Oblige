@@ -160,6 +160,7 @@ MISC_STUFF.UNGROWN_ROOM_CHOICES =
   "grow_and_cull", _("Grow, Cull, Leave Secrets"),
   "dont_cull_secrets", _("Cull and Leave Secrets"),
   "cull_all", _("Cull Only"),
+  "grow_all", _("Grow All"),
   "none", _("Nothing")
 }
 
