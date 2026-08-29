@@ -4558,8 +4558,9 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
   end
 
   -- grow barely grown rooms
-  if not PARAM.ungrown_room_action or 
-  PARAM.ungrown_room_action and PARAM.ungrown_room_action == "grow_and_cull" then
+  if not PARAM.ungrown_room_action or
+  (PARAM.ungrown_room_action and PARAM.ungrown_room_action == "grow_and_cull"
+  or PARAM.ungrown_room_action == "grow_all") then
     for _,R in pairs(LEVEL.rooms) do
       R.is_last_grown = true
 
@@ -4611,8 +4612,9 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
   if not LEVEL.is_procedural_gotcha then
 
     if not PARAM.ungrown_room_action or
-    PARAM.ungrown_room_action and PARAM.ungrown_room_action == "dont_cull_secrets" or
-    PARAM.ungrown_room_action == "grow_and_cull" or PARAM.ungrown_room_action == "dont_cull_secrets" then
+    (PARAM.ungrown_room_action and PARAM.ungrown_room_action == "dont_cull_secrets" or
+    PARAM.ungrown_room_action == "grow_and_cull" or PARAM.ungrown_room_action == "dont_cull_secrets"
+    or PARAM.ungrown_room_action == "cull_all") then
 
       for _,R in pairs(LEVEL.rooms) do
         --gui.printf("ROOM_" .. R.id .. " has " .. R:prelim_conn_num(LEVEL) .. " initial conns.\n")
