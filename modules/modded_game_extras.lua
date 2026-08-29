@@ -1976,12 +1976,21 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       if (A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor)
       or (A.mode == "floor" and A.room:get_env() == "building" and A.dead_end) then
         info.name = "AREA_" .. A.id
+
+        if A.room:get_env() == "building" and A.cg_history then
+          info.name = info.name .. " (cg:" .. A.cg_history .. ")"
+        end
+
         if A.ch_history then
-          info.name = info.name .. " (" .. A.ch_history .. ")"
+          info.name = info.name .. " (h:" .. A.ch_history .. ")"
         end
-        if A.cg_history then
-          info.name = info.name .. " (" .. A.cg_history .. ")"
+
+        if not A.is_outdoor then
+          if A.l_history then
+            info.name = info.name .. " (l:" .. A.l_history .. ")"
+          end
         end
+
         if A.is_porch then
           info.name = info.name .. " is_porch"
         elseif A.is_porch_neighbor then
