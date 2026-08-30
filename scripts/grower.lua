@@ -2755,55 +2755,6 @@ stderrf("prelim_conn %s --> %s : S=%s dir=%d\n", c_out.R1.name, c_out.R2.name, S
   end
 
 
-  local function mark_chunk_nb_side(r, dir)
-    assert(geom.is_straight(dir))
-
-    local x1, y1 = r.sx1, r.sy1
-    local x2, y2 = r.sx2, r.sy2
-
-    if dir == 2 then y2 = y1 end
-    if dir == 8 then y1 = y2 end
-    if dir == 4 then x2 = x1 end
-    if dir == 6 then x1 = x2 end
-
-    for sx = x1, x2 do
-    for sy = y1, y2 do
-      local S = SEEDS[sx][sy]
-
-      local N = S:neighbor(dir)
-      assert(N)
-
-      N.no_assignment = true
-    end
-    end
-  end
-
-
-  local function mark_chunk_neighbors(r)  -- UNUSED ????
-    local shape = assert(r.shape)
-
-    -- the "dir" generally faces its source
-    -- [ but it won't matter when shape is "I" or "P" ]
-    assert(r.dir)
-
-    mark_chunk_nb_side(r, r.dir)
-
-    -- this handles "L" shape
-    if r.dir2 then
-      mark_chunk_nb_side(r, r.dir2)
-    end
-
-    if shape == "I" or shape == "P" then
-      mark_chunk_nb_side(r, 10 - r.dir)
-    end
-
-    if shape == "T" or shape == "P" then
-      mark_chunk_nb_side(r, geom.LEFT [r.dir])
-      mark_chunk_nb_side(r, geom.RIGHT[r.dir])
-    end
-  end
-
-
   local function pick_stair_prefab(chunk)
     local A = chunk.area
     local R = A.room
@@ -4572,7 +4523,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
       local tries = 1
       while R.svolume <= 16 and tries <= 3 do
         local str = "#" .. tries .. ": Grow barely grown rooms -> " .. R.id .. ": " .. R.svolume
-        Grower_grammatical_room(SEEDS, LEVEL, R, "grow")
+        Grower_grow_room(SEEDS, LEVEL, R)
         Grower_grammatical_room(SEEDS, LEVEL, R, "decorate")
         R.svolume = 0
         for _,A in pairs(R.areas) do
@@ -4592,7 +4543,7 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
           gui.printf("Symmetry disabled on this room.\n")
           R.symmetry = {}
           R.symmetry = nil
-          Grower_grammatical_room(SEEDS, LEVEL, R, "grow")
+          Grower_grow_room(SEEDS, LEVEL, R)
           Grower_grammatical_room(SEEDS, LEVEL, R, "decorate")
           tries = tries + 1
         end
