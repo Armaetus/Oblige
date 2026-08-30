@@ -1985,7 +1985,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           info.name = info.name .. " (h:" .. A.ch_history .. ")"
         end
 
-        if not A.is_outdoor then
+        if A.dead_end then
           if A.l_history then
             info.name = info.name .. " (l:" .. A.l_history .. ")"
           end
