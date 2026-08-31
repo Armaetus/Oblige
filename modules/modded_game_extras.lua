@@ -1977,7 +1977,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       or (A.mode == "floor" and A.room:get_env() == "building" and A.dead_end) then
         info.name = "AREA_" .. A.id
 
-        if A.room:get_env() == "building" and A.cg_history then
+        if A.dead_end and A.cg_history then
           info.name = info.name .. " (cg:" .. A.cg_history .. ")"
         end
 
@@ -1985,7 +1985,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           info.name = info.name .. " (h:" .. A.ch_history .. ")"
         end
 
-        if A.dead_end then
+        if A.dead_end and A.room:get_env() == "building" then
           if A.l_history then
             info.name = info.name .. " (l:" .. A.l_history .. ")"
           end
@@ -2032,7 +2032,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     -- floor chunks
     for _,chunk in pairs(R.floor_chunks) do
-      if chunk.prefab_def then
+      if chunk.prefab_def and chunk.kind ~= "light" then
         info.name = "Point: " .. chunk.prefab_def.name
         info.editor_num = PARAM.hn_thing_start_offset
 
