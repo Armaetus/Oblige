@@ -4133,19 +4133,19 @@ _ENTITIES_
 _FORMAT_
 ]]
     -- flavor injection
-    local story_flavor = rand.pick(LLM_NAME.story_components.flavors) .. "\n"
+    local story_flavor = rand.pick(LLM_NAME.story_components.flavors)
     local story_obj = rand.pick(LLM_NAME.story_components.objectives)
-    story_flavor = story_flavor .. "The Objective: " .. story_obj .. "\n"
+    local story_instruction = story_flavor .. "\nThe Objective: " .. story_obj .. "\n"
 
     -- sometimes add a twist
     local story_twist
     if rand.odds(75) then
       story_twist = rand.pick(LLM_NAME.story_components.story_twists)
-      story_flavor = story_flavor .. "The Twist: " .. story_twist .. "\n"
+      story_instruction = story_instruction .. "The Twist: " .. story_twist .. "\n"
     end
     prompt = string.gsub(prompt,
     "_FLAVOR_",
-    story_flavor)
+    story_instruction)
 
     -- place injection
     -- create theme probs
@@ -4286,7 +4286,10 @@ _FORMAT_
       if PARAM.bool_llm_namer_debug == 1 then
         if s_pos == 1 then
           table.insert(PARAM.language_lump,
-            '"' .. story_obj .. " / " .. (story_twist or "No Twist") .. '\\n"\n\n'
+            '"[' .. story_flavor .. ']\\n"'
+          )
+          table.insert(PARAM.language_lump,
+            '"' .. story_obj .. " / " .. (story_twist or "No Twist") .. '\\n\\n"'
           )
         end
       end
@@ -4387,8 +4390,9 @@ OB_MODULES["llm_namer"] =
       default = 1,
       tooltip = _("Generates a context-aware level name via LLM."),
       longtip = _("Uses Ollama to generate a name for a level by sending level metadata to Ollama. " ..
-        "Default model is llama3.1:8b. Using a different model or LLM platform requires modification of the script. " ..
-        "To use this, just download Ollama and llama3.1:8b and keep it running all at default settings.\n\n" ..
+        "Default model is llama3.1:8b for name generation and gemma4:latest for story generation. " .. 
+        "Using a different model or LLM platform requires modification of the script. (see the first lines of code in modules/llm_namer.lua)" ..
+        "To use this, just download Ollama and llama3.1:8b and gemma4:latest and keep it running all at default settings.\n\n" ..
         "This module uses Lua io.popen to access cURL, and may cause CMD to briefly appear. This is normal behavior.\n\n" ..
         "The module DOES NOT SEND DATA outside of your PC. " ..
         "This module will not work if you do not have libcurl as it communicates in RESTful API style.\n\n"),
