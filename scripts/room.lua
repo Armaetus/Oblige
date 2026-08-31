@@ -3509,9 +3509,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       assert(fromA.ceil_h)
       assert(destA.ceil_h)
 
-      if fromA.ceil_h < (destA.floor_h + 96) then
-        fromA:set_ceil(destA.ceil_h)
-        fromA = destA
+      local higherA = A.chunk:higher_stair_floor()
+      if higherA.ceil_h - higherA.floor_h < 96 then
+        A:set_ceil(destA.floor_h + 96)
       end
       assert(destA.ceil_group)
       assert(fromA.ceil_group)

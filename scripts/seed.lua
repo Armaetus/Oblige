@@ -1572,3 +1572,15 @@ function CHUNK_CLASS.flip(chunk)
 
   chunk.is_flipped = not chunk.is_flipped
 end
+
+
+function CHUNK_CLASS.higher_stair_floor(chunk)
+  local A1 = chunk.from_area
+  local A2 = chunk.dest_area
+
+  if A1.floor_h > A2.floor_h then
+    return A1
+  elseif A1.floor_h < A2.floor_h then
+    return A2
+  end
+end
