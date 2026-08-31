@@ -3779,34 +3779,46 @@ GROW_COLONNADE_TINY_NEW_AREA =
 
 GROW_COLONNADE_PARTHENON =
 {
-  prob = 7,
+  prob = 8,
   skip_prob = 80,
 
   structure =
   {
-    "1....","11>AA",
-    "1....","11#AA",
-    "x....","x1>AA",
-    "x....","x1>AA",
-    "x....","x1#AA",
-    "x....","x1>AA",
+    "x.....","x%1>A%",
+    "1.....","111#AA",
+    "1.....","111>AA",
+    "x.....","x11>AA",
+    "x.....","x11#AA",
+    "x.....","x%1>A/",
+  },
+
+  diagonals =
+  {
+    ".1","A.",
+    ".1","A."
   }
 },
 
 GROW_COLONNADE_PARTHENON_3P =
 {
-  prob = 7,
+  prob = 8,
   skip_prob = 75,
 
   structure =
   {
-    "1....","11>AA",
-    "1....","11.AA",
-    "x....","x1>AA",
-    "x....","x1.AA",
-    "x....","x1>AA",
-    "x....","x1.AA",
-    "x....","x1>AA",
+    "x.....","x/1>A%",
+    "1.....","111.AA",
+    "1.....","111>AA",
+    "x.....","x11.AA",
+    "x.....","x11>AA",
+    "x.....","x11.AA",
+    "x.....","x%1>A/",
+  },
+
+  diagonals =
+  {
+    ".1","A.",
+    ".1","A."
   }
 },
 
