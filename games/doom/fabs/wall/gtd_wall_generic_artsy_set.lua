@@ -54,11 +54,25 @@ PREFABS.Wall_frame_light_band =
 
   group = "gtd_generic_frame_light_band",
 
+  rank = 1,
   theme = "!hell",
 
-  z_fit = "top",
+  z_fit = "top"
 }
 
+PREFABS.Wall_frame_light_band_hell =
+{
+  template = "Wall_generic_artsy_bedazzled",
+  map = "MAP05",
+
+  group = "gtd_generic_frame_light_band",
+
+  theme = "hell",
+
+  z_fit = "top",
+
+  tex_BRONZE4 = "BFALL1"
+}
 --
 PREFABS.Wall_generic_artsy_frame_metal =
 {
