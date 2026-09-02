@@ -3,7 +3,7 @@ PREFABS.Pic_park_generic_1 =
   file = "picture/gtd_pic_generic_park.wad",
   map = "MAP01",
 
-  prob = 100,
+  prob = 100 * 20,
   env = "!building",
 
   group = "natural_walls",

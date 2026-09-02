@@ -73,7 +73,9 @@ PREFABS.Wall_frame_light_band_hell =
 
   tex_BRONZE4 = "BFALL1"
 }
+
 --
+
 PREFABS.Wall_generic_artsy_frame_metal =
 {
   template = "Wall_generic_artsy_bedazzled",
