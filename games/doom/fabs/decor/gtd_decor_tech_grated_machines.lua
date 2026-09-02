@@ -23,5 +23,19 @@ PREFABS.Decor_wall_grated_machines_pillar_broken =
   template = "Decor_wall_grated_machines_pillar",
   map = "MAP02",
 
-  prob = 1000
+  prob = 1000,
+
+  z_fit = "nil"
+}
+
+PREFABS.Decor_wall_grated_machines_pillar_large_broken =
+{
+  template = "Decor_wall_grated_machines_pillar",
+  map = "MAP03",
+
+  prob = 7500,
+
+  size = 96,
+
+  z_fit = "nil"
 }
