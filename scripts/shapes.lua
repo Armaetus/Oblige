@@ -10187,7 +10187,7 @@ GROW_MAZE_STRAIGHT =
   }
 },
 
-GROW_MAZE_ZIGZAG =
+GROW_MAZE_ZIGZAG_WIDE =
 {
   prob = 10,
   skip_prob = 80,
@@ -10196,15 +10196,15 @@ GROW_MAZE_ZIGZAG =
 
   structure =
   {
-    "x..x","x11x",
-    "x..x","x%1x",
-    "x..x","x#1x",
-    "....","#/1#",
-    "....","#11#",
-    "....","#1/#",
-    "x..x","x1#x",
-    "x..x","x1%x",
-    "x11x","x11x"
+    "...x","111x",
+    "...x","%11x",
+    "...x","#11x",
+    "....","/11#",
+    "....","111#",
+    "....","11/#",
+    "...x","11#x",
+    "...x","11%x",
+    "11.x","111x"
   },
 
   diagonals =
@@ -10217,7 +10217,7 @@ GROW_MAZE_ZIGZAG =
 },
 
 
-GROW_MAZE_ZIGZAG_WIDE =
+GROW_MAZE_ZIGZAG_WIDE_2 =
 {
   prob = 10,
   skip_prob = 80,
@@ -10232,8 +10232,6 @@ GROW_MAZE_ZIGZAG_WIDE =
     "x...","x/11",
     "....","/11/",
     "...x","11/x",
-    "..xx","11xx",
-    "..xx","11xx",
     "11xx","11xx"
   },
 
@@ -10248,52 +10246,21 @@ GROW_MAZE_ZIGZAG_WIDE =
   }
 },
 
-GROW_MAZE_ZIGZAG_WIDE_NEW_AREA =
-{
-  prob = 10,
-  skip_prob = 75,
-
-  structure =
-  {
-    "..xx","11xx",
-    "...x","11%x",
-    "....","%11%",
-    "x...","x%/A",
-    "xx..","xxAA",
-    "x...","x/%A",
-    "....","/11/",
-    "...x","11/x",
-    "..xx","11xx",
-    "..xx","11xx",
-    "11xx","11xx"
-  },
-
-  diagonals =
-  {
-         "1.",
-    ".1","1.",
-    ".1","1A",
-    ".1","1A",
-    ".1","1.",
-         "1."
-  }
-},
-
-GROW_MAZE_ZIGZAG_CAGE =
+GROW_MAZE_ZIGZAG_CAGE_WIDE =
 {
   prob = 5,
   skip_prob = 80,
 
   structure =
   {
-    "x..x","x11x",
-    "x..x","x%1x",
-    "x..x","xC1x",
-    "....","#/1#",
-    "....","#1/#",
-    "x..x","x1Cx",
-    "x..x","x1%x",
-    "x11x","x11x"
+    "x...x","x111x",
+    "x...x","x%11x",
+    "x...x","xC11x",
+    ".....","#/11#",
+    ".....","#11/#",
+    "x...x","x11Cx",
+    "x...x","x11%x",
+    "x11.x","x111x"
   },
 
   diagonals =
@@ -10302,127 +10269,6 @@ GROW_MAZE_ZIGZAG_CAGE =
     "C1",
     "1C",
     "1C"
-  }
-},
-
-GROW_MAZE_ZIGZAG_DOUBLE =
-{
-  prob = 8,
-  skip_prob = 80,
-
-  never_absurdify = true,
-
-  structure =
-  {
-    "x..x","x11x",
-    "x..x","x%1x",
-    "x..x","x#1x",
-    "...x","#/1x",
-    "x...","x1/#",
-    "x..x","x1#x",
-    "x..x","x1#x",
-    "x...","x1%#",
-    "...x","#%1x",
-    "x..x","x#1x",
-    "x..x","x/1x",
-    "x11x","x11x"
-  },
-
-  diagonals =
-  {
-    ".1",
-    ".1",
-    "1.",
-    "1.",
-    ".1",
-    ".1"
-  }
-},
-
-GROW_MAZE_ZIGZAG_DOUBLE_CAGE =
-{
-  prob = 5,
-  skip_prob = 80,
-
-  structure =
-  {
-    "x..x","x11x",
-    "x..x","x%1x",
-    "x..x","xC1x",
-    "...x","#/1x",
-    "x...","x1/#",
-    "x..x","x1Cx",
-    "x..x","x1Cx",
-    "x...","x1%#",
-    "...x","#%1x",
-    "x..x","xC1x",
-    "x..x","x/1x",
-    "x11x","x11x"
-  },
-
-  diagonals =
-  {
-    "C1",
-    "C1",
-    "1C",
-    "1C",
-    "C1",
-    "C1"
-  }
-},
-
-GROW_MAZE_SIDE_BUMP =
-{
-  prob = 5,
-  skip_prob = 80,
-
-  structure =
-  {
-    "x..x","x11x",
-    "x..x","x%1x",
-    "xx..","xx1%",
-    "xx..","xx11",
-    "xx..","xx11",
-    "xx..","xx1/",
-    "x..x","x/1x",
-    "x11x","x11x"
-  },
-
-  diagonals =
-  {
-    ".1",
-    "1.",
-    "1.",
-    ".1"
-  }
-},
-
-GROW_MAZE_SIDE_BUMP_CAGE =
-{
-  prob = 5,
-  skip_prob = 80,
-
-  structure =
-  {
-    "x..x","x11x",
-    "x..x","x%1x",
-    "xx..","xx1%",
-    "xx..","xx11",
-    "xx..","xx1C",
-    "xx..","xx11",
-    "xx..","xx1C",
-    "xx..","xx11",
-    "xx..","xx1/",
-    "x..x","x/1x",
-    "x11x","x11x"
-  },
-
-  diagonals =
-  {
-    ".1",
-    "1.",
-    "1.",
-    ".1"
   }
 },
 
@@ -10459,25 +10305,6 @@ GROW_MAZE_STRAIGHT_STAIRED =
   }
 },
 
-GROW_MAZE_STRAIGHT_LONG =
-{
-  prob = 8,
-  skip_prob = 35,
-
-  never_absurdify = true,
-
-  structure =
-  {
-    "x..","x11",
-    "x..","x11",
-    "...","#1#",
-    "...","#1#",
-    "...","#1#",
-    "...","#1#",
-    "x11","x11",
-  }
-},
-
 GROW_MAZE_STRAIGHT_STAIRED_LONG =
 {
   prob = 10,
@@ -10493,21 +10320,6 @@ GROW_MAZE_STRAIGHT_STAIRED_LONG =
     "...","#^#",
     "...","#^#",
     "x11","x11",
-  }
-},
-
-GROW_MAZE_L =
-{
-  prob = 12,
-  skip_prob = 35,
-
-  structure =
-  {
-    "...x..","###x11",
-    "......","#11111",
-    "...xxx","#1#xxx",
-    "...xxx","#1#xxx",
-    "11xxxx","11xxxx",
   }
 },
 
