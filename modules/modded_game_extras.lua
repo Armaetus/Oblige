@@ -1985,7 +1985,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           info.name = info.name .. " (h:" .. A.ch_history .. ")"
         end
 
-        if A.dead_end and A.room:get_env() == "building" then
+        if A.dead_end and not A.mode.chunk then
           if A.l_history then
             info.name = info.name .. " (l:" .. A.l_history .. ")"
           end

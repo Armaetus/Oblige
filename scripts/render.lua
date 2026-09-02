@@ -3604,18 +3604,17 @@ function Render_properties_for_area(LEVEL, A)
 
 
   if not A.lighting then
-    if A.is_outdoor then
-      A:set_lighting(LEVEL.sky_light)
+    if R then
+      if R:get_env() == "outdoor" or R:get_env() == "park" then
+        -- this for outdoor closets
+        A:set_lighting(LEVEL.sky_light--[[ - LEVEL.sky_shadow]])
 
-      -- porchy worchy -- MSSP
-      if A.is_porch then
-        A:set_lighting(A.lighting - LEVEL.sky_shadow)
+        if not A.is_outdoor then
+          A:set_lighting(A.lighting - LEVEL.sky_shadow)
+        end
+      else
+        A:set_lighting((A.base_light or 144) + (A.bump_light or 0))
       end
-
-    elseif A.room and A.room.is_outdoor or A.room.is_park then
-      -- this for outdoor closets
-      A:set_lighting(LEVEL.sky_light--[[ - LEVEL.sky_shadow]])
-
     else
       A:set_lighting((A.base_light or 144) + (A.bump_light or 0))
     end
