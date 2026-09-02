@@ -2786,9 +2786,11 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
     end
 
-    if A1.ceil_mat == "_SKY" and A2.ceil_mat ~= "_SKY"
-        or A1.ceil_mat ~= "_SKY" and A2.ceil_mat == "_SKY" then
-      return true
+    if A1:touches(A2) then
+      if A1.is_outdoor and not A2.is_outdoor or
+      A2.is_outdoor and not A1.is_outdoor then
+        return true
+      end
     end
 
     --[[
