@@ -27,7 +27,7 @@ PREFABS.Decor_wall_grated_machines_pillar_broken =
 
   group = "gtd_wall_grated_machines_damaged_wall",
 
-  prob = 1000,
+  prob = 500,
 
   size = 64,
   height = 96,
@@ -41,7 +41,31 @@ PREFABS.Decor_wall_grated_machines_pillar_large_broken =
   template = "Decor_wall_grated_machines_pillar_broken",
   map = "MAP03",
 
-  prob = 7500,
+  prob = 3500,
 
   size = 96,
+}
+
+PREFABS.Decor_wall_grated_machines_pillar_broken_tall =
+{
+  template = "Decor_wall_grated_machines_pillar_broken",
+  map = "MAP02",
+
+  prob = 500,
+
+  size = 96,
+
+  z_fit = "stretch"
+}
+
+PREFABS.Decor_wall_grated_machines_pillar_large_broken_tall =
+{
+  template = "Decor_wall_grated_machines_pillar_broken",
+  map = "MAP03",
+
+  prob = 3500,
+
+  size = 96,
+
+  z_fit = "stretch"
 }

@@ -269,7 +269,7 @@ PREFABS.Wall_tech_outdoor_letter_G_compat =
 
   z_fit = "top",
 
-  tex_SDOM_WL2 = "PIPEWAL1"
+  tex_G_OM_WL2 = "PIPEWAL1"
 }
 
 PREFABS.Wall_tech_outdoor_letter_H = --#
