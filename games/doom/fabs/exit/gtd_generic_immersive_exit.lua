@@ -45,3 +45,12 @@ PREFABS.Exit_generic_immersive_start_gothic =
 
   start_fab_peer = "Start_generic_immersive_start_gothic"
 }
+
+PREFABS.Exit_generic_immersive_start_bloodfalls =
+{
+  template = "Exit_tech_immersive_exit",
+
+  map = "MAP04",
+
+  over = 0,
+}

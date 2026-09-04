@@ -360,6 +360,8 @@ PREFABS.Cage_dem_ledge_ambush5 =
   template = "Cage_dem_ledge_ambush1",
   map = "MAP18",
 
+  deep = 16,
+
   env = "!building",
   park_mode = "no_nature",
 
