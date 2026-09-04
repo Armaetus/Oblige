@@ -1321,6 +1321,104 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
     }
   },
 
+  tech_greenGrey = --50
+  {
+    env = "building",
+    prob = 50,
+
+    walls =
+    {
+      G_OM_WL1 = 5,
+      G_OM_WL2 = 5,
+      G_OM_WL3 = 5,
+      G_OM_WL4 = 5,
+      G_OM_WL5 = 5,
+      G_OM_WL6 = 5,
+      G_OM_WL7 = 5,
+      G_OM_WL8 = 5,
+      G_OM_WL9 = 5,
+      G_OM_WLA = 5,
+      G_OM_WLB = 5,
+      G_OM_WLC = 5,
+      G_OM_WLD = 5,
+      G_OM_WLE = 5,
+
+      G_OM_WG1 = 5,
+      G_OM_WG2 = 5,
+      G_OM_WG3 = 5,
+      G_OM_WG4 = 5,
+      G_OM_WG5 = 5,
+      G_OM_WG6 = 5,
+      G_OM_WG7 = 5,
+      G_OM_WG8 = 5
+    },
+
+    floors =
+    {
+      SLIME14 = 10,
+      SLIME15 = 10,
+      FLOOR0_3 = 10,
+      FLOOR0_5 = 10,
+      FLOOR0_6 = 10,
+      FLOOR4_8 = 10,
+      FLAT1 = 10,
+      FLAT3 = 10,
+      FLAT5_4 = 5,
+      FLAT18 = 10,
+      FLAT19 = 10,
+
+      GRATE1 = 2,
+      GRATE2 = 2,
+      GRATE3 = 2,
+      GRATE4 = 2,
+      GRATE5 = 2,
+      GRATE6 = 2,
+      GRATE7 = 2,
+      GRATE8 = 2,
+
+      G_OM_FG1 = 5,
+      G_OM_FG2 = 5,
+      G_OM_FT1 = 5,
+      G_OM_FT2 = 5,
+      G_OM_FT3 = 5,
+      G_OM_FT4 = 5,
+      G_OM_FT5 = 5,
+      G_OM_FT6 = 5,
+      G_OM_FT7 = 5,
+      G_OM_FT8 = 5,
+      G_OM_FT9 = 5,
+      G_OM_FTA = 5
+    },
+
+    ceilings =
+    {
+      SLIME14 = 10,
+      SLIME15 = 10,
+      FLOOR0_3 = 10,
+      FLOOR0_5 = 10,
+      FLOOR0_6 = 10,
+      FLOOR4_8 = 10,
+      FLAT1 = 10,
+      FLAT3 = 10,
+      FLAT5_4 = 5,
+      FLAT18 = 10,
+      FLAT19 = 10,
+
+      G_OM_FG1 = 5,
+      G_OM_FG2 = 5,
+      G_OM_FT1 = 5,
+      G_OM_FT2 = 5,
+      G_OM_FT3 = 5,
+      G_OM_FT4 = 5,
+      G_OM_FT5 = 5,
+      G_OM_FT6 = 5,
+      G_OM_FT7 = 5,
+      G_OM_FT8 = 5,
+      G_OM_FT9 = 5,
+      G_OM_FTA = 5
+    }
+  },
+
   tech_Outdoors_generic = --50
   {
     env  = "outdoor",
@@ -4944,7 +5042,31 @@ OBS_RESOURCE_PACK_THEMES =
 
       OBTBCEM1 = 25,
       OBTBCEM2 = 25,
-      OBTBCEM3 = 25
+      OBTBCEM3 = 25,
+
+      G_OM_WL1 = 18,
+      G_OM_WL2 = 18,
+      G_OM_WL3 = 18,
+      G_OM_WL4 = 18,
+      G_OM_WL5 = 18,
+      G_OM_WL6 = 18,
+      G_OM_WL7 = 18,
+      G_OM_WL8 = 18,
+      G_OM_WL9 = 18,
+      G_OM_WLA = 18,
+      G_OM_WLB = 18,
+      G_OM_WLC = 18,
+      G_OM_WLD = 18,
+      G_OM_WLE = 18,
+
+      G_OM_WG1 = 20,
+      G_OM_WG2 = 20,
+      G_OM_WG3 = 20,
+      G_OM_WG4 = 20,
+      G_OM_WG5 = 20,
+      G_OM_WG6 = 20,
+      G_OM_WG7 = 20,
+      G_OM_WG8 = 20
     },
 
     fences =
@@ -5346,7 +5468,31 @@ OBS_RESOURCE_PACK_THEMES =
 
       OBTBCEM1 = 25,
       OBTBCEM2 = 25,
-      OBTBCEM3 = 25
+      OBTBCEM3 = 25,
+
+      G_OM_WL1 = 12,
+      G_OM_WL2 = 12,
+      G_OM_WL3 = 12,
+      G_OM_WL4 = 12,
+      G_OM_WL5 = 12,
+      G_OM_WL6 = 12,
+      G_OM_WL7 = 12,
+      G_OM_WL8 = 12,
+      G_OM_WL9 = 12,
+      G_OM_WLA = 12,
+      G_OM_WLB = 12,
+      G_OM_WLC = 12,
+      G_OM_WLD = 12,
+      G_OM_WLE = 12,
+
+      G_OM_WG1 = 15,
+      G_OM_WG2 = 15,
+      G_OM_WG3 = 15,
+      G_OM_WG4 = 15,
+      G_OM_WG5 = 15,
+      G_OM_WG6 = 15,
+      G_OM_WG7 = 15,
+      G_OM_WG8 = 15
     },
 
     fences =

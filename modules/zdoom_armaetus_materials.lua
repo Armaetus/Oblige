@@ -1581,6 +1581,32 @@ OBS_RESOURCE_PACK_MATERIALS = {
   BATHWTR1 = { t="BATHWTR1", f="FLAT23"},
   BATHWTR2 = { t="BATHWTR2", f="FLAT23"},
 
+  -- techy grey walls
+  G_OM_WL1 = { t="G_OM_WL1", f="G_OM_FT1"},
+  G_OM_WL2 = { t="G_OM_WL2", f="G_OM_FT2"},
+  G_OM_WL3 = { t="G_OM_WL3", f="G_OM_FT3"},
+  G_OM_WL4 = { t="G_OM_WL4", f="G_OM_FT4"},
+  G_OM_WL5 = { t="G_OM_WL5", f="G_OM_FT5"},
+  G_OM_WL6 = { t="G_OM_WL6", f="G_OM_FT6"},
+  G_OM_WL7 = { t="G_OM_WL7", f="G_OM_FT7"},
+  G_OM_WL8 = { t="G_OM_WL8", f="G_OM_FT8"},
+  G_OM_WL9 = { t="G_OM_WL9", f="G_OM_FT9"},
+  G_OM_WLA = { t="G_OM_WLA", f="G_OM_FTA"},
+  G_OM_WLB = { t="G_OM_WLB", f="G_OM_FT1"},
+  G_OM_WLC = { t="G_OM_WLC", f="G_OM_FT2"},
+  G_OM_WLD = { t="G_OM_WLD", f="G_OM_FT3"},
+  G_OM_WLE = { t="G_OM_WLE", f="G_OM_FT4"},
+
+  -- techy green walls
+  G_OM_WG1 = { t="G_OM_WG1", f="G_OM_FG1"},
+  G_OM_WG2 = { t="G_OM_WG2", f="G_OM_FG2"},
+  G_OM_WG3 = { t="G_OM_WG3", f="G_OM_FT1"},
+  G_OM_WG4 = { t="G_OM_WG4", f="G_OM_FT2"},
+  G_OM_WG5 = { t="G_OM_WG5", f="G_OM_FT3"},
+  G_OM_WG6 = { t="G_OM_WG6", f="G_OM_FT4"},
+  G_OM_WG7 = { t="G_OM_WG7", f="G_OM_FG1"},
+  G_OM_WG8 = { t="G_OM_WG8", f="G_OM_FG2"},
+
   ----------------------
   -- Special Textures --
   ----------------------

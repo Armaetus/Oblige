@@ -154,15 +154,7 @@ function PREFAB_CONTROL.fine_tune_filters()
   }
   local new_themes_multipliers =
   {
-    --[[tech_cableSocketCatacombs = 1,
-    tech_bumblebee = 1.5,
-    tech_aww2 = 1.5,
-    tech_iStuff = 1.5,
-    --
-    urban_beigetownTech = 1.5,
-    urban_iStuff = 1.5,
-    --
-    hell_cableSocketCatacombs = 1.25]]
+    tech_greenGrey = 3
   }
   local themes =
   {
