@@ -3606,12 +3606,18 @@ function Render_properties_for_area(LEVEL, A)
   if not A.lighting then
     if R then
       if R:get_env() == "outdoor" or R:get_env() == "park" then
-        -- this for outdoor closets
-        A:set_lighting(LEVEL.sky_light--[[ - LEVEL.sky_shadow]])
 
+        -- this for outdoor closets
         if not A.is_outdoor then
-          A:set_lighting(A.lighting - LEVEL.sky_shadow)
+          if A.chunk and A.chunk.kind == "closet" then
+            A:set_lighting(LEVEL.sky_light)
+          else
+            A:set_lighting(LEVEL.sky_light - LEVEL.sky_shadow)
+          end
+        else
+          A:set_lighting(LEVEL.sky_light--[[ - LEVEL.sky_shadow]])
         end
+
       else
         A:set_lighting((A.base_light or 144) + (A.bump_light or 0))
       end
