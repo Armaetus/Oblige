@@ -1985,11 +1985,11 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           info.name = info.name .. " (h:" .. A.ch_history .. ")"
         end
 
-        if A.dead_end and not A.mode.chunk then
+        --[[if A.dead_end and not A.mode.chunk then
           if A.l_history then
             info.name = info.name .. " (l:" .. A.l_history .. ")"
           end
-        end
+        end]]
 
         if A.is_porch then
           info.name = info.name .. " is_porch"
@@ -2138,15 +2138,15 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         info.name = "Closet: " .. chunk.prefab_def.name
         info.editor_num = PARAM.hn_thing_start_offset
 
+        if chunk.area.lighting and chunk.from_area.lighting then
+          info.name = info.name ..
+            " (LH: " .. chunk.area.l_history .. " from " .. chunk.from_area.lighting .. ")"
+        end
+
         if chunk.from_area.floor_group and chunk.from_area.floor_group.wall_group then
           info.name = info.name .. " (Wall Group: " ..
             chunk.from_area.floor_group.wall_group .. ")"
         end
-
-        --[[if chunk.area.lighting and chunk.from_area.lighting then
-          info.name = info.name ..
-            " (LH: " .. chunk.area.l_history .. " from " .. chunk.from_area.lighting .. ")"
-        end]]
 
         if chunk.area then
           if chunk.area.room and chunk.area.room.is_outdoor
