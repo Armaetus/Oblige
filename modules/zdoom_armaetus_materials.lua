@@ -2965,7 +2965,7 @@ OBS_RESOURCE_PACK_TEXTURE_SET_ALIASES =
   {
     materials =
     {
-      "SDOM_FT1", "SDOM_FT2", "SDOM_FT3", "SDOM_FT4"
+      "G_OM_FT1", "G_OM_FT2", "G_OM_FT3", "G_OM_FT4"
     }
   }
 }
