@@ -2611,12 +2611,12 @@ brightmap texture GRNSTONE
 }
 
 // SD stuff
-brightmap texture SDOM_WL2
+brightmap texture G_OM_WL2
 {
   map SDMWL2BR
 }
 
-brightmap texture SDOM_WL5
+brightmap texture G_OM_WL5
 {
   map SDMWL5BR
 }
@@ -2956,8 +2956,8 @@ OBS_RESOURCE_PACK_TEXTURE_SET_ALIASES =
   {
     materials =
     {
-      "SDOM_WL1", "SDOM_WL2", "SDOM_WL3", 
-      "SDOM_WL4", "SDOM_WL5", "SDOM_WL6"
+      "G_OM_WL1", "G_OM_WL2", "G_OM_WL3", 
+      "G_OM_WL4", "G_OM_WL5", "G_OM_WL6"
     }
   },
 
