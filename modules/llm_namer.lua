@@ -4244,7 +4244,13 @@ level_data
     },
     "name")
 
+    if not lname then
+      gui.printf("Failed to acquire name.")
+      return "not_ok"
+    end
+
     gui.printf("Replaced name of " .. epi_lev.id .. ": " .. lname .. "\n")
+
     return lname
   end
 
@@ -4520,30 +4526,30 @@ _FORMAT_
           local name = generate_level_name(level_data, L)
 
           -- parse out common names from the LLM to something more unique
-          local noun_replacers = {}
-          for _,N in ipairs(LLM_NAME.story_components.replacers) do
-            noun_replacers[N] = namelib.generate_unique_noun("exotic")
-            assert(name, "Received no answer from Ollama instance! " ..
-            "Is it on? Why does life have to be this way?!")
-            name = string.gsub(name, N, noun_replacers[N])
-          end
+          if name ~= "not_ok" then
+            local noun_replacers = {}
+            for _,N in ipairs(LLM_NAME.story_components.replacers) do
+              noun_replacers[N] = namelib.generate_unique_noun("exotic")
+              name = string.gsub(name, N, noun_replacers[N])
+            end
 
-          -- direct replacers
-          if rand.odds(90) then
-            for replacee,choices in pairs(LLM_NAME.naming_novelty.replacers) do
-              if string.gmatch(name, replacee) then
-                name = string.gsub(name, replacee, rand.pick(choices))
+            -- direct replacers
+            if rand.odds(90) then
+              for replacee,choices in pairs(LLM_NAME.naming_novelty.replacers) do
+                if string.gmatch(name, replacee) then
+                  name = string.gsub(name, replacee, rand.pick(choices))
+                end
               end
             end
-          end
 
-          if name then
-            gui.debugf("LLM Namer: " .. L.name .. " name '" ..
-            L.description .. "' substituted with '" .. name .. "'!\n")
+            if name then
+              gui.debugf("LLM Namer: " .. L.name .. " name '" ..
+              L.description .. "' substituted with '" .. name .. "'!\n")
 
-            L.description = name
+              L.description = name
 
-            table.insert(LLM_NAME.history , name)
+              table.insert(LLM_NAME.history , name)
+            end
           end
 
         end
@@ -4589,7 +4595,7 @@ OB_MODULES["llm_namer"] =
       default = 1,
       tooltip = _("Generates a context-aware level name via LLM."),
       longtip = _("Uses Ollama to generate a name for a level by sending level metadata to Ollama. " ..
-        "Default model is llama3.1:8b for name generation and gemma4:latest for story generation. " .. 
+        "Default model is llama3.1:8b for name generation and gemma4:latest for story generation. " ..
         "Using a different model or LLM platform requires modification of the script. (see the first lines of code in modules/llm_namer.lua)" ..
         "To use this, just download Ollama and llama3.1:8b and gemma4:latest and keep it running all at default settings.\n\n" ..
         "This module uses Lua io.popen to access cURL, and may cause CMD to briefly appear. This is normal behavior.\n\n" ..
