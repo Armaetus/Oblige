@@ -4440,21 +4440,13 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
           end
 
           SA:set_ceil_group(A.ceil_group)
-          A:set_ceil(A.ceil_h)
         elseif SA.room:get_env() == "building" then
           SA.is_porch_neighbor = nil
 
-          -- use the ceil group of the "dead end" for the stair chunk, if it remains the same height
-          if A.room:get_env() == "building" then
-            SA:set_ceil_group(SAS.ceil_group)
-            A:set_ceil_group(SA.ceil_group)
-            SA:set_ceil(A.ceil_h)
-            A:set_ceil(A.ceil_group.h)
-          elseif A.room:get_env() == "outdoor" then
-            SA:set_ceil_group(A.ceil_group)
-            SA:set_ceil(A.ceil_h)
-            A:set_ceil(A.ceil_group.h)
-          end
+          SA:set_ceil_group(SAS.ceil_group)
+          A:set_ceil_group(SA.ceil_group)
+          SA:set_ceil(A.ceil_group.h)
+          A:set_ceil(A.ceil_group.h)
         end
 
         A:set_floor(SAS.floor_h)
