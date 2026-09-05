@@ -53,4 +53,6 @@ PREFABS.Exit_generic_immersive_start_bloodfalls =
   map = "MAP04",
 
   over = 0,
+
+  start_fab_peer = "Start_generic_immersive_start_bloodfalls"
 }
