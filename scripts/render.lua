@@ -349,6 +349,11 @@ function Render_edge(LEVEL, E, SEEDS)
         if chunk.kind == "stair" and not A.dead_end then
           reqs.deep = 16
           reqs.on_stairs = "yes"
+
+          local HC = chunk:higher_stair_floor()
+          if A.room:get_env() == "building" and HC.floor_group and HC.floor_group.wall_group then
+            reqs.group = HC.floor_group.wall_group
+          end
         end
       end
 
