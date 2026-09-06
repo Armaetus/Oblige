@@ -2632,7 +2632,7 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
   -- this just disables dynamic light entities if they are used directly
   -- when Dynamic Lights is off
   if not PARAM.bool_dynamic_lights
-  or PARAM.bool_dynamic_lights and PARAM.bool_dynamic_lights == false then
+  or PARAM.bool_dynamic_lights and PARAM.bool_dynamic_lights == 0 then
     def.thing_14998 = 0
     def.thing_14997 = 0
     def.thing_14996 = 0
