@@ -288,13 +288,13 @@ function Render_edge(LEVEL, E, SEEDS)
 
     -- don't get prefabs with a z_fit other than "top" for parks.
     local S1 = E.S
-    if A.room and A.room.is_park then
+    --[[if A.room and A.room.is_park then
       if not S1.floor_h and
       (A.room.park_type == "hills"
       or A.room.park_type == "river") then
         reqs.no_top_fit = true
       end
-    end
+    end]]
 
     -- smart checking for wall fabs that are too long
     -- stop them from occupying each others' space
@@ -351,8 +351,14 @@ function Render_edge(LEVEL, E, SEEDS)
           reqs.on_stairs = "yes"
 
           local HC = chunk:higher_stair_floor()
-          if A.room:get_env() == "building" and HC.floor_group and HC.floor_group.wall_group then
-            reqs.group = HC.floor_group.wall_group
+          reqs.height = HC.ceil_h - A.floor_h
+
+          if A.room.stair_wall_group then
+            reqs.group = A.room.stair_wall_group
+          else
+            if A.room:get_env() == "building" and HC.floor_group and HC.floor_group.wall_group then
+              reqs.group = HC.floor_group.wall_group
+            end
           end
         end
       end

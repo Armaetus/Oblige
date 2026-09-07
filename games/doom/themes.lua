@@ -1206,6 +1206,12 @@ DOOM.THEMES =
       ceil_mix_with_w_ultratall = 25
     },
 
+    stair_wall_groups =
+    {
+      wall_stair_1 = 1,
+      wall_stair_2 = 1
+    },
+
     wall_groups =
     {
       PLAIN = 0.01,
