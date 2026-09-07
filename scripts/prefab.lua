@@ -2920,7 +2920,7 @@ function Fab_find_matches(LEVEL, reqs, match_state)
 
     -- REMOVE-ME - temporary fix for the issue of non-natural walls looking
     -- when placed in parks
-    if reqs.no_top_fit and def.z_fit == "top" then return 0 end
+    -- if reqs.no_top_fit and def.z_fit == "top" then return 0 end
 
     -- fabs that require a plain ceiling are disqualified if
     -- the ceiling has already content in it

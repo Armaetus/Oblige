@@ -1973,11 +1973,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     info.editor_num = PARAM.hn_thing_start_offset
 
     for _,A in pairs(R.areas) do
-      if (A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor)
-      or (A.mode == "floor" and A.room:get_env() == "building" and A.dead_end) then
+      if (A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor) then
         info.name = "AREA_" .. A.id
 
-        if A.dead_end and A.cg_history then
+        --[[if A.dead_end and A.cg_history then
           info.name = info.name .. " (cg:" .. A.cg_history .. ")"
         end
 
@@ -1985,11 +1984,15 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           info.name = info.name .. " (h:" .. A.ch_history .. ")"
         end
 
-        --[[if A.dead_end and not A.mode.chunk then
+        if A.dead_end and not A.mode.chunk then
           if A.l_history then
             info.name = info.name .. " (l:" .. A.l_history .. ")"
           end
         end]]
+
+        if A.floor_h and A.ceil_h then
+          info.name = " (hgt: " .. A.ceil_h .. "-"  .. A.floor_h .. "=" .. A.ceil_h - A.floor_h ..  ")"
+        end
 
         if A.is_porch then
           info.name = info.name .. " is_porch"
