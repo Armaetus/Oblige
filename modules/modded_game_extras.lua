@@ -1972,11 +1972,11 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     local info = {}
     info.editor_num = PARAM.hn_thing_start_offset
 
-    for _,A in pairs(R.areas) do
+    --[[for _,A in pairs(R.areas) do
       if (A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor) then
         info.name = "AREA_" .. A.id
 
-        --[[if A.dead_end and A.cg_history then
+        if A.dead_end and A.cg_history then
           info.name = info.name .. " (cg:" .. A.cg_history .. ")"
         end
 
@@ -1988,7 +1988,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           if A.l_history then
             info.name = info.name .. " (l:" .. A.l_history .. ")"
           end
-        end]]
+        end
 
         if A.floor_h and A.ceil_h then
           info.name = " (hgt: " .. A.ceil_h .. "-"  .. A.floor_h .. "=" .. A.ceil_h - A.floor_h ..  ")"
@@ -2031,7 +2031,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         gui.printf("AREA tracker placed in: " .. S.mid_x .. ", " .. S.mid_y .. "\n")
         raw_add_entity(e)
       end
-    end
+    end]]
 
     -- floor chunks
     for _,chunk in pairs(R.floor_chunks) do
