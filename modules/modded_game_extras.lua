@@ -1973,7 +1973,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     info.editor_num = PARAM.hn_thing_start_offset
 
     for _,A in pairs(R.areas) do
-      if (A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor) then
+      if (A.mode == "floor" and not A.mode.chunk) then
         info.name = "AREA_" .. A.id
 
         --[[if A.dead_end and A.cg_history then
@@ -2122,6 +2122,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           info.name = info.name .. "[" .. R.stair_ceil_mode .. "]"
         end]]
 
+        if R.stair_wall_group then
+          info.name = info.name .. "(g: " .. R.stair_wall_group .. ")"
+        end
+
         if SCRIPTS.hn_id_table[info.name] then
           info.editor_num = SCRIPTS.hn_id_table[info.name].id
         elseif not SCRIPTS.hn_id_table[info.name] then
@@ -2146,11 +2150,6 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       if chunk.prefab_def then
         info.name = "Closet: " .. chunk.prefab_def.name
         info.editor_num = PARAM.hn_thing_start_offset
-
-        if chunk.area.lighting and chunk.from_area.lighting then
-          info.name = info.name ..
-            " (LH: " .. chunk.area.l_history .. " from " .. chunk.from_area.lighting .. ")"
-        end
 
         if chunk.from_area.floor_group and chunk.from_area.floor_group.wall_group then
           info.name = info.name .. " (Wall Group: " ..
