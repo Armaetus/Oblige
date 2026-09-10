@@ -1607,6 +1607,34 @@ OBS_RESOURCE_PACK_MATERIALS = {
   G_OM_WG7 = { t="G_OM_WG7", f="G_OM_FG1"},
   G_OM_WG8 = { t="G_OM_WG8", f="G_OM_FG2"},
 
+  -- bumblebee tech
+  G_OTBBW1 = { t="G_OTBBW1", f="G_OTBBF1"},
+  G_OTBBW2 = { t="G_OTBBW2", f="G_OTBBF2"},
+  G_OTBBW3 = { t="G_OTBBW3", f="G_OTBBF3"},
+  G_OTBBW4 = { t="G_OTBBW4", f="G_OTBBF4"},
+  G_OTBBW5 = { t="G_OTBBW5", f="G_OTBBF5"},
+  G_OTBBW6 = { t="G_OTBBW6", f="G_OTBBF6"},
+  G_OTBBW7 = { t="G_OTBBW7", f="G_OTBBF7"},
+  G_OTBBW8 = { t="G_OTBBW8", f="G_OTBBF8"},
+  G_OTBBW9 = { t="G_OTBBW9", f="G_OTBBF9"},
+  G_OTBBWA = { t="G_OTBBWA", f="G_OTBBFA"},
+  G_OTBBWB = { t="G_OTBBWB", f="G_OTBBFB"},
+  G_OTBBWC = { t="G_OTBBWC", f="G_OTBBFC"},
+  -- floors
+  G_OTBBF1 = { t="G_OTBBW1", f="G_OTBBF1"},
+  G_OTBBF2 = { t="G_OTBBW2", f="G_OTBBF2"},
+  G_OTBBF3 = { t="G_OTBBW3", f="G_OTBBF3"},
+  G_OTBBF4 = { t="G_OTBBW4", f="G_OTBBF4"},
+  G_OTBBF5 = { t="G_OTBBW5", f="G_OTBBF5"},
+  G_OTBBF6 = { t="G_OTBBW6", f="G_OTBBF6"},
+  G_OTBBF7 = { t="G_OTBBW7", f="G_OTBBF7"},
+  G_OTBBF8 = { t="G_OTBBW8", f="G_OTBBF8"},
+  G_OTBBF9 = { t="G_OTBBW9", f="G_OTBBF9"},
+  G_OTBBFA = { t="G_OTBBWA", f="G_OTBBFA"},
+  G_OTBBFB = { t="G_OTBBWB", f="G_OTBBFB"},
+  G_OTBBFC = { t="G_OTBBWC", f="G_OTBBFC"},
+  G_OTBBFD = { t="G_OTBBW6", f="G_OTBBFD"},
+
   ----------------------
   -- Special Textures --
   ----------------------

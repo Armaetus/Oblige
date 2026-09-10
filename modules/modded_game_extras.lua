@@ -2203,6 +2203,10 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       info.name = "Joiner: " .. chunk.prefab_def.name
       info.editor_num = PARAM.hn_thing_start_offset
 
+      if chunk.area.lighting then
+        info.name = info.name .. " (lighting: " .. chunk.area.l_history .. ")"
+      end
+
       if SCRIPTS.hn_id_table[info.name] then
         info.editor_num = SCRIPTS.hn_id_table[info.name].id
       elseif not SCRIPTS.hn_id_table[info.name] then
