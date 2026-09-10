@@ -4311,8 +4311,8 @@ Rules:
 - the selected Story Plot controls the actual objective and resolution
 - if the acronym UAC is used, it means "Union Aerospace Corporation"
 - please do not mention: the smell of ozone, nexus points, junctions, or sub-levels, structural integrity
-- avoid inventing a larger hidden crisis to make the ending feel more important
-- do not invent a larger hidden portal, reactor, core, energy-source, breach, or anomaly plot
+- do not use story writing structures such as negations e.g. "not X, just Y", "not afraid, just careful", and so on
+- keep plot legible rather than abstract
 - do not mention Earth, it is only for locational context
 
 The silent marine protagonist is the Doomslayer and needs no introduction, forever fighting an eternal war with hell and answers to no one. 
@@ -4410,7 +4410,11 @@ _FORMAT_
 
       -- sometimes add a McGuffin
       if rand.odds(50) then
-        story_characters = story_characters ..  "Found later in the story:\n"
+        story_characters = story_characters ..  
+          rand.pick({
+            "Found later in the story:\n",
+            "Found interacting Slayer later in the story:\n"
+          })
         story_characters = story_characters .. "* " .. rand.pick(LLM_NAME.story_components.mcguffins) .."\n"
       end
     end
@@ -4418,7 +4422,11 @@ _FORMAT_
     -- higher chance to involve a McGuffin if there are no characters in the story
     if character_mode == "none" then
       if rand.odds(66) then
-        story_characters = story_characters ..  "Found later in the story:\n"
+        story_characters = story_characters ..
+          rand.pick({
+            "Found later in the story:\n",
+            "Wielded by the Slayer's opponents in the story:\n"
+          })
         story_characters = story_characters .. "* " .. rand.pick(LLM_NAME.story_components.mcguffins) .."\n"
         -- a small chance to add a second McGuffin
         if rand.odds(33) then
