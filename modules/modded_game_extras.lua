@@ -1972,11 +1972,11 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     local info = {}
     info.editor_num = PARAM.hn_thing_start_offset
 
-    --[[for _,A in pairs(R.areas) do
+    for _,A in pairs(R.areas) do
       if (A.mode == "floor" and A.room:get_env() == "outdoor" and not A.is_outdoor) then
         info.name = "AREA_" .. A.id
 
-        if A.dead_end and A.cg_history then
+        --[[if A.dead_end and A.cg_history then
           info.name = info.name .. " (cg:" .. A.cg_history .. ")"
         end
 
@@ -2000,7 +2000,12 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           info.name = info.name .. " is_porch_neighbor"
         else
           info.name = info.name .. " unknown"
+        end]]
+
+        if R.pressure_history then
+          info.name = info.name .. " (P: " .. R.pressure_history .. ")"
         end
+
         info.editor_num = PARAM.hn_thing_start_offset
 
         if SCRIPTS.hn_id_table[info.name] then
@@ -2031,7 +2036,9 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         gui.printf("AREA tracker placed in: " .. S.mid_x .. ", " .. S.mid_y .. "\n")
         raw_add_entity(e)
       end
-    end]]
+
+      break;
+    end
 
     -- floor chunks
     for _,chunk in pairs(R.floor_chunks) do
@@ -2088,13 +2095,12 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     for _,chunk in pairs(R.stairs) do
       if chunk.prefab_def then
         local C = chunk
-        info.name = ""
-        --info.name = "Stairs: " .. C.prefab_def.name .. " "
+        info.name = "Stairs: " .. C.prefab_def.name .. " "
         info.editor_num = PARAM.hn_thing_start_offset
 
         --[[if C.area.ceil_group.sink then
           info.name = info.name .. "(" .. C.area.ceil_group.sink.name .. ") "
-        end]]
+        end
 
         if C.area.ceil_group then
           info.name = info.name .. "CG_" .. C.area.ceil_group.id
@@ -2114,7 +2120,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
         if R.stair_ceil_mode then
           info.name = info.name .. "[" .. R.stair_ceil_mode .. "]"
-        end
+        end]]
 
         if SCRIPTS.hn_id_table[info.name] then
           info.editor_num = SCRIPTS.hn_id_table[info.name].id

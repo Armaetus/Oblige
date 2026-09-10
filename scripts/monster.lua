@@ -96,9 +96,9 @@ function Monster_pacing(LEVEL)
 
     for _,R in pairs(LEVEL.rooms) do
       if R.is_hallway or R.is_secret then
-        R.pressure = "low"
+        R:set_pressure("low")
         if R.is_secret and OB_CONFIG.secret_monsters == "yesyes" then
-          R.pressure = rand.sel(75, "medium", "high")
+          R:set_pressure( rand.sel(75, "medium", "high") )
         end
         goto skip
       end
@@ -140,7 +140,7 @@ function Monster_pacing(LEVEL)
       amounts[R.pressure] = amounts[R.pressure] - 1
     end
 
-    R.pressure = what
+    R:set_pressure(what)
 
     amounts[what] = (amounts[what] or 0) + 1
   end

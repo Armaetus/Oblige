@@ -674,6 +674,19 @@ function ROOM_CLASS.get_highest_ceiling(R) --MSSP
   return h
 end
 
+function ROOM_CLASS.set_pressure(R, p)
+  R.pressure = p
+
+  local info = debug.getinfo(2, "Sln")
+  local dbg = info.currentline .. "." .. info.name
+
+  if R.pressure_history then
+    R.pressure_history = R.pressure_history .. "->" .. dbg .. p
+  else
+    R.pressure_history = dbg .. p
+  end
+end
+
 ------------------------------------------------------------------------
 
 
