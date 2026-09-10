@@ -10972,7 +10972,7 @@ GROW_LAKE_EXTENDABLE_extend_bridge_aux =
 GROW_LAKE_BIG_O_NEW_AREA =
 {
   prob = 40,
-  skip_prob = 75,
+  skip_prob = 85,
 
   structure =
   {
@@ -11012,7 +11012,7 @@ GROW_LAKE_BIG_O_NEW_AREA =
 GROW_LAKE_BIG_O_WIDE_NEW_AREA =
 {
   prob = 40,
-  skip_prob = 80,
+  skip_prob = 85,
 
   structure =
   {
@@ -11050,7 +11050,7 @@ GROW_LAKE_BIG_O_WIDE_NEW_AREA =
 GROW_LAKE_BIG_L_NEW_AREA =
 {
   prob = 75,
-  skip_prob = 65,
+  skip_prob = 85,
 
   structure =
   {
@@ -11090,7 +11090,7 @@ GROW_LAKE_BIG_L_NEW_AREA =
 GROW_LAKE_BIG_J_NEW_AREA =
 {
   prob = 35,
-  skip_prob = 75,
+  skip_prob = 85,
 
   structure =
   {
@@ -11125,7 +11125,7 @@ GROW_LAKE_BIG_J_NEW_AREA =
 GROW_LAKE_BIG_J_NEW_AREA_2 =
 {
   prob = 50,
-  skip_prob = 75,
+  skip_prob = 85,
 
   structure =
   {
@@ -11160,7 +11160,7 @@ GROW_LAKE_BIG_J_NEW_AREA_2 =
 GROW_LAKE_CROSS_NEW_AREA =
 {
   prob = 25,
-  skip_prob = 75,
+  skip_prob = 80,
 
   structure =
   {
@@ -11197,7 +11197,7 @@ GROW_LAKE_CROSS_NEW_AREA =
 GROW_LAKE_CROSS_NEW_AREA_STRAIGHT =
 {
   prob = 35,
-  skip_prob = 75,
+  skip_prob = 80,
 
   structure =
   {
