@@ -3,6 +3,8 @@ PREFABS.Wall_stair_floor =
   file = "wall/gtd_wall_stair_groups.wad",
   map = "MAP01",
 
+  kind = "wall",
+
   prob = 50,
   rank = 2,
 
