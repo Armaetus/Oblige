@@ -4312,6 +4312,7 @@ Rules:
 - if the acronym UAC is used, it means "Union Aerospace Corporation"
 - please do not mention: the smell of ozone, nexus points, junctions, or sub-levels, structural integrity
 - do not use story writing structures such as negations e.g. "not X, just Y", "not afraid, just careful", and so on
+- no Warhammer 40k
 - keep plot legible rather than abstract
 - do not mention Earth, it is only for locational context
 

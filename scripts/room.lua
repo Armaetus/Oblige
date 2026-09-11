@@ -681,9 +681,9 @@ function ROOM_CLASS.set_pressure(R, p)
   local dbg = info.currentline .. "." .. info.name
 
   if R.pressure_history then
-    R.pressure_history = R.pressure_history .. "->" .. dbg .. p
-  else
-    R.pressure_history = dbg .. p
+    R.pressure_history = R.pressure_history .. "->" .. dbg .. ":" .. p
+  elseif not R.pressure_history then
+    R.pressure_history = dbg .. ":" .. p
   end
 end
 
