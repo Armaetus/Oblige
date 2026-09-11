@@ -1527,9 +1527,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       OBTBSFL1 = 10,
       OBTBSFL2 = 10,
       OBTBSFL3 = 10,
-      OBTBSBF1 = 10,
-      OBTBSBF2 = 10,
-      OBTBSBF3 = 10,
 
       G_OTBBF1 = 25,
       G_OTBBF2 = 25,
@@ -1574,9 +1571,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       OBTBSFL1 = 10,
       OBTBSFL2 = 10,
       OBTBSFL3 = 10,
-      OBTBSBF1 = 10,
-      OBTBSBF2 = 10,
-      OBTBSBF3 = 10,
 
       G_OTBBF1 = 25,
       G_OTBBF2 = 25,
