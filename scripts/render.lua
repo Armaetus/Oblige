@@ -1430,97 +1430,137 @@ stderrf("away = %s\n\n", string.bool(away))
 
     if S.diagonal == 1 then
       p1, p3, p7, p9 = true, false, false, false
+
     elseif S.diagonal == 3 then
       p1, p3, p7, p9 = false, true, false, false
+
     elseif S.diagonal == 7 then
       p1, p3, p7, p9 = false, false, true, false
+
     elseif S.diagonal == 9 then
       p1, p3, p7, p9 = false, false, false, true
-    end
 
-    if not S.diagonal then
+    else
       p1, p3, p7, p9 = true, true, true, true
+
       local A1 = S.area
       local A2, S1
 
       -- north
       S1 = SEEDS[S.sx][S.sy + 1]
       A2 = S1.area
+
       if A2 ~= A1 then
         p7, p9 = false, false
       end
-      if S1.diagonal == 9 then
-        p9 = true
-      elseif S1.diagonal == 7 then
+
+      if S1.diagonal == 7 then
         p7 = true
+      elseif S1.diagonal == 9 then
+        p9 = true
       end
+
 
       -- south
       S1 = SEEDS[S.sx][S.sy - 1]
       A2 = S1.area
+
       if A2 ~= A1 and not S1.diagonal then
         p1, p3 = false, false
       end
-      if S1.diagonal == 1 then
+
+      if S1.diagonal == 7 then
         p1 = true
-      elseif S1.diagonal == 3 then
+      elseif S1.diagonal == 9 then
         p3 = true
       end
+
 
       -- west
       S1 = SEEDS[S.sx - 1][S.sy]
       A2 = S1.area
-      if A2 ~= A1 and not S1.diagonal  then
+
+      if A2 ~= A1 and not S1.diagonal then
         p1, p7 = false, false
       end
-      if S1.diagonal == 1 then
+
+      -- IMPORTANT: west's east corners are 3 and 9
+      if S1.diagonal == 3 then
         p1 = true
-      end
-      if S1.diagonal == 7 then
+      elseif S1.diagonal == 9 then
         p7 = true
       end
+
 
       -- east
       S1 = SEEDS[S.sx + 1][S.sy]
       A2 = S1.area
-      if A2 ~= A1 and not S1.diagonal  then
+
+      if A2 ~= A1 and not S1.diagonal then
         p3, p9 = false, false
       end
-      if S1.diagonal == 3 then
+
+      if S1.diagonal == 1 then
         p3 = true
-      end
-      if S1.diagonal == 9 then
+      elseif S1.diagonal == 7 then
         p9 = true
       end
+
 
       -- SW
       S1 = SEEDS[S.sx - 1][S.sy - 1]
       A2 = S1.area
+
       if A2 ~= A1 and not S1.diagonal then
         p1 = false
       end
 
+      -- SW's NE corner is current p1
+      if S1.diagonal == 9 then
+        p1 = true
+      end
+
+
       -- SE
       S1 = SEEDS[S.sx + 1][S.sy - 1]
       A2 = S1.area
+
       if A2 ~= A1 and not S1.diagonal then
         p3 = false
       end
 
+      -- SE's NW corner is current p3
+      if S1.diagonal == 7 then
+        p3 = true
+      end
+
+
       -- NW
       S1 = SEEDS[S.sx - 1][S.sy + 1]
       A2 = S1.area
-      if A2 ~= A1 then
+
+      if A2 ~= A1 and not S1.diagonal then
         p7 = false
       end
+
+      -- NW's SE corner is current p7
+      if S1.diagonal == 3 then
+        p7 = true
+      end
+
 
       -- NE
       S1 = SEEDS[S.sx + 1][S.sy + 1]
       A2 = S1.area
-      if A2 ~= A1 then
+
+      if A2 ~= A1 and not S1.diagonal then
         p9 = false
       end
 
+      -- NE's SW corner is current p9
+      if S1.diagonal == 1 then
+        p9 = true
+      end
     end
   end
 
