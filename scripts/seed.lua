@@ -1583,4 +1583,6 @@ function CHUNK_CLASS.higher_stair_floor(chunk)
   elseif A1.floor_h < A2.floor_h then
     return A2
   end
+
+  return A1
 end
