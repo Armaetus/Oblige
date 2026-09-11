@@ -147,16 +147,25 @@ function PREFAB_CONTROL.fine_tune_filters()
   {
 
   }
+
   local new_fab_groups_multipliers =
   {
-    gtd_ribbed_lights_rdwall_EPIC = 12,
-    gtd_wall_grated_machines_damaged_wall = 16
+    gtd_ribbed_lights_rdwall_EPIC = 4, --12
+    gtd_wall_grated_machines_damaged_wall = 6 --16
   }
+
   local new_themes_multipliers =
   {
     tech_greenGrey = 12,
-    tech_bumblebee = 12
+    tech_bumblebee = 12,
+
+    tech_o_letter_Q = 6,
+    tech_o_letter_R = 6,
+
+    tech_o_litter_L2 = 6,
+    tech_o_letter_M2 = 6
   }
+
   local themes =
   {
     "tech",

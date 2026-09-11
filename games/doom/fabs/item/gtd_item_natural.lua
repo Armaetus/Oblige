@@ -3,7 +3,7 @@ PREFABS.Item_natural_closet_1 =
   file  = "item/gtd_item_natural.wad",
   map = "MAP01",
 
-  prob = 350,
+  prob = 750,
 
   where  = "seeds",
   seed_w = 2,
