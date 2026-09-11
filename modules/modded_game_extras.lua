@@ -2042,7 +2042,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     -- floor chunks
     for _,chunk in pairs(R.floor_chunks) do
-      if chunk.prefab_def and chunk.kind ~= "light" then
+      if chunk.prefab_def and chunk.prefab_def.kind ~= "light" then
         info.name = "Point: " .. chunk.prefab_def.name
         info.editor_num = PARAM.hn_thing_start_offset
 
