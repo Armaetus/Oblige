@@ -3658,14 +3658,16 @@ function Render_properties_for_area(LEVEL, A)
     A:set_ceil_mat("_SKY")
   end
 
-  if A.chunk and A.chunk.kind == "stair" then
-    if A.room.is_outdoor then
-      if R.ceil_mats[A.ceil_h] then
-        A:set_ceil_mat(R.ceil_mats[A.ceil_h])
-      elseif A.chunk.dest_area.ceil_mat ~= "_SKY" then
-        A:set_ceil_mat(A.chunk.dest_area.ceil_mat)
-      elseif A.chunk.from_area.ceil_mat ~= "_SKY" then
-        A:set_ceil_mat(A.chunk.from_area.ceil_mat)
+  if A.chunk then
+    if A.chunk.kind == "stair" then
+      if A.room.is_outdoor then
+        if R.ceil_mats[A.ceil_h] then
+          A:set_ceil_mat(R.ceil_mats[A.ceil_h])
+        elseif A.chunk.dest_area.ceil_mat ~= "_SKY" then
+          A:set_ceil_mat(A.chunk.dest_area.ceil_mat)
+        elseif A.chunk.from_area.ceil_mat ~= "_SKY" then
+          A:set_ceil_mat(A.chunk.from_area.ceil_mat)
+        end
       end
     end
   end
@@ -3681,6 +3683,19 @@ end
 function Render_set_all_properties(LEVEL)
   for _,A in pairs(LEVEL.areas) do
     Render_properties_for_area(LEVEL, A)
+  end
+
+  -- joiners gain the average lighting between connecting areas
+  for _,R in pairs(LEVEL.rooms) do
+    for _,J in pairs(R.joiners) do
+
+      if J.kind == "joiner" then
+        local L1 = (J.from_area.lighting)
+        local L2 = (J.dest_area.lighting)
+        J.area:set_lighting(L1 + L2 / 2)
+      end
+
+    end
   end
 end
 
