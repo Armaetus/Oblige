@@ -3784,7 +3784,7 @@ GROW_COLONNADE_PARTHENON =
 
   structure =
   {
-    "x.....","x%1>A%",
+    "x.....","x/1>A%",
     "1.....","111#AA",
     "1.....","111>AA",
     "x.....","x11>AA",
