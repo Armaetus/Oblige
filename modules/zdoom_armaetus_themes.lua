@@ -5443,7 +5443,8 @@ OBS_RESOURCE_PACK_THEMES =
       gtd_bathwater = 30,
       gtd_mscottpaper = 30,
       --
-      gtd_ribbed_lights_rdwall_EPIC = 25
+      gtd_ribbed_lights_rdwall_EPIC = 25,
+      gtd_ribbed_lights_vox_lights_EPIC = 25
     },
 
     window_groups =
@@ -5955,7 +5956,8 @@ OBS_RESOURCE_PACK_THEMES =
       --
       gtd_pools = 30,
       --
-      gtd_ribbed_lights_rdwall_EPIC = 10
+      gtd_ribbed_lights_rdwall_EPIC = 10,
+      gtd_ribbed_lights_vox_lights_EPIC = 10
     },
 
     window_groups =
@@ -6403,7 +6405,8 @@ OBS_RESOURCE_PACK_THEMES =
       gtd_wall_lit_h_window_tall_collite_blue = 10,
       gtd_wall_lit_h_window_tall_collite_orange = 10,
       --
-      gtd_ribbed_lights_rdwall_EPIC = 25
+      gtd_ribbed_lights_rdwall_EPIC = 25,
+      gtd_ribbed_lights_vox_lights_EPIC = 25
     },
 
     window_groups =

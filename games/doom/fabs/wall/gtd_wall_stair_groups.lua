@@ -29,7 +29,9 @@ PREFABS.Wall_stair_floor_tech =
 
   theme = "tech",
 
-  group = "wall_stair_2",
+  group = "wall_stair_1",
+
+  tex_SUPPORT3 = "SUPPORT2"
 }
 
 -- stair2, uses ceiling as texture source
@@ -56,7 +58,9 @@ PREFABS.Wall_stair_ceil_tech =
 
   env = "building",
 
-  tex__FLOOR = "_CEIL"
+  tex__FLOOR = "_CEIL",
+
+  tex_SUPPORT3 = "SUPPORT2"
 }
 
 -- stair2, compat version that uses floor
@@ -65,7 +69,7 @@ PREFABS.Wall_stair_ceil =
 {
   template = "Wall_stair_floor",
 
-  env = "outdoor",
+  env = "!building",
 
   group = "wall_stair_2"
 }
@@ -75,9 +79,10 @@ PREFABS.Wall_stair_ceil_tech =
   template = "Wall_stair_floor",
 
   rank = 1,
+  env = "!building",
 
   theme = "tech",
   group = "wall_stair_2",
 
-  env = "outdoor"
+  tex_SUPPORT3 = "SUPPORT2"
 }

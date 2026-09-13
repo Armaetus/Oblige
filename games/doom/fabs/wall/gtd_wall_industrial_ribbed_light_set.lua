@@ -294,3 +294,43 @@ PREFABS.Wall_gtd_ribbed_lights_rdwall_long_diagonal =
 
   z_fit = { 74,76 , 82,84 },
 }
+
+--
+
+PREFABS.Wall_gtd_ribbed_vox_lights =
+{
+  file = "wall/gtd_wall_industrial_ribbed_light_set.wad",
+  map = "MAP20",
+
+  port = "zdoom",
+
+  prob = 50,
+  group = "gtd_ribbed_lights_vox_lights_EPIC",
+
+  where = "edge",
+
+  deep = 16,
+
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit = {87,89}
+}
+
+PREFABS.Wall_gtd_ribbed_vox_lights_pillar =
+{
+  template = "Wall_gtd_ribbed_vox_lights",
+  map = "MAP21",
+
+  prob = 5
+}
+
+PREFABS.Wall_gtd_ribbed_vox_lights_diagonal =
+{
+  template = "Wall_gtd_ribbed_vox_lights",
+  map = "MAP22",
+
+  where = "diagonal"
+}
