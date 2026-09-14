@@ -353,7 +353,7 @@ function Render_edge(LEVEL, E, SEEDS)
           local HC = chunk:higher_stair_floor()
           reqs.height = HC.ceil_h - A.floor_h
 
-          if A.room.stair_wall_group then
+          if A.room.stair_wall_group and not chunk.dest_area.dead_end then
             reqs.group = A.room.stair_wall_group
           else
             if A.room:get_env() == "building" and HC.floor_group and HC.floor_group.wall_group then
@@ -3732,7 +3732,7 @@ function Render_set_all_properties(LEVEL)
       if J.kind == "joiner" then
         local L1 = (J.from_area.lighting)
         local L2 = (J.dest_area.lighting)
-        J.area:set_lighting(L1 + L2 / 2)
+        J.area:set_lighting((L1 + L2) / 2)
       end
 
     end
