@@ -347,6 +347,8 @@ PREFABS.Cage_dem_ledge_ambush4 =
   env = "!building",
   park_mode = "no_nature",
 
+  deep = 16,
+
   bound_z1 = 0,
   bound_z2 = 136,
 
@@ -360,6 +362,8 @@ PREFABS.Cage_dem_ledge_ambush5 =
 
   env = "!building",
   park_mode = "no_nature",
+
+  deep = 16,
 
   bound_z1 = 0,
   bound_z2 = 232,
