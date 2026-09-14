@@ -31,7 +31,7 @@ PREFABS.Wall_stair_floor_tech =
 
   group = "wall_stair_1",
 
-  tex_SUPPORT3 = "SUPPORT2"
+  tex_SUPPORT3 = "DOORSTOP"
 }
 
 -- stair2, uses ceiling as texture source
@@ -60,7 +60,7 @@ PREFABS.Wall_stair_ceil_tech =
 
   tex__FLOOR = "_CEIL",
 
-  tex_SUPPORT3 = "SUPPORT2"
+  tex_SUPPORT3 = "DOORSTOP"
 }
 
 -- stair2, compat version that uses floor
@@ -84,5 +84,5 @@ PREFABS.Wall_stair_ceil_tech =
   theme = "tech",
   group = "wall_stair_2",
 
-  tex_SUPPORT3 = "SUPPORT2"
+  tex_SUPPORT3 = "DOORSTOP"
 }
