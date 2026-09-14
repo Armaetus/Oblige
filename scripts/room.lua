@@ -2664,7 +2664,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       grp = { id = alloc_id(LEVEL, "floor_group") }
     end
 
-    A.floor_group = grp
+    A:set_floor_group(grp)
 
     if not grp.volume then
       grp.volume = 0
@@ -2719,7 +2719,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     for _, A in pairs(R.areas) do
       if A.floor_group == group2 then
-        A.floor_group = group1
+        A:set_floor_group(group1)
       end
     end
 
