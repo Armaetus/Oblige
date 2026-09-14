@@ -1502,7 +1502,7 @@ gui.debugf("new room %s : env = %s : parent = %s\n", R.name, tostring(info.env),
   end
 
   if info.force_no_street then
-    R.is_street = false
+    R.is_street = nil
   end
 
   if trunk == nil then
@@ -3947,7 +3947,7 @@ function Grower_make_street(R, SEEDS, LEVEL)
   -- regular rooms
   R.areas[1]:calc_volume()
   if R.areas[1].svolume < 96 then
-    R.is_street = false
+    R.is_street = nil
     return
   end
 
