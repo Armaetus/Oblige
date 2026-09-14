@@ -2678,12 +2678,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       if not A2 then goto skip end
       if A2.floor_group then goto skip end
 
-      -- Street Mode:
-      -- keep the road area from the sidewalks
-      if R.is_street then
-        if A.is_road and not A2.is_road then goto skip end
-      end
-
       -- stair connections *must* use another group.
       -- direct connections generally use the same group.
       if IC.kind ~= "direct" or rand.odds(prob_for_new_floor_group(A, A2)) then
@@ -2756,7 +2750,15 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     if group1.h ~= group2.h then return end
 
     if do_floor_groups_touch(R, group1, group2) then
-      merge_floor_groups(R, group1, group2)
+      if not R.is_street then
+        merge_floor_groups(R, group1, group2)
+      elseif R.is_street then
+        if A1.is_road and A2.is_road then
+          merge_floor_groups(R, group1, group2)
+        elseif not A1.is_road and not A2.is_road then
+          merge_floor_groups(R, group1, group2)
+        end
+      end
     end
   end
 
@@ -2846,6 +2848,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
         if A1.is_outdoor and not A2.is_outdoor then return false end
         if A2.is_outdoor and not A1.is_outdoor then return false end
+
+        if A1.is_porch and not A2.is_porch then return false end
+        if not A1.is_porch and A2.is_porch then return false end
 
         if ceilings_must_stay_separated(R, A1, A2) then return false end
 
