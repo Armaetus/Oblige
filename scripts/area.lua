@@ -738,6 +738,7 @@ function Junction_init(LEVEL, SEEDS)
     -- edge of map?
     if not (N and N.area) then
       local junc = Junction_lookup(LEVEL, A, "map_edge", "create_it")
+      assert(junc)
 
       junc.perimeter = junc.perimeter + 1
       goto skip
@@ -746,6 +747,7 @@ function Junction_init(LEVEL, SEEDS)
     if N.area == S.area then goto skip end
 
     local junc = Junction_lookup(LEVEL, A, N.area)
+    assert(junc)
 
     if dir < 5 then
       junc.perimeter = junc.perimeter + 1
