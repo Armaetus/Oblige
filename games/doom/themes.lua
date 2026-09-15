@@ -1560,6 +1560,7 @@ DOOM.THEMES =
       gtd_sunderfall = 13,
       gtd_sunderfall_barred = 13,
       gtd_lavafall = 13,
+      gtd_lusting_for_the_sun = 15,
       --
       cran_bunkbeds = 50,
       gtd_craneo_bank_set = 10,
@@ -2114,6 +2115,7 @@ DOOM.THEMES =
       gtd_sunderfall = 25,
       gtd_sunderfall_barred = 25,
       gtd_lavafall = 7,
+      gtd_lusting_for_the_sun = 30,
       --
       cran_bunkbeds = 50,
       gtd_craneo_bank_set = 50,
@@ -2682,6 +2684,7 @@ DOOM.THEMES =
       gtd_sunderfall = 25,
       gtd_sunderfall_barred = 25,
       gtd_lavafall = 25,
+      gtd_lusting_for_the_sun = 50,
       --
       cran_bloodtubes_set = 50,
       --
