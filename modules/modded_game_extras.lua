@@ -1974,7 +1974,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     for _,A in pairs(R.areas) do
       if (A.mode == "floor" and not A.mode.chunk) then
-        info.name = "AREA_" .. A.id
+        info.name = "ROOM_" .. A.room.id
 
         --[[if A.dead_end and A.cg_history then
           info.name = info.name .. " (cg:" .. A.cg_history .. ")"

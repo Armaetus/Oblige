@@ -140,6 +140,15 @@ function Monster_pacing(LEVEL)
       amounts[R.pressure] = amounts[R.pressure] - 1
     end
 
+    local info = debug.getinfo(2, "Sln")
+    local dbg = info.currentline .. "." .. info.name
+
+    if R.pressure_history then
+      R.pressure_history = R.pressure_history .. "->" .. dbg .. ":" .. what
+    elseif not R.pressure_history then
+      R.pressure_history = dbg .. ":" .. what
+    end
+    
     R:set_pressure(what)
 
     amounts[what] = (amounts[what] or 0) + 1
@@ -258,9 +267,6 @@ function Monster_pacing(LEVEL)
     -- enforce other logic
     if R.is_after_start and #LEVEL.rooms > 2 then
       tab["high"] = nil
-      if LEVEL.has_linear_start then
-        tab["medium"] = nil
-      end
     end
 
     if R.is_teleport_dest then tab["high"] = nil end
