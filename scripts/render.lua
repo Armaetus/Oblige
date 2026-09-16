@@ -800,7 +800,7 @@ function Render_edge(LEVEL, E, SEEDS)
       Trans.set_fitted_z(T, z, min_ceil)
     end
 
-    if LEVEL.is_procedural_gotcha and E.kind == "arch"
+    if LEVEL.is_procedural_gotcha and E.kind == "doorway"
     and PARAM.bool_proc_gotcha_open_start and PARAM.bool_proc_gotcha_open_start == 1 then
       def = PREFABS[rand.pick(THEME.generic_connectors.doors)]
     end
