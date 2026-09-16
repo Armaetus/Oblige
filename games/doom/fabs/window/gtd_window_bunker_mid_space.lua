@@ -51,6 +51,8 @@ PREFABS.Window_bunker_terrace_1 =
   group  = "gtd_window_bunker_terrace",
   prob   = 50,
 
+  passable = true,
+
   where  = "edge",
   seed_w = 1,
 
