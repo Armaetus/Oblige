@@ -800,6 +800,11 @@ function Render_edge(LEVEL, E, SEEDS)
       Trans.set_fitted_z(T, z, min_ceil)
     end
 
+    if LEVEL.is_procedural_gotcha and E.kind == "arch"
+    and PARAM.bool_proc_gotcha_open_start and PARAM.bool_proc_gotcha_open_start == 1 then
+      def = PREFABS[rand.pick(THEME.generic_connectors.doors)]
+    end
+
     -- choose lighting to be the minimum of each side
     Ambient_push(math.min(E.area.lighting, E.peer.area.lighting))
 
@@ -2799,6 +2804,13 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     local start_fab_override = check_peered_exits(def, chunk)
     if start_fab_override then
       def = start_fab_override
+    end
+  end
+
+  if LEVEL.is_procedural_gotcha and chunk.kind == "joiner"
+  and PARAM.bool_proc_gotcha_open_start and PARAM.bool_proc_gotcha_open_start == 1 then
+    if THEME.generic_connectors.joiners then
+      def = PREFABS[rand.pick(THEME.generic_connectors.joiners)]
     end
   end
 

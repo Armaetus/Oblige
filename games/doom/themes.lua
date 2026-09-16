@@ -1239,6 +1239,14 @@ DOOM.THEMES =
     },
 
     streets_friendly = false,
+
+    generic_connectors =
+    {
+      joiners =
+        {"Joiner_simplest"},
+      doors =
+        {"Arch_simplest"}
+    }
   },
 
   ------------------------------------
