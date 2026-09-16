@@ -5007,6 +5007,14 @@ function Grower_create_rooms(LEVEL, SEEDS)
     LEVEL.is_dead = true
   end
 
+  if LEVEL.is_procedural_gotcha then
+    for _,R in pairs(LEVEL.rooms) do
+      if R.svolume < 16 then
+        LEVEL.is_dead = true
+      end
+    end
+  end
+
   --[[if LEVEL.has_linear_start and LEVEL.start_room:prelim_conn_num(LEVEL) > 2 then
     gui.printf("Linear start info:\n" .. table.tostr(LEVEL.start_room,1))
     for _,R in pairs(LEVEL.rooms) do
