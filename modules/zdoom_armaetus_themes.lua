@@ -6406,7 +6406,6 @@ OBS_RESOURCE_PACK_THEMES =
       gtd_wall_lit_h_window_tall_collite_orange = 10,
       --
       gtd_ribbed_lights_rdwall_EPIC = 25,
-      gtd_ribbed_lights_vox_lights_EPIC = 25
     },
 
     window_groups =
