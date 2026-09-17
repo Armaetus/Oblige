@@ -17,7 +17,7 @@ PREFABS.Pic_EPIC_box_template = -- this is now a base template and is disabled.
   deep   =  16,
   over   = -16,
 
-  x_fit = "frame",
+  --x_fit = "frame",
   y_fit = "top",
 
   sector_1 = 0,
