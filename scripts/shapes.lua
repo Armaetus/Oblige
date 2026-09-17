@@ -3384,6 +3384,38 @@ GROW_STAIR_ASKEW_LONG_DIVISIONS =
   }
 },
 
+GROW_WIDE_PILLAR =
+{
+  prob = 10,
+  skip_prob = 50,
+
+  structure =
+  {
+    "......","AAAAAA",
+    "......","AAAAAA",
+    "......","AA##AA",
+    "......","111111",
+    "......","111111",
+    "11xxxx","11xxxx"
+  }
+},
+
+GROW_WIDE_PILLAR_CAGE =
+{
+  prob = 10,
+  skip_prob = 50,
+
+  structure =
+  {
+    "..........","AAAAAAAAAA",
+    "..........","AAAAAAAAAA",
+    "..........","CC##CC##AA",
+    "..........","1111111111",
+    "..........","1111111111",
+    "11xxxxxxxx","11xxxxxxxx"
+  }
+},
+
 -- MSSP's Greek COLONNADE sort of things. [MSSPCOLONNADE]
 
 GROW_COLONNADE_1 =
@@ -13024,6 +13056,30 @@ GROW_RETICULE_SMALL =
   }
 },
 
+GROW_RETICULE_SMALL_CAGE =
+{
+  prob = 15,
+  skip_prob = 60,
+
+  structure =
+  {
+    "x11xxxx","x11xxxx",
+    ".......","/11111%",
+    ".......","111C111",
+    ".......","111C111",
+    ".......","ACC#CCA",
+    ".......","AAACAAA",
+    ".......","AAACAAA",
+    ".......","%AAAAA/"
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1."
+  }
+},
+
 GROW_RETICULE_SMALL_LIQUID =
 {
   prob = 10,
@@ -13073,7 +13129,7 @@ GROW_RETICULE_HALF_SMALL =
   }
 },
 
-GROW_WATER_STRIPES_RETICULE =
+--[[GROW_WATER_STRIPES_RETICULE =
 {
   prob = 10,
   skip_prob = 80,
@@ -13092,7 +13148,7 @@ GROW_WATER_STRIPES_RETICULE =
     "..........","111~11~111",
     "..........","1111111111"
   }
-},
+},]]
 
 GROW_WATER_STRIPES_RETICULE_DIAGONAL =
 {
@@ -13101,25 +13157,29 @@ GROW_WATER_STRIPES_RETICULE_DIAGONAL =
 
   structure =
   {
-    "11xxxxxxxx","11xxxxxxxx",
-    "..........","1111111111",
-    "..........","111~11~111",
+    "xx11xxxxxx","xx11xxxxxx",
+    "x........x","x/111111%x",
+    "..........","/11~11~11%",
     "..........","11/~11~%11",
     "..........","1~~/11%~~1",
     "..........","1111111111",
     "..........","1111111111",
     "..........","1~~%11/~~1",
     "..........","11%~11~/11",
-    "..........","111~11~111",
-    "..........","1111111111"
+    "..........","%11~11~11/",
+    "x........x","x%111111/x"
   },
 
   diagonals =
   {
+    ".1","1.",
+    ".1","1.",
     "1~","~1",
     "~1","1~",
     "~1","1~",
-    "1~","~1"
+    "1~","~1",
+    ".1","1.",
+    ".1","1."
   }
 },
 
@@ -13130,8 +13190,8 @@ GROW_WATER_STRIPES_RETICULE_half =
 
   structure =
   {
-    "xxxxxxxxx11","xxxxxxxxx11",
-    "xxxx.......","xxxx1111111",
+    "xxxxxxxx11x","xxxxxxxx11x",
+    "xxxx.......","xxxx111111%",
     "xxx........","xxx~11~1111",
     "xx.........","xx/~11~%111",
     "x..........","x~~/11%~~11",
@@ -13140,22 +13200,24 @@ GROW_WATER_STRIPES_RETICULE_half =
     "x..........","x~~%11/~~11",
     "xx.........","xx%~11~/111",
     "xxx........","xxx~11~1111",
-    "xxxx.......","xxxx1111111"
+    "xxxx.......","xxxx111111/"
   },
 
   diagonals =
   {
+         ".1",
     ".~","~1",
     "~1","1~",
     "~1","1~",
-    ".~","~1"
+    ".~","~1",
+         ".1"
   }
 },
 
 GROW_WATER_STRIPES_RETICULE_halfdiag =
 {
-  prob = 10,
-  skip_prob = 90,
+  prob = 20,
+  skip_prob = 85,
 
   structure =
   {
@@ -13183,13 +13245,13 @@ GROW_WATER_STRIPES_RETICULE_halfdiag =
 
 GROW_WATER_STRIPES_RETICULE_PILLARED =
 {
-  prob = 10,
-  skip_prob = 90,
+  prob = 20,
+  skip_prob = 85,
 
   structure =
   {
-    "11xxxxxxxx","11xxxxxxxx",
-    "..........","1111111111",
+    "x11xxxxxxx","x11xxxxxxx",
+    "..........","/11111111%",
     "..........","111~11~111",
     "..........","111~##~111",
     "..........","1~~~##~~~1",
@@ -13198,7 +13260,13 @@ GROW_WATER_STRIPES_RETICULE_PILLARED =
     "..........","1~~~##~~~1",
     "..........","111~##~111",
     "..........","111~11~111",
-    "..........","1111111111"
+    "..........","%11111111/"
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1."
   }
 },
 
@@ -13209,8 +13277,8 @@ GROW_WATER_STRIPES_RETICULE_DIAGONAL_PILLARED =
 
   structure =
   {
-    "11xxxxxxxx","11xxxxxxxx",
-    "..........","1111111111",
+    "x11xxxxxxx","x11xxxxxxx",
+    "..........","/11111111%",
     "..........","111~##~111",
     "..........","11/~##~%11",
     "..........","1~~/11%~~1",
@@ -13219,15 +13287,17 @@ GROW_WATER_STRIPES_RETICULE_DIAGONAL_PILLARED =
     "..........","1~~%11/~~1",
     "..........","11%~##~/11",
     "..........","111~##~111",
-    "..........","1111111111"
+    "..........","%11111111/"
   },
 
   diagonals =
   {
+    ".1","1.",
     "1~","~1",
     "~1","1~",
     "~1","1~",
-    "1~","~1"
+    "1~","~1",
+    ".1","1."
   }
 },
 
@@ -13238,8 +13308,8 @@ GROW_RETICULE_WALL =
 
   structure =
   {
-    "11xxxxxxxx","11xxxxxxxx",
-    "..........","1111111111",
+    "x11xxxxxxx","x11xxxxxxx",
+    "..........","/11111111%",
     "..........","1111111111",
     "..........","11##AA##11",
     "..........","11#AAAA#11",
@@ -13248,7 +13318,13 @@ GROW_RETICULE_WALL =
     "..........","11#AAAA#11",
     "..........","11##AA##11",
     "..........","1111111111",
-    "..........","1111111111",
+    "..........","%11111111/",
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".1","1."
   }
 },
 
@@ -13315,12 +13391,13 @@ GROW_CHAMFER_WIDE_ROOM_CORNER_OUTLET =
     "xxxx..","xxxx11",
     "xxx...","xxx/11",
     "1.....","111111",
-    "1.....","111111",
+    "1.....","11111/",
   },
 
   diagonals =
   {
     ".1",
+    "1."
   },
 },
 
@@ -13335,13 +13412,14 @@ GROW_CHAMFER_WIDE_ROOM_CORNER_OUTLET_LIQUID =
     "xx....","xx/~11",
     "xx....","xx~/11",
     "1.....","111111",
-    "1.....","111111",
+    "1.....","11111/",
   },
 
   diagonals =
   {
     ".~",
     "~1",
+    "1."
   },
 },
 
