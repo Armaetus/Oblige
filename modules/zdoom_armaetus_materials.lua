@@ -1464,10 +1464,10 @@ OBS_RESOURCE_PACK_MATERIALS = {
   T_GTHLP = { t="T_GTHLP", f="G04" },
 
   -- Quad lights
-  T_GHFLY = { t="T_GHFLG", f="T_GHFLY" },
-  T_GHFLB = { t="T_GHFLG", f="T_GHFLB" },
+  T_GHFLY = { t="T_GHFLY", f="T_GHFLY" },
+  T_GHFLB = { t="T_GHFLB", f="T_GHFLB" },
   T_GHFLG = { t="T_GHFLG", f="T_GHFLG" },
-  T_GHFLP = { t="T_GHFLG", f="T_GHFLP" },
+  T_GHFLP = { t="T_GHFLP", f="T_GHFLP" },
 
   -------------
   -- DUKETEX --

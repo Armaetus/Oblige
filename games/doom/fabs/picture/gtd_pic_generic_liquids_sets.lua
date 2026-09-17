@@ -18,6 +18,7 @@ PREFABS.Pic_gtd_lusting_for_the_sun_lava_gradient =
   deep   =  16,
 
   x_fit = {100,156},
+  y_fit = "top",
   z_fit = {62,63}
 }
 
