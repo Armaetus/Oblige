@@ -38,51 +38,63 @@ PREFABS.Wall_stair_floor_tech =
 
 PREFABS.Wall_stair_ceil =
 {
-  template = "Wall_stair_floor",
+  file = "wall/gtd_wall_stair_groups.wad",
+  map = "MAP01",
 
-  group = "wall_stair_2",
+  kind = "wall",
+
+  prob = 50,
+  rank = 2,
 
   env = "building",
+  group = "wall_stair_2",
+
+  where = "edge",
+  deep = 16,
+  height = 96,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
 
   tex__FLOOR = "_CEIL"
 }
 
 PREFABS.Wall_stair_ceil_tech =
 {
-  template = "Wall_stair_floor",
+  template = "Wall_stair_ceil",
 
   rank = 1,
 
   theme = "tech",
-  group = "wall_stair_2",
 
   env = "building",
 
-  tex__FLOOR = "_CEIL",
+  tex_SUPPORT3 = "DOORSTOP",
 
-  tex_SUPPORT3 = "DOORSTOP"
+  tex__FLOOR = "_CEIL"
 }
 
 -- stair2, compat version that uses floor
 
-PREFABS.Wall_stair_ceil =
+PREFABS.Wall_stair_ceil_compat =
 {
-  template = "Wall_stair_floor",
+  template = "Wall_stair_ceil",
 
   env = "!building",
 
-  group = "wall_stair_2"
+  tex__FLOOR = "_FLOOR"
 }
 
-PREFABS.Wall_stair_ceil_tech =
+PREFABS.Wall_stair_ceil_tech_compat =
 {
-  template = "Wall_stair_floor",
+  template = "Wall_stair_ceil",
 
   rank = 1,
   env = "!building",
 
   theme = "tech",
-  group = "wall_stair_2",
 
-  tex_SUPPORT3 = "DOORSTOP"
+  tex_SUPPORT3 = "DOORSTOP",
+
+  tex__FLOOR = "_FLOOR"
 }

@@ -151,8 +151,14 @@ function PREFAB_CONTROL.fine_tune_filters()
   local new_fab_groups_multipliers =
   {
     gtd_wall_grated_machines_damaged_wall = 2, --16
-    gtd_ribbed_lights_vox_lights_EPIC = 14,
-    gtd_lusting_for_the_sun = 14
+    gtd_ribbed_lights_vox_lights_EPIC = 8,
+    gtd_lusting_for_the_sun = 12,
+
+    tech_o_letter_Q = 6,
+    tech_o_letter_R = 6,
+
+    tech_o_litter_L2 = 6,
+    tech_o_letter_M2 = 6
   }
 
   local new_themes_multipliers =
@@ -160,11 +166,7 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_greenGrey = 12,
     tech_bumblebee = 12,
 
-    tech_o_letter_Q = 6,
-    tech_o_letter_R = 6,
-
-    tech_o_litter_L2 = 6,
-    tech_o_letter_M2 = 6
+    any_copperRust = 6,
   }
 
   local themes =
