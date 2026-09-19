@@ -2850,6 +2850,9 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         if A1.is_porch and not A2.is_porch then return false end
         if not A1.is_porch and A2.is_porch then return false end
 
+        if A1.dead_end and not A2.dead_end then return false end
+        if not A1.dead_end and A2.dead_end then return false end
+
         if ceilings_must_stay_separated(R, A1, A2) then return false end
 
         if A1:touches(A2) then do_touch = true end
