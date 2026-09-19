@@ -95,66 +95,6 @@ function Render_edge(LEVEL, E, SEEDS)
   local DIAG_DIR_MAP = { [1]=8, [9]=2, [3]=4, [7]=6 }
 
 
-  local function raw_wall_brush()
-    local S = E.S
-
-    local TK = 16
-
-    local x1, y1 = S.x1, S.y1
-    local x2, y2 = S.x2, S.y2
-
-    if dir == 2 then y2 = y1 + TK end
-    if dir == 8 then y1 = y2 - TK end
-
-    if dir == 4 then x2 = x1 + TK end
-    if dir == 6 then x1 = x2 - TK end
-
-
-    if dir == 2 or dir == 4 or dir == 6 or dir == 8 then
-      return brushlib.quad(x1, y1, x2, y2)
-
-    elseif dir == 1 then
-      return
-      {
-        { x=x1,      y=y2      },
-        { x=x2,      y=y1      },
-        { x=x2,      y=y1 + TK },
-        { x=x1 + TK, y=y2      }
-      }
-
-    elseif dir == 9 then
-      return
-      {
-        { x=x1,      y=y2      },
-        { x=x1,      y=y2 - TK },
-        { x=x2 - TK, y=y1      },
-        { x=x2,      y=y1      }
-      }
-
-    elseif dir == 3 then
-      return
-      {
-        { x=x1,      y=y1 },
-        { x=x2,      y=y2 },
-        { x=x2 - TK, y=y2 },
-        { x=x1,      y=y1 + TK }
-      }
-
-    elseif dir == 7 then
-      return
-      {
-        { x=x1,      y=y1 },
-        { x=x1 + TK, y=y1 },
-        { x=x2,      y=y2 - TK },
-        { x=x2,      y=y2 }
-      }
-
-    else
-      error("edge_wall : bad dir")
-    end
-  end
-
-
   local function pick_window_fab()
     -- find a window prefab to use
     local reqs =
@@ -563,8 +503,9 @@ function Render_edge(LEVEL, E, SEEDS)
     end
 
     if A.chunk and A.chunk.kind == "stair" then
-      z1 = math.max(A.chunk.dest_area.floor_h,
-        A.chunk.from_area.floor_h)
+      local HC = A.chunk:higher_stair_floor()
+      z1 = HC.floor_h
+      skin.floor = HC.floor_mat
     end
 
     local T
