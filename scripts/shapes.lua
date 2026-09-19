@@ -3854,7 +3854,7 @@ GROW_COLONNADE_PARTHENON_3P =
   }
 },
 
-GROW_COLONNADE_PARTHENON_LAKE =
+GROW_COLONNADE_PARTHENON_POOLSIDE =
 {
   prob = 15,
   prob_skew = 3,
@@ -3873,6 +3873,152 @@ GROW_COLONNADE_PARTHENON_LAKE =
   {
     "1~","~A",
     ".~","~.",
+  }
+},
+
+GROW_COLONNADE_PARTHENON_POOLSIDE_DOUBLE =
+{
+  prob = 15,
+  prob_skew = 3,
+  skip_prob = 75,
+
+  structure =
+  {
+    "11xxxxxxx","11xxxxxxx",
+    ".........","11/~~~%AA",
+    ".........","11~~~~~AA",
+    ".........","11%~#~/AA",
+    ".........","111>>AAAA",
+    ".........","111>>AAAA",
+    ".........","11/~#~%AA",
+    ".........","11~~~~~AA",
+    ".........","11%~~~/AA"
+  },
+
+  diagonals =
+  {
+    "1~","~A",
+    "1~","~A",
+    "1~","~A",
+    "1~","~A"
+  }
+},
+
+GROW_COLONNADE_PARTHENON_POOLSIDE_STRAIGHT =
+{
+  prob = 25,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx.....xxxx.....x","xx~~~~~xxxx~~~~~x",
+    "x................","x/%~#~/AAAA%~#~/%",
+    "1................","11111AAA/%AAA1111",
+    "1................","11111AAA%/AAA1111",
+    "x................","x%/~#~%AAAA/~#~%/",
+    "xx..............x","xx~~~~~AAAA~~~~~x",
+  },
+
+  diagonals =
+  {
+    ".1","1~","~A","A~","~1","1.",
+              "A.",".A",
+              "A.",".A",
+    ".1","1~","~A","A~","~1","1.",
+  }
+},
+
+GROW_COLONNADE_PARTHENON_POOLSIDE_STRAIGHT_WIDE =
+{
+  prob = 25,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx.....xxxx.....x","xx~~~~~xxxx~~~~~x",
+    "x................","x/%~#~/AAAA%~#~/%",
+    "1................","11111AAAAAAAA1111",
+    "1................","111...AAAAAA...11",
+    "x................","x1111AAAAAAAA1111",
+    "x................","x%/~#~%AAAA/~#~%/",
+    "xx..............x","xx~~~~~AAAA~~~~~x",
+  },
+
+  diagonals =
+  {
+    ".1","1~","~A","A~","~1","1.",
+    ".1","1~","~A","A~","~1","1."
+  }
+},
+
+GROW_COLONNADE_PARTHENON_POOLSIDE_STRAIGHT_WIDE_BRIDGE =
+{
+  prob = 25,
+  skip_prob = 85,
+
+  structure =
+  {
+    "xx.....xxxx.....x","xx~~~~~xxxx~~~~~x",
+    "x................","x/%~#~/AAAA%~#~/%",
+    "1................","1111>>AAAAAA<<111",
+    "1................","111...AAAAAA...11",
+    "x................","x111>>AAAAAA<<111",
+    "x................","x%/~#~%AAAA/~#~%/",
+    "xx..............x","xx~~~~~AAAA~~~~~x",
+  },
+
+  diagonals =
+  {
+    ".1","1~","~A","A~","~1","1.",
+    ".1","1~","~A","A~","~1","1."
+  }
+},
+
+GROW_COLONNADE_PARTHENON_POOLSIDE_STRAIGHT_WIDE_N_LONG =
+{
+  prob = 25,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx............x","xx~~~~~~~~~~~~x",
+    "x..............","x/%~#~~~~~~#~/%",
+    "1..............","1111/AAAAAA%111",
+    "1..............","111..AA..AA..11",
+    "x..............","x111%AAAAAA/111",
+    "x..............","x%/~#~~~~~~#~%/",
+    "xx............x","xx~~~~~~~~~~~~x",
+  },
+
+  diagonals =
+  {
+    ".1","1~","~A","A~","~1","1.",
+              "1A","A1",
+              "1A","A1",
+    ".1","1~","~A","A~","~1","1."
+  }
+},
+
+GROW_COLONNADE_PARTHENON_POOLSIDE_STRAIGHT_WIDE_N_LONG_BRIDGE =
+{
+  prob = 25,
+  skip_prob = 85,
+
+  structure =
+  {
+    "xx............x","xx~~~~~~~~~~~~x",
+    "x..............","x/%~#~~~~~~#~/%",
+    "1..............","111>>AAAAAA<<11",
+    "1..............","111..AA..AA..11",
+    "x..............","x11>>AAAAAA<<11",
+    "x..............","x%/~#~~~~~~#~%/",
+    "xx............x","xx~~~~~~~~~~~~x",
+  },
+
+  diagonals =
+  {
+    ".1","1~","~A","A~","~1","1.",
+    ".1","1~","~A","A~","~1","1."
   }
 },
 
