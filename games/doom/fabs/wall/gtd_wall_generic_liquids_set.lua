@@ -155,7 +155,9 @@ PREFABS.Wall_gtd_lusting_for_the_sun_tall =
   template = "Wall_gtd_lusting_for_the_sun",
   map    = "MAP16",
 
-  prob = 7
+  prob = 7,
+
+  z_fit = {81,82}
 }
 
 PREFABS.Wall_gtd_lusting_for_the_sun_diag =
@@ -197,7 +199,9 @@ PREFABS.Wall_gtd_lusting_for_the_sun_tall_compat =
   prob = 7,
 
   tex_T_GHFLY = "FIRELAVA",
-  tex_BRONZE6 = "BRONZE1"
+  tex_BRONZE6 = "BRONZE1",
+
+  z_fit = {81,82}
 }
 
 PREFABS.Wall_gtd_lusting_for_the_sun_diag_compat =
