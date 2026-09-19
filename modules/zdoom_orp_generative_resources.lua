@@ -33,7 +33,6 @@ OBS_RESOURCE_PACK_GENAI_MATERIALS =
   SD_CURWA = {t="SD_CURWA", f="SD_CURFA"},
   SD_CURWB = {t="SD_CURWB", f="SD_CURFB"},
   SD_CURWC = {t="SD_CURWC", f="SD_CURFC"},
-  SD_CURWD = {t="SD_CURWD", f="SD_CURF1"},
   -- flats
   SD_CURF1 = {t="SD_CURW1", f="SD_CURF1"},
   SD_CURF2 = {t="SD_CURW2", f="SD_CURF2"},
@@ -538,7 +537,6 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SD_CURWA = 25,
       SD_CURWB = 25,
       SD_CURWC = 25,
-      SD_CURWD = 25,
 
       G8_BRNW1 = 10,
       G8_BRNW2 = 10,

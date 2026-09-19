@@ -166,7 +166,7 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_greenGrey = 12,
     tech_bumblebee = 12,
 
-    any_copperRust = 6,
+    any_copperRust = 10,
   }
 
   local themes =
