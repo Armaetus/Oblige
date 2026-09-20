@@ -150,9 +150,9 @@ function PREFAB_CONTROL.fine_tune_filters()
 
   local new_fab_groups_multipliers =
   {
-    gtd_wall_grated_machines_damaged_wall = 2, --16
-    gtd_ribbed_lights_vox_lights_EPIC = 8,
-    gtd_lusting_for_the_sun = 12,
+    gtd_wall_grated_machines_damaged_wall = 1.5, --16
+    gtd_ribbed_lights_vox_lights_EPIC = 4,
+    gtd_lusting_for_the_sun = 6,
 
     tech_o_letter_Q = 6,
     tech_o_letter_R = 6,
