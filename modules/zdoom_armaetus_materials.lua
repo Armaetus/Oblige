@@ -1635,6 +1635,27 @@ OBS_RESOURCE_PACK_MATERIALS = {
   G_OTBBFC = { t="G_OTBBWC", f="G_OTBBFC"},
   G_OTBBFD = { t="G_OTBBW6", f="G_OTBBFD"},
 
+  -- copper rust
+  G_OCURW1 = { t="G_OCURW1", f="G_OCURF1"},
+  G_OCURW2 = { t="G_OCURW2", f="G_OCURF2"},
+  G_OCURW3 = { t="G_OCURW3", f="G_OCURF3"},
+  G_OCURW4 = { t="G_OCURW4", f="G_OCURF4"},
+  G_OCURW5 = { t="G_OCURW5", f="G_OCURF5"},
+  G_OCURW6 = { t="G_OCURW6", f="G_OCURF6"},
+  G_OCURW7 = { t="G_OCURW7", f="G_OCURF7"},
+  G_OCURW8 = { t="G_OCURW8", f="G_OCURF8"},
+  G_OCURW9 = { t="G_OCURW9", f="G_OCURF3"},
+  G_OCURWA = { t="G_OCURWA", f="G_OCURF6"},
+  -- flats
+  G_OCURF1 = { t="G_OCURW1", f="G_OCURF1"},
+  G_OCURF2 = { t="G_OCURW2", f="G_OCURF2"},
+  G_OCURF3 = { t="G_OCURW3", f="G_OCURF3"},
+  G_OCURF4 = { t="G_OCURW4", f="G_OCURF4"},
+  G_OCURF5 = { t="G_OCURW5", f="G_OCURF5"},
+  G_OCURF6 = { t="G_OCURW6", f="G_OCURF6"},
+  G_OCURF7 = { t="G_OCURW7", f="G_OCURF7"},
+  G_OCURF8 = { t="G_OCURW8", f="G_OCURF8"},
+
   ----------------------
   -- Special Textures --
   ----------------------

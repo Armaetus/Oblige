@@ -231,6 +231,110 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
     }
   },
 
+  any_copperRust =
+  {
+    env = "building",
+    prob = 40,
+
+    walls =
+    {
+      G_OCURW1 = 25,
+      G_OCURW2 = 25,
+      G_OCURW3 = 25,
+      G_OCURW4 = 25,
+      G_OCURW5 = 25,
+      G_OCURW6 = 25,
+      G_OCURW7 = 25,
+      G_OCURW8 = 25,
+      G_OCURW9 = 25,
+      G_OCURWA = 25,
+
+      G8_BRNW1 = 10,
+      G8_BRNW2 = 10,
+      G8_BRNW3 = 10,
+
+      BRIKS31 = 10,
+      BRONZE5 = 10,
+      BRONZE6 = 10,
+
+      CEM11 = 10,
+
+      BRONZE1 = 6,
+      BRONZE2 = 6,
+      BRONZE3 = 6,
+      BROWN96 = 6,
+      SPACEW4 = 4,
+    },
+
+    floors =
+    {
+      G_OCURF1 = 25,
+      G_OCURF2 = 25,
+      G_OCURF3 = 25,
+      G_OCURF4 = 25,
+      G_OCURF5 = 25,
+      G_OCURF6 = 25,
+      G_OCURF7 = 25,
+      G_OCURF8 = 25,
+
+      G8_BRNF1 = 10,
+      G8_BRNF2 = 10,
+      G8_BRNF3 = 10,
+
+      DARKF03 = 6,
+      DARKM01 = 6,
+      GMET01 = 6,
+      GMET02 = 6,
+      GMET03 = 6,
+      GMET04 = 6,
+      GMET05 = 6,
+      GMET06 = 6,
+
+      FLOOR0_1 = 3,
+      FLOOR0_2 = 3,
+      FLOOR3_3 = 3,
+      FLOOR4_1 = 3,
+      FLOOR4_5 = 3,
+      FLOOR4_6 = 3,
+      FLOOR5_3 = 3,
+      SLIME16 = 3
+    },
+
+    ceilings =
+    {
+      G_OCURF1 = 25,
+      G_OCURF2 = 25,
+      G_OCURF3 = 25,
+      G_OCURF4 = 25,
+      G_OCURF5 = 25,
+      G_OCURF6 = 25,
+      G_OCURF7 = 25,
+      G_OCURF8 = 25,
+
+      G8_BRNF1 = 10,
+      G8_BRNF2 = 10,
+      G8_BRNF3 = 10,
+
+      DARKF03 = 6,
+      DARKM01 = 6,
+      GMET01 = 6,
+      GMET02 = 6,
+      GMET03 = 6,
+      GMET04 = 6,
+      GMET05 = 6,
+      GMET06 = 6,
+
+      FLOOR0_1 = 3,
+      FLOOR0_2 = 3,
+      FLOOR3_3 = 3,
+      FLOOR4_1 = 3,
+      FLOOR4_5 = 3,
+      FLOOR4_6 = 3,
+      FLOOR5_3 = 3,
+      SLIME16 = 3
+    }
+  },
+
 -- START OF TECH THEMES
 
   tech_GrayMet = --120
