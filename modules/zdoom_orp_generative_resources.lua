@@ -31,8 +31,6 @@ OBS_RESOURCE_PACK_GENAI_MATERIALS =
   SD_CURW8 = {t="SD_CURW8", f="SD_CURF8"},
   SD_CURW9 = {t="SD_CURW9", f="SD_CURF9"},
   SD_CURWA = {t="SD_CURWA", f="SD_CURFA"},
-  SD_CURWB = {t="SD_CURWB", f="SD_CURFB"},
-  SD_CURWC = {t="SD_CURWC", f="SD_CURFC"},
   -- flats
   SD_CURF1 = {t="SD_CURW1", f="SD_CURF1"},
   SD_CURF2 = {t="SD_CURW2", f="SD_CURF2"},
@@ -44,8 +42,8 @@ OBS_RESOURCE_PACK_GENAI_MATERIALS =
   SD_CURF8 = {t="SD_CURW8", f="SD_CURF8"},
   SD_CURF9 = {t="SD_CURW9", f="SD_CURF9"},
   SD_CURFA = {t="SD_CURWA", f="SD_CURFA"},
-  SD_CURFB = {t="SD_CURWB", f="SD_CURFB"},
-  SD_CURFC = {t="SD_CURWC", f="SD_CURFC"},
+  SD_CURFB = {t="SD_CURWB", f="SD_CURF1"},
+  SD_CURFC = {t="SD_CURWC", f="SD_CURF2"},
 
   -- TECH --
   -- dark green
