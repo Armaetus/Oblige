@@ -42,8 +42,8 @@ OBS_RESOURCE_PACK_GENAI_MATERIALS =
   SD_CURF8 = {t="SD_CURW8", f="SD_CURF8"},
   SD_CURF9 = {t="SD_CURW9", f="SD_CURF9"},
   SD_CURFA = {t="SD_CURWA", f="SD_CURFA"},
-  SD_CURFB = {t="SD_CURWB", f="SD_CURF1"},
-  SD_CURFC = {t="SD_CURWC", f="SD_CURF2"},
+  SD_CURFB = {t="SD_CURW4", f="SD_CURFB"},
+  SD_CURFC = {t="SD_CURW7", f="SD_CURFC"},
 
   -- TECH --
   -- dark green
@@ -128,7 +128,7 @@ OBS_RESOURCE_PACK_GENAI_MATERIALS =
   SD_GTHF7 = { t="SD_GTHWB", f="SD_GTHF7"},
   SD_GTHF8 = { t="SD_GTHWC", f="SD_GTHF8"},
   -- switches
-  SDGTHSW1 = { t="SDGTHSW1", f="SD_GTHF1"}, 
+  SDGTHSW1 = { t="SDGTHSW1", f="SD_GTHF1"},
   -- light pillars, 64px
   SD_GTLW1 = { t="SD_GTLW1", f="SD_GTHF1"},
   SD_GTLW2 = { t="SD_GTLW2", f="SD_GTHF2"},
@@ -533,8 +533,6 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SD_CURW8 = 25,
       SD_CURW9 = 25,
       SD_CURWA = 25,
-      SD_CURWB = 25,
-      SD_CURWC = 25,
 
       G8_BRNW1 = 10,
       G8_BRNW2 = 10,
@@ -552,6 +550,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       BROWN96 = 6,
       SPACEW4 = 4,
     },
+
     floors =
     {
       SD_CURF1 = 25,
@@ -589,6 +588,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       FLOOR5_3 = 3,
       SLIME16 = 3
     },
+
     ceilings =
     {
       SD_CURF1 = 25,
@@ -616,7 +616,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       GMET04 = 6,
       GMET05 = 6,
       GMET06 = 6,
-      
+
       FLOOR0_1 = 3,
       FLOOR0_2 = 3,
       FLOOR3_3 = 3,
@@ -917,7 +917,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SDSLDCL6 = 5,
       SDSLDCL7 = 5,
       SDSLDCL8 = 5,
-      
+
       FLOOR7_2 = 1,
       SLIME13 = 1,
       SLIME14 = 1,
@@ -1542,7 +1542,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       S_W2WFR7 = 50,
       S_W2WFR8 = 50,
 
-      
+
       CEIL3_5 = 25,
       FLAT1 = 25,
       MFLR8_1 = 25,
@@ -1642,7 +1642,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
   {
     env = "building",
     prob = 60,
-  
+
     walls =
     {
       SDTBNKW1 = 5,
@@ -1689,7 +1689,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       OBTSVBF1 = 10,
       OBTSVBF2 = 10,
       OBTSVBF3 = 10,
-  
+
       G_OM_FG1 = 10,
       G_OM_FG2 = 10,
       G_OM_FT1 = 10,
@@ -1734,7 +1734,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       OBTSVBF1 = 10,
       OBTSVBF2 = 10,
       OBTSVBF3 = 10,
-  
+
       G_OM_FG1 = 10,
       G_OM_FG2 = 10,
       G_OM_FT1 = 10,
@@ -1806,7 +1806,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       MEM01 = 5,
       QFLAT06 = 5,
       QFLAT09 = 5,
-      
+
       FLAT3 = 5,
       FLOOR0_3 = 5,
       FLOOR0_5 = 5,
@@ -1847,7 +1847,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       MEM01 = 5,
       QFLAT06 = 5,
       QFLAT09 = 5,
-      
+
       FLAT3 = 5,
       FLOOR0_3 = 5,
       FLOOR0_5 = 5,
@@ -1912,7 +1912,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       S_W2WFR7 = 15,
       S_W2WFR8 = 15
     },
-  
+
     porch_floors =
     {
       G_OM_FT1 = 17,
@@ -2650,7 +2650,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       TILES1 = 6,
       TILES4 = 6,
       TILES5 = 6,
-      TILES6 = 6     
+      TILES6 = 6
     },
 
     ceilings =
@@ -2998,7 +2998,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SD_HCCF7 = 25,
       SD_HCCF8 = 25,
 
-      
+
       FLAT18 = 3,
       FLAT3 = 3,
       FLAT5_4 = 3,
@@ -3076,7 +3076,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       MEM01 = 5,
       QFLAT06 = 5,
       QFLAT09 = 5,
-      
+
       FLAT3 = 5,
       FLOOR0_3 = 5,
       FLOOR0_5 = 5,
@@ -3117,7 +3117,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       MEM01 = 5,
       QFLAT06 = 5,
       QFLAT09 = 5,
-      
+
       FLAT3 = 5,
       FLOOR0_3 = 5,
       FLOOR0_5 = 5,
@@ -3336,7 +3336,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SDSLDCL6 = 5,
       SDSLDCL7 = 5,
       SDSLDCL8 = 5,
-      
+
       FLOOR7_2 = 1,
       SLIME13 = 1,
       SLIME14 = 1,
@@ -3743,7 +3743,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       TILES1 = 6,
       TILES4 = 6,
       TILES5 = 6,
-      TILES6 = 6     
+      TILES6 = 6
     },
 
     ceilings =
@@ -4213,7 +4213,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SD_HCCF7 = 25,
       SD_HCCF8 = 25,
 
-      
+
       FLAT18 = 3,
       FLAT3 = 3,
       FLAT5_4 = 3,
@@ -4386,7 +4386,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
   {
     env = "building",
     prob = 40,
-  
+
     walls =
     {
       SDTBNKW1 = 5,
@@ -4433,7 +4433,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       OBTSVBF1 = 10,
       OBTSVBF2 = 10,
       OBTSVBF3 = 10,
-  
+
       G_OM_FG1 = 10,
       G_OM_FG2 = 10,
       G_OM_FT1 = 10,
@@ -4478,7 +4478,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       OBTSVBF1 = 10,
       OBTSVBF2 = 10,
       OBTSVBF3 = 10,
-  
+
       G_OM_FG1 = 10,
       G_OM_FG2 = 10,
       G_OM_FT1 = 10,
@@ -4732,7 +4732,7 @@ OBS_RESOURCE_PACK_GENAI_THEMES =
       gtd_AI_boiler_control_unit = 35,
       --
       gtd_AI_corpse_inset = 20,
-    }    
+    }
   },
 
   hell =
