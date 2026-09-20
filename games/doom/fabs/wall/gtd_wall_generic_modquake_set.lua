@@ -208,6 +208,22 @@ PREFABS.Wall_modquake_round_braced_lit_pillar_industrial =
   tex_SUPPORT3 = "SUPPORT2"
 }
 
+PREFABS.Wall_modquake_round_braced_lit_pillar_industrial_thin =
+{
+  template = "Wall_modquake_set_industrial",
+  map = "MAP16",
+
+  theme = "!hell",
+
+  deep = 16,
+
+  group = "gtd_modquake_round_braced_lit_pillar",
+
+  flat_CEIL5_2 = "FLAT23",
+  tex_METAL = "SHAWN2",
+  tex_SUPPORT3 = "SUPPORT2"
+}
+
 PREFABS.Wall_modquake_round_braced_lit_pillar_hell =
 {
   template = "Wall_modquake_set_industrial",
@@ -241,6 +257,18 @@ PREFABS.Wall_modquake_round_braced_lit_pillar_limit =
   group = "gtd_modquake_round_braced_lit_pillar",
 
   line_342 = 0
+}
+
+PREFABS.Wall_modquake_round_braced_lit_pillar_limit_thin =
+{
+  template = "Wall_modquake_set_industrial",
+  map = "MAP16",
+
+  theme = "any",
+
+  deep = 16,
+
+  group = "gtd_modquake_round_braced_lit_pillar"
 }
 
 -- hexagonal wall inset with a brace inside and a light
