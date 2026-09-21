@@ -228,13 +228,13 @@ function Render_edge(LEVEL, E, SEEDS)
 
     -- don't get prefabs with a z_fit other than "top" for parks.
     local S1 = E.S
-    --[[if A.room and A.room.is_park then
+    if A.room and A.room.is_park then
       if not S1.floor_h and
       (A.room.park_type == "hills"
       or A.room.park_type == "river") then
         reqs.no_top_fit = true
       end
-    end]]
+    end
 
     -- smart checking for wall fabs that are too long
     -- stop them from occupying each others' space
