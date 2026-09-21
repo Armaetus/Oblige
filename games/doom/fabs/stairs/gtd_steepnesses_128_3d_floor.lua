@@ -51,7 +51,7 @@ PREFABS.Stair_gtd_ladder_128_3d =
   delta_h = 128
 }
 
-PREFABS.Stair_gtd_teleporterct_128_3d =
+PREFABS.Stair_gtd_teleporter_128_3d =
 {
   template = "Stair_gtd_lift_128_3d",
   map = "MAP04",
