@@ -3,7 +3,7 @@ PREFABS.Stair_gtd_lift_128_3d =
   file = "stairs/gtd_steepnesses_128_3d_floor.wad",
   map = "MAP01",
 
-  prob = 25, --25
+  prob = 1250, --25
 
   engine = "zdoom",
 
@@ -16,7 +16,7 @@ PREFABS.Stair_gtd_lift_128_3d =
   seed_h = 1,
 
   x_fit = { 28,32 , 64,68 , 96,100 },
-  y_fit = { 20,24 , 64,68 },
+  y_fit = { 30,32 , 48,49 },
 
   bound_z1 = 0,
 
@@ -44,7 +44,7 @@ PREFABS.Stair_gtd_ladder_128_3d =
   map = "MAP03",
 
   x_fit = { 28,32 , 64,68 , 96,100 },
-  y_fit = { 20,24 , 64,68 },
+  y_fit = { 46,48 , 64,65 },
 
   bound_z1 = 0,
 
@@ -54,10 +54,10 @@ PREFABS.Stair_gtd_ladder_128_3d =
 PREFABS.Stair_gtd_teleporterct_128_3d =
 {
   template = "Stair_gtd_lift_128_3d",
-  map = "MAP03",
+  map = "MAP04",
 
   x_fit = { 28,32 , 96,100 },
-  y_fit = { 20,24 },
+  y_fit = { 20,21 },
 
   bound_z1 = 0,
 
