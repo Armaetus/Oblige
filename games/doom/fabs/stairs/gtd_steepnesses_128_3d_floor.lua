@@ -3,7 +3,7 @@ PREFABS.Stair_gtd_lift_128_3d =
   file = "stairs/gtd_steepnesses_128_3d_floor.wad",
   map = "MAP01",
 
-  prob = 1250, --25
+  prob = 15, --15
 
   engine = "zdoom",
 
