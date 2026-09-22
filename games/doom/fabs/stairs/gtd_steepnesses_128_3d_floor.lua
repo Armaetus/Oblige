@@ -63,3 +63,16 @@ PREFABS.Stair_gtd_teleporter_128_3d =
 
   delta_h = 128
 }
+
+PREFABS.Stair_gtd_ladder_bridge_128_3d =
+{
+  template = "Stair_gtd_lift_128_3d",
+  map = "MAP05",
+
+  x_fit = { 56,72 },
+  y_fit = { 96,97 },
+
+  bound_z1 = 0,
+
+  delta_h = 128
+}
