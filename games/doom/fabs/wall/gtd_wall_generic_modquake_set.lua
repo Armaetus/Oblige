@@ -341,3 +341,98 @@ PREFABS.Wall_modquake_hexagon_inset_braced_hell_limit =
   tex_EXITDOOR = "FIREMAG1",
   tex_METAL3 = "METAL2"
 }
+
+--
+
+PREFABS.Wall_modquake_thick_brace =
+{
+  file = "wall/gtd_wall_generic_modquake_set.wad",
+  map = "MAP20",
+
+  texture_pack = "armaetus",
+  group = "gtd_modquake_thick_brace_set",
+
+  prob = 50,
+  rank = 4,
+
+  where = "edge",
+  height = 96,
+  deep = 64,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit = {24,25}
+}
+
+PREFABS.Wall_modquake_thick_brace_16 =
+{
+  template = "Wall_modquake_thick_brace",
+  map = "MAP21",
+
+  rank = 3,
+
+  deep = 16
+}
+
+PREFABS.Wall_modquake_thick_brace_16_diag =
+{
+  template = "Wall_modquake_thick_brace",
+  map = "MAP22",
+
+  where = "diagonal",
+
+  rank = 3,
+
+  deep = 16
+}
+
+--
+
+PREFABS.Wall_modquake_thick_brace_compat =
+{
+  file = "wall/gtd_wall_generic_modquake_set.wad",
+  map = "MAP20",
+
+  group = "gtd_modquake_thick_brace_set",
+
+  prob = 50,
+  rank = 2,
+
+  where = "edge",
+  height = 96,
+  deep = 64,
+
+  bound_z1 = 0,
+  bound_z2 = 96,
+
+  z_fit = {24,25},
+
+  tex_T_GHFLB = "COMPBLUE"
+}
+
+PREFABS.Wall_modquake_thick_brace_16_compat =
+{
+  template = "Wall_modquake_thick_brace",
+  map = "MAP21",
+
+  rank = 1,
+
+  deep = 16,
+
+  tex_T_GHFLB = "COMPBLUE"
+}
+
+PREFABS.Wall_modquake_thick_brace_16_diag_compat =
+{
+  template = "Wall_modquake_thick_brace",
+  map = "MAP22",
+
+  where = "diagonal",
+
+  rank = 1,
+
+  deep = 16,
+
+  tex_T_GHFLB = "COMPBLUE"
+}

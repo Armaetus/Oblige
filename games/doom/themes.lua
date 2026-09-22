@@ -1560,6 +1560,7 @@ DOOM.THEMES =
       gtd_modquake_ex_light_slope_brace = 18,
       gtd_modquake_round_braced_lit_pillar = 18,
       gtd_modquake_hexagon_inset_braced = 18,
+      gtd_modquake_thick_brace_set = 18,
       --
       gtd_wall_lamp_stubby = 16,
       gtd_wall_lamp_thin = 16,
@@ -1647,7 +1648,7 @@ DOOM.THEMES =
       tech_o_letter_Q = 1,
       tech_o_letter_R = 1,
 
-      tech_o_litter_L2 = 1,
+      tech_o_letter_L2 = 1,
       tech_o_letter_M2 = 1
     },
 
@@ -2106,6 +2107,7 @@ DOOM.THEMES =
       gtd_modquake_ex_light_slope_brace = 11,
       gtd_modquake_round_braced_lit_pillar = 11,
       gtd_modquake_hexagon_inset_braced = 11,
+      gtd_modquake_thick_brace_set = 11,
       --
       gtd_wall_lamp_stubby = 7,
       gtd_wall_lamp_thin = 7,
@@ -2676,6 +2678,7 @@ DOOM.THEMES =
       gtd_modquake_ex_light_slope_brace = 11,
       gtd_modquake_round_braced_lit_pillar = 11,
       gtd_modquake_hexagon_inset_braced = 11,
+      gtd_modquake_thick_brace_set = 11,
       --
       gtd_wall_candalebra = 12,
       gtd_wall_blue_torch = 12,
