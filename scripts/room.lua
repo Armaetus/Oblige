@@ -4449,10 +4449,15 @@ function Room_cleanup_stairs_to_nowhere(LEVEL, R)
           if SA.is_porch_neighbor then
             SA.is_porch = true
             SA.is_porch_neighbor = nil
-            SA.is_outdoor = true
+            SA.is_outdoor = nil
           end
 
-          SA:set_ceil_group(A.ceil_group)
+          if SAS.is_porch then
+            SA:set_ceil_group(SAS.ceil_group)
+            A:set_ceil_group(SAS.ceil_group)
+          elseif not SAS.is_porch then
+            SA:set_ceil_group(A.ceil_group)
+          end
         elseif SA.room:get_env() == "building" then
           SA.is_porch_neighbor = nil
 

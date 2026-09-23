@@ -15,5 +15,5 @@ PREFABS.Joiner_gtd_triple_lite3 =
   over   = 16,
 
   x_fit = { 60,68 },
-  y_fit = { 56,64 , 96,104 },
+  y_fit = { 56,64 , 96,104 }
 }
