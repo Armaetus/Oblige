@@ -4949,7 +4949,6 @@ function Grower_create_rooms(LEVEL, SEEDS)
   Seed_draw_minimap(SEEDS, LEVEL)
 
   Grower_begin_trunks(LEVEL, SEEDS)
-  if LEVEL.is_dead then return end
   Grower_grow_all_rooms(SEEDS, LEVEL)
   Grower_cave_stats(LEVEL)
 
@@ -5008,12 +5007,17 @@ function Grower_create_rooms(LEVEL, SEEDS)
   end
 
   if LEVEL.is_procedural_gotcha then
+    if #LEVEL.rooms > 2 then
+      LEVEL.is_dead = true
+    end
+
     for _,R in pairs(LEVEL.rooms) do
       if R.svolume < 16 then
         LEVEL.is_dead = true
       end
     end
   end
+  if LEVEL.is_dead then return end
 
   --[[if LEVEL.has_linear_start and LEVEL.start_room:prelim_conn_num(LEVEL) > 2 then
     gui.printf("Linear start info:\n" .. table.tostr(LEVEL.start_room,1))
