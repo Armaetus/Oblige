@@ -718,6 +718,11 @@ function Render_edge(LEVEL, E, SEEDS)
       def = E.prefab_def
     end
 
+    if LEVEL.is_procedural_gotcha and E.kind == "doorway"
+    and PARAM.bool_proc_gotcha_open_start and PARAM.bool_proc_gotcha_open_start == 1 then
+      def = PREFABS[rand.pick(THEME.generic_connectors.doors)]
+    end
+
     assert(def)
 
     local T
@@ -734,11 +739,6 @@ function Render_edge(LEVEL, E, SEEDS)
     else  -- axis-aligned edge
 
       T = Trans.edge_transform(E, z, 0, 0, def.deep, def.over, flip_it)
-    end
-
-    if LEVEL.is_procedural_gotcha and E.kind == "doorway"
-    and PARAM.bool_proc_gotcha_open_start and PARAM.bool_proc_gotcha_open_start == 1 then
-      def = PREFABS[rand.pick(THEME.generic_connectors.doors)]
     end
 
     if def.z_fit then
