@@ -1384,107 +1384,117 @@ end
 
 
 function Corner_is_at_area_corner(corner)
-  -- corner isn't at a corner when along parallel walls
+  local junctions = corner.junctions
+  local seeds     = corner.seeds
+  local areas     = corner.areas
+
+  -- no pillar when the corner is along colinear or multiple walls
   local wall_count = 0
-  for _,junc in pairs(corner.junctions) do
-    if junc.E1 then
-      if Edge_is_wallish(junc.E1) then
-        wall_count = wall_count + 1
-      end
-    end
-    if wall_count >= 2 then return false end
-  end
 
-  -- no pillars if all junctions are beams
-  local beam_count = 0
-  for _,junc in pairs(corner.junctions) do
-    if junc.E1 then
-      if junc.E1.kind == "beams" or Edge_is_wallish(junc.E1) then
-        beam_count = beam_count + 1
-      end
-    end
-    if beam_count == #corner.junctions then
-      return false
+  for _, junc in ipairs(junctions) do
+    local E = junc.E1
+
+    if E and Edge_is_wallish(E) then
+      wall_count = wall_count + 1
     end
   end
 
-  -- corner is definitely at a corner if more than two areas meet
-  if #corner.areas > 2 then
+  if wall_count >= 2 then
+    return false
+  end
+
+  -- no pillars if every junction is beam/wall-like
+  local beamish_count = 0
+
+  for _, junc in ipairs(junctions) do
+    local E = junc.E1
+
+    if E and (E.kind == "beams" or Edge_is_wallish(E)) then
+      beamish_count = beamish_count + 1
+    end
+  end
+
+  if beamish_count == #junctions then
+    return false
+  end
+
+  -- more than two areas meeting here is definitely a corner
+  if #areas > 2 then
     return true
   end
 
-  -- corner is definitely at a corner if one seed has an area
-  -- that doesn't match all the others
-  if #corner.seeds == 4 then
+  -- 4 surrounding seeds
+  if #seeds == 4 then
 
-    -- corner sits between diagonals that are not parallel
-    local dir_score = 0
-    local diag_count = 0
+    -- detect non-parallel diagonal boundaries
+    local expected_diagonal =
+    {
+      [1] = 1, -- NW
+      [2] = 7, -- SW
+      [3] = 3, -- NE
+      [4] = 9  -- SE
+    }
 
-    -- NW
-    if corner.seeds[1].diagonal and corner.seeds[1].diagonal == 1 then
-      diag_count = diag_count + 1
-      dir_score = dir_score + 1
-    end
-    -- SW
-    if corner.seeds[2].diagonal and corner.seeds[2].diagonal == 7 then
-      diag_count = diag_count + 1
-      dir_score = dir_score + 7
-    end
-    -- NE
-    if corner.seeds[3].diagonal and corner.seeds[3].diagonal == 3 then
-      diag_count = diag_count + 1
-      dir_score = dir_score + 3
-    end
-    -- SE
-    if corner.seeds[4].diagonal and corner.seeds[4].diagonal == 9 then
-      diag_count = diag_count + 1
-      dir_score = dir_score + 9
+    local diagonal_dirs = {}
+
+    for i = 1,4 do
+      local S = seeds[i]
+
+      if S.diagonal and S.diagonal == expected_diagonal[i] then
+        diagonal_dirs[#diagonal_dirs + 1] = S.diagonal
+      end
     end
 
-    if diag_count >= 2 and dir_score ~= 10 then
-      return true
+    -- opposing / parallel diagonal pairs
+    local parallel_pair =
+      function(a, b)
+        return (a == 1 and b == 9) or
+               (a == 9 and b == 1) or
+               (a == 3 and b == 7) or
+               (a == 7 and b == 3)
+      end
+
+    for i = 1,#diagonal_dirs do
+      for j = i + 1,#diagonal_dirs do
+        if not parallel_pair(diagonal_dirs[i], diagonal_dirs[j]) then
+          return true
+        end
+      end
     end
 
-    -- compare NW
-    if corner.seeds[1].area ~= corner.seeds[2].area and
-    corner.seeds[1].area ~= corner.seeds[3].area and
-    corner.seeds[1].area ~= corner.seeds[4].area then
-      return true
-    end
+    -- detect a uniquely different area
+    for i = 1,4 do
+      local unique = true
 
-    -- compare SW
-    if corner.seeds[2].area ~= corner.seeds[1].area and
-    corner.seeds[2].area ~= corner.seeds[3].area and
-    corner.seeds[2].area ~= corner.seeds[4].area then
-      return true
-    end
+      for j = 1,4 do
+        if i ~= j and seeds[i].area == seeds[j].area then
+          unique = false
+          break
+        end
+      end
 
-    -- compare NE
-    if corner.seeds[3].area ~= corner.seeds[1].area and
-    corner.seeds[3].area ~= corner.seeds[3].area and
-    corner.seeds[3].area ~= corner.seeds[4].area then
-      return true
-    end
-
-    -- compare SE
-    if corner.seeds[4].area ~= corner.seeds[1].area and
-    corner.seeds[4].area ~= corner.seeds[2].area and
-    corner.seeds[4].area ~= corner.seeds[3].area then
-      return true
+      if unique then
+        return true
+      end
     end
   end
 
-  -- corner is by at least one diagonal and is between two areas
-  if #corner.areas > 1 then
+  -- corner is next to multiple areas and has exactly one
+  -- top/bottom diagonal boundary.
+  if #areas > 1 then
     local diagonal_score = 0
 
-    for _,S in pairs(corner.seeds) do
-      if S.top or S.bottom then diagonal_score = diagonal_score + 1 end
+    for _, S in ipairs(seeds) do
+      if S.top or S.bottom then
+        diagonal_score = diagonal_score + 1
+      end
     end
 
-    if diagonal_score == 1 then return true end
+    if diagonal_score == 1 then
+      return true
+    end
   end
+
 
   return false
 end
