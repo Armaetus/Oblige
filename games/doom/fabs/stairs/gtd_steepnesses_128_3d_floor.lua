@@ -23,7 +23,7 @@ PREFABS.Stair_gtd_lift_128_3d =
   delta_h = 128
 }
 
-PREFABS.Stair_gtd_stairs_128_3d =
+PREFABS.Stair_gtd_stairs_128_3d = -- requires 2 seed_h
 {
   template = "Stair_gtd_lift_128_3d",
   map = "MAP02",
@@ -69,7 +69,7 @@ PREFABS.Stair_gtd_ladder_bridge_128_3d =
   template = "Stair_gtd_lift_128_3d",
   map = "MAP05",
 
-  x_fit = { 8,16 , 40,88 , 112,120 },
+  x_fit = { 8,16 , 60,68 , 112,120 },
   y_fit = { 72,80 , 96,104 },
 
   bound_z1 = 0,
