@@ -4115,6 +4115,7 @@ function Grower_begin_trunks(LEVEL, SEEDS)
 
   if R.is_dead then
     LEVEL.is_dead = true
+    LEVEL.dead_reason = "is_dead > Could not add trunk.\n"
     return
   end
   assert(not R.is_dead)
@@ -5005,21 +5006,29 @@ function Grower_create_rooms(LEVEL, SEEDS)
 
   -- sanity check for level missing a certain amount of rooms
   if #LEVEL.rooms == 1 and not LEVEL.is_procedural_gotcha then
+    level.dead_reason = "is dead > Standard level with only 1 room.\n"
     LEVEL.is_dead = true
   end
 
   if LEVEL.is_procedural_gotcha then
     if #LEVEL.rooms > 2 then
+      LEVEL.dead_reason = "is_dead > Proc Gotcha: more than 2 rooms.\n"
       LEVEL.is_dead = true
     end
 
     for _,R in pairs(LEVEL.rooms) do
+      for _,A in pairs(R.areas) do
+        if A.mode == "floor" then
+          R.svolume = R.svolume + A.svolume
+        end
+      end
       if R.svolume < 16 then
+        LEVEL.dead_reason = "is_dead > Proc Gotcha: Low floor area of " .. R.svolume .."\n"
         LEVEL.is_dead = true
       end
     end
   end
-  if LEVEL.is_dead then return end
+  if LEVEL.is_dead == true then return end
 
   --[[if LEVEL.has_linear_start and LEVEL.start_room:prelim_conn_num(LEVEL) > 2 then
     gui.printf("Linear start info:\n" .. table.tostr(LEVEL.start_room,1))

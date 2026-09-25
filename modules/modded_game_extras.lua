@@ -2274,7 +2274,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     info.editor_num = PARAM.hn_thing_start_offset
 
     local x_span
-    local y_span 
+    local y_span
     if R.sx2 and R.sx1 then
       x_span = (R.sx2 - R.sx1) * SEED_SIZE
     end
@@ -2282,7 +2282,11 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       y_span = (R.sy2 - R.sy1) * SEED_SIZE
     end
 
-    info.radius = (x_span + y_span)/2
+    if x_span and y_span then
+      info.radius = (x_span + y_span)/2
+    else
+      info.radius = "NIL"
+    end
     info.env = R:get_env()
 
     PARAM.hn_thing_start_offset = PARAM.hn_thing_start_offset + 1
