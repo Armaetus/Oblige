@@ -293,11 +293,15 @@ function Render_edge(LEVEL, E, SEEDS)
           local HC = chunk:higher_stair_floor()
           reqs.height = HC.ceil_h - A.floor_h
 
-          if A.room.stair_wall_group and not chunk.dest_area.dead_end then
-            reqs.group = A.room.stair_wall_group
+          if HC.floor_h == chunk.area.floor_h then
+            reqs.group = HC.floor_group.wall_group
           else
-            if A.room:get_env() == "building" and HC.floor_group and HC.floor_group.wall_group then
-              reqs.group = HC.floor_group.wall_group
+            if A.room.stair_wall_group and not chunk.dest_area.dead_end then
+              reqs.group = A.room.stair_wall_group
+            else
+              if A.room:get_env() == "building" and HC.floor_group and HC.floor_group.wall_group then
+                reqs.group = HC.floor_group.wall_group
+              end
             end
           end
         end
