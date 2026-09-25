@@ -397,6 +397,7 @@ PREFABS.Wall_generic_small_lite_urban =
   bound_z2 = 96,
 
   tex_LITEBLU4 = "LITE3",
+  tex_SHAWN2 = "METAL",
   flat_CEIL4_3 = "TLITE6_4"
 }
 
@@ -415,6 +416,7 @@ PREFABS.Wall_generic_small_lite_urban_diag =
   bound_z2 = 96,
 
   tex_LITEBLU4 = "LITE3",
+  tex_SHAWN2 = "METAL",
   flat_CEIL4_3 = "TLITE6_4"
 }
 
@@ -434,6 +436,7 @@ PREFABS.Wall_generic_small_lite_hell =
   bound_z2 = 96,
 
   tex_LITEBLU4 = "CRACKLE2",
+  tex_SHAWN2 = "METAL",
   flat_CEIL4_3 = "FLOOR1_7"
 }
 
@@ -454,6 +457,7 @@ PREFABS.Wall_generic_small_lite_hell_diag =
   bound_z2 = 96,
 
   tex_LITEBLU4 = "CRACKLE2",
+  tex_SHAWN2 = "METAL",
   flat_CEIL4_3 = "FLOOR1_7"
 }
 
