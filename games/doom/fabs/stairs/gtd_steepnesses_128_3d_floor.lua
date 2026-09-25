@@ -31,7 +31,7 @@ PREFABS.Stair_gtd_stairs_128_3d = -- requires 2 seed_h
   prob = 10,
 
   x_fit = { 28,32 , 64,68 , 96,100 },
-  y_fit = { 20,24 },
+  y_fit = { 16,20 , 80,84 },
 
   seed_h = 2,
 
@@ -99,7 +99,7 @@ PREFABS.Stair_gtd_stair_96_3d = -- seed_h = 2
   prob = 10,
 
   x_fit = { 28,32 , 64,68 , 96,100 },
-  y_fit = { 20,24 },
+  y_fit = { 16,20 , 80,84 },
 
   seed_h = 2,
 
