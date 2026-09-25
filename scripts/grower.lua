@@ -1677,8 +1677,10 @@ function Grower_kill_room(SEEDS, LEVEL, R)
 
   gui.debugf("Killing small/ungrown room %s\n", R.name)
 
-  assert(R ~= LEVEL.start_room)
-  assert(R ~= LEVEL.exit_room)
+  -- commented these out - we actually don't need an explicit start or exit room
+  -- from grower anymore, as Quest determines it elsewhere if required
+  --assert(R ~= LEVEL.start_room)
+  --assert(R ~= LEVEL.exit_room)
 
   handle_conn()
 

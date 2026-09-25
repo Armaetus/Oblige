@@ -2273,8 +2273,14 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     info.editor_num = PARAM.hn_thing_start_offset
 
-    local x_span = (R.sx2 - R.sx1) * SEED_SIZE
-    local y_span = (R.sy2 - R.sy1) * SEED_SIZE
+    local x_span
+    local y_span 
+    if R.sx2 and R.sx1 then
+      x_span = (R.sx2 - R.sx1) * SEED_SIZE
+    end
+    if R.sy2 and R.sy1 then
+      y_span = (R.sy2 - R.sy1) * SEED_SIZE
+    end
 
     info.radius = (x_span + y_span)/2
     info.env = R:get_env()
