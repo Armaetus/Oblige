@@ -2679,7 +2679,6 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
   end
 
   if A.is_natural_park or A.is_clearing then
-
     skin.wall = A.zone.facade_mat
     if def.group == "natural_walls" or reqs.key == "secret" then
 
@@ -2694,9 +2693,15 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
       end
 
     end
-
   end
 
+
+  if LEVEL.is_procedural_gotcha and chunk.kind == "joiner"
+  and PARAM.bool_proc_gotcha_open_start and PARAM.bool_proc_gotcha_open_start == 1 then
+    if THEME.generic_connectors.joiners then
+      def = PREFABS[rand.pick(THEME.generic_connectors.joiners)]
+    end
+  end
 
   -- build the prefab --
 
@@ -2748,12 +2753,6 @@ chunk.goal.action = "S1_OpenDoor"  -- FIXME IT SHOULD BE SET WHEN JOINER IS REND
     end
   end
 
-  if LEVEL.is_procedural_gotcha and chunk.kind == "joiner"
-  and PARAM.bool_proc_gotcha_open_start and PARAM.bool_proc_gotcha_open_start == 1 then
-    if THEME.generic_connectors.joiners then
-      def = PREFABS[rand.pick(THEME.generic_connectors.joiners)]
-    end
-  end
 
   Fabricate(LEVEL, A.room, def, T, { skin })
 

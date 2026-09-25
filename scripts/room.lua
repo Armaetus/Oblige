@@ -932,6 +932,12 @@ function Room_pick_edge_prefab(LEVEL, C)
   E.prefab_def = Fab_pick(LEVEL, reqs)
 
 
+  if LEVEL.is_procedural_gotcha and E.kind == "arch"
+  and PARAM.bool_proc_gotcha_open_start and PARAM.bool_proc_gotcha_open_start == 1 then
+    E.prefab_def = PREFABS[rand.pick(THEME.generic_connectors.doors)]
+  end
+
+
   if goal then
     goal.action = E.prefab_def.door_action
   end
