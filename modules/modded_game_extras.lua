@@ -1874,7 +1874,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
 
     if R.height_profile then
       shapes_string = shapes_string .. "(HGT: " ..
-        R.height_profile .. " " .. R.height_style .. ") "
+        R.height_profile .. " " .. R.height_style .. " " .. LEVEL.room_height_limit .. ") "
     end
 
     if R.pressure then
