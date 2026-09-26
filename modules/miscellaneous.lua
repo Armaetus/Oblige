@@ -60,18 +60,10 @@ MISC_STUFF.HEIGHT_LIMIT_CHOICES =
   "128", _("128"),
   "192", _("192"),
   "256", _("256"),
+  "_", _("_"),
   "none", _("NONE"),
   "short", _("Short"),
   "mixed", _("Mix It Up"),
-}
-
-MISC_STUFF.HEIGHT_DISTO_CHOICES =
-{
-  "rand_room", _("Random Per Room"),
-  "rand_level", _("Random Per Level"),
-  "prog", _("Progressive"),
-  "reg", _("Regressive"),
-  "mixed", _("Mix It Up")
 }
 
 MISC_STUFF.WINDOW_BLOCKING_CHOICES =
@@ -383,13 +375,15 @@ OB_MODULES["misc"] =
       name="room_height_limit",
       label=_("Room Height limit"),
       choices=MISC_STUFF.HEIGHT_LIMIT_CHOICES,
-      tooltip=_("Determines a maximum height limit for room ceilings, excluding sinks. Obsidian default is NONE"),
+      tooltip=_("Determines a maximum height limit for room ceilings from the highest floor area, excluding floor and ceiling sink height differences.\n" ..
+        "Obsidian default is NONE.\n" ..
+        "Mix It Up is a random selection between 128 to NONE.\n"..
+        "Short behaves similar to Mix It Up, but biased toward lower limits.\n" ..
+        "Having no height limit does not mean endless height rooms, just no height clamping, as is original behavior."),
       default="none",
-      priority = 86.75,
+      priority = 86.5,
       randomize_group="architecture",
-    },
-      gap=1,
-      randomize_group="architecture",
+      gap = 1
     },
 
     { name="parks",

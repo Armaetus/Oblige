@@ -2377,18 +2377,20 @@ function Level_choose_misc(LEVEL)
   LEVEL.room_height_style = PARAM.room_heights or "mixed"
 
   if PARAM.room_height_limit == "mixed" then
-    LEVEL.room_height_limit = rand.pick({128,192,256})
+    LEVEL.room_height_limit = rand.pick({128,192,256,EXTREME_H})
   elseif PARAM.room_height_limit == "short" then
     LEVEL.room_height_limit = rand.key_by_probs({
-      [128] = 10,
-      [192] = 4,
-      [256] = 1
+      [128] = 32,
+      [192] = 12,
+      [256] = 4,
+      [EXTREME_H] = 1
     })
   elseif PARAM.room_height_limit == "none" then
     LEVEL.room_height_limit = EXTREME_H
   else
     LEVEL.room_height_limit = PARAM.room_height_limit
   end
+
   if rand.odds(style_sel("outdoors", 0, 33, 66, 100)) then
     LEVEL.has_outdoors = true
 
