@@ -79,6 +79,19 @@ PREFABS.Stair_gtd_ladder_bridge_128_3d =
   delta_h = 128
 }
 
+PREFABS.Stair_gtd_lift_bridge_128_3d =
+{
+  template = "Stair_gtd_lift_128_3d",
+  map = "MAP06",
+
+  x_fit = { 16,17 , 111,112 },
+  y_fit = { 64,65 },
+
+  bound_z1 = 0,
+
+  delta_h = 128
+}
+
 --
 
 PREFABS.Stair_gtd_lift_96_3d =
@@ -128,6 +141,19 @@ PREFABS.Stair_gtd_ladder_bridge_96_3d =
 
   x_fit = { 8,16 , 60,68 , 112,120 },
   y_fit = { 72,80 , 96,104 },
+
+  bound_z1 = 0,
+
+  delta_h = 96
+}
+
+PREFABS.Stair_gtd_lift_bridge_96_3d =
+{
+  template = "Stair_gtd_lift_128_3d",
+  map = "MAP15",
+
+  x_fit = { 16,17 , 111,112 },
+  y_fit = { 64,65 },
 
   bound_z1 = 0,
 
