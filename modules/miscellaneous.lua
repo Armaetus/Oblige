@@ -55,6 +55,25 @@ MISC_STUFF.HEIGHT_CHOICES =
   "mixed",     _("Mix It Up"),
 }
 
+MISC_STUFF.HEIGHT_LIMIT_CHOICES =
+{
+  "128", _("128"),
+  "192", _("192"),
+  "256", _("256"),
+  "none", _("NONE"),
+  "short", _("Short"),
+  "mixed", _("Mix It Up"),
+}
+
+MISC_STUFF.HEIGHT_DISTO_CHOICES =
+{
+  "rand_room", _("Random Per Room"),
+  "rand_level", _("Random Per Level"),
+  "prog", _("Progressive"),
+  "reg", _("Regressive"),
+  "mixed", _("Mix It Up")
+}
+
 MISC_STUFF.WINDOW_BLOCKING_CHOICES =
 {
   "not_on_vistas", _("Not on Vistas"),
@@ -362,11 +381,11 @@ OB_MODULES["misc"] =
       randomize_group="architecture",
     },
 
-
     { name="parks",
-    label=_("Parks"),
-    tooltip = _("Control the number of parks."),
-    choices=STYLE_CHOICES, priority = 86, randomize_group="architecture", },
+      label=_("Parks"),
+      tooltip = _("Control the number of parks."),
+      choices=STYLE_CHOICES, priority = 86, randomize_group="architecture",
+    },
     {
       name="natural_parks",
       label=_("Natural Cliffs"),

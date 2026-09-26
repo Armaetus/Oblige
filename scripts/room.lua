@@ -3785,6 +3785,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     add_h = math.max(group.min_h, add_h)
 
+    if LEVEL.room_height_limit then
+      add_h = math.min(add_h, LEVEL.room_height_limit)
+    end
+
     group.h = group.max_floor_h + add_h
   end
 
