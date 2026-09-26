@@ -4571,11 +4571,24 @@ gui.debugf("=== Coverage seeds: %d/%d  rooms: %d/%d\n",
     or PARAM.ungrown_room_action == "cull_all") then
 
       for _,R in pairs(LEVEL.rooms) do
-        --gui.printf("ROOM_" .. R.id .. " has " .. R:prelim_conn_num(LEVEL) .. " initial conns.\n")
         if rand.odds(cull_threshold) then
           if R.svolume <= 12 and R:prelim_conn_num(LEVEL) == 1 then
-            Grower_kill_room(SEEDS, LEVEL, R)
-            gui.printf(R.id .. " still too small: removed. \n")
+
+            local hallway_neighbor
+            for _,PC in pairs(LEVEL.prelim_conns) do
+              if PC.R1 == R or PC.R2 == R then
+                local other = sel(PC.R1 == R, PC.R2, PC.R1)
+
+                if other.is_hallway then
+                  hallway_neighbor = true
+                end
+              end
+            end
+
+            if hallway_neighbor ~= true then
+              gui.printf(R.id .. " still too small: removed. \n")
+              Grower_kill_room(SEEDS, LEVEL, R)
+            end
           end
         else
           gui.printf(R.id .. " still too small: not culled due to secrets style. \n")
