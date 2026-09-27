@@ -150,16 +150,18 @@ function PREFAB_CONTROL.fine_tune_filters()
 
   local new_fab_groups_multipliers =
   {
-    -- gtd_wall_grated_machines_damaged_wall
-    gtd_ribbed_lights_vox_lights_EPIC = 2,
-    gtd_lusting_for_the_sun = 3,
-    gtd_modquake_thick_brace_set = 16,
+    -- gtd_wall_grated_machines_damaged_wall,
+    --gtd_ribbed_lights_vox_lights_EPIC = 1,
+    gtd_lusting_for_the_sun = 1,
+    gtd_modquake_thick_brace_set = 4,
 
     tech_o_letter_Q = 6,
     tech_o_letter_R = 6,
 
     tech_o_letter_L2 = 6,
-    tech_o_letter_M2 = 6
+    tech_o_letter_M2 = 6,
+
+    low_gap_EPIC = 14
   }
 
   local new_themes_multipliers =
@@ -168,6 +170,8 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_bumblebee = 12,
 
     any_copperRust = 10,
+
+    tech_AITextures = 4
   }
 
   local themes =

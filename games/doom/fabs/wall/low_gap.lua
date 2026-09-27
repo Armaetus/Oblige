@@ -10,8 +10,6 @@ PREFABS.Wall_lowgap =
   file   = "wall/low_gap.wad",
   map    = "MAP01",
 
-  
-
   prob   = 50,
   group  = "low_gap",
   theme  = "tech",
@@ -32,8 +30,6 @@ PREFABS.Wall_lowgap_diag =
   file   = "wall/low_gap.wad",
   map    = "MAP02",
 
-  
-
   prob   = 50,
   group  = "low_gap",
   theme  = "tech",
@@ -52,8 +48,6 @@ PREFABS.Wall_lowgap_innerdiag =
 {
   file = "wall/low_gap.wad",
   map = "MAP04",
-
-  
 
   prob = 50,
   group = "low_gap",
@@ -223,4 +217,36 @@ PREFABS.Wall_hellgap_diag3 =
   theme = "hell",
 
   tex_TEKWALL4 = "SP_FACE1",
+}
+
+--
+
+PREFABS.Wall_lowgap_EPIC =
+{
+  file   = "wall/low_gap.wad",
+  map    = "MAP10",
+
+  prob   = 50,
+  group  = "low_gap_EPIC",
+  theme  = "tech",
+  rank = 2,
+
+  where  = "edge",
+  deep   = 16,
+  height = 64,
+
+  bound_z1 = 0,
+  bound_z2 = 64,
+
+  z_fit  = "top",
+}
+
+PREFABS.Wall_lowgap_EPIC_gothic =
+{
+  template = "Wall_lowgap_EPIC",
+
+  theme  = "!tech",
+  rank = 1,
+
+  T_HLITEB = "T_HLITEY"
 }
