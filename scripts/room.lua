@@ -3302,6 +3302,11 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         end
 
         A.floor_h  = N.floor_h - (THEME.pool_depth or 16)
+
+        if LEVEL.room_height_limit then
+          add_h = math.min(add_h, LEVEL.room_height_limit)
+        end
+
         A.ceil_h   = math.clamp(N2.floor_h + 96,
           N2.ceil_h + add_h,
           EXTREME_H)
@@ -3769,12 +3774,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         [2] = 1,
         [3] = 0.5,
       }
-
-      if group.vol > 96 then
-        tall_offsets[3] = 3
-      elseif group.vol > 64 then
-        tall_offsets[3] = 2
-      end
 
       add_h = tonumber(add_h * rand.key_by_probs(tall_offsets))
     end
