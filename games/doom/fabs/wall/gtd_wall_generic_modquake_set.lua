@@ -171,6 +171,18 @@ PREFABS.Wall_modquake_ex_light_slope_brace =
   group = "gtd_modquake_ex_light_slope_brace"
 }
 
+PREFABS.Wall_modquake_ex_light_slope_brace =
+{
+  template = "Wall_modquake_set_industrial",
+  map = "MAP08",
+
+  rank = 1,
+
+  deep = 16,
+
+  group = "gtd_modquake_ex_light_slope_brace"
+}
+
 -- LIMIT-SAFE:
 
 PREFABS.Wall_modquake_ex_light_slope_brace_limit =
@@ -184,6 +196,20 @@ PREFABS.Wall_modquake_ex_light_slope_brace_limit =
 
   group = "gtd_modquake_ex_light_slope_brace",
 
+  line_342 = 0,
+  line_341 = 0
+}
+
+PREFABS.Wall_modquake_ex_light_slope_brace_limit =
+{
+  template = "Wall_modquake_set_industrial",
+  map = "MAP08",
+
+  deep = 16,
+
+  group = "gtd_modquake_ex_light_slope_brace",
+
+  line_342 = 0,
   line_341 = 0
 }
 
