@@ -8268,6 +8268,38 @@ GROW_CAUSEWAY_CORNER_SINGLE =
   },
 },
 
+GROW_WRESTLE_CAGE =
+{
+  prob = 30,
+  skip_prob = 75,
+
+  structure =
+  {
+    "xx11xxxxxx","xx11xxxxxx",
+    "x........x","x/111111%x",
+    "x........x","x11111111x",
+    "..........","/vAAAAAAv%",
+    "...x..x...","AAAxAAxAAA",
+    "..........","AA/CCCC%AA",
+    "..........","AACCCCCCAA",
+    "..........","AA%CCCC/AA",
+    "...x..x...","AAAxAAxAAA",
+    "..........","%^AAAAAA^/",
+    "x........x","x11111111x",
+    "x........x","x%111111/x",
+  },
+
+  diagonals =
+  {
+    ".1","1.",
+    ".A","A.",
+    "AC","CA",
+    "AC","CA",
+    ".A","A.",
+    ".1","1."
+  }
+},
+
 GROW_CAUSEWAY_TIP =
 {
   prob = 25,
@@ -10597,6 +10629,8 @@ GROW_MAZE_U =
   prob = 8,
   skip_prob = 45,
 
+  never_absurdify = true,
+
   structure =
   {
     "x...x","x111x",
@@ -10605,6 +10639,24 @@ GROW_MAZE_U =
     ".....","#1#1#",
     ".....","11#11",
     "11...","11#11",
+  }
+},
+
+GROW_MAZE_U_MUTATED =
+{
+  prob = 10,
+  skip_prob = 55,
+
+  structure =
+  {
+    "...xxxxxxx","111xxxxxxx",
+    ".x.xxxxxxx","1x1xxxxxxx",
+    "...xxxxxxx","1#1xxxxxxx",
+    "....xxxxxx","1#1#xxxxxx",
+    ".....xxxxx","1#1##xxxxx",
+    ".........x","111111111x",
+    ".........1","1111####11",
+    ".........1","1111111111"
   }
 },
 
