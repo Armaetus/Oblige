@@ -971,7 +971,7 @@ function OTEX_PROC_MODULE.setup(self)
   module_param_up(self)
   OTEX_PROC_MODULE.synthesize_procedural_themes()
 
-  gui.printf("--== OTEX Module: Merging Themes ==--")
+  gui.printf("--== OTEX Module: Merging Themes ==--\n\n")
   table.deep_merge(GAME.MATERIALS, OTEX_MATERIALS, 2)
   table.deep_merge(GAME.ROOM_THEMES, OTEX_ROOM_THEMES, 2)
   table.deep_merge(GAME.THEMES, OTEX_THEMES, 3)

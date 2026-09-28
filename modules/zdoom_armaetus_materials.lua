@@ -1424,6 +1424,7 @@ OBS_RESOURCE_PACK_MATERIALS = {
   T_HLITEY = { t="T_HLITEY", f="FLAT23" },
   T_HLITEG = { t="T_HLITEG", f="FLAT23" },
   T_HLITEB = { t="T_HLITEB", f="FLAT23" },
+  T_HLITER = { t="T_HLITER", f="FLAT23"},
 
   -- Recolored CEIL4_3 flats
   T_CL43R = { t="COMPRED" , f="T_CL43R" },
