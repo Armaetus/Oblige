@@ -373,7 +373,7 @@ OB_MODULES["misc"] =
     },
     {
       name="room_height_limit",
-      label=_("Room Height limit"),
+      label=_("Room Height Limit"),
       choices=MISC_STUFF.HEIGHT_LIMIT_CHOICES,
       tooltip=_("Determines a maximum height limit for room ceilings from the highest floor area, excluding floor and ceiling sink height differences.\n" ..
         "Obsidian default is NONE.\n" ..
