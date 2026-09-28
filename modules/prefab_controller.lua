@@ -161,7 +161,8 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_o_letter_L2 = 6,
     tech_o_letter_M2 = 6,
 
-    low_gap_EPIC = 14
+    low_gap_EPIC = 8,
+    low_gap_EPIC_alt = 8
   }
 
   local new_themes_multipliers =
@@ -171,7 +172,8 @@ function PREFAB_CONTROL.fine_tune_filters()
 
     any_copperRust = 10,
 
-    tech_AITextures = 4
+    tech_iStuff = 8,
+    urban_iStuff = 8
   }
 
   local themes =
