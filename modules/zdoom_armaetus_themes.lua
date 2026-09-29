@@ -3351,7 +3351,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       QFLAT05 = 10,
       QFLAT06 = 10,
       QFLAT07 = 10,
-      QFLAT08 = 10,
       QFLAT09 = 10,
 
       TILES1 = 10,
@@ -3465,7 +3464,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       QFLAT05 = 10,
       QFLAT06 = 10,
       QFLAT07 = 10,
-      QFLAT08 = 10,
       QFLAT09 = 10,
 
       TILES1 = 10,

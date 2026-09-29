@@ -254,12 +254,12 @@ PREFABS.Wall_lowgap_EPIC_diag  =
   template = "Wall_lowgap_EPIC",
   map = "MAP11",
 
-  theme  = "!tech",
-  rank = 1,
+  theme  = "tech",
+  rank = 2,
 
   where = "diagonal",
 
-  T_HLITEB = "T_HLITEY"
+  tex_T_HLITEB = "T_HLITEY"
 }
 
 PREFABS.Wall_lowgap_EPIC_gothic_diag =
@@ -272,7 +272,7 @@ PREFABS.Wall_lowgap_EPIC_gothic_diag =
 
   where = "diagonal",
 
-  T_HLITEB = "T_HLITEY"
+  tex_T_HLITEB = "T_HLITEY"
 }
 
 --
@@ -281,11 +281,11 @@ PREFABS.Wall_lowgap_alt_EPIC =
 {
   template = "Wall_lowgap_EPIC",
 
-  theme  = "!tech",
+  theme  = "tech",
   group  = "low_gap_EPIC_alt",
   rank = 1,
 
-  T_HLITEB = "T_HLITEY"
+  tex_T_HLITEB = "T_HLITEY"
 }
 
 PREFABS.Wall_lowgap_EPIC_alt_gothic =
@@ -294,9 +294,9 @@ PREFABS.Wall_lowgap_EPIC_alt_gothic =
 
   theme  = "!tech",
   group  = "low_gap_EPIC_alt",
-  rank = 1,
+  rank = 2,
 
-  T_HLITEB = "T_HLITEY"
+  tex_T_HLITEB = "T_HLITEY"
 }
 
 PREFABS.Wall_lowgap_EPIC_alt_diag  =
@@ -304,13 +304,13 @@ PREFABS.Wall_lowgap_EPIC_alt_diag  =
   template = "Wall_lowgap_EPIC",
   map = "MAP11",
 
-  theme  = "!tech",
+  theme  = "tech",
   group  = "low_gap_EPIC_alt",
   rank = 1,
 
   where = "diagonal",
 
-  T_HLITEB = "T_HLITER"
+  tex_T_HLITEB = "T_HLITER"
 }
 
 PREFABS.Wall_lowgap_EPIC_gothic_alt_diag =
@@ -320,9 +320,9 @@ PREFABS.Wall_lowgap_EPIC_gothic_alt_diag =
 
   theme  = "!tech",
   group  = "low_gap_EPIC_alt",
-  rank = 1,
+  rank = 2,
 
   where = "diagonal",
 
-  T_HLITEB = "T_HLITER"
+  tex_T_HLITEB = "T_HLITER"
 }
