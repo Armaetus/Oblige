@@ -150,10 +150,10 @@ function PREFAB_CONTROL.fine_tune_filters()
 
   local new_fab_groups_multipliers =
   {
-    -- gtd_wall_grated_machines_damaged_wall,
-    --gtd_ribbed_lights_vox_lights_EPIC = 1,
-    gtd_lusting_for_the_sun = 1,
-    gtd_modquake_thick_brace_set = 4,
+    -- gtd_wall_grated_machines_damaged_wall =,
+    --gtd_ribbed_lights_vox_lights_EPIC =,
+    --gtd_lusting_for_the_sun =,
+    --gtd_modquake_thick_brace_set =,
 
     tech_o_letter_Q = 6,
     tech_o_letter_R = 6,
@@ -162,18 +162,22 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_o_letter_M2 = 6,
 
     low_gap_EPIC = 8,
-    low_gap_EPIC_alt = 8
+    low_gap_EPIC_alt = 8,
+
+    gtd_wall_redlite = 10,
+    gtd_wall_brownlite = 10,
+    gtd_wall_grnlite = 10
   }
 
   local new_themes_multipliers =
   {
-    tech_greenGrey = 12,
-    tech_bumblebee = 12,
+    tech_greenGrey = 8,
+    tech_bumblebee = 8,
 
-    any_copperRust = 10,
+    any_copperRust = 7,
 
-    tech_iStuff = 8,
-    urban_iStuff = 8
+    tech_iStuff = 4,
+    urban_iStuff = 4
   }
 
   local themes =

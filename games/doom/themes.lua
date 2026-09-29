@@ -1445,6 +1445,9 @@ DOOM.THEMES =
       --
       lite1 = 20,
       lite2 = 20,
+      gtd_wall_redlite = 20,
+      gtd_wall_grnlite = 20,
+      gtd_wall_brownlite = 20,
       --
       torches4 = 12, --35
       torches5 = 12, --35
@@ -1992,6 +1995,10 @@ DOOM.THEMES =
       torches6 = 8,
       torches9 = 6, --burning barrel
       torches10 = 4, --skull rock
+      --
+      gtd_wall_redlite = 8,
+      gtd_wall_grnlite = 8,
+      gtd_wall_brownlite = 8,
       --
       gtd_wall_urban_storage = 50,
       gtd_full_storage = 50,
@@ -2571,6 +2578,9 @@ DOOM.THEMES =
       torches8 = 10, --evil eye
       torches9 = 5,  --burning barrel
       torches10 = 5, --skull rock
+      --
+      gtd_wall_redlite = 15,
+      gtd_wall_brownlite = 15,
       --
       lowhell1 = 16,
       lowhell2 = 16,
