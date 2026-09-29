@@ -5035,7 +5035,7 @@ function Grower_create_rooms(LEVEL, SEEDS)
           R.svolume = R.svolume + A.svolume
         end
       end
-      if R.svolume < 16 then
+      if R.svolume < 24 then
         LEVEL.dead_reason = "is_dead > Proc Gotcha: Low floor area of " .. R.svolume .."\n"
         LEVEL.is_dead = true
       end
