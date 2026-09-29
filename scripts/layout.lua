@@ -2786,15 +2786,8 @@ function Layout_handle_corners(LEVEL)
 
 
   local function near_porch(corner)
-    local diff = corner.areas[1].ceil_h
-    local near_porch = false
-
     for _,A in pairs(corner.areas) do
       if A.is_porch or A.is_porch_neighbor then
-        near_porch = true
-      end
-
-      if near_porch and A.ceil_h ~= diff then
         return true
       end
     end
