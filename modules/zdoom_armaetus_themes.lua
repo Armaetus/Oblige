@@ -1558,7 +1558,7 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
   tech_greenGrey = --50
   {
     env = "building",
-    prob = 50,
+    prob = 30,
 
     walls =
     {
@@ -1656,7 +1656,7 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
   tech_bumblebee = --30
   {
     env = "building",
-    prob = 30,
+    prob = 20,
 
     walls =
     {
