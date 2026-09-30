@@ -247,6 +247,8 @@ PREFABS.Wall_lowgap_EPIC_gothic =
 
   theme  = "!tech",
   rank = 1,
+
+  tex_T_HLITEB = "T_HLITEY"
 }
 
 PREFABS.Wall_lowgap_EPIC_diag  =
@@ -258,8 +260,6 @@ PREFABS.Wall_lowgap_EPIC_diag  =
   rank = 2,
 
   where = "diagonal",
-
-  tex_T_HLITEB = "T_HLITEY"
 }
 
 PREFABS.Wall_lowgap_EPIC_gothic_diag =
@@ -296,7 +296,7 @@ PREFABS.Wall_lowgap_EPIC_alt_gothic =
   group  = "low_gap_EPIC_alt",
   rank = 2,
 
-  tex_T_HLITEB = "T_HLITEY"
+  tex_T_HLITEB = "T_HLITER"
 }
 
 PREFABS.Wall_lowgap_EPIC_alt_diag  =
@@ -310,7 +310,7 @@ PREFABS.Wall_lowgap_EPIC_alt_diag  =
 
   where = "diagonal",
 
-  tex_T_HLITEB = "T_HLITER"
+  tex_T_HLITEB = "T_HLITEY"
 }
 
 PREFABS.Wall_lowgap_EPIC_gothic_alt_diag =
