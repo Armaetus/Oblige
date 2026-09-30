@@ -2806,9 +2806,21 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     end
 
     if A1:touches(A2) then
-      if A1.is_outdoor and not A2.is_outdoor or
-      A2.is_outdoor and not A1.is_outdoor then
-        return true
+      if R:get_env() == "outdoor" then
+        if A1.is_outdoor and not A2.is_outdoor or
+        A2.is_outdoor and not A1.is_outdoor then
+          return true
+        end
+
+        if (A1.is_porch and not A2.is_porch) or
+        (not A1.is_porch and A2.is_porch) then
+          return true
+        end
+
+        if (A1.ceil_h == "_SKY" and A2.ceil_h ~= "_SKY") or
+        (A1.ceil_h ~= "_SKY" and A2.ceil_h == "_SKY") then
+          return true
+        end
       end
     end
 
