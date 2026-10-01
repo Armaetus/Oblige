@@ -996,6 +996,12 @@ ULTDOOM.THEMES =
     ceil_light_prob = 60,
 
     streets_friendly = false,
+
+    entity_remap =
+    {
+      mercury_lamp = "lamp",
+      mercury_small = "lamp"
+    }
   },
 
 
