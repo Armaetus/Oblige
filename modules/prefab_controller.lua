@@ -174,7 +174,7 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_greenGrey = 4,
     tech_bumblebee = 4,
 
-    any_copperRust = 7,
+    any_copperRust = 5,
 
     tech_iStuff = 6,
     urban_iStuff = 6
