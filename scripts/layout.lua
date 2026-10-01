@@ -2786,13 +2786,42 @@ function Layout_handle_corners(LEVEL)
 
 
   local function near_porch(corner)
+    local near_porch = false
+    local average_ceil = 0
+    local max_ceil_h = -EXTREME_H
+    local even_ceilings = false
+    local wallish = false
+
     for _,A in pairs(corner.areas) do
       if A.is_porch or A.is_porch_neighbor then
-        return true
+        near_porch = true
+      end
+
+      if A.ceil_h then
+        max_ceil_h = math.max(max_ceil_h, A.ceil_h)
+        average_ceil = average_ceil + A.ceil_h
       end
     end
 
-    return false
+    for _,E in pairs(corner.edges) do
+      if Edge_is_wallish(E) then
+        wallish = true
+      end
+    end
+
+    if (average_ceil / 4) == max_ceil_h then
+      even_ceilings = true
+    end
+
+    if even_ceilings and not wallish then
+      return false
+    end
+
+    if near_porch then
+      return true
+    else
+      return false
+    end
   end
 
 

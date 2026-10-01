@@ -2744,7 +2744,7 @@ function Level_make_level(LEV)
   if res ~= "runt" or not LEVEL.is_dead then
     if not SHAPE_GRAMMAR.ignore_coverage then
       if LEVEL.cur_coverage < coverage_target and not LEVEL.is_procedural_gotcha then
-        LEVEL.dead_reason = "is_dead > Coverage target not met."
+        LEVEL.dead_reason = "is_dead > Coverage target not met.\n"
         res = "runt"
       end
     end
