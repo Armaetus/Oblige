@@ -469,8 +469,6 @@ PREFABS.Pic_EPIC_box_metal_superwide =
     SILVCOMP = 10
   },
 
-  flat_CEIL5_2 = "FLAT20",
-
   sector_1 = { [0]=70, [1]=15 }
 }
 

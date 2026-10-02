@@ -152,8 +152,8 @@ PREFABS.Stair_gtd_lift_bridge_96_3d =
   template = "Stair_gtd_lift_128_3d",
   map = "MAP15",
 
-  x_fit = { 16,17 , 111,112 },
-  y_fit = { 64,65 },
+  x_fit = { 16,17 , 63,65 , 111,112 },
+  y_fit = { 63,64 , 68,69 },
 
   bound_z1 = 0,
 
