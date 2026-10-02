@@ -5019,7 +5019,7 @@ function Grower_create_rooms(LEVEL, SEEDS)
 
   -- sanity check for level missing a certain amount of rooms
   if #LEVEL.rooms == 1 and not LEVEL.is_procedural_gotcha then
-    level.dead_reason = "is dead > Standard level with only 1 room.\n"
+    LEVEL.dead_reason = "is dead > Standard level with only 1 room.\n"
     LEVEL.is_dead = true
   end
 
