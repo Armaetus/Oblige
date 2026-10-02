@@ -2948,11 +2948,6 @@ brightmap texture SDIPHWL2
   map SDIPHBR2
 }
 
-brightmap texture SDIPHWL9
-{
-  map SDIPHBR9
-}
-
 brightmap texture SDSLDWL1
 {
   map SDSLDBR1
