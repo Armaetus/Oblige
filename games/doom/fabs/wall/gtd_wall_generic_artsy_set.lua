@@ -71,7 +71,8 @@ PREFABS.Wall_frame_light_band_hell =
 
   z_fit = "top",
 
-  tex_BRONZE4 = "BFALL1"
+  tex_BRONZE4 = "BFALL1",
+  tex_DOORSTOP = "SUPPORT3"
 }
 
 --

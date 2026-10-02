@@ -456,7 +456,7 @@ PREFABS.Pic_EPIC_box_metal_superwide =
 
   seed_w = 3,
 
-  tex_GLASS1 =
+  tex_PLAN1 =
   {
     PLAN1    = 75,
     PLAN2    = 75,
@@ -485,13 +485,6 @@ PREFABS.Pic_EPIC_superwide_longconsole =
   theme = "tech",
 
   seed_w = 3,
-
-  tex_GLASS1 =
-  {
-   CONSOLE5 = 100
-  },
-
-  flat_CEIL5_2 = "FLAT20",
 
   sector_1 = { [0]=70, [1]=20 }
 }
