@@ -1657,6 +1657,29 @@ OBS_RESOURCE_PACK_MATERIALS = {
   G_OCURF7 = { t="G_OCURW7", f="G_OCURF7"},
   G_OCURF8 = { t="G_OCURW8", f="G_OCURF8"},
 
+  -- iStuff theme
+  -- walls
+  G_IPHWL1 = {t="G_IPHWL1", f="G_IPHFT1"},
+  G_IPHWL2 = {t="G_IPHWL2", f="G_IPHFT2"},
+  G_IPHWL3 = {t="G_IPHWL3", f="G_IPHFT3"},
+  G_IPHWL4 = {t="G_IPHWL4", f="G_IPHFT4"},
+  G_IPHWL5 = {t="G_IPHWL5", f="G_IPHFT5"},
+  G_IPHWL6 = {t="G_IPHWL6", f="G_IPHFT6"},
+  G_IPHWL7 = {t="G_IPHWL7", f="G_IPHFT7"},
+  G_IPHWL8 = {t="G_IPHWL8", f="G_IPHFT8"},
+  G_IPHWL9 = {t="G_IPHWL9", f="G_IPHFT3"},
+  G_IPHWLA = {t="G_IPHWLA", f="G_IPHFT5"},
+  G_IPHWLB = {t="G_IPHWLB", f="G_IPHFT8"},
+  -- flats
+  G_IPHFT1 = {t="G_IPHWL1", f="G_IPHFT1"},
+  G_IPHFT2 = {t="G_IPHWL2", f="G_IPHFT2"},
+  G_IPHFT3 = {t="G_IPHWL3", f="G_IPHFT3"},
+  G_IPHFT4 = {t="G_IPHWL5", f="G_IPHFT4"},
+  G_IPHFT5 = {t="G_IPHWL6", f="G_IPHFT5"},
+  G_IPHFT6 = {t="G_IPHWL8", f="G_IPHFT6"},
+  G_IPHFT7 = {t="G_IPHWL9", f="G_IPHFT7"},
+  G_IPHFT8 = {t="G_IPHWLB", f="G_IPHFT8"},
+
   ----------------------
   -- Special Textures --
   ----------------------
@@ -2940,12 +2963,6 @@ brightmap texture SDHCCBWB
 brightmap texture SDHCCBWC
 {
   map SDHCCBRC
-}
-
-// iStuff wall brightmaps
-brightmap texture SDIPHWL2
-{
-  map SDIPHBR2
 }
 
 brightmap texture SDSLDWL1

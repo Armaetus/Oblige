@@ -447,30 +447,6 @@ OBS_RESOURCE_PACK_GENAI_MATERIALS =
   S_W2WFR7 = {t="S_W2WALC", f="S_W2WFR1"},
   S_W2WFR8 = {t="S_W2WALE", f="S_W2WFR1"},
 
-  -- iStuff theme
-  -- walls
-  SDIPHWL1 = {t="SDIPHWL1", f="SDIPHFT1"},
-  SDIPHWL2 = {t="SDIPHWL2", f="SDIPHFT1"},
-  SDIPHWL3 = {t="SDIPHWL3", f="SDIPHFT2"},
-  SDIPHWL4 = {t="SDIPHWL4", f="SDIPHFT2"},
-  SDIPHWL5 = {t="SDIPHWL5", f="SDIPHFT3"},
-  SDIPHWL6 = {t="SDIPHWL6", f="SDIPHFT4"},
-  SDIPHWL7 = {t="SDIPHWL7", f="SDIPHFT4"},
-  SDIPHWL8 = {t="SDIPHWL8", f="SDIPHFT5"},
-  SDIPHWL9 = {t="SDIPHWL9", f="SDIPHFT6"},
-  SDIPHWLA = {t="SDIPHWLA", f="SDIPHFT6"},
-  SDIPHWLB = {t="SDIPHWLB", f="SDIPHFT7"},
-  SDIPHWLC = {t="SDIPHWLC", f="SDIPHFT7"},
-  -- flats
-  SDIPHFT1 = {t="SDIPHWL1", f="SDIPHFT1"},
-  SDIPHFT2 = {t="SDIPHWL2", f="SDIPHFT2"},
-  SDIPHFT3 = {t="SDIPHWL3", f="SDIPHFT3"},
-  SDIPHFT4 = {t="SDIPHWL5", f="SDIPHFT4"},
-  SDIPHFT5 = {t="SDIPHWL6", f="SDIPHFT5"},
-  SDIPHFT6 = {t="SDIPHWL8", f="SDIPHFT6"},
-  SDIPHFT7 = {t="SDIPHWL9", f="SDIPHFT7"},
-  SDIPHFT8 = {t="SDIPHWLB", f="SDIPHFT8"},
-
   -- bunker theme
   SDTBNKW1 = {t="SDTBNKW1", f="FLAT18"},
   SDTBNKW2 = {t="SDTBNKW2", f="FLAT19"},
@@ -528,18 +504,17 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       S_W2WALD = 2,
       S_W2WALE = 2,
 
-      SDIPHWL1 = 4,
-      SDIPHWL2 = 4,
-      SDIPHWL3 = 4,
-      SDIPHWL4 = 4,
-      SDIPHWL5 = 4,
-      SDIPHWL6 = 4,
-      SDIPHWL7 = 4,
-      SDIPHWL8 = 4,
-      SDIPHWL9 = 4,
-      SDIPHWLA = 4,
-      SDIPHWLB = 4,
-      SDIPHWLC = 4
+      G_IPHWL1 = 4,
+      G_IPHWL2 = 4,
+      G_IPHWL3 = 4,
+      G_IPHWL4 = 4,
+      G_IPHWL5 = 4,
+      G_IPHWL6 = 4,
+      G_IPHWL7 = 4,
+      G_IPHWL8 = 4,
+      G_IPHWL9 = 4,
+      G_IPHWLA = 4,
+      G_IPHWLB = 4
     },
 
     floors =
@@ -581,14 +556,14 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SD_GTHF7 = 1,
       SD_GTHF8 = 1,
 
-      SDIPHFT1 = 4,
-      SDIPHFT2 = 4,
-      SDIPHFT3 = 4,
-      SDIPHFT4 = 4,
-      SDIPHFT5 = 4,
-      SDIPHFT6 = 4,
-      SDIPHFT7 = 4,
-      SDIPHFT8 = 4
+      G_IPHFT1 = 4,
+      G_IPHFT2 = 4,
+      G_IPHFT3 = 4,
+      G_IPHFT4 = 4,
+      G_IPHFT5 = 4,
+      G_IPHFT6 = 4,
+      G_IPHFT7 = 4,
+      G_IPHFT8 = 4
     },
 
     ceilings =
@@ -612,13 +587,13 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       G_OM_FT9 = 5,
       G_OM_FTA = 5,
 
-      SDIPHFT1 = 4,
-      SDIPHFT2 = 4,
-      SDIPHFT3 = 4,
-      SDIPHFT4 = 4,
-      SDIPHFT5 = 4,
-      SDIPHFT6 = 4,
-      SDIPHFT7 = 4
+      G_IPHFT1 = 4,
+      G_IPHFT2 = 4,
+      G_IPHFT3 = 4,
+      G_IPHFT4 = 4,
+      G_IPHFT5 = 4,
+      G_IPHFT6 = 4,
+      G_IPHFT7 = 4
     }
   },
 
@@ -1427,79 +1402,6 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       GRATE5 = 20,
       GRATE6 = 20,
       GRATE7 = 20,
-    }
-  },
-
-  tech_iStuff = --30
-  {
-    env = "building",
-    prob = 30,
-
-    is_generative = true,
-
-    walls =
-    {
-      SDIPHWL1 = 20,
-      SDIPHWL2 = 20,
-      SDIPHWL3 = 20,
-      SDIPHWL4 = 20,
-      SDIPHWL5 = 20,
-      SDIPHWL6 = 20,
-      SDIPHWL7 = 20,
-      SDIPHWL8 = 20,
-      SDIPHWL9 = 20,
-      SDIPHWLA = 20,
-      SDIPHWLB = 20,
-      SDIPHWLC = 20,
-
-      BROWN2 = 5,
-      BROWN3 = 5,
-      BRIKS32 = 5,
-      CEM10 = 5,
-      GRAY6 = 5,
-      GRAY8 = 5,
-      GRAY9 = 5
-    },
-
-    floors =
-    {
-      SDIPHFT1 = 20,
-      SDIPHFT2 = 20,
-      SDIPHFT3 = 20,
-      SDIPHFT4 = 20,
-      SDIPHFT5 = 20,
-      SDIPHFT6 = 20,
-      SDIPHFT7 = 20,
-      SDIPHFT8 = 20,
-
-      SD_TSGF3 = 5,
-      SD_TSGF9 = 5,
-      SD_TSGFA = 5,
-      SD_TSGFC = 5,
-
-      FLAT18 = 4,
-      FLAT20 = 4,
-      FLAT3 = 4,
-      FLOOR0_5 = 4,
-      SLIME14 = 3
-    },
-
-    ceilings =
-    {
-      SDIPHFT1 = 20,
-      SDIPHFT2 = 20,
-      SDIPHFT3 = 20,
-      SDIPHFT4 = 20,
-      SDIPHFT5 = 20,
-      SDIPHFT6 = 20,
-      SDIPHFT7 = 20,
-      SDIPHFT8 = 20,
-
-      FLAT18 = 4,
-      FLAT20 = 4,
-      FLAT3 = 4,
-      FLOOR0_5 = 4,
-      SLIME14 = 3
     }
   },
 
@@ -4095,79 +3997,6 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SDM_HGF1 = 8,
       SDM_HGF2 = 8,
       SDM_HGF3 = 8,
-    }
-  },
-
-  urban_iStuff = --20
-  {
-    env = "building",
-    prob = 20,
-
-    is_generative = true,
-
-    walls =
-    {
-      SDIPHWL1 = 20,
-      SDIPHWL2 = 20,
-      SDIPHWL3 = 20,
-      SDIPHWL4 = 20,
-      SDIPHWL5 = 20,
-      SDIPHWL6 = 20,
-      SDIPHWL7 = 20,
-      SDIPHWL8 = 20,
-      SDIPHWL9 = 20,
-      SDIPHWLA = 20,
-      SDIPHWLB = 20,
-      SDIPHWLC = 20,
-
-      BROWN2 = 5,
-      BROWN3 = 5,
-      BRIKS32 = 5,
-      CEM10 = 5,
-      GRAY6 = 5,
-      GRAY8 = 5,
-      GRAY9 = 5
-    },
-
-    floors =
-    {
-      SDIPHFT1 = 20,
-      SDIPHFT2 = 20,
-      SDIPHFT3 = 20,
-      SDIPHFT4 = 20,
-      SDIPHFT5 = 20,
-      SDIPHFT6 = 20,
-      SDIPHFT7 = 20,
-      SDIPHFT8 = 20,
-
-      SD_TSGF3 = 5,
-      SD_TSGF9 = 5,
-      SD_TSGFA = 5,
-      SD_TSGFC = 5,
-
-      FLAT18 = 4,
-      FLAT20 = 4,
-      FLAT3 = 4,
-      FLOOR0_5 = 4,
-      SLIME14 = 3
-    },
-
-    ceilings =
-    {
-      SDIPHFT1 = 20,
-      SDIPHFT2 = 20,
-      SDIPHFT3 = 20,
-      SDIPHFT4 = 20,
-      SDIPHFT5 = 20,
-      SDIPHFT6 = 20,
-      SDIPHFT7 = 20,
-      SDIPHFT8 = 20,
-
-      FLAT18 = 4,
-      FLAT20 = 4,
-      FLAT3 = 4,
-      FLOOR0_5 = 4,
-      SLIME14 = 3
     }
   },
 

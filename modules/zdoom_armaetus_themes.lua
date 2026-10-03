@@ -1768,6 +1768,87 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
     }
   },
 
+  tech_iStuff = --30
+  {
+    env = "building",
+    prob = 30,
+
+    walls =
+    {
+      G_IPHWL1 = 20,
+      G_IPHWL2 = 20,
+      G_IPHWL3 = 20,
+      G_IPHWL4 = 20,
+      G_IPHWL5 = 20,
+      G_IPHWL6 = 20,
+      G_IPHWL7 = 20,
+      G_IPHWL8 = 20,
+      G_IPHWL9 = 20,
+      G_IPHWLA = 20,
+      G_IPHWLB = 20,
+
+      BROWN2 = 5,
+      BROWN3 = 5,
+      BRIKS32 = 5,
+      CEM10 = 5,
+      GRAY6 = 5,
+      GRAY8 = 5,
+      GRAY9 = 5
+    },
+
+    floors =
+    {
+      G_IPHFT1 = 20,
+      G_IPHFT2 = 20,
+      G_IPHFT3 = 20,
+      G_IPHFT4 = 20,
+      G_IPHFT5 = 20,
+      G_IPHFT6 = 20,
+      G_IPHFT7 = 20,
+      G_IPHFT8 = 20,
+
+      OBTBSFL1 = 10,
+      OBTBSFL2 = 10,
+      OBTBSFL3 = 10,
+      OBTSVBF1 = 10,
+      OBTSVBF2 = 10,
+      OBTSVBF3 = 10,
+
+      GRATE1 = 7,
+      GRATE5 = 7,
+      GRATE6 = 7,
+      SHINY01 = 7,
+      SHINY03 = 7,
+      SHINY04 = 7,
+
+      FLAT1 = 4,
+      FLAT3 = 4,
+      FLAT18 = 4,
+      FLAT20 = 4,
+      FLOOR0_5 = 4,
+      FLOOR4_8 = 4,
+      SLIME14 = 3
+    },
+
+    ceilings =
+    {
+      G_IPHFT1 = 20,
+      G_IPHFT2 = 20,
+      G_IPHFT3 = 20,
+      G_IPHFT4 = 20,
+      G_IPHFT5 = 20,
+      G_IPHFT6 = 20,
+      G_IPHFT7 = 20,
+      G_IPHFT8 = 20,
+
+      FLAT18 = 4,
+      FLAT20 = 4,
+      FLAT3 = 4,
+      FLOOR0_5 = 4,
+      SLIME14 = 3
+    }
+  },
+
   tech_Outdoors_generic = --50
   {
     env  = "outdoor",
@@ -4445,7 +4526,89 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       RROCK03 = 50,
       RROCK09 = 30
     }
-  }
+  },
+
+  urban_iStuff = --20
+  {
+    env = "building",
+    prob = 20,
+
+    walls =
+    {
+      G_IPHWL1 = 20,
+      G_IPHWL2 = 20,
+      G_IPHWL3 = 20,
+      G_IPHWL4 = 20,
+      G_IPHWL5 = 20,
+      G_IPHWL6 = 20,
+      G_IPHWL7 = 20,
+      G_IPHWL8 = 20,
+      G_IPHWL9 = 20,
+      G_IPHWLA = 20,
+      G_IPHWLB = 20,
+
+      BROWN2 = 5,
+      BROWN3 = 5,
+      BRIKS32 = 5,
+      CEM10 = 5,
+      GRAY6 = 5,
+      GRAY8 = 5,
+      GRAY9 = 5
+    },
+
+    floors =
+    {
+      G_IPHFT1 = 20,
+      G_IPHFT2 = 20,
+      G_IPHFT3 = 20,
+      G_IPHFT4 = 20,
+      G_IPHFT5 = 20,
+      G_IPHFT6 = 20,
+      G_IPHFT7 = 20,
+      G_IPHFT8 = 20,
+
+      OBTBSFL1 = 10,
+      OBTBSFL2 = 10,
+      OBTBSFL3 = 10,
+      OBTSVBF1 = 10,
+      OBTSVBF2 = 10,
+      OBTSVBF3 = 10,
+
+      GRATE1 = 7,
+      GRATE5 = 7,
+      GRATE6 = 7,
+      SHINY01 = 7,
+      SHINY03 = 7,
+      SHINY04 = 7,
+
+      FLAT1 = 4,
+      FLAT3 = 4,
+      FLAT18 = 4,
+      FLAT20 = 4,
+      FLOOR0_5 = 4,
+      FLOOR4_8 = 4,
+      SLIME14 = 3
+    },
+
+    ceilings =
+    {
+      G_IPHFT1 = 20,
+      G_IPHFT2 = 20,
+      G_IPHFT3 = 20,
+      G_IPHFT4 = 20,
+      G_IPHFT5 = 20,
+      G_IPHFT6 = 20,
+      G_IPHFT7 = 20,
+      G_IPHFT8 = 20,
+
+      FLAT18 = 4,
+      FLAT20 = 4,
+      FLAT3 = 4,
+      FLOOR0_5 = 4,
+      SLIME14 = 3
+    }
+  },
+
 -- END OF THEMES TABLES
 }
 
@@ -5760,7 +5923,19 @@ OBS_RESOURCE_PACK_THEMES =
       G_OCURW7 = 18,
       G_OCURW8 = 18,
       G_OCURW9 = 18,
-      G_OCURWA = 18
+      G_OCURWA = 18,
+
+      G_IPHWL1 = 18,
+      G_IPHWL2 = 18,
+      G_IPHWL3 = 18,
+      G_IPHWL4 = 18,
+      G_IPHWL5 = 18,
+      G_IPHWL6 = 18,
+      G_IPHWL7 = 18,
+      G_IPHWL8 = 18,
+      G_IPHWL9 = 18,
+      G_IPHWLA = 18,
+      G_IPHWLB = 18
     },
 
     fences =
@@ -6192,29 +6367,41 @@ OBS_RESOURCE_PACK_THEMES =
       G_OM_WG7 = 15,
       G_OM_WG8 = 15,
 
-      G_OTBBW1 = 7,
-      G_OTBBW2 = 7,
-      G_OTBBW3 = 7,
-      G_OTBBW4 = 7,
-      G_OTBBW5 = 7,
-      G_OTBBW6 = 7,
-      G_OTBBW7 = 7,
-      G_OTBBW8 = 7,
-      G_OTBBW9 = 7,
-      G_OTBBWA = 7,
-      G_OTBBWB = 7,
-      G_OTBBWC = 7,
+      G_OTBBW1 = 5,
+      G_OTBBW2 = 5,
+      G_OTBBW3 = 5,
+      G_OTBBW4 = 5,
+      G_OTBBW5 = 5,
+      G_OTBBW6 = 5,
+      G_OTBBW7 = 5,
+      G_OTBBW8 = 5,
+      G_OTBBW9 = 5,
+      G_OTBBWA = 5,
+      G_OTBBWB = 5,
+      G_OTBBWC = 5,
 
-      G_OCURW1 = 7,
-      G_OCURW2 = 7,
-      G_OCURW3 = 7,
-      G_OCURW4 = 7,
-      G_OCURW5 = 7,
-      G_OCURW6 = 7,
-      G_OCURW7 = 7,
-      G_OCURW8 = 7,
-      G_OCURW9 = 7,
-      G_OCURWA = 7
+      G_OCURW1 = 5,
+      G_OCURW2 = 5,
+      G_OCURW3 = 5,
+      G_OCURW4 = 5,
+      G_OCURW5 = 5,
+      G_OCURW6 = 5,
+      G_OCURW7 = 5,
+      G_OCURW8 = 5,
+      G_OCURW9 = 5,
+      G_OCURWA = 5,
+
+      G_IPHWL1 = 5,
+      G_IPHWL2 = 5,
+      G_IPHWL3 = 5,
+      G_IPHWL4 = 5,
+      G_IPHWL5 = 5,
+      G_IPHWL6 = 5,
+      G_IPHWL7 = 5,
+      G_IPHWL8 = 5,
+      G_IPHWL9 = 5,
+      G_IPHWLA = 5,
+      G_IPHWLB = 5
     },
 
     fences =
