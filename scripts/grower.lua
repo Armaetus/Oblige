@@ -2761,26 +2761,11 @@ stderrf("prelim_conn %s --> %s : S=%s dir=%d\n", c_out.R1.name, c_out.R2.name, S
     local A = chunk.area
     local R = A.room
 
-    if not R.has_consistent_stairs_rolled then
-      -- should probably put this in a function for cleanliness
-      for _,P in pairs(PREFABS) do
-        if P.kind == "stairs" then
-          if P.original_rank and P.original_rank ~= 0 then
-            P.rank = P.original_rank
-            P.original_rank = nil
-          else
-            P.rank = nil
-          end
-        end
-      end
-    end
-
     if rand.odds(R.trunk.consistent_stairs)
     and not R.has_consistent_stairs_rolled then
       R.has_consistent_stairs = true
+      R.preferred_stairs = {}
     end
-
-    R.has_consistent_stairs_rolled = true
 
     local reqs = chunk:base_reqs(chunk.from_dir)
 
@@ -2805,14 +2790,18 @@ stderrf("prelim_conn %s --> %s : S=%s dir=%d\n", c_out.R1.name, c_out.R2.name, S
     local def = Fab_pick(LEVEL, reqs)
 
     if R.has_consistent_stairs then
-      if def then
-        if def.rank then
-          PREFABS[def.name].original_rank = def.rank
-        else
-          PREFABS[def.name].original_rank = 0
-        end
+      local sh = tonumber(chunk.sh)
+      local sw = tonumber(chunk.sw)
+
+      R.preferred_stairs = R.preferred_stairs or {}
+      R.preferred_stairs[sh] = R.preferred_stairs[sh] or {}
+      R.preferred_stairs[sh][sw] = R.preferred_stairs[sh][sw] or {}
+
+      if not table.empty(R.preferred_stairs[sh][sw]) then
+        def = R.preferred_stairs[sh][sw]
+      else
+        R.preferred_stairs[sh][sw] = def
       end
-      PREFABS[def.name].rank = 1
     end
 
     if def.plain_ceiling then
