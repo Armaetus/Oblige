@@ -31,7 +31,7 @@ PREFABS.Pic_industrial_medkit_filler =
   template = "Pic_industrial_ssg_assembler",
   map = "MAP02",
 
-  prob = 10,
+  prob = 3,
 
   seed_w = 2,
   seed_h = 1,

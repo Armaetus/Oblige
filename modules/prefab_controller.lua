@@ -161,12 +161,15 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_o_letter_L2 = 6,
     tech_o_letter_M2 = 6,
 
-    low_gap_EPIC = 8,
-    low_gap_EPIC_alt = 8,
+    --low_gap_EPIC = 8,
+    --low_gap_EPIC_alt = 8,
 
-    gtd_wall_redlite = 10,
-    gtd_wall_brownlite = 10,
-    gtd_wall_grnlite = 10
+    --gtd_wall_redlite = 10,
+    --gtd_wall_brownlite = 10,
+    --gtd_wall_grnlite = 10
+
+    gtd_generic_metal_top_n_bottom = 8,
+    gtd_generic_lite_box_3d_inset = 8
   }
 
   local new_themes_multipliers =
@@ -176,8 +179,8 @@ function PREFAB_CONTROL.fine_tune_filters()
 
     any_copperRust = 5,
 
-    tech_iStuff = 6,
-    urban_iStuff = 6
+    tech_iStuff = 8,
+    urban_iStuff = 8
   }
 
   local themes =
