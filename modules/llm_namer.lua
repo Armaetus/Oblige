@@ -4245,7 +4245,7 @@ level_data
     "name")
 
     if not lname then
-      gui.printf("Failed to acquire name.")
+      gui.printf("Failed to acquire name. Preserving original.\n")
       return "not_ok"
     end
 
@@ -4411,7 +4411,7 @@ _FORMAT_
 
       -- sometimes add a McGuffin
       if rand.odds(50) then
-        story_characters = story_characters ..  
+        story_characters = story_characters ..
           rand.pick({
             "Found later in the story:\n",
             "Found interacting Slayer later in the story:\n"
@@ -4472,6 +4472,9 @@ _FORMAT_
       num_predict = 1800
     },
     "story")
+
+    assert(story_chunks, "LLM Namer: No story retrieved. Is Ollama on? "..
+    "Is the climate fixed? Have wages caught up with inflation? Has the authoritarian-populism fad faded? Are we doomed?")
 
     -- parse out common names from the LLM to something more unique
     local noun_replacers = {}
