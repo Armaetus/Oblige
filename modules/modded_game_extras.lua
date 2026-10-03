@@ -361,6 +361,10 @@ MODDED_GAME_EXTRAS.SQUAD_NAMES =
   }
 }
 
+MODDED_GAME_EXTRAS.marine_gen_actor_names_code =
+[[  if (a is "AIMarine") return true;
+]]
+
 MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS_X =
 {
   -- zombieman replacements
@@ -2445,7 +2449,7 @@ class bossNameHandler : EventHandler
 
   bool isAIMarine(Actor a)
   {
-    if (a is "AIMarine") return true;
+    MARINE_GEN
 
     return false;
   }
@@ -2771,6 +2775,12 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
   actor_name_script = string.gsub( actor_name_script, "LDEMONS_COMPAT_CHECKS", " ")
   actor_name_script = string.gsub( actor_name_script, "SDEMONS_COMPAT_CHECKS", " ")
   actor_name_script = string.gsub( actor_name_script, "GDEMONS_COMPAT_CHECKS", " ")
+
+  if PARAM.marine_gen and PARAM.marine_gen == true then
+    actor_name_script = string.gsub( actor_name_script, "MARINE_GEN", MODDED_GAME_EXTRAS.marine_gen_actor_names_code)
+  else
+    actor_name_script = string.gsub( actor_name_script, "MARINE_GEN", " ")
+  end
 
   if SCRIPTS.zscript then
     SCRIPTS.zscript = SCRIPTS.zscript .. actor_name_script
