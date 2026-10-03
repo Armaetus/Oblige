@@ -221,9 +221,8 @@ PREFABS.Wall_modquake_round_braced_lit_pillar_industrial =
   template = "Wall_modquake_set_industrial",
   map = "MAP06",
 
+  rank = 1,
   theme = "!hell",
-
-  rank = 2,
 
   deep = 20,
 
@@ -239,6 +238,7 @@ PREFABS.Wall_modquake_round_braced_lit_pillar_industrial_thin =
   template = "Wall_modquake_set_industrial",
   map = "MAP16",
 
+  rank = 1,
   theme = "!hell",
 
   deep = 16,
@@ -255,11 +255,26 @@ PREFABS.Wall_modquake_round_braced_lit_pillar_hell =
   template = "Wall_modquake_set_industrial",
   map = "MAP06",
 
+  rank = 2,
   theme = "hell",
 
-  rank = 3,
-
   deep = 20,
+
+  group = "gtd_modquake_round_braced_lit_pillar",
+
+  tex_LITEBLU1 = "FIREWALA",
+  tex_LITEBLU4 = "FIREMAG1"
+}
+
+PREFABS.Wall_modquake_round_braced_lit_pillar_industrial_thin =
+{
+  template = "Wall_modquake_set_industrial",
+  map = "MAP06",
+
+  rank = 2,
+  theme = "!hell",
+
+  deep = 16,
 
   group = "gtd_modquake_round_braced_lit_pillar",
 
