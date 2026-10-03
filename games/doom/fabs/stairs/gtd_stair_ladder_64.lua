@@ -1,6 +1,6 @@
 PREFABS.Ladder_64_rustic =
 {
-  file = "stairs/gtd_stair_ladder_128.wad",
+  file = "stairs/gtd_stair_ladder_64.wad",
   map = "MAP01",
 
   prob = 10,
