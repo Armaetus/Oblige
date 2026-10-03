@@ -204,6 +204,14 @@ function Render_edge(LEVEL, E, SEEDS)
       reqs.group = A.floor_group.wall_group
     end
 
+    if A.room and A.room:get_env() == "outdoor" and A.ceil_mat ~= "_SKY"
+    and A.svolume >= 6 then
+      reqs.group = LEVEL.porch_wall_groups[LEVEL.theme_name]
+      if A.room.is_exit and A.room.theme.theme_override then
+        reqs.group = LEVEL.porch_wall_groups[A.room.theme.theme_override]
+      end
+    end
+
     if A.is_outdoor then
       reqs.group = LEVEL.outdoor_wall_group
 

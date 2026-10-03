@@ -3256,6 +3256,14 @@ function Quest_room_themes(LEVEL)
     if THEME.outdoor_wall_groups then
       LEVEL.outdoor_wall_group = rand.key_by_probs(THEME.outdoor_wall_groups)
     end
+
+    LEVEL.porch_wall_groups = {}
+    for _,T in pairs(GAME.THEMES) do
+      if T.name ~= "DEFAULTS" and T.name ~= "exclusions" then
+        LEVEL.porch_wall_groups[T.name] = {}
+        LEVEL.porch_wall_groups[T.name] = rand.key_by_probs(T.wall_groups)
+      end
+    end
   end
 
 
