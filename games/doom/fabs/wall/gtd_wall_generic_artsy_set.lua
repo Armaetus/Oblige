@@ -606,7 +606,7 @@ PREFABS.Wall_artsy_corpo_art_diag =
 PREFABS.Wall_artsy_lite_box_3d_inset =
 {
   template = "Wall_generic_artsy_bedazzled",
-  map = "MAP42",
+  map = "MAP44",
 
   rank = 2,
   group = "gtd_generic_lite_box_3d_inset",
@@ -621,7 +621,7 @@ PREFABS.Wall_artsy_lite_box_3d_inset =
 PREFABS.Wall_artsy_lite_box_3d_inset_compat =
 {
   template = "Wall_generic_artsy_bedazzled",
-  map = "MAP42",
+  map = "MAP44",
 
   rank = 1,
   port = "!zdoom",
@@ -637,7 +637,7 @@ PREFABS.Wall_artsy_lite_box_3d_inset_compat =
 PREFABS.Wall_artsy_lite_box_3d_inset_hell =
 {
   template = "Wall_generic_artsy_bedazzled",
-  map = "MAP42",
+  map = "MAP44",
 
   theme = "hell",
   rank = 2,
@@ -655,7 +655,7 @@ PREFABS.Wall_artsy_lite_box_3d_inset_hell =
 PREFABS.Wall_artsy_lite_box_3d_inset_compat_hell =
 {
   template = "Wall_generic_artsy_bedazzled",
-  map = "MAP42",
+  map = "MAP44",
 
   rank = 1,
   theme = "hell",
