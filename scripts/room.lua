@@ -2817,8 +2817,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
           return true
         end
 
-        if (A1.ceil_h == "_SKY" and A2.ceil_h ~= "_SKY") or
-        (A1.ceil_h ~= "_SKY" and A2.ceil_h == "_SKY") then
+        if (A1.ceil_mat == "_SKY" and A2.ceil_mat ~= "_SKY") or
+        (A1.ceil_mat ~= "_SKY" and A2.ceil_mat == "_SKY") then
           return true
         end
       end
@@ -2955,17 +2955,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
         end
       end
-      --[[if A.chunk and A.chunk.kind == "stair" then
-        local fromA = A.chunk.from_area
-        local destA = A.chunk.dest_area
-
-        assert(table.tostr(A.chunk,1))
-        if R.stair_ceil_mode == "use_dest" then
-          A:set_ceil_group(destA.ceil_group)
-        elseif R.stair_ceil_mode == "from_dest" then
-          A:set_ceil_group(fromA.ceil_group)
-        end
-      end]]
     end
 
     for _, A in pairs(R.areas) do
@@ -2974,28 +2963,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       end
     end
   end
-
-
-  --[[local function room_add_steps(R)
-    -- NOT USED ATM [ should be done while flowing through room ]
-
-    for _,C in pairs(R.internal_conns) do
-      local A1 = C.A1
-      local A2 = C.A2
-
-      if C.kind == "stair" then goto skip end
-
-      local diff = math.abs(A1.floor_h - A2.floor_h)
-      if diff <= PARAM.jump_height then goto skip end
-
-      -- FIXME : generally build single staircases (a la V6 and earlier)
-
-      local junc = Junction_lookup(A1, A2)
-
-      Junction_make_steps(junc)
-      ::skip::
-    end
-  end]]
 
 
   local function process_room(R, entry_area)
