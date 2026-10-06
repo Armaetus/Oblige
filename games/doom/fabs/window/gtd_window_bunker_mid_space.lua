@@ -63,7 +63,7 @@ PREFABS.Window_bunker_terrace_1 =
   bound_z1 = 0,
   bound_z2 = 96,
 
-  z_fit = {88,82 , 88,92}
+  z_fit = {81,82 , 88,92}
 }
 
 PREFABS.Window_bunker_terrace_2 =
