@@ -1438,6 +1438,7 @@ function CHUNK_CLASS.is_open_to_sky(chunk, R, SEEDS)
     if A.room and A.room ~= R then return false end
     if A.mode == "scenic" and A.face_room ~= R then return false end
     if A.border_type == "no_vista" then return false end
+    if A.ceil_mat and A.ceil_mat ~= "_SKY" then return false end
 
     return true
   end
