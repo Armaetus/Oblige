@@ -2218,6 +2218,8 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         info.name = info.name .. " (lighting: " .. chunk.area.l_history .. ")"
       end
 
+      info.name = info.name .. " (H:" .. chunk.from_area.ceil_h .. "->" .. chunk.ceil_h .. ")"
+
       if SCRIPTS.hn_id_table[info.name] then
         info.editor_num = SCRIPTS.hn_id_table[info.name].id
       elseif not SCRIPTS.hn_id_table[info.name] then

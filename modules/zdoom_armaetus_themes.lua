@@ -487,7 +487,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
 
       G_OM_FG1 = 30,
       G_OM_FG2 = 30,
-      G_OM_FT1 = 30,
       G_OM_FT2 = 30,
       G_OM_FT3 = 30,
       G_OM_FT4 = 30,
@@ -516,18 +515,18 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
 
       OBTBSFL3 = 10,
 
-      G_OM_FG1 = 10,
-      G_OM_FG2 = 10,
-      G_OM_FT1 = 10,
-      G_OM_FT2 = 10,
-      G_OM_FT3 = 10,
-      G_OM_FT4 = 10,
-      G_OM_FT5 = 10,
-      G_OM_FT6 = 10,
-      G_OM_FT7 = 10,
-      G_OM_FT8 = 10,
-      G_OM_FT9 = 10,
-      G_OM_FTA = 10
+      G_OM_FG1 = 7,
+      G_OM_FG2 = 7,
+      G_OM_FT1 = 30,
+      G_OM_FT2 = 30,
+      G_OM_FT3 = 7,
+      G_OM_FT4 = 7,
+      G_OM_FT5 = 7,
+      G_OM_FT6 = 7,
+      G_OM_FT7 = 7,
+      G_OM_FT8 = 7,
+      G_OM_FT9 = 7,
+      G_OM_FTA = 7
     }
   },
 
@@ -560,7 +559,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
 
       G_OM_FG1 = 5,
       G_OM_FG2 = 5,
-      G_OM_FT1 = 5,
       G_OM_FT2 = 5,
       G_OM_FT3 = 5,
       G_OM_FT4 = 5,
@@ -1612,7 +1610,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
 
       G_OM_FG1 = 5,
       G_OM_FG2 = 5,
-      G_OM_FT1 = 5,
       G_OM_FT2 = 5,
       G_OM_FT3 = 5,
       G_OM_FT4 = 5,
@@ -1640,8 +1637,8 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
 
       G_OM_FG1 = 5,
       G_OM_FG2 = 5,
-      G_OM_FT1 = 5,
-      G_OM_FT2 = 5,
+      G_OM_FT1 = 10,
+      G_OM_FT2 = 10,
       G_OM_FT3 = 5,
       G_OM_FT4 = 5,
       G_OM_FT5 = 5,
@@ -1707,7 +1704,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       G_OM_FG1 = 5,
       G_OM_FG2 = 5,
 
-      G_OM_FT1 = 5,
       G_OM_FT2 = 5,
       G_OM_FT3 = 5,
       G_OM_FT4 = 5,
@@ -1742,17 +1738,17 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GRATE6 = 6,
       SHINY04 = 6,
 
-      G_OM_FG1 = 5,
-      G_OM_FG2 = 5,
-      G_OM_FT1 = 5,
-      G_OM_FT2 = 5,
-      G_OM_FT3 = 5,
-      G_OM_FT4 = 5,
-      G_OM_FT5 = 5,
-      G_OM_FT6 = 5,
-      G_OM_FT7 = 5,
-      G_OM_FT9 = 5,
-      G_OM_FTA = 5,
+      G_OM_FG1 = 3,
+      G_OM_FG2 = 3,
+      G_OM_FT1 = 10,
+      G_OM_FT2 = 10,
+      G_OM_FT3 = 3,
+      G_OM_FT4 = 3,
+      G_OM_FT5 = 3,
+      G_OM_FT6 = 3,
+      G_OM_FT7 = 3,
+      G_OM_FT9 = 3,
+      G_OM_FTA = 3,
 
       FLOOR4_8 = 5,
       FLOOR5_1 = 5,
