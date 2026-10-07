@@ -1977,8 +1977,16 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
     info.editor_num = PARAM.hn_thing_start_offset
 
     for _,A in pairs(R.areas) do
-      if (A.mode == "floor" and not A.mode.chunk) then
+      if (A.mode == "floor" and not A.mode.chunk)
+      and A.room:get_env() == "outdoor" then
         info.name = "ROOM_" .. A.room.id
+
+        if A.ceil_group then
+          info.name = info.name .. "CG_" .. A.ceil_group.id .. " "
+          if A.ceil_group.sink then
+            info.name = info.name .. "(" .. A.ceil_group.sink.name .. ")"
+          end
+        end
 
         --[[if A.dead_end and A.cg_history then
           info.name = info.name .. " (cg:" .. A.cg_history .. ")"
@@ -1992,23 +2000,23 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
           if A.l_history then
             info.name = info.name .. " (l:" .. A.l_history .. ")"
           end
-        end
+        end]]
 
         if A.floor_h and A.ceil_h then
           info.name = " (hgt: " .. A.ceil_h .. "-"  .. A.floor_h .. "=" .. A.ceil_h - A.floor_h ..  ")"
         end
 
-        if A.is_porch then
+        --[[if A.is_porch then
           info.name = info.name .. " is_porch"
         elseif A.is_porch_neighbor then
           info.name = info.name .. " is_porch_neighbor"
         else
           info.name = info.name .. " unknown"
-        end]]
+        end
 
         if R.pressure_history then
           info.name = info.name .. " (P: " .. R.pressure_history .. ")"
-        end
+        end]]
 
         info.editor_num = PARAM.hn_thing_start_offset
 
