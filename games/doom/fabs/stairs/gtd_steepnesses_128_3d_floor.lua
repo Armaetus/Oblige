@@ -5,7 +5,7 @@ PREFABS.Stair_gtd_lift_128_3d =
 
   prob = 7, --15
 
-  engine = "zdoom",
+  port = "zdoom",
 
   style = "steepness",
 
