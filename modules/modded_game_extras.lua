@@ -2003,7 +2003,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
         end]]
 
         if A.floor_h and A.ceil_h then
-          info.name = " (hgt: " .. A.ceil_h .. "-"  .. A.floor_h .. "=" .. A.ceil_h - A.floor_h ..  ")"
+          info.name = " (hgt: " .. A.ceil_h .. "-"  .. A.floor_h .. "=" .. A.ceil_h - A.floor_h .. "/" .. A.zone.sky_h .. ")"
         end
 
         --[[if A.is_porch then
@@ -2214,11 +2214,14 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
       info.name = "Joiner: " .. chunk.prefab_def.name
       info.editor_num = PARAM.hn_thing_start_offset
 
-      if chunk.area.lighting then
+      --[[if chunk.area.lighting then
         info.name = info.name .. " (lighting: " .. chunk.area.l_history .. ")"
-      end
+      end]]
 
-      info.name = info.name .. " (H:" .. chunk.from_area.ceil_h .. "->" .. chunk.ceil_h .. ")"
+      info.name = info.name .. " (H:" .. chunk.from_area.zone.sky_h .. "->" ..
+        chunk.from_area.ceil_h or "NIL" .. "->" ..
+        chunk.area.ceil_h .. "->" ..
+        chunk.dest_area.ceil_h or "NIL" .. "->" .. chunk.dest_area.zone.sky_h .. ")"
 
       if SCRIPTS.hn_id_table[info.name] then
         info.editor_num = SCRIPTS.hn_id_table[info.name].id
