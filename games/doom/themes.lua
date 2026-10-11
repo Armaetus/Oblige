@@ -1652,6 +1652,7 @@ DOOM.THEMES =
       tech_o_letter_P = 1,
       tech_o_letter_Q = 1,
       tech_o_letter_R = 1,
+      tech_o_letter_S = 1,
 
       tech_o_letter_L2 = 1,
       tech_o_letter_M2 = 1

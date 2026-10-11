@@ -607,7 +607,7 @@ PREFABS.Wall_tech_outdoor_letter_M2 = --#
 
 --
 
-PREFABS.Wall_tech_outdoor_letter_M2 = --#
+PREFABS.Wall_tech_outdoor_letter_R = --#
 {
   template = "Wall_tech_outdoor_hex_inset",
   map = "MAP25",
@@ -622,7 +622,7 @@ PREFABS.Wall_tech_outdoor_letter_M2 = --#
   z_fit = {15,17 , 43,45}
 }
 
-PREFABS.Wall_tech_outdoor_letter_M2_compat = --#
+PREFABS.Wall_tech_outdoor_letter_R_compat = --#
 {
   template = "Wall_tech_outdoor_hex_inset",
   map = "MAP25",
@@ -636,4 +636,40 @@ PREFABS.Wall_tech_outdoor_letter_M2_compat = --#
   z_fit = {15,17 , 43,45},
 
   tex_RDLITE01 = "REDWALL"
+}
+
+--
+
+PREFABS.Wall_tech_outdoor_letter_S = --#
+{
+  template = "Wall_tech_outdoor_hex_inset",
+  map = "MAP26",
+
+  texture_pack = "armaetus",
+  rank = 2,
+  height = 96,
+  group = "tech_o_letter_S",
+
+  bound_z2 = 96,
+
+  z_fit = {24,25}
+}
+
+PREFABS.Wall_tech_outdoor_letter_R_compat = --#
+{
+  template = "Wall_tech_outdoor_hex_inset",
+  map = "MAP25",
+
+  rank = 1,
+  height = 96,
+  group = "tech_o_letter_S",
+
+  bound_z2 = 96,
+
+  z_fit = {24,25},
+
+  tex_TEKSHAW = "SHAWN2",
+  tex_SHAWN01D = "METAL5",
+  tex_SILVER2W = "SILVER2",
+  tex_SHAWVEN2 = "GRAY7"
 }
