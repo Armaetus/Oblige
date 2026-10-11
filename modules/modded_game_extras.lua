@@ -362,7 +362,7 @@ MODDED_GAME_EXTRAS.SQUAD_NAMES =
 }
 
 MODDED_GAME_EXTRAS.marine_gen_actor_names_code =
-[[  if (a is "AIMarine") return true;
+[[if (a is "AIMarine") return true;
 ]]
 
 MODDED_GAME_EXTRAS.COMPLEX_DOOM_MONS_X =
@@ -2789,7 +2789,7 @@ function MODDED_GAME_EXTRAS.generate_custom_actor_names()
   actor_name_script = string.gsub( actor_name_script, "SDEMONS_COMPAT_CHECKS", " ")
   actor_name_script = string.gsub( actor_name_script, "GDEMONS_COMPAT_CHECKS", " ")
 
-  if PARAM.marine_gen and PARAM.marine_gen == 1 then
+  if PARAM.marine_gen and PARAM.marine_gen == true then
     actor_name_script = string.gsub( actor_name_script, "MARINE_GEN", MODDED_GAME_EXTRAS.marine_gen_actor_names_code)
   else
     actor_name_script = string.gsub( actor_name_script, "MARINE_GEN", " ")
@@ -2888,7 +2888,7 @@ OB_MODULES["modded_game_extras"] =
 
   hooks =
   {
-    setup = MODDED_GAME_EXTRAS.setup,
+    setup2 = MODDED_GAME_EXTRAS.setup,
     end_level = MODDED_GAME_EXTRAS.create_hn_info,
     all_done = MODDED_GAME_EXTRAS.generate_hn_decorate
   },
