@@ -183,7 +183,8 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_iStuff = 5,
     urban_iStuff = 4,
 
-    tech_wood_lab = 12
+    tech_wood_lab = 10,
+    urban_wood_lab = 10
   }
 
   local themes =

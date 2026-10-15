@@ -1845,6 +1845,150 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
     }
   },
 
+  tech_wood_lab = --40
+  {
+    env = "building",
+    prob = 40,
+
+    walls =
+    {
+      G_OTWDW1 = 5,
+      G_OTWDW2 = 5,
+      G_OTWDW3 = 5,
+      G_OTWDW4 = 5,
+      G_OTWDW5 = 5,
+      G_OTWDW6 = 5,
+      G_OTWDW7 = 5,
+      G_OTWDW8 = 5,
+      G_OTWDW9 = 5,
+      G_OTWDWA = 5,
+      G_OTWDWB = 5,
+      G_OTWDWC = 5,
+      G_OTWDWD = 5,
+      G_OTWDWE = 5
+    },
+
+    floors =
+    {
+      G_OTWDF1 = 30,
+      G_OTWDF2 = 30,
+      G_OTWDF3 = 30,
+      G_OTWDF4 = 30,
+      G_OTWDF5 = 30,
+      G_OTWDF6 = 30,
+      G_OTWDF7 = 30,
+      G_OTWDF8 = 30,
+
+      FLAT1 = 5,
+      FLAT20 = 2,
+      FLAT3 = 5,
+      FLAT5_4 = 5,
+
+      FLAT5_5 = 5,
+      FLOOR3_3 = 5,
+      FLOOR4_1 = 5,
+      FLOOR4_5 = 5,
+      FLOOR4_6 = 5,
+      FLOOR4_8 = 5,
+      FLOOR5_2 = 5,
+      FLOOR5_3 = 5,
+      FLOOR5_4 = 5,
+
+      FLOOR0_3 = 5,
+      FLOOR0_5 = 5,
+
+      SLIME14 = 5,
+      SLIME15 = 5,
+
+      GMET01 = 5,
+      GMET02 = 5,
+      GMET04 = 5,
+
+      GRATE1 = 5,
+      GRATE5 = 5,
+      GRATE6 = 5,
+      SHINY01 = 5,
+      SHINY02 = 5,
+      SHINY03 = 5,
+      SHINY04 = 5,
+
+      STARGRF = 1,
+      TILES4 = 5,
+      TILES6 = 5,
+
+      OBTBSFL1 = 5,
+      OBTBSFL2 = 5,
+      OBTSVBF1 = 5,
+      OBTSVBF2 = 5,
+      OBTSVBF3 = 5,
+
+      G_OM_FT1 = 5,
+      G_OM_FT3 = 5,
+      G_OM_FT4 = 5,
+      G_OM_FT5 = 5
+    },
+
+    ceilings =
+    {
+      G_OTWDF1 = 30,
+      G_OTWDF2 = 30,
+      G_OTWDF3 = 30,
+      G_OTWDF4 = 30,
+      G_OTWDF5 = 30,
+      G_OTWDF6 = 30,
+      G_OTWDF7 = 30,
+      G_OTWDF8 = 30,
+
+      FLAT1 = 5,
+      FLAT20 = 2,
+      FLAT3 = 5,
+      FLAT5_4 = 5,
+
+      FLAT5_5 = 5,
+      FLOOR3_3 = 5,
+      FLOOR4_1 = 5,
+      FLOOR4_5 = 5,
+      FLOOR4_6 = 5,
+      FLOOR4_8 = 5,
+      FLOOR5_2 = 5,
+      FLOOR5_3 = 5,
+      FLOOR5_4 = 5,
+
+      FLOOR0_3 = 5,
+      FLOOR0_5 = 5,
+
+      SLIME14 = 5,
+      SLIME15 = 5,
+
+      GMET01 = 5,
+      GMET02 = 5,
+      GMET04 = 5,
+
+      GRATE1 = 5,
+      GRATE5 = 5,
+      GRATE6 = 5,
+      SHINY01 = 5,
+      SHINY02 = 5,
+      SHINY03 = 5,
+      SHINY04 = 5,
+
+      STARGRF = 1,
+      TILES4 = 5,
+      TILES6 = 5,
+
+      OBTBSFL1 = 5,
+      OBTBSFL2 = 5,
+      OBTSVBF1 = 5,
+      OBTSVBF2 = 5,
+      OBTSVBF3 = 5,
+
+      G_OM_FT1 = 5,
+      G_OM_FT3 = 5,
+      G_OM_FT4 = 5,
+      G_OM_FT5 = 5
+    }
+  },
+
   tech_Outdoors_generic = --50
   {
     env  = "outdoor",
@@ -4489,8 +4633,6 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
     env  = "cave",
     prob = 60,
 
-    is_generative = true,
-
     walls =
     {
       SP_ROCK1 = 30,
@@ -4602,6 +4744,148 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       FLAT3 = 4,
       FLOOR0_5 = 4,
       SLIME14 = 3
+    }
+  },
+
+  urban_wood_lab = --40
+  {
+    env = "building",
+    prob = 40,
+
+    walls =
+    {
+      G_OTWDW1 = 5,
+      G_OTWDW2 = 5,
+      G_OTWDW3 = 5,
+      G_OTWDW4 = 5,
+      G_OTWDW5 = 5,
+      G_OTWDW6 = 5,
+      G_OTWDW7 = 5,
+      G_OTWDW8 = 5,
+      G_OTWDW9 = 5,
+      G_OTWDWA = 5,
+      G_OTWDWB = 5,
+      G_OTWDWC = 5,
+      G_OTWDWD = 5,
+      G_OTWDWE = 5
+    },
+
+    floors =
+    {
+      G_OTWDF1 = 30,
+      G_OTWDF2 = 30,
+      G_OTWDF3 = 30,
+      G_OTWDF4 = 30,
+      G_OTWDF5 = 30,
+      G_OTWDF6 = 30,
+      G_OTWDF7 = 30,
+      G_OTWDF8 = 30,
+      FLAT1 = 5,
+      FLAT20 = 2,
+      FLAT3 = 5,
+      FLAT5_4 = 5,
+      FLAT5_5 = 5,
+      FLOOR3_3 = 5,
+      FLOOR4_1 = 5,
+      FLOOR4_5 = 5,
+      FLOOR4_6 = 5,
+      FLOOR4_8 = 5,
+      FLOOR5_2 = 5,
+      FLOOR5_3 = 5,
+      FLOOR5_4 = 5,
+
+      FLOOR0_3 = 5,
+      FLOOR0_5 = 5,
+
+      SLIME14 = 5,
+      SLIME15 = 5,
+
+      GMET01 = 5,
+      GMET02 = 5,
+      GMET04 = 5,
+
+      GRATE1 = 5,
+      GRATE5 = 5,
+      GRATE6 = 5,
+      SHINY01 = 5,
+      SHINY02 = 5,
+      SHINY03 = 5,
+      SHINY04 = 5,
+
+      STARGRF = 1,
+      TILES4 = 5,
+      TILES6 = 5,
+
+      OBTBSFL1 = 5,
+      OBTBSFL2 = 5,
+      OBTSVBF1 = 5,
+      OBTSVBF2 = 5,
+      OBTSVBF3 = 5,
+
+      G_OM_FT1 = 5,
+      G_OM_FT3 = 5,
+      G_OM_FT4 = 5,
+      G_OM_FT5 = 5
+    },
+
+    ceilings =
+    {
+      G_OTWDF1 = 30,
+      G_OTWDF2 = 30,
+      G_OTWDF3 = 30,
+      G_OTWDF4 = 30,
+      G_OTWDF5 = 30,
+      G_OTWDF6 = 30,
+      G_OTWDF7 = 30,
+      G_OTWDF8 = 30,
+
+      FLAT1 = 5,
+      FLAT20 = 2,
+      FLAT3 = 5,
+      FLAT5_4 = 5,
+
+      FLAT5_5 = 5,
+      FLOOR3_3 = 5,
+      FLOOR4_1 = 5,
+      FLOOR4_5 = 5,
+      FLOOR4_6 = 5,
+      FLOOR4_8 = 5,
+      FLOOR5_2 = 5,
+      FLOOR5_3 = 5,
+      FLOOR5_4 = 5,
+
+      FLOOR0_3 = 5,
+      FLOOR0_5 = 5,
+
+      SLIME14 = 5,
+      SLIME15 = 5,
+
+      GMET01 = 5,
+      GMET02 = 5,
+      GMET04 = 5,
+
+      GRATE1 = 5,
+      GRATE5 = 5,
+      GRATE6 = 5,
+      SHINY01 = 5,
+      SHINY02 = 5,
+      SHINY03 = 5,
+      SHINY04 = 5,
+
+      STARGRF = 1,
+      TILES4 = 5,
+      TILES6 = 5,
+
+      OBTBSFL1 = 5,
+      OBTBSFL2 = 5,
+      OBTSVBF1 = 5,
+      OBTSVBF2 = 5,
+      OBTSVBF3 = 5,
+
+      G_OM_FT1 = 5,
+      G_OM_FT3 = 5,
+      G_OM_FT4 = 5,
+      G_OM_FT5 = 5
     }
   },
 
@@ -5931,7 +6215,23 @@ OBS_RESOURCE_PACK_THEMES =
       G_IPHWL8 = 18,
       G_IPHWL9 = 18,
       G_IPHWLA = 18,
-      G_IPHWLB = 18
+      G_IPHWLB = 18,
+
+      G_OTWDW1 = 12,
+      G_OTWDW2 = 12,
+      G_OTWDW3 = 12,
+      G_OTWDW4 = 12,
+      G_OTWDW5 = 12,
+      G_OTWDW6 = 12,
+      G_OTWDW7 = 12,
+      G_OTWDW8 = 12,
+      G_OTWDW9 = 12,
+      G_OTWDWA = 12,
+      G_OTWDWB = 12,
+      G_OTWDWC = 12,
+      G_OTWDWD = 12,
+      G_OTWDWE = 12,
+
     },
 
     fences =
@@ -6397,7 +6697,22 @@ OBS_RESOURCE_PACK_THEMES =
       G_IPHWL8 = 5,
       G_IPHWL9 = 5,
       G_IPHWLA = 5,
-      G_IPHWLB = 5
+      G_IPHWLB = 5,
+
+      G_OTWDW1 = 8,
+      G_OTWDW2 = 8,
+      G_OTWDW3 = 8,
+      G_OTWDW4 = 8,
+      G_OTWDW5 = 8,
+      G_OTWDW6 = 8,
+      G_OTWDW7 = 8,
+      G_OTWDW8 = 8,
+      G_OTWDW9 = 8,
+      G_OTWDWA = 8,
+      G_OTWDWB = 8,
+      G_OTWDWC = 8,
+      G_OTWDWD = 8,
+      G_OTWDWE = 8
     },
 
     fences =

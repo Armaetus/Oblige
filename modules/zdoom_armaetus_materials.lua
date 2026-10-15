@@ -1636,6 +1636,31 @@ OBS_RESOURCE_PACK_MATERIALS = {
   G_OTBBFC = { t="G_OTBBWC", f="G_OTBBFC"},
   G_OTBBFD = { t="G_OTBBW6", f="G_OTBBFD"},
 
+  -- tech wood
+  G_OTWDW1 = { t="G_OTWDW1", f="G_OTWDF1"},
+  G_OTWDW2 = { t="G_OTWDW2", f="G_OTWDF2"},
+  G_OTWDW3 = { t="G_OTWDW3", f="G_OTWDF3"},
+  G_OTWDW4 = { t="G_OTWDW4", f="G_OTWDF4"},
+  G_OTWDW5 = { t="G_OTWDW5", f="G_OTWDF5"},
+  G_OTWDW6 = { t="G_OTWDW6", f="G_OTWDF1"},
+  G_OTWDW7 = { t="G_OTWDW7", f="G_OTWDF2"},
+  G_OTWDW8 = { t="G_OTWDW8", f="G_OTWDF3"},
+  G_OTWDW9 = { t="G_OTWDW9", f="G_OTWDF4"},
+  G_OTWDWA = { t="G_OTWDWA", f="G_OTWDF5"},
+  G_OTWDWB = { t="G_OTWDWB", f="G_OTWDF1"},
+  G_OTWDWC = { t="G_OTWDWC", f="G_OTWDF3"},
+  G_OTWDWD = { t="G_OTWDWD", f="G_OTWDF4"},
+  G_OTWDWE = { t="G_OTWDWE", f="G_OTWDF5"},
+  -- flats
+  G_OTWDF1 = { t="G_OTWDW1", f="G_OTWDF1"},
+  G_OTWDF2 = { t="G_OTWDW2", f="G_OTWDF2"},
+  G_OTWDF3 = { t="G_OTWDW3", f="G_OTWDF3"},
+  G_OTWDF4 = { t="G_OTWDW6", f="G_OTWDF4"},
+  G_OTWDF5 = { t="G_OTWDW5", f="G_OTWDF5"},
+  G_OTWDF6 = { t="G_OTWDW6", f="G_OTWDF1"},
+  G_OTWDF7 = { t="G_OTWDW7", f="G_OTWDF3"},
+  G_OTWDF8 = { t="G_OTWDW8", f="G_OTWDF5"},
+
   -- copper rust
   G_OCURW1 = { t="G_OCURW1", f="G_OCURF1"},
   G_OCURW2 = { t="G_OCURW2", f="G_OCURF2"},
@@ -2745,17 +2770,17 @@ brightmap texture SD_GTLW4
   map SDGTL4BR
 }
 
-brightmap texture SD_TWDL1
+brightmap texture G_OTWDL1
 {
   map SDTDL1BR
 }
 
-brightmap texture SD_TWDL2
+brightmap texture G_OTWDL2
 {
   map SDTDL2BR
 }
 
-brightmap texture SD_TWDL3
+brightmap texture G_OTWDL3
 {
   map SDTDL3BR
 }
@@ -2840,14 +2865,9 @@ brightmap texture SD_HCCWC
   map SDBRHCWC
 }
 
-brightmap texture SD_TWDW3
+brightmap texture G_OTWDW3
 {
   map OBRTWTW3
-}
-
-brightmap texture SD_TWDW9
-{
-  map OBRTWTW9
 }
 
 brightmap texture SDMSRCP1
