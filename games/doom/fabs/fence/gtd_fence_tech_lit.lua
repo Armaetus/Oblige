@@ -89,7 +89,7 @@ PREFABS.Fence_tech_hl_bars =
 
   group = "fence_tech_hl_bars",
 
-  replaces = "Fence_gappy_fallback",
+  rank = 1,
   texture_pack = "armaetus",
 
   where  = "edge",
@@ -108,7 +108,7 @@ PREFABS.Fence_tech_hl_bars_diag =
 
   group = "fence_tech_hl_bars",
 
-  replaces = "Fence_gappy_fallback_diag",
+  rank = 1,
   texture_pack = "armaetus",
 
   where = "diagonal",
@@ -118,12 +118,12 @@ PREFABS.Fence_tech_hl_bars_diag =
 
 PREFABS.Fence_gappy_fallback =
 {
-  file   = "fence/gappy.wad",
-  map    = "MAP01",
+  file   = "fence/gtd_fence_tech_lit.wad",
+  map    = "MAP03",
 
   prob   = 50,
 
-  group  = "fence_tech_hl_bars",
+  group = "fence_tech_hl_bars",
 
   where  = "edge",
 
@@ -132,22 +132,19 @@ PREFABS.Fence_gappy_fallback =
 
   fence_h  = 32,
   bound_z1 = 0,
+
+  tex_WARNSTEP = "BRONZE1",
+  tex_GDRAIL1 = "MIDBARS3",
+  flat_WARN1 = "CEIL5_2",
+  flat_WARN2 = "CEIL5_2"
 }
 
 PREFABS.Fence_gappy_fallback_diag =
 {
-  file   = "fence/gappy.wad",
-  map    = "MAP02",
+  template = "Fence_gappy_fallback",
+  map = "MAP04",
 
-  prob   = 50,
-
-  group  = "fence_tech_hl_bars",
-
-  where  = "diagonal",
-
-  fence_h = 32,
-
-  bound_z1 = 0,
+  where = "diagonal",
 }
 
 --
