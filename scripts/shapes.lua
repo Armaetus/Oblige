@@ -4070,8 +4070,8 @@ GROW_COLONNADE_PARTHENON_POOLSIDE_STRAIGHT_WIDE_N_LONG_BRIDGE =
 
   diagonals =
   {
-    ".1","1~","~A","A~","~1","1.",
-    ".1","1~","~A","A~","~1","1."
+    ".1","1~","~1","1.",
+    ".1","1~","~1","1."
   }
 },
 
