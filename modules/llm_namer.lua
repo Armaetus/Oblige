@@ -36,8 +36,9 @@
 -- names in AI data sets pretty much do to training on regurgitated web data.
 
 -- If you are interested in using your own model,
--- just replace the model aliases under LLM_NAME.naming_model and LLM_NAME.story_model below.
--- It's fine to use any model or even the same model for both features.
+-- just add theaceous model aliases under LLM_NAME.MODEL_CHOICES below.
+-- It's fine to use any model or even the same model for both features
+-- but you need to configure some settings under LLM_NAME.MODEL_CHOICES.
 
 -- cURL is used for connecting to the chat instance. If something else is preferred
 -- from Ollama, you will need to change the API call as well.
@@ -51,9 +52,46 @@
 
 LLM_NAME = { }
 
-LLM_NAME.naming_model = "llama3.1:8b" -- which Ollama alias to use for the level renamer
---LLM_NAME.story_model = "llama3.1:8b" -- which Ollama lias to use for story generator
-LLM_NAME.story_model = "gemma4:latest" -- which Ollama lias to use for story generator
+LLM_NAME.MODEL_CHOICES =
+{
+  "gpt-oss:latest", _("GPT-OSS"),
+  "llama3.1:8b", _("Llama3.1 8B"),
+  "gemma4:latest", _("Gemma4")
+}
+
+LLM_NAME.MODEL_SETTINGS =
+{
+  -- ChatGPT's GPT-OSS. Required high max_token count or it will die thinking before
+  -- sending a response. reasoning_effort set to low for level names.
+  -- Spends a bit of time even on low reasoning effort.
+  ["gpt-oss:latest"] =
+  {
+    story =
+    '"max_tokens":1000,' ..
+    '"reasoning_effort":"high",',
+    name = 
+    '"max_tokens":1000,' ..
+    '"reasoning_effort":"low",',
+  },
+  -- Meta's Llama3.1. Decent general purpose dense model.
+  -- Actually speedy and good enough for level names.
+  ["llama3.1:8b"] =
+  {
+    story =
+    '"num_predict:1800"',
+    name =
+    '"num_predict:20"'
+  },
+  -- Google's Gemma4. Pretty good Mixture-of-Experts model.
+  -- Takes a very long time, but response is usually consistent.
+  ["gemma4:latest"] =
+  {
+    story =
+    '"num_predict:1800"',
+    name =
+    '"num_predict:1000"'
+  }
+}
 
 LLM_NAME.endpoint = "http://127.0.0.1:11434/api/generate"
 
@@ -3862,10 +3900,10 @@ function LLM_NAME.do_it()
     options = options or {}
 
     local temperature = options.temperature or 0.3
-    local num_predict = options.num_predict or 8
-    local model = LLM_NAME.naming_model
+    local model = PARAM.level_name_model
+    local settings = LLM_NAME.MODEL_SETTINGS[PARAM.story_gen_model][model_m]
     if model_m == "story" then
-      model = LLM_NAME.story_model
+      model = PARAM.story_gen_model
     end
 
     local json =
@@ -3876,7 +3914,7 @@ function LLM_NAME.do_it()
       --'"raw":true,' ..
       '"options":{' ..
         '"temperature":' .. temperature .. ',' ..
-        '"num_predict":' .. num_predict .. ',' ..
+        settings ..
         '"seed":' .. seed_to_number(OB_CONFIG.seed) ..
       '}' ..
       '}'
@@ -3979,7 +4017,9 @@ function LLM_NAME.do_it()
 
     local response = extract_json_string(json, "response")
 
-    if not response then
+    if not response
+    or (response and response == "" or response == " ") then
+      gui.printf("LLM Namer: Query generated no response. Did the LLM have enough time/tokens to answer?")
       return nil
     end
 
@@ -4613,6 +4653,24 @@ OB_MODULES["llm_namer"] =
         "This module uses Lua io.popen to access cURL, and may cause CMD to briefly appear. This is normal behavior.\n\n" ..
         "The module DOES NOT SEND DATA outside of your PC. " ..
         "This module will not work if you do not have libcurl as it communicates in RESTful API style.\n\n"),
+      priority = 102,
+    },
+
+    {
+      name = "level_name_model",
+      label = _("Level Name Model"),
+      choices = LLM_NAME.MODEL_CHOICES,
+      default = "llama3.1:8b",
+      tooltip = _("Which LLM model to generate level names. Dense models are recommended."),
+      priority = 101,
+    },
+
+    {
+      name = "story_gen_model",
+      label = _("Story Generator Model"),
+      choices = LLM_NAME.MODEL_CHOICES,
+      default = "gemma4:latest",
+      tooltip = _("Which LLM model to generate the intermission story. Mixture-of-Experts models are recommended."),
       priority = 100,
     },
 
