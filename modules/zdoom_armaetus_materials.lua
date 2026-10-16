@@ -2770,21 +2770,6 @@ brightmap texture SD_GTLW4
   map SDGTL4BR
 }
 
-brightmap texture G_OTWDL1
-{
-  map SDTDL1BR
-}
-
-brightmap texture G_OTWDL2
-{
-  map SDTDL2BR
-}
-
-brightmap texture G_OTWDL3
-{
-  map SDTDL3BR
-}
-
 brightmap texture SD_TWLW3
 {
   map STWLW3BR

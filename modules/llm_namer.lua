@@ -36,7 +36,9 @@
 -- names in AI data sets pretty much do to training on regurgitated web data.
 
 -- If you are interested in using your own model,
--- just add theaceous model aliases under LLM_NAME.MODEL_CHOICES below.
+-- just add model aliases under LLM_NAME.MODEL_CHOICES below.
+-- Actual model alias names e.g. "gemma4:latest" can be revealed by entering
+-- the command "ollama ls" in your terminal.
 -- It's fine to use any model or even the same model for both features
 -- but you need to configure some settings under LLM_NAME.MODEL_CHOICES.
 
