@@ -6402,7 +6402,12 @@ OBS_RESOURCE_PACK_THEMES =
       gtd_ribbed_lights_vox_lights_EPIC = 25,
       --
       low_gap_EPIC = 20,
-      low_gap_EPIC_alt = 20
+      low_gap_EPIC_alt = 20,
+      --
+      gtd_tekwoodlite_1 = 25,
+      gtd_tekwoodlite_2 = 25,
+      gtd_tekwoodlite_3 = 25,
+      gtd_tekwoodlite_pillar = 25,
     },
 
     window_groups =
@@ -6956,7 +6961,12 @@ OBS_RESOURCE_PACK_THEMES =
       gtd_ribbed_lights_vox_lights_EPIC = 10,
       --
       low_gap_EPIC = 10,
-      low_gap_EPIC_alt = 10
+      low_gap_EPIC_alt = 10,
+      --
+      gtd_tekwoodlite_1 = 25,
+      gtd_tekwoodlite_2 = 25,
+      gtd_tekwoodlite_3 = 25,
+      gtd_tekwoodlite_pillar = 25,
     },
 
     window_groups =

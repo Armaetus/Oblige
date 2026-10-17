@@ -170,7 +170,12 @@ function PREFAB_CONTROL.fine_tune_filters()
     --gtd_wall_grnlite = 10
 
     gtd_generic_metal_top_n_bottom = 2,
-    gtd_generic_lite_box_3d_inset = 3
+    gtd_generic_lite_box_3d_inset = 3,
+
+    gtd_tekwoodlite_1 = 6,
+    gtd_tekwoodlite_2 = 6,
+    gtd_tekwoodlite_3 = 6,
+    gtd_tekwoodlite_pillar = 6
   }
 
   local new_themes_multipliers =

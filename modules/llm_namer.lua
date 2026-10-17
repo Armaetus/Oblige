@@ -69,10 +69,10 @@ LLM_NAME.MODEL_SETTINGS =
   ["gpt-oss:latest"] =
   {
     story =
-    '"max_tokens":1000,' ..
+    '"max_tokens":4096,' ..
     '"reasoning_effort":"high",',
     name = 
-    '"max_tokens":1000,' ..
+    '"max_tokens":1024,' ..
     '"reasoning_effort":"low",',
   },
   -- Meta's Llama3.1. Decent general purpose dense model.
