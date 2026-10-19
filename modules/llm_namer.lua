@@ -70,7 +70,7 @@ LLM_NAME.MODEL_SETTINGS =
   {
     story =
     '"max_tokens":4096,' ..
-    '"reasoning_effort":"high",',
+    '"reasoning_effort":"medium",',
     name = 
     '"max_tokens":1024,' ..
     '"reasoning_effort":"low",',
@@ -3357,7 +3357,7 @@ LLM_NAME.history = {}
 
 function LLM_NAME.setup(self)
   local function ollama_is_alive(endpoint)
-    local cmd = 'curl -s --fail --max-time 2 ' .. endpoint
+    local cmd = 'curl -s --fail --max-time 5 ' .. endpoint
     local pipe = io.popen(cmd)
     if not pipe then return false end
 
@@ -4021,7 +4021,8 @@ function LLM_NAME.do_it()
 
     if not response
     or (response and response == "" or response == " ") then
-      gui.printf("LLM Namer: Query generated no response. Did the LLM have enough time/tokens to answer?")
+      gui.printf(json .. "\n")
+      gui.printf("LLM Namer: Query generated no response. Did the LLM have enough time/tokens to answer?\n")
       return nil
     end
 
@@ -4516,7 +4517,7 @@ _FORMAT_
     "story")
 
     assert(story_chunks, "LLM Namer: No story retrieved. Is Ollama on? "..
-    "Is the climate fixed? Have wages caught up with inflation? Has the authoritarian-populism fad faded? Are we doomed?")
+    "Is the climate fixed? Have wages caught up with inflation? Has the authoritarian-populism fad faded? Are we doomed?\n")
 
     -- parse out common names from the LLM to something more unique
     local noun_replacers = {}
