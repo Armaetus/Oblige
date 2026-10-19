@@ -236,7 +236,7 @@ PREFABS.Cage_dem_bunker_ambush1 =
 
   theme  = "!hell",
 
-  env = "!building",
+  env = "park",
 
   where  = "seeds",
   shape  = "U",
@@ -245,7 +245,7 @@ PREFABS.Cage_dem_bunker_ambush1 =
   seed_h = 2,
 
   deep   = 16,
-  
+
   bound_z1 = 0,
   bound_z2 = 128,
 
@@ -253,21 +253,8 @@ PREFABS.Cage_dem_bunker_ambush1 =
   y_fit  = "frame",
   z_fit = { 56,64 },
 
-  texture_pack = "armaetus",
-
-
-  thing_3004 =
-  {
-    nothing = 20,
-    zombie = 50,
-    shooter = 30,
-    imp = 50,
-    gunner = 20,
-  }
-
+  texture_pack = "armaetus"
 }
-
-
 
 PREFABS.Cage_dem_bunker_ambush2 =
 {
