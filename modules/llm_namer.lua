@@ -69,11 +69,12 @@ LLM_NAME.MODEL_SETTINGS =
   ["gpt-oss:latest"] =
   {
     story =
-    '"max_tokens":4096,' ..
-    '"reasoning_effort":"medium",',
+    '"num_predict":8192,' ..
+    '"reasoning_effort":"medium",' ..
+    '"num_ctx":8192,',
     name = 
-    '"max_tokens":1024,' ..
-    '"reasoning_effort":"low",',
+    '"num_predict":2048,' ..
+    '"reasoning_effort":low,',
   },
   -- Meta's Llama3.1. Decent general purpose dense model.
   -- Actually speedy and good enough for level names.
@@ -3357,7 +3358,7 @@ LLM_NAME.history = {}
 
 function LLM_NAME.setup(self)
   local function ollama_is_alive(endpoint)
-    local cmd = 'curl -s --fail --max-time 5 ' .. endpoint
+    local cmd = 'curl -s --fail --max-time 3 ' .. endpoint
     local pipe = io.popen(cmd)
     if not pipe then return false end
 
@@ -3933,7 +3934,7 @@ function LLM_NAME.do_it()
     file:close()
 
     local cmd =
-      'start "" /b curl --max-time 180 -sS ' ..
+      'start "" /b curl --max-time 300 -sS ' ..
       '-H "Content-Type: application/json" '..
       '"' .. LLM_NAME.endpoint .. '"' ..
       ' -d @ollama_payload.json'
@@ -4282,8 +4283,7 @@ level_data
 
     local lname = ask(prompt,
     {
-      temperature = pick_tmp or 1.0,
-      num_predict = 20
+      temperature = pick_tmp or 1.0
     },
     "name")
 
@@ -4504,15 +4504,15 @@ _FORMAT_
     -- temperature
     local temp = rand.pick
     {
-      3.0,
-      3.0
+      0.9,
+      1.0,
+      1.1
     }
 
     -- prompt structure
     local story_chunks = ask(prompt,
     {
-      temperature = temp,
-      num_predict = 1800
+      temperature = temp
     },
     "story")
 

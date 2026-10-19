@@ -3453,9 +3453,11 @@ DOOM.NAMES =
         ["Damned Demon Destruction"]=10, -- Demios
         ["Don't Forget You're Here Forever"]=10,
         ["Disorganized Labor"]=10,
+        ["Grindset Sigma"]=10,
         ["Humans Resourced"]=10,
-        ["Pizza Cafe by Alfredo"]=10,
+        ["Key Performance Incenerator"]=10,
         ["Nothing Personnel"]=10,
+        ["Pizza Cafe by Alfredo"]=10,
 
         -- End of 2021 additions by Reisal
         ["A Weeping Statue"]=10,
