@@ -3,7 +3,7 @@ PREFABS.Joiner_gtd_door_diagonal_1x2 =
   file = "joiner/gtd_doors.wad",
   map = "MAP01",
 
-  prob = 25,
+  prob = 35,
 
   theme = "!hell",
 
@@ -35,6 +35,8 @@ PREFABS.Joiner_gtd_door_diagonal_1x2_hell =
   template = "Joiner_gtd_door_diagonal_1x2",
   map = "MAP01",
 
+  prob = 50,
+
   seed_h = 2,
 
   theme = "hell",
@@ -49,6 +51,8 @@ PREFABS.Joiner_gtd_door_diagonal_2x2_hell =
 {
   template = "Joiner_gtd_door_diagonal_1x2",
   map = "MAP02",
+
+  prob = 50,
 
   seed_h = 2,
 

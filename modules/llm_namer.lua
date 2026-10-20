@@ -74,25 +74,25 @@ LLM_NAME.MODEL_SETTINGS =
     '"num_ctx":8192,',
     name = 
     '"num_predict":2048,' ..
-    '"reasoning_effort":low,',
+    '"reasoning_effort":"low",',
   },
   -- Meta's Llama3.1. Decent general purpose dense model.
   -- Actually speedy and good enough for level names.
   ["llama3.1:8b"] =
   {
     story =
-    '"num_predict:1800"',
+    '"num_predict:1800",',
     name =
-    '"num_predict:20"'
+    '"num_predict:20",'
   },
   -- Google's Gemma4. Pretty good Mixture-of-Experts model.
   -- Takes a very long time, but response is usually consistent.
   ["gemma4:latest"] =
   {
     story =
-    '"num_predict:1800"',
+    '"num_predict:1800",',
     name =
-    '"num_predict:1000"'
+    '"num_predict:1000",'
   }
 }
 
