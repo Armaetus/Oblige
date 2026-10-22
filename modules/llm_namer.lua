@@ -69,9 +69,9 @@ LLM_NAME.MODEL_SETTINGS =
   ["gpt-oss:latest"] =
   {
     story =
-    '"num_predict":8192,' ..
+    '"num_predict":16384,' ..
     '"reasoning_effort":"medium",' ..
-    '"num_ctx":8192,',
+    '"num_ctx":16384,',
     name = 
     '"num_predict":2048,' ..
     '"reasoning_effort":"low",',
