@@ -978,10 +978,6 @@ function Room_detect_porches(LEVEL, R)
 
     -- Note : keeping 'is_outdoor' on the area
 
-    -- MSSP: Overriden because junction code seems to
-    -- skip out on room->scenics interactions...
-    A.is_outdoor = nil
-
     if not A.room.porch_fence_type then
       A.room.porch_fence_type = rand.key_by_probs(
         {
@@ -3951,8 +3947,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
               A.peer.is_porch_neighbor = true
               A.peer:set_ceil_mat(A.ceil_mat)
               if A2.ceil_h then
-                A.peer:set_ceil_group(A.peer.ceil_group)
-                A.peer:set_ceil(A.peer.ceil_group.h)
+                A.peer:set_ceil_group(A.ceil_group)
+                A.peer:set_ceil(A.ceil_group.h)
               end
             end
           end
