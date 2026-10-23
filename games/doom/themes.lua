@@ -1634,6 +1634,9 @@ DOOM.THEMES =
       tech_o_g_modwall1 = 1,
       tech_o_g_modwall2 = 1,
       tech_o_yellow_compsil = 1,
+
+      --
+
       tech_o_letter_A = 1,
       tech_o_letter_B = 1,
       tech_o_letter_C = 1,
@@ -1655,7 +1658,10 @@ DOOM.THEMES =
       tech_o_letter_S = 1,
 
       tech_o_letter_L2 = 1,
-      tech_o_letter_M2 = 1
+      tech_o_letter_M2 = 1,
+
+      tech_o_dfan = 1,
+      tech_o_dfan_alt = 1
     },
 
     window_groups =

@@ -516,7 +516,7 @@ PREFABS.Wall_hexagon_uac_spotlights = --#
   z_fit = { 64,72 }
 }
 
-PREFABS.Wall_hexagon_uac_spotlights_vanilla = 
+PREFABS.Wall_hexagon_uac_spotlights_vanilla =
 {
   template = "Wall_tech_outdoor_caution_strip",
   map = "MAP22",
@@ -567,10 +567,10 @@ PREFABS.Wall_tech_outdoor_blakwall = --#
   bound_z2 = 104,
   group = "tech_o_g_blakwall",
 
-  z_fit = { 
-    7,8, 
-    15,16, 
-    96,98 
+  z_fit = {
+    7,8,
+    15,16,
+    96,98
   }
 }
 
@@ -583,9 +583,9 @@ PREFABS.Wall_tech_outdoor_modwall1 = --#
   bound_z2 = 104,
   group = "tech_o_g_modwall1",
 
-  z_fit = { 
-    7,8, 
-    23,24, 
+  z_fit = {
+    7,8,
+    23,24,
     96,98
   }
 }
@@ -599,8 +599,8 @@ PREFABS.Wall_tech_outdoor_modwall2 = --#
   bound_z2 = 96,
   group = "tech_o_g_modwall2",
 
-  z_fit = { 
-    15,16, 
+  z_fit = {
+    15,16,
     80,81,
     88,90
   }
@@ -634,4 +634,101 @@ PREFABS.Wall_tech_outdoor_yellow_compsil_vanilla =
 
   tex_SILVER2Y = "SILVER2",
   tex_COMPTIL5 = "COMPBLUE"
+}
+
+--
+
+PREFABS.Wall_tech_outdoor_dfan =
+{
+  template = "Wall_tech_outdoor_caution_strip",
+  map = "MAP28",
+
+  texture_pack = "armaetus",
+
+  group = "tech_o_dfan",
+
+  height = 96,
+  bound_z2 = 96,
+
+  z_fit = {22,24 , 88,89},
+
+  tex_DFAN1 =
+  {
+    DFAN1 = 1,
+    COMPVEN2 = 1,
+    COMPVENT = 2,
+  },
+  tex_DARKMET1 =
+  {
+    DARKMET = 4,
+    PIPEWAL1 = 1
+  }
+}
+
+PREFABS.Wall_tech_outdoor_dfan_compat =
+{
+  template = "Wall_tech_outdoor_caution_strip",
+  map = "MAP28",
+
+  group = "tech_o_dfan",
+
+  height = 96,
+  bound_z2 = 96,
+
+  z_fit = {22,24 , 88,89},
+
+  tex_DFAN1 = "BLAKWAL1",
+  tex_DARKMET1 =
+  {
+    BRONZE3 = 4,
+    PIPEWAL1 = 1
+  }
+}
+
+--
+
+PREFABS.Wall_tech_outdoor_dfan_alt =
+{
+  template = "Wall_tech_outdoor_caution_strip",
+  map = "MAP28",
+
+  texture_pack = "armaetus",
+
+  group = "tech_o_dfan_alt",
+
+  height = 96,
+  bound_z2 = 96,
+
+  z_fit = {22,24 , 88,89},
+
+  tex_DFAN1 =
+  {
+    DFAN1 = 1,
+    DFAN2 = 1,
+    DFAN3 = 1,
+    DFAN4 = 1
+  },
+    tex_DFAN2 =
+  {
+    DFAN1 = 1,
+    DFAN2 = 1,
+    DFAN3 = 1,
+    DFAN4 = 1
+  }
+}
+
+PREFABS.Wall_tech_outdoor_dfan_alt_compat =
+{
+  template = "Wall_tech_outdoor_caution_strip",
+  map = "MAP28",
+
+  group = "tech_o_dfan_alt",
+
+  height = 96,
+  bound_z2 = 96,
+
+  z_fit = {22,24 , 88,89},
+
+  tex_DFAN1 = "BLAKWAL1",
+  tex_DFAN2 = "BLAKWAL1"
 }

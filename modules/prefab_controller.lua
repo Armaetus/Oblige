@@ -150,10 +150,10 @@ function PREFAB_CONTROL.fine_tune_filters()
 
   local new_fab_groups_multipliers =
   {
-    -- gtd_wall_grated_machines_damaged_wall =,
-    --gtd_ribbed_lights_vox_lights_EPIC =,
-    --gtd_lusting_for_the_sun =,
-    --gtd_modquake_thick_brace_set =,
+    --[[gtd_wall_grated_machines_damaged_wall =,
+    gtd_ribbed_lights_vox_lights_EPIC =,
+    gtd_lusting_for_the_sun =,
+    gtd_modquake_thick_brace_set =,
 
     tech_o_letter_Q = 2,
     tech_o_letter_R = 10,
@@ -162,12 +162,15 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_o_letter_L2 = 2,
     tech_o_letter_M2 = 2,
 
-    --low_gap_EPIC = 8,
-    --low_gap_EPIC_alt = 8,
+    low_gap_EPIC = 8,
+    low_gap_EPIC_alt = 8,
 
-    --gtd_wall_redlite = 10,
-    --gtd_wall_brownlite = 10,
-    --gtd_wall_grnlite = 10
+    gtd_wall_redlite = 10,
+    gtd_wall_brownlite = 10,
+    gtd_wall_grnlite = 10]]
+
+    tech_o_dfan = 12,
+    tech_o_dfan_alt = 12,
 
     gtd_generic_metal_top_n_bottom = 2,
     gtd_generic_lite_box_3d_inset = 3,
