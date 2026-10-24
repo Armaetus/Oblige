@@ -971,9 +971,11 @@ function Room_detect_porches(LEVEL, R)
 
   local function set_as_porch(A)
     A.is_porch = true
+    A.is_outdoor = nil
 
     if A.peer then -- apply porchness to symmetry too, of course
       A.peer.is_porch = true
+      A.peer.is_outdoor = nil
     end
 
     -- Note : keeping 'is_outdoor' on the area
