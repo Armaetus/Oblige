@@ -263,7 +263,8 @@ OBS_RESOURCE_PACK_GENAI_MATERIALS =
   SDMHAZW4 = { t="SDMHAZW4", f="SDMHAZF4"},
   SDMHAZW5 = { t="SDMHAZW5", f="SDMHAZF5"},
   SDMHAZW6 = { t="SDMHAZW6", f="SDMHAZF6"},
-  SDMHAZW7 = { t="SDMHAZW7", f="SDMHAZF4"},
+  SDMHAZW7 = { t="SDMHAZW7", f="SDMHAZF3"},
+  SDMHAZW8 = { t="SDMHAZW8", f="SDMHAZF5"},
   -- flats
   SDMHAZF1 = { t="SDMHAZW1", f="SDMHAZF1"},
   SDMHAZF2 = { t="SDMHAZW2", f="SDMHAZF2"},
@@ -1798,7 +1799,8 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SDMHAZW4 = 5,
       SDMHAZW5 = 5,
       SDMHAZW6 = 5,
-      SDMHAZW7 = 5
+      SDMHAZW7 = 5,
+      SDMHAZW8 = 5
     },
 
     floors =
@@ -1831,6 +1833,28 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       RROCK17 = 5,
       RROCK18 = 5,
       SKINFLT1 = 5,
+
+      G01 = 5,
+      G02 = 5,
+      G03 = 5,
+      G09 = 2,
+      G10 = 2,
+      G14 = 3,
+      G16 = 3,
+      G18 = 3,
+      G21 = 3,
+      MEM01 = 3,
+      QFLAT03 = 3,
+      QFLAT04 = 4,
+      QFLAT05 = 4,
+      QFLAT06 = 4,
+      QFLAT07 = 4,
+      QFLAT09 = 4,
+      STARTANF = 5,
+      SLIME16 = 5,
+      TILES2 = 5,
+      TILES3 = 5,
+      URB1 = 5,
 
       SDMHAZF1 = 25,
       SDMHAZF2 = 25,
@@ -1870,6 +1894,28 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       RROCK17 = 5,
       RROCK18 = 5,
       SKINFLT1 = 5,
+
+      G01 = 5,
+      G02 = 5,
+      G03 = 5,
+      G09 = 2,
+      G10 = 2,
+      G14 = 3,
+      G16 = 3,
+      G18 = 3,
+      G21 = 3,
+      MEM01 = 3,
+      QFLAT03 = 3,
+      QFLAT04 = 4,
+      QFLAT05 = 4,
+      QFLAT06 = 4,
+      QFLAT07 = 4,
+      QFLAT09 = 4,
+      STARTANF = 5,
+      SLIME16 = 5,
+      TILES2 = 5,
+      TILES3 = 5,
+      URB1 = 5,
 
       SDMHAZF1 = 25,
       SDMHAZF2 = 25,
@@ -3872,6 +3918,134 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
     }
   },
 
+  urban_AztecClay = --55
+  {
+    env = "building",
+    prob = 35,
+
+    is_generative = true,
+
+    walls =
+    {
+      SDMHAZW1 = 5,
+      SDMHAZW2 = 5,
+      SDMHAZW3 = 5,
+      SDMHAZW4 = 5,
+      SDMHAZW5 = 5,
+      SDMHAZW6 = 5,
+      SDMHAZW7 = 5,
+      SDMHAZW8 = 5
+    },
+
+    floors =
+    {
+      FLAT1_1 = 2,
+      FLAT1_2 = 2,
+      FLAT8 = 2,
+      FLOOR0_1 = 2,
+      FLOOR0_2 = 2,
+      FLOOR3_3 = 2,
+      FLOOR4_6 = 2,
+      FLOOR5_4 = 2,
+      FLOOR7_1 = 2,
+
+      BRIK01 = 5,
+      EG01 = 5,
+      EG02 = 5,
+      EG03 = 5,
+      EG04 = 5,
+      EG05 = 5,
+      EG06 = 5,
+
+      G01 = 5,
+      G02 = 5,
+      G03 = 5,
+      G09 = 2,
+      G10 = 2,
+      G14 = 3,
+      G16 = 3,
+      G18 = 3,
+      G21 = 3,
+      GSTN03 = 5,
+      GSTN04 = 5,
+      GSTN05 = 5,
+      MEM01 = 3,
+      QFLAT03 = 3,
+      QFLAT04 = 4,
+      QFLAT05 = 4,
+      QFLAT06 = 4,
+      QFLAT07 = 4,
+      QFLAT09 = 4,
+      STARTANF = 5,
+      SLIME16 = 5,
+      TILES2 = 5,
+      TILES3 = 5,
+      URB1 = 5,
+      RROCK12 = 5,
+
+      SDMHAZF1 = 25,
+      SDMHAZF2 = 25,
+      SDMHAZF3 = 25,
+      SDMHAZF4 = 25,
+      SDMHAZF5 = 25,
+      SDMHAZF6 = 25
+    },
+
+    ceilings =
+    {
+      FLAT1_1 = 2,
+      FLAT1_2 = 2,
+      FLAT8 = 2,
+      FLOOR0_1 = 2,
+      FLOOR0_2 = 2,
+      FLOOR3_3 = 2,
+      FLOOR4_6 = 2,
+      FLOOR5_4 = 2,
+      FLOOR7_1 = 2,
+
+      BRIK01 = 5,
+      EG01 = 5,
+      EG02 = 5,
+      EG03 = 5,
+      EG04 = 5,
+      EG05 = 5,
+      EG06 = 5,
+
+      G01 = 5,
+      G02 = 5,
+      G03 = 5,
+      G09 = 2,
+      G10 = 2,
+      G14 = 3,
+      G16 = 3,
+      G18 = 3,
+      G21 = 3,
+      GSTN03 = 5,
+      GSTN04 = 5,
+      GSTN05 = 5,
+      MEM01 = 3,
+      QFLAT03 = 3,
+      QFLAT04 = 4,
+      QFLAT05 = 4,
+      QFLAT06 = 4,
+      QFLAT07 = 4,
+      QFLAT09 = 4,
+      STARTANF = 5,
+      SLIME16 = 5,
+      TILES2 = 5,
+      TILES3 = 5,
+      URB1 = 5,
+      RROCK12 = 5,
+
+      SDMHAZF1 = 25,
+      SDMHAZF2 = 25,
+      SDMHAZF3 = 25,
+      SDMHAZF4 = 25,
+      SDMHAZF5 = 25,
+      SDMHAZF6 = 25
+    }
+  },
+
   urban_Outdoors_generic = --50
   {
     env  = "outdoor",
@@ -4099,7 +4273,11 @@ OBS_RESOURCE_PACK_GENAI_THEMES =
       SDMHAZW1 = 20,
       SDMHAZW2 = 20,
       SDMHAZW3 = 20,
-      SDMHAZW4 = 20
+      SDMHAZW4 = 20,
+      SDMHAZW5 = 20,
+      SDMHAZW6 = 20,
+      SDMHAZW7 = 20,
+      SDMHAZW8 = 20
     },
 
     wall_groups =

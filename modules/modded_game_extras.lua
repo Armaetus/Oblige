@@ -2068,7 +2068,7 @@ function MODDED_GAME_EXTRAS.create_hn_info(self, LEVEL)
             chunk.area.floor_group.wall_group .. ")"
           end
 
-          if chunk.area.room and chunk.area.room.is_outdoor
+          if chunk.area.room and chunk.area.room:get_env() == "outdoor"
           and chunk.area.room.outdoor_wall_group then
             info.name = info.name ..
               " (Outdoor Wall Group: " ..
