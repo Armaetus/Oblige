@@ -14255,30 +14255,6 @@ GROW_36_ATARI_LOGO_NEW_AREA =
   },
 },
 
-GROW_36_ATARI_LOGO_NEW_AREA_V2 =
-{
-  prob = 25,
-  skip_prob = 75,
-
-  structure =
-  {
-    "x.......xx","xA1%1/1Axx",
-    "x.......xx","xA1A1A1Axx",
-    "x.......xx","xA1A1A1Axx",
-    ".........x","A//A1A%%Ax",
-    ".........x","1/A/1%A%1x",
-    "x........1","x111111111",
-    "x........1","x111111111",
-  },
-
-  diagonals =
-  {
-         "A1","1A",
-    "A1","1A","A1","1A",
-    "1A","A1","1A","A1"
-  },
-},
-
 GROW_36_INVERSE_ATARI_LOGO_NEW_AREA =
 {
   prob = 25,
