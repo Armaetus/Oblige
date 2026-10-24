@@ -183,16 +183,21 @@ function PREFAB_CONTROL.fine_tune_filters()
 
   local new_themes_multipliers =
   {
-    --tech_greenGrey = 1.5,
-    --tech_bumblebee = 1.5,
+    --[[tech_greenGrey = 1.5,
+    tech_bumblebee = 1.5,
 
     any_copperRust = 2,
 
     tech_iStuff = 5,
-    urban_iStuff = 4,
+    urban_iStuff = 4,]]
 
-    tech_wood_lab = 10,
-    urban_wood_lab = 10
+    tech_wood_lab = 4,
+    urban_wood_lab = 4,
+
+    hell_AztecClay = 18,
+
+    tech_silver_grate = 8,
+    urban_silver_grate = 8
   }
 
   local themes =
