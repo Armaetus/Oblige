@@ -1536,7 +1536,7 @@ function Room_make_windows(LEVEL, A1, A2, SEEDS)
   local prob = style_sel("windows", 0, 35, 70, 140)
 
   -- less chance between indoor rooms
-  if (not A1.is_outdoor and not A2.is_outdoor) then
+  if (A1:is_closed_to_sky() and A2:is_closed_to_sky()) then
     prob = prob * 0.7
   end
 
@@ -1788,7 +1788,7 @@ function Room_border_up(LEVEL, SEEDS)
 
     if not A1.room then
       -- nothing needed when both are building/cave
-      if A1.is_outdoor or A2.is_outdoor then
+      if A1:is_open_to_sky() or A2:is_open_to_sky() then
         Cave_join_scenic_borders(junc)
       end
 
@@ -1811,14 +1811,14 @@ function Room_border_up(LEVEL, SEEDS)
     if not A2.room then
       if A1.room.border ~= A2 or A2.border_type == "no_vista" then
         Junction_make_wall(junc)
-      elseif not A1.is_outdoor and not A1.is_cave then
+      elseif A1:is_closed_to_sky() and not A1.is_cave then
         if A2.border_type ~= "simple_fence"
             or A1.border_type ~= "no_vista"
             or A2.border_type == nil then
           Room_make_windows(LEVEL, A1, A2, SEEDS)
         end
         Junction_make_wall(junc)
-      elseif A1.is_outdoor then
+      elseif A1:is_open_to_sky() then
         if A1.is_clearing then
           if A2.fence_type == "fence" then
             Junction_make_fence(junc)
@@ -1859,7 +1859,7 @@ function Room_border_up(LEVEL, SEEDS)
 
       -- walls on areas where ceilings and floors meet --
 
-      if not (A1.is_outdoor and A2.is_outdoor) then
+      if not (A1:is_open_to_sky() and A2:is_open_to_sky()) then
         if (A1.floor_h > A2.ceil_h)
             or (A2.floor_h > A1.ceil_h) then
           Junction_make_wall(junc)
@@ -1868,7 +1868,7 @@ function Room_border_up(LEVEL, SEEDS)
 
       -- beams --
 
-      if not A1.is_outdoor and not A2.is_outdoor then
+      if A1:is_closed_to_sky() and A2:is_closed_to_sky() then
         if can_beam(A1, A2, junc) and A1.beamable then
           Junction_make_beams(junc)
         end
@@ -1876,7 +1876,7 @@ function Room_border_up(LEVEL, SEEDS)
 
       -- fences --
 
-      if A1.is_outdoor and A2.is_outdoor then
+      if A1:is_open_to_sky() and A2:is_open_to_sky() then
         if (A1.floor_h ~= A2.floor_h)
             and (A1.fence_up or A2.fence_up) then
           if can_fence(A1, A2)
@@ -1939,14 +1939,14 @@ function Room_border_up(LEVEL, SEEDS)
           end
           return
         else
-          if A1.is_outdoor then
+          if A1:is_open_to_sky() then
             if can_porch_wall(A1, A2) then
               Room_make_windows(LEVEL, A1, A2, SEEDS)
               if A1.floor_h >= A2.ceil_h or A2.floor_h >= A1.ceil_h then
                 Junction_make_wall(junc)
               end
             end
-          elseif not A1.is_outdoor then
+          elseif A1:is_closed_to_sky() then
             if can_porch_wall(A1, A2) then
               if A1.room.porch_fence_type == "fence" then
                 Junction_make_fence(junc)
@@ -1990,7 +1990,7 @@ function Room_border_up(LEVEL, SEEDS)
 
     -- fences --
 
-    if A1.is_outdoor and A2.is_outdoor then
+    if A1:is_open_to_sky() and A2:is_open_to_sky() then
       -- just solid walls on start rooms and quiet starts
       if A1.room and A2.room then
         if (A1.room.is_start or A2.room.is_start)
@@ -2805,8 +2805,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
 
     if A1:touches(A2) then
       if R:get_env() == "outdoor" then
-        if A1.is_outdoor and not A2.is_outdoor or
-        A2.is_outdoor and not A1.is_outdoor then
+        if A1:is_open_to_sky() and A2:is_closed_to_sky() or
+        A2:is_open_to_sky() and A1:is_closed_to_sky() then
           return true
         end
 
@@ -2860,11 +2860,8 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         if A1.ceil_group ~= group1 then goto skip end
         if A2.ceil_group ~= group2 then goto skip end
 
-        if A1.is_outdoor and not A2.is_outdoor then return false end
-        if A2.is_outdoor and not A1.is_outdoor then return false end
-
-        if A1.is_porch and not A2.is_porch then return false end
-        if not A1.is_porch and A2.is_porch then return false end
+        if A1:is_open_to_sky() and A2:is_closed_to_sky() then return false end
+        if A2:is_open_to_sky() and A1:is_closed_to_sky() then return false end
 
         if A1.dead_end and not A2.dead_end then return false end
         if not A1.dead_end and A2.dead_end then return false end
@@ -3096,7 +3093,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     assert(tab)
 
     for _, A in pairs(R.areas) do
-      if not A:is_indoor() then goto skip end
+      if not A:is_closed_to_sky() then goto skip end
 
       if A.mode ~= "floor" then goto skip end
 
@@ -3508,7 +3505,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       local A = chunk.area
 
       -- outdoor heights are done later, get a dummy now
-      if not A:is_indoor() then
+      if not A:is_closed_to_sky() then
         A:set_ceil(A.floor_h + R.zone.sky_add_h - 8)
         goto skip
       end
@@ -3521,11 +3518,11 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
         A:set_ceil(destA.floor_h + 96)
       end
 
-      if destA.is_outdoor and not fromA.is_outdoor then
+      if destA:is_open_to_sky() and fromA:is_closed_to_sky() then
         A:set_ceil(fromA.ceil_group.h or fromA.ceil_h)
         A:set_ceil_mat(fromA.ceil_mat)
         goto skip
-      elseif fromA.is_outdoor and not destA.is_outdoor then
+      elseif fromA:is_open_to_sky() and destA:is_closed_to_sky() then
         A:set_ceil(destA.ceil_group.h or destA.ceil_h)
         A:set_ceil_mat(destA.ceil_mat)
         goto skip
@@ -3973,7 +3970,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       if A.mode ~= "floor" then goto skip end
 
       -- outdoor heights are done later, get a dummy now
-      if not A:is_indoor() then
+      if not A:is_closed_to_sky() then
         A:set_ceil(A.floor_h + R.zone.sky_add_h - 8)
         goto skip
       end
@@ -4164,7 +4161,7 @@ function Room_set_sky_heights(LEVEL)
 
   for _, A in pairs(LEVEL.areas) do
     -- visit all normal, outdoor areas
-    if A.floor_h and not A:is_indoor() and not A.mode ~= "scenic" then
+    if A.floor_h and not A:is_closed_to_sky() and not A.mode ~= "scenic" then
       do_area(A)
 
       -- include nearby buildings in same zone
@@ -4189,7 +4186,7 @@ function Room_set_sky_heights(LEVEL)
   -- [ SCENIC areas are done later.... ]
 
   for _, A in pairs(LEVEL.areas) do
-    if A.floor_h and A.zone and not A:is_indoor() and not A.is_porch then
+    if A.floor_h and A.zone and not A:is_closed_to_sky() and not A.is_porch then
       A:set_ceil(A.zone.sky_h + 16)
     end
   end

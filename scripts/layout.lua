@@ -1656,7 +1656,7 @@ function Layout_decorate_rooms(LEVEL, pass, SEEDS)
     -- control check for Epic Textures module environment theme,
     -- if available -MSSP
     if PARAM.environment_themes then
-      if A.is_outdoor then
+      if A:is_open_to_sky() then
         reqs.outdoor_theme = LEVEL.outdoor_theme
       end
     end
@@ -2868,7 +2868,7 @@ function Layout_handle_corners(LEVEL)
       if not junc.E1 then goto skip end
 
       -- code for fancy fenceposts
-      if (junc.E1.kind == "fence" and junc.E1.area.is_outdoor) then
+      if (junc.E1.kind == "fence" and junc.E1.area:is_open_to_sky()) then
         if Corner_touches_wall(corner) then return end
 
         if corner.posted then return end

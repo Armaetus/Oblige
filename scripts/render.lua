@@ -212,7 +212,7 @@ function Render_edge(LEVEL, E, SEEDS)
       end
     end
 
-    if A.is_outdoor then
+    if A:is_open_to_sky() then
       reqs.group = LEVEL.outdoor_wall_group
 
       if A.room and A.room.is_exit and LEVEL.alt_outdoor_wall_group then
@@ -3623,7 +3623,7 @@ function Render_properties_for_area(LEVEL, A)
       if R:get_env() == "outdoor" or R:get_env() == "park" then
 
         -- this for outdoor closets
-        if not A.is_outdoor then
+        if A:is_closed_to_sky() then
           if A.chunk and A.chunk.kind == "closet" then
             A:set_lighting(LEVEL.sky_light)
           else
@@ -3658,7 +3658,7 @@ function Render_properties_for_area(LEVEL, A)
     A:set_floor_mat("_LIQUID")
   end
 
-  if A.is_outdoor and not A.is_porch then
+  if A:is_open_to_sky() then
     A:set_ceil_mat("_SKY")
   end
 
@@ -3676,7 +3676,7 @@ function Render_properties_for_area(LEVEL, A)
     end
   end
 
-  if not A.is_outdoor and A.mode == "floor" then
+  if A:is_closed_to_sky() and A.mode == "floor" then
     A:set_floor_mat(R.floor_mats[A.floor_h] or R.main_tex)
     A:set_ceil_mat(R.ceil_mats[A.ceil_h] or R.main_tex)
   end
@@ -4458,7 +4458,7 @@ function Render_cells(LEVEL, area)
     end
 
     -- disable liquid lighting in outdoor rooms
-    if f_mat == "_LIQUID" and area.is_outdoor and not LEVEL.is_dark then
+    if f_mat == "_LIQUID" and area:is_open_to_sky() and not LEVEL.is_dark then
       for _,C in pairs(f_brush) do
         if C.t then C.light_add = 0 end
       end

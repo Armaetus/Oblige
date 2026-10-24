@@ -367,7 +367,7 @@ function AREA_CLASS.has_conn(A, LEVEL)
 end
 
 
-function AREA_CLASS.is_indoor(A)
+function AREA_CLASS.is_closed_to_sky(A)
   if A.mode == "scenic" then return false end
 
   if not A.is_outdoor then return true end
@@ -375,6 +375,13 @@ function AREA_CLASS.is_indoor(A)
 
   if A.chunk and A.chunk.kind == "closet" then return true end
   if A.chunk and A.chunk.kind == "joiner" then return true end
+
+  return false
+end
+
+
+function AREA_CLASS.is_open_to_sky(A)
+  if not A:is_closed_to_sky(A) then return true end
 
   return false
 end
@@ -775,7 +782,7 @@ function Junction_make_map_edge(junc)
   local A = junc.A1
   local mat
 
-  if A.room and A:is_indoor() then
+  if A.room and A:is_closed_to_sky() then
     mat = A.room.main_tex
   elseif A.zone then
     mat = A.zone.facade_mat
@@ -788,7 +795,7 @@ function Junction_make_map_edge(junc)
   junc.E1 = { kind="wall", area=A, wall_mat=mat }
   junc.E2 = { kind="nothing" }
 
-  if not A:is_indoor() and A.floor_h then
+  if not A:is_closed_to_sky() and A.floor_h then
     junc.E1.kind = "sky_edge"
   end
 end
@@ -834,7 +841,7 @@ function Junction_calc_wall_tex(A1, A2, kind, group)
 
   if A1.zone ~= A2.zone then
 
-    if A1.room and not A1.is_outdoor then
+    if A1.room and A1:is_closed_to_sky() then
       return assert(A1.room.main_tex)
     end
 
@@ -851,7 +858,7 @@ function Junction_calc_wall_tex(A1, A2, kind, group)
     return assert(A1.zone.facade_mat)
   end
 
-  if A1.is_outdoor and A2:is_indoor() then
+  if A1:is_open_to_sky() and A2:is_open_to_sky() then
 
     if A1.room and A1.room.is_natural_park then
       return assert(A1.room.main_tex)
@@ -865,7 +872,7 @@ function Junction_calc_wall_tex(A1, A2, kind, group)
   end
 
   if A1.room then
-    if A1.room.is_outdoor and A1.is_porch then
+    if A1.room:get_env() == "outdoor" and A1.is_porch then
       return assert(A1.zone.facade_mat)
     end
     return assert(A1.room.main_tex)
@@ -942,7 +949,7 @@ function Junction_calc_fence_z(A1, A2)
   -- one of the areas' ceiling heights (usually the one with the porch)
   -- MSSP
   if A1.is_porch or A2.is_porch then
-    if not A1.is_outdoor or not A2.is_outdoor then
+    if A1:is_closed_to_sky() or not A2:is_closed_to_sky() then
       top_z = per_area_z
     end
 
@@ -1202,7 +1209,7 @@ function Corner_detect_zone_diffs(LEVEL)
         has_diff = true
       end
 
-      if A1.is_outdoor or A2.is_outdoor then
+      if A1:is_open_to_sky() or A2:is_open_to_sky() then
         has_outdoor = true
       end
     end
@@ -1708,7 +1715,7 @@ function Area_locate_chunks(LEVEL, SEEDS)
     end
 
     -- TODO : review the liquid check here
-    if A:is_indoor() then
+    if A:is_closed_to_sky() then
       local CEIL = make_chunk("ceil", A, sx1,sy1, sx2,sy2)
       table.insert(R.ceil_chunks, CEIL)
 
@@ -2200,7 +2207,7 @@ function Area_pick_facing_rooms(LEVEL, SEEDS)
 
       if not (A.mode == "floor" or A.mode == "nature") then goto skip end
 
-      if sel(A.is_outdoor, 1, 0) ~= sel(want_outdoor, 1, 0) then goto skip end
+      if sel(A:is_open_to_sky(), 1, 0) ~= sel(want_outdoor, 1, 0) then goto skip end
 
       for _,S in pairs(A.seeds) do
       for _,dir in pairs(geom.ALL_DIRS) do
@@ -2991,7 +2998,7 @@ local test_textures =
     end
 
     for _,N in pairs(A.corner_neighbors) do
-      if not N.facade_group and kinda_in_zone(N, Z) and N:is_indoor() then
+      if not N.facade_group and kinda_in_zone(N, Z) and N:is_closed_to_sky() then
         N.facade_group = A.facade_group
 
         spread_facade(Z, N)
@@ -3002,7 +3009,7 @@ local test_textures =
 
   local function visit_zone(Z)
     for _,A in pairs(LEVEL.areas) do
-      if not A.facade_group and kinda_in_zone(A, Z) and A:is_indoor() then
+      if not A.facade_group and kinda_in_zone(A, Z) and A:is_closed_to_sky() then
         A.facade_group = new_group()
 
         spread_facade(Z, A)
@@ -3033,7 +3040,7 @@ local test_textures =
 
       for _,A in pairs(Z.areas) do
         gui.debugf("  %s (%s / %s) ---> '%s'\n", A.name,
-          A.mode, sel(A.is_outdoor, "outdoor", " indoor"),
+          A.mode, sel(A:is_open_to_sky(), "outdoor", " indoor"),
           A.facade_crap or "(nil)")
       end
     end

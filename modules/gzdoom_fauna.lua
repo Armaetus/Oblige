@@ -356,18 +356,18 @@ function FAUNA_MODULE.add_flies(LEVEL)
       for _,S in pairs(A.seeds) do
 
         -- No spawning in outdoor snow areas
-        if (A.is_outdoor and LEVEL.outdoor_theme == "snow") then end
+        if (A:is_closed_to_sky() and LEVEL.outdoor_theme == "snow") then end
 
         -- Default spawning odds
         local spawn_odds = 10
 
         -- Lower spawning probability if indoors
-        if (A.is_indoor) then
+        if (A:is_closed_to_sky()) then
           spawn_odds = 5
         end
 
         -- Greater spawning probability if outdoors and temperate
-        if (A.is_outdoor and LEVEL.outdoor_theme == "temperate") then
+        if (A:is_closed_to_sky() and LEVEL.outdoor_theme == "temperate") then
           spawn_odds = 15
         end
 
@@ -415,13 +415,13 @@ function FAUNA_MODULE.add_rats(LEVEL)
       for _,S in pairs(A.seeds) do
 
         -- No spawning in outdoor snow areas
-        if (A.is_outdoor and LEVEL.outdoor_theme == "snow") then end
+        if (A:is_closed_to_sky() and LEVEL.outdoor_theme == "snow") then end
 
         -- Default spawning odds
         local spawn_odds = 1
 
         -- Greater spawning probability if indoors
-        if (A.is_indoor) then
+        if (A:is_closed_to_sky()) then
           spawn_odds = 3
         end
 
