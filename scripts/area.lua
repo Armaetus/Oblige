@@ -775,7 +775,7 @@ function Junction_make_map_edge(junc)
   local A = junc.A1
   local mat
 
-  if A.room and not A.is_outdoor then
+  if A.room and A:is_indoor() then
     mat = A.room.main_tex
   elseif A.zone then
     mat = A.zone.facade_mat
@@ -788,7 +788,7 @@ function Junction_make_map_edge(junc)
   junc.E1 = { kind="wall", area=A, wall_mat=mat }
   junc.E2 = { kind="nothing" }
 
-  if A.is_outdoor and A.floor_h then
+  if not A:is_indoor() and A.floor_h then
     junc.E1.kind = "sky_edge"
   end
 end
@@ -1708,7 +1708,7 @@ function Area_locate_chunks(LEVEL, SEEDS)
     end
 
     -- TODO : review the liquid check here
-    if not A.is_outdoor then
+    if A:is_indoor() then
       local CEIL = make_chunk("ceil", A, sx1,sy1, sx2,sy2)
       table.insert(R.ceil_chunks, CEIL)
 

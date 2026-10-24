@@ -3096,7 +3096,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     assert(tab)
 
     for _, A in pairs(R.areas) do
-      if A.is_outdoor then goto skip end
+      if not A:is_indoor() then goto skip end
 
       if A.mode ~= "floor" then goto skip end
 
@@ -3508,7 +3508,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       local A = chunk.area
 
       -- outdoor heights are done later, get a dummy now
-      if A.is_outdoor then
+      if not A:is_indoor() then
         A:set_ceil(A.floor_h + R.zone.sky_add_h - 8)
         goto skip
       end
@@ -3973,7 +3973,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       if A.mode ~= "floor" then goto skip end
 
       -- outdoor heights are done later, get a dummy now
-      if A.is_outdoor then
+      if not A:is_indoor() then
         A:set_ceil(A.floor_h + R.zone.sky_add_h - 8)
         goto skip
       end
@@ -4164,7 +4164,7 @@ function Room_set_sky_heights(LEVEL)
 
   for _, A in pairs(LEVEL.areas) do
     -- visit all normal, outdoor areas
-    if A.floor_h and A.is_outdoor and not A.mode ~= "scenic" then
+    if A.floor_h and not A:is_indoor() and not A.mode ~= "scenic" then
       do_area(A)
 
       -- include nearby buildings in same zone
@@ -4189,7 +4189,7 @@ function Room_set_sky_heights(LEVEL)
   -- [ SCENIC areas are done later.... ]
 
   for _, A in pairs(LEVEL.areas) do
-    if A.floor_h and A.zone and A.is_outdoor and not A.is_porch then
+    if A.floor_h and A.zone and not A:is_indoor() and not A.is_porch then
       A:set_ceil(A.zone.sky_h + 16)
     end
   end

@@ -1433,7 +1433,7 @@ function CHUNK_CLASS.is_open_to_sky(chunk, R, SEEDS)
   if not R.is_outdoor then return false end
 
   local function area_open_to_sky(A)
-    if not A.is_outdoor then return false end
+    if A:is_indoor() then return false end
     if A.mode == "void" then return false end
     if A.room and A.room ~= R then return false end
     if A.mode == "scenic" and A.face_room ~= R then return false end
