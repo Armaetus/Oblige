@@ -1695,7 +1695,8 @@ DOOM.THEMES =
       gtd_window_low_gap_closed = 15,
       gtd_window_half_chamfer_techy = 30,
       gtd_window_cubby_holes = 20,
-      gtd_window_bunker_terrace = 20
+      gtd_window_bunker_terrace = 20,
+      gtd_window_staggered_square = 10
     },
 
     fence_groups =
@@ -2208,7 +2209,8 @@ DOOM.THEMES =
       gtd_window_low_gap_closed = 10,
       gtd_window_half_chamfer_techy = 30,
       gtd_window_cubby_holes = 20,
-      gtd_window_bunker_terrace = 35
+      gtd_window_bunker_terrace = 35,
+      gtd_window_staggered_square = 20
     },
 
     fence_groups =
@@ -2800,7 +2802,8 @@ DOOM.THEMES =
       gtd_window_lite_cross = 30,
       gtd_window_low_gap_closed = 25,
       gtd_window_cubby_holes = 30,
-      gtd_window_bunker_terrace = 45
+      gtd_window_bunker_terrace = 45,
+      gtd_window_staggered_square = 25
     },
 
     fence_groups =
