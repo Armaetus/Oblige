@@ -2714,6 +2714,15 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       RROCK10 = 15,
       RROCK12 = 15,
       RROCK15 = 15,
+
+      GO_MHZF1 = 10,
+      GO_MHZF2 = 10,
+      GO_MHZF3 = 10,
+      GO_MHZF4 = 10,
+      GO_MHZF5 = 10,
+      GO_MHZF6 = 10,
+      GO_MHZF7 = 10,
+      GO_MHZF8 = 10
     },
 
     ceilings =
@@ -2727,6 +2736,15 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       RROCK10 = 20,
       RROCK12 = 20,
       RROCK15 = 20,
+
+      GO_MHZF1 = 10,
+      GO_MHZF2 = 10,
+      GO_MHZF3 = 10,
+      GO_MHZF4 = 10,
+      GO_MHZF5 = 10,
+      GO_MHZF6 = 10,
+      GO_MHZF7 = 10,
+      GO_MHZF8 = 10
     },
   },
 
@@ -3276,7 +3294,8 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GO_MHZF4 = 25,
       GO_MHZF5 = 25,
       GO_MHZF6 = 25,
-      GO_MHZF7 = 25
+      GO_MHZF7 = 25,
+      GO_MHZF8 = 25
     },
 
     ceilings =
@@ -3338,7 +3357,8 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GO_MHZF4 = 25,
       GO_MHZF5 = 25,
       GO_MHZF6 = 25,
-      GO_MHZF7 = 25
+      GO_MHZF7 = 25,
+      GO_MHZF8 = 25
     }
   },
 
@@ -5100,7 +5120,8 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GO_MHZF4 = 25,
       GO_MHZF5 = 25,
       GO_MHZF6 = 25,
-      GO_MHZF7 = 25
+      GO_MHZF7 = 25,
+      GO_MHZF8 = 25
     },
 
     ceilings =
@@ -5155,7 +5176,8 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GO_MHZF4 = 25,
       GO_MHZF5 = 25,
       GO_MHZF6 = 25,
-      GO_MHZF7 = 25
+      GO_MHZF7 = 25,
+      GO_MHZF8 = 25
     }
   },
 -- END OF THEMES TABLES
@@ -8132,7 +8154,16 @@ ORP_DESERT_ROOM_THEMES =
       EG05  = 10,
       EG03  = 15,
       EG02  = 10,
-      EG01  = 15
+      EG01  = 15,
+
+      GO_MHZF1 = 15,
+      GO_MHZF2 = 15,
+      GO_MHZF3 = 15,
+      GO_MHZF4 = 15,
+      GO_MHZF5 = 15,
+      GO_MHZF6 = 15,
+      GO_MHZF7 = 15,
+      GO_MHZF8 = 15
     },
 
     naturals =
@@ -8162,7 +8193,16 @@ ORP_DESERT_ROOM_THEMES =
       EG05  = 10,
       EG03  = 15,
       EG02  = 10,
-      EG01  = 15
+      EG01  = 15,
+
+      GO_MHZF1 = 10,
+      GO_MHZF2 = 10,
+      GO_MHZF3 = 10,
+      GO_MHZF4 = 10,
+      GO_MHZF5 = 10,
+      GO_MHZF6 = 10,
+      GO_MHZF7 = 10,
+      GO_MHZF8 = 10
     },
 
     naturals =

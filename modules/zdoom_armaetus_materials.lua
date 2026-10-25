@@ -1722,6 +1722,7 @@ OBS_RESOURCE_PACK_MATERIALS = {
   GO_MHZF5 = { t="GO_MHZW5", f="GO_MHZF5"},
   GO_MHZF6 = { t="GO_MHZW6", f="GO_MHZF6"},
   GO_MHZF7 = { t="GO_MHZW7", f="GO_MHZF7"},
+  GO_MHZF8 = { t="GO_MHZW8", f="GO_MHZF8"},
 
   ----------------------
   -- Special Textures --
