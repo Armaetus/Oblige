@@ -4,7 +4,7 @@ PREFABS.Pic_control_room =
   map = "MAP01",
 
   prob = 75,
-  prob_skew = 2,
+  prob_skew = 1.5,
   theme = "tech",
 
   env = "building",

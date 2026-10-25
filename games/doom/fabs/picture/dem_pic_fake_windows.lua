@@ -143,7 +143,7 @@ PREFABS.Pic_dem_windows_decoc1 =
   file   = "picture/dem_pic_fake_windows.wad",
   map    = "MAP04",
 
-  prob   = 30,
+  prob   = 20,
   skip_prob = 50,
 
   theme  = "urban",
