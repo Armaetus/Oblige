@@ -708,7 +708,7 @@ PREFABS.Wall_tech_outdoor_dfan_alt =
     DFAN3 = 1,
     DFAN4 = 1
   },
-    tex_DFAN2 =
+  tex_DFAN2 =
   {
     DFAN1 = 1,
     DFAN2 = 1,
@@ -731,4 +731,36 @@ PREFABS.Wall_tech_outdoor_dfan_alt_compat =
 
   tex_DFAN1 = "BLAKWAL1",
   tex_DFAN2 = "BLAKWAL1"
+}
+
+--
+
+PREFABS.Wall_tech_outdoor_dfan_alt_2 =
+{
+  template = "Wall_tech_outdoor_caution_strip",
+  map = "MAP28",
+
+  texture_pack = "armaetus",
+
+  group = "tech_o_dfan_alt_2",
+
+  height = 96,
+  bound_z2 = 96,
+
+  z_fit = { 8,32 }
+}
+
+PREFABS.Wall_tech_outdoor_dfan_alt_2_compat =
+{
+  template = "Wall_tech_outdoor_caution_strip",
+  map = "MAP28",
+
+  group = "tech_o_dfan_alt_2",
+
+  height = 96,
+  bound_z2 = 96,
+
+  z_fit = { 8,32 },
+
+  tex_DFAN1 = "BLAKWAL1",
 }

@@ -169,8 +169,9 @@ function PREFAB_CONTROL.fine_tune_filters()
     gtd_wall_brownlite = 10,
     gtd_wall_grnlite = 10]]
 
-    tech_o_dfan = 12,
-    tech_o_dfan_alt = 12,
+    tech_o_dfan = 16,
+    tech_o_dfan_alt = 16,
+    tech_o_dfan_alt_2 = 16,
 
     gtd_generic_metal_top_n_bottom = 2,
     gtd_generic_lite_box_3d_inset = 3,
@@ -194,8 +195,8 @@ function PREFAB_CONTROL.fine_tune_filters()
     tech_wood_lab = 4,
     urban_wood_lab = 4,
 
-    hell_AztecClay = 16,
-    urban_AztecClay = 16,
+    hell_AztecClay = 24,
+    urban_AztecClay = 24,
 
     tech_silver_grate = 8,
     urban_silver_grate = 8

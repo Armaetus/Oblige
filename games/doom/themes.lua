@@ -1661,7 +1661,8 @@ DOOM.THEMES =
       tech_o_letter_M2 = 1,
 
       tech_o_dfan = 1,
-      tech_o_dfan_alt = 1
+      tech_o_dfan_alt = 1,
+      tech_o_dfan_alt_2 = 1
     },
 
     window_groups =
