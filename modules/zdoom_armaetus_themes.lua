@@ -3200,6 +3200,146 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
     }
   },
 
+  hell_AztecClay = --55
+  {
+    env = "building",
+    prob = 55,
+
+    walls =
+    {
+      GO_MHZW1 = 5,
+      GO_MHZW2 = 5,
+      GO_MHZW3 = 5,
+      GO_MHZW4 = 5,
+      GO_MHZW5 = 5,
+      GO_MHZW6 = 5,
+      GO_MHZW7 = 5,
+      GO_MHZW8 = 5
+    },
+
+    floors =
+    {
+      FLAT1_1 = 2,
+      FLAT1_2 = 2,
+      FLAT8 = 2,
+      FLOOR0_1 = 2,
+      FLOOR0_2 = 2,
+      FLOOR3_3 = 2,
+      FLOOR4_6 = 2,
+      FLOOR5_4 = 2,
+      FLOOR7_1 = 2,
+
+      BRIK01 = 5,
+      EG01 = 5,
+      EG02 = 5,
+      EG03 = 5,
+      EG04 = 5,
+      EG05 = 5,
+      EG06 = 5,
+      GSTN03 = 5,
+      GSTN04 = 5,
+      GSTN05 = 5,
+      RROCK09 = 5,
+      RROCK10 = 5,
+      RROCK11 = 5,
+      RROCK12 = 5,
+      RROCK16 = 5,
+      RROCK17 = 5,
+      RROCK18 = 5,
+      SKINFLT1 = 5,
+
+      G01 = 5,
+      G02 = 5,
+      G03 = 5,
+      G09 = 2,
+      G10 = 2,
+      G14 = 3,
+      G16 = 3,
+      G18 = 3,
+      G21 = 3,
+      MEM01 = 3,
+      QFLAT03 = 3,
+      QFLAT04 = 4,
+      QFLAT05 = 4,
+      QFLAT06 = 4,
+      QFLAT07 = 4,
+      QFLAT09 = 4,
+      STARTANF = 5,
+      SLIME16 = 5,
+      TILES2 = 5,
+      TILES3 = 5,
+      URB1 = 5,
+
+      GO_MHZF1 = 25,
+      GO_MHZF2 = 25,
+      GO_MHZF3 = 25,
+      GO_MHZF4 = 25,
+      GO_MHZF5 = 25,
+      GO_MHZF6 = 25
+    },
+
+    ceilings =
+    {
+      FLAT1_1 = 2,
+      FLAT1_2 = 2,
+      FLAT8 = 2,
+      FLOOR0_1 = 2,
+      FLOOR0_2 = 2,
+      FLOOR3_3 = 2,
+      FLOOR4_6 = 2,
+      FLOOR5_4 = 2,
+      FLOOR7_1 = 2,
+
+      BRIK01 = 5,
+      EG01 = 5,
+      EG02 = 5,
+      EG03 = 5,
+      EG04 = 5,
+      EG05 = 5,
+      EG06 = 5,
+      GSTN03 = 5,
+      GSTN04 = 5,
+      GSTN05 = 5,
+      RROCK09 = 5,
+      RROCK10 = 5,
+      RROCK11 = 5,
+      RROCK12 = 5,
+      RROCK16 = 5,
+      RROCK17 = 5,
+      RROCK18 = 5,
+      SKINFLT1 = 5,
+
+      G01 = 5,
+      G02 = 5,
+      G03 = 5,
+      G09 = 2,
+      G10 = 2,
+      G14 = 3,
+      G16 = 3,
+      G18 = 3,
+      G21 = 3,
+      MEM01 = 3,
+      QFLAT03 = 3,
+      QFLAT04 = 4,
+      QFLAT05 = 4,
+      QFLAT06 = 4,
+      QFLAT07 = 4,
+      QFLAT09 = 4,
+      STARTANF = 5,
+      SLIME16 = 5,
+      TILES2 = 5,
+      TILES3 = 5,
+      URB1 = 5,
+
+      GO_MHZF1 = 25,
+      GO_MHZF2 = 25,
+      GO_MHZF3 = 25,
+      GO_MHZF4 = 25,
+      GO_MHZF5 = 25,
+      GO_MHZF6 = 25
+    }
+  },
+
   -- Hell has frozen over!
   hell_icecave = --50
   {
@@ -4889,6 +5029,131 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
     }
   },
 
+  urban_AztecClay = --55
+  {
+    env = "building",
+    prob = 35,
+
+    walls =
+    {
+      GO_MHZW1 = 5,
+      GO_MHZW2 = 5,
+      GO_MHZW3 = 5,
+      GO_MHZW4 = 5,
+      GO_MHZW5 = 5,
+      GO_MHZW6 = 5,
+      GO_MHZW7 = 5,
+      GO_MHZW8 = 5
+    },
+
+    floors =
+    {
+      FLAT1_1 = 2,
+      FLAT1_2 = 2,
+      FLAT8 = 2,
+      FLOOR0_1 = 2,
+      FLOOR0_2 = 2,
+      FLOOR3_3 = 2,
+      FLOOR4_6 = 2,
+      FLOOR5_4 = 2,
+      FLOOR7_1 = 2,
+
+      BRIK01 = 5,
+      EG01 = 5,
+      EG02 = 5,
+      EG03 = 5,
+      EG04 = 5,
+      EG05 = 5,
+      EG06 = 5,
+
+      G01 = 5,
+      G02 = 5,
+      G03 = 5,
+      G09 = 2,
+      G10 = 2,
+      G14 = 3,
+      G16 = 3,
+      G18 = 3,
+      G21 = 3,
+      GSTN03 = 5,
+      GSTN04 = 5,
+      GSTN05 = 5,
+      MEM01 = 3,
+      QFLAT03 = 3,
+      QFLAT04 = 4,
+      QFLAT05 = 4,
+      QFLAT06 = 4,
+      QFLAT07 = 4,
+      QFLAT09 = 4,
+      STARTANF = 5,
+      SLIME16 = 5,
+      TILES2 = 5,
+      TILES3 = 5,
+      URB1 = 5,
+      RROCK12 = 5,
+
+      GO_MHZF1 = 25,
+      GO_MHZF2 = 25,
+      GO_MHZF3 = 25,
+      GO_MHZF4 = 25,
+      GO_MHZF5 = 25,
+      GO_MHZF6 = 25
+    },
+
+    ceilings =
+    {
+      FLAT1_1 = 2,
+      FLAT1_2 = 2,
+      FLAT8 = 2,
+      FLOOR0_1 = 2,
+      FLOOR0_2 = 2,
+      FLOOR3_3 = 2,
+      FLOOR4_6 = 2,
+      FLOOR5_4 = 2,
+      FLOOR7_1 = 2,
+
+      BRIK01 = 5,
+      EG01 = 5,
+      EG02 = 5,
+      EG03 = 5,
+      EG04 = 5,
+      EG05 = 5,
+      EG06 = 5,
+
+      G01 = 5,
+      G02 = 5,
+      G03 = 5,
+      G09 = 2,
+      G10 = 2,
+      G14 = 3,
+      G16 = 3,
+      G18 = 3,
+      G21 = 3,
+      GSTN03 = 5,
+      GSTN04 = 5,
+      GSTN05 = 5,
+      MEM01 = 3,
+      QFLAT03 = 3,
+      QFLAT04 = 4,
+      QFLAT05 = 4,
+      QFLAT06 = 4,
+      QFLAT07 = 4,
+      QFLAT09 = 4,
+      STARTANF = 5,
+      SLIME16 = 5,
+      TILES2 = 5,
+      TILES3 = 5,
+      URB1 = 5,
+      RROCK12 = 5,
+
+      GO_MHZF1 = 25,
+      GO_MHZF2 = 25,
+      GO_MHZF3 = 25,
+      GO_MHZF4 = 25,
+      GO_MHZF5 = 25,
+      GO_MHZF6 = 25
+    }
+  },
 -- END OF THEMES TABLES
 }
 
