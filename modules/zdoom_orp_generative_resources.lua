@@ -1866,6 +1866,7 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       GO_MHZF4 = 25,
       GO_MHZF5 = 25,
       GO_MHZF6 = 25,
+      GO_MHZF7 = 25,
 
       SDPBBFT1 = 45,
       SDPBBFT2 = 45,
@@ -2626,7 +2627,8 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       GO_MHZF3 = 15,
       GO_MHZF4 = 15,
       GO_MHZF5 = 15,
-      GO_MHZF6 = 15
+      GO_MHZF6 = 15,
+      GO_MHZF7 = 15
     },
   },
 

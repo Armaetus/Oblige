@@ -3275,7 +3275,8 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GO_MHZF3 = 25,
       GO_MHZF4 = 25,
       GO_MHZF5 = 25,
-      GO_MHZF6 = 25
+      GO_MHZF6 = 25,
+      GO_MHZF7 = 25
     },
 
     ceilings =
@@ -3336,7 +3337,8 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GO_MHZF3 = 25,
       GO_MHZF4 = 25,
       GO_MHZF5 = 25,
-      GO_MHZF6 = 25
+      GO_MHZF6 = 25,
+      GO_MHZF7 = 25
     }
   },
 
@@ -5097,7 +5099,8 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GO_MHZF3 = 25,
       GO_MHZF4 = 25,
       GO_MHZF5 = 25,
-      GO_MHZF6 = 25
+      GO_MHZF6 = 25,
+      GO_MHZF7 = 25
     },
 
     ceilings =
@@ -5151,7 +5154,8 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
       GO_MHZF3 = 25,
       GO_MHZF4 = 25,
       GO_MHZF5 = 25,
-      GO_MHZF6 = 25
+      GO_MHZF6 = 25,
+      GO_MHZF7 = 25
     }
   },
 -- END OF THEMES TABLES
