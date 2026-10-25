@@ -6496,7 +6496,6 @@ OBS_RESOURCE_PACK_THEMES =
       G_OTWDWC = 12,
       G_OTWDWD = 12,
       G_OTWDWE = 12,
-
     },
 
     fences =
@@ -6982,7 +6981,16 @@ OBS_RESOURCE_PACK_THEMES =
       G_OTWDWB = 8,
       G_OTWDWC = 8,
       G_OTWDWD = 8,
-      G_OTWDWE = 8
+      G_OTWDWE = 8,
+
+      GO_MHZW1 = 5,
+      GO_MHZW2 = 5,
+      GO_MHZW3 = 5,
+      GO_MHZW4 = 5,
+      GO_MHZW5 = 5,
+      GO_MHZW6 = 5,
+      GO_MHZW7 = 5,
+      GO_MHZW8 = 5
     },
 
     fences =
@@ -7483,7 +7491,16 @@ OBS_RESOURCE_PACK_THEMES =
       G_OCURW7 = 15,
       G_OCURW8 = 15,
       G_OCURW9 = 15,
-      G_OCURWA = 15
+      G_OCURWA = 15,
+
+      GO_MHZW1 = 18,
+      GO_MHZW2 = 18,
+      GO_MHZW3 = 18,
+      GO_MHZW4 = 18,
+      GO_MHZW5 = 18,
+      GO_MHZW6 = 18,
+      GO_MHZW7 = 18,
+      GO_MHZW8 = 18
     },
 
     fences =

@@ -256,23 +256,6 @@ OBS_RESOURCE_PACK_GENAI_MATERIALS =
   SD_HCSF5 = { t="SD_HCSW3", f="SD_HCSF5"},
   SD_HCSF6 = { t="SD_HCSW4", f="SD_HCSF6"},
 
-  -- aztec demonic
-  GO_MHZW1 = { t="GO_MHZW1", f="GO_MHZF1"},
-  GO_MHZW2 = { t="GO_MHZW2", f="GO_MHZF2"},
-  GO_MHZW3 = { t="GO_MHZW3", f="GO_MHZF3"},
-  GO_MHZW4 = { t="GO_MHZW4", f="GO_MHZF4"},
-  GO_MHZW5 = { t="GO_MHZW5", f="GO_MHZF5"},
-  GO_MHZW6 = { t="GO_MHZW6", f="GO_MHZF6"},
-  GO_MHZW7 = { t="GO_MHZW7", f="GO_MHZF3"},
-  GO_MHZW8 = { t="GO_MHZW8", f="GO_MHZF5"},
-  -- flats
-  GO_MHZF1 = { t="GO_MHZW1", f="GO_MHZF1"},
-  GO_MHZF2 = { t="GO_MHZW2", f="GO_MHZF2"},
-  GO_MHZF3 = { t="GO_MHZW3", f="GO_MHZF3"},
-  GO_MHZF4 = { t="GO_MHZW4", f="GO_MHZF4"},
-  GO_MHZF5 = { t="GO_MHZW1", f="GO_MHZF5"},
-  GO_MHZF6 = { t="GO_MHZW4", f="GO_MHZF6"},
-
   -- babylonian demonic
   SDPBBWL1 = { t="SDPBBWL1", f="GO_MHZF1"},
   SDPBBWL2 = { t="SDPBBWL2", f="GO_MHZF2"},
