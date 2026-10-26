@@ -41,6 +41,14 @@ PREFABS.Window_thin_mid_space_4 =
   seed_w = 4
 }
 
+PREFABS.Window_thin_mid_space_diag =
+{
+  template = "Window_thin_mid_space_1",
+  map = "MAP21",
+
+  where = "diagonal"
+}
+
 --#
 
 PREFABS.Window_bunker_terrace_1 =
@@ -88,4 +96,12 @@ PREFABS.Window_bunker_terrace_4 =
   map = "MAP13",
 
   seed_w = 4
+}
+
+PREFABS.Window_bunker_terrace_diag =
+{
+  template = "Window_bunker_terrace_1",
+  map = "MAP22",
+
+  where = "diagonal"
 }

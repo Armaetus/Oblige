@@ -16,7 +16,7 @@ PREFABS.Window_bay_1 =
   over   = 16,
 
   bound_z1 = 0,
-  bound_z2 = 128,
+  bound_z2 = 128
 }
 
 PREFABS.Window_bay_2 =
@@ -24,7 +24,7 @@ PREFABS.Window_bay_2 =
   template = "Window_bay_1",
   map      = "MAP02",
 
-  seed_w   = 2,
+  seed_w   = 2
 }
 
 PREFABS.Window_bay_3 =
@@ -32,5 +32,13 @@ PREFABS.Window_bay_3 =
   template = "Window_bay_1",
   map      = "MAP03",
 
-  seed_w   = 3,
+  seed_w   = 3
+}
+
+PREFABS.Window_bay_diag =
+{
+  template = "Window_bay_1",
+  map      = "MAP11",
+
+  where = "diagonal"
 }

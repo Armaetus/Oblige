@@ -40,3 +40,13 @@ PREFABS.Window_arrowslit_3 =
 
   seed_w = 3,
 }
+
+PREFABS.Window_arrowslit_diag =
+{
+  template = "Window_arrowslit_1",
+  map    = "MAP011",
+
+  group  = "gtd_window_arrowslit",
+
+  where = "diagonal"
+}

@@ -33,6 +33,14 @@ PREFABS.Window_bulletproof_glassy_3 =
   seed_w   = 3,
 }
 
+PREFABS.Window_bulletproof_glassy_diag =
+{
+  template = "Window_bulletproof_glassy_1",
+  map      = "MAP11",
+
+  where = "diagonal"
+}
+
 -- green
 
 PREFABS.Window_bulletproof_glassy_1_green =
@@ -71,6 +79,18 @@ PREFABS.Window_bulletproof_glassy_3_green =
   seed_w = 3,
 }
 
+PREFABS.Window_bulletproof_glassy_diag_green =
+{
+  template = "Window_bulletproof_glassy_1",
+  map      = "MAP11",
+
+  group = "gtd_window_bulletproof_glass_green",
+
+  tex_COLLITE3 = "COLLITE1",
+
+  where = "diagonal"
+}
+
 -- orange
 
 PREFABS.Window_bulletproof_glassy_1_orange =
@@ -107,4 +127,16 @@ PREFABS.Window_bulletproof_glassy_3_orange =
   tex_COLLITE3 = "COLLITE2",
 
   seed_w = 3,
+}
+
+PREFABS.Window_bulletproof_glassy_diag_orange =
+{
+  template = "Window_bulletproof_glassy_1",
+  map      = "MAP11",
+
+  group = "gtd_window_bulletproof_glass_orange",
+
+  tex_COLLITE3 = "COLLITE2",
+
+  where = "diagonal"
 }

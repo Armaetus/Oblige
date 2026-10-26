@@ -73,6 +73,31 @@ PREFABS.Window_cage_3_tech =
   flat_CEIL5_2 = "FLAT20",
 }
 
+PREFABS.Window_cage_diag =
+{
+  template = "Window_cage_1",
+  map    = "MAP11",
+  theme  = "!tech",
+
+  group  = "gtd_window_cage_lowbars",
+
+  where = "diagonal"
+}
+
+PREFABS.Window_cage_diag_tech =
+{
+  template   = "Window_cage_1",
+  map    = "MAP11",
+  theme  = "tech",
+
+  tex_BROWN144 = "DOORSTOP",
+  flat_CEIL5_2 = "FLAT20",
+
+  where = "diagonal"
+}
+
+--
+
 PREFABS.Window_cage_1_HB =
 {
   template = "Window_cage_1",
@@ -147,6 +172,35 @@ PREFABS.Window_cage_3_tech_HB =
   tex_MIDBARS3 = "MIDSPACE",
 }
 
+PREFABS.Window_cage_DIAG_HB =
+{
+  template = "Window_cage_1",
+  map = "MAP11",
+  theme  = "!tech",
+
+  group = "gtd_window_cage_highbars",
+
+  tex_MIDBARS3 = "MIDBARS1",
+
+  where = "diagonal"
+}
+
+PREFABS.Window_cage_DIAG_tech_HB =
+{
+  template   = "Window_cage_1",
+  map    = "MAP11",
+  theme  = "tech",
+  group = "gtd_window_cage_highbars",
+
+  tex_BROWN144 = "DOORSTOP",
+  flat_CEIL5_2 = "FLAT20",
+  tex_MIDBARS3 = "MIDSPACE",
+
+  where = "diagonal"
+}
+
+--
+
 PREFABS.Window_cage_1_hell =
 {
   template = "Window_cage_1",
@@ -154,7 +208,7 @@ PREFABS.Window_cage_1_hell =
   theme = "any",
 
   group = "gtd_window_cage_hell",
- 
+
   tex_MIDBARS3 = "MIDGRATE",
 }
 
@@ -178,6 +232,19 @@ PREFABS.Window_cage_3_hell =
 
   theme = "any",
   seed_w = 3,
+
+  group = "gtd_window_cage_hell",
+
+  tex_MIDBARS3 = "MIDGRATE",
+}
+
+PREFABS.Window_cage_diag_hell =
+{
+  template = "Window_cage_1",
+  map = "MAP11",
+
+  theme = "any",
+  where = "diagonal",
 
   group = "gtd_window_cage_hell",
 
