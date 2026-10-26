@@ -69,6 +69,17 @@ PREFABS.Window_tech_abstract_half_chamfer_techy4_no_stretch =
 
   z_fit = "top"
 }
+
+PREFABS.Window_tech_abstract_half_chamfer_techy_diag =
+{
+  template = "Window_tech_abstract_half_chamfer_techy",
+  map      = "MAP11",
+
+  where = "diagonal",
+
+  z_fit = "top"
+}
+
 -- vanilla fallbacks
 
 PREFABS.Window_tech_abstract_half_chamfer_techy_vanilla =
@@ -136,6 +147,24 @@ PREFABS.Window_tech_abstract_half_chamfer_techy_vanilla4 =
   z_fit = { 44 + 4, 64 - 4 }
 }
 
+PREFABS.Window_tech_abstract_half_chamfer_techy_vanilla_diag =
+{
+  template = "Window_tech_abstract_half_chamfer_techy",
+  port = "!zdoom",
+  map = "MAP11",
+  where = "diagonal",
+
+  rank = 1,
+
+  line_300 = 0,
+  line_343 = 0,
+  line_344 = 0,
+  line_345 = 0,
+
+  seed_w = 4,
+  z_fit = { 44 + 4, 64 - 4 }
+}
+
 --
 
 PREFABS.Window_generic_cubby_holes =
@@ -183,6 +212,14 @@ PREFABS.Window_generic_cubby_holes_4 =
   map = "MAP06",
 
   seed_w = 4
+}
+
+PREFABS.Window_generic_cubby_holes_diag =
+{
+  template = "Window_generic_cubby_holes",
+  map = "MAP12",
+
+  where = "diagonal"
 }
 
 --
@@ -243,4 +280,16 @@ PREFABS.Window_generic_cubby_holes_4_hell =
   flat_FLAT23 = "CEIL5_2"
 }
 
+PREFABS.Window_generic_cubby_holes_diag_hell =
+{
+  template = "Window_generic_cubby_holes",
+  map = "MAP12",
 
+  theme = "hell",
+  rank = 2,
+
+  where = "diagonal",
+
+  tex_SHAWN2 = "METAL",
+  flat_FLAT23 = "CEIL5_2"
+}

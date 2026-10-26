@@ -45,6 +45,14 @@ PREFABS.Window_low_gap_closed_4 =
   seed_w   = 4
 }
 
+PREFABS.Window_low_gap_closed_diag =
+{
+  template = "Window_low_gap_closed_1",
+
+  map      = "MAP11",
+  where = "diagonal"
+}
+
 --
 
 PREFABS.Window_low_gap_closed_1_hell =
@@ -102,6 +110,22 @@ PREFABS.Window_low_gap_closed_4_hell =
   theme = "hell",
   rank = 2,
   seed_w = 4,
+
+  flat_FLAT1 = "CEIL5_2",
+  flat_FLAT3 = "FLAT10",
+  tex_STEP4 = "STEP3",
+  tex_SHAWN2 = "METAL",
+  tex_DOORSTOP = "BRONZE3"
+}
+
+PREFABS.Window_low_gap_closed_diag_hell =
+{
+  template = "Window_low_gap_closed_1",
+  map = "MAP11",
+
+  theme = "hell",
+  rank = 2,
+  where = "diagonal",
 
   flat_FLAT1 = "CEIL5_2",
   flat_FLAT3 = "FLAT10",

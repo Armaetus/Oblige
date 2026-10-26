@@ -40,6 +40,14 @@ PREFABS.Window_tall_octagon_3 =
   seed_w = 3,
 }
 
+PREFABS.Window_tall_octagon_diag =
+{
+  template = "Window_tall_octagon_1",
+  map = "MAP11",
+
+  where = "diagonal"
+}
+
 --
 
 PREFABS.Window_tall_octagon_1_limit =
@@ -90,5 +98,17 @@ PREFABS.Window_tall_octagon_3_limit =
 
   seed_w = 3,
 
+  line_345 = 0
+}
+
+PREFABS.Window_tall_octagon_diag_limit =
+{
+  template = "Window_tall_octagon_1_limit",
+  map = "MAP11",
+
+  port = "!zdoom",
+
+  where = "diagonal",
+  
   line_345 = 0
 }

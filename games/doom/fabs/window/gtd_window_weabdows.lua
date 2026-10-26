@@ -38,6 +38,14 @@ PREFABS.Window_weabdows_3 =
   seed_w   = 3,
 }
 
+PREFABS.Window_weabdows_diag =
+{
+  template = "Window_weabdows_1",
+  map      = "MAP11",
+
+  where = "diagonal"
+}
+
 -- fallbacks
 
 PREFABS.Window_not_weabdows =
@@ -77,4 +85,12 @@ PREFABS.Window_not_weabdows_3 =
   map = "MAP03",
 
   seed_w = 3,
+}
+
+PREFABS.Window_not_weabdows_diag =
+{
+  template = "Window_not_weabdows",
+  map = "MAP11",
+
+  where = "diagonal"
 }
