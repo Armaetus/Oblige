@@ -25,7 +25,7 @@ PREFABS.Window_slump_tall_2 =
   template = "Window_slump_tall_1",
   map      = "MAP02",
 
-  seed_w   = 2,
+  seed_w   = 2
 }
 
 PREFABS.Window_slump_tall_3 =
@@ -33,7 +33,7 @@ PREFABS.Window_slump_tall_3 =
   template = "Window_slump_tall_1",
   map      = "MAP03",
 
-  seed_w   = 3,
+  seed_w   = 3
 }
 
 PREFABS.Window_slump_tall_4 =
@@ -41,5 +41,13 @@ PREFABS.Window_slump_tall_4 =
   template = "Window_slump_tall_1",
   map      = "MAP04",
 
-  seed_w   = 4,
+  seed_w   = 4
+}
+
+PREFABS.Window_slump_tall_diag =
+{
+  template = "Window_slump_tall_1",
+  map      = "MAP11",
+
+  where = "diagonal"
 }

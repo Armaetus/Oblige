@@ -1,6 +1,6 @@
 PREFABS.Window_staggered_square_1 =
 {
-  file   = "window/gtd_window_tall_and_glassy.wad",
+  file   = "window/gtd_window_staggered_square.wad",
   map    = "MAP01",
 
   group  = "gtd_window_staggered_square",
@@ -36,4 +36,12 @@ PREFABS.Window_staggered_square_3 =
   map      = "MAP03",
 
   seed_w   = 3,
+}
+
+PREFABS.Window_staggered_square_diag =
+{
+  template = "Window_staggered_square_1",
+  map      = "MAP11",
+
+  where = "diagonal"
 }

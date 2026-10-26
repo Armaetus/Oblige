@@ -38,6 +38,14 @@ PREFABS.Window_quakeish_3 =
   seed_w   = 3,
 }
 
+PREFABS.Window_quakeish_diag =
+{
+  template = "Window_quakeish_1",
+  map      = "MAP11",
+
+  where = "diagonal"
+}
+
 -- fallbacks
 
 PREFABS.Window_not_quakeish =
@@ -77,4 +85,12 @@ PREFABS.Window_not_quakeish_3 =
   map = "MAP03",
 
   seed_w = 3,
+}
+
+PREFABS.Window_not_quakeish_diag =
+{
+  template = "Window_not_quakeish",
+  map = "MAP11",
+
+  where = "diagonal"
 }
