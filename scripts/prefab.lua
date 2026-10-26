@@ -3076,7 +3076,8 @@ function Fab_pick(LEVEL, reqs, allow_none)
       gui.printf("Fab_pick:\n")
       gui.printf("reqs  = \n%s\n", table.tostr(reqs))
 
-      error("No matching prefabs for: " .. reqs.kind)
+      error("No matching prefabs for: " .. reqs.kind
+      .. "\n" .. table.tostr(reqs))
     end
 
     if reqs.NONE_prob then
