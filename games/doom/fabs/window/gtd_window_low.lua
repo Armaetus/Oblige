@@ -45,3 +45,11 @@ PREFABS.Window_low_2_with_opening =
   height = 112,
   bound_z2 = 112,
 }
+
+PREFABS.Window_low_diag =
+{
+  template = "Window_low_1",
+  map = "MAP11",
+
+  where = "diagonal",
+}

@@ -44,6 +44,14 @@ PREFABS.Window_gtd_industrial_lite_archs_3b =
   seed_w = 3,
 }
 
+PREFABS.Window_gtd_industrial_lite_archs_diag =
+{
+  template = "Window_gtd_industrial_lite_archs_1",
+  map = "MAP11",
+
+  where = "diagonal",
+}
+
 --
 
 PREFABS.Window_gtd_industrial_lite_archs_hell_1 =
@@ -92,4 +100,12 @@ PREFABS.Window_gtd_industrial_lite_archs_hell_3b =
   map = "MAP04",
 
   seed_w = 3,
+}
+
+PREFABS.Window_gtd_industrial_lite_archs_hell_diag =
+{
+  template = "Window_gtd_industrial_lite_archs_hell_1",
+  map = "MAP11",
+
+  where = "diagonal",
 }

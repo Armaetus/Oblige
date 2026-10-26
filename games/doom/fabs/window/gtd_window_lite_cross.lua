@@ -44,6 +44,14 @@ PREFABS.Window_gtd_lite_cross_4 =
   seed_w = 4
 }
 
+PREFABS.Window_gtd_lite_cross_diag =
+{
+  template = "Window_gtd_lite_cross",
+  map = "MAP11",
+
+  where = "diagonal"
+}
+
 --
 
 PREFABS.Window_gtd_lite_cross_1_urban =
@@ -94,6 +102,19 @@ PREFABS.Window_gtd_lite_cross_4_urban =
   tex_LITE5 = "SHAWN2"
 }
 
+PREFABS.Window_gtd_lite_cross_diag_urban =
+{
+  template = "Window_gtd_lite_cross",
+  map = "MAP11",
+
+  rank = 3,
+  theme = "urban",
+
+  where = "diagonal",
+
+  tex_LITE5 = "SHAWN2"
+}
+
 --
 
 PREFABS.Window_gtd_lite_cross_1_hell =
@@ -113,7 +134,7 @@ PREFABS.Window_gtd_lite_cross_1_hell =
 PREFABS.Window_gtd_lite_cross_2_hell =
 {
   template = "Window_gtd_lite_cross",
-  map = "MAP01",
+  map = "MAP02",
 
   rank = 1,
   theme = "hell",
@@ -127,7 +148,7 @@ PREFABS.Window_gtd_lite_cross_2_hell =
 PREFABS.Window_gtd_lite_cross_3_hell =
 {
   template = "Window_gtd_lite_cross",
-  map = "MAP01",
+  map = "MAP03",
 
   rank = 1,
   theme = "hell",
@@ -141,11 +162,25 @@ PREFABS.Window_gtd_lite_cross_3_hell =
 PREFABS.Window_gtd_lite_cross_4_hell =
 {
   template = "Window_gtd_lite_cross",
-  map = "MAP01",
+  map = "MAP40",
 
   rank = 1,
   theme = "hell",
   seed_w = 4,
+
+  tex_LITE3 = "METAL",
+  tex_LITE5 = "METAL",
+  tex_SUPPORT3 = "SUPPORT2"
+}
+
+PREFABS.Window_gtd_lite_cross_diag_hell =
+{
+  template = "Window_gtd_lite_cross",
+  map = "MAP11",
+
+  rank = 1,
+  theme = "hell",
+  where = "diagonal",
 
   tex_LITE3 = "METAL",
   tex_LITE5 = "METAL",
