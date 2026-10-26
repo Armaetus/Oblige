@@ -55,3 +55,11 @@ PREFABS.Window_chainlink_3_plain =
 
   seed_w = 3,
 }
+
+PREFABS.Window_chainlink_diag =
+{
+  template = "Window_chainlink_1",
+  map    = "MAP11",
+
+  where = "diagonal"
+}

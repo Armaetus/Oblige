@@ -56,6 +56,22 @@ PREFABS.Window_gtd_construction_frames_3 =
   seed_w = 3,
 }
 
+PREFABS.Window_gtd_construction_frames_diag_1 =
+{
+  template   = "Window_gtd_construction_frames_1_1",
+  map    = "MAP11",
+
+  where = "diagonal"
+}
+
+PREFABS.Window_gtd_construction_frames_diag_2 =
+{
+  template   = "Window_gtd_construction_frames_1_1",
+  map    = "MAP12",
+
+  where = "diagonal"
+}
+
 -- alt fits
 
 PREFABS.Window_gtd_construction_frames_1_1_low =

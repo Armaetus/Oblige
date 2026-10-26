@@ -38,6 +38,14 @@ PREFABS.Window_gtd_dem_3 =
   seed_w = 3,
 }
 
+PREFABS.Window_gtd_dem_diag =
+{
+  template = "Window_gtd_dem_1",
+  map = "MAP11",
+
+  where = "diagonal"
+}
+
 --
 
 PREFABS.Window_gtd_dem_1_tech =
@@ -68,6 +76,16 @@ PREFABS.Window_gtd_dem_3_tech =
   seed_w = 3
 }
 
+PREFABS.Window_gtd_dem_diag_tech =
+{
+  template = "Window_gtd_dem_1",
+  map = "MAP12",
+
+  theme = "tech",
+
+  where = "diagonal"
+}
+
 --
 
 PREFABS.Window_gtd_dem_1_hell =
@@ -96,4 +114,14 @@ PREFABS.Window_gtd_dem_3_hell =
   theme = "hell",
 
   seed_w = 3
+}
+
+PREFABS.Window_gtd_dem_diag_hell =
+{
+  template = "Window_gtd_dem_1",
+  map = "MAP13",
+
+  theme = "hell",
+
+  where = "diagonal"
 }

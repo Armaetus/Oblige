@@ -43,6 +43,16 @@ PREFABS.Window_open_4 =
   seed_w   = 4,
 }
 
+PREFABS.Window_open_diag =
+{
+  template = "Window_open_1",
+  map      = "MAP11",
+
+  where = "diagonal"
+}
+
+--
+
 PREFABS.Window_open_1_tall =
 {
   template = "Window_open_1",
@@ -83,6 +93,18 @@ PREFABS.Window_open_4_tall =
   map = "MAP04",
 
   seed_w = 4,
+
+  group = "gtd_window_full_open_tall",
+
+  z_fit = { 26,32 },
+}
+
+PREFABS.Window_open_tall_diag =
+{
+  template = "Window_open_1",
+  map      = "MAP11",
+
+  where = "diagonal",
 
   group = "gtd_window_full_open_tall",
 

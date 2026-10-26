@@ -46,6 +46,14 @@ PREFABS.Window_goffik_3 =
   seed_w   = 3,
 }
 
+PREFABS.Window_goffik_diag =
+{
+  template = "Window_goffik_1",
+  map      = "MAP11",
+
+  where = "diagonal"
+}
+
 -- yellow/orange variant
 
 PREFABS.Window_goffik_1_gold =
@@ -84,6 +92,21 @@ PREFABS.Window_goffik_3_gold =
   group = "gtd_window_goffik_gold",
 
   seed_w = 3,
+
+  flat_FLOOR1_6 = "ORANFLOR",
+  tex_COMPRED = "COMPYELL",
+  tex_COMPTIL2 = "COMPTIL5",
+  tex_RDLITE01 = "COLLITE2",
+}
+
+PREFABS.Window_goffik_3_gold_diag =
+{
+  template = "Window_goffik_1",
+  map      = "MAP11",
+
+  group = "gtd_window_goffik_gold",
+
+  where = "diagonal",
 
   flat_FLOOR1_6 = "ORANFLOR",
   tex_COMPRED = "COMPYELL",
