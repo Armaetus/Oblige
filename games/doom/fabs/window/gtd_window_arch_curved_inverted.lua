@@ -43,3 +43,11 @@ PREFABS.Window_arched_inverse_3 =
 
   seed_w = 3,
 }
+
+PREFABS.Window_arched_inverse_diag =
+{
+  template = "Window_arched_inverse_1",
+  map    = "MAP011",
+
+  where = "diagonal"
+}
