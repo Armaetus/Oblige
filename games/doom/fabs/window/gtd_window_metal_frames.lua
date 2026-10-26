@@ -20,7 +20,7 @@ PREFABS.Window_metal_frame_1 =
   bound_z1 = 0,
   bound_z2 = 96,
 
-  z_fit = {48,64},
+  z_fit = {48,64}
 }
 
 PREFABS.Window_metal_frame_2 =
@@ -28,7 +28,7 @@ PREFABS.Window_metal_frame_2 =
   template = "Window_metal_frame_1",
   map      = "MAP02",
 
-  seed_w   = 2,
+  seed_w   = 2
 }
 
 PREFABS.Window_metal_frame_3 =
@@ -36,8 +36,18 @@ PREFABS.Window_metal_frame_3 =
   template = "Window_metal_frame_1",
   map      = "MAP03",
 
-  seed_w   = 3,
+  seed_w   = 3
 }
+
+PREFABS.Window_metal_frame_diag =
+{
+  template = "Window_metal_frame_1",
+  map      = "MAP11",
+
+  where = "diagonal"
+}
+
+--
 
 PREFABS.Window_metal_frame_1_hell =
 {
@@ -48,7 +58,7 @@ PREFABS.Window_metal_frame_1_hell =
 
   tex_STEP4 = "METAL",
   tex_DOORSTOP = "METAL",
-  flat_FLAT23 = "CEIL5_2",
+  flat_FLAT23 = "CEIL5_2"
 }
 
 PREFABS.Window_metal_frame_2_hell =
@@ -62,7 +72,7 @@ PREFABS.Window_metal_frame_2_hell =
 
   tex_STEP4 = "METAL",
   tex_DOORSTOP = "METAL",
-  flat_FLAT23 = "CEIL5_2",
+  flat_FLAT23 = "CEIL5_2"
 }
 
 PREFABS.Window_metal_frame_3_hell =
@@ -76,5 +86,18 @@ PREFABS.Window_metal_frame_3_hell =
 
   tex_STEP4 = "METAL",
   tex_DOORSTOP = "METAL",
-  flat_FLAT23 = "CEIL5_2",
+  flat_FLAT23 = "CEIL5_2"
+}
+
+PREFABS.Window_metal_frame_diag_hell =
+{
+  template = "Window_metal_frame_1",
+  map      = "MAP11",
+
+  theme = "hell",
+  where = "diagonal",
+
+  tex_STEP4 = "METAL",
+  tex_DOORSTOP = "METAL",
+  flat_FLAT23 = "CEIL5_2"
 }

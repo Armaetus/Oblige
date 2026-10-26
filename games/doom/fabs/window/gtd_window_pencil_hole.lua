@@ -36,3 +36,11 @@ PREFABS.Window_pencil_hole_3 =
 
   seed_w   = 3,
 }
+
+PREFABS.Window_pencil_hole_diag =
+{
+  template = "Window_pencil_hole_1",
+  map      = "MAP11",
+
+  where = "diagonal"
+}

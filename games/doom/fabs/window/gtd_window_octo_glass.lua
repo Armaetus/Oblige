@@ -39,6 +39,14 @@ PREFABS.Window_octo_glass_3 =
   seed_w   = 3,
 }
 
+PREFABS.Window_octo_glass_diag =
+{
+  template = "Window_octo_glass_1",
+  map      = "MAP11",
+
+  where = "diagonal"
+}
+
 --
 
 PREFABS.Window_octo_glass_alt_1 =
@@ -70,6 +78,19 @@ PREFABS.Window_octo_glass_alt_3 =
   map = "MAP03",
 
   seed_w = 3,
+
+  port = "!zdoom",
+  group = "gtd_window_octo_glass",
+
+  rank = 1,
+}
+
+PREFABS.Window_octo_glass_alt_diag =
+{
+  template = "Window_gtd_window_hexagon_1",
+  map = "MAP11",
+
+  where = "diagonal",
 
   port = "!zdoom",
   group = "gtd_window_octo_glass",
