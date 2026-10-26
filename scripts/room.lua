@@ -1463,6 +1463,22 @@ function Room_make_windows(LEVEL, A1, A2, SEEDS)
       end
     end
 
+    -- diagonal windows: one prefab per diagonal seed
+    for _, S in pairs(A1.seeds) do
+      local diag = S.diagonal
+
+      if diag == 1 or diag == 3
+      or diag == 7 or diag == 9 then
+
+        -- get the direction tangent to the diagonal line
+        local dir = 10 - diag
+
+        if is_possible_at_seed(S, dir) then
+          add_piece(S, dir, 1)
+        end
+      end
+    end
+
     return edge_list, total_len
   end
 

@@ -8,8 +8,6 @@ PREFABS.Window_tall_1 =
   map    = "MAP01",
   theme  = "!tech",
 
-  
-
   group  = "tall",
   prob   = 50,
 
@@ -72,6 +70,27 @@ PREFABS.Window_tall_3_tech =
   seed_w   = 3,
   tex_METAL5 = "DOORSTOP",
   flat_CEIL5_2 = "FLAT20",
+}
+
+PREFABS.Window_tall_diag =
+{
+  template = "Window_tall_1",
+  theme  = "!tech",
+  map      = "MAP21",
+
+  where = "diagonal"
+}
+
+PREFABS.Window_tall_diag_tech =
+{
+  template = "Window_tall_1",
+  theme  = "tech",
+  map      = "MAP21",
+  seed_w   = 3,
+  tex_METAL5 = "DOORSTOP",
+  flat_CEIL5_2 = "FLAT20",
+
+  where = "diagonal"
 }
 
 
@@ -141,6 +160,32 @@ PREFABS.Window_tallish_3_tech =
   theme  = "tech",
   map      = "MAP09",
   seed_w   = 3,
+
+  rank     = 1,
+  height   = 128,
+  tex_METAL5 = "DOORSTOP",
+  flat_CEIL5_2 = "FLAT20",
+}
+
+PREFABS.Window_tallish_diag =
+{
+  template = "Window_tall_1",
+  theme  = "!tech",
+  map      = "MAP13",
+
+  where = "diagonal",
+
+  rank     = 1,
+  height   = 128,
+}
+
+PREFABS.Window_tallish_diag_tech =
+{
+  template = "Window_tall_1",
+  theme  = "tech",
+  map      = "MAP09",
+
+  where = "diagonal",
 
   rank     = 1,
   height   = 128,

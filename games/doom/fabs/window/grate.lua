@@ -64,3 +64,22 @@ PREFABS.Window_grate_3_midspace =
   tex_MIDBARS3 = "MIDSPACE",
   seed_w = 3,
 }
+
+PREFABS.Window_grate_diag =
+{
+  template = "Window_grate_1",
+  map      = "MAP12",
+  theme    = "!tech",
+
+  where = "diagonal"
+}
+
+PREFABS.Window_grate_diag_midspace =
+{
+  template = "Window_grate_1",
+  map      = "MAP21",
+  theme    = "tech",
+  tex_MIDBARS3 = "MIDSPACE",
+
+  where = "diagonal"
+}

@@ -40,3 +40,11 @@ PREFABS.Window_barred2_4 =
 
   seed_w = 4,
 }
+
+PREFABS.Window_barred2_diag =
+{
+  template = "Window_barred2_1",
+  map = "MAP11",
+
+  where = "diagonal"
+}

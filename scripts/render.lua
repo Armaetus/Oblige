@@ -113,7 +113,15 @@ function Render_edge(LEVEL, E, SEEDS)
       reqs.where = "edge"
     end
 
-    local def = Fab_pick(LEVEL, reqs)
+    local def = Fab_pick(LEVEL, reqs, "none_ok")
+
+    if not def then
+      if reqs.where = "diagonal" then
+        gui.printf("--WARNING-- No diagonal found for window group: " .. reqs.window_group .. "\n")
+      end
+      reqs.group = "square"
+      def = Fab_pick(LEVEL, reqs)
+    end
 
     return def
   end

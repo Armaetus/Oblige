@@ -84,3 +84,26 @@ PREFABS.Window_round3_tech =
   seed_w   = 3,
 
 }
+
+
+PREFABS.Window_round_diag =
+{
+  template = "Window_round1",
+
+  map      = "MAP03",
+  theme    = "!tech",
+
+  where = "diagonal"
+}
+
+PREFABS.Window_round_diag_tech =
+{
+  template = "Window_round1",
+  map    = "MAP03",
+  theme =  "tech",
+
+  tex_METAL = "SHAWN2",
+  flat_CEIL5_2 = "FLAT20",
+
+  where = "diagonal"
+}

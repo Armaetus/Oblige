@@ -8,8 +8,6 @@ PREFABS.Window_square1 =
   map    = "MAP01",
   theme  = "!tech",
 
-  
-
   group  = "square",
 
   passable = true,
@@ -68,7 +66,6 @@ PREFABS.Window_square3 =
   seed_w   = 3,
 }
 
-
 PREFABS.Window_square3_tech =
 {
   template = "Window_square1",
@@ -77,4 +74,25 @@ PREFABS.Window_square3_tech =
 
   flat_FLAT1 = "FLAT20",
   seed_w = 3,
+}
+
+
+PREFABS.Window_square_diag =
+{
+  template = "Window_square1",
+  theme  = "!tech",
+  map      = "MAP03",
+
+  where = "diagonal"
+}
+
+PREFABS.Window_square_diag_tech =
+{
+  template = "Window_square1",
+  theme    = "tech",
+  map      = "MAP03",
+
+  flat_FLAT1 = "FLAT20",
+
+  where = "diagonal"
 }

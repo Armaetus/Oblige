@@ -8,8 +8,6 @@ PREFABS.Window_barred1 =
   map    = "MAP01",
   theme  = "!tech",
 
-  
-
   passable = true,
 
   group  = "barred",
@@ -37,7 +35,6 @@ PREFABS.Window_barred1_tech =
 
   tex_METAL = "SHAWN2",
   flat_FLAT23 = "FLAT23",
-
 }
 
 PREFABS.Window_barred2 =
@@ -49,7 +46,6 @@ PREFABS.Window_barred2 =
   seed_w   = 2,
 
   flat_FLAT23 = "CEIL5_2",
-
 }
 
 PREFABS.Window_barred2_tech =
@@ -61,9 +57,7 @@ PREFABS.Window_barred2_tech =
 
   tex_METAL = "SHAWN2",
   flat_FLAT23 = "FLAT23",
-
 }
-
 
 PREFABS.Window_barred3 =
 {
@@ -73,7 +67,6 @@ PREFABS.Window_barred3 =
   seed_w   = 3,
 
   flat_FLAT23 = "CEIL5_2",
-
 }
 
 PREFABS.Window_barred3_tech =
@@ -85,5 +78,27 @@ PREFABS.Window_barred3_tech =
 
   tex_METAL = "SHAWN2",
   flat_FLAT23 = "FLAT23",
+}
 
+PREFABS.Window_barred_diag =
+{
+  template = "Window_barred1",
+  theme    = "!tech",
+  map      = "MAP11",
+
+  where = "diagonal",
+
+  flat_FLAT23 = "CEIL5_2",
+}
+
+PREFABS.Window_barred_diag_tech =
+{
+  template   = "Window_barred1",
+  map    = "MAP11",
+  theme = "tech",
+
+  where = "diagonal",
+
+  tex_METAL = "SHAWN2",
+  flat_FLAT23 = "FLAT23",
 }
