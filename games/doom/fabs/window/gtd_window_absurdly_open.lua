@@ -34,3 +34,11 @@ PREFABS.Window_absurdly_open_3 =
 
   seed_w   = 3,
 }
+
+PREFABS.Window_absurdly_open_diag =
+{
+  template = "Window_absurdly_open_1",
+  map      = "MAP11",
+
+  where = "diagonal"
+}
