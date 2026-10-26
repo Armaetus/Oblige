@@ -42,7 +42,7 @@ PREFABS.Window_arched_3 =
 PREFABS.Window_arched_diag =
 {
   template = "Window_arched_1",
-  map    = "MAP011",
+  map    = "MAP11",
 
   group  = "gtd_window_arched",
 
@@ -86,9 +86,9 @@ PREFABS.Window_arched_3_tall =
 PREFABS.Window_arched_diag_tall =
 {
   template = "Window_arched_1",
-  map    = "MAP011",
+  map = "MAP11",
 
-  group  = "gtd_window_arched_tall",
+  group = "gtd_window_arched_tall",
 
   where = "diagonal",
 
