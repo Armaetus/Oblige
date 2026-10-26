@@ -14,6 +14,8 @@ PREFABS.Window_staggered_square_1 =
   deep   = 16,
   over   = 16,
 
+  passable = true,
+
   bound_z1 = 0,
   bound_z2 = 96,
 
