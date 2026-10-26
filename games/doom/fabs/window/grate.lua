@@ -68,7 +68,7 @@ PREFABS.Window_grate_3_midspace =
 PREFABS.Window_grate_diag =
 {
   template = "Window_grate_1",
-  map      = "MAP12",
+  map      = "MAP21",
   theme    = "!tech",
 
   where = "diagonal"
