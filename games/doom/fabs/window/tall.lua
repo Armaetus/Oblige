@@ -171,7 +171,7 @@ PREFABS.Window_tallish_diag =
 {
   template = "Window_tall_1",
   theme  = "!tech",
-  map      = "MAP13",
+  map      = "MAP22",
 
   where = "diagonal",
 
@@ -183,7 +183,7 @@ PREFABS.Window_tallish_diag_tech =
 {
   template = "Window_tall_1",
   theme  = "tech",
-  map      = "MAP09",
+  map      = "MAP22",
 
   where = "diagonal",
 
