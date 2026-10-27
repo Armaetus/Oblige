@@ -909,6 +909,39 @@ SPROUT_CASTLE_2 =
   }
 },
 
+SPROUT_CASTLE_DEEP =
+{
+  theme = "!urban",
+  env = "outdoor",
+  prob = 175, --200,
+
+  structure =
+  {
+    "!!!!!!!!", "RRRRRRRR",
+    "!!!!!!!!", "RRRRRRRR",
+    "!!!!!!!!", "1%RRRR/1",
+    "!!!!!!!!", "11%RR/11",
+    "!!!!!!!!", "11111111",
+    "xxx11xxx", "xxx11xxx",
+  },
+
+  diagonals = {
+    "1R","R1",
+    "1R","R1"
+  },
+
+  new_room =
+  {
+    env = "building",
+
+    conn = { x=4, y=2, w=2, dir=8 },
+
+    symmetry = { kind="mirror", x=4, y=5, w=4, dir=4 },
+    symmetry2 = { kind="mirror", x=4, y=5, w=4, dir=6 },
+    symmetry3 = { kind="rotate", x=3, y=4, x2=6, y2=7 }
+  }
+},
+
 
 --[[SPROUT_DOUBLE_TEST =
 {
