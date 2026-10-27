@@ -1928,10 +1928,11 @@ function Room_border_up(LEVEL, SEEDS)
       -- porches --
 
       if (A1.is_porch and not A2.is_porch)
-          or (not A1.is_porch and A2.is_porch) then
+      or (not A1.is_porch and A2.is_porch) then
+
         if (A1.dead_end or A2.dead_end) then
           if A1.room and A1.room:get_env() == "building"
-              or A2.room and A2.room:get_env() == "building" then
+          or A2.room and A2.room:get_env() == "building" then
             Junction_make_empty(junc)
             return
           end
@@ -3939,7 +3940,7 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
           infect_area(A1, A2)
         end
 
-        -- stair stuff
+        --stair stuff
         if A.chunk and A.chunk.kind == "stair" then
           A1 = A
           if A.chunk.dest_area.is_porch then
@@ -3950,10 +3951,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
           end
 
           if A2 then
-            if A2.ceil_h then
+            --[[if A2.ceil_h then
               A:set_ceil_group(A2.ceil_group)
               A:set_ceil(A.ceil_group.h)
-            end
+            end]]
 
             A.is_outdoor = nil
             A.is_porch_neighbor = true
@@ -3961,10 +3962,10 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
               A.peer.is_outdoor = nil
               A.peer.is_porch_neighbor = true
               A.peer:set_ceil_mat(A.ceil_mat)
-              if A2.ceil_h then
+              --[[if A2.ceil_h then
                 A.peer:set_ceil_group(A.ceil_group)
                 A.peer:set_ceil(A.ceil_group.h)
-              end
+              end]]
             end
           end
         end
