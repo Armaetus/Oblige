@@ -1436,10 +1436,10 @@ function Corner_is_at_area_corner(corner)
     -- detect non-parallel diagonal boundaries
     local expected_diagonal =
     {
-      [1] = 1, -- NW
-      [2] = 7, -- SW
-      [3] = 3, -- NE
-      [4] = 9  -- SE
+      [1] = 7, -- NW
+      [2] = 1, -- SW
+      [3] = 9, -- NE
+      [4] = 3  -- SE
     }
 
     local diagonal_dirs = {}
