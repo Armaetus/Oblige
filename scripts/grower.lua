@@ -2761,15 +2761,16 @@ stderrf("prelim_conn %s --> %s : S=%s dir=%d\n", c_out.R1.name, c_out.R2.name, S
     local A = chunk.area
     local R = A.room
 
-    if rand.odds(R.trunk.consistent_stairs)
+    -- FIX-ME
+    --[[if rand.odds(R.trunk.consistent_stairs)
     and not R.has_consistent_stairs_rolled then
       R.has_consistent_stairs = true
       R.preferred_stairs = {}
-    end
+    end]]
 
     local reqs = chunk:base_reqs(chunk.from_dir)
 
-    reqs.kind  = "stairs"
+    reqs.kind = "stairs"
     reqs.shape = assert(chunk.shape)
 
     if A.room then
@@ -2789,7 +2790,7 @@ stderrf("prelim_conn %s --> %s : S=%s dir=%d\n", c_out.R1.name, c_out.R2.name, S
 
     local def = Fab_pick(LEVEL, reqs)
 
-    if R.has_consistent_stairs then
+    --[[if R.has_consistent_stairs then
       local sh = tonumber(chunk.sh)
       local sw = tonumber(chunk.sw)
 
@@ -2802,7 +2803,7 @@ stderrf("prelim_conn %s --> %s : S=%s dir=%d\n", c_out.R1.name, c_out.R2.name, S
       else
         R.preferred_stairs[sh][sw] = def
       end
-    end
+    end]]
 
     if def.plain_ceiling then
       chunk.plain_ceiling = true
