@@ -81,7 +81,7 @@ PREFABS.Window_square_diag =
 {
   template = "Window_square1",
   theme  = "!tech",
-  map      = "MAP03",
+  map      = "MAP11",
 
   where = "diagonal"
 }
@@ -90,7 +90,7 @@ PREFABS.Window_square_diag_tech =
 {
   template = "Window_square1",
   theme    = "tech",
-  map      = "MAP03",
+  map      = "MAP11",
 
   flat_FLAT1 = "FLAT20",
 
