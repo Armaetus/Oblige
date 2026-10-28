@@ -169,17 +169,18 @@ function PREFAB_CONTROL.fine_tune_filters()
     gtd_wall_brownlite = 10,
     gtd_wall_grnlite = 10]]
 
-    tech_o_dfan = 16,
-    tech_o_dfan_alt = 16,
-    tech_o_dfan_alt_2 = 16,
 
-    gtd_generic_metal_top_n_bottom = 2,
-    gtd_generic_lite_box_3d_inset = 3,
+    --[[gtd_generic_metal_top_n_bottom = 1,
+    gtd_generic_lite_box_3d_inset = 1,]]
 
-    gtd_tekwoodlite_1 = 6,
-    gtd_tekwoodlite_2 = 6,
-    gtd_tekwoodlite_3 = 6,
-    gtd_tekwoodlite_pillar = 6
+    tech_o_dfan = 32,
+    tech_o_dfan_alt = 32,
+    tech_o_dfan_alt_2 = 32,
+
+    gtd_tekwoodlite_1 = 3,
+    gtd_tekwoodlite_2 = 3,
+    gtd_tekwoodlite_3 = 3,
+    gtd_tekwoodlite_pillar = 3
   }
 
   local new_themes_multipliers =
@@ -198,8 +199,8 @@ function PREFAB_CONTROL.fine_tune_filters()
     hell_AztecClay = 24,
     urban_AztecClay = 24,
 
-    tech_silver_grate = 8,
-    urban_silver_grate = 8
+    tech_silver_grate = 16,
+    urban_silver_grate = 12
   }
 
   local themes =
