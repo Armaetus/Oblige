@@ -44,7 +44,7 @@ PREFABS.Window_arrowslit_3 =
 PREFABS.Window_arrowslit_diag =
 {
   template = "Window_arrowslit_1",
-  map    = "MAP011",
+  map    = "MAP11",
 
   group  = "gtd_window_arrowslit",
 
