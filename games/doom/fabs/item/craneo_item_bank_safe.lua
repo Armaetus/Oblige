@@ -1,7 +1,6 @@
 PREFABS.Item_craneo_bank_safe =
 {
   file  = "item/craneo_item_bank_safe.wad",
-
   map   = "MAP01",
 
   texture_pack = "armaetus",
@@ -17,6 +16,8 @@ PREFABS.Item_craneo_bank_safe =
   seed_w = 2,
   seed_h = 2,
 
+  deep = 16,
+
   x_fit = "frame",
-  y_fit = "frame",
+  y_fit = "frame"
 }
