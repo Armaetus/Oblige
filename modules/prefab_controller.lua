@@ -173,9 +173,9 @@ function PREFAB_CONTROL.fine_tune_filters()
     --[[gtd_generic_metal_top_n_bottom = 1,
     gtd_generic_lite_box_3d_inset = 1,]]
 
-    tech_o_dfan = 32,
-    tech_o_dfan_alt = 32,
-    tech_o_dfan_alt_2 = 32,
+    tech_o_dfan = 8,
+    tech_o_dfan_alt = 8,
+    tech_o_dfan_alt_2 = 8,
 
     gtd_tekwoodlite_1 = 3,
     gtd_tekwoodlite_2 = 3,
@@ -231,7 +231,7 @@ function PREFAB_CONTROL.fine_tune_filters()
           if GAME.THEMES[theme_name].outdoor_wall_groups
           and GAME.THEMES[theme_name].outdoor_wall_groups[WG] then
             GAME.THEMES[theme_name].outdoor_wall_groups[WG] =
-            GAME.THEMES[theme_name].outdoor_wall_groups[WG] * 2
+            GAME.THEMES[theme_name].outdoor_wall_groups[WG] * mult
           end
         end
       end

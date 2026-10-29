@@ -153,7 +153,6 @@ OBS_RESOURCE_PACK_GENAI_MATERIALS =
   SD_TSGWA = { t="SD_TSGWA", f="SD_TSGFA"},
   SD_TSGWB = { t="SD_TSGWB", f="SD_TSGFB"},
   SD_TSGWC = { t="SD_TSGWC", f="SD_TSGFC"},
-  SD_TSGWD = { t="SD_TSGWD", f="SD_TSGF6"},
   -- flats
   SD_TSGF1 = { t="SD_TSGW1", f="SD_TSGF1"},
   SD_TSGF2 = { t="SD_TSGW2", f="SD_TSGF2"},
@@ -943,7 +942,6 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SD_TSGWA = 24,
       SD_TSGWB = 24,
       SD_TSGWC = 24,
-      SD_TSGWD = 24,
 
       BRONZEG1 = 5,
       BROWN2 = 5,
@@ -2941,7 +2939,6 @@ OBS_RESOURCE_PACK_GENAI_ROOM_THEMES =
       SD_TSGWA = 24,
       SD_TSGWB = 24,
       SD_TSGWC = 24,
-      SD_TSGWD = 24,
 
       BRONZEG1 = 5,
       BROWN2 = 5,
@@ -3855,7 +3852,6 @@ OBS_RESOURCE_PACK_GENAI_THEMES =
       SD_TSGW8 = 20,
       SD_TSGWB = 20,
       SD_TSGWC = 20,
-      SD_TSGWD = 20,
 
       G_OTBBW1 = 20,
       G_OTBBW2 = 20,
