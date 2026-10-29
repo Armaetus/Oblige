@@ -640,14 +640,21 @@ PREFABS.Wall_tech_outdoor_yellow_compsil_vanilla =
 
 PREFABS.Wall_tech_outdoor_dfan =
 {
-  template = "Wall_tech_outdoor_caution_strip",
+  file = "wall/gtd_wall_tech_exterior_wall_groups.wad",
   map = "MAP28",
 
   texture_pack = "armaetus",
 
+  rank = 1,
+  prob = 15,
+
   group = "tech_o_dfan",
 
+  where = "edge",
   height = 96,
+  deep = 16,
+
+  bound_z1 = 0,
   bound_z2 = 96,
 
   z_fit = {22,24 , 88,89},
@@ -667,12 +674,18 @@ PREFABS.Wall_tech_outdoor_dfan =
 
 PREFABS.Wall_tech_outdoor_dfan_compat =
 {
-  template = "Wall_tech_outdoor_caution_strip",
+  file = "wall/gtd_wall_tech_exterior_wall_groups.wad",
   map = "MAP28",
+
+  prob = 15,
 
   group = "tech_o_dfan",
 
+  where = "edge",
   height = 96,
+  deep = 16,
+
+  bound_z1 = 0,
   bound_z2 = 96,
 
   z_fit = {22,24 , 88,89},
@@ -689,15 +702,10 @@ PREFABS.Wall_tech_outdoor_dfan_compat =
 
 PREFABS.Wall_tech_outdoor_dfan_alt =
 {
-  template = "Wall_tech_outdoor_caution_strip",
-  map = "MAP28",
-
-  texture_pack = "armaetus",
+  template = "Wall_tech_outdoor_dfan",
+  map = "MAP29",
 
   group = "tech_o_dfan_alt",
-
-  height = 96,
-  bound_z2 = 96,
 
   z_fit = {22,24 , 88,89},
 
@@ -719,13 +727,8 @@ PREFABS.Wall_tech_outdoor_dfan_alt =
 
 PREFABS.Wall_tech_outdoor_dfan_alt_compat =
 {
-  template = "Wall_tech_outdoor_caution_strip",
-  map = "MAP28",
-
-  group = "tech_o_dfan_alt",
-
-  height = 96,
-  bound_z2 = 96,
+  template = "Wall_tech_outdoor_dfan_compat",
+  map = "MAP29",
 
   z_fit = {22,24 , 88,89},
 
@@ -737,30 +740,22 @@ PREFABS.Wall_tech_outdoor_dfan_alt_compat =
 
 PREFABS.Wall_tech_outdoor_dfan_alt_2 =
 {
-  template = "Wall_tech_outdoor_caution_strip",
-  map = "MAP28",
-
-  texture_pack = "armaetus",
+  template = "Wall_tech_outdoor_dfan",
+  map = "MAP30",
 
   group = "tech_o_dfan_alt_2",
-
-  height = 96,
-  bound_z2 = 96,
 
   z_fit = { 8,32 }
 }
 
 PREFABS.Wall_tech_outdoor_dfan_alt_2_compat =
 {
-  template = "Wall_tech_outdoor_caution_strip",
-  map = "MAP28",
+  template = "Wall_tech_outdoor_dfan_compat",
+  map = "MAP30",
 
   group = "tech_o_dfan_alt_2",
 
-  height = 96,
-  bound_z2 = 96,
-
   z_fit = { 8,32 },
 
-  tex_DFAN1 = "BLAKWAL1",
+  tex_DFAN1 = "BLAKWAL1"
 }
