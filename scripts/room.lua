@@ -2821,14 +2821,19 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
     end
 
     if A1:touches(A2) then
+      if (A1.is_porch and not A2.is_porch) or
+      (not A1.is_porch and A2.is_porch) then
+        return true
+      end
+
+      if (A1.dead_end and not A2.dead_end) or
+      (A2.dead_end and not A1.dead_end) then
+        return true
+      end
+
       if R:get_env() == "outdoor" then
         if A1:is_open_to_sky() and A2:is_closed_to_sky() or
         A2:is_open_to_sky() and A1:is_closed_to_sky() then
-          return true
-        end
-
-        if (A1.is_porch and not A2.is_porch) or
-        (not A1.is_porch and A2.is_porch) then
           return true
         end
 
@@ -2876,12 +2881,6 @@ function Room_floor_ceil_heights(LEVEL, SEEDS)
       for _, A2 in pairs(R.areas) do
         if A1.ceil_group ~= group1 then goto skip end
         if A2.ceil_group ~= group2 then goto skip end
-
-        if A1:is_open_to_sky() and A2:is_closed_to_sky() then return false end
-        if A2:is_open_to_sky() and A1:is_closed_to_sky() then return false end
-
-        if A1.dead_end and not A2.dead_end then return false end
-        if not A1.dead_end and A2.dead_end then return false end
 
         if ceilings_must_stay_separated(R, A1, A2) then return false end
 
