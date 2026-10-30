@@ -3729,7 +3729,7 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
 
       MEM01 = 10,
       QFLAT02 = 10,
-      QLFAT03 = 10,
+      QFLAT03 = 10,
       QFLAT04 = 10,
       QFLAT05 = 10,
       QFLAT06 = 10,
@@ -3843,7 +3843,7 @@ OBS_RESOURCE_PACK_ROOM_THEMES =
 
       MEM01 = 10,
       QFLAT02 = 10,
-      QLFAT03 = 10,
+      QFL3AT03 = 10,
       QFLAT04 = 10,
       QFLAT05 = 10,
       QFLAT06 = 10,
